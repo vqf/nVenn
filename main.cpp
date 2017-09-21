@@ -944,8 +944,12 @@ class borderLine
     point spring(point &p0, point &p1, float dampen = 0, float springK = sk)
     {
         point result;
-        result.fx = springK * (p1.x - p0.x);
-        result.fy = springK * (p1.y - p0.y);
+        float dx = p1.x - p0.x;
+        int sx = dx / abs(dx);
+        float dy = p1.y - p0.y;
+        int sy = dy / abs(dy);
+        result.fx = springK * dx;
+        result.fy = springK * dy;
         p0.fx += result.fx - dampen * p0.vx * p0.vx * p0.vx;
         p1.fx -= result.fx + dampen * p1.vx * p1.vx * p1.vx;
         p0.fy += result.fy - dampen * p0.vy * p0.vy * p0.vy;
@@ -994,7 +998,7 @@ class borderLine
         }
     }*/
 
-    point contact(point &p0, point &p1, float hardness = 5e3f)
+    point contact(point &p0, point &p1, float hardness = 5e1f)
     {
         point result;
         point zero;
@@ -1037,7 +1041,7 @@ class borderLine
         if (d <= radius)
         {
             dr = radius / d;
-            if (vc < 0)
+            /*if (vc < 0)
             {
                 vx = (m1*p1.vx + m0*p0.vx)/(m1 + m0);
                 vy = (m1*p1.vy + m0*p0.vy)/(m1 + m0);
@@ -1047,7 +1051,7 @@ class borderLine
                 p0.vy = vy;
                 p1.vx = vx;
                 p1.vy = vy;
-//                attention(p1.x, p1.y, 1);
+//                attention(p1.x, p1.y, 1, 1);
 //                attention(p1.x+0.1*p1.vx, p1.y+0.1*p1.vy, 0.5);
 //                attention(p0.x, p0.y, 0.2);
 //                attention(p0.x+0.1*p0.vx, p0.y+0.1*p0.vy, 0.2);
@@ -1062,10 +1066,10 @@ class borderLine
                 p0.fy -= 2*f0*dy / d;
                 p1.fx += 2*f1*dx / d;
                 p1.fy += 2*f1*dy / d;
-                //attention(p0.x, p0.y, 1);
+                //attention(p0.x, p0.y, 1, 1);
                 //attention(p0.x+p0.fx, p0.y+p0.fy, 0.5);
                 //Sleep(100);
-            }
+            }*/
             if (d <= radius){
                 ratio = d/(radius);
                 kx = dx * (-1.0f + ratio);
@@ -1076,7 +1080,7 @@ class borderLine
                 p0.fy += result.fy;
                 p1.fx -= result.fx;
                 p1.fy -= result.fy;
-               // attention(p0.x, p0.y, 1);
+//                attention(p0.x, p0.y, 1, 1);
             }
             return result;
         }
@@ -1136,7 +1140,7 @@ class borderLine
         point f;
         //line points
         /*******/
-        float damp = sk / 1000;
+        float damp = sk / 100;
         for (i = 0; i < bl.size(); i++)
         {
             //first point
@@ -1326,9 +1330,9 @@ class borderLine
         }
         else
         {
-            maxf = 5e0f;
+            maxf = 5e20f;
             kb = 1e2f;
-            maxv = 7e0f;
+            maxv = 7e20f;
         }
 
 
@@ -1529,7 +1533,7 @@ public:
         //init time parameters
         startdt = dt;
         udt.init(startdt);
-        stepdt = 0.50;
+        stepdt = 0.90;
 
         //init points
         for (i = 0; i < ngroups; i++)
