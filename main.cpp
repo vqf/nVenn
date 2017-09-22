@@ -5,17 +5,20 @@
 
 #include <windows.h>
 #include <gl/gl.h>
+#include <gl/glu.h>
 #include <math.h>
 #include <iostream>
 #include <vector>
 #include <string>
 #include <sstream>
 #include <fstream>
+#include "bmpfont.h"
 
 #define CIRCLE_MASS 200.0f
 #define POINT_MASS 20
 
 typedef unsigned int UINT;
+
 
 float sk = 1e3f;
 float dt = 1e-2f;
@@ -645,7 +648,7 @@ class borderLine
     float startdt;
     timeMaster udt;
     float minratio;
-
+    vector<string> dataDisplay;
     float stepdt;
 
     void attention(float x, float y, float dx, float dy)
@@ -1041,35 +1044,6 @@ class borderLine
         if (d <= radius)
         {
             dr = radius / d;
-            /*if (vc < 0)
-            {
-                vx = (m1*p1.vx + m0*p0.vx)/(m1 + m0);
-                vy = (m1*p1.vy + m0*p0.vy)/(m1 + m0);
-                result.vx = dr * vc * dx / d;
-                result.vy = dr * vc * dy / d;
-                p0.vx = vx;
-                p0.vy = vy;
-                p1.vx = vx;
-                p1.vy = vy;
-//                attention(p1.x, p1.y, 1, 1);
-//                attention(p1.x+0.1*p1.vx, p1.y+0.1*p1.vy, 0.5);
-//                attention(p0.x, p0.y, 0.2);
-//                attention(p0.x+0.1*p0.vx, p0.y+0.1*p0.vy, 0.2);
-            }
-            if (fc < 0)
-            {
-                result.fx = fc * dx / d;
-                result.fy = fc * dy / d;
-                f0 = (p0.fx*dx + p0.fy*dy)/d;
-                f1 = (p1.fx*dx + p1.fy*dy)/d;
-                p0.fx -= 2*f0*dx / d;
-                p0.fy -= 2*f0*dy / d;
-                p1.fx += 2*f1*dx / d;
-                p1.fy += 2*f1*dy / d;
-                //attention(p0.x, p0.y, 1, 1);
-                //attention(p0.x+p0.fx, p0.y+p0.fy, 0.5);
-                //Sleep(100);
-            }*/
             if (d <= radius){
                 ratio = d/(radius);
                 kx = dx * (-1.0f + ratio);
@@ -1512,7 +1486,7 @@ public:
     borderLine(binMap b, vector<float> tw)
     {
         int i;
-        minratio = 0.1f;
+        minratio = 0.01f;
         w = tw;         //keep a copy of the weights
         wlimit();
 
@@ -1618,9 +1592,16 @@ public:
             }
             glEnd ();*/
         }
-        warn.clear();
-        /**********/
+        // Text
+        glColor3f(0.0f, 0.0f, 1.0f);
+        float yd = 0.8f;
 
+        glRasterPos2f(-0.9f, 0.8f);
+        printString("THE QUICK BROWN FOX JUMPS");
+        warn.clear();
+        dataDisplay.clear();
+        glFlush();
+        /**********/
         SwapBuffers (hDC);
     }
 
@@ -2151,7 +2132,7 @@ WinMain (HINSTANCE hInstance,
 
     /* enable OpenGL for the window */
     EnableOpenGL (hWnd, &hDC, &hRC);
-
+    init(); // Init bitmap font
 
     lines.interpolate(50);
     lines.simulate(1000, hDC);
