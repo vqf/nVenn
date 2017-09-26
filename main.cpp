@@ -4,6 +4,7 @@
  **************************/
 
 #include <windows.h>
+#include <Windows.h>
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include <math.h>
@@ -38,6 +39,11 @@ void temp(int n, string a="")
     j = sprintf(t, "%d", n);
     temp = t;
     MessageBox(publich, temp.c_str(), a.c_str(), MB_ICONINFORMATION | MB_OK);
+}
+
+void showText(char* n, string a="")
+{
+    MessageBox(publich, n, a.c_str(), MB_ICONINFORMATION | MB_OK);
 }
 
 class point
@@ -407,7 +413,7 @@ class fileText
 public:
     void addLine(string t)
     {
-        text = text + t +"\r\n";
+        text = text + t +"\n";
     }
     void clearText()
     {
@@ -648,7 +654,7 @@ class borderLine
     float startdt;
     timeMaster udt;
     float minratio;
-    vector<string> dataDisplay;
+    vector<char*> dataDisplay;
     float stepdt;
 
     void attention(float x, float y, float dx, float dy)
@@ -1315,6 +1321,11 @@ class borderLine
         setContacts();
         updPos(kb, maxv, resetVelocity);
         clearForces();
+//Show dt
+        char* dsp = (char*) calloc(100, sizeof(char));
+        sprintf(dsp, "DT: %.8f", dt);
+        dataDisplay.insert(dataDisplay.end(), dsp);
+//
         if (checkTopol())
         {
             bl = bl_old10;
@@ -1595,14 +1606,22 @@ public:
         // Text
         glColor3f(0.0f, 0.0f, 1.0f);
         float yd = 0.8f;
-
-        glRasterPos2f(-0.9f, 0.8f);
-        printString("THE QUICK BROWN FOX JUMPS");
+        for (i = 0; i < dataDisplay.size(); i++){
+          char* mymsg = dataDisplay[i];
+          //showText(mymsg); exit(0);
+          glRasterPos2f(-0.9f, yd);
+          printString(mymsg);
+          yd -= 0.1;
+        }
         warn.clear();
+        for (i = 0; i < dataDisplay.size(); i++){
+          free(dataDisplay[i]);
+        }
         dataDisplay.clear();
         glFlush();
         /**********/
         SwapBuffers (hDC);
+        Sleep(0);
     }
 
     fileText toPS()
@@ -1688,8 +1707,11 @@ public:
         pstext.addLine("/offsetx exch def");
         pstext.addLine("/b exch def");
         pstext.addLine("/g exch def");
-        pstext.addLine("/r exch def                                                                                      ");
-        pstext.addLine("/step 2 def");
+        pstext.addLine("/r exch def");
+        char* st = (char*) calloc(100, sizeof(char));
+        sprintf(st, "/step %u def", ngroups);
+        pstext.addLine(st);
+        free(st);
         pstext.addLine("offsetx llx add step urx offsetx add{");
         pstext.addLine("/x exch def");
         pstext.addLine(" offsety lly add step ury offsety add{");
@@ -1758,6 +1780,7 @@ public:
         pstext.addLine("%Begin program");
         pstext.addLine(" ");
 
+        UINT offset = 0;
         for (i = 0; i < ngroups; i++)
         {
             pstext.addLine("gsave");
@@ -1765,11 +1788,12 @@ public:
             tst = temp;
             pstext.addLine(tst);
             pstext.addLine("clip");
-            tsize = sprintf(temp, "%f %f %f 0 0 colorpattern", colors[i].red,
-                            colors[i].green, colors[i].blue);
+            tsize = sprintf(temp, "%f %f %f %u %u colorpattern", colors[i].red,
+                            colors[i].green, colors[i].blue, offset, offset);
             tst = temp;
             pstext.addLine(tst);
             pstext.addLine("grestore");
+            offset++;
         }
         pstext.addLine(" ");
 
