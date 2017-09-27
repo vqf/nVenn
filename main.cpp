@@ -8,6 +8,7 @@
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include <math.h>
+#include <time.h>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,7 +23,7 @@ typedef unsigned int UINT;
 
 
 float sk = 1e3f;
-float dt = 1e-2f;
+float dt = 1e-1f;
 float kdt = 0.0f;
 float baseV  = 5.0f;
 float baseBV = 20.0f;
@@ -651,19 +652,19 @@ class borderLine
     vector<rgb> colors;
     vector<point> warn;
     scale internalScale;
+    int totalExpectedSurface;
     float startdt;
     timeMaster udt;
     float minratio;
     vector<char*> dataDisplay;
     float stepdt;
 
-    void attention(float x, float y, float dx, float dy)
+    void attention(float x, float y)
     {
         point temp;
         temp.x = x;
         temp.y = y;
-        temp.fx = dx;
-        temp.fy = dy;
+        temp.radius = 1;
         warn.insert(warn.end(), temp);
     }
 
@@ -1349,9 +1350,13 @@ class borderLine
                 dt /= stepdt;
             }
         }
-
         blCounter++;
         deciderCounter++;
+        float surf = estSurf();
+        char* sur = (char*) calloc(100, sizeof(char));
+        sprintf(sur, "SURF.: %.4f", surf);
+        dataDisplay.insert(dataDisplay.end(), sur);
+
     }
 
     void updPos(float kb, float maxv, bool resetVelocity)
@@ -1383,6 +1388,10 @@ class borderLine
                     bl[i][j].vy = 0;
                 }
             }
+            float p = perimeter(bl[i], true);
+            char* t = (char*) calloc(100, sizeof(char));
+            sprintf(t, "P%u: %.4f", i, p);
+            dataDisplay.insert(dataDisplay.end(), t);
         }
 
         for (i = 0; i < circles.size(); i++)
@@ -1409,76 +1418,117 @@ class borderLine
         }
     }
 
+    float estSurf(int nPoints = 1000){
+      int i;
+      float perc;
+      int tsurf = (int) (internalScale.xSpan() * internalScale.ySpan());
+      int in = 0;
+      int out = 0;
+      vector<int> topol;
+      for (i = 0; i < ngroups; i++){
+        topol.insert(topol.end(), 0);
+      }
+      for (i = 0; i < nPoints; i++){
+        point P;
+        P.x = internalScale.minX + internalScale.xSpan() * (2*(((float) rand()) / ((float) RAND_MAX)) - 1);
+        P.y = internalScale.minY + internalScale.ySpan() * (2*(((float) rand()) / ((float) RAND_MAX)) - 1);
+        bool inside = isTopolCorrect(P, topol);
+        if (inside){
+          in++;
+        }
+        else{
+          out++;
+        }
+      }
+      if (out){
+        perc = ((float) in) / ((float) out);
+      }
+      else{
+        perc = -1;
+      }
+      float result = perc * (float) tsurf;
+      result /= totalExpectedSurface;
+      return result;
+    }
+
+    bool isTopolCorrect(point P, vector<int> belong){
+      int j, k;
+      int lastPoint;
+      bool mustBeIn;  //Must the circle be inside the curve?
+      bool isIn;      //Is the circle inside the curve?
+      bool ch;        //Must isIn change?
+      bool isAbove;   //Is the curve point above the circle center?
+      bool isRight;   //Is the curve point to the right of the circle center?
+      float a, b;
+      point previousPoint;
+      point testPoint;
+      for (j = 0; j < bl.size(); j++)
+      {
+          lastPoint = bl[j].size()-1;
+          isIn = false;
+          mustBeIn = (belong[j] == 1);
+          isAbove = (bl[j][lastPoint].y > P.y);
+          isRight = (bl[j][lastPoint].x > P.x);
+          for (k = 0; k < bl[j].size(); k++)
+          {
+              ch = (bl[j][k].y > P.y);
+              ch = (ch ^ isAbove);
+              if (ch)
+              {    /* Lines cross */
+                  isAbove = !isAbove;
+                  if (bl[j][k].x > P.x && isRight)
+                  { /* Not an extreme point */
+                      isIn = !isIn;
+                  }
+                  else if (bl[j][k].x > P.x ^ isRight)
+                  { /*Extreme point */
+                      if (k > 0)
+                      {
+                          previousPoint = bl[j][k - 1];
+                      }
+                      else
+                      {
+                          previousPoint = bl[j][lastPoint];
+                      }
+                      a = (bl[j][k].y - previousPoint.y)/
+                          (bl[j][k].x - previousPoint.x);
+                      b = bl[j][k].y - a * bl[j][k].x;
+                      testPoint.y = P.y;
+                      testPoint.x = (testPoint.y - b) / a;
+                      if (testPoint.x > P.x
+                              && isInside(previousPoint, bl[j][k], testPoint))
+                      {
+                          isIn = !isIn;
+                      }
+                  }
+              }   /* Lines cross */
+              isRight  = (bl[j][k].x > P.x);
+          }
+          if (isIn ^ mustBeIn)
+          {
+              //attention(circles[i].x, circles[i].y, 2);
+              //Sleep(1000);
+              return true;
+          }
+      }
+      return false;
+    }
+
     bool checkTopol()
     {
-        int i, j, k;
-        int lastPoint;
-        bool mustBeIn;  //Must the circle be inside the curve?
-        bool isIn;      //Is the circle inside the curve?
-        bool ch;        //Must isIn change?
-        bool isAbove;   //Is the curve point above the circle center?
-        bool isRight;   //Is the curve point to the right of the circle center?
-        float a, b;
-        vector<int> belong;
-        point previousPoint;
-        point testPoint;
-        for (i = 0; i < circles.size(); i++)
-        {
-            if (circles[i].radius > 0)
-            { /* Circle has radius */
-                belong = toBin(circles[i].n, bl.size());
-                for (j = 0; j < bl.size(); j++)
-                {
-                    lastPoint = bl[j].size()-1;
-                    isIn = false;
-                    mustBeIn = (belong[j] == 1);
-                    isAbove = (bl[j][lastPoint].y > circles[i].y);
-                    isRight = (bl[j][lastPoint].x > circles[i].x);
-                    for (k = 0; k < bl[j].size(); k++)
-                    {
-                        ch = (bl[j][k].y > circles[i].y);
-                        ch = (ch ^ isAbove);
-                        if (ch)
-                        {    /* Lines cross */
-                            isAbove = !isAbove;
-                            if (bl[j][k].x > circles[i].x && isRight)
-                            { /* Not an extreme point */
-                                isIn = !isIn;
-                            }
-                            else if (bl[j][k].x > circles[i].x ^ isRight)
-                            { /*Extreme point */
-                                if (k > 0)
-                                {
-                                    previousPoint = bl[j][k - 1];
-                                }
-                                else
-                                {
-                                    previousPoint = bl[j][lastPoint];
-                                }
-                                a = (bl[j][k].y - previousPoint.y)/
-                                    (bl[j][k].x - previousPoint.x);
-                                b = bl[j][k].y - a * bl[j][k].x;
-                                testPoint.y = circles[i].y;
-                                testPoint.x = (testPoint.y - b) / a;
-                                if (testPoint.x > circles[i].x
-                                        && isInside(previousPoint, bl[j][k], testPoint))
-                                {
-                                    isIn = !isIn;
-                                }
-                            }
-                        }   /* Lines cross */
-                        isRight  = (bl[j][k].x > circles[i].x);
-                    }
-                    if (isIn ^ mustBeIn)
-                    {
-                        //attention(circles[i].x, circles[i].y, 2);
-                        //Sleep(1000);
-                        return true;
-                    }
-                }
-            } /* Circle has radius */
-        }
-        return false;
+      int i;
+      for (i = 0; i < circles.size(); i++)
+      {
+          if (circles[i].radius > 0)
+          { /* Circle has radius */
+              vector<int> belong = toBin(circles[i].n, bl.size()); // This might be taken out and calculated only once. Does not take long, though
+              bool result = isTopolCorrect(circles[i], belong);
+              if (result){
+                return result;
+              }
+          } /* Circle has radius */
+      }
+      return false;
     }
 
     void wlimit(){
@@ -1498,6 +1548,7 @@ public:
     {
         int i;
         minratio = 0.01f;
+        srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
 
@@ -1507,6 +1558,11 @@ public:
 
         //init circles
         setCircles(b);
+
+        totalExpectedSurface = 0;
+        for (i = 0; i < w.size(); i++){
+          totalExpectedSurface += circles[i].radius * circles[i].radius;
+        }
 
         //init counters
         blCounter.setLimits(0, 30u);
@@ -1551,7 +1607,6 @@ public:
         ogl.maxX = 1;
         ogl.minY = -1;
         ogl.maxY = 1;
-
         //define vectors
         for (i = 0; i < bl.size(); i++)
         {
@@ -1583,8 +1638,8 @@ public:
         for (i = 0; i < warn.size();  i++)
         {
             P = place(ogl, warn[i]);
-            point tp;
-            tp.x = warn[i].fx;
+            //point tp;
+            /*tp.x = warn[i].fx;
             tp.y = warn[i].fy;
             point P2;
             P2 = place(ogl, tp);
@@ -1593,15 +1648,15 @@ public:
                 glVertex2f (P.x, P.y);
                 glVertex2f (P2.x,P2.y);
             glEnd ();
-
-            /*temp = glCircle(P.x, P.y, P.radius);
+            */
+            temp = glCircle(P.x, P.y, P.radius);
             glBegin (GL_LINE_LOOP);
             glColor3f (0.0f, 1.0f, 0.0f);
             for (j = 0; j < temp.size(); j++)
             {
                 glVertex2f (temp[j].x, temp[j].y);
             }
-            glEnd ();*/
+            glEnd ();
         }
         // Text
         glColor3f(0.0f, 0.0f, 1.0f);

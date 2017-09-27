@@ -19,12 +19,13 @@
 	<sstream>
 	<fstream>
 
-1506334390 source:c:\users\vqf\documents\cpp\venn\1.2\main.cpp
+1506446180 source:c:\users\vqf\documents\cpp\venn\1.2\main.cpp
 	<windows.h>
 	<Windows.h>
 	<gl/gl.h>
 	<gl/glu.h>
 	<math.h>
+	<time.h>
 	<iostream>
 	<vector>
 	<string>
@@ -32,5 +33,5 @@
 	<fstream>
 	"bmpfont.h"
 
-1506103093 c:\users\vqf\documents\cpp\venn\1.2\bmpfont.h
+1506446834 c:\users\vqf\documents\cpp\venn\1.2\bmpfont.h
 

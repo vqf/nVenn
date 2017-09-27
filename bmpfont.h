@@ -43,6 +43,13 @@ GLubyte letters[][13] = {
 
 GLuint fontOffset;
 
+void addGlyph(char ch, GLubyte* v){
+   glNewList(fontOffset + ch, GL_COMPILE);
+   //GLubyte v[13] = {0x00, 0x00, 0x00, 0x08, 0x2a, 0x1c, 0x7f, 0x1c, 0x2a, 0x08, 0x00, 0x00, 0x00};
+   glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, v);
+   glEndList();
+}
+
 void makeRasterFont(void)
 {
    GLuint i, j;
@@ -60,17 +67,19 @@ void makeRasterFont(void)
       glEndList();
    }
    //Dot
-   glNewList(fontOffset + '.', GL_COMPILE);
    GLubyte dot[13] = {0x00, 0x18, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-   glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, dot);
-   glEndList();
-   glNewList(fontOffset + ':', GL_COMPILE);
    GLubyte colon[13] = {0x00, 0x00, 0x18, 0x18, 0x00, 0x00, 0x18, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00};
-   glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, colon);
-   glEndList();
+   GLubyte aster[13] = {0x00, 0x00, 0x00, 0x08, 0x2a, 0x1c, 0x7f, 0x1c, 0x2a, 0x08, 0x00, 0x00, 0x00};
+   GLubyte slash[13] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x7e, 0x7e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+   addGlyph('.', dot);
+   addGlyph(':', colon);
+   addGlyph('*', aster);
+   addGlyph('-', slash);
+
    glNewList(fontOffset + ' ', GL_COMPILE);
    glBitmap(8, 13, 0.0, 2.0, 10.0, 0.0, space);
    glEndList();
+
 }
 
 void init(void)
