@@ -653,11 +653,12 @@ class borderLine
     vector<point> warn;
     scale internalScale;
     int totalExpectedSurface;
+    float surfRatio;
+    float minSurfRatio;
     float startdt;
     timeMaster udt;
     float minratio;
     vector<char*> dataDisplay;
-    float surfRatio;
     float stepdt;
     bool fixCircles;
 
@@ -896,6 +897,8 @@ class borderLine
                 bl_old10[i][j].reset();
             }
         }
+        surfRatio = estSurf();
+        minSurfRatio = surfRatio;
     }
 
     vector<point> glCircle(float x, float y, float r)
@@ -1249,13 +1252,13 @@ class borderLine
                         bl[k][i].radius = Scale * k;
                         storeR = circles[j].radius;
                         circles[j].radius -= 2*bl[k][i].radius;
-                        //f = contact(circles[j], bl[k][i]);
+                        f = contact(circles[j], bl[k][i]);
                         f = eqforce(circles[j], bl[k][i], 1e-4f);
                         circles[j].radius = storeR;
-                        //circles[j].fx = 0;
-                        //circles[j].fy = 0;
-                        //circles[j].vx = 0;
-                        //circles[j].vy = 0;
+                        circles[j].fx = 0;
+                        circles[j].fy = 0;
+                        circles[j].vx = 0;
+                        circles[j].vy = 0;
                         if (i > 0)
                         {
                             i1 = i - 1;
@@ -1317,12 +1320,27 @@ class borderLine
         setContacts();
         updPos(kb, resetVelocity);
         clearForces();
+        surfRatio = estSurf();
+        if (minSurfRatio == 0){
+          minSurfRatio = surfRatio;
+        }
+        if(minSurfRatio > surfRatio){
+          minSurfRatio = surfRatio;
+        }
 //Show dt
         char* dsp = (char*) calloc(100, sizeof(char));
         sprintf(dsp, "DT: %.8f", dt);
         dataDisplay.insert(dataDisplay.end(), dsp);
+
+        char* sur = (char*) calloc(100, sizeof(char));
+        sprintf(sur, "SURF.: %.4f", surfRatio);
+        dataDisplay.insert(dataDisplay.end(), sur);
+
+        char* msur = (char*) calloc(100, sizeof(char));
+        sprintf(msur, "MINSURF.: %.4f", minSurfRatio);
+        dataDisplay.insert(dataDisplay.end(), msur);
 //
-        if (checkTopol())
+        if (checkTopol() || surfRatio > (5 * minSurfRatio))
         {
             bl = bl_old10;
             circles = circles_old10;
@@ -1347,10 +1365,6 @@ class borderLine
         }
         blCounter++;
         deciderCounter++;
-        //float surf = estSurf();
-        char* sur = (char*) calloc(100, sizeof(char));
-        sprintf(sur, "SURF.: %.4f", surfRatio);
-        dataDisplay.insert(dataDisplay.end(), sur);
 
     }
 
@@ -1376,7 +1390,6 @@ class borderLine
                 //limitVel(bl[i][j], maxv);
                 //Prepare the scale for the new frame
                 setScale(bl[i][j]);
-                surfRatio = estSurf();
 
                 if (resetVelocity)
                 {
@@ -1384,6 +1397,7 @@ class borderLine
                     bl[i][j].vy = 0;
                 }
             }
+
             //float p = perimeter(bl[i], true);
             //char* t = (char*) calloc(100, sizeof(char));
             //sprintf(t, "P%u: %.4f", i, p);
@@ -1547,7 +1561,6 @@ public:
         int i;
         minratio = 0.01f;
         fixCircles = false;
-        surfRatio = estSurf();
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
@@ -1590,6 +1603,7 @@ public:
         {
             colors.insert(colors.end(),toRGB(i, 1));
         }
+        minSurfRatio = 0;
     }
 
     void toOGL(HDC hDC)
