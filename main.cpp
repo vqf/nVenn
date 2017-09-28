@@ -657,7 +657,9 @@ class borderLine
     timeMaster udt;
     float minratio;
     vector<char*> dataDisplay;
+    float surfRatio;
     float stepdt;
+    bool fixCircles;
 
     void attention(float x, float y)
     {
@@ -1188,6 +1190,14 @@ class borderLine
             }
         }
         /*******/
+        if (fixCircles){
+          for (i = 0; i < circles.size(); i++){
+            circles[i].fx = 0;
+            circles[i].fy = 0;
+            circles[i].vx = 0;
+            circles[i].vy = 0;
+          }
+        }
     }
     void setForces2()
     {
@@ -1223,9 +1233,10 @@ class borderLine
         float storeR = 0;
         Scale = 0.02;
         string temp;
+        //fixCircles = true;
+        float dampen = sk / 10;
         /*******/
         //line-circle
-
         for (k = 0; k < bl.size(); k++)
         {
             size = bl[k].size();
@@ -1238,13 +1249,13 @@ class borderLine
                         bl[k][i].radius = Scale * k;
                         storeR = circles[j].radius;
                         circles[j].radius -= 2*bl[k][i].radius;
-                        f = contact(circles[j], bl[k][i]);
-                        f = eqforce(circles[j], bl[k][i], 1e-3f);
+                        //f = contact(circles[j], bl[k][i]);
+                        f = eqforce(circles[j], bl[k][i], 1e-4f);
                         circles[j].radius = storeR;
-                        circles[j].fx = 0;
-                        circles[j].fy = 0;
-                        circles[j].vx = 0;
-                        circles[j].vy = 0;
+                        //circles[j].fx = 0;
+                        //circles[j].fy = 0;
+                        //circles[j].vx = 0;
+                        //circles[j].vy = 0;
                         if (i > 0)
                         {
                             i1 = i - 1;
@@ -1261,8 +1272,8 @@ class borderLine
                         {
                             i1 = 0;
                         }
-                        f = spring(bl[k][i1], bl[k][i]);
-                        f = spring(bl[k][i], bl[k][i2]);
+                        f = spring(bl[k][i1], bl[k][i], dampen);
+                        f = spring(bl[k][i], bl[k][i2], dampen);
 
                     }
                 }
@@ -1282,45 +1293,29 @@ class borderLine
         }
     }
 
-    void limitVel(point &p, float maxv)
-    {
-        float v;
-        v = p.vx * p.vx + p.vy * p.vy;
-        if (v > maxv*maxv)
-        {
-            //attention(p.x, p.y, 1);
-            v = sqrt(v);
-            p.vx *= maxv/v;
-            p.vy *= maxv/v;
-        }
-    }
-
 
     void solve(bool resetVelocity = false)
     {
         int i, j;
         float kb;
         float maxf;
-        float maxv;
 
         if (resetVelocity)
         {
-            maxf = 5e20f;
+            maxf = 5e10f;
             kb = 1e2f;//1e2f;
-            maxv = 8e2f;
         }
         else
         {
-            maxf = 5e20f;
+            maxf = 5e30f;
             kb = 1e2f;
-            maxv = 7e20f;
         }
 
 
         //Init the scale for the new frame
         internalScale.clear = true;
         setContacts();
-        updPos(kb, maxv, resetVelocity);
+        updPos(kb, resetVelocity);
         clearForces();
 //Show dt
         char* dsp = (char*) calloc(100, sizeof(char));
@@ -1352,14 +1347,14 @@ class borderLine
         }
         blCounter++;
         deciderCounter++;
-        float surf = estSurf();
+        //float surf = estSurf();
         char* sur = (char*) calloc(100, sizeof(char));
-        sprintf(sur, "SURF.: %.4f", surf);
+        sprintf(sur, "SURF.: %.4f", surfRatio);
         dataDisplay.insert(dataDisplay.end(), sur);
 
     }
 
-    void updPos(float kb, float maxv, bool resetVelocity)
+    void updPos(float kb, bool resetVelocity)
     {
         int i, j;
         //Apply each force to each point
@@ -1381,6 +1376,7 @@ class borderLine
                 //limitVel(bl[i][j], maxv);
                 //Prepare the scale for the new frame
                 setScale(bl[i][j]);
+                surfRatio = estSurf();
 
                 if (resetVelocity)
                 {
@@ -1388,15 +1384,15 @@ class borderLine
                     bl[i][j].vy = 0;
                 }
             }
-            float p = perimeter(bl[i], true);
-            char* t = (char*) calloc(100, sizeof(char));
-            sprintf(t, "P%u: %.4f", i, p);
-            dataDisplay.insert(dataDisplay.end(), t);
+            //float p = perimeter(bl[i], true);
+            //char* t = (char*) calloc(100, sizeof(char));
+            //sprintf(t, "P%u: %.4f", i, p);
+            //dataDisplay.insert(dataDisplay.end(), t);
         }
 
         for (i = 0; i < circles.size(); i++)
         {
-            maxv *= 60;
+
             /*******
             limitForce(circles[i], maxf);
             /*******/
@@ -1418,11 +1414,11 @@ class borderLine
         }
     }
 
-    float estSurf(int nPoints = 1000){
+    float estSurf(int nPoints = 100){
       int i;
       float perc;
-      int tsurf = (int) (internalScale.xSpan() * internalScale.ySpan());
-      int in = 0;
+      float tsurf = (float) (internalScale.xSpan() * internalScale.ySpan());
+      /*int in = 0;
       int out = 0;
       vector<int> topol;
       for (i = 0; i < ngroups; i++){
@@ -1448,7 +1444,9 @@ class borderLine
       }
       float result = perc * (float) tsurf;
       result /= totalExpectedSurface;
-      return result;
+      return result;*/
+      tsurf /= (float) totalExpectedSurface;
+      return tsurf;
     }
 
     bool isTopolCorrect(point P, vector<int> belong){
@@ -1548,6 +1546,8 @@ public:
     {
         int i;
         minratio = 0.01f;
+        fixCircles = false;
+        surfRatio = estSurf();
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
@@ -1861,7 +1861,7 @@ public:
         }
         pstext.addLine(" ");
 
-        /****Draw circles*
+        /****Draw circles*/
         for (i = 0; i < circles.size(); i++){
             pstemp = place(ps, circles[i]);
             pstext.addLine("newpath");
@@ -1869,6 +1869,7 @@ public:
                             pstemp.y, pstemp.radius);
             tst = temp;
             pstext.addLine(tst);
+            pstext.addLine("0.2 setlinewidth");
             pstext.addLine("1 0 0 setrgbcolor");
             pstext.addLine("stroke");
         }
@@ -1984,71 +1985,9 @@ public:
             }
         }
 
-        bQuit = false;
-        sk = 15e3f;
-        dt = 0.1f;
-        interpolate(200);
         udt.clear();
-        while (!bQuit)
-        {
-            /* check for messages */
-            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-            {
-                /* handle or dispatch messages */
-                if (msg.message == WM_KEYDOWN)
-                {
-                    //temp(dt*1e5, "KeyDown");
-                }
-                if (msg.message == WM_QUIT)
-                {
-                    bQuit = TRUE;
-                }
-
-                else
-                {
-                    TranslateMessage (&msg);
-                    DispatchMessage (&msg);
-                }
-            }
-            else
-            {
-                // TODO (vic#1#): Attention here too\
-
-                setForces2();
-                solve(true);
-                toOGL(hDC);
-            }
-        }
-
         bQuit = false;
-        dt = 0.005;
         interpolate(700);
-        while (!bQuit)
-        {
-            /* check for messages */
-            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-            {
-                /* handle or dispatch messages */
-                if (msg.message == WM_QUIT)
-                {
-                    bQuit = TRUE;
-                }
-                else
-                {
-                    TranslateMessage (&msg);
-                    DispatchMessage (&msg);
-                }
-            }
-            else
-            {
-                setForces3();
-                solve(true);
-                toOGL(hDC);
-                //Sleep(1);
-            }
-        }
-        bQuit = false;
-        dt /= 2;
         //interpolate(700);
         while (!bQuit)
         {
@@ -2069,7 +2008,7 @@ public:
             else
             {
                 setForces3();
-                solve(true);
+                solve();
                 toOGL(hDC);
                 //Sleep(1);
             }
