@@ -646,8 +646,10 @@ class borderLine
     vector<point> circles_old5;
     vector<point> circles_old10;
     UINT ngroups;
+    UINT startPerim;
     lCounter blCounter;
     lCounter deciderCounter;
+    lCounter refreshScreen;
     vector<float> w;
     vector<rgb> colors;
     vector<point> warn;
@@ -1138,12 +1140,7 @@ class borderLine
                 f = spring(bl[i][j], bl[i][j-1], damp);
             }
         }
-        /** Circle-circle
-        for (i = 0; i < circles.size() - 1; i++){
-            for (j = i + 1; j < circles.size(); j++){
-              f = spring(circles[i], circles[j], sk / 50, circles[i].radius + circles[j].radius);
-            }
-        }**/
+
     }
 
     void setContacts()
@@ -1282,6 +1279,12 @@ class borderLine
                 }
             }
         }
+        /** Circle-circle
+        for (i = 0; i < circles.size() - 1; i++){
+            for (j = i + 1; j < circles.size(); j++){
+              f = eqforce(circles[i], circles[j]);
+            }
+        } **/
     }
 
     void limitForce(point &p, float maxf)
@@ -1340,7 +1343,7 @@ class borderLine
         sprintf(msur, "MINSURF.: %.4f", minSurfRatio);
         dataDisplay.insert(dataDisplay.end(), msur);
 //
-        if (checkTopol() || surfRatio > (5 * minSurfRatio))
+        if (checkTopol() || surfRatio > (2 * minSurfRatio))
         {
             bl = bl_old10;
             circles = circles_old10;
@@ -1559,11 +1562,12 @@ public:
     borderLine(binMap b, vector<float> tw)
     {
         int i;
-        minratio = 0.01f;
+        minratio = 0.05f;
         fixCircles = false;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
+
 
         int height;     //number of rows in the first column
         ngroups = b.ngroups;
@@ -1580,6 +1584,7 @@ public:
         //init counters
         blCounter.setLimits(0, 30u);
         deciderCounter.setLimits(0, 300u);
+        refreshScreen.setLimits(1, 10);
 
         //init internal scale
         internalScale.clear = true;
@@ -1587,7 +1592,7 @@ public:
         //init time parameters
         startdt = dt;
         udt.init(startdt);
-        stepdt = 0.90;
+        stepdt = 0.60;
 
         //init points
         for (i = 0; i < ngroups; i++)
@@ -1596,7 +1601,9 @@ public:
             setPoints(b, i);
             bl.insert(bl.end(), p);
         }
-        interpolate(100);
+        startPerim = perimeter(bl[0]);
+        UINT np = (UINT) (0.5f * (float) startPerim);
+        interpolate(np);
 
         //init colors
         for (i = 0; i <= 0x00FFFFFF; i = i + (int)0x00FFFFFF/ngroups)
@@ -1690,7 +1697,7 @@ public:
         glFlush();
         /**********/
         SwapBuffers (hDC);
-        Sleep(0);
+        Sleep(1);
     }
 
     fileText toPS()
@@ -1965,7 +1972,13 @@ public:
             {
                 //setForces1();
                 //solve();
-                toOGL(hDC);
+                if (refreshScreen.isMax()) toOGL(hDC);
+                refreshScreen++;
+                warn.clear();
+                for (i = 0; i < dataDisplay.size(); i++){
+                  free(dataDisplay[i]);
+                }
+                dataDisplay.clear();
                 // TODO (vic#1#): Attention here\
 
                 //Sleep(100);
@@ -1992,7 +2005,13 @@ public:
             {
                 setForces1();
                 solve();
-                toOGL(hDC);
+                if (refreshScreen.isMax()) toOGL(hDC);
+                refreshScreen++;
+                warn.clear();
+                for (i = 0; i < dataDisplay.size(); i++){
+                  free(dataDisplay[i]);
+                }
+                dataDisplay.clear();
                 // TODO (vic#1#): Attention here\
 
                 //Sleep(200);
@@ -2023,7 +2042,13 @@ public:
             {
                 setForces3();
                 solve();
-                toOGL(hDC);
+                if (refreshScreen.isMax()) toOGL(hDC);
+                refreshScreen++;
+                warn.clear();
+                for (i = 0; i < dataDisplay.size(); i++){
+                  free(dataDisplay[i]);
+                }
+                dataDisplay.clear();
                 //Sleep(1);
             }
         }
