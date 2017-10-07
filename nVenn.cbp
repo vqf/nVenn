@@ -12,6 +12,11 @@
 				<Option compiler="gcc" />
 				<Option projectResourceIncludeDirsRelation="0" />
 			</Target>
+			<Target title="plain">
+				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -23,7 +28,14 @@
 			<Add library="user32" />
 			<Add library="kernel32" />
 		</Linker>
+		<Unit filename="bmpfont.h">
+			<Option target="default" />
+		</Unit>
+		<Unit filename="graphics.h">
+			<Option target="default" />
+		</Unit>
 		<Unit filename="main.cpp" />
+		<Unit filename="topol.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
