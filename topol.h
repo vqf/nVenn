@@ -1,6 +1,403 @@
 #ifndef TOPOL_H_INCLUDED
 #define TOPOL_H_INCLUDED
 
+#include <vector>
+#include <math.h>
+#include <time.h>
+
+
+#define CIRCLE_MASS 200.0f
+#define POINT_MASS 20
+
+typedef unsigned int UINT;
+
+
+float sk = 1e3f;
+float dt = 1e-1f;
+float kdt = 0.0f;
+float baseV  = 5.0f;
+float baseBV = 20.0f;
+
+
+using namespace std;
+
+UINT twoPow(UINT n)
+{
+    if (n > 8*sizeof(UINT)-1)
+        return 0;
+    UINT result = 1;
+    result = result << n;
+    return result;
+}
+
+
+
+
+float sprod(vector<float> a, vector<float> b)
+{
+    float result;
+    int i;
+    result = 0;
+    for (i = 0; i < a.size(); i++)
+    {
+        result += a[i] * b[i];
+    }
+    return result;
+}
+
+vector<float> arr2vec(float arr[], int n)
+{
+    int i;
+    vector<float> result;
+    for (i = 0; i < n; i++)
+    {
+        result.insert(result.end(), arr[i]);
+    }
+    return result;
+}
+
+
+vector<int> toBin(int number, int nBits = 0)
+{
+    //  Takes an integer and returns a vector containing
+    //  its binary representation
+
+    int i;                          // iterate over each bit
+    int bit;                        // temp storage of each bit
+    vector<int> bits;               // return vector
+    while (number > 1)
+    {
+        bit = number % 2;
+        number = number / 2;
+        bits.insert(bits.begin(), bit);
+    }
+    if (number > 0)
+        bits.insert(bits.begin(),1);
+    if (nBits > bits.size())
+    {
+        for (i = bits.size(); i < nBits; i++)
+        {
+            bits.insert(bits.begin(), 0);
+        }
+    }
+    return bits;
+}
+int toInt(vector<int> v)
+{
+    // Takes a vector containing the binary representation
+    // of an integer and returns that integer
+
+    int i;                          // decreasing iterator
+    int counter = 0;                // increasing iterator
+    int result = 0;
+    for (i = v.size()-1; i >= 0; --i)
+    {
+        result = result + v[i] * twoPow(counter);
+        counter++;
+    }
+    return result;
+}
+
+class fileText
+{
+    string text;
+public:
+    void addLine(string t)
+    {
+        text = text + t +"\n";
+    }
+    void clearText()
+    {
+        text = "";
+    }
+    string getText()
+    {
+        return text;
+    }
+};
+
+float distance(float x0, float y0, float x1, float y1)
+{
+    float result = 0;
+    float rx, ry;
+    rx = x1 - x0;
+    ry = y1 - y0;
+    rx *= rx;
+    ry *= ry;
+    result = sqrt(rx + ry);
+    return result;
+}
+
+class point
+{
+public:
+    UINT n;
+    float x;
+    float y;
+    float vx;
+    float vy;
+    float fx;
+    float fy;
+    float radius;
+    float mass;
+    bool cancelForce;
+    point()
+    {
+        x = 0;
+        y = 0;
+        radius = 0;
+        reset();
+    }
+    void reset()
+    {
+        resetv();
+        resetf();
+    }
+    void resetv()
+    {
+        vx = 0;
+        vy = 0;
+    }
+    void resetf()
+    {
+        fx = 0;
+        fy = 0;
+    }
+};
+
+class timeMaster
+{
+    UINT count;
+    float unstable;
+    float defaultst;
+    float stored;
+public:
+
+    timeMaster()
+    {}
+
+    void init(float unst)
+    {
+        count = 0;
+        unstable = unst;
+        defaultst = unst;
+        stored = unst;
+    }
+
+    void clear()
+    {
+        count = 0;
+        unstable = defaultst;
+    }
+
+    void report(float unst)
+    {
+        if (unst == unstable)
+        {
+            ++count;
+        }
+        else
+        {
+            count = 0;
+            unstable = unst;
+        }
+        if (count >= 5)
+        {
+            stored = unstable;
+        }
+    }
+
+    float unstabledt()
+    {
+        return stored;
+    }
+};
+
+class lCounter
+{
+
+    UINT counter;
+    UINT lLimit;
+    UINT uLimit;
+    UINT span;
+
+public:
+
+    lCounter(UINT lowerLimit, UINT upperLimit)
+    {
+        counter = lowerLimit;
+        lLimit = lowerLimit;
+        uLimit = upperLimit;
+        span = uLimit - lLimit;
+    }
+
+    lCounter()
+    {
+        counter = 0;
+        lLimit = 0;
+        uLimit = 0;
+        span = 0;
+    }
+
+    void setLimits(UINT lowerLimit, UINT upperLimit)
+    {
+        counter = lowerLimit;
+        lLimit = lowerLimit;
+        uLimit = upperLimit;
+        span = uLimit - lLimit;
+    }
+
+    bool isMax()
+    {
+        if (counter == uLimit)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    bool isMin()
+    {
+        if (counter == lLimit)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void operator++(int)
+    {
+        if (counter < uLimit)
+        {
+            counter++;
+        }
+        else
+        {
+            counter = lLimit;
+        }
+    }
+    void operator++()
+    {
+        if (counter < uLimit)
+        {
+            counter++;
+        }
+        else
+        {
+            counter = lLimit;
+        }
+    }
+    void operator--(int)
+    {
+        if (counter > lLimit)
+        {
+            counter--;
+        }
+        else
+        {
+            counter = uLimit;
+        }
+    }
+    void operator--()
+    {
+        if (counter > lLimit)
+        {
+            counter--;
+        }
+        else
+        {
+            counter = uLimit;
+        }
+    }
+    operator UINT()
+    {
+        return counter;
+    }
+    void operator=(UINT a)
+    {
+        UINT tCount;
+        tCount =  a - lLimit;
+        tCount = tCount % span;
+        counter = lLimit + tCount;
+    }
+};
+
+class scale
+{
+public:
+
+    float minX;
+    float minY;
+    float maxX;
+    float maxY;
+    bool clear;
+
+    float xSpan()
+    {
+        float result = maxX - minX;
+        return result;
+    }
+    float ySpan()
+    {
+        float result = maxY - minY;
+        return result;
+    }
+    float ratio()
+    {
+        float result;
+        if (xSpan() == 0)
+            return 0.0f;
+        result = ySpan() / xSpan();
+        return result;
+    }
+};
+
+struct rgb
+{
+    float red;
+    float green;
+    float blue;
+};
+
+template<typename T>
+string toString(T input)
+{
+    ostream result;
+    result << input;
+    return result;
+}
+
+
+
+
+float perimeter(vector<point> v, bool close = false)
+{
+    int i;
+    float result = 0;
+    float rx, ry;
+    for (i = 0; i < v.size() - 1; i++)
+    {
+        rx = v[i+1].x - v[i].x;
+        ry = v[i+1].y - v[i].y;
+        result += sqrt(rx * rx + ry * ry);
+    }
+    if (close)
+    {
+        rx = v[v.size()-1].x - v[0].x;
+        ry = v[v.size()-1].y - v[0].y;
+        result += sqrt(rx * rx + ry * ry);
+    }
+    return result;
+}
+
+
+
 class binMap
 {
 
@@ -182,6 +579,7 @@ public:
 
 class borderLine
 {
+    friend class glGraphics;
     vector<point> p;
     vector<vector<point> > bl;
     vector<vector<point> > bl_old5;
@@ -207,6 +605,7 @@ class borderLine
     vector<char*> dataDisplay;
     float stepdt;
     bool fixCircles;
+    bool signalEnd;
 
     void attention(float x, float y)
     {
@@ -216,6 +615,19 @@ class borderLine
         temp.radius = 1;
         warn.insert(warn.end(), temp);
     }
+
+    rgb toRGB(int color, int max)
+    {
+        rgb result;
+        result.red = (0x00FF0000 & color)/0x10000;
+        result.red = result.red * max / 0xFF;
+        result.green = (0x0000FF00 & color)/0x100;
+        result.green = result.green * max / 0xFF;
+        result.blue = (0x000000FF & color);
+        result.blue = result.blue * max / 0xFF;
+        return result;
+    }
+
 
     void initOlds()
     {
@@ -444,40 +856,13 @@ class borderLine
             }
         }
         surfRatio = estSurf();
+        if (surfRatio < minSurfRatio){
+          signalEnd = true;
+        }
         minSurfRatio = surfRatio;
     }
 
-    vector<point> glCircle(float x, float y, float r)
-    {
-        point temp;
-        vector<point> result;
-        float sen = 0.7071067811f;
-        temp.x = x;
-        temp.y = y + r;
-        result.insert(result.end(), temp);
-        temp.x = x + sen * r;
-        temp.y = y + sen * r;
-        result.insert(result.end(), temp);
-        temp.x = x + r;
-        temp.y = y;
-        result.insert(result.end(), temp);
-        temp.x = x + sen * r;
-        temp.y = y - sen * r;
-        result.insert(result.end(), temp);
-        temp.x = x ;
-        temp.y = y - r;
-        result.insert(result.end(), temp);
-        temp.x = x - sen * r;
-        temp.y = y - sen * r;
-        result.insert(result.end(), temp);
-        temp.x = x - r;
-        temp.y = y;
-        result.insert(result.end(), temp);
-        temp.x = x - sen * r;
-        temp.y = y + sen * r;
-        result.insert(result.end(), temp);
-        return result;
-    }
+
 
     point eqforce(point &p0, point &p1, float kattr = 7e-5f)
     {
@@ -777,7 +1162,7 @@ class borderLine
         float storeR = 0;
         Scale = 0.02;
         string temp;
-        //fixCircles = true;
+        fixCircles = true;
 
         float dampen = sk / 10;
         /*******/
@@ -794,7 +1179,7 @@ class borderLine
                         bl[k][i].radius = Scale * k;
                         storeR = circles[j].radius;
                         circles[j].radius -= 2*bl[k][i].radius;
-                        f = contact(circles[j], bl[k][i]);
+                        f = contact(circles[j], bl[k][i], 1e3f);
                         f = eqforce(circles[j], bl[k][i], 1e-4f);
                         circles[j].radius = storeR;
                         circles[j].fx = 0;
@@ -853,7 +1238,7 @@ class borderLine
 
         if (resetVelocity)
         {
-            maxf = 5e10f;
+            maxf = 5e20f;
             kb = 1e2f;//1e2f;
         }
         else
@@ -868,13 +1253,6 @@ class borderLine
         setContacts();
         updPos(kb, resetVelocity);
         clearForces();
-        surfRatio = estSurf();
-        if (minSurfRatio == 0){
-          minSurfRatio = surfRatio;
-        }
-        if(minSurfRatio > surfRatio){
-          minSurfRatio = surfRatio;
-        }
 //Show dt
         char* dsp = (char*) calloc(100, sizeof(char));
         sprintf(dsp, "DT: %.8f", dt);
@@ -910,6 +1288,13 @@ class borderLine
             {
                 dt /= stepdt;
             }
+        }
+        surfRatio = estSurf();
+        if (minSurfRatio == 0){
+          minSurfRatio = surfRatio;
+        }
+        if(minSurfRatio > surfRatio){
+          minSurfRatio = surfRatio;
         }
         blCounter++;
         deciderCounter++;
@@ -963,8 +1348,8 @@ class borderLine
             //if (circles[i].vx){
             //    temp(1e5*circles[i].vx);
             //}
-            circles[i].vx += circles[i].fx * dt / CIRCLE_MASS;
-            circles[i].vy += circles[i].fy * dt / CIRCLE_MASS;
+            circles[i].vx += circles[i].fx * dt / (circles[i].radius * CIRCLE_MASS);
+            circles[i].vy += circles[i].fy * dt / (circles[i].radius * CIRCLE_MASS);
             //limitVel(circles[i], maxv);
             circles[i].x += circles[i].vx * dt;
             circles[i].y += circles[i].vy * dt;
@@ -1068,7 +1453,7 @@ class borderLine
       int i;
       float wmax = 0;
       for (i = 0; i < w.size(); i++){
-        if (w[i] > wmax) wmax = w[i];
+        if (w[i] > 0 && w[i] > wmax) wmax = w[i];
       }
       for (i = 0; i < w.size(); i++){
         if (w[i] > 0 && w[i] < (wmax * minratio)) w[i] = minratio * wmax;
@@ -1076,10 +1461,13 @@ class borderLine
     }
 
 public:
-
+    borderLine(){
+      return;
+    }
     borderLine(binMap b, vector<float> tw)
     {
         int i;
+        signalEnd = false;
         minratio = 0.05f;
         fixCircles = false;
         srand(time(0));
@@ -1131,7 +1519,40 @@ public:
         minSurfRatio = 0;
     }
 
+    bool isThisTheEnd(){
+      return signalEnd;
+    }
 
+    vector<vector<point> > getPoints(){
+      return bl;
+    }
+
+    fileText toSVG(){
+      fileText svg;
+      char temp[512];
+      scale sc;
+      sc.minX = 10.0f;
+      sc.minY = 10.0f;
+      sc.maxX = 490.0f;
+      sc.maxY = 490.0f;
+      int i;
+      string tst;
+      point svgtemp;
+      svg.addLine("<svg width=\"500\" height=\"500\">");
+      for (i = 0; i < circles.size(); i++){
+          if (circles[i].mass > 0){
+            svgtemp = place(sc, circles[i]);
+            if (svgtemp.x > sc.minX && svgtemp.x < sc.maxX){
+              sprintf(temp, "<circle cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", svgtemp.x,
+                              svgtemp.y, svgtemp.radius);
+              tst = temp;
+              svg.addLine(tst);
+            }
+          }
+      }
+      svg.addLine("</svg>");
+      return svg;
+    }
 
     fileText toPS()
     {
@@ -1317,15 +1738,19 @@ public:
 
         /****Draw circles*/
         for (i = 0; i < circles.size(); i++){
-            pstemp = place(ps, circles[i]);
-            pstext.addLine("newpath");
-            tsize = sprintf(temp, "%f %f %f 0 360 arc", pstemp.x,
-                            pstemp.y, pstemp.radius);
-            tst = temp;
-            pstext.addLine(tst);
-            pstext.addLine("0.2 setlinewidth");
-            pstext.addLine("1 0 0 setrgbcolor");
-            pstext.addLine("stroke");
+            if (circles[i].mass > 0){
+              pstemp = place(ps, circles[i]);
+              pstext.addLine("newpath");
+              if (pstemp.x > ps.minX && pstemp.x < ps.maxX){
+                tsize = sprintf(temp, "%f %f %f 0 360 arc", pstemp.x,
+                                pstemp.y, pstemp.radius);
+                tst = temp;
+                pstext.addLine(tst);
+                pstext.addLine("0.2 setlinewidth");
+                pstext.addLine("1 0 0 setrgbcolor");
+                pstext.addLine("stroke");
+              }
+            }
         }
         /*****/
         pstext.addLine("showpage");
@@ -1377,17 +1802,23 @@ public:
         initOlds();
     }
 
-    void simulate(int ncycles)
+    void simulate(int maxRel = 0)
     {
         int i, j, k;
-        int cycle;
+        float mrel = (float) maxRel;
         int size;
-        UINT it1 = 1e4;
-        UINT it2 = 1e3;
+        UINT it1 = 1e5;
+        UINT it2 = 1e2;
         point minP;
         point maxP;
         printf("Starting...\n");
         for (i = 0; i < it1; i++){
+          printf("%d\t%.1f, %.1f\r", i, minSurfRatio, mrel);
+          fflush(stdout);
+          if (signalEnd == true){
+            signalEnd = false;
+            i = it1 - 100;
+          }
           setForces1();
           solve();
         }

@@ -4,12 +4,48 @@
 #include <gl/glu.h>
 #include "bmpfont.h"
 
-class glGraphics: private borderLine{
-  void toOGL(HDC hDC)
+
+
+class glGraphics{
+  public:
+
+  vector<point> glCircle(float x, float y, float r)
+  {
+      point temp;
+      vector<point> result;
+      float sen = 0.7071067811f;
+      temp.x = x;
+      temp.y = y + r;
+      result.insert(result.end(), temp);
+      temp.x = x + sen * r;
+      temp.y = y + sen * r;
+      result.insert(result.end(), temp);
+      temp.x = x + r;
+      temp.y = y;
+      result.insert(result.end(), temp);
+      temp.x = x + sen * r;
+      temp.y = y - sen * r;
+      result.insert(result.end(), temp);
+      temp.x = x ;
+      temp.y = y - r;
+      result.insert(result.end(), temp);
+      temp.x = x - sen * r;
+      temp.y = y - sen * r;
+      result.insert(result.end(), temp);
+      temp.x = x - r;
+      temp.y = y;
+      result.insert(result.end(), temp);
+      temp.x = x - sen * r;
+      temp.y = y + sen * r;
+      result.insert(result.end(), temp);
+      return result;
+  }
+  void toOGL(borderLine bl, HDC hDC)
   {
       int i, j;
       point P;     //coordinates
       vector<point> temp; //stores perimeters
+      vector<vector<point> > blp = bl.bl;
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
       //define openGL scale
@@ -21,23 +57,23 @@ class glGraphics: private borderLine{
       ogl.minY = -1;
       ogl.maxY = 1;
       //define vectors
-      for (i = 0; i < bl.size(); i++)
+      for (i = 0; i < blp.size(); i++)
       {
           //attention(bl[i][0].x, bl[i][0].y, 0.1);
           //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
           glBegin (GL_LINE_LOOP);
-          glColor3f (colors[i].red, colors[i].green, colors[i].blue);
-          for (j = 0; j < bl[i].size(); j++)
+          glColor3f (bl.colors[i].red, bl.colors[i].green, bl.colors[i].blue);
+          for (j = 0; j < blp[i].size(); j++)
           {
-              P = place(ogl, bl[i][j]);
+              P = bl.place(ogl, blp[i][j]);
               glVertex2f (P.x, P.y);
           }
           glEnd ();
       }
 
-      for (i = 0; i < circles.size();  i++)
+      for (i = 0; i < bl.circles.size();  i++)
       {
-          P = place(ogl, circles[i]);
+          P = bl.place(ogl, bl.circles[i]);
           temp = glCircle(P.x, P.y, P.radius);
           glColor3f (1.0f, 0.0f, 0.0f);
           glBegin (GL_LINE_LOOP);
@@ -48,9 +84,9 @@ class glGraphics: private borderLine{
           glEnd ();
       }
       /**********/
-      for (i = 0; i < warn.size();  i++)
+      for (i = 0; i < bl.warn.size();  i++)
       {
-          P = place(ogl, warn[i]);
+          P = bl.place(ogl, bl.warn[i]);
           //point tp;
           /*tp.x = warn[i].fx;
           tp.y = warn[i].fy;
@@ -74,25 +110,26 @@ class glGraphics: private borderLine{
       // Text
       glColor3f(0.0f, 0.0f, 1.0f);
       float yd = 0.8f;
-      for (i = 0; i < dataDisplay.size(); i++){
-        char* mymsg = dataDisplay[i];
+      for (i = 0; i < bl.dataDisplay.size(); i++){
+        char* mymsg = bl.dataDisplay[i];
         //showText(mymsg); exit(0);
         glRasterPos2f(-0.9f, yd);
         printString(mymsg);
         yd -= 0.1;
       }
-      warn.clear();
-      for (i = 0; i < dataDisplay.size(); i++){
-        free(dataDisplay[i]);
+      bl.warn.clear();
+      for (i = 0; i < bl.dataDisplay.size(); i++){
+        free(bl.dataDisplay[i]);
       }
-      dataDisplay.clear();
+      bl.dataDisplay.clear();
       glFlush();
       /**********/
       SwapBuffers (hDC);
       Sleep(1);
   }
-  void simulate(int ncycles, HDC hDC)
+  borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
+      borderLine bl = *blp;
       int i, j, k;
       int cycle;
       int size;
@@ -119,20 +156,19 @@ class glGraphics: private borderLine{
           {
               //setForces1();
               //solve();
-              if (refreshScreen.isMax()) toOGL(hDC);
-              refreshScreen++;
-              warn.clear();
-              for (i = 0; i < dataDisplay.size(); i++){
-                free(dataDisplay[i]);
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.refreshScreen++;
+              bl.warn.clear();
+              for (i = 0; i < bl.dataDisplay.size(); i++){
+                free(bl.dataDisplay[i]);
               }
-              dataDisplay.clear();
+              bl.dataDisplay.clear();
               // TODO (vic#1#): Attention here\
 
               //Sleep(100);
           }
       }
       bQuit = false;
-
       while (!bQuit)
       {
           /* check for messages */
@@ -150,24 +186,24 @@ class glGraphics: private borderLine{
           }
           else
           {
-              setForces1();
-              solve();
-              if (refreshScreen.isMax()) toOGL(hDC);
-              refreshScreen++;
-              warn.clear();
-              for (i = 0; i < dataDisplay.size(); i++){
-                free(dataDisplay[i]);
+              bl.setForces1();
+              bl.solve();
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.refreshScreen++;
+              bl.warn.clear();
+              for (i = 0; i < bl.dataDisplay.size(); i++){
+                free(bl.dataDisplay[i]);
               }
-              dataDisplay.clear();
+              bl.dataDisplay.clear();
               // TODO (vic#1#): Attention here\
 
               //Sleep(200);
           }
       }
 
-      udt.clear();
+      bl.udt.clear();
       bQuit = false;
-      interpolate(700);
+      bl.interpolate(700);
       //interpolate(700);
       while (!bQuit)
       {
@@ -187,20 +223,20 @@ class glGraphics: private borderLine{
           }
           else
           {
-              setForces3();
-              solve();
-              if (refreshScreen.isMax()) toOGL(hDC);
-              refreshScreen++;
-              warn.clear();
-              for (i = 0; i < dataDisplay.size(); i++){
-                free(dataDisplay[i]);
+              bl.setForces3();
+              bl.solve();
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.refreshScreen++;
+              bl.warn.clear();
+              for (i = 0; i < bl.dataDisplay.size(); i++){
+                free(bl.dataDisplay[i]);
               }
-              dataDisplay.clear();
+              bl.dataDisplay.clear();
               //Sleep(1);
           }
       }
+      return bl;
   }
-
 };
 
 #endif // GRAPHICS_H_INCLUDED
