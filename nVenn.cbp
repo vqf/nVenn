@@ -11,16 +11,26 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-DGRAPHICS" />
+				</Compiler>
 			</Target>
 			<Target title="plain">
 				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+				</Compiler>
 			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
+		<Compiler>
+			<Add option="-std=c++0x" />
+		</Compiler>
 		<Linker>
 			<Add library="opengl32" />
 			<Add library="glu32" />

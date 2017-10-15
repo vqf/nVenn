@@ -16,6 +16,7 @@
 
 //#define GRAPHICS
 #ifdef GRAPHICS
+
   #include <windows.h>
   #include <Windows.h>
   #include "graphics.h"
@@ -73,33 +74,34 @@ int main()
     fileText svgfile;
     fname = getFile("Name of the Venn data file?", "File not found!");
     vFile.open(fname.c_str());
+    getline(vFile, header);
+    cout << header;
+    getline(vFile, header);
+    number = atoi(header.c_str());
+    cout << endl << number << " groups:" << endl;
+    for (i = 0; i < number; i++){
         getline(vFile, header);
-        cout << header;
+        groupNames.insert(groupNames.end(), header);
+        cout << header << endl;
+    }
+    n = twoPow(number);
+    for (i = 0; i < n; i++){
         getline(vFile, header);
-        number = atoi(header.c_str());
-        cout << endl << number << " groups:" << endl;
-        for (i = 0; i < number; i++){
-            getline(vFile, header);
-            cout << header << endl;
-        }
-        n = (int)pow(2, number);
-        for (i = 0; i < n; i++){
-            getline(vFile, header);
-            weights.insert (weights.end(), atoi(header.c_str()));
-            temp = toBin(i, number);
-            printv(temp);
-            cout << ".- " << weights[i] << endl;
-        }
+        weights.insert (weights.end(), atoi(header.c_str()));
+        temp = toBin(i, number);
+        printv(temp);
+        cout << ".- " << weights[i] << endl;
+    }
     vFile.close();
     binMap mymap(number);
-    borderLine lines(mymap, weights);
+    borderLine lines(mymap, groupNames, weights);
     lines.interpolate(50);
     lines.simulate(7);
     mymap.textOut();
-    psfile = lines.toPS();
-    result.open("result.ps");
-    result.write(psfile.getText().c_str(), psfile.getText().size());
-    result.close();
+    //psfile = lines.toPS();
+    //result.open("result.ps");
+    //result.write(psfile.getText().c_str(), psfile.getText().size());
+    //result.close();
     svgfile = lines.toSVG();
     result.open("result.svg");
     result.write(svgfile.getText().c_str(), svgfile.getText().size());
@@ -164,6 +166,7 @@ WinMain (HINSTANCE hInstance,
     vector<string> groupNames;
     vector<float> weights;
     fileText psfile;
+    fileText svgfile;
     fname = "venn.txt";
     vFile.open(fname.c_str());
     getline(vFile, header);
@@ -172,6 +175,7 @@ WinMain (HINSTANCE hInstance,
     for (i = 0; i < number; i++)
     {
         getline(vFile, header);
+        groupNames.insert(groupNames.end(), header);
         cout << header << endl;
     }
     n = twoPow(number);
@@ -185,7 +189,7 @@ WinMain (HINSTANCE hInstance,
     }
     vFile.close();
     binMap mymap(number);
-    borderLine lines(mymap, weights);
+    borderLine lines(mymap, groupNames, weights);
 
     /* register window class */
     wc.style = CS_OWNDC;
@@ -224,6 +228,10 @@ WinMain (HINSTANCE hInstance,
     result.write(psfile.getText().c_str(), psfile.getText().size());
     result.close();
 
+    svgfile = lres.toSVG();
+    result.open("result.svg");
+    result.write(svgfile.getText().c_str(), svgfile.getText().size());
+    result.close();
 
 
 

@@ -19,7 +19,7 @@
 	<sstream>
 	<fstream>
 
-1507635410 source:c:\users\vqf\documents\cpp\venn\1.2\main.cpp
+1507905780 source:c:\users\vqf\documents\cpp\venn\1.2\main.cpp
 	<stdlib.h>
 	<math.h>
 	<time.h>
@@ -35,12 +35,12 @@
 
 1506446834 c:\users\vqf\documents\cpp\venn\1.2\bmpfont.h
 
-1507635384 c:\users\vqf\documents\cpp\venn\1.2\topol.h
+1507909406 c:\users\vqf\documents\cpp\venn\1.2\topol.h
 	<vector>
-	<math.h>
+	<cmath>
 	<time.h>
 
-1507549852 c:\users\vqf\documents\cpp\venn\1.2\graphics.h
+1507908296 c:\users\vqf\documents\cpp\venn\1.2\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"

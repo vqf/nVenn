@@ -200,10 +200,43 @@ class glGraphics{
               //Sleep(200);
           }
       }
-
       bl.udt.clear();
       bQuit = false;
       bl.interpolate(700);
+
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              bl.setForces3();
+              bl.solve(true);
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.refreshScreen++;
+              bl.warn.clear();
+              for (i = 0; i < bl.dataDisplay.size(); i++){
+                free(bl.dataDisplay[i]);
+              }
+              bl.dataDisplay.clear();
+              //Sleep(1);
+          }
+      }
+      bl.udt.clear();
+      bQuit = false;
+
       //interpolate(700);
       while (!bQuit)
       {
@@ -224,7 +257,7 @@ class glGraphics{
           else
           {
               bl.setForces3();
-              bl.solve();
+              bl.solve(true);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.refreshScreen++;
               bl.warn.clear();
