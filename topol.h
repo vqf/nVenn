@@ -342,18 +342,20 @@ public:
     float xSpan()
     {
         float result = maxX - minX;
+        if (result == 0) result = 1.0f;
         return result;
     }
     float ySpan()
     {
         float result = maxY - minY;
+        if (result == 0) result = 1.0f;
         return result;
     }
     float ratio()
     {
         float result;
         if (xSpan() == 0)
-            return 0.0f;
+            return 1.0f;
         result = ySpan() / xSpan();
         return result;
     }
@@ -612,6 +614,11 @@ class borderLine
     float stepdt;
     bool fixCircles;
     bool signalEnd;
+
+    /* Keep track */
+    float totalCircleV;
+    float totalLineV;
+    /* */
 
     void attention(float x, float y)
     {
@@ -1148,23 +1155,64 @@ class borderLine
           }
         }
     }
+    int nextPoint(int i, int j){
+      int result = j + 1;
+      if (result >= bl[i].size()){
+        result = 0;
+      }
+      return result;
+    }
+
+    int prevPoint(int i, int j){
+      int result = j - 1;
+      if (result < 0){
+        result = bl[i].size() - 1;
+      }
+      return result;
+    }
+
     void setForces3()
     {
         int i, j, k;
+        point p1, p2;
         /*******/
         for (i = 0; i < bl.size(); i++)
         {
             for (j = 0; j < bl[i].size(); j++)
             {
-                for (k = 0; k < circles.size(); k++){
-                  float rad = bl[i][j].radius + circles[k].radius;
-                  float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
-                  if (prad < 1.0 * rad){
-                    float rat = rad / prad;
-                    bl[i][j].x = rat * bl[i][j].x;
-                    bl[i][j].y = rat * bl[i][j].y;
-                  }
+                bl[i][j].cancelForce = false;
+                k = closestToSurf(i,j);
+                float rad = bl[i][j].radius + circles[k].radius;
+                float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
+                if (prad < (rad + 2 * margin)){
+                  float rat = rad / prad;
+                  bl[i][j].x = circles[k].x + rat * (bl[i][j].x - circles[k].x);
+                  bl[i][j].y = circles[k].y + rat * (bl[i][j].y - circles[k].y);
+                  bl[i][j].cancelForce = true;
                 }
+            }
+            // Soften borders
+            for (j = 0; j < bl[i].size(); j++)
+            {
+              if (bl[i][j].cancelForce == true){
+                int k = prevPoint(i, j);
+                int l = prevPoint(i, k);
+                int m = nextPoint(i, j);
+                int n = nextPoint(i, m);
+
+                if (bl[i][k].cancelForce == false && bl[i][l].cancelForce == false){
+                  bl[i][j].x = (bl[i][k].x + bl[i][m].x) / 2;
+                  bl[i][j].y = (bl[i][k].y + bl[i][m].y) / 2;
+                  bl[i][k].x = (bl[i][l].x + bl[i][j].x) / 2;
+                  bl[i][k].y = (bl[i][l].y + bl[i][j].y) / 2;
+                }
+                if (bl[i][m].cancelForce == false && bl[i][n].cancelForce == false){
+                  bl[i][j].x = (bl[i][k].x + bl[i][m].x) / 2;
+                  bl[i][j].y = (bl[i][k].y + bl[i][m].y) / 2;
+                  bl[i][m].x = (bl[i][n].x + bl[i][j].x) / 2;
+                  bl[i][m].y = (bl[i][n].y + bl[i][j].y) / 2;
+                }
+              }
             }
         }
     }
@@ -1179,7 +1227,7 @@ class borderLine
       float mindist = distance(p.x, p.y, circles[result].x, circles[result].y) - circles[result].radius;
       int k = result;
       while (k < circles.size()){
-        float dst = distance(p.x, p.y, circles[result].x, circles[k].y) - circles[k].radius;
+        float dst = distance(p.x, p.y, circles[k].x, circles[k].y) - circles[k].radius;
         if (dst < mindist){
           mindist = dst;
           result = k;
@@ -1292,7 +1340,7 @@ class borderLine
         char* dsp = (char*) calloc(100, sizeof(char));
         sprintf(dsp, "DT: %.8f", dt);
         dataDisplay.insert(dataDisplay.end(), dsp);
-
+/*
         char* sur = (char*) calloc(100, sizeof(char));
         sprintf(sur, "SURF.: %.4f", surfRatio);
         dataDisplay.insert(dataDisplay.end(), sur);
@@ -1300,6 +1348,7 @@ class borderLine
         char* msur = (char*) calloc(100, sizeof(char));
         sprintf(msur, "MINSURF.: %.4f", minSurfRatio);
         dataDisplay.insert(dataDisplay.end(), msur);
+        */
 //
         if (checkTopol() || surfRatio > (2 * minSurfRatio))
         {
@@ -1350,6 +1399,7 @@ class borderLine
                 //limitForce(bl[i][j], maxf);
                 bl[i][j].vx += bl[i][j].fx * dt / bl[i][j].mass;
                 bl[i][j].vy += bl[i][j].fy * dt / bl[i][j].mass;
+                totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
                 bl[i][j].x += bl[i][j].vx * dt;
                 bl[i][j].y += bl[i][j].vy * dt;
                 /*******/
@@ -1371,7 +1421,6 @@ class borderLine
             //sprintf(t, "P%u: %.4f", i, p);
             //dataDisplay.insert(dataDisplay.end(), t);
         }
-
         for (i = 0; i < circles.size(); i++)
         {
 
@@ -1385,6 +1434,7 @@ class borderLine
             //}
             circles[i].vx += circles[i].fx * dt / (CIRCLE_MASS);
             circles[i].vy += circles[i].fy * dt / (CIRCLE_MASS);
+            totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
             //limitVel(circles[i], maxv);
             circles[i].x += circles[i].vx * dt;
             circles[i].y += circles[i].vy * dt;
@@ -1394,6 +1444,14 @@ class borderLine
                 circles[i].vy = 0;
             }
         }
+        char* tcv = (char*) calloc(100, sizeof(char));
+        sprintf(tcv, "CIRCLEV: %g", totalCircleV);
+        dataDisplay.insert(dataDisplay.end(), tcv);
+        char* df = (char*) calloc(100, sizeof(char));
+        sprintf(df, "LINEV: %g", totalLineV);
+        dataDisplay.insert(dataDisplay.end(), df);
+        totalCircleV = 0;
+        totalLineV = 0;
     }
 
     float estSurf(int nPoints = 100){
@@ -1507,6 +1565,8 @@ public:
         signalEnd = false;
         minratio = 0.005f;
         marginScale = 0.02f;
+        totalCircleV = 0;
+        totalLineV   = 0;
         fixCircles = false;
         srand(time(0));
         w = tw;         //keep a copy of the weights
@@ -1528,7 +1588,7 @@ public:
         //init counters
         blCounter.setLimits(0, 30u);
         deciderCounter.setLimits(0, 300u);
-        refreshScreen.setLimits(1, 10);
+        refreshScreen.setLimits(1, 100);
 
         //init internal scale
         internalScale.clear = true;
@@ -1731,7 +1791,9 @@ public:
                            coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
                            coord(next.x) + " " + coord(next.y);
         }
+        svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
       }*/
+      /* This does not */
       for (i = 0; i < ngroups; i++){
         point nxt = place(sc, bl[i][0]);
         string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
@@ -2022,6 +2084,7 @@ public:
           setForces2();
           solve(true);
         }
+        setForces3();
     }
 
 };
