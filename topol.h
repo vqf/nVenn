@@ -604,7 +604,7 @@ class borderLine
     float surfRatio;
     float minSurfRatio;
     float startdt;
-    float Scale;
+    float marginScale;
     float margin;
     timeMaster udt;
     float minratio;
@@ -879,7 +879,7 @@ class borderLine
         float dx, dy;
         float fatt, frep;
         float d;
-        radius = 1.1 * (p0.radius + p1.radius);
+        radius = 1.0 * (p0.radius + p1.radius);
         float maxrad = p0.radius;
         if (p1.radius > maxrad) maxrad = p1.radius;
         //radius *= 1.2;
@@ -1060,6 +1060,15 @@ class borderLine
         }
     }
 
+    void setRadii(){
+      int i, j;
+      for (i = 0; i < bl.size(); i++){
+        for (j = 0; j < bl[i].size(); j++){
+          bl[i][j].radius = marginScale * i;
+        }
+      }
+    }
+
     void setForces1()
     {
         int i, j, k;
@@ -1139,24 +1148,23 @@ class borderLine
           }
         }
     }
-    void setForces2()
+    void setForces3()
     {
         int i, j, k;
-        int cycle;
-        int size;
-        point f;
-        //cout << ".";
-        //line points
         /*******/
         for (i = 0; i < bl.size(); i++)
         {
-            //first point
-            size = bl[i].size();
-            f = spring(bl[i][0], bl[i][size-1]);
-            //rest of the points
-            for (j = 1; j < size; j++)
+            for (j = 0; j < bl[i].size(); j++)
             {
-                f = spring(bl[i][j], bl[i][j-1]);
+                for (k = 0; k < circles.size(); k++){
+                  float rad = bl[i][j].radius + circles[k].radius;
+                  float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
+                  if (prad < 1.0 * rad){
+                    float rat = rad / prad;
+                    bl[i][j].x = rat * bl[i][j].x;
+                    bl[i][j].y = rat * bl[i][j].y;
+                  }
+                }
             }
         }
     }
@@ -1181,7 +1189,7 @@ class borderLine
       return result;
     }
 
-    void setForces3()
+    void setForces2()
     {
         int i, j, k;
         int i1, i2;
@@ -1192,8 +1200,7 @@ class borderLine
         float storeR = 0;
         string temp;
         fixCircles = true;
-
-        float dampen = sk / 10;
+        float dampen = sk / 5;
         /*******/
         //line-circle
         for (k = 0; k < bl.size(); k++)
@@ -1201,20 +1208,12 @@ class borderLine
             size = bl[k].size();
             for (i = 0; i < bl[k].size(); i++)
             {
+                //j = closestToSurf(k, i);
                 for (j = 0; j < circles.size(); j++)
                 {
                     if (circles[j].radius > 0)
                     {
-                        bl[k][i].radius = Scale * k;
-                        storeR = circles[j].radius;
-                        circles[j].radius -= 2*bl[k][i].radius;
-                        f = contact(circles[j], bl[k][i], 1e3f);
-                        f = eqforce(circles[j], bl[k][i], 1e-3f);
-                        circles[j].radius = storeR;
-                        //circles[j].fx = 0;
-                        //circles[j].fy = 0;
-                        //circles[j].vx = 0;
-                        //circles[j].vy = 0;
+                        f = eqforce(circles[j], bl[k][i], 1e-6f * sk);
                         if (i > 0)
                         {
                             i1 = i - 1;
@@ -1507,6 +1506,7 @@ public:
         groups = g;
         signalEnd = false;
         minratio = 0.005f;
+        marginScale = 0.02f;
         fixCircles = false;
         srand(time(0));
         w = tw;         //keep a copy of the weights
@@ -1585,7 +1585,7 @@ public:
           colors.insert(colors.end(),toRGB(arr[i], 1));
         }
         minSurfRatio = 0;
-        margin = 4 * ngroups * Scale;
+        margin = ngroups * marginScale;
     }
 
     bool isThisTheEnd(){
@@ -1624,6 +1624,17 @@ public:
       return result;
     }
 
+    string join(string interm, vector<string> arr){
+      int i;
+      string result;
+      int j = arr.size() - 1;
+      for (i = 0; i < j; i++){
+        result += arr[i] + interm;
+      }
+      result += arr[j];
+      return result;
+    }
+
     fileText toSVG(){
       fileText svg;
       char temp[512];
@@ -1632,6 +1643,7 @@ public:
       sc.minY = 10.0f;
       sc.maxX = 490.0f;
       sc.maxY = 490.0f;
+      int fsize = 10;
       int i, j;
       string tst;
       point svgtemp;
@@ -1649,7 +1661,16 @@ public:
       svg.addLine("  }");
       svg.addLine("  .nLabel {");
       svg.addLine("	   font-family: Arial;");
-      svg.addLine("	   font-size: 10px;");
+      char t[200];
+      sprintf(t, "	   font-size: %dpx;", fsize);
+      svg.addLine((string) t);
+      svg.addLine("	   text-anchor: middle;");
+      svg.addLine("	   alignment-baseline: central;");
+      svg.addLine("  }");
+      svg.addLine("  .belong {");
+      svg.addLine("	   font-family: Arial;");
+      sprintf(t, "	   font-size: %dpx;", fsize / 2);
+      svg.addLine((string) t);
       svg.addLine("	   text-anchor: middle;");
       svg.addLine("	   alignment-baseline: central;");
       svg.addLine("  }");
@@ -1673,17 +1694,33 @@ public:
             tst = temp;
             svg.addLine(tst);
             char addNum[200];
-            sprintf(addNum, "<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y + 5, circles[i].orig);
+            sprintf(addNum, "<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y + fsize/2, circles[i].orig);
             tst = addNum;
             svg.addLine(tst);
+            // Belongs to
+            vector<int> tb = toBin(circles[i].n, bl.size());
+            vector<string> belongs;
+            int m;
+            for (m = 0; m < tb.size(); m++){
+              if (tb[m] > 0){
+                char t[100];
+                sprintf(t, "%d", m + 1);
+                belongs.insert(belongs.end(), (string) t);
+              }
+            }
+            string bgs = join(", ", belongs);
+            char addBelongs[500];
+            sprintf(addBelongs, "<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize, bgs.c_str());
+            svg.addLine(addBelongs);
           }
         }
       }
-      for (i = 0; i < ngroups; i++){
+      /* This softens the lines*/
+      /*for (i = 0; i < ngroups; i++){
         point nxt = place(sc, bl[i][0]);
         string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
-        /* This softens the lines*/
-        /*for (j = 1; j < (bl[i].size() - 2); j++){
+
+        for (j = 1; j < (bl[i].size() - 2); j++){
           point prev = place(sc, bl[i][j - 1]);
           point curr = place(sc, bl[i][j]);
           point next = place(sc, bl[i][j + 1]);
@@ -1693,15 +1730,14 @@ public:
           cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
                            coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
                            coord(next.x) + " " + coord(next.y);
-        }*/
-        for (i = 0; i < ngroups; i++){
-          point nxt = place(sc, bl[i][0]);
-          string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
-          for (j = 1; j < bl[i].size(); j++){
-            nxt = place(sc, bl[i][j]);
-            cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
-          }
-          svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
+        }
+      }*/
+      for (i = 0; i < ngroups; i++){
+        point nxt = place(sc, bl[i][0]);
+        string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
+        for (j = 1; j < bl[i].size(); j++){
+          nxt = place(sc, bl[i][j]);
+          cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
         }
         svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
       }
@@ -1980,8 +2016,10 @@ public:
         }
         printf("Refining...\n");
         interpolate(400);
+        margin /= 10;
+        setRadii();
         for (i = 0; i < it2; i++){
-          setForces3();
+          setForces2();
           solve(true);
         }
     }

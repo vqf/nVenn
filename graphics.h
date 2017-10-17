@@ -122,7 +122,7 @@ class glGraphics{
         free(bl.dataDisplay[i]);
       }
       bl.dataDisplay.clear();
-      glFlush();
+      //glFlush();
       /**********/
       SwapBuffers (hDC);
       Sleep(1);
@@ -203,7 +203,8 @@ class glGraphics{
       bl.udt.clear();
       bQuit = false;
       bl.interpolate(700);
-
+      bl.margin /= 10;
+      bl.setRadii();
       while (!bQuit)
       {
           /* check for messages */
@@ -222,7 +223,7 @@ class glGraphics{
           }
           else
           {
-              bl.setForces3();
+              bl.setForces2();
               bl.solve(true);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.refreshScreen++;
@@ -236,8 +237,6 @@ class glGraphics{
       }
       bl.udt.clear();
       bQuit = false;
-
-      //interpolate(700);
       while (!bQuit)
       {
           /* check for messages */
@@ -257,17 +256,13 @@ class glGraphics{
           else
           {
               bl.setForces3();
-              bl.solve(true);
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.refreshScreen++;
-              bl.warn.clear();
-              for (i = 0; i < bl.dataDisplay.size(); i++){
-                free(bl.dataDisplay[i]);
-              }
-              bl.dataDisplay.clear();
-              //Sleep(1);
+              toOGL(bl, hDC);
+              bQuit = true;
+
           }
       }
+
+
       return bl;
   }
 };
