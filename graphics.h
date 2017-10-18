@@ -119,10 +119,7 @@ class glGraphics{
         yd -= 0.1;
       }
       bl.warn.clear();
-      for (i = 0; i < bl.dataDisplay.size(); i++){
-        free(bl.dataDisplay[i]);
-      }
-      bl.dataDisplay.clear();
+
       //glFlush();
       /**********/
       SwapBuffers (hDC);

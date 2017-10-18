@@ -1091,6 +1091,7 @@ class borderLine
         {
             dr = radius / d;
             if (d <= radius){
+                blSettings.contacts++;
                 ratio = d/(radius);
                 kx = dx * (-1.0f + ratio);
                 ky = dy * (-1.0f + ratio);
@@ -1412,7 +1413,10 @@ class borderLine
         int i, j;
         float kb;
         float maxf;
-
+        for (i = 0; i < dataDisplay.size(); i++){
+          free(dataDisplay[i]);
+        }
+        dataDisplay.clear();
         if (resetVelocity)
         {
             maxf = 5e20f;
@@ -1430,26 +1434,21 @@ class borderLine
         setContacts();
         updPos(kb, resetVelocity);
         clearForces();
-        for (i = 0; i < dataDisplay.size(); i++){
-          free(dataDisplay[i]);
-        }
-        dataDisplay.clear();
 //Show dt
         char* dsp = (char*) calloc(100, sizeof(char));
         if (dsp){
           sprintf(dsp, "DT: %.8f", dt);
           dataDisplay.insert(dataDisplay.end(), dsp);
         }
-/*
-        char* sur = (char*) calloc(100, sizeof(char));
-        sprintf(sur, "SURF.: %.4f", surfRatio);
-        dataDisplay.insert(dataDisplay.end(), sur);
 
-        char* msur = (char*) calloc(100, sizeof(char));
-        sprintf(msur, "MINSURF.: %.4f", minSurfRatio);
-        dataDisplay.insert(dataDisplay.end(), msur);
-        */
-//
+        char* dsc = (char*) calloc(100, sizeof(char));
+        if (dsc){
+          sprintf(dsc, "CONTACTS: %d", blSettings.contacts);
+          dataDisplay.insert(dataDisplay.end(), dsc);
+        }
+        blSettings.contacts = 0;
+
+
         if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio))
         {
             bl = bl_old10;
