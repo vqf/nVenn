@@ -102,6 +102,9 @@ class fileText
 {
     string text;
 public:
+    fileText(){
+      text = "";
+    }
     void addLine(string t)
     {
         text = text + t +"\n";
@@ -143,6 +146,7 @@ typedef struct blData{
   float totalLineV;
   int contacts;
 } blData;
+
 
 class point
 {
@@ -354,6 +358,14 @@ class scale
     bool clear;
 public:
     scale(){
+      x = -1;
+      X = 1;
+      y = -1;
+      Y = 1;
+      clear = false;
+    }
+
+    void initScale(){
       x = -1;
       X = 1;
       y = -1;
@@ -619,8 +631,6 @@ public:
         currentC = getBranches(currentV);
         fillRow(currentC);
     }
-    binMap()
-    {}
     void textOut()
     {
         int i, j, k;
@@ -643,7 +653,7 @@ public:
 class borderLine
 {
     friend class glGraphics;
-    binMap bm;
+    binMap* bm;
     vector<string> groups;
     vector<point> p;
     vector<vector<point> > bl;
@@ -665,12 +675,30 @@ class borderLine
     int totalExpectedSurface;
     vector<char*> dataDisplay;
     timeMaster udt;
-    blData settings;
+    blData blSettings;
+
+    void initBlData(blData* b){
+      b->minratio = 0.005f;
+      b->stepdt = 0.6f;
+      b->fixCircles = false;
+      b->signalEnd = false;
+      b->smoothSVG = false;
+      b->surfRatio = 0;
+      b->minSurfRatio = 0;
+      b->startdt = 0;
+      b->marginScale = 0.02f;
+      b->margin = 0;
+      b->totalCircleV = 0;
+      b->totalLineV = 0;
+      b->contacts = 0;
+    }
+
 
 
     void attention(float x, float y)
     {
         point temp;
+        initPoint(&temp);
         temp.x = x;
         temp.y = y;
         temp.radius = 1;
@@ -701,7 +729,9 @@ class borderLine
     point place(scale s, point m)
     {
         point r;
+        initPoint(&r);
         scale tempScale;
+        tempScale.initScale();
         float offset;
         float Scale;
         if (s.ratio() <= internalScale.ratio())
@@ -761,6 +791,7 @@ class borderLine
         int offset;
         float maxw = 0;
         point cpoint;
+        initPoint(&cpoint);
         height = b.row[0].size();
         for (i = 0; i < w.size(); i++)
         {
@@ -919,11 +950,11 @@ class borderLine
                 bl_old10[i][j].reset();
             }
         }
-        settings.surfRatio = estSurf();
-        if (settings.surfRatio < settings.minSurfRatio){
-          settings.signalEnd = true;
+        blSettings.surfRatio = estSurf();
+        if (blSettings.surfRatio < blSettings.minSurfRatio){
+          blSettings.signalEnd = true;
         }
-        settings.minSurfRatio = settings.surfRatio;
+        blSettings.minSurfRatio = blSettings.surfRatio;
     }
 
 
@@ -931,6 +962,7 @@ class borderLine
     point eqforce(point &p0, point &p1, float kattr = 7e-4f)
     {
         point result;
+        initPoint(&result);
         float radius;
         float rdiff;
         float dx, dy;
@@ -958,6 +990,7 @@ class borderLine
     point spring(point &p0, point &p1, float dampen = 0, float springK = sk)
     {
         point result;
+        initPoint(&result);
         float dx = p1.x - p0.x;
         int sx = (int) (dx / abs(dx));
         float dy = p1.y - p0.y;
@@ -1015,7 +1048,9 @@ class borderLine
     point contact(point &p0, point &p1, float hardness = 5e1f)
     {
         point result;
+        initPoint(&result);
         point zero;
+        initPoint(&zero);
         float d;
         float dx;
         float dy;
@@ -1039,7 +1074,7 @@ class borderLine
         m0 = p0.mass;
         m1 = p1.mass;
         radius = p0.radius + p1.radius;
-        radius += settings.margin;
+        radius += blSettings.margin;
         //check contact
         d = distance(p0.x, p0.y, p1.x, p1.y);
 
@@ -1081,8 +1116,11 @@ class borderLine
         float a, b;
         float d;
         point result;
+        initPoint(&result);
         point zero;
+        initPoint(&zero);
         point virt;
+        initPoint(&virt);
         float d0, d1;
         bool isContact;
         a = (p1.y - p0.y)/(p1.x - p0.x);
@@ -1121,7 +1159,7 @@ class borderLine
       int i, j;
       for (i = 0; i < bl.size(); i++){
         for (j = 0; j < bl[i].size(); j++){
-          bl[i][j].radius = settings.marginScale * i;
+          bl[i][j].radius = blSettings.marginScale * i;
         }
       }
     }
@@ -1132,6 +1170,7 @@ class borderLine
         int cycle;
         int size;
         point f;
+        initPoint(&f);
         //line points
         /*******/
         float damp = sk / 100;
@@ -1155,6 +1194,7 @@ class borderLine
         int cycle;
         int size;
         point f;
+        initPoint(&f);
 
         //contact forces
         /*******/
@@ -1196,7 +1236,7 @@ class borderLine
             }
         }
         /*******/
-        if (settings.fixCircles){
+        if (blSettings.fixCircles){
           for (i = 0; i < circles.size(); i++){
             circles[i].fx = 0;
             circles[i].fy = 0;
@@ -1225,6 +1265,7 @@ class borderLine
     {
         int i, j, k;
         point p1, p2;
+        initPoint(&p1); initPoint(&p2);
         /*******/
         for (i = 0; i < bl.size(); i++)
         {
@@ -1234,7 +1275,7 @@ class borderLine
                 k = closestToSurf(i,j);
                 float rad = bl[i][j].radius + circles[k].radius;
                 float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
-                if (prad < (rad + 2 * settings.margin)){
+                if (prad < (rad + 2 * blSettings.margin)){
                   float rat = rad / prad;
                   bl[i][j].x = circles[k].x + rat * (bl[i][j].x - circles[k].x);
                   bl[i][j].y = circles[k].y + rat * (bl[i][j].y - circles[k].y);
@@ -1270,14 +1311,14 @@ class borderLine
     int closestToSurf(int i, int j){
       // Get the closest circle to a line point
       int result = 0;
-      point p = bl[i][j];
+      point P = bl[i][j];
       while (circles[result].radius == 0 && result < circles.size()){
         result++;
       }
-      float mindist = distance(p.x, p.y, circles[result].x, circles[result].y) - circles[result].radius;
+      float mindist = distance(P.x, P.y, circles[result].x, circles[result].y) - circles[result].radius;
       int k = result;
       while (k < circles.size()){
-        float dst = distance(p.x, p.y, circles[k].x, circles[k].y) - circles[k].radius;
+        float dst = distance(P.x, P.y, circles[k].x, circles[k].y) - circles[k].radius;
         if (dst < mindist){
           mindist = dst;
           result = k;
@@ -1292,12 +1333,15 @@ class borderLine
         int i, j, k;
         int i1, i2;
         point f;
+        initPoint(&f);
         int size;
         point previous;
+        initPoint(&previous);
         point next;
+        initPoint(&next);
         float storeR = 0;
         string temp;
-        settings.fixCircles = true;
+        blSettings.fixCircles = true;
         float dampen = sk / 5;
         /*******/
         //line-circle
@@ -1350,15 +1394,15 @@ class borderLine
         **/
     }
 
-    void limitForce(point &p, float maxf)
+    void limitForce(point &P, float maxf)
     {
         float f;
-        f = p.fx * p.fx + p.fy * p.fy;
+        f = P.fx * P.fx + P.fy * P.fy;
         if (f > maxf*maxf)
         {
             f = sqrt(f);
-            p.fx *= maxf/f;
-            p.fy *= maxf/f;
+            P.fx *= maxf/f;
+            P.fy *= maxf/f;
         }
     }
 
@@ -1386,10 +1430,16 @@ class borderLine
         setContacts();
         updPos(kb, resetVelocity);
         clearForces();
+        for (i = 0; i < dataDisplay.size(); i++){
+          free(dataDisplay[i]);
+        }
+        dataDisplay.clear();
 //Show dt
         char* dsp = (char*) calloc(100, sizeof(char));
-        sprintf(dsp, "DT: %.8f", dt);
-        dataDisplay.insert(dataDisplay.end(), dsp);
+        if (dsp){
+          sprintf(dsp, "DT: %.8f", dt);
+          dataDisplay.insert(dataDisplay.end(), dsp);
+        }
 /*
         char* sur = (char*) calloc(100, sizeof(char));
         sprintf(sur, "SURF.: %.4f", surfRatio);
@@ -1400,12 +1450,12 @@ class borderLine
         dataDisplay.insert(dataDisplay.end(), msur);
         */
 //
-        if (checkTopol() || settings.surfRatio > (2 * settings.minSurfRatio))
+        if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio))
         {
             bl = bl_old10;
             circles = circles_old10;
             udt.report(dt);
-            dt *= settings.stepdt;
+            dt *= blSettings.stepdt;
             deciderCounter = 0;
         }
         else if (blCounter == 0)
@@ -1418,17 +1468,17 @@ class borderLine
         }
         else if (deciderCounter.isMax())
         {
-            if (dt/settings.stepdt < udt.unstabledt())
+            if (dt/blSettings.stepdt < udt.unstabledt())
             {
-                dt /= settings.stepdt;
+                dt /= blSettings.stepdt;
             }
         }
-        settings.surfRatio = estSurf();
-        if (settings.minSurfRatio == 0){
-          settings.minSurfRatio = settings.surfRatio;
+        blSettings.surfRatio = estSurf();
+        if (blSettings.minSurfRatio == 0){
+          blSettings.minSurfRatio = blSettings.surfRatio;
         }
-        if(settings.minSurfRatio > settings.surfRatio){
-          settings.minSurfRatio = settings.surfRatio;
+        if(blSettings.minSurfRatio > blSettings.surfRatio){
+          blSettings.minSurfRatio = blSettings.surfRatio;
         }
         blCounter++;
         deciderCounter++;
@@ -1449,7 +1499,7 @@ class borderLine
                 //limitForce(bl[i][j], maxf);
                 bl[i][j].vx += bl[i][j].fx * dt / bl[i][j].mass;
                 bl[i][j].vy += bl[i][j].fy * dt / bl[i][j].mass;
-                settings.totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
+                blSettings.totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
                 bl[i][j].x += bl[i][j].vx * dt;
                 bl[i][j].y += bl[i][j].vy * dt;
                 /*******/
@@ -1484,7 +1534,7 @@ class borderLine
             //}
             circles[i].vx += circles[i].fx * dt / (CIRCLE_MASS);
             circles[i].vy += circles[i].fy * dt / (CIRCLE_MASS);
-            settings.totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
+            blSettings.totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
             //limitVel(circles[i], maxv);
             circles[i].x += circles[i].vx * dt;
             circles[i].y += circles[i].vy * dt;
@@ -1495,13 +1545,15 @@ class borderLine
             }
         }
         /*char* tcv = (char*) calloc(100, sizeof(char));
-        sprintf(tcv, "CIRCLEV: %g", settings.totalCircleV);
+        sprintf(tcv, "CIRCLEV: %g", blSettings.totalCircleV);
         dataDisplay.insert(dataDisplay.end(), tcv);*/
         char* df = (char*) calloc(100, sizeof(char));
-        sprintf(df, "LINEV: %g", settings.totalLineV);
-        dataDisplay.insert(dataDisplay.end(), df);
-        settings.totalCircleV = 0;
-        settings.totalLineV = 0;
+        if (df){
+          sprintf(df, "LINEV: %g", blSettings.totalLineV);
+          dataDisplay.insert(dataDisplay.end(), df);
+        }
+        blSettings.totalCircleV = 0;
+        blSettings.totalLineV = 0;
     }
 
     float estSurf(int nPoints = 100){
@@ -1522,7 +1574,9 @@ class borderLine
       bool isRight;   //Is the curve point to the right of the circle center?
       float a, b;
       point previousPoint;
+      initPoint(&previousPoint);
       point testPoint;
+      initPoint(&testPoint);
       for (j = 0; j < bl.size(); j++)
       {
           lastPoint = bl[j].size()-1;
@@ -1599,42 +1653,42 @@ class borderLine
         if (w[i] > 0 && w[i] > wmax) wmax = w[i];
       }
       for (i = 0; i < w.size(); i++){
-        if (w[i] > 0 && w[i] < (wmax * settings.minratio)) w[i] = settings.minratio * wmax;
+        if (w[i] > 0 && w[i] < (wmax * blSettings.minratio)) w[i] = blSettings.minratio * wmax;
       }
     }
 
 public:
-    borderLine(){
-      return;
-    }
-    borderLine(binMap b, vector<string> g, vector<float> tw)
+    borderLine(){}
+    borderLine(binMap* b, vector<string> g, vector<float> tw)
     {
         int i;
         bm = b;
         groups = g;
-        settings.signalEnd = false;
-        settings.smoothSVG = false;
-        settings.contacts = 0;
-        settings.fixCircles = false;
-        settings.minratio = 0.005f;
-        settings.marginScale = 0.02f;
-        settings.totalCircleV = 0;
-        settings.totalLineV   = 0;
-        settings.minSurfRatio = 0;
-        settings.margin = ngroups * settings.marginScale;
-        settings.startdt = dt;
-        settings.stepdt = 0.6f;
+        ngroups = bm->ngroups;
+        internalScale.initScale();
+        initBlData(&blSettings);
+        blSettings.signalEnd = false;
+        blSettings.smoothSVG = false;
+        blSettings.contacts = 0;
+        blSettings.fixCircles = false;
+        blSettings.minratio = 0.005f;
+        blSettings.marginScale = 0.02f;
+        blSettings.totalCircleV = 0;
+        blSettings.totalLineV   = 0;
+        blSettings.minSurfRatio = 0;
+        blSettings.margin = ngroups * blSettings.marginScale;
+        blSettings.startdt = dt;
+        blSettings.stepdt = 0.6f;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
 
 
         int height;     //number of rows in the first column
-        ngroups = b.ngroups;
-        height = b.row[0].size();
+        height = bm->row[0].size();
 
         //init circles
-        setCircles(b, tw);
+        setCircles(*bm, tw);
 
         totalExpectedSurface = 0;
         for (i = 0; i < w.size(); i++){
@@ -1650,13 +1704,13 @@ public:
         internalScale.setClear(true);
 
         //init time parameters
-        udt.init(settings.startdt);
+        udt.init(blSettings.startdt);
 
         //init points
         for (i = 0; i < ngroups; i++)
         {
             p.clear();
-            setPoints(b, i);
+            setPoints(*bm, i);
             bl.insert(bl.end(), p);
         }
         startPerim = (UINT) perimeter(bl[0]);
@@ -1701,7 +1755,7 @@ public:
     }
 
     bool isThisTheEnd(){
-      return settings.signalEnd;
+      return blSettings.signalEnd;
     }
 
     vector<vector<point> > getPoints(){
@@ -1724,6 +1778,7 @@ public:
 
     point fstCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
       point result;
+      initPoint(&result);
       result.x = start.x + sc * (nxt.x - prev.x);
       result.y = start.y + sc * (nxt.y - prev.y);
       return result;
@@ -1731,6 +1786,7 @@ public:
 
     point scndCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
       point result;
+      initPoint(&result);
       result.x = start.x - sc * (nxt.x - prev.x);
       result.y = start.y - sc * (nxt.y - prev.y);
       return result;
@@ -1751,6 +1807,7 @@ public:
       fileText svg;
       char temp[512];
       scale sc;
+      sc.initScale();
       sc.setMinX(10.0f);
       sc.setMinY(10.0f);
       sc.setMaxX(490.0f);
@@ -1759,6 +1816,7 @@ public:
       int i, j;
       string tst;
       point svgtemp;
+      initPoint(&svgtemp);
       svg.addLine("<svg width=\"500\" height=\"500\">");
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
@@ -1828,7 +1886,7 @@ public:
         }
       }
       /* This softens the lines*/
-      if (settings.smoothSVG == true){
+      if (blSettings.smoothSVG == true){
         for (i = 0; i < ngroups; i++){
           point nxt = place(sc, bl[i][0]);
           string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
@@ -1870,7 +1928,9 @@ public:
         int tsize;
         int i, j;
         point pstemp;
+        initPoint(&pstemp);
         scale ps;
+        ps.initScale();
         ps.setMinX(72.0f);
         ps.setMinY(72.0f);
         ps.setMaxX(551.0f);
@@ -2087,7 +2147,9 @@ public:
         float segment;
         int interpoints;
         point startPoint;
+        initPoint(&startPoint);
         point endPoint;
+        initPoint(&endPoint);
         point tempPoint;
         initPoint(&tempPoint);
         vector<point> tempv;
@@ -2133,11 +2195,13 @@ public:
         UINT it1 = (UINT) 2e4;
         UINT it2 = (UINT) 2e3;
         point minP;
+        initPoint(&minP);
         point maxP;
+        initPoint(&maxP);
         printf("Starting...\n");
         for (i = 0; i < it1; i++){
           //printf("%d\t%.1f, %.1f                        \r",
-          //        i, settings.minSurfRatio, mrel);
+          //        i, blSettings.minSurfRatio, mrel);
           //fflush(stdout);
           /*if (signalEnd == true){
             signalEnd = false;
@@ -2148,15 +2212,19 @@ public:
         }
         printf("Refining...\n");
         interpolate(400);
-        settings.margin /= 10;
+        blSettings.margin /= 10;
         setRadii();
         for (i = 0; i < it2; i++){
           setForces2();
           solve(true);
         }
         setForces3();
+        int counter;
+        for (counter = 0; counter < dataDisplay.size(); counter++){
+          free(dataDisplay[counter]);
+        }
+        dataDisplay.clear();
     }
-
 };
 
 

@@ -11,7 +11,9 @@ class glGraphics{
 
   vector<point> glCircle(float x, float y, float r)
   {
+    borderLine dummy;
       point temp;
+      dummy.initPoint(&temp);
       vector<point> result;
       float sen = 0.7071067811f;
       temp.x = x;
@@ -42,8 +44,10 @@ class glGraphics{
   }
   void toOGL(borderLine bl, HDC hDC)
   {
+    borderLine dummy;
       int i, j;
       point P;     //coordinates
+      dummy.initPoint(&P);
       vector<point> temp; //stores perimeters
       vector<vector<point> > blp = bl.bl;
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
@@ -51,6 +55,7 @@ class glGraphics{
       //define openGL scale
 
       scale ogl;
+      ogl.initScale();
 
       //define vectors
       for (i = 0; i < blp.size(); i++)
@@ -131,7 +136,9 @@ class glGraphics{
       int size;
       MSG msg;
       point minP;
+      bl.initPoint(&minP);
       point maxP;
+      bl.initPoint(&maxP);
       bool bQuit = false;
       while (!bQuit)
       {
@@ -150,18 +157,8 @@ class glGraphics{
           }
           else
           {
-              //setForces1();
-              //solve();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.refreshScreen++;
-              bl.warn.clear();
-              for (i = 0; i < bl.dataDisplay.size(); i++){
-                free(bl.dataDisplay[i]);
-              }
-              bl.dataDisplay.clear();
-              // TODO (vic#1#): Attention here\
-
-              //Sleep(100);
           }
       }
       bQuit = false;
@@ -183,14 +180,10 @@ class glGraphics{
           else
           {
               bl.setForces1();
-              bl.solve();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.solve();
               bl.refreshScreen++;
               bl.warn.clear();
-              for (i = 0; i < bl.dataDisplay.size(); i++){
-                free(bl.dataDisplay[i]);
-              }
-              bl.dataDisplay.clear();
               // TODO (vic#1#): Attention here\
 
               //Sleep(200);
@@ -199,7 +192,7 @@ class glGraphics{
       bl.udt.clear();
       bQuit = false;
       bl.interpolate(700);
-      bl.settings.margin /= 10;
+      bl.blSettings.margin /= 10;
       bl.setRadii();
       while (!bQuit)
       {
@@ -220,15 +213,10 @@ class glGraphics{
           else
           {
               bl.setForces2();
-              bl.solve(true);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.solve(true);
               bl.refreshScreen++;
               bl.warn.clear();
-              for (i = 0; i < bl.dataDisplay.size(); i++){
-                free(bl.dataDisplay[i]);
-              }
-              bl.dataDisplay.clear();
-              //Sleep(1);
           }
       }
       bl.udt.clear();

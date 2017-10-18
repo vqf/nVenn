@@ -62,7 +62,8 @@ void printv(vector<int> v)
 int main()
 {
     int i;
-    int number,n;
+    int number = 4;
+    int n = 0;
     string fname;
     string header;
     ifstream vFile;
@@ -94,7 +95,7 @@ int main()
     }
     vFile.close();
     binMap mymap(number);
-    borderLine lines(mymap, groupNames, weights);
+    borderLine lines(&mymap, groupNames, weights);
     lines.interpolate(50);
     lines.simulate(7);
     mymap.textOut();
@@ -189,7 +190,7 @@ WinMain (HINSTANCE hInstance,
     }
     vFile.close();
     binMap mymap(number);
-    borderLine lines(mymap, groupNames, weights);
+    borderLine lines(&mymap, groupNames, weights);
 
     /* register window class */
     wc.style = CS_OWNDC;
