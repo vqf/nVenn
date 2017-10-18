@@ -128,6 +128,22 @@ float distance(float x0, float y0, float x1, float y1)
     return result;
 }
 
+typedef struct blData{
+  float minratio;
+  float stepdt;
+  bool fixCircles;
+  bool signalEnd;
+  bool smoothSVG;
+  float surfRatio;
+  float minSurfRatio;
+  float startdt;
+  float marginScale;
+  float margin;
+  float totalCircleV;
+  float totalLineV;
+  int contacts;
+} blData;
+
 class point
 {
 public:
@@ -331,23 +347,67 @@ public:
 
 class scale
 {
-public:
-
-    float minX;
-    float minY;
-    float maxX;
-    float maxY;
+    float x;
+    float y;
+    float X;
+    float Y;
     bool clear;
+public:
+    scale(){
+      x = -1;
+      X = 1;
+      y = -1;
+      Y = 1;
+      clear = false;
+    }
+
+    bool isClear(){
+      return clear;
+    }
+    void setClear(bool v = true){
+      clear = v;
+    }
+
+    float minX(){
+      return x;
+    }
+
+    void setMinX(float v){
+      x = v;
+    }
+
+    float maxX(){
+      return X;
+    }
+    void setMaxX(float v){
+      X = v;
+    }
+
+    float minY(){
+      return y;
+    }
+
+    void setMinY(float v){
+      y = v;
+    }
+
+    float maxY(){
+      return Y;
+    }
+
+    void setMaxY(float v){
+      Y = v;
+    }
 
     float xSpan()
     {
-        float result = maxX - minX;
+        float result = X - x;
         if (result == 0) result = 1.0f;
         return result;
     }
     float ySpan()
     {
-        float result = maxY - minY;
+        float result = Y - y;
         if (result == 0) result = 1.0f;
         return result;
     }
@@ -603,22 +663,10 @@ class borderLine
     vector<point> warn;
     scale internalScale;
     int totalExpectedSurface;
-    float surfRatio;
-    float minSurfRatio;
-    float startdt;
-    float marginScale;
-    float margin;
-    timeMaster udt;
-    float minratio;
     vector<char*> dataDisplay;
-    float stepdt;
-    bool fixCircles;
-    bool signalEnd;
+    timeMaster udt;
+    blData settings;
 
-    /* Keep track */
-    float totalCircleV;
-    float totalLineV;
-    /* */
 
     void attention(float x, float y)
     {
@@ -660,28 +708,28 @@ class borderLine
         {
             offset = s.xSpan() - s.ySpan() / internalScale.ratio();
             offset /= 2;
-            tempScale.minX = offset + s.minX;
-            tempScale.maxX = s.maxX - offset;
-            tempScale.minY = s.minY;
-            tempScale.maxY = s.maxY;
+            tempScale.setMinX(offset + s.minX());
+            tempScale.setMaxX(s.maxX() - offset);
+            tempScale.setMinY(s.minY());
+            tempScale.setMaxY(s.maxY());
         }
         else
         {
             offset = s.ySpan() - internalScale.ratio() * s.xSpan();
             offset /= 2;
-            tempScale.minX = s.minX;
-            tempScale.maxX = s.maxX;
-            tempScale.minY = offset + s.minY;
-            tempScale.maxY = s.maxY - offset;
+            tempScale.setMinX(s.minX());
+            tempScale.setMaxX(s.maxX());
+            tempScale.setMinY(offset + s.minY());
+            tempScale.setMaxY(s.maxY() - offset);
         }
-        r.x = m.x - internalScale.minX;
-        r.y = m.y - internalScale.minY;
+        r.x = m.x - internalScale.minX();
+        r.y = m.y - internalScale.minY();
         r.x /= internalScale.xSpan();
         r.y /= internalScale.ySpan();
         r.x *= tempScale.xSpan();
         r.y *= tempScale.ySpan();
-        r.x += tempScale.minX;
-        r.y += tempScale.minY;
+        r.x += tempScale.minX();
+        r.y += tempScale.minY();
         Scale = tempScale.xSpan() / internalScale.xSpan();
         r.radius = Scale * m.radius;
         return r;
@@ -738,24 +786,24 @@ class borderLine
 
     void setScale(point p)
     {
-        if (internalScale.clear == true)
+        if (internalScale.isClear() == true)
         {
-            internalScale.minX = p.x;
-            internalScale.minY = p.y;
-            internalScale.maxX = p.x;
-            internalScale.maxY = p.y;
-            internalScale.clear = false;
+            internalScale.setMinX(p.x);
+            internalScale.setMinY(p.y);
+            internalScale.setMaxX(p.x);
+            internalScale.setMaxY(p.y);
+            internalScale.setClear(false);
         }
         else
         {
-            if (p.x < internalScale.minX)
-                internalScale.minX = p.x;
-            if (p.y < internalScale.minY)
-                internalScale.minY = p.y;
-            if (p.x > internalScale.maxX)
-                internalScale.maxX = p.x;
-            if (p.y > internalScale.maxY)
-                internalScale.maxY = p.y;
+            if (p.x < internalScale.minX())
+                internalScale.setMinX(p.x);
+            if (p.y < internalScale.minY())
+                internalScale.setMinY(p.y);
+            if (p.x > internalScale.maxX())
+                internalScale.setMaxX(p.x);
+            if (p.y > internalScale.maxY())
+                internalScale.setMaxY(p.y);
         }
     }
 
@@ -765,7 +813,9 @@ class borderLine
         int cstart;         //placement of first and last point
         //depending on ngroup
         point cpoint;       //point storage
+        initPoint(&cpoint);
         point fpoint;       //first point
+        initPoint(&fpoint);
         int height;
         int width;
         int omyheight;      //offset
@@ -869,11 +919,11 @@ class borderLine
                 bl_old10[i][j].reset();
             }
         }
-        surfRatio = estSurf();
-        if (surfRatio < minSurfRatio){
-          signalEnd = true;
+        settings.surfRatio = estSurf();
+        if (settings.surfRatio < settings.minSurfRatio){
+          settings.signalEnd = true;
         }
-        minSurfRatio = surfRatio;
+        settings.minSurfRatio = settings.surfRatio;
     }
 
 
@@ -989,7 +1039,7 @@ class borderLine
         m0 = p0.mass;
         m1 = p1.mass;
         radius = p0.radius + p1.radius;
-        radius += margin;
+        radius += settings.margin;
         //check contact
         d = distance(p0.x, p0.y, p1.x, p1.y);
 
@@ -1071,7 +1121,7 @@ class borderLine
       int i, j;
       for (i = 0; i < bl.size(); i++){
         for (j = 0; j < bl[i].size(); j++){
-          bl[i][j].radius = marginScale * i;
+          bl[i][j].radius = settings.marginScale * i;
         }
       }
     }
@@ -1146,7 +1196,7 @@ class borderLine
             }
         }
         /*******/
-        if (fixCircles){
+        if (settings.fixCircles){
           for (i = 0; i < circles.size(); i++){
             circles[i].fx = 0;
             circles[i].fy = 0;
@@ -1184,7 +1234,7 @@ class borderLine
                 k = closestToSurf(i,j);
                 float rad = bl[i][j].radius + circles[k].radius;
                 float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
-                if (prad < (rad + 2 * margin)){
+                if (prad < (rad + 2 * settings.margin)){
                   float rat = rad / prad;
                   bl[i][j].x = circles[k].x + rat * (bl[i][j].x - circles[k].x);
                   bl[i][j].y = circles[k].y + rat * (bl[i][j].y - circles[k].y);
@@ -1247,7 +1297,7 @@ class borderLine
         point next;
         float storeR = 0;
         string temp;
-        fixCircles = true;
+        settings.fixCircles = true;
         float dampen = sk / 5;
         /*******/
         //line-circle
@@ -1332,7 +1382,7 @@ class borderLine
 
 
         //Init the scale for the new frame
-        internalScale.clear = true;
+        internalScale.setClear(true);
         setContacts();
         updPos(kb, resetVelocity);
         clearForces();
@@ -1350,12 +1400,12 @@ class borderLine
         dataDisplay.insert(dataDisplay.end(), msur);
         */
 //
-        if (checkTopol() || surfRatio > (2 * minSurfRatio))
+        if (checkTopol() || settings.surfRatio > (2 * settings.minSurfRatio))
         {
             bl = bl_old10;
             circles = circles_old10;
             udt.report(dt);
-            dt *= stepdt;
+            dt *= settings.stepdt;
             deciderCounter = 0;
         }
         else if (blCounter == 0)
@@ -1368,17 +1418,17 @@ class borderLine
         }
         else if (deciderCounter.isMax())
         {
-            if (dt/stepdt < udt.unstabledt())
+            if (dt/settings.stepdt < udt.unstabledt())
             {
-                dt /= stepdt;
+                dt /= settings.stepdt;
             }
         }
-        surfRatio = estSurf();
-        if (minSurfRatio == 0){
-          minSurfRatio = surfRatio;
+        settings.surfRatio = estSurf();
+        if (settings.minSurfRatio == 0){
+          settings.minSurfRatio = settings.surfRatio;
         }
-        if(minSurfRatio > surfRatio){
-          minSurfRatio = surfRatio;
+        if(settings.minSurfRatio > settings.surfRatio){
+          settings.minSurfRatio = settings.surfRatio;
         }
         blCounter++;
         deciderCounter++;
@@ -1399,7 +1449,7 @@ class borderLine
                 //limitForce(bl[i][j], maxf);
                 bl[i][j].vx += bl[i][j].fx * dt / bl[i][j].mass;
                 bl[i][j].vy += bl[i][j].fy * dt / bl[i][j].mass;
-                totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
+                settings.totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
                 bl[i][j].x += bl[i][j].vx * dt;
                 bl[i][j].y += bl[i][j].vy * dt;
                 /*******/
@@ -1434,7 +1484,7 @@ class borderLine
             //}
             circles[i].vx += circles[i].fx * dt / (CIRCLE_MASS);
             circles[i].vy += circles[i].fy * dt / (CIRCLE_MASS);
-            totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
+            settings.totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
             //limitVel(circles[i], maxv);
             circles[i].x += circles[i].vx * dt;
             circles[i].y += circles[i].vy * dt;
@@ -1444,14 +1494,14 @@ class borderLine
                 circles[i].vy = 0;
             }
         }
-        char* tcv = (char*) calloc(100, sizeof(char));
-        sprintf(tcv, "CIRCLEV: %g", totalCircleV);
-        dataDisplay.insert(dataDisplay.end(), tcv);
+        /*char* tcv = (char*) calloc(100, sizeof(char));
+        sprintf(tcv, "CIRCLEV: %g", settings.totalCircleV);
+        dataDisplay.insert(dataDisplay.end(), tcv);*/
         char* df = (char*) calloc(100, sizeof(char));
-        sprintf(df, "LINEV: %g", totalLineV);
+        sprintf(df, "LINEV: %g", settings.totalLineV);
         dataDisplay.insert(dataDisplay.end(), df);
-        totalCircleV = 0;
-        totalLineV = 0;
+        settings.totalCircleV = 0;
+        settings.totalLineV = 0;
     }
 
     float estSurf(int nPoints = 100){
@@ -1484,7 +1534,7 @@ class borderLine
           {
               ch = (bl[j][k].y > P.y);
               ch = (ch ^ isAbove);
-              if (ch)
+              if (ch == true)
               {    /* Lines cross */
                   isAbove = !isAbove;
                   if (bl[j][k].x > P.x && isRight)
@@ -1549,7 +1599,7 @@ class borderLine
         if (w[i] > 0 && w[i] > wmax) wmax = w[i];
       }
       for (i = 0; i < w.size(); i++){
-        if (w[i] > 0 && w[i] < (wmax * minratio)) w[i] = minratio * wmax;
+        if (w[i] > 0 && w[i] < (wmax * settings.minratio)) w[i] = settings.minratio * wmax;
       }
     }
 
@@ -1562,12 +1612,18 @@ public:
         int i;
         bm = b;
         groups = g;
-        signalEnd = false;
-        minratio = 0.005f;
-        marginScale = 0.02f;
-        totalCircleV = 0;
-        totalLineV   = 0;
-        fixCircles = false;
+        settings.signalEnd = false;
+        settings.smoothSVG = false;
+        settings.contacts = 0;
+        settings.fixCircles = false;
+        settings.minratio = 0.005f;
+        settings.marginScale = 0.02f;
+        settings.totalCircleV = 0;
+        settings.totalLineV   = 0;
+        settings.minSurfRatio = 0;
+        settings.margin = ngroups * settings.marginScale;
+        settings.startdt = dt;
+        settings.stepdt = 0.6f;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
@@ -1591,12 +1647,10 @@ public:
         refreshScreen.setLimits(1, 100);
 
         //init internal scale
-        internalScale.clear = true;
+        internalScale.setClear(true);
 
         //init time parameters
-        startdt = dt;
-        udt.init(startdt);
-        stepdt = 0.60;
+        udt.init(settings.startdt);
 
         //init points
         for (i = 0; i < ngroups; i++)
@@ -1644,12 +1698,10 @@ public:
         {
           colors.insert(colors.end(),toRGB(arr[i], 1));
         }
-        minSurfRatio = 0;
-        margin = ngroups * marginScale;
     }
 
     bool isThisTheEnd(){
-      return signalEnd;
+      return settings.signalEnd;
     }
 
     vector<vector<point> > getPoints(){
@@ -1670,14 +1722,14 @@ public:
       return result;
     }
 
-    point fstCtrlPoint(point prev, point start, point nxt, float sc = 0.2f){
+    point fstCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
       point result;
       result.x = start.x + sc * (nxt.x - prev.x);
       result.y = start.y + sc * (nxt.y - prev.y);
       return result;
     }
 
-    point scndCtrlPoint(point prev, point start, point nxt, float sc = 0.2f){
+    point scndCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
       point result;
       result.x = start.x - sc * (nxt.x - prev.x);
       result.y = start.y - sc * (nxt.y - prev.y);
@@ -1699,10 +1751,10 @@ public:
       fileText svg;
       char temp[512];
       scale sc;
-      sc.minX = 10.0f;
-      sc.minY = 10.0f;
-      sc.maxX = 490.0f;
-      sc.maxY = 490.0f;
+      sc.setMinX(10.0f);
+      sc.setMinY(10.0f);
+      sc.setMaxX(490.0f);
+      sc.setMaxY(490.0f);
       int fsize = 10;
       int i, j;
       string tst;
@@ -1748,7 +1800,7 @@ public:
         if (circles[i].radius > 0){
           svgtemp = place(sc, circles[i]);
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
-          if (svgtemp.x > sc.minX && svgtemp.x < sc.maxX){
+          if (svgtemp.x > sc.minX() && svgtemp.x < sc.maxX()){
             sprintf(temp, "<circle class=\"circle\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", svgtemp.x,
                             svgtemp.y, svgtemp.radius);
             tst = temp;
@@ -1776,32 +1828,35 @@ public:
         }
       }
       /* This softens the lines*/
-      /*for (i = 0; i < ngroups; i++){
-        point nxt = place(sc, bl[i][0]);
-        string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
+      if (settings.smoothSVG == true){
+        for (i = 0; i < ngroups; i++){
+          point nxt = place(sc, bl[i][0]);
+          string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
 
-        for (j = 1; j < (bl[i].size() - 2); j++){
-          point prev = place(sc, bl[i][j - 1]);
-          point curr = place(sc, bl[i][j]);
-          point next = place(sc, bl[i][j + 1]);
-          point next2 = place(sc, bl[i][j + 2]);
-          point ctrlfst = fstCtrlPoint(prev, curr, next);
-          point ctrlsec = scndCtrlPoint(curr, next, next2);
-          cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
-                           coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
-                           coord(next.x) + " " + coord(next.y);
+          for (j = 1; j < (bl[i].size() - 2); j++){
+            point prev = place(sc, bl[i][j - 1]);
+            point curr = place(sc, bl[i][j]);
+            point next = place(sc, bl[i][j + 1]);
+            point next2 = place(sc, bl[i][j + 2]);
+            point ctrlfst = fstCtrlPoint(prev, curr, next);
+            point ctrlsec = scndCtrlPoint(curr, next, next2);
+            cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
+                             coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
+                             coord(next.x) + " " + coord(next.y);
+          }
+          svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
         }
-        svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
-      }*/
-      /* This does not */
-      for (i = 0; i < ngroups; i++){
-        point nxt = place(sc, bl[i][0]);
-        string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
-        for (j = 1; j < bl[i].size(); j++){
-          nxt = place(sc, bl[i][j]);
-          cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
+      } else{
+        /* This does not */
+        for (i = 0; i < ngroups; i++){
+          point nxt = place(sc, bl[i][0]);
+          string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
+          for (j = 1; j < bl[i].size(); j++){
+            nxt = place(sc, bl[i][j]);
+            cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
+          }
+          svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
         }
-        svg.addLine("<path id=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
       }
       svg.addLine("</svg>");
       return svg;
@@ -1816,10 +1871,10 @@ public:
         int i, j;
         point pstemp;
         scale ps;
-        ps.minX = 72.0f;
-        ps.minY = 72.0f;
-        ps.maxX = 551.0f;
-        ps.maxY = 721.0f;
+        ps.setMinX(72.0f);
+        ps.setMinY(72.0f);
+        ps.setMaxX(551.0f);
+        ps.setMaxY(721.0f);
 
         // Postscript header
         pstext.addLine(" ");
@@ -1994,7 +2049,7 @@ public:
             if (circles[i].mass > 0){
               pstemp = place(ps, circles[i]);
               pstext.addLine("newpath");
-              if (pstemp.x > ps.minX && pstemp.x < ps.maxX){
+              if (pstemp.x > ps.minX() && pstemp.x < ps.maxX()){
                 tsize = sprintf(temp, "%f %f %f 0 360 arc", pstemp.x,
                                 pstemp.y, pstemp.radius);
                 tst = temp;
@@ -2010,6 +2065,20 @@ public:
         return pstext;
     }
 
+    void initPoint(point* p){
+      p->cancelForce = false;
+      p->fx = 0.0f;
+      p->fy = 0.0f;
+      p->mass = POINT_MASS;
+      p->n = 0;
+      p->orig = 0.0f;
+      p->radius = 0.0f;
+      p->vx = 0.0f;
+      p->vy = 0.0f;
+      p->x = 0.0f;
+      p->y = 0.0f;
+    }
+
     void interpolate(int npoints)
     {
         int i, j, k;
@@ -2020,6 +2089,7 @@ public:
         point startPoint;
         point endPoint;
         point tempPoint;
+        initPoint(&tempPoint);
         vector<point> tempv;
         vector<vector<point> > tempbl;
         for (i = 0; i < bl.size(); i++)
@@ -2066,9 +2136,9 @@ public:
         point maxP;
         printf("Starting...\n");
         for (i = 0; i < it1; i++){
-          printf("%d\t%.1f, %.1f                        \r",
-                  i, minSurfRatio, mrel);
-          fflush(stdout);
+          //printf("%d\t%.1f, %.1f                        \r",
+          //        i, settings.minSurfRatio, mrel);
+          //fflush(stdout);
           /*if (signalEnd == true){
             signalEnd = false;
             i = it1 - 1000;
@@ -2078,7 +2148,7 @@ public:
         }
         printf("Refining...\n");
         interpolate(400);
-        margin /= 10;
+        settings.margin /= 10;
         setRadii();
         for (i = 0; i < it2; i++){
           setForces2();

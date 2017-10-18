@@ -52,10 +52,6 @@ class glGraphics{
 
       scale ogl;
 
-      ogl.minX = -1;
-      ogl.maxX = 1;
-      ogl.minY = -1;
-      ogl.maxY = 1;
       //define vectors
       for (i = 0; i < blp.size(); i++)
       {
@@ -203,7 +199,7 @@ class glGraphics{
       bl.udt.clear();
       bQuit = false;
       bl.interpolate(700);
-      bl.margin /= 10;
+      bl.settings.margin /= 10;
       bl.setRadii();
       while (!bQuit)
       {
