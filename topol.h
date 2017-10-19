@@ -145,6 +145,7 @@ typedef struct blData{
   float totalCircleV;
   float totalLineV;
   int contacts;
+  float maxf;
 } blData;
 
 
@@ -162,6 +163,7 @@ public:
     float mass;
     float orig;
     bool cancelForce;
+    bool softenForce;
     point()
     {
         x = 0;
@@ -1101,6 +1103,8 @@ class borderLine
                 p0.fy += result.fy;
                 p1.fx -= result.fx;
                 p1.fy -= result.fy;
+                p0.softenForce = true;
+                p1.softenForce = true;
 //                attention(p0.x, p0.y, 1, 1);
             }
             return result;
@@ -1412,22 +1416,10 @@ class borderLine
     {
         int i, j;
         float kb;
-        float maxf;
         for (i = 0; i < dataDisplay.size(); i++){
           free(dataDisplay[i]);
         }
         dataDisplay.clear();
-        if (resetVelocity)
-        {
-            maxf = 5e20f;
-            kb = 1e2f;//1e2f;
-        }
-        else
-        {
-            maxf = 5e30f;
-            kb = 1e2f;
-        }
-
 
         //Init the scale for the new frame
         internalScale.setClear(true);
@@ -1494,11 +1486,18 @@ class borderLine
             {
                 bl[i][j].fx -= kb * bl[i][j].vx;
                 bl[i][j].fy -= kb * bl[i][j].vy;
+
                 //Limit force to avoid artifacts
-                //limitForce(bl[i][j], maxf);
+                if (bl[i][j].softenForce == true){
+                  limitForce(bl[i][j], blSettings.maxf);
+                  bl[i][j].softenForce = false;
+                }
+                //
+
                 bl[i][j].vx += bl[i][j].fx * dt / bl[i][j].mass;
                 bl[i][j].vy += bl[i][j].fy * dt / bl[i][j].mass;
                 blSettings.totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
+
                 bl[i][j].x += bl[i][j].vx * dt;
                 bl[i][j].y += bl[i][j].vy * dt;
                 /*******/
@@ -1528,13 +1527,17 @@ class borderLine
             /*******/
             circles[i].fx -= kb * circles[i].vx;
             circles[i].fy -= kb * circles[i].vy;
-            //if (circles[i].vx){
-            //    temp(1e5*circles[i].vx);
+            //Limit force to avoid artifacts
+            //if (circles[i].softenForce == true){
+            //  limitForce(circles[i], blSettings.maxf);
+            //  circles[i].softenForce = false;
             //}
+            //
             circles[i].vx += circles[i].fx * dt / (CIRCLE_MASS);
             circles[i].vy += circles[i].fy * dt / (CIRCLE_MASS);
             blSettings.totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
             //limitVel(circles[i], maxv);
+
             circles[i].x += circles[i].vx * dt;
             circles[i].y += circles[i].vy * dt;
             if (resetVelocity)
@@ -1670,11 +1673,12 @@ public:
         blSettings.smoothSVG = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
-        blSettings.minratio = 0.005f;
+        blSettings.minratio = 0.005f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
         blSettings.marginScale = 0.02f;
         blSettings.totalCircleV = 0;
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
+        blSettings.maxf = 5e20f;
         blSettings.margin = ngroups * blSettings.marginScale;
         blSettings.startdt = dt;
         blSettings.stepdt = 0.6f;
@@ -1697,7 +1701,7 @@ public:
         //init counters
         blCounter.setLimits(0, 30u);
         deciderCounter.setLimits(0, 300u);
-        refreshScreen.setLimits(1, 100);
+        refreshScreen.setLimits(1, 10);
 
         //init internal scale
         internalScale.setClear(true);
@@ -2136,6 +2140,7 @@ public:
       p->vy = 0.0f;
       p->x = 0.0f;
       p->y = 0.0f;
+      p->softenForce = false;
     }
 
     void interpolate(int npoints)
@@ -2191,7 +2196,7 @@ public:
         int i, j, k;
         float mrel = (float) maxRel;
         int size;
-        UINT it1 = (UINT) 2e4;
+        UINT it1 = (UINT) 1e5;
         UINT it2 = (UINT) 2e3;
         point minP;
         initPoint(&minP);

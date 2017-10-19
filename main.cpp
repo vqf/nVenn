@@ -59,7 +59,7 @@ void printv(vector<int> v)
 
 
 #ifndef GRAPHICS
-int main()
+int main(int argc, char** argv)
 {
     int i;
     int number = 4;
@@ -73,7 +73,12 @@ int main()
     vector<float> weights;
     fileText psfile;
     fileText svgfile;
-    fname = getFile("Name of the Venn data file?", "File not found!");
+    if (argc > 1){
+      fname = argv[1];
+    }
+    else{
+      fname = getFile("Name of the Venn data file?", "File not found!");
+    }
     vFile.open(fname.c_str());
     getline(vFile, header);
     cout << header;
