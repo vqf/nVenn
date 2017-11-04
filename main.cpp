@@ -66,6 +66,7 @@ int main(int argc, char** argv)
     int n = 0;
     string fname;
     string header;
+    string outputFile;
     ifstream vFile;
     ofstream result;
     vector<int> temp;
@@ -78,6 +79,12 @@ int main(int argc, char** argv)
     }
     else{
       fname = getFile("Name of the Venn data file?", "File not found!");
+    }
+    if (argc > 2){
+      outputFile = argv[2];
+    }
+    else{
+      outputFile = "result.svg";
     }
     vFile.open(fname.c_str());
     getline(vFile, header);
@@ -100,7 +107,7 @@ int main(int argc, char** argv)
     }
     vFile.close();
     binMap mymap(number);
-    borderLine lines(&mymap, groupNames, weights);
+    borderLine lines(&mymap, groupNames, weights, outputFile);
     lines.interpolate(50);
     lines.simulate(7);
     mymap.textOut();
@@ -109,7 +116,7 @@ int main(int argc, char** argv)
     //result.write(psfile.getText().c_str(), psfile.getText().size());
     //result.close();
     svgfile = lines.toSVG();
-    result.open("result.svg");
+    result.open(outputFile.c_str());
     result.write(svgfile.getText().c_str(), svgfile.getText().size());
     result.close();
     return 0;

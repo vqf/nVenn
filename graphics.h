@@ -108,6 +108,7 @@ class glGraphics{
           }
           glEnd ();
       }
+      bl.warn.clear();
       // Text
       glColor3f(0.0f, 0.0f, 1.0f);
       float yd = 0.8f;
@@ -118,7 +119,6 @@ class glGraphics{
         printString(mymsg);
         yd -= 0.1;
       }
-      bl.warn.clear();
       for (i = 0; i < bl.dataDisplay.size(); i++){
         free(bl.dataDisplay[i]);
       }
@@ -183,7 +183,6 @@ class glGraphics{
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve();
               bl.refreshScreen++;
-              bl.warn.clear();
               // TODO (vic#1#): Attention here\
 
               //Sleep(200);
@@ -216,7 +215,7 @@ class glGraphics{
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve(true);
               bl.refreshScreen++;
-              bl.warn.clear();
+
 
           }
       }
