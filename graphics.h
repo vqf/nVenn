@@ -131,6 +131,7 @@ class glGraphics{
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
       borderLine bl = *blp;
+      //bl.refreshScreen.setLimits(1,10);
       int i, j, k;
       int cycle;
       int size;
@@ -157,7 +158,7 @@ class glGraphics{
           }
           else
           {
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              if (bl.refreshScreen.isMax() == true) toOGL(bl, hDC);
               bl.refreshScreen++;
           }
       }

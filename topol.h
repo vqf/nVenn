@@ -148,6 +148,8 @@ typedef struct blData{
   int contacts;
   float maxf;
   float maxv;
+  int checkFor; // If any of the previous or following 10 point is sticking to
+                           // the surface, the current point will also stick
   string fname;
 } blData;
 
@@ -247,6 +249,7 @@ class lCounter
     UINT lLimit;
     UINT uLimit;
     UINT span;
+    bool toInf; // Disables the counter
 
 public:
 
@@ -256,6 +259,11 @@ public:
         lLimit = lowerLimit;
         uLimit = upperLimit;
         span = uLimit - lLimit;
+        toInf = false;
+    }
+
+    void setAsStable(){
+      toInf = true;
     }
 
     lCounter()
@@ -264,6 +272,7 @@ public:
         lLimit = 0;
         uLimit = 0;
         span = 0;
+        toInf = false;
     }
 
     void setLimits(UINT lowerLimit, UINT upperLimit)
@@ -276,6 +285,7 @@ public:
 
     bool isMax()
     {
+      if (toInf) return false;
         if (counter == uLimit)
         {
             return true;
@@ -288,6 +298,7 @@ public:
 
     bool isMin()
     {
+      if (toInf) return false;
         if (counter == lLimit)
         {
             return true;
@@ -300,6 +311,7 @@ public:
 
     void operator++(int)
     {
+      if (toInf) return;
         if (counter < uLimit)
         {
             counter++;
@@ -311,6 +323,7 @@ public:
     }
     void operator++()
     {
+      if (toInf) return;
         if (counter < uLimit)
         {
             counter++;
@@ -322,6 +335,7 @@ public:
     }
     void operator--(int)
     {
+      if (toInf) return;
         if (counter > lLimit)
         {
             counter--;
@@ -333,6 +347,7 @@ public:
     }
     void operator--()
     {
+      if (toInf) return;
         if (counter > lLimit)
         {
             counter--;
@@ -697,6 +712,7 @@ class borderLine
       b->totalCircleV = 0;
       b->totalLineV = 0;
       b->contacts = 0;
+      b->checkFor = 30;
     }
 
 
@@ -1191,6 +1207,11 @@ class borderLine
       }
     }
 
+    void setAsStable(){
+      dt *= blSettings.stepdt;
+      deciderCounter.setAsStable();
+    }
+
     void setForces1()
     {
         int i, j, k;
@@ -1288,6 +1309,30 @@ class borderLine
       return result;
     }
 
+
+    bool sticking(int i, int j, int k){
+      int c;
+      bool prev = false;
+      float rad = bl[i][j].radius + circles[k].radius;
+      for (c = 0; c < blSettings.checkFor; c++){
+        int l = prevPoint(i, j);
+        float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
+        if (prad < (rad + 2 * blSettings.margin)){
+          prev = true;
+        }
+      }
+      bool next = false;
+      for (c = 0; c < blSettings.checkFor; c++){
+        int l = nextPoint(i, j);
+        float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
+        if (prad < (rad + 2 * blSettings.margin)){
+          next = true;
+        }
+      }
+      bool result = prev & next;
+      return result;
+    }
+
     void setForces3()
     {
         int i, j, k;
@@ -1302,7 +1347,8 @@ class borderLine
                 k = closestToSurf(i,j);
                 float rad = bl[i][j].radius + circles[k].radius;
                 float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
-                if (prad < (rad + 2 * blSettings.margin)){
+                bool st = sticking(i, j, k);
+                if (st){
                   float rat = rad / prad;
                   bl[i][j].x = circles[k].x + rat * (bl[i][j].x - circles[k].x);
                   bl[i][j].y = circles[k].y + rat * (bl[i][j].y - circles[k].y);
@@ -1713,8 +1759,8 @@ public:
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
         blSettings.maxf = 5e20f;
-        blSettings.maxv = 5e20f;
-        blSettings.margin = ngroups * blSettings.marginScale;
+        blSettings.maxv = 5e5f;
+        blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         blSettings.startdt = dt;
         blSettings.stepdt = 0.6f;
         blSettings.fname = outputFile;
@@ -1861,16 +1907,16 @@ public:
       string tst;
       point svgtemp;
       initPoint(&svgtemp);
-      svg.addLine("<svg width=\"600\" height=\"500\">");
+      svg.addLine("<svg width=\"700\" height=\"500\">");
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
       svg.addLine("  .borderLine {");
-      svg.addLine("	   stroke-width: 0.5;");
+      svg.addLine("	   stroke-width: 1;");
       svg.addLine("	   fill-opacity: 0.4;");
       svg.addLine("  }");
       svg.addLine("  .circle {");
       svg.addLine("	   stroke: #888888;");
-      svg.addLine("	   stroke-width: 0.1;");
+      svg.addLine("	   stroke-width: 0.5;");
       svg.addLine("	   fill: none;");
       svg.addLine("  }");
       svg.addLine("  .nLabel {");
@@ -1897,6 +1943,7 @@ public:
       svg.addLine("]]>");
       svg.addLine("</style>");
       svg.addLine("</defs>");
+      svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
       /* This softens the lines*/
       if (blSettings.smoothSVG == true){
         for (i = 0; i < ngroups; i++){
@@ -1939,7 +1986,7 @@ public:
             tst = temp;
             svg.addLine(tst);
             char addNum[200];
-            sprintf(addNum, "<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y + fsize/2, circles[i].orig);
+            sprintf(addNum, "<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);
             tst = addNum;
             svg.addLine(tst);
             // Belongs to
@@ -2266,13 +2313,19 @@ public:
         initPoint(&maxP);
         printf("Starting...\n");
         for (i = 0; i < it1; i++){
-          //printf("%d\t%.1f, %.1f                        \r",
-          //        i, blSettings.minSurfRatio, mrel);
-          //fflush(stdout);
-          /*if (signalEnd == true){
-            signalEnd = false;
-            i = it1 - 1000;
-          }*/
+          setForces1();
+          if (refreshScreen.isMax() == true){
+            fileText tmp = toSVG();
+            ofstream result;
+            result.open(blSettings.fname.c_str());
+            result.write(tmp.getText().c_str(), tmp.getText().size());
+            result.close();
+          }
+          refreshScreen++;
+          solve();
+        }
+        setAsStable();
+        for (i = 0; i < 300; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
             fileText tmp = toSVG();
