@@ -146,6 +146,7 @@ typedef struct blData{
   float totalCircleV;
   float totalLineV;
   int contacts;
+  UINT ncycles;
   float maxf;
   float maxv;
   int checkFor; // If any of the previous or following 10 point is sticking to
@@ -981,7 +982,7 @@ class borderLine
 
 
 
-    point eqforce(point &p0, point &p1, float kattr = 5e-3f)
+    point eqforce(point &p0, point &p1, float kattr = 5e-2f)
     {
         point result;
         initPoint(&result);
@@ -1000,6 +1001,7 @@ class borderLine
         fatt = 0;
         if (d > maxrad) fatt = sk * kattr * (d - radius);
         if (d < maxrad) fatt = -fatt;
+        fatt /= twoPow(ngroups);
         result.fx = dx * fatt;
         result.fy = dy * fatt;
         p0.fx += result.fx;
@@ -1109,7 +1111,7 @@ class borderLine
         fy = p1.fy - p0.fy;
         fc = dx*fx + dy*fy;
 
-        if (d <= (1.2 * radius))
+        if (d <= (2 * radius))
         {
             dr = radius / d;
             if (d <= radius){
@@ -1428,7 +1430,7 @@ class borderLine
                 {
                     if (circles[j].radius > 0)
                     {
-                        f = eqforce(circles[j], bl[k][i], 1e-6f * sk);
+                        f = eqforce(circles[j], bl[k][i], 1e-5f * sk);
                         if (i > 0)
                         {
                             i1 = i - 1;
@@ -1476,6 +1478,7 @@ class borderLine
             f = sqrt(f);
             P.vx *= maxv/f;
             P.vy *= maxv/f;
+            //attention(P.x, P.y);
         }
     }
 
@@ -1515,7 +1518,7 @@ class borderLine
 
         char* dsc = (char*) calloc(100, sizeof(char));
         if (dsc){
-          sprintf(dsc, "CONTACTS: %d", blSettings.contacts);
+          sprintf(dsc, "CYCLES: %d", blSettings.ncycles);
           dataDisplay.insert(dataDisplay.end(), dsc);
         }
         blSettings.contacts = 0;
@@ -1553,7 +1556,7 @@ class borderLine
         }
         blCounter++;
         deciderCounter++;
-
+        blSettings.ncycles++;
     }
 
     void updPos(float kb, bool resetVelocity)
@@ -1759,11 +1762,12 @@ public:
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
         blSettings.maxf = 5e20f;
-        blSettings.maxv = 5e5f;
+        blSettings.maxv = 5e0f;
         blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         blSettings.startdt = dt;
         blSettings.stepdt = 0.6f;
         blSettings.fname = outputFile;
+        blSettings.ncycles = 0;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         wlimit();
@@ -1799,7 +1803,7 @@ public:
             bl.insert(bl.end(), p);
         }
         startPerim = (UINT) perimeter(bl[0]);
-        UINT np = (UINT) (0.5f * (float) startPerim);
+        UINT np = (UINT) (0.4f * (float) startPerim);
         interpolate(np);
 
 
@@ -1918,6 +1922,7 @@ public:
       svg.addLine("	   stroke: #888888;");
       svg.addLine("	   stroke-width: 0.5;");
       svg.addLine("	   fill: none;");
+      svg.addLine("    pointer-events: all;");
       svg.addLine("  }");
       svg.addLine("  .nLabel {");
       svg.addLine("	   font-family: Arial;");
@@ -1981,7 +1986,7 @@ public:
           svgtemp = place(sc, circles[i]);
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
           if (svgtemp.x > sc.minX() && svgtemp.x < sc.maxX()){
-            sprintf(temp, "<circle class=\"circle\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", svgtemp.x,
+            sprintf(temp, "<circle onclick=\"fromCircle(%u)\" class=\"circle\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, svgtemp.x,
                             svgtemp.y, svgtemp.radius);
             tst = temp;
             svg.addLine(tst);
@@ -2002,7 +2007,7 @@ public:
             }
             string bgs = join(", ", belongs);
             char addBelongs[500];
-            sprintf(addBelongs, "<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize, bgs.c_str());
+            sprintf(addBelongs, "<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
             svg.addLine(addBelongs);
           }
         }
@@ -2305,8 +2310,8 @@ public:
         int i, j, k;
         float mrel = (float) maxRel;
         int size;
-        UINT it1 = (UINT) 1e4;
-        UINT it2 = (UINT) 5e2;
+        UINT it1 = (UINT) 7e3;
+        UINT it2 = (UINT) 1e3;
         point minP;
         initPoint(&minP);
         point maxP;
