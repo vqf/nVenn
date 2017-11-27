@@ -15,9 +15,7 @@ typedef unsigned int UINT;
 
 float sk = 1e3f;
 float dt = 1e-1f;
-float kdt = 0.0f;
-float baseV  = 5.0f;
-float baseBV = 20.0f;
+float baseBV = 0.2f;
 
 
 using namespace std;
@@ -1090,7 +1088,7 @@ class borderLine
         float m0, m1;
         float kx, ky;
         float dr;
-        float ratio;
+        float crat;
         zero.fx = 0;
         zero.fy = 0;
         dx = p1.x - p0.x;
@@ -1111,14 +1109,14 @@ class borderLine
         fy = p1.fy - p0.fy;
         fc = dx*fx + dy*fy;
 
-        if (d <= (2 * radius))
+        if (d <= (radius))
         {
             dr = radius / d;
             if (d <= radius){
                 blSettings.contacts++;
-                ratio = d/(radius);
-                kx = dx * (-1.0f + ratio);
-                ky = dy * (-1.0f + ratio);
+                crat = (d - radius)/(radius);
+                kx = dx * (crat);
+                ky = dy * (crat);
                 result.fx = hardness * sk * kx;
                 result.fy = hardness * sk * ky;
                 p0.fx += result.fx;
@@ -1319,7 +1317,7 @@ class borderLine
       for (c = 0; c < blSettings.checkFor; c++){
         int l = prevPoint(i, j);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
-        if (prad < (rad + 2 * blSettings.margin)){
+        if (prad < (rad + blSettings.marginScale * i)){
           prev = true;
         }
       }
@@ -1327,7 +1325,7 @@ class borderLine
       for (c = 0; c < blSettings.checkFor; c++){
         int l = nextPoint(i, j);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
-        if (prad < (rad + 2 * blSettings.margin)){
+        if (prad < (rad + blSettings.marginScale * i)){
           next = true;
         }
       }
@@ -1498,7 +1496,7 @@ class borderLine
     void solve(bool resetVelocity = false)
     {
         int i, j;
-        float kb;
+        float kb = baseBV;
         for (i = 0; i < dataDisplay.size(); i++){
           free(dataDisplay[i]);
         }
@@ -1785,9 +1783,9 @@ public:
         }
 
         //init counters
-        blCounter.setLimits(0, 30u);
-        deciderCounter.setLimits(0, 300u);
-        refreshScreen.setLimits(1, 500);
+        blCounter.setLimits(0, 1u);
+        deciderCounter.setLimits(0, 1u);
+        refreshScreen.setLimits(1, 1);
 
         //init internal scale
         internalScale.setClear(true);
@@ -1803,7 +1801,7 @@ public:
             bl.insert(bl.end(), p);
         }
         startPerim = (UINT) perimeter(bl[0]);
-        UINT np = (UINT) (0.4f * (float) startPerim);
+        UINT np = (UINT) (0.5f * (float) startPerim);
         interpolate(np);
 
 
@@ -2311,7 +2309,7 @@ public:
         float mrel = (float) maxRel;
         int size;
         UINT it1 = (UINT) 7e3;
-        UINT it2 = (UINT) 1e3;
+        UINT it2 = (UINT) 5e2;
         point minP;
         initPoint(&minP);
         point maxP;
@@ -2330,7 +2328,7 @@ public:
           solve();
         }
         setAsStable();
-        for (i = 0; i < 300; i++){
+        for (i = 0; i < 500; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
             fileText tmp = toSVG();
@@ -2343,6 +2341,8 @@ public:
           solve();
         }
         printf("Refining...\n");
+        UINT np = (UINT) (4.5f * (float) startPerim);
+        interpolate(np);
         interpolate(400);
         blSettings.margin /= 10;
         setRadii();
