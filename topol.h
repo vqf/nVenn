@@ -687,7 +687,9 @@ class borderLine
     lCounter blCounter;
     lCounter deciderCounter;
     lCounter refreshScreen;
+    vector<float> circRadii;
     vector<float> w;
+    vector<float> origw;
     vector<rgb> colors;
     vector<string> svgcolors;
     vector<point> warn;
@@ -696,6 +698,7 @@ class borderLine
     vector<char*> dataDisplay;
     timeMaster udt;
     blData blSettings;
+    float minRat;
 
     void initBlData(blData* b){
       b->minratio = 0.005f;
@@ -724,6 +727,22 @@ class borderLine
         temp.y = y;
         temp.radius = 1;
         warn.insert(warn.end(), temp);
+    }
+
+    void displayFloat(string label, float d){
+        char* dsp = (char*) calloc(100, sizeof(char));
+        if (dsp){
+          sprintf(dsp, "%s: %g", label.c_str(), d);
+          dataDisplay.insert(dataDisplay.end(), dsp);
+        }
+    }
+
+    void displayUINT(string label, UINT d){
+        char* dsp = (char*) calloc(100, sizeof(char));
+        if (dsp){
+          sprintf(dsp, "%s: %u", label.c_str(), d);
+          dataDisplay.insert(dataDisplay.end(), dsp);
+        }
     }
 
     rgb toRGB(int color, int max)
@@ -803,6 +822,23 @@ class borderLine
         }
         return result;
     }
+    void resetCircleRadius(){
+        int i;
+        float minCoord = internalScale.xSpan();
+        if (internalScale.ySpan() < minCoord) minCoord = internalScale.ySpan();
+        minRat = 0.01 * minCoord;
+        for (i = 0; i < circles.size(); i++){
+            float trad = circles[i].radius;
+            float tr = circRadii[i];
+            //displayFloat("TR", tr);
+            //displayFloat("TRAD", trad);
+            if (tr < minRat){
+                if (trad > minRat) trad = minRat;
+            }
+            circles[i].radius = trad;
+        }
+
+    }
 
     void setCircles(binMap b, vector<float> o)
     {
@@ -829,6 +865,7 @@ class borderLine
                 cpoint.x = 6 * i;
                 cpoint.y = 6 * (j + offset - 1);
                 cpoint.radius = 2 * sqrt(w[n] / maxw);
+                circRadii.insert(circRadii.end(), 2 * sqrt(origw[n] / maxw));
                 cpoint.orig = o[n];
                 circles.insert(circles.end(), cpoint);
             }
@@ -1508,19 +1545,8 @@ class borderLine
         updPos(kb, resetVelocity);
         clearForces();
 //Show dt
-        char* dsp = (char*) calloc(100, sizeof(char));
-        if (dsp){
-          sprintf(dsp, "DT: %.8f", dt);
-          dataDisplay.insert(dataDisplay.end(), dsp);
-        }
-
-        char* dsc = (char*) calloc(100, sizeof(char));
-        if (dsc){
-          sprintf(dsc, "CYCLES: %d", blSettings.ncycles);
-          dataDisplay.insert(dataDisplay.end(), dsc);
-        }
-        blSettings.contacts = 0;
-
+        displayFloat("DT", dt);
+        displayUINT("CYCLES", blSettings.ncycles);
 
         if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio))
         {
@@ -1545,6 +1571,7 @@ class borderLine
                 dt /= blSettings.stepdt;
             }
         }
+        resetCircleRadius();
         blSettings.surfRatio = estSurf();
         if (blSettings.minSurfRatio == 0){
           blSettings.minSurfRatio = blSettings.surfRatio;
@@ -1627,14 +1654,8 @@ class borderLine
                 circles[i].vy = 0;
             }
         }
-        /*char* tcv = (char*) calloc(100, sizeof(char));
-        sprintf(tcv, "CIRCLEV: %g", blSettings.totalCircleV);
-        dataDisplay.insert(dataDisplay.end(), tcv);*/
-        char* df = (char*) calloc(100, sizeof(char));
-        if (df){
-          sprintf(df, "LINEV: %g", blSettings.totalLineV);
-          dataDisplay.insert(dataDisplay.end(), df);
-        }
+        displayFloat("LINEV", blSettings.totalLineV);
+        displayFloat("MINRAT", minRat);
         blSettings.totalCircleV = 0;
         blSettings.totalLineV = 0;
     }
@@ -1750,11 +1771,12 @@ public:
         ngroups = bm->ngroups;
         internalScale.initScale();
         initBlData(&blSettings);
+        minRat = 0;
         blSettings.signalEnd = false;
         blSettings.smoothSVG = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
-        blSettings.minratio = 0.005f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
+        blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
         blSettings.marginScale = 0.02f;
         blSettings.totalCircleV = 0;
         blSettings.totalLineV   = 0;
@@ -1768,6 +1790,9 @@ public:
         blSettings.ncycles = 0;
         srand(time(0));
         w = tw;         //keep a copy of the weights
+        for (i = 0; i < tw.size(); i++){
+          origw.insert(origw.end(), tw[i]);
+        }
         wlimit();
 
 
@@ -1775,7 +1800,7 @@ public:
         height = bm->row[0].size();
 
         //init circles
-        setCircles(*bm, tw);
+        setCircles(*bm, w);
 
         totalExpectedSurface = 0;
         for (i = 0; i < w.size(); i++){
@@ -1783,9 +1808,9 @@ public:
         }
 
         //init counters
-        blCounter.setLimits(0, 1u);
-        deciderCounter.setLimits(0, 1u);
-        refreshScreen.setLimits(1, 1);
+        blCounter.setLimits(0, 5u);
+        deciderCounter.setLimits(0, 5u);
+        refreshScreen.setLimits(1, 5);
 
         //init internal scale
         internalScale.setClear(true);
@@ -2343,8 +2368,7 @@ public:
         printf("Refining...\n");
         UINT np = (UINT) (4.5f * (float) startPerim);
         interpolate(np);
-        interpolate(400);
-        blSettings.margin /= 10;
+        blSettings.margin /= (ngroups + 1);
         setRadii();
         for (i = 0; i < it2; i++){
           setForces2();

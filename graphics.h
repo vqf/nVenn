@@ -119,12 +119,12 @@ class glGraphics{
         printString(mymsg);
         yd -= 0.1;
       }
-      for (i = 0; i < bl.dataDisplay.size(); i++){
+      /*for (i = 0; i < bl.dataDisplay.size(); i++){
         free(bl.dataDisplay[i]);
       }
       bl.dataDisplay.clear();
       //glFlush();
-      /**********/
+      **********/
       SwapBuffers (hDC);
       Sleep(1);
   }
