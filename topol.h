@@ -145,10 +145,12 @@ typedef struct blData{
   float totalLineV;
   int contacts;
   UINT ncycles;
+  UINT maxRunningTime;
   float maxf;
   float maxv;
   int checkFor; // If any of the previous or following 10 point is sticking to
                            // the surface, the current point will also stick
+  string inputFile;
   string fname;
 } blData;
 
@@ -714,7 +716,8 @@ class borderLine
       b->totalCircleV = 0;
       b->totalLineV = 0;
       b->contacts = 0;
-      b->checkFor = 30;
+      b->checkFor = 10;
+      b->maxRunningTime = 300; // 300 seconds to finish the first part
     }
 
 
@@ -727,6 +730,16 @@ class borderLine
         temp.y = y;
         temp.radius = 1;
         warn.insert(warn.end(), temp);
+    }
+
+    string float2string(float f){
+        char* dsp = (char*) calloc(100, sizeof(char));
+        if (dsp){
+          sprintf(dsp, "%g", f);
+          string result(dsp);
+          return result;
+        }
+        return "Error";
     }
 
     void displayFloat(string label, float d){
@@ -895,6 +908,7 @@ class borderLine
                 internalScale.setMaxY(p.y);
         }
     }
+
 
     void setPoints(binMap b, int ngroup)
     {
@@ -1103,6 +1117,15 @@ class borderLine
             return zero;
         }
     }*/
+
+    void writeCoords(){
+        ofstream result;
+        string outputFigData = blSettings.inputFile + ".data";
+        fileText datafile = saveFigure();
+        result.open(outputFigData.c_str());
+        result.write(datafile.getText().c_str(), datafile.getText().size());
+        result.close();
+    }
 
     point contact(point &p0, point &p1, float hardness = 5e1f)
     {
@@ -1354,7 +1377,7 @@ class borderLine
       for (c = 0; c < blSettings.checkFor; c++){
         int l = prevPoint(i, j);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
-        if (prad < (rad + blSettings.marginScale * i)){
+        if (prad < (rad)){
           prev = true;
         }
       }
@@ -1362,7 +1385,7 @@ class borderLine
       for (c = 0; c < blSettings.checkFor; c++){
         int l = nextPoint(i, j);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
-        if (prad < (rad + blSettings.marginScale * i)){
+        if (prad < (rad)){
           next = true;
         }
       }
@@ -1382,7 +1405,7 @@ class borderLine
             {
                 bl[i][j].cancelForce = false;
                 k = closestToSurf(i,j);
-                float rad = bl[i][j].radius + circles[k].radius;
+                float rad = bl[i][j].radius + circles[k].radius + blSettings.marginScale * i;
                 float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
                 bool st = sticking(i, j, k);
                 if (st){
@@ -1763,7 +1786,7 @@ class borderLine
 
 public:
     borderLine(){}
-    borderLine(binMap* b, vector<string> g, vector<float> tw, string outputFile = "result.svg")
+    borderLine(binMap* b, vector<string> g, vector<float> tw, string inputFile = "venn.txt", string outputFile = "result.svg")
     {
         int i;
         bm = b;
@@ -1773,7 +1796,6 @@ public:
         initBlData(&blSettings);
         minRat = 0;
         blSettings.signalEnd = false;
-        blSettings.smoothSVG = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
         blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
@@ -1786,6 +1808,7 @@ public:
         blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         blSettings.startdt = dt;
         blSettings.stepdt = 0.6f;
+        blSettings.inputFile = inputFile;
         blSettings.fname = outputFile;
         blSettings.ncycles = 0;
         srand(time(0));
@@ -1800,7 +1823,7 @@ public:
         height = bm->row[0].size();
 
         //init circles
-        setCircles(*bm, w);
+        setCircles(*bm, origw);
 
         totalExpectedSurface = 0;
         for (i = 0; i < w.size(); i++){
@@ -1878,6 +1901,74 @@ public:
     vector<vector<point> > getPoints(){
       return bl;
     }
+
+    void setCoords(string dataFile){
+        ifstream vFile;
+        vFile.open(dataFile.c_str());
+        if (vFile.good() == true){
+            bl.clear();
+            bl_old5.clear();
+            bl_old10.clear();
+            string line;
+            getline(vFile, line); // _F
+            getline(vFile, line); // _L
+            while (line == "_L" && vFile.eof() == false){
+                vector<point> thisline;
+                getline(vFile, line); // First x coord
+                while (line != "_L" && line != "_C" && vFile.eof() == false){
+                    float x = atof(line.c_str());
+                    getline(vFile, line);
+                    float y = atof(line.c_str());
+                    point p; initPoint(&p);
+                    p.x = x; p.y = y;
+                    setScale(p);
+                    thisline.insert(thisline.end(), p);
+                    getline(vFile, line);
+                }
+                bl.insert(bl.end(), thisline);
+            }
+            if (line == "_C"){
+                getline(vFile, line);
+                int i = 0;
+                while (vFile.eof() == false){
+                    float x = atof(line.c_str());
+                    getline(vFile, line);
+                    float y = atof(line.c_str());
+                    getline(vFile, line);
+                    float r = atof(line.c_str());
+                    getline(vFile, line);
+                    circles[i].x = x; circles[i].y = y; circles[i].radius = r;
+                    i++;
+                }
+            }
+        }
+    }
+
+    fileText saveFigure(){
+        fileText result;
+        result.addLine("_F");
+        int i; int j;
+        for (i = 0; i < bl.size(); i++){
+            result.addLine("_L");
+            for (j = 0; j < bl[i].size(); j++){
+                string x = float2string(bl[i][j].x);
+                string y = float2string(bl[i][j].y);
+                result.addLine(x);
+                result.addLine(y);
+            }
+        }
+        result.addLine("_C");
+        for (i = 0; i < circles.size(); i++){
+            string x = float2string(circles[i].x);
+            string y = float2string(circles[i].y);
+            string r = float2string(circles[i].radius);
+            result.addLine(x);
+            result.addLine(y);
+            result.addLine(r);
+        }
+        return result;
+    }
+
 
     string coord(float c){
       char t[500];
@@ -1989,7 +2080,7 @@ public:
                              coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
                              coord(next.x) + " " + coord(next.y);
           }
-          svg.addLine("<path class=\"p" + num(i) + "\" class=\"borderLine\" d=\"" + cpath + " Z\" />");
+          svg.addLine("<path class=\"p" + num(i) + " borderLine\" d=\"" + cpath + " Z\" />");
         }
       } else{
         /* This does not */
@@ -2334,12 +2425,14 @@ public:
         float mrel = (float) maxRel;
         int size;
         UINT it1 = (UINT) 7e3;
-        UINT it2 = (UINT) 5e2;
+        UINT it2 = (UINT) 2e2;
         point minP;
         initPoint(&minP);
         point maxP;
         initPoint(&maxP);
         printf("Starting...\n");
+        // This loop is limited to maxRunningTime
+        time_t start = time(NULL);
         for (i = 0; i < it1; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
@@ -2348,6 +2441,13 @@ public:
             result.open(blSettings.fname.c_str());
             result.write(tmp.getText().c_str(), tmp.getText().size());
             result.close();
+            time_t now = time(NULL);
+            double elapsed = difftime(now, start);
+            writeCoords();
+            if (((UINT) elapsed) > blSettings.maxRunningTime){
+              exit(0);
+            }
+
           }
           refreshScreen++;
           solve();
@@ -2366,9 +2466,9 @@ public:
           solve();
         }
         printf("Refining...\n");
-        UINT np = (UINT) (4.5f * (float) startPerim);
+        UINT np = (UINT) (1.5f * (float) startPerim);
         interpolate(np);
-        blSettings.margin /= (ngroups + 1);
+        blSettings.margin /= (1.2);
         setRadii();
         for (i = 0; i < it2; i++){
           setForces2();

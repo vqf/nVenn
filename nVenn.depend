@@ -46,8 +46,9 @@
 	<gl/glu.h>
 	"bmpfont.h"
 
-1511176169 source:d:\cpp\venn\1.2\main.cpp
+1512068550 source:d:\cpp\venn\1.2\main.cpp
 	<stdlib.h>
+	<stdio.h>
 	<math.h>
 	<time.h>
 	<iostream>
@@ -60,7 +61,7 @@
 	<Windows.h>
 	"graphics.h"
 
-1511896113 d:\cpp\venn\1.2\topol.h
+1512070007 d:\cpp\venn\1.2\topol.h
 	<vector>
 	<cmath>
 	<time.h>

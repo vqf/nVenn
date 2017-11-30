@@ -4,6 +4,7 @@
  **************************/
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <time.h>
 #include <iostream>
@@ -55,6 +56,46 @@ void printv(vector<int> v)
     cout << " ";
 }
 //--------------------------------------------
+borderLine getFileInfo(string fname, string outputFile){
+    ifstream vFile;
+    string header;
+    vector<string> groupNames;
+    vector<int> temp;
+    vector<float> weights;
+    int i;
+    vFile.open(fname.c_str());
+    getline(vFile, header);
+    cout << header;
+    getline(vFile, header);
+    int number = atoi(header.c_str());
+    cout << endl << number << " groups:" << endl;
+    for (i = 0; i < number; i++){
+        getline(vFile, header);
+        groupNames.insert(groupNames.end(), header);
+        cout << header << endl;
+    }
+    int n = twoPow(number);
+    for (i = 0; i < n; i++){
+        getline(vFile, header);
+        weights.insert (weights.end(), atoi(header.c_str()));
+        temp = toBin(i, number);
+        printv(temp);
+        cout << ".- " << weights[i] << endl;
+    }
+    vFile.close();
+
+    binMap mymap(number);
+    string dataFile = fname + ".data";
+    borderLine lines(&mymap, groupNames, weights, fname, outputFile);
+    vFile.open(dataFile.c_str());
+    if (vFile.good() == true){ // Unfinished
+        vFile.close();
+        lines.setCoords(dataFile);
+    }
+
+
+    return lines;
+}
 
 
 
@@ -62,16 +103,10 @@ void printv(vector<int> v)
 int main(int argc, char** argv)
 {
     int i;
-    int number = 4;
     int n = 0;
     string fname;
-    string header;
     string outputFile;
-    ifstream vFile;
     ofstream result;
-    vector<int> temp;
-    vector<string> groupNames;
-    vector<float> weights;
     fileText psfile;
     fileText svgfile;
     if (argc > 1){
@@ -86,31 +121,10 @@ int main(int argc, char** argv)
     else{
       outputFile = "result.svg";
     }
-    vFile.open(fname.c_str());
-    getline(vFile, header);
-    cout << header;
-    getline(vFile, header);
-    number = atoi(header.c_str());
-    cout << endl << number << " groups:" << endl;
-    for (i = 0; i < number; i++){
-        getline(vFile, header);
-        groupNames.insert(groupNames.end(), header);
-        cout << header << endl;
-    }
-    n = twoPow(number);
-    for (i = 0; i < n; i++){
-        getline(vFile, header);
-        weights.insert (weights.end(), atoi(header.c_str()));
-        temp = toBin(i, number);
-        printv(temp);
-        cout << ".- " << weights[i] << endl;
-    }
-    vFile.close();
-    binMap mymap(number);
-    borderLine lines(&mymap, groupNames, weights, outputFile);
+    borderLine lines = getFileInfo(fname, outputFile);
     lines.interpolate(50);
     lines.simulate(7);
-    mymap.textOut();
+    //mymap.textOut();
     //psfile = lines.toPS();
     //result.open("result.ps");
     //result.write(psfile.getText().c_str(), psfile.getText().size());
@@ -170,39 +184,14 @@ WinMain (HINSTANCE hInstance,
     BOOL bQuit = FALSE;
     float theta = 0.0f;
     int i;
-    int number,n;
+    int n;
     string fname;
-    string header;
-    ifstream vFile;
     ofstream result;
-    vector<int> temp;
-    vector<string> groupNames;
-    vector<float> weights;
     fileText psfile;
     fileText svgfile;
     fname = "venn.txt";
-    vFile.open(fname.c_str());
-    getline(vFile, header);
-    getline(vFile, header);
-    number = atoi(header.c_str());
-    for (i = 0; i < number; i++)
-    {
-        getline(vFile, header);
-        groupNames.insert(groupNames.end(), header);
-        cout << header << endl;
-    }
-    n = twoPow(number);
-    for (i = 0; i < n; i++)
-    {
-        getline(vFile, header);
-        weights.insert (weights.end(), atoi(header.c_str()));
-        temp = toBin(i, number);
-        printv(temp);
-        cout << ".- " << weights[i] << endl;
-    }
-    vFile.close();
-    binMap mymap(number);
-    borderLine lines(&mymap, groupNames, weights);
+    string outputFile = "venn.svg";
+    borderLine lines = getFileInfo(fname, outputFile);
 
     /* register window class */
     wc.style = CS_OWNDC;
