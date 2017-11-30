@@ -83,9 +83,8 @@ borderLine getFileInfo(string fname, string outputFile){
         cout << ".- " << weights[i] << endl;
     }
     vFile.close();
-
     binMap mymap(number);
-    string dataFile = fname + ".data";
+    string dataFile = outputFile + ".data";
     borderLine lines(&mymap, groupNames, weights, fname, outputFile);
     vFile.open(dataFile.c_str());
     if (vFile.good() == true){ // Unfinished
@@ -190,7 +189,7 @@ WinMain (HINSTANCE hInstance,
     fileText psfile;
     fileText svgfile;
     fname = "venn.txt";
-    string outputFile = "venn.svg";
+    string outputFile = "result.svg";
     borderLine lines = getFileInfo(fname, outputFile);
 
     /* register window class */

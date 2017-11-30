@@ -138,6 +138,8 @@ typedef struct blData{
   bool smoothSVG;
   float surfRatio;
   float minSurfRatio;
+  float minDx;
+  float minDy;
   float startdt;
   float marginScale;
   float margin;
@@ -710,6 +712,8 @@ class borderLine
       b->smoothSVG = false;
       b->surfRatio = 0;
       b->minSurfRatio = 0;
+      b->minDx = 0;
+      b->minDy = 0;
       b->startdt = 0;
       b->marginScale = 0.05f;
       b->margin = 0;
@@ -1027,6 +1031,8 @@ class borderLine
           blSettings.signalEnd = true;
         }
         blSettings.minSurfRatio = blSettings.surfRatio;
+        blSettings.minDx = internalScale.xSpan();
+        blSettings.minDy = internalScale.ySpan();
     }
 
 
@@ -1120,7 +1126,7 @@ class borderLine
 
     void writeCoords(){
         ofstream result;
-        string outputFigData = blSettings.inputFile + ".data";
+        string outputFigData = blSettings.fname + ".data";
         fileText datafile = saveFigure();
         result.open(outputFigData.c_str());
         result.write(datafile.getText().c_str(), datafile.getText().size());
@@ -1570,8 +1576,9 @@ class borderLine
 //Show dt
         displayFloat("DT", dt);
         displayUINT("CYCLES", blSettings.ncycles);
-
-        if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio))
+        if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio)
+                         || internalScale.xSpan() > (2 * blSettings.minDx)
+                         || internalScale.ySpan() > (2 * blSettings.minDy))
         {
             bl = bl_old10;
             circles = circles_old10;
@@ -1599,9 +1606,13 @@ class borderLine
         if (blSettings.minSurfRatio == 0){
           blSettings.minSurfRatio = blSettings.surfRatio;
         }
+        if (blSettings.minDx == 0) blSettings.minDx = internalScale.xSpan();
+        if (blSettings.minDy == 0) blSettings.minDy = internalScale.ySpan();
         if(blSettings.minSurfRatio > blSettings.surfRatio){
           blSettings.minSurfRatio = blSettings.surfRatio;
         }
+        if (blSettings.minDx > internalScale.xSpan()) blSettings.minDx = internalScale.xSpan();
+        if (blSettings.minDy > internalScale.ySpan()) blSettings.minDy = internalScale.ySpan();
         blCounter++;
         deciderCounter++;
         blSettings.ncycles++;
@@ -1833,7 +1844,7 @@ public:
         //init counters
         blCounter.setLimits(0, 5u);
         deciderCounter.setLimits(0, 5u);
-        refreshScreen.setLimits(1, 5);
+        refreshScreen.setLimits(1, 100);
 
         //init internal scale
         internalScale.setClear(true);

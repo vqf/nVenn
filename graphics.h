@@ -131,7 +131,7 @@ class glGraphics{
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
       borderLine bl = *blp;
-      bl.refreshScreen.setLimits(1,10);
+      bl.refreshScreen.setLimits(1,1);
       int i, j, k;
       int cycle;
       int size;
