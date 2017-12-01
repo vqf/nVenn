@@ -148,6 +148,7 @@ typedef struct blData{
   int contacts;
   UINT ncycles;
   UINT maxRunningTime;
+  UINT ncyclesInterrupted;
   float maxf;
   float maxv;
   int checkFor; // If any of the previous or following 10 point is sticking to
@@ -721,6 +722,8 @@ class borderLine
       b->totalLineV = 0;
       b->contacts = 0;
       b->checkFor = 10;
+      b->ncycles = 0;
+      b->ncyclesInterrupted = 0;
       b->maxRunningTime = 300; // 300 seconds to finish the first part
     }
 
@@ -741,9 +744,26 @@ class borderLine
         if (dsp){
           sprintf(dsp, "%g", f);
           string result(dsp);
+          free(dsp);
           return result;
         }
         return "Error";
+    }
+
+    string UINT2string(UINT f){
+        char* dsp = (char*) calloc(100, sizeof(char));
+        if (dsp){
+          sprintf(dsp, "%u", f);
+          string result(dsp);
+          free(dsp);
+          return result;
+        }
+        return "Error";
+    }
+
+    string bool2string(bool f){
+        string result = f ? "1" : "0";
+        return result;
     }
 
     void displayFloat(string label, float d){
@@ -1027,9 +1047,6 @@ class borderLine
             }
         }
         blSettings.surfRatio = estSurf();
-        if (blSettings.surfRatio < blSettings.minSurfRatio){
-          blSettings.signalEnd = true;
-        }
         blSettings.minSurfRatio = blSettings.surfRatio;
         blSettings.minDx = internalScale.xSpan();
         blSettings.minDy = internalScale.ySpan();
@@ -1844,7 +1861,7 @@ public:
         //init counters
         blCounter.setLimits(0, 5u);
         deciderCounter.setLimits(0, 5u);
-        refreshScreen.setLimits(1, 100);
+        refreshScreen.setLimits(1, 50);
 
         //init internal scale
         internalScale.setClear(true);
@@ -1898,11 +1915,11 @@ public:
         {
           colors.insert(colors.end(),toRGB(arr[i], 1));
         }
-        fileText tmp = toSVG();
+        /*fileText tmp = toSVG();
         ofstream result;
         result.open(blSettings.fname.c_str());
         result.write(tmp.getText().c_str(), tmp.getText().size());
-        result.close();
+        result.close();*/
     }
 
     bool isThisTheEnd(){
@@ -1916,13 +1933,20 @@ public:
     void setCoords(string dataFile){
         ifstream vFile;
         vFile.open(dataFile.c_str());
+        UINT ncI = 0;
         if (vFile.good() == true){
             bl.clear();
             bl_old5.clear();
             bl_old10.clear();
             string line;
             getline(vFile, line); // _F
-            getline(vFile, line); // _L
+            getline(vFile, line); // ncyclesInterrupted or _L
+            if (line != "_L"){
+                int c = atoi(line.c_str());
+                if (c > 0) ncI = (UINT) c;
+                blSettings.ncyclesInterrupted = ncI;
+                getline(vFile, line); // _L
+            }
             while (line == "_L" && vFile.eof() == false){
                 vector<point> thisline;
                 getline(vFile, line); // First x coord
@@ -1958,6 +1982,8 @@ public:
     fileText saveFigure(){
         fileText result;
         result.addLine("_F");
+        string nc = UINT2string(blSettings.ncyclesInterrupted);
+        result.addLine(nc);
         int i; int j;
         for (i = 0; i < bl.size(); i++){
             result.addLine("_L");
@@ -2073,6 +2099,8 @@ public:
       svg.addLine("]]>");
       svg.addLine("</style>");
       svg.addLine("</defs>");
+      string nc = bool2string(blSettings.signalEnd);
+      svg.addLine("<!-- isDone: " + nc + " -->");
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
       /* This softens the lines*/
       if (blSettings.smoothSVG == true){
@@ -2444,7 +2472,8 @@ public:
         printf("Starting...\n");
         // This loop is limited to maxRunningTime
         time_t start = time(NULL);
-        for (i = 0; i < it1; i++){
+        if (blSettings.ncyclesInterrupted >= it1) blSettings.ncyclesInterrupted = 0;
+        for (i = blSettings.ncyclesInterrupted; i < it1; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
             fileText tmp = toSVG();
@@ -2456,15 +2485,17 @@ public:
             double elapsed = difftime(now, start);
             writeCoords();
             if (((UINT) elapsed) > blSettings.maxRunningTime){
-              exit(0);
+              blSettings.ncyclesInterrupted = i;
+              blSettings.signalEnd = false;
+              i = it1;
             }
-
           }
           refreshScreen++;
+          if (i == (it1 - 1)) blSettings.signalEnd = true;
           solve();
         }
         setAsStable();
-        for (i = 0; i < 500; i++){
+        for (i = 0; i < 100; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
             fileText tmp = toSVG();
