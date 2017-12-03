@@ -15,7 +15,7 @@ typedef unsigned int UINT;
 
 float sk = 1e3f;
 float dt = 1e-1f;
-float baseBV = 0.2f;
+float baseBV = 5.0f;
 
 
 using namespace std;
@@ -724,7 +724,7 @@ class borderLine
       b->checkFor = 10;
       b->ncycles = 0;
       b->ncyclesInterrupted = 0;
-      b->maxRunningTime = 300; // 300 seconds to finish the first part
+      b->maxRunningTime = 200; // 300 seconds to finish the first part
     }
 
 
@@ -1304,7 +1304,7 @@ class borderLine
         initPoint(&f);
         //line points
         /*******/
-        float damp = sk / 50;
+        float damp = sk / 20;
         for (i = 0; i < bl.size(); i++)
         {
             //first point
@@ -1426,7 +1426,7 @@ class borderLine
         {
             for (j = 0; j < bl[i].size(); j++)
             {
-                bl[i][j].cancelForce = false;
+                bl[i][j].cancelForce = false; // Reuse to point those points inside a circle
                 k = closestToSurf(i,j);
                 float rad = bl[i][j].radius + circles[k].radius + blSettings.marginScale * i;
                 float prad = distance(bl[i][j].x, bl[i][j].y, circles[k].x, circles[k].y);
@@ -2483,19 +2483,22 @@ public:
             result.close();
             time_t now = time(NULL);
             double elapsed = difftime(now, start);
-            writeCoords();
             if (((UINT) elapsed) > blSettings.maxRunningTime){
-              blSettings.ncyclesInterrupted = i;
+              blSettings.ncyclesInterrupted = (UINT) i;
               blSettings.signalEnd = false;
               i = it1;
             }
+            writeCoords();
           }
           refreshScreen++;
-          if (i == (it1 - 1)) blSettings.signalEnd = true;
+          if (i == (it1 - 1)){
+            blSettings.signalEnd = true;
+            blSettings.ncyclesInterrupted = it1;
+          }
           solve();
         }
         setAsStable();
-        for (i = 0; i < 100; i++){
+        for (i = 0; i < 50; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
             fileText tmp = toSVG();
@@ -2510,7 +2513,7 @@ public:
         printf("Refining...\n");
         UINT np = (UINT) (1.5f * (float) startPerim);
         interpolate(np);
-        blSettings.margin /= (1.2);
+        blSettings.margin /= 10;
         setRadii();
         for (i = 0; i < it2; i++){
           setForces2();
