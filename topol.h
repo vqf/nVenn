@@ -2077,6 +2077,7 @@ public:
       svg.addLine("  }");
       svg.addLine("  .nLabel {");
       svg.addLine("	   font-family: Arial;");
+      svg.addLine("    pointer-events: none;");
       char t[200];
       sprintf(t, "	   font-size: %dpx;", fsize);
       svg.addLine((string) t);
@@ -2085,6 +2086,7 @@ public:
       svg.addLine("  }");
       svg.addLine("  .belong {");
       svg.addLine("	   font-family: Arial;");
+      svg.addLine("    pointer-events: none;");
       sprintf(t, "	   font-size: %dpx;", fsize / 2);
       svg.addLine((string) t);
       svg.addLine("	   text-anchor: middle;");
