@@ -2,7 +2,7 @@
 This tool creates generalized, proportional Venn and Euler diagrams. The command-line version can be directly compiled in most systems with g++. The graphical version uses OpenGL and at this time is Windows-specific. It can be compiled by adding the -DGRAPHICS option. There is also a web interface [here] (http://degradome.uniovi.es/cgi-bin/nVenn/nvenn.cgi).
 
 Binaries for Windows (command-line and graphical) and Debian Linux (command-line) are located in the binaries folder. Each of them has demo file called venn.txt. This file describes the regions of the Venn diagram:
-`
+```
 nVenn v1.2       | Header
 4                | Number of sets
 8h               | Names of sets
@@ -25,4 +25,4 @@ nVenn v1.2       | Header
 35               | 1101
 65               | 1110
 8                | 1111
-`
+```
