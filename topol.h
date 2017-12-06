@@ -721,7 +721,7 @@ class borderLine
       b->totalCircleV = 0;
       b->totalLineV = 0;
       b->contacts = 0;
-      b->checkFor = 10;
+      b->checkFor = 30;
       b->ncycles = 0;
       b->ncyclesInterrupted = 0;
       b->maxRunningTime = 200; // 300 seconds to finish the first part
@@ -1396,17 +1396,19 @@ class borderLine
     bool sticking(int i, int j, int k){
       int c;
       bool prev = false;
-      float rad = bl[i][j].radius + circles[k].radius;
+      float rad = bl[i][j].radius + circles[k].radius + blSettings.marginScale * i;
+      int l = j;
       for (c = 0; c < blSettings.checkFor; c++){
-        int l = prevPoint(i, j);
+        l = prevPoint(i, l);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
         if (prad < (rad)){
           prev = true;
         }
       }
       bool next = false;
+      l = j;
       for (c = 0; c < blSettings.checkFor; c++){
-        int l = nextPoint(i, j);
+        l = nextPoint(i, l);
         float prad = distance(bl[i][l].x, bl[i][l].y, circles[k].x, circles[k].y);
         if (prad < (rad)){
           next = true;
@@ -1915,11 +1917,7 @@ public:
         {
           colors.insert(colors.end(),toRGB(arr[i], 1));
         }
-        /*fileText tmp = toSVG();
-        ofstream result;
-        result.open(blSettings.fname.c_str());
-        result.write(tmp.getText().c_str(), tmp.getText().size());
-        result.close();*/
+        /*writeSVG()*/
     }
 
     bool isThisTheEnd(){
@@ -2460,6 +2458,15 @@ public:
         initOlds();
     }
 
+    void writeSVG(){
+        fileText tmp = toSVG();
+        ofstream result;
+        result.open(blSettings.fname.c_str());
+        result.write(tmp.getText().c_str(), tmp.getText().size());
+        result.close();
+
+    }
+
     void simulate(int maxRel = 0)
     {
         int i, j, k;
@@ -2472,17 +2479,14 @@ public:
         point maxP;
         initPoint(&maxP);
         printf("Starting...\n");
+
         // This loop is limited to maxRunningTime
         time_t start = time(NULL);
         if (blSettings.ncyclesInterrupted >= it1) blSettings.ncyclesInterrupted = 0;
         for (i = blSettings.ncyclesInterrupted; i < it1; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
-            fileText tmp = toSVG();
-            ofstream result;
-            result.open(blSettings.fname.c_str());
-            result.write(tmp.getText().c_str(), tmp.getText().size());
-            result.close();
+            writeSVG();
             time_t now = time(NULL);
             double elapsed = difftime(now, start);
             if (((UINT) elapsed) > blSettings.maxRunningTime){
@@ -2499,15 +2503,12 @@ public:
           }
           solve();
         }
+
         setAsStable();
         for (i = 0; i < 50; i++){
           setForces1();
           if (refreshScreen.isMax() == true){
-            fileText tmp = toSVG();
-            ofstream result;
-            result.open(blSettings.fname.c_str());
-            result.write(tmp.getText().c_str(), tmp.getText().size());
-            result.close();
+            writeSVG();
           }
           refreshScreen++;
           solve();
@@ -2520,15 +2521,11 @@ public:
         for (i = 0; i < it2; i++){
           setForces2();
           if (refreshScreen.isMax() == true){
-            fileText tmp = toSVG();
-            ofstream result;
-            result.open(blSettings.fname.c_str());
-            result.write(tmp.getText().c_str(), tmp.getText().size());
-            result.close();
+            writeSVG();
           }
           solve(true);
         }
-        setForces3();
+        //setForces3();
         int counter;
         for (counter = 0; counter < dataDisplay.size(); counter++){
           free(dataDisplay[counter]);

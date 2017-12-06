@@ -86,6 +86,7 @@ borderLine getFileInfo(string fname, string outputFile){
     binMap mymap(number);
     string dataFile = outputFile + ".data";
     borderLine lines(&mymap, groupNames, weights, fname, outputFile);
+
     vFile.open(dataFile.c_str());
     if (vFile.good() == true){ // Unfinished
         vFile.close();
@@ -207,7 +208,7 @@ WinMain (HINSTANCE hInstance,
 
     /* create main window */
     hWnd = CreateWindow (
-               "GLSample", "OpenGL Sample",
+               "GLSample", "nVenn",
                WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
                0, 0, 800, 600,
                NULL, NULL, hInstance, NULL);
@@ -219,6 +220,7 @@ WinMain (HINSTANCE hInstance,
     init(); // Init bitmap font
 
     lines.interpolate(50);
+
     glGraphics mygl;
     borderLine lres = mygl.gsimulate(&lines, 1000, hDC);
 

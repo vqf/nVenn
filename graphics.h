@@ -194,6 +194,7 @@ class glGraphics{
       bl.interpolate(700);
       bl.blSettings.margin /= 10;
       bl.setRadii();
+      bl.setAsStable();
       while (!bQuit)
       {
           /* check for messages */
@@ -220,6 +221,7 @@ class glGraphics{
 
           }
       }
+
       bl.udt.clear();
       bQuit = false;
       while (!bQuit)
@@ -240,7 +242,7 @@ class glGraphics{
           }
           else
           {
-              bl.setForces3();
+        //      bl.setForces3();
               toOGL(bl, hDC);
               bQuit = true;
 
