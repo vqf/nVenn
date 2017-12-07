@@ -45,7 +45,7 @@ class glGraphics{
   void toOGL(borderLine bl, HDC hDC)
   {
     borderLine dummy;
-      int i, j;
+      UINT i, j;
       point P;     //coordinates
       dummy.initPoint(&P);
       vector<point> temp; //stores perimeters
@@ -132,9 +132,6 @@ class glGraphics{
   {
       borderLine bl = *blp;
       bl.refreshScreen.setLimits(1,1);
-      int i, j, k;
-      int cycle;
-      int size;
       MSG msg;
       point minP;
       bl.initPoint(&minP);
@@ -184,7 +181,6 @@ class glGraphics{
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve();
               bl.refreshScreen++;
-              // TODO (vic#1#): Attention here\
 
               //Sleep(200);
           }

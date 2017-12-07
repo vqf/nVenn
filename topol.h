@@ -35,7 +35,7 @@ UINT twoPow(UINT n)
 float sprod(vector<float> a, vector<float> b)
 {
     float result;
-    int i;
+    UINT i;
     result = 0;
     for (i = 0; i < a.size(); i++)
     {
@@ -56,12 +56,12 @@ vector<float> arr2vec(float arr[], int n)
 }
 
 
-vector<int> toBin(int number, int nBits = 0)
+vector<int> toBin(int number, UINT nBits = 0)
 {
     //  Takes an integer and returns a vector containing
     //  its binary representation
 
-    int i;                          // iterate over each bit
+    UINT i;                          // iterate over each bit
     int bit;                        // temp storage of each bit
     vector<int> bits;               // return vector
     while (number > 1)
@@ -478,7 +478,7 @@ string toString(T input)
 
 float perimeter(vector<point> v, bool close = false)
 {
-    int i;
+    UINT i;
     float result = 0;
     float rx, ry;
     for (i = 0; i < v.size() - 1; i++)
@@ -518,7 +518,7 @@ class binMap
         ***********************************************************/
 
         signed int counter = 0;
-        int i;
+        UINT i;
         for (i = 0; i < v.size(); i++)
         {
 
@@ -549,7 +549,7 @@ class binMap
         ***********************************************************/
 
         signed int counter = 0;
-        int i, j;
+        UINT i, j;
         bool ismatched = false;
         for (i = 0; i < v.size() - 1; i++)
         {
@@ -592,7 +592,7 @@ class binMap
 
         ***********************************************************/
 
-        int i;
+        UINT i;
         int last1=0;
         vector<int> tempV;
         vector<vector<int> > result;
@@ -632,7 +632,7 @@ class binMap
 
     void fillRow(vector<vector<int> > c)
     {
-        int i;
+        UINT i;
         vector<vector<int> > tempc;
         for (i = 0; i < c.size(); i++)
         {
@@ -658,7 +658,7 @@ public:
     }
     void textOut()
     {
-        int i, j, k;
+        UINT i, j, k;
         for (i = 0; i < row.size(); i++)
         {
             for (j = 0; j < row[i].size(); j++)
@@ -860,7 +860,7 @@ class borderLine
         return result;
     }
     void resetCircleRadius(){
-        int i;
+        UINT i;
         float minCoord = internalScale.xSpan();
         if (internalScale.ySpan() < minCoord) minCoord = internalScale.ySpan();
         minRat = 0.01 * minCoord;
@@ -879,7 +879,7 @@ class borderLine
 
     void setCircles(binMap b, vector<float> o)
     {
-        int i, j;
+        UINT i, j;
         int n;
         int height;
         int offset;
@@ -934,9 +934,9 @@ class borderLine
     }
 
 
-    void setPoints(binMap b, int ngroup)
+    void setPoints(binMap b, UINT ngroup)
     {
-        int i, j, counter;
+        int i, counter;
         int cstart;         //placement of first and last point
         //depending on ngroup
         point cpoint;       //point storage
@@ -948,10 +948,9 @@ class borderLine
         int omyheight;      //offset
         int myheight;
         int isOne;
-        int groupNumber;
         height = b.row[0].size();
         // First point
-        if (ngroup < ngroups - 1)
+        if (ngroup < (ngroups - 1))
         {
             cstart = b.ngroups - ngroup - 2;
         }
@@ -1011,7 +1010,7 @@ class borderLine
 
     void clearForces()
     {
-        int i, j;
+        UINT i, j;
         //clear line point forces
         for (i = 0; i < bl.size(); i++)
         {
@@ -1031,7 +1030,7 @@ class borderLine
 
     void resetOld()
     {
-        int i, j;
+        UINT i, j;
         for (i = 0; i < bl_old5.size(); i++)
         {
             for(j = 0; j < bl_old5[i].size(); j++)
@@ -1059,9 +1058,8 @@ class borderLine
         point result;
         initPoint(&result);
         float radius;
-        float rdiff;
         float dx, dy;
-        float fatt, frep;
+        float fatt;
         float d;
         radius = 1.0 * (p0.radius + p1.radius);
         float maxrad = p0.radius;
@@ -1088,9 +1086,7 @@ class borderLine
         point result;
         initPoint(&result);
         float dx = p1.x - p0.x;
-        int sx = (int) (dx / abs(dx));
         float dy = p1.y - p0.y;
-        int sy = (int) (dy / abs(dy));
         result.fx = springK * dx;
         result.fy = springK * dy;
         p0.fx += result.fx - dampen * p0.vx * p0.vx * p0.vx;
@@ -1159,42 +1155,21 @@ class borderLine
         float d;
         float dx;
         float dy;
-        float dsq;
         float radius;
-        float sc;
-        float fc, fc1, fc0;
-        float vc, vc1, vc0;
-        float vx, fx;
-        float vy, fy;
-        float v0, f0;
-        float v1, f1;
-        float m0, m1;
         float kx, ky;
-        float dr;
         float crat;
         zero.fx = 0;
         zero.fy = 0;
         dx = p1.x - p0.x;
         dy = p1.y - p0.y;
-        m0 = p0.mass;
-        m1 = p1.mass;
         radius = p0.radius + p1.radius;
         radius += blSettings.margin;
         //check contact
         d = distance(p0.x, p0.y, p1.x, p1.y);
 
-        vx = p1.vx - p0.vx;
-        vy = p1.vy - p0.vy;
-        vc = dx*vx + dy*vy;
-
-
-        fx = p1.fx - p0.fx;
-        fy = p1.fy - p0.fy;
-        fc = dx*fx + dy*fy;
 
         if (d <= (radius))
         {
-            dr = radius / d;
             if (d <= radius){
                 blSettings.contacts++;
                 crat = (d - radius)/(radius);
@@ -1238,7 +1213,6 @@ class borderLine
 
     point rope(point &circ, point &p0, point &p1)
     {
-        float dist;
         float a, b;
         float d;
         point result;
@@ -1248,7 +1222,6 @@ class borderLine
         point virt;
         initPoint(&virt);
         float d0, d1;
-        bool isContact;
         a = (p1.y - p0.y)/(p1.x - p0.x);
         b = p0.y - a * p0.x;
         virt.x = ((circ.x + a*circ.y - a * b)/(a*a + 1));
@@ -1282,7 +1255,7 @@ class borderLine
     }
 
     void setRadii(){
-      int i, j;
+      UINT i, j;
       for (i = 0; i < bl.size(); i++){
         for (j = 0; j < bl[i].size(); j++){
           bl[i][j].radius = blSettings.marginScale * i;
@@ -1297,9 +1270,8 @@ class borderLine
 
     void setForces1()
     {
-        int i, j, k;
-        int cycle;
-        int size;
+        UINT i, j;
+        UINT size;
         point f;
         initPoint(&f);
         //line points
@@ -1321,8 +1293,7 @@ class borderLine
 
     void setContacts()
     {
-        int i, j, k;
-        int cycle;
+        UINT i, j, k;
         int size;
         point f;
         initPoint(&f);
@@ -1376,8 +1347,8 @@ class borderLine
           }
         }
     }
-    int nextPoint(int i, int j){
-      int result = j + 1;
+    int nextPoint(UINT i, UINT j){
+      UINT result = j + 1;
       if (result >= bl[i].size()){
         result = 0;
       }
@@ -1420,7 +1391,7 @@ class borderLine
 
     void setForces3()
     {
-        int i, j, k;
+        UINT i, j, k;
         point p1, p2;
         initPoint(&p1); initPoint(&p2);
         /*******/
@@ -1466,15 +1437,15 @@ class borderLine
         }
     }
 
-    int closestToSurf(int i, int j){
+    int closestToSurf(UINT i, UINT j){
       // Get the closest circle to a line point
-      int result = 0;
+      UINT result = 0;
       point P = bl[i][j];
       while (circles[result].radius == 0 && result < circles.size()){
         result++;
       }
       float mindist = distance(P.x, P.y, circles[result].x, circles[result].y) - circles[result].radius;
-      int k = result;
+      UINT k = result;
       while (k < circles.size()){
         float dst = distance(P.x, P.y, circles[k].x, circles[k].y) - circles[k].radius;
         if (dst < mindist){
@@ -1488,16 +1459,14 @@ class borderLine
 
     void setForces2()
     {
-        int i, j, k;
-        int i1, i2;
+        UINT i, j, k;
+        UINT i1, i2;
         point f;
         initPoint(&f);
-        int size;
         point previous;
         initPoint(&previous);
         point next;
         initPoint(&next);
-        float storeR = 0;
         string temp;
         blSettings.fixCircles = true;
         float dampen = sk / 5;
@@ -1505,7 +1474,6 @@ class borderLine
         //line-circle
         for (k = 0; k < bl.size(); k++)
         {
-            size = bl[k].size();
             for (i = 0; i < bl[k].size(); i++)
             {
                 //j = closestToSurf(k, i);
@@ -1580,7 +1548,7 @@ class borderLine
 
     void solve(bool resetVelocity = false)
     {
-        int i, j;
+        UINT i;
         float kb = baseBV;
         for (i = 0; i < dataDisplay.size(); i++){
           free(dataDisplay[i]);
@@ -1639,7 +1607,7 @@ class borderLine
 
     void updPos(float kb, bool resetVelocity)
     {
-        int i, j;
+        UINT i, j;
         //Apply each force to each point
         for (i = 0; i < bl.size(); i++)
         {
@@ -1685,7 +1653,7 @@ class borderLine
 
             /*******
             limitForce(circles[i], maxf);
-            /*******/
+            *******/
             circles[i].fx -= kb * circles[i].vx;
             circles[i].fy -= kb * circles[i].vy;
             //Limit force to avoid artifacts
@@ -1714,15 +1682,13 @@ class borderLine
     }
 
     float estSurf(int nPoints = 100){
-      int i;
-      float perc;
       float tsurf = (float) (internalScale.xSpan() * internalScale.ySpan());
       tsurf /= (float) totalExpectedSurface;
       return tsurf;
     }
 
     bool isTopolCorrect(point P, vector<int> belong){
-      int j, k;
+      UINT j, k;
       int lastPoint;
       bool mustBeIn;  //Must the circle be inside the curve?
       bool isIn;      //Is the circle inside the curve?
@@ -1748,11 +1714,11 @@ class borderLine
               if (ch == true)
               {    /* Lines cross */
                   isAbove = !isAbove;
-                  if (bl[j][k].x > P.x && isRight)
+                  if ((bl[j][k].x > P.x) && isRight)
                   { /* Not an extreme point */
                       isIn = !isIn;
                   }
-                  else if (bl[j][k].x > P.x ^ isRight)
+                  else if ((bl[j][k].x > P.x) ^ isRight)
                   { /*Extreme point */
                       if (k > 0)
                       {
@@ -1788,7 +1754,7 @@ class borderLine
 
     bool checkTopol()
     {
-      int i;
+      UINT i;
       for (i = 0; i < circles.size(); i++)
       {
           if (circles[i].radius > 0)
@@ -1804,7 +1770,7 @@ class borderLine
     }
 
     void wlimit(){
-      int i;
+      UINT i;
       float wmax = 0;
       for (i = 0; i < w.size(); i++){
         if (w[i] > 0 && w[i] > wmax) wmax = w[i];
@@ -1818,7 +1784,7 @@ public:
     borderLine(){}
     borderLine(binMap* b, vector<string> g, vector<float> tw, string inputFile = "venn.txt", string outputFile = "result.svg")
     {
-        int i;
+        UINT i;
         bm = b;
         groups = g;
         ngroups = bm->ngroups;
@@ -1849,8 +1815,6 @@ public:
         wlimit();
 
 
-        int height;     //number of rows in the first column
-        height = bm->row[0].size();
 
         //init circles
         setCircles(*bm, origw);
@@ -1982,7 +1946,7 @@ public:
         result.addLine("_F");
         string nc = UINT2string(blSettings.ncyclesInterrupted);
         result.addLine(nc);
-        int i; int j;
+        UINT i; UINT j;
         for (i = 0; i < bl.size(); i++){
             result.addLine("_L");
             for (j = 0; j < bl[i].size(); j++){
@@ -2056,7 +2020,7 @@ public:
       sc.setMaxX(490.0f);
       sc.setMaxY(490.0f);
       int fsize = 10;
-      int i, j;
+      UINT i, j;
       string tst;
       point svgtemp;
       initPoint(&svgtemp);
@@ -2150,7 +2114,7 @@ public:
             // Belongs to
             vector<int> tb = toBin(circles[i].n, bl.size());
             vector<string> belongs;
-            int m;
+            UINT m;
             for (m = 0; m < tb.size(); m++){
               if (tb[m] > 0){
                 char t[100];
@@ -2166,7 +2130,7 @@ public:
         }
       }
       // Legend
-      int l;
+      UINT l;
       float cx = 500.0f;
       float cy = 50.0f;
       float rw = 30.0f;
@@ -2194,8 +2158,7 @@ public:
         fileText pstext;
         char temp[512];
         string tst;
-        int tsize;
-        int i, j;
+        UINT i, j;
         point pstemp;
         initPoint(&pstemp);
         scale ps;
@@ -2326,17 +2289,17 @@ public:
             for (j = 0; j < bl[i].size(); j++)
             {
                 pstemp = place(ps, bl[i][j]);
-                tsize = sprintf(temp, "%f %f", pstemp.x, pstemp.y);
+                sprintf(temp, "%f %f", pstemp.x, pstemp.y);
                 tst = temp;
                 pstext.addLine(tst);
             }
-            tsize = sprintf(temp, "]");
+            sprintf(temp, "]");
             tst = temp;
             pstext.addLine(tst);
-            tsize = sprintf(temp, "/set%d exch def", i + 1);
+            sprintf(temp, "/set%d exch def", i + 1);
             tst = temp;
             pstext.addLine(tst);
-            tsize = sprintf(temp, "set%d minmax", i + 1);
+            sprintf(temp, "set%d minmax", i + 1);
             tst = temp;
             pstext.addLine(tst);
             pstext.addLine(" ");
@@ -2351,11 +2314,11 @@ public:
         for (i = 0; i < ngroups; i++)
         {
             pstext.addLine("gsave");
-            tsize = sprintf(temp, "set%d topath", i+1);
+            sprintf(temp, "set%d topath", i+1);
             tst = temp;
             pstext.addLine(tst);
             pstext.addLine("clip");
-            tsize = sprintf(temp, "%f %f %f %u %u colorpattern", colors[i].red,
+            sprintf(temp, "%f %f %f %u %u colorpattern", colors[i].red,
                             colors[i].green, colors[i].blue, offset, offset);
             tst = temp;
             pstext.addLine(tst);
@@ -2366,7 +2329,7 @@ public:
 
         for (i = 0; i < ngroups; i++)
         {
-            tsize = sprintf(temp, "%f %f %f set%d showline", colors[i].red,
+            sprintf(temp, "%f %f %f set%d showline", colors[i].red,
                             colors[i].green, colors[i].blue, i+1);
             tst = temp;
             pstext.addLine(tst);
@@ -2379,7 +2342,7 @@ public:
               pstemp = place(ps, circles[i]);
               pstext.addLine("newpath");
               if (pstemp.x > ps.minX() && pstemp.x < ps.maxX()){
-                tsize = sprintf(temp, "%f %f %f 0 360 arc", pstemp.x,
+                sprintf(temp, "%f %f %f 0 360 arc", pstemp.x,
                                 pstemp.y, pstemp.radius);
                 tst = temp;
                 pstext.addLine(tst);
@@ -2410,13 +2373,13 @@ public:
       p->softenVel = false;
     }
 
-    void interpolate(int npoints)
+    void interpolate(UINT npoints)
     {
-        int i, j, k;
+        UINT i, j, k;
         float dx, dy;
         float perim;
         float segment;
-        int interpoints;
+        UINT interpoints;
         point startPoint;
         initPoint(&startPoint);
         point endPoint;
@@ -2469,9 +2432,7 @@ public:
 
     void simulate(int maxRel = 0)
     {
-        int i, j, k;
-        float mrel = (float) maxRel;
-        int size;
+        UINT i;
         UINT it1 = (UINT) 7e3;
         UINT it2 = (UINT) 2e2;
         point minP;
@@ -2526,7 +2487,7 @@ public:
           solve(true);
         }
         //setForces3();
-        int counter;
+        UINT counter;
         for (counter = 0; counter < dataDisplay.size(); counter++){
           free(dataDisplay[counter]);
         }

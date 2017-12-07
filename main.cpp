@@ -48,7 +48,7 @@ string getFile(string prompt, string errorPrompt)
 //--------------------------------------------
 void printv(vector<int> v)
 {
-    int i;
+    UINT i;
     for (i = 0; i < v.size(); i++)
     {
         cout << v[i];
@@ -102,8 +102,6 @@ borderLine getFileInfo(string fname, string outputFile){
 #ifndef GRAPHICS
 int main(int argc, char** argv)
 {
-    int i;
-    int n = 0;
     string fname;
     string outputFile;
     ofstream result;
@@ -140,10 +138,9 @@ HWND publich;
 
 void temp(int n, string a="")
 {
-    int i, j;
     char t[200];
     string temp;
-    j = sprintf(t, "%d", n);
+    sprintf(t, "%d", n);
     temp = t;
     MessageBox(publich, temp.c_str(), a.c_str(), MB_ICONINFORMATION | MB_OK);
 }
@@ -182,9 +179,6 @@ WinMain (HINSTANCE hInstance,
     HGLRC hRC;
     MSG msg;
     BOOL bQuit = FALSE;
-    float theta = 0.0f;
-    int i;
-    int n;
     string fname;
     ofstream result;
     fileText psfile;
