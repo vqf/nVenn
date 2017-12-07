@@ -24,5 +24,16 @@ nVenn v1.2       | Header
 65               | 1100
 35               | 1101
 65               | 1110
-8                | 1111
+8                | 1111 <- Present in all sets
+```
+The program has been coded with Code:Blocks. Windows binaries were directly compiled with MinGW:
+
+```
+g++.exe -Wall -c -g  main.cpp -o .\.objs\main.o
+g++.exe -static -static-libgcc -static-libstdc++ -o .\binaries\Win\nVenn.exe .\.objs\main.o
+
+mingw32-c++.exe -lopengl32 -lglu32 -static-libgcc -static-libstdc++ -DGRAPHICS  -c D:\cpp\venn\1.2\m
+ain.cpp -o .\.globjs\main.o
+mingw32-c++.exe -o .\binaries\Win\nVennOGL.exe .globjs\main.o  -static -static-libgcc  -lopengl32 -l
+glu32 -lgdi32 -luser32 -lkernel32 -mwindows
 ```
