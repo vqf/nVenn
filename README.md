@@ -37,4 +37,4 @@ ain.cpp -o .\.globjs\main.o
 mingw32-c++.exe -o .\binaries\Win\nVennOGL.exe .globjs\main.o  -static -static-libgcc  -lopengl32 -l
 glu32 -lgdi32 -luser32 -lkernel32 -mwindows
 ```
-At this time, the OpenGL version only reads a "venn.txt" file in the same folder and outputs a "result.svg" and a "result.ps" in the same folder. We believe that this tool is great for tweaking the algorithm. Press ESC to start each step of the algorithm and to finish.
+At this time, the OpenGL version only reads a "venn.txt" file in the same folder and outputs a "result.svg" and a "result.ps" in the same folder. We believe that this tool is mainly useful to visualize and tweak the algorithm. Press ESC to start each step of the algorithm and to finish.
