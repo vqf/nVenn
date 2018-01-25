@@ -29,8 +29,11 @@ nVenn v1.2       | Header
 8                | 1111 <- Present in all sets
 ```
 Each region can be represented with a binary chain, where each position represents a set, from left to right. For each set, a 1 means that the region belongs to the set, and a 0 means that the region does not belong to the set. For instance, region 0101 belongs to sets 2 and 4.
+
 As shown in the right column, each number represents the number of elements in a region (80 elements belong only to set 4, 60 
-elements belong only to set 3, 5 elements belong only to sets 3 and 4, ...). The order of the regions is given by the chain interpreted as a number (0, 0000; 1, 0001; 2, 0010; 3, 0011;...). There is also a Perl script (feed_venn.pl) which reads text files with set elements and outputs the corresponding venn input text. The text files contain a first line with the name of the group and the elements of the group, one per line. You can see examples in the files ex1.txt, ex2.txt and ex3.txt. Run the example with 
+elements belong only to set 3, 5 elements belong only to sets 3 and 4, ...). The order of the regions is given by the chain interpreted as a number (0, 0000; 1, 0001; 2, 0010; 3, 0011;...). 
+
+There is also a Perl script (feed_venn.pl) which reads text files with set elements and outputs the corresponding venn input text. The text files contain a first line with the name of the group and the elements of the group, one per line. You can see examples in the files ex1.txt, ex2.txt and ex3.txt. Run the example with 
 
 ```
 perl feed_venn.txt ex1 ex2 ex3
