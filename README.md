@@ -1,5 +1,5 @@
 # nVenn
-This tool creates generalized, proportional Venn and Euler diagrams. The command-line version can be directly compiled in most systems with g++. The graphical version uses OpenGL and at this time is Windows-specific. It can be compiled by adding the -DGRAPHICS option. There is also a web interface [here](http://degradome.uniovi.es/cgi-bin/nVenn/nvenn.cgi).
+This tool creates generalized, proportional Venn and Euler diagrams. The command-line version can be directly compiled in most systems with g++. The graphical version uses OpenGL and at this time is Windows-specific. It can be compiled by adding the -DGRAPHICS option. There is also a web interface and further information [here](http://degradome.uniovi.es/cgi-bin/nVenn/nvenn.cgi).
 
 Binaries for Windows (command-line and graphical) and Debian Linux (command-line) are located in the binaries folder. Each of them has demo file called venn.txt. This file describes the regions of the Venn diagram:
 ```
