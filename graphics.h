@@ -126,7 +126,7 @@ class glGraphics{
       //glFlush();
       **********/
       SwapBuffers (hDC);
-      Sleep(1);
+      //Sleep(1);
   }
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {

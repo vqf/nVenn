@@ -867,10 +867,17 @@ class borderLine
         for (i = 0; i < circles.size(); i++){
             float trad = circles[i].radius;
             float tr = circRadii[i];
-            //displayFloat("TR", tr);
-            //displayFloat("TRAD", trad);
-            if (tr < minRat){
-                if (trad > minRat) trad = minRat;
+            //if (tr > 0){
+            //  displayFloat("TR", tr);
+            //  displayFloat("TRAD", trad);
+            //}
+            if (tr > 0 && tr < minRat){
+                //if (tr < minRat){
+                  trad = minRat;
+                //}
+            }
+            else if (trad != tr){
+              trad = tr;
             }
             circles[i].radius = trad;
         }
