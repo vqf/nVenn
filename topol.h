@@ -2035,8 +2035,12 @@ public:
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
       svg.addLine("  .borderLine {");
-      svg.addLine("	   stroke-width: 1;");
+      svg.addLine("	   stroke: none;");
       svg.addLine("	   fill-opacity: 0.4;");
+      svg.addLine("  }");
+      svg.addLine("  .outLine {");
+      svg.addLine("	   stroke-width: 1;");
+      svg.addLine("	   fill: none;");
       svg.addLine("  }");
       svg.addLine("  .circle {");
       svg.addLine("	   stroke: #888888;");
@@ -2063,13 +2067,16 @@ public:
       svg.addLine("  }");
       for (i = 0; i < ngroups; i++){
         svg.addLine("  .p" + num(i) + "{");
-        svg.addLine("    stroke: " + svgcolors[i] + ";");
+        svg.addLine("    stroke: none;");
         svg.addLine("    fill: " + svgcolors[i] + ";");
+        svg.addLine("  }");
+        svg.addLine("  .q" + num(i) + "{");
+        svg.addLine("    fill: none;");
+        svg.addLine("    stroke: " + svgcolors[i] + ";");
         svg.addLine("  }");
       }
       svg.addLine("]]>");
       svg.addLine("</style>");
-      svg.addLine("</defs>");
       string nc = bool2string(blSettings.signalEnd);
       svg.addLine("<!-- isDone: " + nc + " -->");
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
@@ -2090,7 +2097,9 @@ public:
                              coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
                              coord(next.x) + " " + coord(next.y);
           }
+          svg.addLine("<symbol id=\"bl" + num(i) + "\">");
           svg.addLine("<path class=\"p" + num(i) + " borderLine\" d=\"" + cpath + " Z\" />");
+          svg.addLine("</symbol>");
         }
       } else{
         /* This does not */
@@ -2101,8 +2110,19 @@ public:
             nxt = place(sc, bl[i][j]);
             cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
           }
-          svg.addLine("<path class=\"p" + num(i) + " borderLine\" d=\"" + cpath + " Z\" />");
+          svg.addLine("<symbol id=\"bl" + num(i) + "\">");
+          svg.addLine("<path d=\"" + cpath + " Z\" />");
+          svg.addLine("</symbol>");
         }
+      }
+      svg.addLine("</defs>");
+      // Add fills
+      for (i = 0; i < ngroups; i++){
+        svg.addLine("<use class=\"p" + num(i) + " borderLine\" xlink:href=\"#bl" + num(i) + "\"/>");
+      }
+      // Add strokes
+      for (i = 0; i < ngroups; i++){
+        svg.addLine("<use class=\"q" + num(i) + "\" xlink:href=\"#bl" + num(i) + "\"/>");
       }
       for (i = 0; i < circles.size(); i++){
         //printf("%d\n", i);
