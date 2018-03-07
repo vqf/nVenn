@@ -2078,8 +2078,6 @@ public:
       svg.addLine("]]>");
       svg.addLine("</style>");
       string nc = bool2string(blSettings.signalEnd);
-      svg.addLine("<!-- isDone: " + nc + " -->");
-      svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
       /* This softens the lines*/
       if (blSettings.smoothSVG == true){
         for (i = 0; i < ngroups; i++){
@@ -2116,6 +2114,9 @@ public:
         }
       }
       svg.addLine("</defs>");
+      svg.addLine("<!-- isDone: " + nc + " -->");
+      svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
+
       // Add fills
       for (i = 0; i < ngroups; i++){
         svg.addLine("<use class=\"p" + num(i) + " borderLine\" xlink:href=\"#bl" + num(i) + "\"/>");
