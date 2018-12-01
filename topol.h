@@ -1476,7 +1476,7 @@ class borderLine
         initPoint(&next);
         string temp;
         blSettings.fixCircles = true;
-        float dampen = sk / 5;
+        float dampen = sk / 2;
         /*******/
         //line-circle
         for (k = 0; k < bl.size(); k++)
@@ -2123,9 +2123,9 @@ public:
       }
       // Add strokes
       for (i = 0; i < ngroups; i++){
-        svg.addLine("<use class=\"q" + num(i) + "\" xlink:href=\"#bl" + num(i) + "\"/>");
+        svg.addLine("<use class=\"q" + num(i) + " outLine\" xlink:href=\"#bl" + num(i) + "\"/>");
       }
-      for (i = 0; i < circles.size(); i++){
+      for (i = 1; i < circles.size(); i++){
         //printf("%d\n", i);
         if (circles[i].radius > 0){
           svgtemp = place(sc, circles[i]);
@@ -2168,12 +2168,17 @@ public:
       for (l = 0; l < ngroups; l++){
         string g = groups[l];
         char myg[50]; sprintf(myg, "p%d", l);
+        char myq[50]; sprintf(myq, "q%d", l);
         char addRect[500];
+        char addOut[500];
         sprintf(addRect, "<rect class=\"%s borderLine\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
                 myg, cx, cy, rw, rh);
+        sprintf(addOut, "<rect class=\"%s\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
+                myq, cx, cy, rw, rh);
         char addLegend[500];
         sprintf(addLegend, "<text class=\"legend\" x=\"%.2f\" y=\"%.2f\">%s</text>", cx + dx, cy + rh, g.c_str());
         svg.addLine(addRect);
+        svg.addLine(addOut);
         svg.addLine(addLegend);
         cy += dy;
       }
