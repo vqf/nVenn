@@ -3,6 +3,7 @@
 #include <gl/gl.h>
 #include <gl/glu.h>
 #include "bmpfont.h"
+//#include <windows.h>
 
 
 
@@ -60,7 +61,7 @@ class glGraphics{
       //define vectors
       for (i = 0; i < blp.size(); i++)
       {
-          //attention(bl[i][0].x, bl[i][0].y, 0.1);
+          //attention(blp[i][0].x, blp[i][0].y);
           //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
           glBegin (GL_LINE_LOOP);
           glColor3f (bl.colors[i].red, bl.colors[i].green, bl.colors[i].blue);

@@ -213,7 +213,7 @@ WinMain (HINSTANCE hInstance,
     EnableOpenGL (hWnd, &hDC, &hRC);
     init(); // Init bitmap font
 
-    lines.interpolate(50);
+    lines.interpolate(8);
 
     glGraphics mygl;
     borderLine lres = mygl.gsimulate(&lines, 1000, hDC);

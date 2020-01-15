@@ -6,7 +6,6 @@
 #include <time.h>
 #include <fstream>
 
-
 #define CIRCLE_MASS 200.0f
 #define POINT_MASS 20
 
@@ -14,7 +13,8 @@ typedef unsigned int UINT;
 
 
 float sk = 1e3f;
-float dt = 1e-1f;
+float dt = 4e-2f;
+float mindt = dt / 100;
 float baseBV = 5.0f;
 
 
@@ -201,20 +201,24 @@ public:
 class timeMaster
 {
     UINT count;
+    UINT backcount;
     float unstable;
+    float currentdt;
     float defaultst;
-    float stored;
+    float stepdt;
 public:
 
     timeMaster()
     {}
 
-    void init(float unst)
+    void init(float unst, float mystepdt)
     {
         count = 0;
+        backcount = 200;
         unstable = unst;
         defaultst = unst;
-        stored = unst;
+        currentdt = unst;
+        stepdt = mystepdt;
     }
 
     void clear()
@@ -223,26 +227,56 @@ public:
         unstable = defaultst;
     }
 
-    void report(float unst)
+    float cdt(){
+      return currentdt;
+    }
+
+    UINT counter(){
+      return count;
+    }
+
+    UINT backcounter(){
+      return backcount;
+    }
+
+    void report()
     {
-        if (unst == unstable)
-        {
-            ++count;
+      if (currentdt >= unstable){
+        ++count;
+      }
+      else
+      {
+          count = 0;
+          unstable = currentdt;
+          ++backcount;
+      }
+      if (count >= 5)
+      {
+          backcount = 200;
+          count = 0;
+          unstable = currentdt * stepdt;
+      }
+      currentdt *= stepdt;
+    }
+
+    void poke(){
+      if (currentdt < unstable)
+      {
+          currentdt /= stepdt;
+      }
+      else{
+        --backcount;
+        if (backcount <= 0 && unstable < defaultst){ // Ok, try again
+          unstable /= stepdt;
+          currentdt = unstable;
+          backcount = 200;
         }
-        else
-        {
-            count = 0;
-            unstable = unst;
-        }
-        if (count >= 5)
-        {
-            stored = unstable;
-        }
+      }
     }
 
     float unstabledt()
     {
-        return stored;
+        return unstable;
     }
 };
 
@@ -682,16 +716,22 @@ class borderLine
     vector<string> groups;
     vector<point> p;
     vector<vector<point> > bl;
-    vector<vector<point> > bl_old5;
+    vector<vector<point> > bl_secure; // For changes in the number of points
     vector<vector<point> > bl_old10;
     vector<point> circles;
-    vector<point> circles_old5;
+    vector<point> circles_secure;
     vector<point> circles_old10;
+    UINT ncycles_secure;
+    UINT ncyles_old10;
     UINT ngroups;
     UINT startPerim;
+    float minCircRadius; // Minimum circ radius, to calc nPointsMin
+    UINT nPointsMin;  // Minimum number of points per line
+    float avgStartDist; // Average distance between points at start
     lCounter blCounter;
     lCounter deciderCounter;
     lCounter refreshScreen;
+    lCounter keepDistCounter;
     vector<float> circRadii;
     vector<float> w;
     vector<float> origw;
@@ -797,9 +837,8 @@ class borderLine
 
     void initOlds()
     {
-        bl_old5 = bl;
         bl_old10 = bl;
-        circles_old5 = circles;
+        ncyles_old10 = blSettings.ncycles;
         circles_old10 = circles;
     }
 
@@ -913,6 +952,9 @@ class borderLine
                 cpoint.orig = o[n];
                 circles.insert(circles.end(), cpoint);
             }
+        }
+        for (j = 1; j < circRadii.size(); j++){
+          if (circRadii[j] > 0 && circRadii[j] < minCircRadius) minCircRadius = circRadii[j];
         }
     }
 
@@ -1038,11 +1080,11 @@ class borderLine
     void resetOld()
     {
         UINT i, j;
-        for (i = 0; i < bl_old5.size(); i++)
+        for (i = 0; i < bl_secure.size(); i++)
         {
-            for(j = 0; j < bl_old5[i].size(); j++)
+            for(j = 0; j < bl_secure[i].size(); j++)
             {
-                bl_old5[i][j].reset();
+                bl_secure[i][j].reset();
             }
         }
         for (i = 0; i < bl_old10.size(); i++)
@@ -1151,6 +1193,36 @@ class borderLine
         result.open(outputFigData.c_str());
         result.write(datafile.getText().c_str(), datafile.getText().size());
         result.close();
+    }
+
+    void setSecureState(){
+      bl_secure = bl;
+      ncycles_secure = blSettings.ncycles;
+      resetOld();
+      circles_secure = circles;
+    }
+
+    void restoreSecureState(){
+      bl = bl_secure;
+      circles = circles_secure;
+      deciderCounter = 0;
+      keepDistCounter = 0;
+      blSettings.ncycles = ncycles_secure;
+    }
+
+    void setPrevState(){
+      bl_old10 = bl;
+      ncyles_old10 = blSettings.ncycles;
+      resetOld();
+      circles_old10 = circles;
+    }
+
+    void restorePrevState(){
+      bl = bl_old10;
+      circles = circles_old10;
+      deciderCounter = 0;
+      keepDistCounter = 0;
+      blSettings.ncycles = ncyles_old10;
     }
 
     point contact(point &p0, point &p1, float hardness = 5e1f)
@@ -1570,31 +1642,43 @@ class borderLine
 //Show dt
         displayFloat("DT", dt);
         displayUINT("CYCLES", blSettings.ncycles);
+        displayFloat("NPOINTSMIN", nPointsMin);
+        displayFloat("UNST", udt.unstabledt());
+        displayUINT("COUNT", udt.counter());
+        displayUINT("BACKCOUNT", udt.backcounter());
+        displayUINT("POINTS", (UINT) bl[0].size());
+
         if (checkTopol() || blSettings.surfRatio > (2 * blSettings.minSurfRatio)
                          || internalScale.xSpan() > (2 * blSettings.minDx)
                          || internalScale.ySpan() > (2 * blSettings.minDy))
         {
-            bl = bl_old10;
-            circles = circles_old10;
-            udt.report(dt);
-            dt *= blSettings.stepdt;
-            deciderCounter = 0;
-        }
-        else if (blCounter == 0)
-        {
-            bl_old10 = bl_old5;
-            bl_old5 = bl;
-            resetOld();
-            circles_old10 = circles_old5;
-            circles_old5 = circles;
-        }
-        else if (deciderCounter.isMax())
-        {
-            if (dt/blSettings.stepdt < udt.unstabledt())
-            {
-                dt /= blSettings.stepdt;
+            if (udt.cdt() < mindt){
+              restoreSecureState();
+              blCounter = 0;
+            }
+            else{
+              restorePrevState();
+              udt.report();
             }
         }
+        else {
+          if (blCounter == 0)
+          {
+              setPrevState();
+          }
+          if (deciderCounter.isMax())
+          {
+              udt.poke();
+          }
+          if (keepDistCounter.isMax()){
+              setSecureState();
+              keepDist(avgStartDist);
+              if (checkTopol()){
+                restorePrevState();
+              }
+          }
+        }
+        dt = udt.cdt();
         resetCircleRadius();
         blSettings.surfRatio = estSurf();
         if (blSettings.minSurfRatio == 0){
@@ -1609,6 +1693,7 @@ class borderLine
         if (blSettings.minDy > internalScale.ySpan()) blSettings.minDy = internalScale.ySpan();
         blCounter++;
         deciderCounter++;
+        keepDistCounter++;
         blSettings.ncycles++;
     }
 
@@ -1637,7 +1722,7 @@ class borderLine
                 bl[i][j].x += bl[i][j].vx * dt;
                 bl[i][j].y += bl[i][j].vy * dt;
                 /*******/
-                //attention(bl[i][j].x, bl[i][j].y, 0.1);
+                //attention(bl[i][j].x, bl[i][j].y);
                 /*******/
                 //limitVel(bl[i][j], maxv);
                 //Prepare the scale for the new frame
@@ -1762,11 +1847,12 @@ class borderLine
     bool checkTopol()
     {
       UINT i;
+      UINT j = circles.size();
       for (i = 0; i < circles.size(); i++)
       {
           if (circles[i].radius > 0)
           { /* Circle has radius */
-              vector<int> belong = toBin(circles[i].n, bl.size()); // This might be taken out and calculated only once. Does not take long, though
+              vector<int> belong = toBin(circles[i].n, bl.size());
               bool result = isTopolCorrect(circles[i], belong);
               if (result){
                 return result;
@@ -1795,6 +1881,8 @@ public:
         bm = b;
         groups = g;
         ngroups = bm->ngroups;
+        minCircRadius = 1.0f;
+        nPointsMin = 10;
         internalScale.initScale();
         initBlData(&blSettings);
         minRat = 0;
@@ -1834,13 +1922,14 @@ public:
         //init counters
         blCounter.setLimits(0, 5u);
         deciderCounter.setLimits(0, 5u);
+        keepDistCounter.setLimits(0, 100u);
         refreshScreen.setLimits(1, 50);
 
         //init internal scale
         internalScale.setClear(true);
 
         //init time parameters
-        udt.init(blSettings.startdt);
+        udt.init(blSettings.startdt, blSettings.stepdt);
 
         //init points
         for (i = 0; i < ngroups; i++)
@@ -1853,6 +1942,8 @@ public:
         UINT np = (UINT) (0.5f * (float) startPerim);
         interpolate(np);
 
+        setPrevState();
+        setSecureState();
 
         int arr[] = {
           0xE6194B,
@@ -1905,7 +1996,7 @@ public:
         UINT ncI = 0;
         if (vFile.good() == true){
             bl.clear();
-            bl_old5.clear();
+            bl_secure.clear();
             bl_old10.clear();
             string line;
             getline(vFile, line); // _F
@@ -2031,7 +2122,7 @@ public:
       string tst;
       point svgtemp;
       initPoint(&svgtemp);
-      svg.addLine("<svg width=\"700\" height=\"500\">");
+      svg.addLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"700\" height=\"500\">");
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
       svg.addLine("  .borderLine {");
@@ -2406,6 +2497,45 @@ public:
       p->softenVel = false;
     }
 
+    void keepDist(float minDist){
+      UINT i, j;
+      float perim;
+      float segment;
+      float minDist10 = minDist / 100;
+      point startPoint;
+      initPoint(&startPoint);
+      point endPoint;
+      initPoint(&endPoint);
+      point tempPoint;
+      initPoint(&tempPoint);
+      vector<point> tempv;
+      vector<vector<point> > tempbl;
+      for (i = 0; i < bl.size(); i++)
+      {
+        UINT bls = (UINT) bl[i].size();
+          perim = perimeter(bl[i], true);
+          startPoint = bl[i][bl[i].size()-1];
+          for (j = 0; j < bls; j++)
+          {
+              endPoint = bl[i][j];
+              segment = distance(startPoint.x, startPoint.y,
+                                 endPoint.x, endPoint.y);
+              if ((bls <= nPointsMin && segment > minDist10) || segment > minDist){
+                tempPoint.x = endPoint.x;
+                tempPoint.y = endPoint.y;
+                tempPoint.mass = POINT_MASS;
+                tempv.insert(tempv.end(), tempPoint);
+                startPoint = endPoint;
+              }
+
+          }
+          tempbl.insert(tempbl.end(), tempv);
+          tempv.clear();
+      }
+      bl.clear();
+      bl = tempbl;
+    }
+
     void interpolate(UINT npoints)
     {
         UINT i, j, k;
@@ -2421,16 +2551,19 @@ public:
         initPoint(&tempPoint);
         vector<point> tempv;
         vector<vector<point> > tempbl;
+        npoints += (UINT) bl[0].size();
         for (i = 0; i < bl.size(); i++)
         {
             perim = perimeter(bl[i], true);
+            nPointsMin = (UINT) (perim / bl.size());
             startPoint = bl[i][bl[i].size()-1];
+            avgStartDist = perim / npoints;
             for (j = 0; j < bl[i].size(); j++)
             {
                 endPoint = bl[i][j];
                 segment = distance(startPoint.x, startPoint.y,
                                    endPoint.x, endPoint.y);
-                interpoints = (int)(segment * npoints / perim);
+                interpoints = (int)(segment / avgStartDist);
                 if (interpoints == 0)
                     interpoints = 1;
                 dx = (float)(endPoint.x - startPoint.x);
