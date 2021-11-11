@@ -5,6 +5,7 @@
 #include <cmath>
 #include <time.h>
 #include <fstream>
+#include <sstream>
 
 #define CIRCLE_MASS 200.0f
 #define POINT_MASS 20
@@ -502,9 +503,9 @@ struct rgb
 template<typename T>
 string toString(T input)
 {
-    ostream result;
+    ostringstream result; 
     result << input;
-    return result;
+    return result.str();
 }
 
 
