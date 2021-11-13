@@ -77,10 +77,25 @@ borderLine getFileInfo(string fname, string outputFile){
     }
     int n = twoPow(number);
     for (i = 0; i < n; i++){
-        getline(vFile, header, ' '); /// get the number
-        weights.insert (weights.end(), atoi(header.c_str()));
-        getline(vFile, header) ;  ///  get the rest of the line with the labels
-        labels.insert (labels.end(), header);
+        getline(vFile, header); //  get the whole line
+        string w = header.substr(0,header.find_first_of(" "));
+        weights.insert (weights.end(), atoi(w.c_str())); // it take the first number
+        string label;
+        try
+        {
+            label = header.substr(header.find_first_of(" "));
+        }
+        catch (const std::exception& e)
+        {
+            cout << i << endl;
+            label = "";
+        }
+        labels.insert (labels.end(), label);
+        cout << "w=" << w << "  label:" << label << endl;
+        //getline(vFile, header, ' '); /// get the number
+        //weights.insert (weights.end(), atoi(header.c_str()));
+        //getline(vFile, header) ;  ///  get the rest of the line with the labels
+        //labels.insert (labels.end(), header);
         temp = toBin(i, number);
         printv(temp);
         cout << ".- " << weights[i] << " : " << labels[i] << endl;
