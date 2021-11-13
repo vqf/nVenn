@@ -62,6 +62,7 @@ borderLine getFileInfo(string fname, string outputFile){
     vector<string> groupNames;
     vector<int> temp;
     vector<float> weights;
+    vector<string> labels;
     int i;
     vFile.open(fname.c_str());
     getline(vFile, header);
@@ -76,16 +77,18 @@ borderLine getFileInfo(string fname, string outputFile){
     }
     int n = twoPow(number);
     for (i = 0; i < n; i++){
-        getline(vFile, header);
+        getline(vFile, header, ' '); /// get the number
         weights.insert (weights.end(), atoi(header.c_str()));
+        getline(vFile, header) ;  ///  get the rest of the line with the labels
+        labels.insert (labels.end(), header);
         temp = toBin(i, number);
         printv(temp);
-        cout << ".- " << weights[i] << endl;
+        cout << ".- " << weights[i] << " : " << labels[i] << endl;
     }
     vFile.close();
     binMap mymap(number);
     string dataFile = outputFile + ".data";
-    borderLine lines(&mymap, groupNames, weights, fname, outputFile);
+    borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
 
     vFile.open(dataFile.c_str());
     if (vFile.good() == true){ // Unfinished
