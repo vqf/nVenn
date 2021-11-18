@@ -735,6 +735,7 @@ class borderLine
     lCounter keepDistCounter;
     vector<float> circRadii;
     vector<float> w;
+    vector<string> labels;
     vector<float> origw;
     vector<rgb> colors;
     vector<string> svgcolors;
@@ -924,7 +925,7 @@ class borderLine
 
     }
 
-    void setCircles(binMap b, vector<float> o)
+    void setCircles(binMap b, vector<float> o, vector<string> tlabels)
     {
         UINT i, j;
         int n;
@@ -952,6 +953,7 @@ class borderLine
                 circRadii.insert(circRadii.end(), 2 * sqrt(origw[n] / maxw));
                 cpoint.orig = o[n];
                 circles.insert(circles.end(), cpoint);
+                labels.insert(labels.end(), tlabels[n]);
             }
         }
         for (j = 1; j < circRadii.size(); j++){
@@ -1876,7 +1878,7 @@ class borderLine
 
 public:
     borderLine(){}
-    borderLine(binMap* b, vector<string> g, vector<float> tw, string inputFile = "venn.txt", string outputFile = "result.svg")
+    borderLine(binMap* b, vector<string> g, vector<float> tw, vector<string> tlabels, string inputFile = "venn.txt", string outputFile = "result.svg") /// aqui
     {
         UINT i;
         bm = b;
@@ -1913,7 +1915,7 @@ public:
 
 
         //init circles
-        setCircles(*bm, origw);
+        setCircles(*bm, origw, tlabels);
 
         totalExpectedSurface = 0;
         for (i = 0; i < w.size(); i++){
@@ -2140,10 +2142,18 @@ public:
       svg.addLine("	   fill: none;");
       svg.addLine("    pointer-events: all;");
       svg.addLine("  }");
-      svg.addLine("  .nLabel {");
+      svg.addLine("  .tLabel {");
       svg.addLine("	   font-family: Arial;");
       svg.addLine("    pointer-events: none;");
       char t[200];
+      sprintf(t, "	   font-size: %dpx;", fsize+4);
+      svg.addLine((string) t);
+      svg.addLine("	   text-anchor: middle;");
+      svg.addLine("	   alignment-baseline: central;");
+      svg.addLine("  }");
+      svg.addLine("  .nLabel {");
+      svg.addLine("	   font-family: Arial;");
+      svg.addLine("    pointer-events: none;");
       sprintf(t, "	   font-size: %dpx;", fsize);
       svg.addLine((string) t);
       svg.addLine("	   text-anchor: middle;");
@@ -2226,6 +2236,10 @@ public:
             sprintf(temp, "<circle onclick=\"fromCircle(%u)\" class=\"circle\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, svgtemp.x,
                             svgtemp.y, svgtemp.radius);
             tst = temp;
+            svg.addLine(tst);
+            char addLabel[500];
+            sprintf(addLabel, "<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
+            tst =  addLabel;
             svg.addLine(tst);
             char addNum[200];
             sprintf(addNum, "<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);

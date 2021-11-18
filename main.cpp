@@ -62,6 +62,7 @@ borderLine getFileInfo(string fname, string outputFile){
     vector<string> groupNames;
     vector<int> temp;
     vector<float> weights;
+    vector<string> labels;
     int i;
     vFile.open(fname.c_str());
     getline(vFile, header);
@@ -76,16 +77,33 @@ borderLine getFileInfo(string fname, string outputFile){
     }
     int n = twoPow(number);
     for (i = 0; i < n; i++){
-        getline(vFile, header);
-        weights.insert (weights.end(), atoi(header.c_str()));
+        getline(vFile, header); //  get the whole line
+        string w = header.substr(0,header.find_first_of(" "));
+        weights.insert (weights.end(), atoi(w.c_str())); // it take the first number
+        string label;
+        try
+        {
+            label = header.substr(header.find_first_of(" "));
+        }
+        catch (const std::exception& e)
+        {
+            cout << i << endl;
+            label = "";
+        }
+        labels.insert (labels.end(), label);
+        cout << "w=" << w << "  label:" << label << endl;
+        //getline(vFile, header, ' '); /// get the number
+        //weights.insert (weights.end(), atoi(header.c_str()));
+        //getline(vFile, header) ;  ///  get the rest of the line with the labels
+        //labels.insert (labels.end(), header);
         temp = toBin(i, number);
         printv(temp);
-        cout << ".- " << weights[i] << endl;
+        cout << ".- " << weights[i] << " : " << labels[i] << endl;
     }
     vFile.close();
     binMap mymap(number);
     string dataFile = outputFile + ".data";
-    borderLine lines(&mymap, groupNames, weights, fname, outputFile);
+    borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
 
     vFile.open(dataFile.c_str());
     if (vFile.good() == true){ // Unfinished
