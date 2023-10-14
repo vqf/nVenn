@@ -43,6 +43,16 @@ class glGraphics{
       result.insert(result.end(), temp);
       return result;
   }
+
+  point showForce(point p, float sc = 1){
+    borderLine dummy;
+    point r;
+    dummy.initPoint(&r);
+    r.x = p.x + p.fx * sc;
+    r.y = p.y + p.fy * sc;
+    return r;
+  }
+
   void toOGL(borderLine bl, HDC hDC)
   {
     borderLine dummy;
@@ -59,18 +69,66 @@ class glGraphics{
       ogl.initScale();
 
       //define vectors
-      for (i = 0; i < blp.size(); i++)
-      {
-          //attention(blp[i][0].x, blp[i][0].y);
-          //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
-          glBegin (GL_LINE_LOOP);
-          glColor3f (bl.colors[i].red, bl.colors[i].green, bl.colors[i].blue);
-          for (j = 0; j < blp[i].size(); j++)
-          {
-              P = bl.place(ogl, blp[i][j]);
-              glVertex2f (P.x, P.y);
+      if (bl.blSettings.doCheckTopol == true){
+        for (i = 0; i < blp.size(); i++)
+        {
+            //attention(blp[i][0].x, blp[i][0].y);
+            //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
+            glBegin (GL_LINE_LOOP);
+            glColor3f (bl.colors[i].red, bl.colors[i].green, bl.colors[i].blue);
+            for (j = 0; j < blp[i].size(); j++)
+            {
+                P = bl.place(ogl, blp[i][j]);
+                glVertex2f (P.x, P.y);
+            }
+            glEnd ();
+        }
+      }
+      else{
+
+        for (i = 0; i < bl.circles.size() -1; i++)
+        {
+          if (bl.circles[i].radius > 0){
+              //attention(blp[i][0].x, blp[i][0].y);
+              //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
+
+               //Show forces
+              glBegin (GL_LINES);
+
+              point t = showForce(bl.circles[i], 0.01);
+
+              P = bl.place(ogl, bl.circles[i]);
+              glVertex2f(P.x, P.y);
+              P = bl.place(ogl, t);
+              glVertex2f(P.x, P.y);
+              glEnd ();
+
+
+              /*
+              // Show relationships
+              for (j = 0; j < bl.circles.size(); j++)
+              {
+                if (bl.circles[j].radius > 0){
+                  for (UINT group = 0; group < bl.ngroups; group++){
+                    UINT mask = 1 << group;
+                    glColor3f (bl.colors[group].red, bl.colors[group].green, bl.colors[group].blue);
+                    if ((bl.circles[i].n & mask) > 0 && (bl.circles[j].n & mask) > 0){
+                      glLineWidth(bl.getRelationships(i, j));
+                      glBegin (GL_LINES);
+                      P = bl.place(ogl, bl.circles[i]);
+                      glVertex2f(P.x, P.y);
+                      P = bl.place(ogl, bl.circles[j]);
+                      glVertex2f(P.x, P.y);
+                      glEnd ();
+                    }
+                  }
+                }
+              }*/
+
+              glLineWidth(1);
           }
-          glEnd ();
+        }
+
       }
 
       for (i = 0; i < bl.circles.size();  i++)
@@ -114,7 +172,7 @@ class glGraphics{
       glColor3f(0.0f, 0.0f, 1.0f);
       float yd = 0.8f;
       for (i = 0; i < bl.dataDisplay.size(); i++){
-        char* mymsg = bl.dataDisplay[i];
+        string mymsg = bl.dataDisplay[i];
         //showText(mymsg); exit(0);
         glRasterPos2f(-0.9f, yd);
         printString(mymsg);
@@ -178,8 +236,11 @@ class glGraphics{
           }
           else
           {
-              bl.setForces1();
+              bl.setForcesFirstStep();
+              //bl.setForces1();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.setCheckTopol(false);
+              //bl.setContacts(false, true);
               bl.solve();
               bl.refreshScreen++;
 
@@ -210,8 +271,11 @@ class glGraphics{
           }
           else
           {
-              bl.setForces2();
+              bl.setForcesSecondStep();
+              //bl.setForces1();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.setCheckTopol(false);
+              bl.setContacts(false, true, 2*bl.maxRad());
               bl.solve(true);
               bl.refreshScreen++;
 
@@ -240,6 +304,8 @@ class glGraphics{
           else
           {
         //      bl.setForces3();
+              bl.addLines();
+              bl.setCheckTopol(true);
               toOGL(bl, hDC);
               bQuit = true;
 

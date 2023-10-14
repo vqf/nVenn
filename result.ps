@@ -1,0 +1,1026 @@
+ 
+%!PS-Adobe-2.0
+ 
+/scale 1 def
+/ury 0  def
+/urx 0  def
+/lly 900  def
+/llx 900  def
+ 
+/showline{     %draws a line from an array of points
+topath          %stack: point_array. rgb_color
+setrgbcolor
+1 setlinejoin
+stroke
+} def
+ 
+/topath{        %makes a path from an array of points
+/tmat exch def  
+newpath
+tmat 0 get scale mul tmat 1 get scale mul moveto
+2 2 tmat length 1 sub
+{
+dup
+tmat exch get
+scale mul /x exch def
+1 add
+tmat exch get
+scale mul /y exch def
+x y lineto
+}for
+closepath
+}def
+ 
+/showp{                %draws points from an array
+/tmat exch def         %stack: point_array. rgb_color
+/b exch def
+/g exch def
+/r exch def
+0 2 tmat length 1 sub
+{
+dup
+tmat exch get
+scale mul /x exch def
+1 add
+tmat exch get
+scale mul neg /y exch def
+newpath
+x y 1 0 360 arc
+r g b setrgbcolor
+stroke
+}for
+}def
+ 
+/patternshape{
+/size 0.5 def
+moveto
+size 2 div size 2 div rmoveto
+0 size neg rlineto
+size neg 0 rlineto
+0 size rlineto
+size 0 rlineto
+} def
+
+/colorpattern{
+/offsety exch def
+/offsetx exch def
+/b exch def
+/g exch def
+/r exch def
+/step 9 def
+offsetx llx add step urx offsetx add{
+/x exch def
+ offsety lly add step ury offsety add{
+ /y exch def
+  newpath
+  x y patternshape
+  r g b setrgbcolor
+  fill
+ } for
+} for
+} def
+
+
+
+/minmax{
+/tmat exch def
+
+0 2 tmat length 1 sub
+{
+ dup
+ tmat exch get
+ scale mul /x exch def
+ 1 add
+ tmat exch get
+ scale mul /y exch def
+ x urx gt{
+ /urx x def
+ }if
+ x llx lt{
+ /llx x def
+ }if
+ y ury gt{
+ /ury y def
+ }if
+ y lly lt{
+ /lly y def
+ }if
+}for
+}def
+[
+493.416199 141.178650
+151.753815 410.518768
+226.432465 586.374268
+428.915802 646.775635
+545.396545 410.433990
+233.967056 435.296051
+357.107880 507.350586
+484.090637 470.758911
+493.416199 141.178650
+]
+/set1 exch def
+set1 minmax
+ 
+[
+514.437744 304.285034
+181.106628 329.713257
+151.753815 410.518768
+358.184143 696.987427
+500.299103 598.749268
+428.915802 646.775635
+545.396545 410.433990
+405.384369 436.232880
+357.107880 507.350586
+361.774506 593.096741
+514.437744 304.285034
+]
+/set2 exch def
+set2 minmax
+ 
+[
+471.624573 224.334320
+151.753815 410.518768
+226.432465 586.374268
+291.524963 642.602905
+551.000000 524.777588
+361.774506 593.096741
+484.090637 470.758911
+357.107880 507.350586
+466.625824 375.848389
+405.384369 436.232880
+471.624573 224.334320
+]
+/set3 exch def
+set3 minmax
+ 
+[
+319.592682 430.138916
+160.438217 641.561768
+358.184143 696.987427
+551.000000 524.777588
+361.774506 593.096741
+545.396545 410.433990
+151.753815 410.518768
+357.107880 507.350586
+484.090637 470.758911
+272.681152 356.146240
+319.592682 430.138916
+]
+/set4 exch def
+set4 minmax
+ 
+[
+271.335815 513.015747
+226.432465 586.374268
+291.524963 642.602905
+428.915802 646.775635
+500.299103 598.749268
+328.757050 282.408630
+151.753815 410.518768
+271.335815 513.015747
+]
+/set5 exch def
+set5 minmax
+ 
+[
+435.775604 541.921509
+122.269257 564.521729
+160.438217 641.561768
+435.775604 541.921509
+]
+/set6 exch def
+set6 minmax
+ 
+[
+225.553101 697.742065
+328.757050 282.408630
+151.753815 410.518768
+122.269257 564.521729
+225.553101 697.742065
+]
+/set7 exch def
+set7 minmax
+ 
+[
+72.000000 378.454254
+102.359009 480.869263
+181.106628 329.713257
+72.000000 378.454254
+]
+/set8 exch def
+set8 minmax
+ 
+[
+243.573578 270.627136
+102.359009 480.869263
+185.593170 506.355621
+300.184814 201.314392
+243.573578 270.627136
+]
+/set9 exch def
+set9 minmax
+ 
+ 
+%Begin program
+ 
+gsave
+set1 topath
+clip
+0.901961 0.098039 0.294118 0 0 colorpattern
+grestore
+gsave
+set2 topath
+clip
+0.235294 0.705882 0.294118 1 1 colorpattern
+grestore
+gsave
+set3 topath
+clip
+1.000000 0.882353 0.098039 2 2 colorpattern
+grestore
+gsave
+set4 topath
+clip
+0.000000 0.509804 0.784314 3 3 colorpattern
+grestore
+gsave
+set5 topath
+clip
+0.960784 0.509804 0.192157 4 4 colorpattern
+grestore
+gsave
+set6 topath
+clip
+0.568627 0.117647 0.705882 5 5 colorpattern
+grestore
+gsave
+set7 topath
+clip
+0.274510 0.941176 0.941176 6 6 colorpattern
+grestore
+gsave
+set8 topath
+clip
+0.941176 0.196078 0.901961 7 7 colorpattern
+grestore
+gsave
+set9 topath
+clip
+0.823529 0.960784 0.235294 8 8 colorpattern
+grestore
+ 
+0.901961 0.098039 0.294118 set1 showline
+0.235294 0.705882 0.294118 set2 showline
+1.000000 0.882353 0.098039 set3 showline
+0.000000 0.509804 0.784314 set4 showline
+0.960784 0.509804 0.192157 set5 showline
+0.568627 0.117647 0.705882 set6 showline
+0.274510 0.941176 0.941176 set7 showline
+0.941176 0.196078 0.901961 set8 showline
+0.823529 0.960784 0.235294 set9 showline
+ 
+newpath
+newpath
+493.416199 141.178650 43.026417 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+428.613129 298.677368 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+405.384369 436.232880 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+357.107880 507.350586 9.620998 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+151.753815 410.518768 16.664059 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+514.437744 304.285034 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+367.596588 359.033813 11.783269 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+361.774506 593.096741 17.999241 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+547.669556 4439.657227 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+547.669556 -369.496216 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+358.184143 696.987427 19.241997 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -4577.505859 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+500.299103 598.749268 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 8647.667969 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+547.669556 -1571.784302 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+547.669556 2636.225586 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -7583.227051 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -970.639893 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+181.106628 329.713257 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+547.669556 2035.081421 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+300.184814 201.314392 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+471.624573 224.334320 11.783269 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+466.625824 375.848389 11.783269 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+484.090637 470.758911 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -5779.794434 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+547.669556 7445.379883 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -6982.083496 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+291.524963 642.602905 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+226.432465 586.374268 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 6844.234863 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 5040.802246 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+319.592682 430.138916 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+272.681152 356.146240 17.999241 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+545.396545 410.433990 11.783269 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 6243.090820 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+547.669556 832.792603 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -6380.938477 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+160.438217 641.561768 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -8184.371094 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+271.335815 513.015747 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+233.967056 435.296051 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+428.915802 646.775635 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -5178.650391 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 3237.369385 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+328.757050 282.408630 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+547.669556 -3375.217285 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+547.669556 3838.514648 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+435.775604 541.921509 9.620998 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+122.269257 564.521729 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 8046.523926 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+225.553101 697.742065 13.606147 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -2172.928711 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 -2774.073242 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+185.593170 506.355621 6.803073 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+547.669556 5641.946289 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+547.669556 1433.937012 0.000000 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+102.359009 480.869263 9.620998 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+243.573578 270.627136 15.212134 0 360 arc
+0.2 setlinewidth
+1 0 0 setrgbcolor
+stroke
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+newpath
+showpage
