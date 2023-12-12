@@ -14,7 +14,6 @@ class glGraphics{
   {
     borderLine dummy;
       point temp;
-      dummy.initPoint(&temp);
       vector<point> result;
       float sen = 0.7071067811f;
       temp.x = x;
@@ -47,10 +46,37 @@ class glGraphics{
   point showForce(point p, float sc = 1){
     borderLine dummy;
     point r;
-    dummy.initPoint(&r);
     r.x = p.x + p.fx * sc;
     r.y = p.y + p.fy * sc;
     return r;
+  }
+
+  void addRectangle(borderLine bl, scale ogl, vector<point> p){
+    glBegin (GL_LINE_LOOP);
+    glColor3f(.5, .5, .5);
+    point p0;
+    p0.x = p[0].x;
+    p0.y = p[0].y;
+    point mp = bl.place(ogl, p0);
+    glVertex2d(mp.x, mp.y);
+    p0.x = p[1].x;
+    p0.y = p[0].y;
+    mp = bl.place(ogl, p0);
+    glVertex2d(mp.x, mp.y);
+    p0.x = p[1].x;
+    p0.y = p[1].y;
+    mp = bl.place(ogl, p0);
+    glVertex2d(mp.x, mp.y);
+    p0.x = p[0].x;
+    p0.y = p[1].y;
+    mp = bl.place(ogl, p0);
+    glVertex2d(mp.x, mp.y);
+    p0.x = p[0].x;
+    p0.y = p[0].y;
+    mp = bl.place(ogl, p0);
+    glVertex2d(mp.x, mp.y);
+    glEnd();
+    return;
   }
 
   void toOGL(borderLine bl, HDC hDC)
@@ -58,7 +84,6 @@ class glGraphics{
     borderLine dummy;
       UINT i, j;
       point P;     //coordinates
-      dummy.initPoint(&P);
       vector<point> temp; //stores perimeters
       vector<vector<point> > blp = bl.bl;
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
@@ -66,8 +91,8 @@ class glGraphics{
       //define openGL scale
 
       scale ogl;
+      //addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));
       ogl.initScale();
-
       //define vectors
       if (bl.blSettings.doCheckTopol == true){
         for (i = 0; i < blp.size(); i++)
@@ -93,7 +118,8 @@ class glGraphics{
               //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
 
                //Show forces
-              glBegin (GL_LINES);
+               //-----------
+/*              glBegin (GL_LINES);
 
               point t = showForce(bl.circles[i], 0.01);
 
@@ -102,8 +128,8 @@ class glGraphics{
               P = bl.place(ogl, t);
               glVertex2f(P.x, P.y);
               glEnd ();
-
-
+*/
+              //-----------
               /*
               // Show relationships
               for (j = 0; j < bl.circles.size(); j++)
@@ -131,11 +157,17 @@ class glGraphics{
 
       }
 
+
       for (i = 0; i < bl.circles.size();  i++)
       {
           P = bl.place(ogl, bl.circles[i]);
           temp = glCircle(P.x, P.y, P.radius);
-          glColor3f (1.0f, 0.0f, 0.0f);
+          if ((bl.circles[i].flags & IS_OUTSIDE) > 0){
+            glColor3f (0.0f, 1.0f, 0.0f);
+          }
+          else{
+            glColor3f (1.0f, 0.0f, 0.0f);
+          }
           glBegin (GL_LINE_LOOP);
           for (j = 0; j < temp.size(); j++)
           {
@@ -187,15 +219,17 @@ class glGraphics{
       SwapBuffers (hDC);
       //Sleep(1);
   }
+
+
+
+
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
       borderLine bl = *blp;
       bl.refreshScreen.setLimits(1,1);
       MSG msg;
       point minP;
-      bl.initPoint(&minP);
       point maxP;
-      bl.initPoint(&maxP);
       bool bQuit = false;
       while (!bQuit)
       {
@@ -249,10 +283,6 @@ class glGraphics{
       }
       bl.udt.clear();
       bQuit = false;
-      bl.interpolate(700);
-      bl.blSettings.margin /= 10;
-      bl.setRadii();
-      bl.setAsStable();
       while (!bQuit)
       {
           /* check for messages */
@@ -304,10 +334,101 @@ class glGraphics{
           else
           {
         //      bl.setForces3();
+              //bl.chooseCombination();
               bl.addLines();
+              //bl.setCheckTopol(true);
+              UINT b1 = bl.countOutsiders();
+              UINT bo = bl.chooseCombination(true);
+              do{
+                  //tolog("One more\n");
+                b1 = bo;
+                bo = bl.chooseCombination(true);
+              } while (bo < b1);
+              bl.chooseCrossings(true);
+              bl.addLines();
+              bl.fixTopology();
               bl.setCheckTopol(true);
+              bl.writeSVG("tmp.svg");
+              bl.setCheckTopol(false);
+              bl.polishLines();
               toOGL(bl, hDC);
               bQuit = true;
+              //bQuit = true;
+
+          }
+      }
+      if (bl.checkTopol() == false){
+        bl.udt.clear();
+        bl.interpolate(150);
+        bl.setPrevState();
+        bl.setSecureState();
+      }
+      else{
+        bl.listOutsiders();
+        ofstream result;
+        fileText svgfile = bl.toSVG();
+        result.open("result.svg");
+        result.write(svgfile.getText().c_str(), svgfile.getText().size());
+        result.close();
+        exit(0);
+      }
+      bQuit = false;
+      bl.setFixedCircles(true);
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              bl.setCheckTopol(true);
+              bl.setForces3();
+              bl.setContacts();
+              bl.displayUINT("STATE: ", 1);
+              toOGL(bl, hDC);
+              bl.solve();
+              bl.refreshScreen++;
+
+          }
+      }
+      bQuit = false;
+      bl.setFixedCircles(false);
+      bl.resetTimer();
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              bl.setCheckTopol(true);
+              bl.setForces1();
+              bl.setContacts();
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.solve();
+              bl.refreshScreen++;
 
           }
       }
