@@ -1,0 +1,286 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="500">
+<defs>
+<style type="text/css"><![CDATA[
+  .borderLine {
+	   stroke: none;
+	   fill-opacity: 0.4;
+  }
+  .outLine {
+	   stroke-width: 1;
+	   fill: none;
+  }
+  .circle {
+	   stroke: #888888;
+	   stroke-width: 0.5;
+	   fill: none;
+    pointer-events: all;
+  }
+  .spcircle {
+	   stroke: #FF2222;
+	   stroke-width: 1;
+	   fill: none;
+    pointer-events: all;
+  }
+  .tLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 14px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .nLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 10px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .belong {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 5px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .p0{
+    stroke: none;
+    fill: #e6194b;
+  }
+  .q0{
+    fill: none;
+    stroke: #e6194b;
+  }
+  .p1{
+    stroke: none;
+    fill: #3cb44b;
+  }
+  .q1{
+    fill: none;
+    stroke: #3cb44b;
+  }
+  .p2{
+    stroke: none;
+    fill: #ffe119;
+  }
+  .q2{
+    fill: none;
+    stroke: #ffe119;
+  }
+  .p3{
+    stroke: none;
+    fill: #0082c8;
+  }
+  .q3{
+    fill: none;
+    stroke: #0082c8;
+  }
+  .p4{
+    stroke: none;
+    fill: #f58231;
+  }
+  .q4{
+    fill: none;
+    stroke: #f58231;
+  }
+  .p5{
+    stroke: none;
+    fill: #911eb4;
+  }
+  .q5{
+    fill: none;
+    stroke: #911eb4;
+  }
+  .p6{
+    stroke: none;
+    fill: #46f0f0;
+  }
+  .q6{
+    fill: none;
+    stroke: #46f0f0;
+  }
+  .p7{
+    stroke: none;
+    fill: #f032e6;
+  }
+  .q7{
+    fill: none;
+    stroke: #f032e6;
+  }
+]]>
+</style>
+<symbol id="bl0">
+<path d="M 165.33 276.36 L 156.09 277.64 L 151.55 285.80 L 155.34 294.33 L 164.43 296.44 L 177.17 349.80 L 186.30 358.79 L 182.21 370.93 L 193.67 418.92 L 181.83 430.81 L 181.83 430.81 L 182.23 439.52 L 187.15 446.72 L 187.15 446.72 L 187.15 446.72 L 195.11 450.27 L 203.76 449.10 L 203.76 449.10 L 213.33 435.32 L 319.82 441.09 L 323.80 367.71 L 311.04 353.49 L 325.26 340.74 L 338.01 354.96 L 323.80 367.71 L 319.82 441.09 L 387.83 444.78 L 411.04 482.00 L 453.94 472.84 L 459.93 429.39 L 421.12 408.97 L 417.32 379.32 L 403.13 367.55 L 413.90 352.59 L 392.98 189.16 L 404.38 181.01 L 403.87 167.01 L 391.90 159.72 L 379.22 165.68 L 331.16 130.08 L 331.16 130.08 L 332.32 127.06 L 331.75 123.88 L 331.75 123.88 L 326.55 120.45 L 321.09 123.44 L 321.18 129.67 L 264.72 164.81 L 258.81 185.38 L 237.74 181.60 L 191.59 210.32 L 186.80 207.48 L 181.73 209.76 L 180.68 215.23 L 184.54 219.23 Z" />
+</symbol>
+<symbol id="bl1">
+<path d="M 39.71 211.59 L 33.19 207.31 L 27.89 213.03 L 27.89 213.03 L 29.14 216.99 L 32.65 219.21 L 32.65 219.21 L 32.65 219.21 L 36.76 218.64 L 39.53 215.54 L 39.53 215.54 L 298.79 318.90 L 309.86 291.14 L 302.32 273.60 L 319.86 266.05 L 327.41 283.60 L 309.86 291.14 L 298.79 318.90 L 403.98 360.84 L 406.39 374.77 L 419.91 378.91 L 429.71 368.71 L 425.04 355.37 L 461.09 311.07 L 467.05 312.03 L 470.86 307.34 L 468.70 301.70 L 462.74 300.75 L 443.66 251.04 L 453.60 240.90 L 452.44 226.75 L 440.99 218.37 L 427.15 221.54 L 400.10 186.23 L 405.87 175.40 L 401.48 163.95 L 389.95 159.74 L 379.22 165.68 L 331.16 130.08 L 331.91 124.25 L 327.35 120.54 L 321.80 122.46 L 320.52 128.20 Z" />
+</symbol>
+<symbol id="bl2">
+<path d="M 100.76 368.07 L 100.76 368.07 L 94.99 369.40 L 90.86 373.64 L 90.86 373.64 L 90.86 373.64 L 89.71 379.45 L 91.88 384.95 L 91.88 384.95 L 91.89 384.95 L 96.70 388.39 L 102.62 388.66 L 102.62 388.66 L 102.62 388.66 L 107.73 385.68 L 110.41 380.40 L 110.41 380.40 L 261.52 408.23 L 274.18 403.77 L 284.43 412.45 L 339.54 422.60 L 339.54 422.60 L 340.44 430.43 L 345.57 436.43 L 345.57 436.43 L 360.65 436.04 L 365.96 421.92 L 354.86 411.69 L 388.87 189.11 L 404.01 181.72 L 402.42 164.96 L 386.17 160.55 L 376.32 174.21 L 266.34 172.12 L 261.01 159.91 L 248.28 155.98 L 237.00 163.07 L 235.02 176.25 L 214.36 182.20 L 236.36 258.48 L 249.31 265.63 L 242.16 278.57 L 229.21 271.42 L 236.36 258.48 L 214.36 182.20 L 120.27 209.34 L 112.27 201.99 L 102.06 205.70 L 100.66 216.48 L 109.59 222.68 Z" />
+</symbol>
+<symbol id="bl3">
+<path d="M 174.97 349.52 L 165.59 353.49 L 162.58 363.21 L 168.07 371.78 L 178.16 373.11 L 192.60 419.21 L 181.41 434.59 L 192.86 449.78 L 210.72 443.25 L 209.67 424.25 L 424.40 246.00 L 442.43 251.46 L 454.51 237.00 L 445.94 220.23 L 427.15 221.54 L 400.10 186.23 L 405.89 175.00 L 400.89 163.40 L 388.76 159.89 L 378.34 167.02 L 261.66 98.78 L 261.70 92.75 L 256.50 89.69 L 251.25 92.65 L 251.18 98.68 L 187.54 134.32 L 182.38 131.24 L 177.12 134.13 L 176.96 140.14 L 182.07 143.31 L 179.66 213.28 L 180.43 213.30 L 186.67 207.47 L 192.50 213.72 L 186.26 219.54 L 180.43 213.30 L 179.66 213.28 L 174.97 349.52 L 165.59 353.49 L 162.58 363.21 L 168.07 371.78 L 178.16 373.11 L 192.60 419.21 L 181.41 434.59 L 192.86 449.78 L 210.72 443.25 L 209.67 424.25 L 424.40 246.00 L 442.43 251.46 L 454.51 237.00 L 445.94 220.23 L 427.15 221.54 L 400.10 186.23 L 405.89 175.00 L 400.89 163.40 L 388.76 159.89 L 378.34 167.02 L 261.66 98.78 L 261.70 92.75 L 256.50 89.69 L 251.25 92.65 L 251.18 98.68 L 187.54 134.32 L 182.38 131.24 L 177.12 134.13 L 176.96 140.14 L 182.07 143.31 Z" />
+</symbol>
+<symbol id="bl4">
+<path d="M 276.69 404.49 L 263.76 406.15 L 258.27 417.97 L 265.32 428.93 L 278.36 428.82 L 309.79 484.74 L 309.79 484.74 L 307.24 487.51 L 306.84 491.26 L 306.84 491.26 L 306.84 491.26 L 308.74 494.51 L 312.19 496.01 L 312.19 496.01 L 312.19 496.01 L 315.86 495.17 L 318.32 492.32 L 318.32 492.32 L 318.32 492.32 L 318.61 488.56 L 316.62 485.37 L 316.62 485.37 L 356.09 438.14 L 363.18 433.70 L 366.29 425.93 L 407.86 376.20 L 420.27 378.81 L 429.37 369.99 L 427.14 357.51 L 415.55 352.37 L 403.36 182.78 L 405.86 173.43 L 402.05 164.53 L 397.72 104.41 L 397.72 104.41 L 401.63 102.59 L 403.32 98.63 L 403.32 98.63 L 398.20 92.42 L 391.46 96.82 L 391.46 96.82 L 391.90 101.10 L 395.08 104.01 L 395.08 104.01 L 327.81 274.75 L 327.43 283.55 L 321.70 290.24 Z" />
+</symbol>
+<symbol id="bl5">
+<path d="M 126.87 88.15 L 126.87 88.15 L 125.93 82.15 L 121.24 78.29 L 121.24 78.29 L 110.79 82.73 L 114.00 93.62 L 125.19 91.71 L 177.55 133.51 L 176.40 138.69 L 179.78 142.78 L 185.09 142.62 L 188.22 138.33 L 376.54 171.89 L 379.80 184.02 L 391.20 189.28 L 402.54 183.88 L 405.63 171.71 L 460.14 161.28 L 466.62 166.15 L 472.11 160.20 L 466.74 154.14 L 460.17 158.89 L 330.00 131.26 L 325.05 132.39 L 320.99 129.35 Z" />
+</symbol>
+<symbol id="bl6">
+<path d="M 392.30 159.75 L 377.52 168.64 L 381.23 185.50 L 398.38 187.37 L 405.63 171.71 L 460.14 161.28 L 463.99 165.81 L 469.86 164.85 L 472.06 159.32 L 468.46 154.59 L 537.69 -6.54 L 552.88 -11.55 L 549.77 -27.24 L 533.82 -26.08 L 533.02 -10.10 L 402.01 94.62 L 396.73 92.38 L 391.96 95.56 L 391.99 101.29 L 396.80 104.41 Z" />
+</symbol>
+<symbol id="bl7">
+<path d="M 467.97 311.59 L 467.97 311.59 L 470.75 307.89 L 470.09 303.31 L 470.09 303.31 L 470.09 303.31 L 466.40 300.54 L 461.82 301.20 L 461.82 301.20 L 461.82 301.20 L 459.05 304.89 L 459.70 309.47 L 459.70 309.47 L 459.70 309.47 L 463.40 312.24 L 467.97 311.59 L 467.97 311.59 L 610.13 551.68 L 604.14 575.08 L 627.53 581.07 L 633.53 557.68 L 610.13 551.68 Z" />
+</symbol>
+</defs>
+<!-- isDone: 0 -->
+<rect width="700" height="500" style="fill:#fff;stroke-width:0" />
+<use class="p0 borderLine" xlink:href="#bl0"/>
+<use class="p1 borderLine" xlink:href="#bl1"/>
+<use class="p2 borderLine" xlink:href="#bl2"/>
+<use class="p3 borderLine" xlink:href="#bl3"/>
+<use class="p4 borderLine" xlink:href="#bl4"/>
+<use class="p5 borderLine" xlink:href="#bl5"/>
+<use class="p6 borderLine" xlink:href="#bl6"/>
+<use class="p7 borderLine" xlink:href="#bl7"/>
+<use class="q0 outLine" xlink:href="#bl0"/>
+<use class="q1 outLine" xlink:href="#bl1"/>
+<use class="q2 outLine" xlink:href="#bl2"/>
+<use class="q3 outLine" xlink:href="#bl3"/>
+<use class="q4 outLine" xlink:href="#bl4"/>
+<use class="q5 outLine" xlink:href="#bl5"/>
+<use class="q6 outLine" xlink:href="#bl6"/>
+<use class="q7 outLine" xlink:href="#bl7"/>
+<circle onclick="fromCircle(1)" class="circle" cx="425.9644" cy="446.8454" r="38.1893" />
+<text class="tLabel" x="425.96" y="426.85"></text>
+<text class="nLabel" x="425.96" y="441.85">40</text>
+<text class="belong" x="425.96" y="451.85">(1)</text>
+<circle onclick="fromCircle(3)" class="circle" cx="326.3044" cy="126.4820" r="6.0383" />
+<text class="tLabel" x="326.30" y="106.48"></text>
+<text class="nLabel" x="326.30" y="121.48">1</text>
+<text class="belong" x="326.30" y="131.48">(1, 2)</text>
+<circle onclick="fromCircle(7)" class="spcircle" cx="186.4651" cy="213.5095" r="6.0383" />
+<text class="tLabel" x="186.47" y="193.51"></text>
+<text class="nLabel" x="186.47" y="208.51">1</text>
+<text class="belong" x="186.47" y="218.51">(1, 2, 3)</text>
+<circle onclick="fromCircle(15)" class="circle" cx="320.1776" cy="202.5520" r="8.5394" />
+<text class="tLabel" x="320.18" y="182.55"></text>
+<text class="nLabel" x="320.18" y="197.55">2</text>
+<text class="belong" x="320.18" y="207.55">(1, 2, 3, 4)</text>
+<circle onclick="fromCircle(127)" class="circle" cx="391.1062" cy="174.4887" r="14.7906" />
+<text class="tLabel" x="391.11" y="154.49"></text>
+<text class="nLabel" x="391.11" y="169.49">6</text>
+<text class="belong" x="391.11" y="179.49">(1, 2, 3, 4, 5, 6, 7)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="33.9245" cy="213.3073" r="6.0383" />
+<text class="tLabel" x="33.92" y="193.31"></text>
+<text class="nLabel" x="33.92" y="208.31">1</text>
+<text class="belong" x="33.92" y="218.31">(2)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="110.2224" cy="212.2424" r="10.4586" />
+<text class="tLabel" x="110.22" y="192.24"></text>
+<text class="nLabel" x="110.22" y="207.24">3</text>
+<text class="belong" x="110.22" y="217.24">(2, 3)</text>
+<circle onclick="fromCircle(14)" class="circle" cx="250.3670" cy="171.8187" r="15.9757" />
+<text class="tLabel" x="250.37" y="151.82"></text>
+<text class="nLabel" x="250.37" y="166.82">7</text>
+<text class="belong" x="250.37" y="176.82">(2, 3, 4)</text>
+<circle onclick="fromCircle(10)" class="circle" cx="437.5372" cy="235.0924" r="17.0788" />
+<text class="tLabel" x="437.54" y="215.09"></text>
+<text class="nLabel" x="437.54" y="230.09">8</text>
+<text class="belong" x="437.54" y="240.09">(2, 4)</text>
+<circle onclick="fromCircle(18)" class="circle" cx="416.5196" cy="365.8388" r="13.5019" />
+<text class="tLabel" x="416.52" y="345.84"></text>
+<text class="nLabel" x="416.52" y="360.84">5</text>
+<text class="belong" x="416.52" y="370.84">(2, 5)</text>
+<circle onclick="fromCircle(130)" class="circle" cx="464.8984" cy="306.3913" r="6.0383" />
+<text class="tLabel" x="464.90" y="286.39"></text>
+<text class="nLabel" x="464.90" y="301.39">1</text>
+<text class="belong" x="464.90" y="311.39">(2, 8)</text>
+<circle onclick="fromCircle(4)" class="circle" cx="100.1215" cy="378.5078" r="10.4586" />
+<text class="tLabel" x="100.12" y="358.51"></text>
+<text class="nLabel" x="100.12" y="373.51">3</text>
+<text class="belong" x="100.12" y="383.51">(3)</text>
+<circle onclick="fromCircle(5)" class="circle" cx="161.9986" cy="286.2690" r="10.4586" />
+<text class="tLabel" x="162.00" y="266.27"></text>
+<text class="nLabel" x="162.00" y="281.27">3</text>
+<text class="belong" x="162.00" y="291.27">(1, 3)</text>
+<circle onclick="fromCircle(13)" class="spcircle" cx="314.8641" cy="278.5961" r="13.5019" />
+<text class="tLabel" x="314.86" y="258.60"></text>
+<text class="nLabel" x="314.86" y="273.60">5</text>
+<text class="belong" x="314.86" y="283.60">(1, 3, 4)</text>
+<circle onclick="fromCircle(12)" class="circle" cx="174.5508" cy="361.5897" r="12.0765" />
+<text class="tLabel" x="174.55" y="341.59"></text>
+<text class="nLabel" x="174.55" y="356.59">4</text>
+<text class="belong" x="174.55" y="366.59">(3, 4)</text>
+<circle onclick="fromCircle(20)" class="spcircle" cx="324.5268" cy="354.2243" r="13.5019" />
+<text class="tLabel" x="324.53" y="334.22"></text>
+<text class="nLabel" x="324.53" y="349.22">5</text>
+<text class="belong" x="324.53" y="359.22">(3, 5)</text>
+<circle onclick="fromCircle(21)" class="circle" cx="352.8209" cy="425.0411" r="13.5019" />
+<text class="tLabel" x="352.82" y="405.04"></text>
+<text class="nLabel" x="352.82" y="420.04">5</text>
+<text class="belong" x="352.82" y="430.04">(1, 3, 5)</text>
+<circle onclick="fromCircle(8)" class="circle" cx="256.4480" cy="95.7312" r="6.0383" />
+<text class="tLabel" x="256.45" y="75.73"></text>
+<text class="nLabel" x="256.45" y="90.73">1</text>
+<text class="belong" x="256.45" y="100.73">(4)</text>
+<circle onclick="fromCircle(9)" class="circle" cx="197.3804" cy="434.4570" r="15.9757" />
+<text class="tLabel" x="197.38" y="414.46"></text>
+<text class="nLabel" x="197.38" y="429.46">7</text>
+<text class="belong" x="197.38" y="439.46">(1, 4)</text>
+<circle onclick="fromCircle(11)" class="spcircle" cx="239.2588" cy="268.5246" r="10.4586" />
+<text class="tLabel" x="239.26" y="248.52"></text>
+<text class="nLabel" x="239.26" y="263.52">3</text>
+<text class="belong" x="239.26" y="273.52">(1, 2, 4)</text>
+<circle onclick="fromCircle(40)" class="circle" cx="182.2739" cy="137.2749" r="6.0383" />
+<text class="tLabel" x="182.27" y="117.27"></text>
+<text class="nLabel" x="182.27" y="132.27">1</text>
+<text class="belong" x="182.27" y="142.27">(4, 6)</text>
+<circle onclick="fromCircle(16)" class="circle" cx="312.7471" cy="490.0000" r="6.0383" />
+<text class="tLabel" x="312.75" y="470.00"></text>
+<text class="nLabel" x="312.75" y="485.00">1</text>
+<text class="belong" x="312.75" y="495.00">(5)</text>
+<circle onclick="fromCircle(17)" class="circle" cx="271.7389" cy="417.0482" r="13.5019" />
+<text class="tLabel" x="271.74" y="397.05"></text>
+<text class="nLabel" x="271.74" y="412.05">5</text>
+<text class="belong" x="271.74" y="422.05">(1, 5)</text>
+<circle onclick="fromCircle(19)" class="circle" cx="389.4971" cy="294.4333" r="13.5019" />
+<text class="tLabel" x="389.50" y="274.43"></text>
+<text class="nLabel" x="389.50" y="289.43">5</text>
+<text class="belong" x="389.50" y="299.43">(1, 2, 5)</text>
+<circle onclick="fromCircle(80)" class="circle" cx="397.2901" cy="98.3908" r="6.0383" />
+<text class="tLabel" x="397.29" y="78.39"></text>
+<text class="nLabel" x="397.29" y="93.39">1</text>
+<text class="belong" x="397.29" y="103.39">(5, 7)</text>
+<circle onclick="fromCircle(32)" class="circle" cx="118.5154" cy="86.3785" r="8.5394" />
+<text class="tLabel" x="118.52" y="66.38"></text>
+<text class="nLabel" x="118.52" y="81.38">2</text>
+<text class="belong" x="118.52" y="91.38">(6)</text>
+<circle onclick="fromCircle(96)" class="circle" cx="466.0755" cy="160.1409" r="6.0383" />
+<text class="tLabel" x="466.08" y="140.14"></text>
+<text class="nLabel" x="466.08" y="155.14">1</text>
+<text class="belong" x="466.08" y="165.14">(6, 7)</text>
+<rect class="p0 borderLine" x="500.00" y="50.00" width="30.00" height="15.00" />
+<rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="65.00">Ball2017</text>
+<rect class="p1 borderLine" x="500.00" y="90.00" width="30.00" height="15.00" />
+<rect class="q1" x="500.00" y="90.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="105.00">Courtois2015</text>
+<rect class="p2 borderLine" x="500.00" y="130.00" width="30.00" height="15.00" />
+<rect class="q2" x="500.00" y="130.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="145.00">Hilton2017</text>
+<rect class="p3 borderLine" x="500.00" y="170.00" width="30.00" height="15.00" />
+<rect class="q3" x="500.00" y="170.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="185.00">Ball2017</text>
+<rect class="p4 borderLine" x="500.00" y="210.00" width="30.00" height="15.00" />
+<rect class="q4" x="500.00" y="210.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="225.00">Ball2017</text>
+<rect class="p5 borderLine" x="500.00" y="250.00" width="30.00" height="15.00" />
+<rect class="q5" x="500.00" y="250.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="265.00">Ball2017</text>
+<rect class="p6 borderLine" x="500.00" y="290.00" width="30.00" height="15.00" />
+<rect class="q6" x="500.00" y="290.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="305.00">Courtois2015</text>
+<rect class="p7 borderLine" x="500.00" y="330.00" width="30.00" height="15.00" />
+<rect class="q7" x="500.00" y="330.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="345.00">Hilton2017</text>
+</svg>

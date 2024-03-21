@@ -225,6 +225,11 @@ class glGraphics{
 
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
+    std::ofstream dlme;
+dlme.open("log.txt", std::ios_base::out);
+dlme.write("", 0);
+dlme.close();
+
       borderLine bl = *blp;
       bl.refreshScreen.setLimits(1,1);
       MSG msg;
@@ -312,7 +317,6 @@ class glGraphics{
 
           }
       }
-
       bl.udt.clear();
       bQuit = false;
       while (!bQuit)
@@ -336,30 +340,36 @@ class glGraphics{
         //      bl.setForces3();
               //bl.chooseCombination();
               bl.addLines();
+              bl.polishLines();
               //bl.setCheckTopol(true);
               UINT b1 = bl.countOutsiders();
-              UINT bo = bl.chooseCombination(true);
+              UINT bo = bl.chooseCombination();
               do{
                   //tolog("One more\n");
                 b1 = bo;
-                bo = bl.chooseCombination(true);
+                bo = bl.chooseCombination();
               } while (bo < b1);
-              bl.chooseCrossings(true);
-              bl.addLines();
-              bl.fixTopology();
+              bl.chooseCrossings();
               bl.setCheckTopol(true);
-              bl.writeSVG("tmp.svg");
+              bl.addLines();
+              bl.fixTopology(true);
+
               bl.setCheckTopol(false);
-              bl.polishLines();
               toOGL(bl, hDC);
               bQuit = true;
               //bQuit = true;
 
           }
       }
+      bl.setCheckTopol(true);
       if (bl.checkTopol() == false){
         bl.udt.clear();
-        bl.interpolate(150);
+        //vector<point> s = bl.getBoundaries();
+        //scale sc = scale(s[0], s[1]);
+        //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
+        //point P = bl.place(sc, pt);
+        //bl.interpolateToDist(P.radius);
+        bl.interpolateToDist(bl.minCircRadius);
         bl.setPrevState();
         bl.setSecureState();
       }
@@ -370,16 +380,16 @@ class glGraphics{
         result.open("result.svg");
         result.write(svgfile.getText().c_str(), svgfile.getText().size());
         result.close();
-        exit(0);
+        exit(1);
       }
       bQuit = false;
-      bl.setFixedCircles(true);
+      /*bl.setFixedCircles(true);
       while (!bQuit)
       {
-          /* check for messages */
+
           if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
           {
-              /* handle or dispatch messages */
+
               if (msg.message == WM_QUIT)
               {
                   bQuit = TRUE;
@@ -393,7 +403,7 @@ class glGraphics{
           else
           {
               bl.setCheckTopol(true);
-              bl.setForces3();
+              bl.setForces1();
               bl.setContacts();
               bl.displayUINT("STATE: ", 1);
               toOGL(bl, hDC);
@@ -402,8 +412,8 @@ class glGraphics{
 
           }
       }
+      bl.setFixedCircles(false);*/
       bQuit = false;
-      bl.setFixedCircles(false);
       bl.resetTimer();
       while (!bQuit)
       {
@@ -428,6 +438,36 @@ class glGraphics{
               bl.setContacts();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve();
+              bl.refreshScreen++;
+
+          }
+      }
+          // Debug topol
+          bQuit = false;
+      bl.resetTimer();
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              bl.setCheckTopol(true);
+              bl.setForces1();
+              bl.setContacts();
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.solve(false, true);
               bl.refreshScreen++;
 
           }
