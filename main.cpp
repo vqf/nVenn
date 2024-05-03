@@ -15,7 +15,10 @@
 #include "topol.h"
 
 
+//#ifndef GRAPHICS
 //#define GRAPHICS
+//#endif // GRAPHICS
+
 #ifdef GRAPHICS
 
   #include <windows.h>
@@ -138,7 +141,8 @@ int main(int argc, char** argv)
       outputFile = "result.svg";
     }
     borderLine lines = getFileInfo(fname, outputFile);
-    lines.interpolate(50);
+    lines.showInfo();
+    //lines.interpolate(50);
     lines.simulate(7);
     //mymap.textOut();
     //psfile = lines.toPS();
@@ -149,6 +153,7 @@ int main(int argc, char** argv)
     result.open(outputFile.c_str());
     result.write(svgfile.getText().c_str(), svgfile.getText().size());
     result.close();
+
     return 0;
 }
 #else
@@ -222,7 +227,7 @@ WinMain (HINSTANCE hInstance,
     hWnd = CreateWindow (
                "GLSample", "nVenn",
                WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-               0, 0, 800, 600,
+               0, 0, 1200, 800,
                NULL, NULL, hInstance, NULL);
     publich = hWnd;
     //MessageBox(hWnd, "hi", "yo", MB_ICONINFORMATION | MB_OK);
@@ -231,10 +236,10 @@ WinMain (HINSTANCE hInstance,
     EnableOpenGL (hWnd, &hDC, &hRC);
     init(); // Init bitmap font
 
-    lines.interpolate(8);
+    //lines.interpolate(8);
 
     glGraphics mygl;
-    borderLine lres = mygl.gsimulate(&lines, 1000, hDC);
+    borderLine lres = mygl.gsimulate(&lines, 100, hDC);
 
 
     //mymap.textOut();

@@ -1,0 +1,20 @@
+1985
+Fixing circle 14 with line 0
+2019
+Line: 0, segment9, circle 14
+minV -1, ddsq 33.4107
+2019
+Line: 0, segment14, circle 14
+minV 33.4107, ddsq 57.4503
+2019
+Line: 0, segment26, circle 14
+minV 33.4107, ddsq 21.9649
+2019
+Line: 0, segment29, circle 14
+minV 21.9649, ddsq 8.33068
+Slope: 0.0348704	Quadrant: 1
+Slope: 0.0348707	Quadrant: 4
+Slope: 0.0348707	Quadrant: 3
+Slope: 0.0348707	Quadrant: 1
+2072 - 1
+Could not fix circle 14 with line 0.
