@@ -1966,9 +1966,9 @@ class borderLine
       addLines();
       //writeSVG("addlines.svg");
       polishLines();
-      //writeSVG("polishlines.svg");
-      embellishTopology();
-      //writeSVG("embellish.svg");
+      writeSVG("polishlines.svg");
+      //embellishTopology();
+      writeSVG("embellish.svg");
       for (UINT k = 0; k < bl.size(); k++){
         bool goon = true;
         while (goon){
@@ -1979,7 +1979,7 @@ class borderLine
               point p3 = circles[j];
               vector<int> belong = toBin(p3.n, bl.size());
               bool incorrect = circleTopol(circles[j], belong, k);
-              point safety;
+              bool safe = false;
               if (incorrect){
                 if (logit){
                   tolog(toString(__LINE__) + "\n" + "Fixing circle " + toString(circles[j].n) +
@@ -2018,7 +2018,7 @@ class borderLine
                         float ddsq = d1sq - dsena * dsena;
                         tolog(toString(__LINE__) + "\nLine: " + toString(k) + ", segment" + toString(i) + ", circle " + toString(circles[j].n) + "\n");
                         tolog("minV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
-                        if ((minV < 0 || (ddsq < minV))){
+                        if ((minV < 0 || (ddsq < minV)) || !safe){
                           minV = ddsq;
                           //tolog(toString(__LINE__) + "\tminV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
                           oi.vertex = tvertx;
@@ -2026,6 +2026,7 @@ class borderLine
                           oi.dsena = dsena;
                           oi.outsider = p3;
                           goon = true;
+                          safe = true;
                         }
                       }
                     }

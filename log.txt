@@ -1,60 +1,20 @@
-1983
+1985
 Fixing circle 14 with line 0
-2017
-Line: 0, segment4, circle 14
-minV -1, ddsq 110.397
-2017
-Line: 0, segment24, circle 14
-minV 110.397, ddsq 18.205
-2017
-Line: 0, segment27, circle 14
-minV 18.205, ddsq 5.24537
-2017
-Line: 0, segment35, circle 14
-minV 5.24537, ddsq 20.8636
-Slope: 1.88791	Quadrant: 1
-Slope: 1.88792	Quadrant: 4
-Slope: 1.88792	Quadrant: 3
-Slope: 1.88792	Quadrant: 1
-2070 - 0
-1983
-Fixing circle 19 with line 2
-2017
-Line: 2, segment6, circle 19
-minV -1, ddsq 71.9775
-2017
-Line: 2, segment7, circle 19
-minV 71.9775, ddsq 55.2923
-2017
-Line: 2, segment18, circle 19
-minV 55.2923, ddsq 27.9788
-2017
-Line: 2, segment26, circle 19
-minV 27.9788, ddsq 8.63289
-2017
-Line: 2, segment27, circle 19
-minV 8.63289, ddsq 11.0123
-Slope: 0.0613753	Quadrant: 2
-Slope: 0.0613752	Quadrant: 1
-Slope: 0.0613752	Quadrant: 4
-Slope: 0.0613752	Quadrant: 2
-2070 - 0
-1983
-Fixing circle 7 with line 5
-2017
-Line: 5, segment10, circle 7
-minV -1, ddsq 2.37136
-2017
-Line: 5, segment18, circle 7
-minV 2.37136, ddsq 10.6428
-2017
-Line: 5, segment23, circle 7
-minV 2.37136, ddsq 6.88248
-Slope: 6.01253	Quadrant: 2
-Slope: 6.01238	Quadrant: 1
-Slope: 6.01238	Quadrant: 4
-Slope: 6.01238	Quadrant: 2
-2070 - 0
-Break on topol
-Circle 127 is incorrect with line 0
-Circle 127 is incorrect with line 5
+2019
+Line: 0, segment9, circle 14
+minV -1, ddsq 33.4107
+2019
+Line: 0, segment14, circle 14
+minV 33.4107, ddsq 57.4503
+2019
+Line: 0, segment26, circle 14
+minV 33.4107, ddsq 21.9649
+2019
+Line: 0, segment29, circle 14
+minV 21.9649, ddsq 8.33068
+Slope: 0.0348704	Quadrant: 1
+Slope: 0.0348707	Quadrant: 4
+Slope: 0.0348707	Quadrant: 3
+Slope: 0.0348707	Quadrant: 1
+2072 - 1
+Could not fix circle 14 with line 0.
