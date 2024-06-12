@@ -1,0 +1,7 @@
+<map id="init" name="init">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,44,32"/>
+<area shape="rect" id="Node000002" href="$bmpfont_8h.html#aea8559252958559714145238c8b79d46" title=" " alt="" coords="92,5,209,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,16,76,16,76,21,44,21"/>
+<area shape="rect" id="Node000003" href="$bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37" title=" " alt="" coords="257,5,333,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,16,241,16,241,21,210,21"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="borderLine::estSurf" name="borderLine::estSurf">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,136,57"/>
+<area shape="rect" id="Node000002" href="$classscale.html#a1cd116a8f255c3660eae870504576311" title=" " alt="" coords="184,5,281,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,31,168,26,169,31,137,36"/>
+<area shape="rect" id="Node000003" href="$classscale.html#ace505d3010c0fd26e71210f05c287747" title=" " alt="" coords="184,56,281,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,52,169,57,168,62,136,57"/>
+</map>

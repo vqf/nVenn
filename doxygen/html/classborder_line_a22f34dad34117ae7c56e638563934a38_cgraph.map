@@ -1,0 +1,13 @@
+<map id="borderLine::setPrevState" name="borderLine::setPrevState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,169,57"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#aa3a41b1ac800c6489e5f1748115024c5" title=" " alt="" coords="217,31,355,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,41,201,41,201,47,169,47"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a172a0a9e7477348ef5e891c492b3c900" title=" " alt="" coords="403,31,533,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="356,41,387,41,387,47,356,47"/>
+<area shape="rect" id="Node000004" href="$classscale.html#a1cd116a8f255c3660eae870504576311" title=" " alt="" coords="581,5,679,32"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="339,27,403,16,488,11,566,12,566,18,488,17,403,21,340,33"/>
+<area shape="rect" id="Node000005" href="$classscale.html#ace505d3010c0fd26e71210f05c287747" title=" " alt="" coords="581,68,679,95"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="343,55,403,67,488,75,566,78,565,83,488,80,403,72,342,61"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="533,31,565,26,566,31,534,36"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="529,55,567,64,566,69,528,60"/>
+</map>

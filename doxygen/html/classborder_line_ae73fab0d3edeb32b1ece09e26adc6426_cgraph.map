@@ -1,0 +1,12 @@
+<map id="borderLine::leftmostCircle" name="borderLine::leftmostCircle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,174,57"/>
+<area shape="rect" id="Node000002" href="$classgroup_iterator.html#a9a39d8603801f7c1aeeb3845ea3fb150" title=" " alt="" coords="222,5,341,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,30,206,26,207,31,174,36"/>
+<area shape="rect" id="Node000005" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="223,56,340,83"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="174,52,208,57,207,62,173,58"/>
+<area shape="rect" id="Node000003" href="$classgroup_iterator.html#ac6fd6d91ce3ebf43be39a7d12e12a692" title="Next number counting from &#160;&#160;that has bit @group set to 1." alt="" coords="571,5,743,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,16,556,16,556,21,341,21"/>
+<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a0b338d3eb42b0b2bc251db90c57b6765" title=" " alt="" coords="389,31,523,57"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="342,25,374,29,373,35,341,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="523,33,556,29,556,34,524,38"/>
+</map>

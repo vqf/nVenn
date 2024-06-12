@@ -1,0 +1,13 @@
+<map id="borderLine::setContacts" name="borderLine::setContacts">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,165,57"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a2b88557f8295e9df37f7e4e0cc2c5842" title=" " alt="" coords="376,5,508,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,36,360,22,360,27,165,41"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#a061f6deff435e34445a03d0ad032d273" title=" " alt="" coords="213,56,327,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,52,197,57,197,62,165,58"/>
+<area shape="rect" id="Node000003" href="$topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="556,31,627,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="509,27,541,33,540,38,508,33"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="317,53,379,34,380,39,319,58"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="327,62,541,45,541,51,328,68"/>
+<area shape="rect" id="Node000005" href="$classborder_line.html#a1f2d5da3e9fcc0528dcafbf5d6a77212" title=" " alt="" coords="375,107,508,133"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="319,81,380,99,379,104,317,86"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="borderLine::setCircles" name="borderLine::setCircles">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,153,32"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#a0c77626f8b856b4b6a2078b5c73796ba" title="Takes a vector containing the binary representation of an integer and returns that integer." alt="" coords="201,5,247,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,16,185,16,185,21,153,21"/>
+<area shape="rect" id="Node000003" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="295,5,361,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="247,16,279,16,279,21,247,21"/>
+</map>

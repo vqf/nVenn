@@ -1,0 +1,18 @@
+<map id="binMap::binMap" name="binMap::binMap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,119,103"/>
+<area shape="rect" id="Node000002" href="$classbin_map.html#afd263ae14f169cc653aad49f40e3c573" title=" " alt="" coords="332,26,459,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,74,113,41,138,25,166,13,211,4,257,4,301,10,340,19,339,24,300,15,257,9,211,9,167,18,141,30,116,46,78,78"/>
+<area shape="rect" id="Node000004" href="$classbin_map.html#a9a1472c6e57e8ed73173a9fd0c32e7ae" title=" " alt="" coords="167,51,275,78"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,78,151,73,152,78,120,83"/>
+<area shape="rect" id="Node000005" href="$classbin_map.html#a6e10d0db8e6a3d8b339ce9c5c1a44093" title=" " alt="" coords="323,77,467,103"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="119,87,308,87,308,93,119,93"/>
+<area shape="rect" id="Node000007" href="$topol_8h.html#a097440c725e87260f8c1788d2625c45c" title="Converts a number into a vector of integers with the binary representation of the number." alt="" coords="195,153,247,179"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="93,101,182,145,180,150,91,106"/>
+<area shape="rect" id="Node000003" href="$classbin_map.html#aa5a4563b88979b22e619a943d266b0f1" title=" " alt="" coords="515,26,681,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="459,37,500,37,500,42,459,42"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="275,54,315,48,316,53,276,59"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="193,52,188,42,192,33,203,27,221,25,240,27,250,34,247,38,238,32,221,30,205,32,196,36,194,42,198,50"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="276,70,308,75,307,80,275,75"/>
+<area shape="rect" id="Node000006" href="$classbin_map.html#abf469fbd3a9c37b5bec89917e5f058ab" title=" " alt="" coords="515,77,681,103"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="468,87,500,87,500,93,468,93"/>
+</map>

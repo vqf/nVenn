@@ -1,0 +1,13 @@
+<map id="borderLine::getOutsidePoints" name="borderLine::getOutsidePoints">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,195,83"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a71baf09e1f585914f0c07f21b321a35e" title=" " alt="" coords="243,31,415,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,56,227,53,228,58,196,61"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="260,81,398,108"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="196,77,245,83,244,88,195,83"/>
+<area shape="rect" id="Node000003" href="$classcircle_iterator.html#a114c860f5bc6db493698d23bbb2cbde0" title=" " alt="" coords="463,5,581,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="415,30,447,26,448,31,416,35"/>
+<area shape="rect" id="Node000005" href="$classcircle_iterator.html#a3dd1266028ddcceb588153936028744f" title=" " alt="" coords="465,56,580,83"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="416,53,449,57,449,62,415,58"/>
+<area shape="rect" id="Node000004" href="$classcircle_iterator.html#a444f0ed0012b005eb0523234d34350b2" title=" " alt="" coords="629,5,763,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="582,16,614,16,614,21,582,21"/>
+</map>

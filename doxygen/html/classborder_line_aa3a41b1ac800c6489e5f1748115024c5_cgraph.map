@@ -1,0 +1,11 @@
+<map id="borderLine::resetOld" name="borderLine::resetOld">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a172a0a9e7477348ef5e891c492b3c900" title=" " alt="" coords="192,31,322,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,41,176,41,176,47,144,47"/>
+<area shape="rect" id="Node000003" href="$classscale.html#a1cd116a8f255c3660eae870504576311" title=" " alt="" coords="370,5,467,32"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="127,27,191,16,276,11,354,12,354,18,277,17,192,21,128,33"/>
+<area shape="rect" id="Node000004" href="$classscale.html#ace505d3010c0fd26e71210f05c287747" title=" " alt="" coords="370,68,467,95"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="131,55,192,67,277,75,354,78,354,83,276,80,191,72,130,61"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,31,354,26,355,31,323,36"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="318,55,355,64,354,69,317,60"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="groupIterator::nxt" name="groupIterator::nxt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,125,32"/>
+<area shape="rect" id="Node000002" href="$classgroup_iterator.html#ac6fd6d91ce3ebf43be39a7d12e12a692" title="Next number counting from &#160;&#160;that has bit @group set to 1." alt="" coords="355,5,526,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,16,339,16,339,21,125,21"/>
+<area shape="rect" id="Node000003" href="$classgroup_iterator.html#a0b338d3eb42b0b2bc251db90c57b6765" title=" " alt="" coords="173,31,307,57"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,25,158,29,157,35,125,30"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="307,33,339,29,340,34,307,38"/>
+</map>

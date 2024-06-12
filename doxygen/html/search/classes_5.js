@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rgb_0',['rgb',['../structrgb.html',1,'']]]
+  ['outsiderinfo_0',['outsiderInfo',['../structoutsider_info.html',1,'']]]
 ];

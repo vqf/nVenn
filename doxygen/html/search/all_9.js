@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['keepdist_0',['keepDist',['../classborder_line.html#ae8cf945e26e7678347369d13baf29e90',1,'borderLine']]],
-  ['keepdistcounter_1',['keepDistCounter',['../classborder_line.html#abe1e208c0eabf1a0a9fc137178578359',1,'borderLine']]]
+  ['join_0',['join',['../classborder_line.html#a50e7f49ba6b1c9eddec9b6d30b1666bc',1,'borderLine']]]
 ];

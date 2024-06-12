@@ -1,0 +1,13 @@
+<map id="borderLine" name="borderLine">
+<area shape="rect" id="Node000001" title=" " alt="" coords="214,144,295,171"/>
+<area shape="rect" id="Node000002" href="$classbin_map.html" title=" " alt="" coords="5,5,69,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,45,70,84,85,102,102,118,128,133,157,143,214,152,213,157,156,148,126,137,99,122,81,106,66,86,45,48"/>
+<area shape="rect" id="Node000003" href="$classl_counter.html" title=" " alt="" coords="93,5,162,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,47,137,84,144,102,155,118,182,138,214,148,212,153,180,142,151,122,139,105,132,85,125,48"/>
+<area shape="rect" id="Node000004" href="$classscale.html" title=" " alt="" coords="228,5,281,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="257,48,257,143,252,143,252,48"/>
+<area shape="rect" id="Node000005" href="$classtime_master.html" title=" " alt="" coords="321,5,407,32"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="364,48,356,85,348,104,336,122,318,137,296,148,294,143,315,133,332,118,343,102,351,84,359,47"/>
+<area shape="rect" id="Node000006" href="$structbl_data.html" title=" " alt="" coords="431,5,489,32"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="450,47,425,86,409,106,389,122,367,135,342,144,296,155,295,150,341,139,364,130,386,118,405,102,421,83,445,45"/>
+</map>

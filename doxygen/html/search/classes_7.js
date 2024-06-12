@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timemaster_0',['timeMaster',['../classtime_master.html',1,'']]]
+  ['rgb_0',['rgb',['../structrgb.html',1,'']]]
 ];

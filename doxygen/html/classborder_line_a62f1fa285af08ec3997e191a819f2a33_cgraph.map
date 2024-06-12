@@ -1,0 +1,13 @@
+<map id="borderLine::polishLines" name="borderLine::polishLines">
+<area shape="rect" id="Node000001" title="Take the lines generated with @addLines and set the points to the outside of each circle." alt="" coords="5,56,160,83"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="253,5,323,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,53,237,28,238,33,140,58"/>
+<area shape="rect" id="Node000003" href="$classtangent.html#a2870e8fb4b876786de4619cad27dd566" title=" " alt="" coords="208,56,368,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,67,192,67,192,72,160,72"/>
+<area shape="rect" id="Node000006" href="$classtangent.html#a93192645af418200291773c09866a038" title=" " alt="" coords="210,107,366,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="140,81,217,100,215,105,139,86"/>
+<area shape="rect" id="Node000004" href="$classtangent.html#aeab7bcf5b95a49fe7fc98d6ed4c9309c" title=" " alt="" coords="416,56,523,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="368,67,400,67,400,72,368,72"/>
+<area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="571,56,677,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="524,67,556,67,556,72,524,72"/>
+</map>

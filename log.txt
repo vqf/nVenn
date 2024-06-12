@@ -1,20 +1,79 @@
-1985
-Fixing circle 14 with line 0
-2019
-Line: 0, segment9, circle 14
-minV -1, ddsq 33.4107
-2019
-Line: 0, segment14, circle 14
-minV 33.4107, ddsq 57.4503
-2019
-Line: 0, segment26, circle 14
-minV 33.4107, ddsq 21.9649
-2019
-Line: 0, segment29, circle 14
-minV 21.9649, ddsq 8.33068
-Slope: 0.0348704	Quadrant: 1
-Slope: 0.0348707	Quadrant: 4
-Slope: 0.0348707	Quadrant: 3
-Slope: 0.0348707	Quadrant: 1
-2072 - 1
-Could not fix circle 14 with line 0.
+1990
+Fixing circle 13 with line 1
+2024
+Line: 1, segment4, circle 13
+minV -1, ddsq 27.2872
+2024
+Line: 1, segment6, circle 13
+minV 27.2872, ddsq 37.2023
+2024
+Line: 1, segment9, circle 13
+minV 27.2872, ddsq 0.0542836
+2024
+Line: 1, segment14, circle 13
+minV 0.0542836, ddsq 85.254
+Vertex: 9
+NextVertex: 10
+Slope: 0.652384	Quadrant: 2
+Slope: 0.652408	Quadrant: 1
+Slope: 0.652408	Quadrant: 4
+Slope: 0.652408	Quadrant: 2
+2080 - 0
+1990
+Fixing circle 19 with line 2
+2024
+Line: 2, segment4, circle 19
+minV -1, ddsq 10.2379
+2024
+Line: 2, segment12, circle 19
+minV 10.2379, ddsq 200.355
+2024
+Line: 2, segment29, circle 19
+minV 10.2379, ddsq 4.37622
+Vertex: 29
+NextVertex: 0
+Slope: 1.18472	Quadrant: 4
+Slope: 1.18471	Quadrant: 3
+Slope: 1.18471	Quadrant: 2
+Slope: 1.18471	Quadrant: 4
+2080 - 0
+1990
+Fixing circle 8 with line 6
+2024
+Line: 6, segment4, circle 8
+minV -1, ddsq 0.0908932
+2024
+Line: 6, segment9, circle 8
+minV 0.0908932, ddsq 31.0474
+2024
+Line: 6, segment14, circle 8
+minV 0.0908932, ddsq 11.7338
+Vertex: 4
+NextVertex: 5
+Slope: 4.27038	Quadrant: 3
+Slope: 4.27037	Quadrant: 2
+Slope: 4.27037	Quadrant: 1
+Slope: 4.27037	Quadrant: 3
+2080 - 0
+Break on topol
+Circle 20 is incorrect with line 1
+Break on topol
+Circle 40 is incorrect with line 4
+Break on topol
+Circle 3 is incorrect with line 1
+Circle 127 is incorrect with line 1
+Circle 2 is incorrect with line 1
+Circle 6 is incorrect with line 1
+Circle 130 is incorrect with line 1
+Circle 12 is incorrect with line 1
+Circle 20 is incorrect with line 1
+Circle 8 is incorrect with line 1
+Circle 40 is incorrect with line 1
+Circle 19 is incorrect with line 1
+Circle 80 is incorrect with line 1
+Circle 32 is incorrect with line 1
+Circle 96 is incorrect with line 1
+Circle 64 is incorrect with line 1
+Circle 128 is incorrect with line 1
+Break on topol
+Circle 12 is incorrect with line 2

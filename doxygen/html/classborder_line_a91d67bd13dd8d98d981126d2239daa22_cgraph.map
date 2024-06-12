@@ -1,0 +1,12 @@
+<map id="borderLine::saveFigure" name="borderLine::saveFigure">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,157,83"/>
+<area shape="rect" id="Node000002" href="$classfile_text.html#a21098c6744e6f897f852432b14181f3e" title=" " alt="" coords="225,5,341,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,53,211,34,213,39,138,58"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#ad0bce08bfd4ce0e631bbaf1445935ffd" title=" " alt="" coords="207,56,359,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,67,191,67,191,72,157,72"/>
+<area shape="rect" id="Node000005" href="$classborder_line.html#a1f18d2f4ce0eb8994b9b956c120e3d84" title=" " alt="" coords="205,107,361,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="138,81,213,100,211,105,137,86"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#ae0a3c3299df6bf91e7bfcca08ce676f2" title=" " alt="" coords="409,81,539,108"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="360,77,394,81,394,87,359,82"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="361,107,393,103,394,108,362,112"/>
+</map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yspan_0',['ySpan',['../classscale.html#ace505d3010c0fd26e71210f05c287747',1,'scale']]]
+  ['xspan_0',['xSpan',['../classscale.html#a1cd116a8f255c3660eae870504576311',1,'scale']]]
 ];

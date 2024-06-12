@@ -1,0 +1,5 @@
+<map id="borderLine::interpolateToDist" name="borderLine::interpolateToDist">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,192,32"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="240,5,310,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,16,224,16,224,21,192,21"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="toInt" name="toInt">
+<area shape="rect" id="Node000001" title="Takes a vector containing the binary representation of an integer and returns that integer." alt="" coords="5,5,52,32"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="100,5,166,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,16,84,16,84,21,52,21"/>
+</map>

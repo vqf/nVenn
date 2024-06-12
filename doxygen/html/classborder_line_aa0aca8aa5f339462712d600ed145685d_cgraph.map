@@ -1,0 +1,25 @@
+<map id="borderLine::checkTopol" name="borderLine::checkTopol">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,161,133"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a0bd95e3372cb60ea8a88d264210024b8" title=" " alt="" coords="209,81,381,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,108,193,104,193,109,161,113"/>
+<area shape="rect" id="Node000012" href="$topol_8h.html#a097440c725e87260f8c1788d2625c45c" title="Converts a number into a vector of integers with the binary representation of the number." alt="" coords="269,132,321,159"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="161,127,254,138,253,143,161,132"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a0661e7145417bf5db71d2fbafb226962" title=" " alt="" coords="429,56,580,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="381,82,413,78,414,83,382,87"/>
+<area shape="rect" id="Node000011" href="$topol_8h.html#a79c729e556b12420c94aeabf8061b0da" title=" " alt="" coords="472,107,538,133"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="382,102,456,112,456,117,381,108"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#a457641ee348d4950c63ce0faf00e1050" title="Do segments p1&#45;p2 and p3&#45;p4 cross?" alt="" coords="654,5,775,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="563,53,641,34,642,39,564,58"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#a71baf09e1f585914f0c07f21b321a35e" title=" " alt="" coords="628,56,801,83"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="581,67,613,67,613,72,581,72"/>
+<area shape="rect" id="Node000010" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="646,107,783,133"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="564,81,642,100,641,105,563,86"/>
+<area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="855,5,961,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="776,16,840,16,840,21,776,21"/>
+<area shape="rect" id="Node000007" href="$classcircle_iterator.html#a114c860f5bc6db493698d23bbb2cbde0" title=" " alt="" coords="849,56,967,83"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="801,67,833,67,833,72,801,72"/>
+<area shape="rect" id="Node000009" href="$classcircle_iterator.html#a3dd1266028ddcceb588153936028744f" title=" " alt="" coords="850,107,966,133"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="769,81,841,100,839,105,768,86"/>
+<area shape="rect" id="Node000008" href="$classcircle_iterator.html#a444f0ed0012b005eb0523234d34350b2" title=" " alt="" coords="1015,56,1148,83"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="968,67,999,67,999,72,968,72"/>
+</map>

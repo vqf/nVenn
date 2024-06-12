@@ -1,0 +1,7 @@
+<map id="borderLine::countCrossings" name="borderLine::countCrossings">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,185,32"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a457641ee348d4950c63ce0faf00e1050" title="Do segments p1&#45;p2 and p3&#45;p4 cross?" alt="" coords="233,5,354,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,16,217,16,217,21,185,21"/>
+<area shape="rect" id="Node000003" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="402,5,507,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,16,386,16,386,21,355,21"/>
+</map>

@@ -1,6 +1,7 @@
 var classscale =
 [
     [ "scale", "classscale.html#a1993931f9a024d5203d7ecdde3f35278", null ],
+    [ "scale", "classscale.html#ac46a6e9b6b58de3ec49793d36642135c", null ],
     [ "initScale", "classscale.html#a84024d4d617a7a19d19a9b394a6bd409", null ],
     [ "isClear", "classscale.html#af203918d6494bae5a3da290f3791e49b", null ],
     [ "maxX", "classscale.html#ac4e3c850624f113eccc5e68a5b1fd30b", null ],

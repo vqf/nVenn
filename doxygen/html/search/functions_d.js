@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['operator_20uint_0',['operator UINT',['../classl_counter.html#ab31bff750e90d2e262c3104abf1e3314',1,'lCounter']]],
-  ['operator_2b_2b_1',['operator++',['../classl_counter.html#aabe5adc58c460c1ccd0a0d57bb825c4f',1,'lCounter::operator++(int)'],['../classl_counter.html#ae69f62cafd796b5d3884bae3d96cdd63',1,'lCounter::operator++()']]],
-  ['operator_2d_2d_2',['operator--',['../classl_counter.html#a155ca9c1020b64a979baa2314670404a',1,'lCounter::operator--(int)'],['../classl_counter.html#a9a10a34915d22e4a58a9870ab55cadb0',1,'lCounter::operator--()']]],
-  ['operator_3d_3',['operator=',['../classl_counter.html#a2abd30e75b4119341cae9b663d83f826',1,'lCounter']]]
+  ['nextingroup_0',['nextInGroup',['../classgroup_iterator.html#ac6fd6d91ce3ebf43be39a7d12e12a692',1,'groupIterator']]],
+  ['nextpoint_1',['nextPoint',['../classborder_line.html#a754217543a26b2df2af42e099d622d3a',1,'borderLine']]],
+  ['num_2',['num',['../classborder_line.html#abc1916ec02c45094e8497182aca58224',1,'borderLine']]],
+  ['nxt_3',['nxt',['../classgroup_iterator.html#a9a39d8603801f7c1aeeb3845ea3fb150',1,'groupIterator::nxt()'],['../classcircle_iterator.html#a114c860f5bc6db493698d23bbb2cbde0',1,'circleIterator::nxt()']]]
 ];

@@ -803,6 +803,7 @@ public:
     UINT backcounter(){
       if (backcount > topcount){
         backcount = topcount;
+        count = 0;
       }
       return backcount;
     }
@@ -1114,6 +1115,10 @@ typedef struct{
   UINT nextVertex;
 } outsiderInfo;
 
+void oilog(outsiderInfo oi){
+  tolog("Vertex: " + toString(oi.vertex) + "\nNextVertex: " + toString(oi.nextVertex) + "\n");
+}
+
 class binMap
 {
 
@@ -1352,7 +1357,7 @@ class borderLine
       b->dt = 2.5e-2f;
       b->mindt = b->dt / 100;
       b->maxdt = b->dt;
-      b->baseBV = 5.0f;
+      b->baseBV = 4.0f;
 
       b->minratio = 0.005f;
       b->stepdt = 0.6f;
@@ -1974,6 +1979,153 @@ class borderLine
         while (goon){
           goon = false;
           for (UINT j = 0; j < circles.size(); j++){
+            if (circles[j].radius > 0 && ((circles[j].flags & USED) == 0) && !goon){
+              circles[j].flags = setFlag(circles[j].flags, USED);
+              point p3 = circles[j];
+              vector<int> belong = toBin(p3.n, bl.size());
+              bool incorrect = circleTopol(circles[j], belong, k);
+              bool safe = false;
+              if (incorrect){
+                if (logit){
+                  tolog(toString(__LINE__) + "\n" + "Fixing circle " + toString(circles[j].n) +
+                        " with line " + toString(k) + "\n");
+                }
+                outsiderInfo oi;
+                float minV = -1;
+                for (UINT i = 0; i < bl[k].size(); i++){
+                  UINT tvertx = i;
+                  point p1 = bl[k][tvertx];
+                  UINT tvertnx = 0;
+                  if (i < (bl[k].size() - 1)){
+                    tvertnx = i + 1;
+                  }
+                  point p2 = bl[k][tvertnx];
+                  if (p1 != p3 && p2 != p3 && p1 != p2){
+                    tangent t1(p1, p2);
+                    tangent t2(p1, p3);
+                    tangent t3(p2, p3);
+                    //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack());
+                    t2.rotate(t1);
+                    t3.rotate(t1);
+                    float mindsena = 0;
+                    //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack() + "Line " + toString(k) + ", circle " + toString(circles[j].n) + "\n");
+                    if (t2.getQuadrant() == 4 && t3.getQuadrant() == 3){
+                      //tolog(toString(__LINE__) + "\n" + "Line " + toString(k) + ", circle " + toString(j) + " " + toString(circles[j].n) + "\n");
+                      float d1sq = (p3.x - p1.x) * (p3.x - p1.x) +
+                                   (p3.y - p1.y) * (p3.y - p1.y);
+                      float d2sq = (p2.x - p3.x) * (p2.x - p3.x) +
+                                   (p2.y - p3.y) * (p2.y - p3.y);
+                      float dsq = (p2.x - p1.x) * (p2.x - p1.x) +
+                                  (p2.y - p1.y) * (p2.y - p1.y);
+                      if (dsq > 0){
+                        float d = sqrt(dsq);
+                        float dsena = (dsq + d1sq - d2sq) / (2*d);
+                        float ddsq = d1sq - dsena * dsena;
+                        tolog(toString(__LINE__) + "\nLine: " + toString(k) + ", segment" + toString(i) + ", circle " + toString(circles[j].n) + "\n");
+                        tolog("minV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
+                        if ((minV < 0 || (ddsq < minV)) || !safe){
+                          minV = ddsq;
+                          //tolog(toString(__LINE__) + "\tminV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
+                          oi.vertex = tvertx;
+                          oi.nextVertex = tvertnx;
+                          oi.dsena = dsena;
+                          oi.outsider = p3;
+                          goon = true;
+                          safe = true;
+                        }
+                      }
+                    }
+                  }
+                }
+                if (goon){
+                  oilog(oi);
+                  vector<point> newpoints;
+                  for (UINT i = 0; i <= oi.vertex; i++){
+                    newpoints.push_back(bl[k][i]);
+                  }
+                  UINT prevVertex = oi.vertex;
+                  UINT currentVertex = oi.nextVertex;
+                  float dsena = oi.dsena;
+                  point pt = oi.outsider;
+                  if (dsena > pt.radius){
+                    tangent mn(0, 1);
+                    tangent rv(1, 0);
+                    point v = bl[k][prevVertex];
+                    point vn = bl[k][currentVertex];
+                    tangent t(v, vn);
+                    point q = t.transformPoint(v, dsena);
+                    tangent toc1(q, pt);
+                    float d = distance(q.x, q.y, pt.x, pt.y);
+                    point c1 = toc1.transformPoint(q, d - pt.radius);
+                    tangent toc2 = toc1 + mn;
+                    point c2 = toc2.transformPoint(pt, pt.radius);
+                    point c3 = toc1.transformPoint(pt, pt.radius);
+                    tangent toc4 = toc2 + rv;
+                    point c4 = toc4.transformPoint(pt, pt.radius);
+                    newpoints.push_back(q);
+                    newpoints.push_back(c1);
+                    newpoints.push_back(c2);
+                    newpoints.push_back(c3);
+                    newpoints.push_back(c4);
+                    newpoints.push_back(c1);
+                    newpoints.push_back(q);
+                    tolog(t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
+                  }
+                  if (oi.nextVertex > 0){
+                    for (UINT i = oi.nextVertex; i < bl[k].size(); i++){
+                      newpoints.push_back(bl[k][i]);
+                    }
+                  }
+                  bl[k] = newpoints;
+                  tolog(toString(__LINE__) + " - " + toString(circleTopol(p3, belong, k)) + "\n");
+                  //writeSVG("delme.svg");
+                  //exit(0);
+                  //tolog(toString(circleTopol(p3, belong, k)) + "\n");
+                }
+                else{
+                  tolog("Somehow, this one did not make it.\n");
+                  tolog("Line " + toString(k) + ", segment " + toString(oi.vertex) + "\n");
+                  tolog(oi.outsider.croack());
+                  writeSVG("delme.svg");
+                  exit(1);
+                }
+                incorrect = circleTopol(circles[j], belong, k); //Was it fixed?
+                if (incorrect){
+                  writeSVG("error.svg");
+                  tolog("Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n");
+                  exit(1);
+                }
+              }
+            }
+          }
+        }
+        for (UINT i = 0; i < circles.size(); i++){
+          circles[i].flags = unsetFlag(circles[i].flags, USED);
+        }
+      }
+      embellishTopology(logit);
+    }
+
+
+    /** \brief Fix topology by excluding circles from improper borderlines
+     *
+     * \param false bool logit= Whether the function should log operations.
+     *        Ignored if DEBUG is undef.
+     * \return void
+     *
+     */
+    void fTopology(bool logit = false){
+      addLines();
+      //writeSVG("addlines.svg");
+      polishLines();
+      writeSVG("polishlines.svg");
+      //embellishTopology();
+      writeSVG("embellish.svg");
+      for (UINT k = 0; k < bl.size(); k++){
+        bool goon = true;
+        while (goon){
+          goon = false;
+          for (UINT j = 0; j < circles.size(); j++){
             if (circles[j].radius > 0 && ((circles[j].flags & USED) == 0)){
               circles[j].flags = setFlag(circles[j].flags, USED);
               point p3 = circles[j];
@@ -2099,102 +2251,6 @@ class borderLine
     }
 
 
-    /** \brief Fix topology by excluding circles from improper borderlines
-     *
-     * \param false bool logit= Whether the function should log operations.
-     *        Ignored if DEBUG is undef.
-     * \return void
-     *
-     */
-    void fTopology(bool logit = false){
-      for (UINT i = 0; i < bl.size(); i++){
-        vector<point> outsiders;
-        for (UINT j = 0; j < circles.size(); j++){
-          vector<int> belong = toBin(circles[j].n, bl.size());
-          if (circles[j].radius > 0 && belong[i] == 0){
-            bool incorrect = circleTopol(circles[j], belong, i);
-            if (incorrect){
-              outsiders.push_back(circles[j]);
-            }
-          }
-        }
-        vector<outsiderInfo> oInfo;
-
-
-        for (UINT j = 0; j < outsiders.size(); j++){
-          float minV = -1;
-          UINT tvertx = 0;
-          UINT tvertnx = 0;
-          float mindsena = 0;
-          bool countThisOne = true;
-          for (UINT k = 0; k < bl[i].size(); k++){
-            UINT vnx = 0;
-            if (k < (bl[i].size() - 1)){
-              vnx = k + 1;
-            }
-            point nxt = bl[i][vnx];
-            float v = 0;
-            float d1sq = (outsiders[j].x - bl[i][k].x) * (outsiders[j].x - bl[i][k].x) +
-                         (outsiders[j].y - bl[i][k].y) * (outsiders[j].y - bl[i][k].y);
-            float d2sq = (nxt.x - outsiders[j].x) * (nxt.x - outsiders[j].x) +
-                         (nxt.y - outsiders[j].y) * (nxt.y - outsiders[j].y);
-            float dsq = (nxt.x - bl[i][k].x) * (nxt.x - bl[i][k].x) +
-                        (nxt.y - bl[i][k].y) * (nxt.y - bl[i][k].y);
-            float d = sqrt(dsq);
-            float dsena = (dsq + d1sq - d2sq) / (2*d);
-            float ddsq = d1sq - dsena * dsena;
-            if (dsena < outsiders[j].radius){
-              countThisOne = false;
-            }
-            if (dsq < d1sq && dsq < d2sq && dsena > 0 && (minV < 0 || (ddsq < minV))){
-              minV = ddsq;
-              tvertx = k;
-              tvertnx = vnx;
-              mindsena = dsena;
-            }
-          }
-          if (countThisOne){
-            outsiderInfo oi;
-            oi.outsider = outsiders[j];
-            oi.dsena = mindsena;
-            oi.vertex = tvertx;
-            oi.nextVertex = tvertnx;
-            oInfo.push_back(oi);
-          }
-        }
-        if (logit){
-          tolog(toString(__LINE__) + "\n" + "Line " + toString(i) + " has " + toString(outsiders.size()) + " outsiders.\n");
-        }
-        sort(oInfo.begin(), oInfo.end(), outsorter);
-        vector<point> newpoints;
-        UINT currentVertex = 0;
-        for (UINT j = 0; j < oInfo.size(); j++){
-          for (UINT v = currentVertex; v <= oInfo[j].vertex; v++){
-            newpoints.push_back(bl[i][v]);
-          }
-          UINT prevVertex = oInfo[j].vertex;
-          currentVertex = oInfo[j].nextVertex;
-          float dsena = oInfo[j].dsena;
-          point pt = oInfo[j].outsider;
-          if (dsena > pt.radius){
-            point v = bl[i][prevVertex];
-            point vn = bl[i][currentVertex];
-            tangent t(vn.x - v.x, vn.y - v.y);
-            point q = t.transformPoint(v, dsena);
-            newpoints.push_back(q);
-            //pt.flags = pt.flags | RIGHT_SIDE;
-            newpoints.push_back(pt);
-            newpoints.push_back(q);
-          }
-        }
-        for (UINT k = currentVertex; k < bl[i].size(); k++){
-          newpoints.push_back(bl[i][k]);
-        }
-        bl[i] = newpoints;
-      }
-      embellishTopology(logit);
-    }
-
     /** \brief Adds group lines
      *
      * \return void
@@ -2271,6 +2327,22 @@ class borderLine
 
       }
       //exit(0);
+    }
+
+    /** \brief If the segment between points `p1` and `p2` crosses circle `c`,
+     * return a set of points that define a path starting at `p1` and ending
+     * at `p2` surrounding `c` on the left (`onTheLeft` == true) or on the right.
+     *
+     * \param p1 point Start of segment
+     * \param p2 point End of segment
+     * \param c point Circle
+     * \param true bool onTheLeft Surrounding on the left?
+     * \return vector<point>
+     *
+     */
+    vector<point> surroundCircle(point p1, point p2, point c, bool onTheLeft=true){
+      vector<point> result;
+      result.push_back(p1);
     }
 
     /** \brief Take the lines generated with @addLines and set the points to the
@@ -2631,6 +2703,9 @@ class borderLine
     void restorePrevState(){
       bl = bl_old10;
       circles = circles_old10;
+      for (UINT i = 0; i < circles.size(); i++){
+        circles[i].resetv();
+      }
       deciderCounter = 0;
       keepDistCounter = 0;
       blSettings.ncycles = ncyles_old10;
@@ -3106,12 +3181,9 @@ class borderLine
         }
         if (blSettings.doCheckTopol == true && (checkTopol()))
         {
-          for (UINT j = 0; j < circles.size(); j++){
-            //circles[j].resetv();
-          }
-            if (breakOnTopol){
-              //writeSVG("error.svg");
+          if (breakOnTopol){
               tolog("Break on topol\n");
+              writeSVG("error.svg");
               for (UINT j = 0; j < circles.size(); j++){
                 if (circles[j].radius > 0){
                   point P = circles[j];
@@ -3138,16 +3210,21 @@ class borderLine
           if (blCounter == 0)
           {
               setPrevState();
+              //udt.reset();
           }
           if (deciderCounter.isMax())
           {
               udt.poke();
           }
           if (keepDistCounter.isMax()){
-              setSecureState();
               keepDist(avgStartDist);
               if (checkTopol()){
+                writeSVG("error.svg");
+                tolog("Break on KeepDist\n");
                 restorePrevState();
+              }
+              else{
+                setSecureState();
               }
           }
         }
@@ -4210,7 +4287,7 @@ public:
               endPoint = bl[i][j];
               segment = distance(startPoint.x, startPoint.y,
                                  endPoint.x, endPoint.y);
-              if ((bls <= nPointsMin && segment > minDist10) || segment > minDist){
+              if ((segment > minDist10) || segment > minDist){
                 tempPoint.x = endPoint.x;
                 tempPoint.y = endPoint.y;
                 tempPoint.mass = POINT_MASS;
