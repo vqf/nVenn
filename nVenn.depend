@@ -117,7 +117,7 @@
 	<Windows.h>
 	"graphics.h"
 
-1718212041 d:\proyectos\nvenn2\gh\topol.h
+1718390554 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -127,7 +127,7 @@
 	<algorithm>
 	<math.h>
 
-1708424984 d:\proyectos\nvenn2\gh\graphics.h
+1718388479 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"

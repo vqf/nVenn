@@ -258,6 +258,7 @@ typedef struct blData{
   UINT ncyclesInterrupted;
   float maxf;
   float maxv;
+  float simTime; /**< Simulated time since start */
   int checkFor; // If any of the previous or following 10 point is sticking to
                            // the surface, the current point will also stick
   string inputFile;
@@ -1357,7 +1358,7 @@ class borderLine
       b->dt = 2.5e-2f;
       b->mindt = b->dt / 100;
       b->maxdt = b->dt;
-      b->baseBV = 4.0f;
+      b->baseBV = 5.0f;
 
       b->minratio = 0.005f;
       b->stepdt = 0.6f;
@@ -1380,6 +1381,7 @@ class borderLine
       b->ncycles = 0;
       b->ncyclesInterrupted = 0;
       b->maxRunningTime = 200; // 300 seconds to finish the first part
+      b->simTime = 0;
     }
 
     UINT leftmostCircle(UINT group){
@@ -2491,6 +2493,7 @@ class borderLine
       addLines();
       polishLines();
       UINT bestout = countOutsiders();
+      UINT bestcrs = countCrossings();
       if (logit){
         tolog(toString(__LINE__) + "\n" + "Starting with " + toString(bestout) + " outsiders.\n");
       }
@@ -2502,9 +2505,11 @@ class borderLine
               addLines();
               polishLines();
               UINT out = countOutsiders();
-              if (out < bestout){
+              UINT crs = countCrossings();
+              if (out < bestout || (out == bestout && crs < bestcrs)){
                 best = circles;
                 bestout = out;
+                bestcrs = crs;
                 if (logit){
                   tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
                         "j: " + toString(j) + ", " + "out: " + toString(out) + "\n");
@@ -2532,32 +2537,35 @@ class borderLine
         vector<point> q = getOutsidePoints();
         for (UINT i = 0; i < circles.size(); i++){
           if (circles[i].radius > 0){
-            point t; t.x = circles[i].x; t.y = circles[i].y;
-            UINT j = 0;
-            circles[i].x = q[j].x;
-            circles[i].y = q[j].y;
-            addLines();
-            polishLines();
-            UINT out = countOutsiders();
-            if (logit){
-              tolog(toString(__LINE__) + "\n" + toString(out) + "-" + toString(bestout) + "\n");
-            }
-            if (out < bestout){
-                bestout = out;
-                goon = true;
-                circles[i].flags = circles[i].flags | TAKEN_OUT;
-                setScale(circles[i]);
-                if (logit){
-                  tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
-                        "j: " + toString(j) + ", " + "outer: " + toString(out) + "\n");
-                  tolog(toString(__LINE__) + "\n" + "Change : \n" + t.croack() + circles[i].croack());
-                }
-            }
-            else{
-              //tolog(toString(__LINE__) + "\n" + toString(i) + " with " + toString(j) + " was no better\n");
-              circles[i].flags = circles[i].flags & (~TAKEN_OUT);
-              circles[i].x = t.x;
-              circles[i].y = t.y;
+            for (UINT j = 0; j < q.size(); j++){
+              point t; t.x = circles[i].x; t.y = circles[i].y;
+              circles[i].x = q[j].x;
+              circles[i].y = q[j].y;
+              addLines();
+              polishLines();
+              UINT out = countOutsiders();
+              UINT crs = countCrossings();
+              if (logit){
+                tolog(toString(__LINE__) + "\n" + toString(out) + "-" + toString(bestout) + "\n");
+              }
+              if (out < bestout || (out == bestout && crs < bestcrs)){
+                  bestout = out;
+                  bestcrs = crs;
+                  goon = true;
+                  circles[i].flags = circles[i].flags | TAKEN_OUT;
+                  setScale(circles[i]);
+                  if (logit){
+                    tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
+                          "j: " + toString(j) + ", " + "outer: " + toString(out) + "\n");
+                    tolog(toString(__LINE__) + "\n" + "Change : \n" + t.croack() + circles[i].croack());
+                  }
+              }
+              else{
+                //tolog(toString(__LINE__) + "\n" + toString(i) + " with " + toString(j) + " was no better\n");
+                circles[i].flags = circles[i].flags & (~TAKEN_OUT);
+                circles[i].x = t.x;
+                circles[i].y = t.y;
+              }
             }
           }
         }
@@ -2854,6 +2862,17 @@ class borderLine
                 f = spring(bl[i][j], bl[i][j-1], damp);
             }
         }
+    }
+
+    void setCircleAttraction(float G = 1e-5){
+      float minDist = maxRad()  * sqrt((float) circles.size());
+      for (UINT i = 0; i < (circles.size() - 1); i++){
+        for (UINT j = i + 1; j < circles.size(); j++){
+          if (distance(circles[i].x, circles[i].y, circles[j].x, circles[j].y) > minDist){
+            selforce(circles[i], circles[j], G);
+          }
+        }
+      }
     }
 
     void setForcesFirstStep(){
@@ -3165,9 +3184,9 @@ class borderLine
         updPos(kb, resetVelocity);
         clearForces();
 //Show dt
+        displayFloat("SIMTIME", blSettings.simTime);
         displayFloat("DT", blSettings.dt);
         displayUINT("CYCLES", blSettings.ncycles);
-        displayFloat("NPOINTSMIN", nPointsMin);
         displayUINT("NPOINTS", bl[0].size());
         displayFloat("UNST", udt.unstabledt());
         displayUINT("COUNT", udt.counter());
@@ -3272,6 +3291,7 @@ class borderLine
 
                   bl[i][j].x += bl[i][j].vx * blSettings.dt;
                   bl[i][j].y += bl[i][j].vy * blSettings.dt;
+                  blSettings.simTime += blSettings.dt;
                   /*******/
                   //attention(bl[i][j].x, bl[i][j].y);
                   /*******/
@@ -3646,7 +3666,7 @@ public:
         //init counters
         blCounter.setLimits(0, 5u);
         deciderCounter.setLimits(0, 5u);
-        keepDistCounter.setLimits(0, 100u);
+        keepDistCounter.setLimits(0, 500u);
         refreshScreen.setLimits(1, 50);
 
         //init internal scale
@@ -3705,6 +3725,16 @@ public:
           colors.push_back(toRGB(arr[i], 1));
         }
         /*writeSVG()*/
+    }
+
+    /** \brief Set baseBV (Reference friction coefficient)
+     *
+     * \param bv float New value (5.0 by default)
+     * \return void
+     *
+     */
+    void setBV(float bv){
+      blSettings.baseBV = bv;
     }
 
 
@@ -4268,39 +4298,14 @@ public:
 
 
     void keepDist(float minDist){
-      UINT i, j;
-      float perim;
-      float segment;
-      float minDist10 = minDist / 100;
-      point startPoint;
-      point endPoint;
-      point tempPoint;
-      vector<point> tempv;
-      vector<vector<point> > tempbl;
-      for (i = 0; i < bl.size(); i++)
-      {
-        UINT bls = (UINT) bl[i].size();
-          perim = perimeter(bl[i], true);
-          startPoint = bl[i][bl[i].size()-1];
-          for (j = 0; j < bls; j++)
-          {
-              endPoint = bl[i][j];
-              segment = distance(startPoint.x, startPoint.y,
-                                 endPoint.x, endPoint.y);
-              if ((segment > minDist10) || segment > minDist){
-                tempPoint.x = endPoint.x;
-                tempPoint.y = endPoint.y;
-                tempPoint.mass = POINT_MASS;
-                tempv.push_back(tempPoint);
-                startPoint = endPoint;
-              }
-
+      for (UINT i = 0; i < bl.size(); i++){
+        for (UINT j = 0; j < bl[i].size() - 2; j++){
+          float d = distance(bl[i][j].x, bl[i][j].y, bl[i][j+2].x, bl[i][j+2].y);
+          if (d < minCircRadius){
+            bl[i].erase(bl[i].begin() + j+ 1);
           }
-          tempbl.push_back(tempv);
-          tempv.clear();
+        }
       }
-      bl.clear();
-      bl = tempbl;
     }
 
     void interpolateToDist(float pointDist){

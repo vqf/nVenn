@@ -339,8 +339,8 @@ dlme.close();
           {
         //      bl.setForces3();
               //bl.chooseCombination();
-              bl.addLines();
-              bl.polishLines();
+              //bl.addLines();
+              //bl.polishLines();
               //bl.setCheckTopol(true);
               UINT b1 = bl.countOutsiders();
               UINT bo = bl.chooseCombination();
@@ -349,9 +349,10 @@ dlme.close();
                 b1 = bo;
                 bo = bl.chooseCombination();
               } while (bo < b1);
-              bl.chooseCrossings();
+              //bl.chooseCrossings();
               bl.setCheckTopol(true);
               bl.addLines();
+              bl.polishLines();
               bl.fixTopology(true);
 
               bl.setCheckTopol(false);
@@ -464,6 +465,8 @@ dlme.close();
           else
           {
               bl.setCheckTopol(true);
+              bl.setBV(0.5);
+              bl.setCircleAttraction(1e-4);
               bl.setForces1();
               bl.setContacts();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
