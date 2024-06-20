@@ -1,13 +1,11 @@
 nVenn1.2
-8
+6
 Ball2017
 Courtois2015
 Hilton2017
 Ball2017
 Ball2017
 Ball2017
-Courtois2015
-Hilton2017
 0
 40
 1

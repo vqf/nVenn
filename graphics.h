@@ -81,7 +81,6 @@ class glGraphics{
 
   void toOGL(borderLine bl, HDC hDC)
   {
-    borderLine dummy;
       UINT i, j;
       point P;     //coordinates
       vector<point> temp; //stores perimeters
@@ -94,6 +93,7 @@ class glGraphics{
       //addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));
       ogl.initScale();
       //define vectors
+      vector<point> attn = bl.getWarnings();
       if (bl.blSettings.doCheckTopol == true){
         for (i = 0; i < blp.size(); i++)
         {
@@ -108,6 +108,31 @@ class glGraphics{
             }
             glEnd ();
         }
+        /**********/
+      for (i = 0; i < attn.size();  i++)
+      {
+          P = bl.place(ogl, attn[i]);
+          //point tp;
+          /*tp.x = warn[i].fx;
+          tp.y = warn[i].fy;
+          point P2;
+          P2 = place(ogl, tp);
+          glBegin (GL_LINES);
+              glColor3f (0.0f, 1.0f, 0.0f);
+              glVertex2f (P.x, P.y);
+              glVertex2f (P2.x,P2.y);
+          glEnd ();
+          */
+          temp = glCircle(P.x, P.y, P.radius);
+          glBegin (GL_LINE_LOOP);
+          glColor3f (0.0f, 1.0f, 0.0f);
+          for (j = 0; j < temp.size(); j++)
+          {
+              glVertex2f (temp[j].x, temp[j].y);
+          }
+          glEnd ();
+        }
+        bl.clearWarnings();
       }
       else{
 
@@ -175,31 +200,6 @@ class glGraphics{
           }
           glEnd ();
       }
-      /**********/
-      for (i = 0; i < bl.warn.size();  i++)
-      {
-          P = bl.place(ogl, bl.warn[i]);
-          //point tp;
-          /*tp.x = warn[i].fx;
-          tp.y = warn[i].fy;
-          point P2;
-          P2 = place(ogl, tp);
-          glBegin (GL_LINES);
-              glColor3f (0.0f, 1.0f, 0.0f);
-              glVertex2f (P.x, P.y);
-              glVertex2f (P2.x,P2.y);
-          glEnd ();
-          */
-          temp = glCircle(P.x, P.y, P.radius);
-          glBegin (GL_LINE_LOOP);
-          glColor3f (0.0f, 1.0f, 0.0f);
-          for (j = 0; j < temp.size(); j++)
-          {
-              glVertex2f (temp[j].x, temp[j].y);
-          }
-          glEnd ();
-      }
-      bl.warn.clear();
       // Text
       glColor3f(0.0f, 0.0f, 1.0f);
       float yd = 0.8f;
@@ -217,6 +217,27 @@ class glGraphics{
       //glFlush();
       **********/
       SwapBuffers (hDC);
+      /*********DEBUG***/
+      if (attn.size() > 0){
+        bool bQuit = false;
+            MSG msg;
+
+            while (!bQuit){
+            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+            {
+
+                if (msg.message == WM_QUIT)
+                {
+                    bQuit = TRUE;
+                }
+                {
+                    TranslateMessage (&msg);
+                    DispatchMessage (&msg);
+                }
+            }
+          }
+      }
+      /*********DEBUG***/
       //Sleep(1);
   }
 

@@ -259,6 +259,7 @@ typedef struct blData{
   float maxf;
   float maxv;
   float simTime; /**< Simulated time since start */
+  string cycleInfo; /**< Debuggin info from last cycle */
   int checkFor; // If any of the previous or following 10 point is sticking to
                            // the surface, the current point will also stick
   string inputFile;
@@ -1903,6 +1904,7 @@ class borderLine
                 UINT fcirc = 0;
                 for (UINT k = fcirc; k < circles.size(); k++){
                   point c = circles[k];
+                  float lrad = maxRad();
                   if (!again && ((c.flags & USED) == 0)){
                     bool inside = (c.n & twoPow(i)) > 0 ? true : false;
                     float dsq1 = sqDistance(c, current);
@@ -1917,18 +1919,11 @@ class borderLine
                         c.flags = setFlag(c.flags, USED);
                         fcirc = k + 1;
                         tangent tp(nxt.x - current.x, nxt.y - current.y);
-                        float t = sqrt(c.radius * c.radius - h * h);
+                        float t = sqrt(lrad * lrad - h * h);
                         float d1 = sqrt(dsq1 - h * h);
                         float d2 = sqrt(dsq2 - h * h);
                         float x1 = d1 - t;
                         float x2 = d2 - t;
-                        //tolog(toString(__LINE__) + "\n" + "---\n");
-                        //tolog(toString(__LINE__) + "\n" + "I: " + toString(i) + "\t J: " + toString(j) + "\n");
-                        //tolog(toString(__LINE__) + "\n" + current.croack() + nxt.croack() + c.croack());
-                        //tolog(toString(__LINE__) + "\n" + "D1: " + toString(dsq1) + ", x1: " + toString(x1) + "\n");
-                        //tolog(toString(__LINE__) + "\n" + "h: " + toString(h) + "\n");
-                        //tolog(toString(__LINE__) + "\n" + "Mask: " + toString(twoPow(i)) + "\t" + "Inside: " + toString(inside) + "\n");
-                        //tolog(toString(__LINE__) + "\n" + "---\n");
                         point pst1 = tp.transformPoint(current, x1);
                         point pst2 = tp.transformPoint(current, d1 + t) ;
                         newbl.push_back(pst1);
@@ -1938,7 +1933,7 @@ class borderLine
                           tr = tp + lft;
                           //tolog(toString(__LINE__) + "\n" + "Inside: \n" + tp.croack() + tr.croack());
                         }
-                        point newp = tr.transformPoint(c, c.radius);
+                        point newp = tr.transformPoint(c, lrad);
                         newbl.push_back(newp);
                         newbl.push_back(pst2);
                         // Close the bl for the next cycle
@@ -1974,8 +1969,6 @@ class borderLine
       //writeSVG("addlines.svg");
       polishLines();
       writeSVG("polishlines.svg");
-      //embellishTopology();
-      writeSVG("embellish.svg");
       for (UINT k = 0; k < bl.size(); k++){
         bool goon = true;
         while (goon){
@@ -2050,6 +2043,7 @@ class borderLine
                   float dsena = oi.dsena;
                   point pt = oi.outsider;
                   if (dsena > pt.radius){
+                    float lrad = maxRad();
                     tangent mn(0, 1);
                     tangent rv(1, 0);
                     point v = bl[k][prevVertex];
@@ -2058,12 +2052,12 @@ class borderLine
                     point q = t.transformPoint(v, dsena);
                     tangent toc1(q, pt);
                     float d = distance(q.x, q.y, pt.x, pt.y);
-                    point c1 = toc1.transformPoint(q, d - pt.radius);
+                    point c1 = toc1.transformPoint(q, d - lrad);
                     tangent toc2 = toc1 + mn;
-                    point c2 = toc2.transformPoint(pt, pt.radius);
-                    point c3 = toc1.transformPoint(pt, pt.radius);
+                    point c2 = toc2.transformPoint(pt, lrad);
+                    point c3 = toc1.transformPoint(pt, lrad);
                     tangent toc4 = toc2 + rv;
-                    point c4 = toc4.transformPoint(pt, pt.radius);
+                    point c4 = toc4.transformPoint(pt, lrad);
                     newpoints.push_back(q);
                     newpoints.push_back(c1);
                     newpoints.push_back(c2);
@@ -2366,7 +2360,7 @@ class borderLine
           }
           if (current.radius > 0){
             // Point 1
-            float r = current.radius;
+            float r = maxRadius;// current.radius;
             float d = distance(current.x, current.y, prev.x, prev.y);
             if (d > 0){
               float ndx = (current.x - prev.x) * (1 - r/d);
@@ -2460,6 +2454,24 @@ class borderLine
           result[1].y = circles[i].y;
         }
         i= ci.nxt();
+      }
+      if (blSettings.doCheckTopol){
+        for (UINT i = 0; i < bl.size(); i++){
+          for (UINT j = 0; j < bl[i].size(); j++){
+            if (bl[i][j].x < result[0].x){
+              result[0].x = bl[i][j].x;
+            }
+            if (bl[i][j].y < result[0].y){
+              result[0].y = bl[i][j].y;
+            }
+            if (bl[i][j].x > result[1].x){
+              result[1].x = bl[i][j].x;
+            }
+            if (bl[i][j].y > result[1].y){
+              result[1].y = bl[i][j].y;
+            }
+          }
+        }
       }
       result[0].x -= air;
       result[0].y -= air;
@@ -2812,10 +2824,10 @@ class borderLine
         if (d < circ.radius && isInside(p0, p1, virt))
         {
             result = contact(circ, virt);
-            p0.fx = -d1 * result.fx;
-            p0.fy = -d1 * result.fy;
-            p1.fx = -d0 * result.fx;
-            p1.fy = -d0 * result.fy;
+            p0.fx = d1 * virt.fx;
+            p0.fy = d1 * virt.fy;
+            p1.fx = d0 * virt.fx;
+            p1.fy = d0 * virt.fy;
             //attention(p0.x, p0.y, p0.x+1e-3*p0.fx, p0.y+1e-3*p0.fy);
             //attention(p1.x, p1.y, p1.x+1e-3*p1.fx, p1.y+1e-3*p1.fy);
             //Sleep(100);
@@ -3177,6 +3189,7 @@ class borderLine
     {
         UINT i;
         float kb = blSettings.baseBV;
+        warn.clear();
         dataDisplay.clear();
 
         //Init the scale for the new frame
@@ -3211,6 +3224,7 @@ class borderLine
                     bool incorrect = circleTopol(P, b, i);
                     if (incorrect){
                       tolog("Circle " + toString(circles[j].n) + " is incorrect with line " + toString(i) + "\n");
+                      tolog(blSettings.cycleInfo + "\n");
                     }
                   }
                 }
@@ -3375,25 +3389,47 @@ class borderLine
       bool isIn = false;      //Is the circle inside the curve?
       vector<point> bnd = getBoundaries();
       float xmax = max(bnd[0].x, bnd[1].x) + 2 * maxRad() +  1;
-      point p3 = P;
-      point p4;
-      p4.x = xmax;
-      p4.y = P.y;
+      point p1 = P;
+      point p2;
+      p2.x = xmax;
+      p2.y = P.y;
+      blSettings.cycleInfo = "";
       for (UINT i = 0; i < bl[j].size(); i++){
-        point p1 = bl[j][i];
-        point p2 = bl[j][0];
+        point p3 = bl[j][i];
+        point p4 = bl[j][0];
         if (i < (bl[j].size() - 1)){
-          p2 = bl[j][i+1];
+          p4 = bl[j][i+1];
         }
         if (cross(p1, p2, p3, p4)){
           isIn = !isIn;
+          blSettings.cycleInfo += "Cross: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack() + "\n";
+          blSettings.cycleInfo += "i: " + toString(i) + ", j: " + toString(j) + "\n";
         }
       }
       if (isIn ^ mustBeIn)
       {
           //attention(circles[j].x, circles[j].y);
-          //Sleep(1000);
-          //tolog(toString(__LINE__) + "\n" + "Line " + toString(j) + ", " + P.croack() + "isIn: " + toString(isIn) + " mustBeIn: " + toString(mustBeIn) + "\n\n");
+          /******DEBUG*/
+          if (blSettings.doCheckTopol){
+            attention(p1.x, p1.y);
+            attention(p2.x, p2.y);
+            for (UINT i = 0; i < bl[j].size(); i++){
+              point p3 = bl[j][i];
+              point p4 = bl[j][0];
+              if (i < (bl[j].size() - 1)){
+                p4 = bl[j][i+1];
+              }
+              if (cross(p1, p2, p3, p4)){
+                //isIn = !isIn;
+                attention(p3.x, p3.y);
+                attention(p4.x, p4.y);
+                blSettings.cycleInfo += "Crossing with: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack();
+              }
+            }
+          }
+          /*******/
+          tolog(toString(__LINE__) + "\n" + "Line " + toString(j) + ", " + P.croack() + "isIn: " + toString(isIn) + " mustBeIn: " +
+                toString(mustBeIn) + "\n\n");
           return true;
       }
       return false;
@@ -3449,24 +3485,41 @@ class borderLine
      */
     bool cross(point p1, point p2, point p3, point p4){
       bool result = false;
-      if (p1 == p3 || p2 == p3 || p2 == p4 || p1 == p4){
-        return true;
-      }
-      tangent t1 = tangent(p1, p3);
-      tangent t2 = tangent(p3, p2);
-      tangent t3 = tangent(p2, p4);
-      tangent t4 = tangent(p4, p1);
-      t2.rotate(t1);
-      t3.rotate(t1);
-      t4.rotate(t1);
-      tangent tz = tangent(-1, 0);
-      tangent tr = tangent(1, 0);
-      if (t2 != tz && t4 != tr &&
-          t4 != tz && t2 != tr){
-        if (((t2 <= t3) && (t3 <= t4)) ||
-            ((t3 <= t2) && (t4 <= t3))){
+      if (max(p1.x, p2.x) >= min(p3.x, p4.x) &&
+          max(p1.y, p2.y) >= min(p3.y, p4.y) &&
+          min(p1.x, p2.x) <= max(p3.x, p4.x) &&
+          min(p1.y, p2.y) <= max(p3.y, p4.y)){
+        if (p1 == p3 || p2 == p3){
+          return true;
+        }
+        if (p2 == p4 || p1 == p4){
+          return false;
+        }
+        tangent t1 = tangent(p1, p3);
+        tangent t2 = tangent(p3, p2);
+        tangent t3 = tangent(p2, p4);
+        tangent t4 = tangent(p4, p1);
+        t2.rotate(t1);
+        t3.rotate(t1);
+        t4.rotate(t1);
+        tangent tz = tangent(-1, 0);
+        tangent tr = tangent(1, 0);
+        if (t2 == tr){
+          result = false;
+        }
+        else if (t3 == t4){
           result = true;
         }
+        else{
+          if (!(t2 == tz && t4 == tr) &&
+              !(t4 == tz && t2 == tr)){
+            if (((t2 <= t3) && (t3 <= t4)) ||
+                ((t3 <= t2) && (t4 <= t3))){
+              result = true;
+            }
+          }
+        }
+        blSettings.cycleInfo += "Tangents: \n" + t1.croack() + t2.croack() + t3.croack() + t4.croack();
       }
       return result;
     }
@@ -3629,6 +3682,7 @@ public:
         blSettings.inputFile = inputFile;
         blSettings.fname = outputFile;
         blSettings.ncycles = 0;
+        blSettings.cycleInfo = "";
         srand(time(0));
         w = tw;         //keep a copy of the weights
         for (i = 0; i < tw.size(); i++){
@@ -3666,7 +3720,7 @@ public:
         //init counters
         blCounter.setLimits(0, 5u);
         deciderCounter.setLimits(0, 5u);
-        keepDistCounter.setLimits(0, 500u);
+        keepDistCounter.setLimits(0, 149u);
         refreshScreen.setLimits(1, 50);
 
         //init internal scale
@@ -3874,6 +3928,14 @@ public:
       return std::string(zc.data(), iLen);
     }
 
+    void clearWarnings(){
+      warn.clear();
+    }
+
+    vector<point> getWarnings(){
+      vector<point> result = warn;
+      return result;
+    }
 
     string coord(float c){
       string result = vformat("%.2f", c);
