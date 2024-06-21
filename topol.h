@@ -226,7 +226,7 @@ float distance(float x0, float y0, float x1, float y1)
     return result;
 }
 
-
+enum crossResult{crosses, doesnotcross, cont};
 
 typedef struct blData{
   float sk;  /**< Reference value for spring parameter */
@@ -1892,10 +1892,7 @@ class borderLine
           vector<point> newbl;
           for (UINT j = 0; j < bl[i].size(); j++){
             if (!again){
-              point nxt = bl[i][0];
-              if (j < (bl[i].size() - 1)){
-                nxt = bl[i][j+1];
-              }
+              point nxt = bl[i][nextPoint(i, j)];
               point current = bl[i][j];
               newbl.push_back(current);
               float dsq3 = sqDistance(current, nxt);
@@ -2517,11 +2514,20 @@ class borderLine
               addLines();
               polishLines();
               UINT out = countOutsiders();
-              UINT crs = countCrossings();
-              if (out < bestout || (out == bestout && crs < bestcrs)){
-                best = circles;
-                bestout = out;
-                bestcrs = crs;
+              if (out <= bestout){
+                UINT crs = countCrossings();
+                if (out == bestout){
+                  if (crs < bestcrs){
+                    best = circles;
+                    bestout = out;
+                    bestcrs = crs;
+                  }
+                }
+                else{
+                  best = circles;
+                  bestout = out;
+                  bestcrs = crs;
+                }
                 if (logit){
                   tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
                         "j: " + toString(j) + ", " + "out: " + toString(out) + "\n");
@@ -2998,7 +3004,7 @@ class borderLine
       return result;
     }
 
-    int prevPoint(int i, int j){
+    int prevPoint(UINT i, UINT j){
       int result = j - 1;
       if (result < 0){
         result = bl[i].size() - 1;
@@ -3396,11 +3402,16 @@ class borderLine
       blSettings.cycleInfo = "";
       for (UINT i = 0; i < bl[j].size(); i++){
         point p3 = bl[j][i];
-        point p4 = bl[j][0];
-        if (i < (bl[j].size() - 1)){
-          p4 = bl[j][i+1];
+        crossResult cr = cont;
+        UINT np = nextPoint(j, i);
+        point p4 = bl[j][np];
+        while (cr == cont){
+          cr = cross(p1, p2, p3, p4);
+          np = nextPoint(j, np);
+          p4 = bl[j][np];
         }
-        if (cross(p1, p2, p3, p4)){
+
+        if (cr == crosses){
           isIn = !isIn;
           blSettings.cycleInfo += "Cross: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack() + "\n";
           blSettings.cycleInfo += "i: " + toString(i) + ", j: " + toString(j) + "\n";
@@ -3415,11 +3426,15 @@ class borderLine
             attention(p2.x, p2.y);
             for (UINT i = 0; i < bl[j].size(); i++){
               point p3 = bl[j][i];
-              point p4 = bl[j][0];
-              if (i < (bl[j].size() - 1)){
-                p4 = bl[j][i+1];
+              crossResult cr = cont;
+              UINT np = nextPoint(j, i);
+              point p4 = bl[j][np];
+              while (cr == cont){
+                cr = cross(p1, p2, p3, p4);
+                np = nextPoint(j, np);
+                p4 = bl[j][np];
               }
-              if (cross(p1, p2, p3, p4)){
+              if (cr == crosses){
                 //isIn = !isIn;
                 attention(p3.x, p3.y);
                 attention(p4.x, p4.y);
@@ -3427,9 +3442,10 @@ class borderLine
               }
             }
           }
-          /*******/
+          /*******
           tolog(toString(__LINE__) + "\n" + "Line " + toString(j) + ", " + P.croack() + "isIn: " + toString(isIn) + " mustBeIn: " +
                 toString(mustBeIn) + "\n\n");
+          /*******/
           return true;
       }
       return false;
@@ -3475,6 +3491,8 @@ class borderLine
     }
 
     /** \brief Do segments p1-p2 and p3-p4 cross?
+     * Points p5 is used in the particular case where p1-p2 crosses p4 exactly.
+     * In that case, the result is positive if p1-p2 crosses p3-p5.
      *
      * \param p1 point
      * \param p2 point
@@ -3483,17 +3501,17 @@ class borderLine
      * \return bool true if segments cross.
      *
      */
-    bool cross(point p1, point p2, point p3, point p4){
-      bool result = false;
+    crossResult cross(point p1, point p2, point p3, point p4){
+      crossResult result = doesnotcross;
       if (max(p1.x, p2.x) >= min(p3.x, p4.x) &&
           max(p1.y, p2.y) >= min(p3.y, p4.y) &&
           min(p1.x, p2.x) <= max(p3.x, p4.x) &&
           min(p1.y, p2.y) <= max(p3.y, p4.y)){
         if (p1 == p3 || p2 == p3){
-          return true;
+          return crosses;
         }
         if (p2 == p4 || p1 == p4){
-          return false;
+          return doesnotcross;
         }
         tangent t1 = tangent(p1, p3);
         tangent t2 = tangent(p3, p2);
@@ -3503,20 +3521,16 @@ class borderLine
         t3.rotate(t1);
         t4.rotate(t1);
         tangent tz = tangent(-1, 0);
-        tangent tr = tangent(1, 0);
-        if (t2 == tr){
-          result = false;
+        if (t2 == tz){
+          result = doesnotcross;
         }
         else if (t3 == t4){
-          result = true;
+          result = cont;
         }
         else{
-          if (!(t2 == tz && t4 == tr) &&
-              !(t4 == tz && t2 == tr)){
-            if (((t2 <= t3) && (t3 <= t4)) ||
-                ((t3 <= t2) && (t4 <= t3))){
-              result = true;
-            }
+          if (((t2 <= t3) && (t3 <= t4)) ||
+              ((t3 <= t2) && (t4 <= t3))){
+            result = crosses;
           }
         }
         blSettings.cycleInfo += "Tangents: \n" + t1.croack() + t2.croack() + t3.croack() + t4.croack();
@@ -3529,18 +3543,19 @@ class borderLine
       for (UINT i = 0; i < bl.size()-1; i++){
         for (UINT ii = 0; ii < bl[i].size(); ii++){
           point p1 = bl[i][ii];
-          point p2 = bl[i][0];
-          if (ii < (bl[i].size() - 1)){
-            p2 = bl[i][ii+1];
-          }
+          point p2 = bl[i][nextPoint(i, ii)];
           for (UINT j = i + 1; j < bl.size(); j++){
             for (UINT jj = 0; jj < bl[j].size(); jj++){
               point p3 = bl[j][jj];
-              point p4 = bl[j][0];
-              if (jj < (bl[j].size() - 1)){
-                p4 = bl[j][jj+1];
+              UINT np = nextPoint(j, jj);
+              point p4 = bl[j][np];
+              crossResult cr = cont;
+              while (cr == cont){
+                p4 = bl[j][np];
+                cr = cross(p1, p2, p3, p4);
+                np = nextPoint(j, np);
               }
-              if (cross(p1, p2, p3, p4)){
+              if (cr == crosses){
                 result++;
               }
             }
@@ -4379,10 +4394,7 @@ public:
         vector<point>tempbl;
         for(UINT j = 0; j < bl[i].size(); j++){
           point current = bl[i][j];
-          point nxt = bl[i][0];
-          if (j < (bl[i].size() - 1)){
-            nxt = bl[i][j+1];
-          }
+          point nxt = bl[i][nextPoint(i, j)];
           float d = distance(current.x, current.y, nxt.x, nxt.y);
           UINT interpoints = ceil(d / pointDist);
           if (interpoints == 0)

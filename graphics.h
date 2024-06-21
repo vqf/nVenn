@@ -217,7 +217,7 @@ class glGraphics{
       //glFlush();
       **********/
       SwapBuffers (hDC);
-      /*********DEBUG***/
+      /*********DEBUG**
       if (attn.size() > 0){
         bool bQuit = false;
             MSG msg;
@@ -366,9 +366,10 @@ dlme.close();
               UINT b1 = bl.countOutsiders();
               UINT bo = bl.chooseCombination();
               do{
-                  //tolog("One more\n");
+                //tolog("One more\n");
                 b1 = bo;
                 bo = bl.chooseCombination();
+                tolog("Crossings lowered to " + toString(bo) + "\n");
               } while (bo < b1);
               //bl.chooseCrossings();
               bl.setCheckTopol(true);
