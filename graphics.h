@@ -109,6 +109,8 @@ class glGraphics{
             glEnd ();
         }
         /**********/
+      //vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
+      //addRectangle(bl, ogl, bnd);
       for (i = 0; i < attn.size();  i++)
       {
           P = bl.place(ogl, attn[i]);
@@ -392,7 +394,7 @@ dlme.close();
         //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
-        bl.interpolateToDist(bl.minCircRadius);
+        bl.interpolateToDist(bl.minCircRadius * 1.2);
         bl.setPrevState();
         bl.setSecureState();
       }
@@ -400,7 +402,7 @@ dlme.close();
         bl.listOutsiders();
         ofstream result;
         fileText svgfile = bl.toSVG();
-        result.open("result.svg");
+        result.open("error.svg");
         result.write(svgfile.getText().c_str(), svgfile.getText().size());
         result.close();
         exit(1);
@@ -490,6 +492,7 @@ dlme.close();
               bl.setBV(0.5);
               bl.setCircleAttraction(1e-4);
               bl.setForces1();
+              //bl.setGravityForces();
               bl.setContacts();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve(false, true);

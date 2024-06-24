@@ -13,12 +13,14 @@
 
 #define CIRCLE_MASS 200.0f
 #define POINT_MASS 20
+#define AIR 1.1    // polish and embellish multiply maxRad() by this factor
 
 // Flags for points
 #define IS_OUTSIDE        0x01  // The circle is in an incorrect space. Set to 0x01 to highlight
 #define DO_NOT_EMBELLISH  0X02  // The point has already been corrected
 #define TAKEN_OUT         0x04  // The point has been moved outside
 #define USED              0x08  // The point has been used in a procedure. Remember to reset at the end
+#define DELME             0x10  // The point will be deleted
 
 typedef unsigned int UINT;
 
@@ -774,7 +776,7 @@ public:
     void init(float unst, float mystepdt)
     {
         count = 0;
-        topcount = 100;
+        topcount = 50;
         backcount = topcount;
         unstable = unst;
         defaultst = unst;
@@ -1875,7 +1877,8 @@ class borderLine
           if (circles[j].radius > 0 && belong[i] == 0){
             bool incorrect = circleTopol(circles[j], belong, i);
             if (incorrect){
-              tolog(toString(__LINE__) + "\n" + "Line " + toString(i) + ", " + circles[j].croack());
+              tolog("Line " + toString(__LINE__) + ": " + "Incorrect topology of circle " + toString(circles[j].n) +
+                    " with line " + toString(i) + ", " + circles[j].croack());
             }
           }
         }
@@ -1901,7 +1904,7 @@ class borderLine
                 UINT fcirc = 0;
                 for (UINT k = fcirc; k < circles.size(); k++){
                   point c = circles[k];
-                  float lrad = maxRad();
+                  float lrad = maxRad() * AIR;
                   if (!again && ((c.flags & USED) == 0)){
                     bool inside = (c.n & twoPow(i)) > 0 ? true : false;
                     float dsq1 = sqDistance(c, current);
@@ -1976,7 +1979,6 @@ class borderLine
               point p3 = circles[j];
               vector<int> belong = toBin(p3.n, bl.size());
               bool incorrect = circleTopol(circles[j], belong, k);
-              bool safe = false;
               if (incorrect){
                 if (logit){
                   tolog(toString(__LINE__) + "\n" + "Fixing circle " + toString(circles[j].n) +
@@ -1987,12 +1989,11 @@ class borderLine
                 for (UINT i = 0; i < bl[k].size(); i++){
                   UINT tvertx = i;
                   point p1 = bl[k][tvertx];
-                  UINT tvertnx = 0;
-                  if (i < (bl[k].size() - 1)){
-                    tvertnx = i + 1;
-                  }
+                  UINT tvertnx = nextPoint(k, tvertx);
                   point p2 = bl[k][tvertnx];
-                  if (p1 != p3 && p2 != p3 && p1 != p2){
+                  if (p1 != p3 && p2 != p3 && p1 != p2 &&
+                      !(p1.flags & DO_NOT_EMBELLISH) &&
+                      !(p2.flags & DO_NOT_EMBELLISH)){
                     tangent t1(p1, p2);
                     tangent t2(p1, p3);
                     tangent t3(p2, p3);
@@ -2001,7 +2002,7 @@ class borderLine
                     t3.rotate(t1);
                     float mindsena = 0;
                     //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack() + "Line " + toString(k) + ", circle " + toString(circles[j].n) + "\n");
-                    if (t2.getQuadrant() == 4 && t3.getQuadrant() == 3){
+                    if ((t2.getQuadrant() == 4 && t3.getQuadrant() == 3)){
                       //tolog(toString(__LINE__) + "\n" + "Line " + toString(k) + ", circle " + toString(j) + " " + toString(circles[j].n) + "\n");
                       float d1sq = (p3.x - p1.x) * (p3.x - p1.x) +
                                    (p3.y - p1.y) * (p3.y - p1.y);
@@ -2015,7 +2016,7 @@ class borderLine
                         float ddsq = d1sq - dsena * dsena;
                         tolog(toString(__LINE__) + "\nLine: " + toString(k) + ", segment" + toString(i) + ", circle " + toString(circles[j].n) + "\n");
                         tolog("minV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
-                        if ((minV < 0 || (ddsq < minV)) || !safe){
+                        if ((minV < 0 || (ddsq < minV))){
                           minV = ddsq;
                           //tolog(toString(__LINE__) + "\tminV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
                           oi.vertex = tvertx;
@@ -2023,8 +2024,10 @@ class borderLine
                           oi.dsena = dsena;
                           oi.outsider = p3;
                           goon = true;
-                          safe = true;
                         }
+                      }
+                      else{
+                        tolog("DSQ failure: " + toString(dsq));
                       }
                     }
                   }
@@ -2039,8 +2042,8 @@ class borderLine
                   UINT currentVertex = oi.nextVertex;
                   float dsena = oi.dsena;
                   point pt = oi.outsider;
-                  if (dsena > pt.radius){
-                    float lrad = maxRad();
+                  //if (dsena > pt.radius){
+                    float lrad = maxRad() * AIR;
                     tangent mn(0, 1);
                     tangent rv(1, 0);
                     point v = bl[k][prevVertex];
@@ -2063,7 +2066,7 @@ class borderLine
                     newpoints.push_back(c1);
                     newpoints.push_back(q);
                     tolog(t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
-                  }
+                  //}
                   if (oi.nextVertex > 0){
                     for (UINT i = oi.nextVertex; i < bl[k].size(); i++){
                       newpoints.push_back(bl[k][i]);
@@ -2357,7 +2360,7 @@ class borderLine
           }
           if (current.radius > 0){
             // Point 1
-            float r = maxRadius;// current.radius;
+            float r = maxRadius * AIR;// current.radius;
             float d = distance(current.x, current.y, prev.x, prev.y);
             if (d > 0){
               float ndx = (current.x - prev.x) * (1 - r/d);
@@ -2427,7 +2430,7 @@ class borderLine
       circles[j].y = interm.y;
     }
 
-    vector<point> getBoundaries(float air = 0){
+    vector<point> getBoundaries(float air = 0, bool onlyCircles = false){
       point ul;
       point lr;
       circleIterator ci(circles, circles.size());
@@ -2452,7 +2455,7 @@ class borderLine
         }
         i= ci.nxt();
       }
-      if (blSettings.doCheckTopol){
+      if (blSettings.doCheckTopol && !onlyCircles){
         for (UINT i = 0; i < bl.size(); i++){
           for (UINT j = 0; j < bl[i].size(); j++){
             if (bl[i][j].x < result[0].x){
@@ -2508,42 +2511,45 @@ class borderLine
       }
       for (UINT i = 0; i < circles.size() - 1; i++){
         if (circles[i].radius > 0){
-          for (UINT j = i + 1; j < circles.size(); j++){
-            if (circles[j].radius > 0){
-              swapCoords(i, j);
-              addLines();
-              polishLines();
-              UINT out = countOutsiders();
-              if (out <= bestout){
-                UINT crs = countCrossings();
-                if (out == bestout){
-                  if (crs < bestcrs){
+          //vector<int> b = toBin(circles[i].n, twoPow(ngroups));
+          //if (!isTopolCorrect(circles[i], b)){
+            for (UINT j = i + 1; j < circles.size(); j++){
+              if (circles[j].radius > 0){
+                swapCoords(i, j);
+                addLines();
+                polishLines();
+                UINT out = countOutsiders();
+                if (out <= bestout){
+                  UINT crs = countCrossings();
+                  if (out == bestout){
+                    if (crs < bestcrs){
+                      best = circles;
+                      bestout = out;
+                      bestcrs = crs;
+                    }
+                  }
+                  else{
                     best = circles;
                     bestout = out;
                     bestcrs = crs;
                   }
+                  if (logit){
+                    tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
+                          "j: " + toString(j) + ", " + "out: " + toString(out) + "\n");
+                  }
+                  /*if (level < 2){
+                    level++;
+                    UINT tout = chooseCombination(level);
+                    if (tout < bestout){
+                      bestout = tout;
+                    }
+                  }*/
                 }
                 else{
-                  best = circles;
-                  bestout = out;
-                  bestcrs = crs;
+                  swapCoords(i, j);
                 }
-                if (logit){
-                  tolog(toString(__LINE__) + "\n" + "i: " + toString(i) + ", " +
-                        "j: " + toString(j) + ", " + "out: " + toString(out) + "\n");
-                }
-                /*if (level < 2){
-                  level++;
-                  UINT tout = chooseCombination(level);
-                  if (tout < bestout){
-                    bestout = tout;
-                  }
-                }*/
               }
-              else{
-                swapCoords(i, j);
-              }
-            }
+            //}
           }
         }
       }
@@ -2888,6 +2894,16 @@ class borderLine
         for (UINT j = i + 1; j < circles.size(); j++){
           if (distance(circles[i].x, circles[i].y, circles[j].x, circles[j].y) > minDist){
             selforce(circles[i], circles[j], G);
+          }
+        }
+      }
+    }
+
+    void setGravityForces(){
+      for (UINT i = 0; i < bl.size(); i++){
+        for (UINT j = 0; j < bl[i].size(); j++){
+          for(UINT k = 0; k < circles.size(); k++){
+            selforce(bl[i][j], circles[k]);
           }
         }
       }
@@ -4375,13 +4391,46 @@ public:
 
 
     void keepDist(float minDist){
-      for (UINT i = 0; i < bl.size(); i++){
-        for (UINT j = 0; j < bl[i].size() - 2; j++){
-          float d = distance(bl[i][j].x, bl[i][j].y, bl[i][j+2].x, bl[i][j+2].y);
-          if (d < minCircRadius){
-            bl[i].erase(bl[i].begin() + j+ 1);
+      if (blSettings.doCheckTopol){
+        vector<point> q = getBoundaries(2*maxRadius*AIR, true);
+        for (UINT i = 0; i < bl.size(); i++){
+          float cx = bl[i][0].x;
+          float cy = bl[i][0].y;
+          for (UINT j = 0; j < bl[i].size(); j++){
+            if (bl[i][j].x < q[0].x ){
+              bl[i][j].x = q[0].x;
+            }
+            else if (bl[i][j].x > q[1].x){
+              bl[i][j].x = q[1].x;
+            }
+            if (bl[i][j].y < q[0].y){
+              bl[i][j].y = q[0].y;
+            }
+            else if (bl[i][j].y > q[1].y){
+              bl[i][j].y = q[1].y;
+            }
           }
+          for (UINT j = 0; j < bl[i].size() - 2; j++){
+            float d = distance(cx, cy, bl[i][j+1].x, bl[i][j+1].y);
+            if (d < minCircRadius){
+              bl[i][j].flags = bl[i][j].flags | DELME;
+              //bl[i].erase(bl[i].begin() + j+ 1);
+            }
+            else{
+              cx = bl[i][j].x;
+              cy = bl[i][j].y;
+            }
+          }
+          vector<point> rb;
+          for (UINT j = 0; j < bl[i].size(); j++){
+            if (!(bl[i][j].flags & DELME)){
+              rb.push_back(bl[i][j]);
+            }
+          }
+          bl[i] = rb;
         }
+        //writeSVG("error.svg");
+        //exit(0);
       }
     }
 
