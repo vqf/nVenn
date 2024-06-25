@@ -51,9 +51,9 @@ class glGraphics{
     return r;
   }
 
-  void addRectangle(borderLine bl, scale ogl, vector<point> p){
+  void addRectangle(borderLine bl, scale ogl, vector<point> p, rgb color = {0.5, 0.5, 0.5}){
     glBegin (GL_LINE_LOOP);
-    glColor3f(.5, .5, .5);
+    glColor3f(color.red, color.green, color.blue);
     point p0;
     p0.x = p[0].x;
     p0.y = p[0].y;
@@ -77,6 +77,26 @@ class glGraphics{
     glVertex2d(mp.x, mp.y);
     glEnd();
     return;
+  }
+
+  void wait(){
+    bool bQuit = false;
+    MSG msg;
+
+    while (!bQuit){
+      if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+      {
+
+          if (msg.message == WM_QUIT)
+          {
+              bQuit = TRUE;
+          }
+          {
+              TranslateMessage (&msg);
+              DispatchMessage (&msg);
+          }
+      }
+    }
   }
 
   void toOGL(borderLine bl, HDC hDC)
@@ -108,7 +128,13 @@ class glGraphics{
             }
             glEnd ();
         }
-        /**********/
+        /**********
+      for (UINT i = 0; i < bl.ngroups; i++){
+        UINT n = twoPow(i);
+        vector<point> q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);
+        addRectangle(bl, ogl, q, bl.colors[i]);
+      }
+      /**********/
       //vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
       //addRectangle(bl, ogl, bnd);
       for (i = 0; i < attn.size();  i++)
@@ -219,25 +245,9 @@ class glGraphics{
       //glFlush();
       **********/
       SwapBuffers (hDC);
-      /*********DEBUG**
+      /*********DEBUG**/
       if (attn.size() > 0){
-        bool bQuit = false;
-            MSG msg;
-
-            while (!bQuit){
-            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-            {
-
-                if (msg.message == WM_QUIT)
-                {
-                    bQuit = TRUE;
-                }
-                {
-                    TranslateMessage (&msg);
-                    DispatchMessage (&msg);
-                }
-            }
-          }
+        //wait();
       }
       /*********DEBUG***/
       //Sleep(1);
@@ -333,8 +343,10 @@ dlme.close();
               //bl.setForces1();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.setCheckTopol(false);
-              bl.setContacts(false, true, 2*bl.maxRad());
+              bl.setContacts(false, true, 2*bl.maxRad()*AIR);
               bl.solve(true);
+              //wait();
+              //exit(0);
               bl.refreshScreen++;
 
 
@@ -365,13 +377,21 @@ dlme.close();
               //bl.addLines();
               //bl.polishLines();
               //bl.setCheckTopol(true);
+              bl.setCheckTopol(true);
+              bl.addLines();
+              toOGL(bl, hDC);
+              bl.setCheckTopol(false);
               UINT b1 = bl.countOutsiders();
               UINT bo = bl.chooseCombination();
               do{
                 //tolog("One more\n");
                 b1 = bo;
                 bo = bl.chooseCombination();
-                tolog("Crossings lowered to " + toString(bo) + "\n");
+                bl.setCheckTopol(true);
+                bl.addLines();
+                toOGL(bl, hDC);
+                bl.setCheckTopol(false);
+                tolog("Outsiders lowered to " + toString(bo) + "\n");
               } while (bo < b1);
               //bl.chooseCrossings();
               bl.setCheckTopol(true);
