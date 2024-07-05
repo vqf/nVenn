@@ -55,6 +55,7 @@ void tolog(string t){
 }
 )
 
+
 UINT setFlag(UINT flag, UINT mask){
   UINT result = flag | mask;
   return result;
@@ -255,6 +256,7 @@ typedef struct blData{
   float margin;
   float totalCircleV;
   float totalLineV;
+  bool increasedDT;
   int contacts;
   UINT ncycles;
   UINT maxRunningTime;
@@ -263,6 +265,8 @@ typedef struct blData{
   float maxv;
   float simTime; /**< Simulated time since start */
   string cycleInfo; /**< Debuggin info from last cycle */
+  float lineAir; /**< Added to radii so that there is room for lines between circles */
+  UINT contactFunction;
   int checkFor; // If any of the previous or following 10 point is sticking to
                            // the surface, the current point will also stick
   string inputFile;
@@ -331,7 +335,7 @@ public:
     }
     string croack(){
       ostringstream r;
-      r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius << "\n";
+      r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius << "\tFx: " << fx << "\tFy: " << fy << "\n";
       return r.str();
     }
 };
@@ -534,10 +538,16 @@ public:
 class tangent {
   float slope;
   UINT quadrant;
+  bool err;
 
 public:
   tangent(float dx, float dy) {
     slope = 0;
+    err = false;
+    if (dx == 0 && dy == 0){
+      //tolog("Incorrect tangent!\n");
+      err = true;
+    }
     if (dx < 0 && dy <= 0) {
       quadrant = 1;
       slope = dy / dx;
@@ -556,6 +566,7 @@ public:
     float dx = p2.x - p1.x;
     float dy = p2.y - p1.y;
     slope = 0;
+    err = false;
     if (dx < 0 && dy <= 0) {
       quadrant = 1;
       slope = dy / dx;
@@ -571,8 +582,11 @@ public:
     }
     if (slope != slope){
       tolog(_L_ + "Incorrect tangent: \n" + p1.croack() + p2.croack());
-      exit(0);
+      err = true;
     }
+  }
+  bool error(){
+    return err;
   }
   UINT getQuadrant(){
     return quadrant;
@@ -1350,6 +1364,7 @@ class borderLine
     vector<string> svgcolors;
     vector<point> warn;
     scale internalScale;
+    scale svgScale;
     int totalExpectedSurface;
     vector<string> dataDisplay;
     timeMaster udt;
@@ -1384,6 +1399,7 @@ class borderLine
       b->checkFor = 30;
       b->ncycles = 0;
       b->ncyclesInterrupted = 0;
+      b->contactFunction = 0; // contact()
       b->maxRunningTime = 200; // 300 seconds to finish the first part
       b->simTime = 0;
     }
@@ -1886,6 +1902,10 @@ class borderLine
       }
     }
 
+    vector<point> embellishTrajectory(point p0, point p1){
+
+    }
+
     void embellishTopology(bool logit = false){
       tangent lft(0, -1);
       tangent rgh(0, 1);
@@ -1917,7 +1937,6 @@ class borderLine
                       //tolog(toString(__LINE__) + "\n" + toString(h) + "\t" + toString(dsq1) + "\t" + toString(dsq2) + "\t" + toString(dsq3) + "\t" + toString(sq3) + "\n");
                       if (h > 0 && h < c.radius){
                         again = true;
-                        c.flags = setFlag(c.flags, USED);
                         fcirc = k + 1;
                         tangent tp(nxt.x - current.x, nxt.y - current.y);
                         float t = sqrt(lrad * lrad - h * h);
@@ -1930,10 +1949,11 @@ class borderLine
                         newbl.push_back(pst1);
                         tangent tr = tp + rgh;
                         //tolog(toString(__LINE__) + "\n" + "Outside: \n" + tp.croack() + tr.croack());
-                        if (inside){
+                        if (inside || (!inside && ((c.flags & USED) > 0))){
                           tr = tp + lft;
                           //tolog(toString(__LINE__) + "\n" + "Inside: \n" + tp.croack() + tr.croack());
                         }
+                        c.flags = setFlag(c.flags, USED);
                         point newp = tr.transformPoint(c, lrad);
                         newbl.push_back(newp);
                         newbl.push_back(pst2);
@@ -2011,7 +2031,7 @@ class borderLine
                                    (p2.y - p3.y) * (p2.y - p3.y);
                       float dsq = (p2.x - p1.x) * (p2.x - p1.x) +
                                   (p2.y - p1.y) * (p2.y - p1.y);
-                      if (dsq > 0){
+                      if (true){ //dsq > 0){
                         float d = sqrt(dsq);
                         float dsena = (dsq + d1sq - d2sq) / (2*d);
                         float ddsq = d1sq - dsena * dsena;
@@ -2347,75 +2367,94 @@ class borderLine
      *
      */
     void polishLines(){
+      tangent rev(1, 0);
       for (UINT i = 0; i < bl.size(); i++){
         UINT sz = bl[i].size();
-        point prev = bl[i][sz - 1];
         vector<point> newpoints;
-        for (UINT j = 0; j < sz; j++){
-          point current = bl[i][j];
-          point next = bl[i][0];
-          if (j < (sz-1)){
-            next = bl[i][j+1];
-          }
-          if (current.radius > 0){
-            // Point 1
-            float r = maxRadius * AIR;// current.radius;
-            float d = distance(current.x, current.y, prev.x, prev.y);
-            if (d > 0){
-              float ndx = (current.x - prev.x) * (1 - r/d);
-              float ndy = (current.y - prev.y) * (1 - r/d);
-              point np;
-              np.x = prev.x + ndx;
-              np.y = prev.y + ndy;
-              newpoints.push_back(np);
-              tangent rev(1, 0);
-              tangent t1(current.x - prev.x, current.y - prev.y);
-              tangent t2(next.x - current.x, next.y - current.y);
-              tangent t3 = t1.leftIntermediate(t2);
-              tangent rt3 = t3 + rev;
-              tangent t4 = t1.leftIntermediate(t3);
-              tangent t5 = rt3.leftIntermediate(t2);
-              // Point 2
-              point tt2 = t4.transformPoint(current, r);
-              tt2.flags = setFlag(tt2.flags, DO_NOT_EMBELLISH);
+        if (sz < 2){
+          tangent dwn(0, -1);
+          tangent lft(-1, 0);
+          tangent up(0, 1);
+          point current = bl[i][0];
+          point p1 = rev.transformPoint(current, current.radius);
+          p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
+          point p2 = dwn.transformPoint(current, current.radius);
+          p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
+          point p3 = lft.transformPoint(current, current.radius);
+          p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
+          point p4 = up.transformPoint(current, current.radius);
+          p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
+          newpoints.push_back(p1);
+          newpoints.push_back(p2);
+          newpoints.push_back(p3);
+          newpoints.push_back(p4);
+        }
+        else{
+            point prev = bl[i][sz - 1];
 
-              // Point 3
-              point tt3 = t3.transformPoint(current, r);
-              tt3.flags = setFlag(tt3.flags, DO_NOT_EMBELLISH);
+            for (UINT j = 0; j < sz; j++){
+              point current = bl[i][j];
+              int nj = nextPoint(i, j);
+              point next = bl[i][nj];
+              if (current.radius > 0){
+                // Point 1
+                float r = maxRadius * AIR;// current.radius;
+                float d = distance(current.x, current.y, prev.x, prev.y);
+                if (d > 0){
+                  float ndx = (current.x - prev.x) * (1 - r/d);
+                  float ndy = (current.y - prev.y) * (1 - r/d);
+                  point np;
+                  np.x = prev.x + ndx;
+                  np.y = prev.y + ndy;
+                  newpoints.push_back(np);
+                  tangent t1(current.x - prev.x, current.y - prev.y);
+                  tangent t2(next.x - current.x, next.y - current.y);
+                  tangent t3 = t1.leftIntermediate(t2);
+                  tangent rt3 = t3 + rev;
+                  tangent t4 = t1.leftIntermediate(t3);
+                  tangent t5 = rt3.leftIntermediate(t2);
+                  // Point 2
+                  point tt2 = t4.transformPoint(current, r);
+                  tt2.flags = setFlag(tt2.flags, DO_NOT_EMBELLISH);
 
-              // Point 4
-              point tt4 = t5.transformPoint(current, r);
-              tt4.flags = setFlag(tt4.flags, DO_NOT_EMBELLISH);
+                  // Point 3
+                  point tt3 = t3.transformPoint(current, r);
+                  tt3.flags = setFlag(tt3.flags, DO_NOT_EMBELLISH);
 
-              /*if ((current.flags & RIGHT_SIDE) > 0){
-                newpoints.push_back(tt4);
-                newpoints.push_back(tt3);
-                newpoints.push_back(tt2);
-                tolog(toString(__LINE__) + ": Right-side byte set wrong\n");
+                  // Point 4
+                  point tt4 = t5.transformPoint(current, r);
+                  tt4.flags = setFlag(tt4.flags, DO_NOT_EMBELLISH);
+
+                  /*if ((current.flags & RIGHT_SIDE) > 0){
+                    newpoints.push_back(tt4);
+                    newpoints.push_back(tt3);
+                    newpoints.push_back(tt2);
+                    tolog(toString(__LINE__) + ": Right-side byte set wrong\n");
+                  }
+                  else{*/
+                    newpoints.push_back(tt2);
+                    newpoints.push_back(tt3);
+                    newpoints.push_back(tt4);
+                  //  }
+
+
+                }
+                // Point 5
+                d = distance(next.x, next.y, current.x, current.y);
+                if (d > 0){
+                  float ndx = (next.x - current.x) * (r/d);
+                  float ndy = (next.y - current.y) * (r/d);
+                  point np;
+                  np.x = current.x + ndx;
+                  np.y = current.y + ndy;
+                  newpoints.push_back(np);
+                }
               }
-              else{*/
-                newpoints.push_back(tt2);
-                newpoints.push_back(tt3);
-                newpoints.push_back(tt4);
-              //  }
-
-
+            else{
+              newpoints.push_back(current);
             }
-            // Point 5
-            d = distance(next.x, next.y, current.x, current.y);
-            if (d > 0){
-              float ndx = (next.x - current.x) * (r/d);
-              float ndy = (next.y - current.y) * (r/d);
-              point np;
-              np.x = current.x + ndx;
-              np.y = current.y + ndy;
-              newpoints.push_back(np);
-            }
+            prev = current;
           }
-          else{
-            newpoints.push_back(current);
-          }
-          prev = current;
         }
         bl[i] = newpoints;
       }
@@ -2433,32 +2472,34 @@ class borderLine
     vector<point> getSetBoundaries(UINT groups, float air = 0, bool onlyCircles = false){
       point ul;
       point lr;
-      circleIterator ci(circles, circles.size());
-      UINT i = ci.val();
-      while (i > 0 && !(i & groups)){
-        i = ci.nxt();
-      }
-      ul.x = circles[i].x; ul.y = circles[i].y;
-      lr.x = circles[i].x; lr.y = circles[i].y;
+      bool fst = true;
       vector<point> result;
-      result.push_back(ul); result.push_back(lr);
-      i = ci.nxt();
-      while (i > 0){
-        if (circles[i].n & groups){
-          if (circles[i].x < result[0].x){
-          result[0].x = circles[i].x;
-          }
-          if (circles[i].y < result[0].y){
-            result[0].y = circles[i].y;
-          }
-          if (circles[i].x > result[1].x){
-            result[1].x = circles[i].x;
-          }
-          if (circles[i].y > result[1].y){
-            result[1].y = circles[i].y;
+      //i = ci.nxt();
+      for(UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          if (circles[i].n & groups){
+            if (fst){
+              fst = false;
+              ul.x = circles[i].x; ul.y = circles[i].y;
+              lr.x = circles[i].x; lr.y = circles[i].y;
+              result.push_back(ul); result.push_back(lr);
+            }
+            else{
+              if (circles[i].x < result[0].x){
+                result[0].x = circles[i].x;
+              }
+              if (circles[i].y < result[0].y){
+                result[0].y = circles[i].y;
+              }
+              if (circles[i].x > result[1].x){
+                result[1].x = circles[i].x;
+              }
+              if (circles[i].y > result[1].y){
+                result[1].y = circles[i].y;
+              }
+            }
           }
         }
-        i= ci.nxt();
       }
       if (blSettings.doCheckTopol && !onlyCircles){
         for (UINT i = 0; i < bl.size(); i++){
@@ -2515,7 +2556,7 @@ class borderLine
       vector<point> backup = circles;
       vector<point> best   = circles;
       addLines();
-      polishLines();
+      //polishLines();
       UINT bestout = countOutsiders();
       UINT bestcrs = countCrossings();
       if (logit){
@@ -2529,7 +2570,7 @@ class borderLine
               if (circles[j].radius > 0){
                 swapCoords(i, j);
                 addLines();
-                polishLines();
+                //polishLines();
                 UINT out = countOutsiders();
                 if (out <= bestout){
                   UINT crs = countCrossings();
@@ -2571,6 +2612,23 @@ class borderLine
       do{
         goon = false;
         vector<point> q = getOutsidePoints();
+        /***********
+        vector<point> qq;
+        for (UINT i = 0; i < q.size(); i++){
+          point tp = q[i];
+          point np = q[0];
+          if (i < (q.size()-1)){
+            np = q[i+1];
+          }
+          point r;
+          r.x = (tp.x + np.x) / 2;
+          r.y = (tp.y + np.y) / 2;
+          qq.push_back(r);
+        }
+        for (UINT i = 0; i < qq.size(); i++){
+          q.push_back(qq[i]);
+        }
+        /***********/
         for (UINT i = 0; i < circles.size(); i++){
           if (circles[i].radius > 0){
             for (UINT j = 0; j < q.size(); j++){
@@ -2755,72 +2813,94 @@ class borderLine
       blSettings.ncycles = ncyles_old10;
     }
 
+    void contact2(point &p0, point &p1){
+      float trueRadius = p0.radius + p1.radius;
+      float dx = p1.x - p0.x;
+      float dy = p1.y - p0.y;
+      float d = (p0.x, p0.y, p1.x, p1.y);
+      if (d <= trueRadius){
+        float fx = p0.fx + p1.fx;
+        float fy = p0.fy + p1.fy;
+        float modf = fx * dx + fy * dy;
+        if (modf > 0){
+          attention(p0.x, p0.y);
+          attention(p1.x, p1.y);
+        }
+      }
+    }
+
     point contact(point &p0, point &p1, float hardness = 5e1f, float radius = 0 )
     {
-      if (hardness == 0){
-        hardness = 5e1f;
+      point result;
+      if (blSettings.contactFunction == 1){
+        contact2(p0, p1);
       }
-        point result;
-        point zero;
-        float d;
-        float dx;
-        float dy;
-        float kx, ky;
-        float crat;
-        zero.fx = 0;
-        zero.fy = 0;
-        dx = p1.x - p0.x;
-        dy = p1.y - p0.y;
-        float trueRadius = p0.radius + p1.radius;
-        if (radius == 0){
-          radius = (trueRadius) * AIR;
+      if (blSettings.contactFunction == 0){
+        if (hardness == 0){
+          hardness = 5e1f;
         }
-        //radius += blSettings.margin;
-        //check contact
-        d = distance(p0.x, p0.y, p1.x, p1.y);
+          point zero;
+          float d;
+          float dx;
+          float dy;
+          float kx, ky;
+          float crat;
+          zero.fx = 0;
+          zero.fy = 0;
+          dx = p1.x - p0.x;
+          dy = p1.y - p0.y;
+          float trueRadius = p0.radius + p1.radius;
+          if (radius == 0){
+            radius = (trueRadius) * AIR;
+          }
+          //radius += blSettings.margin;
+          //check contact
+          d = distance(p0.x, p0.y, p1.x, p1.y);
 
 
-        if (d <= (radius))
-        {
-            if (d <= radius){
-                blSettings.contacts++;
-                crat = (d - radius)/(radius);
-                kx = dx * (crat);
-                ky = dy * (crat);
-                result.fx = hardness * blSettings.sk * kx;
-                result.fy = hardness * blSettings.sk * ky;
-                p0.fx += result.fx;
-                p0.fy += result.fy;
-                p1.fx -= result.fx;
-                p1.fy -= result.fy;
-                p0.inContact = true;
-                p1.inContact = true;
-//                attention(p0.x, p0.y, 1, 1);
-            }
-            else{
-              if (p0.inContact == true){
-                p0.softenVel = true;
-                p0.inContact = false;
+          if (d <= (radius))
+          {
+              if (d <= radius){
+                  blSettings.contacts++;
+                  crat = (d - radius)/(radius);
+                  kx = dx * (crat);
+                  ky = dy * (crat);
+                  result.fx = hardness * blSettings.sk * kx;
+                  result.fy = hardness * blSettings.sk * ky;
+                  p0.fx += result.fx;
+                  p0.fy += result.fy;
+                  p1.fx -= result.fx;
+                  p1.fy -= result.fy;
+                  p0.inContact = true;
+                  p1.inContact = true;
+  //                attention(p0.x, p0.y, 1, 1);
               }
-              if (p1.inContact == true){
-                p1.softenVel = true;
-                p1.inContact = false;
+              else{
+                if (p0.inContact == true){
+                  p0.softenVel = true;
+                  p0.inContact = false;
+                }
+                if (p1.inContact == true){
+                  p1.softenVel = true;
+                  p1.inContact = false;
+                }
               }
+              return result;
+          }
+          else
+          {
+            if (p0.inContact == true){
+              p0.softenVel = true;
+              p0.inContact = false;
             }
-            return result;
-        }
-        else
-        {
-          if (p0.inContact == true){
-            p0.softenVel = true;
-            p0.inContact = false;
+            if (p1.inContact == true){
+              p1.softenVel = true;
+              p1.inContact = false;
+            }
+            return zero;
           }
-          if (p1.inContact == true){
-            p1.softenVel = true;
-            p1.inContact = false;
-          }
-          return zero;
-        }
+      }
+      return result;
     }
 
     point rope(point &circ, point &p0, point &p1)
@@ -3226,6 +3306,9 @@ class borderLine
         warn.clear();
         dataDisplay.clear();
 
+        blSettings.totalCircleV = 0;
+        blSettings.totalLineV = 0;
+
         //Init the scale for the new frame
         internalScale.setClear(true);
         updPos(kb, resetVelocity);
@@ -3238,7 +3321,7 @@ class borderLine
         displayFloat("UNST", udt.unstabledt());
         displayUINT("COUNT", udt.counter());
         displayUINT("BACKCOUNT", udt.backcounter());
-        displayFloat("POTENTIAL", potential);
+        displayFloat("POTENTIAL", log10(potential));
 
         potential = 0;
 
@@ -3287,6 +3370,7 @@ class borderLine
               keepDist(avgStartDist);
               if (checkTopol()){
                 writeSVG("error.svg");
+                listOutsiders();
                 tolog(_L_ + "Break on KeepDist\n");
                 restorePrevState();
               }
@@ -3314,6 +3398,9 @@ class borderLine
         blSettings.ncycles++;
     }
 
+    void collisions(){
+    }
+
     void updPos(float kb, bool resetVelocity = false)
     {
         UINT i, j;
@@ -3327,10 +3414,10 @@ class borderLine
                   bl[i][j].fy -= kb * bl[i][j].vy;
 
                   //Limit force to avoid artifacts
-                  if (bl[i][j].softenVel == true){
+                  //if (bl[i][j].softenVel == true){
                     limitVel(bl[i][j], blSettings.maxv);
-                    bl[i][j].softenVel = false;
-                  }
+                    //bl[i][j].softenVel = false;
+                  //}
                   //
 
                   bl[i][j].vx += bl[i][j].fx * blSettings.dt / bl[i][j].mass;
@@ -3367,10 +3454,14 @@ class borderLine
         {
           if (circles[i].radius > 0){
               if (isNAN(circles[i].fx)){
-                writeSVG();
+                tolog(_L_ + "Bad circle: " + circles[i].croack());
+                writeSVG("error.svg");
                 exit(0);
               }
-              //limitForce(circles[i], blSettings.maxf);
+              if (blSettings.doCheckTopol){
+                  limitForce(circles[i], blSettings.maxf);
+                  limitVel(circles[i], blSettings.maxv);
+              }
 
               /*float sx = 0;
               if (circles[i].vx != 0){
@@ -3403,12 +3494,10 @@ class borderLine
               setScale(circles[i]);
           }
         }
-        displayFloat("LINEV", blSettings.totalLineV);
+        displayFloat("LINEV", log(blSettings.totalLineV));
         displayFloat("MINRAT", minRat);
-        displayFloat("CIRCLEV", blSettings.totalCircleV);
+        displayFloat("CIRCLEV", log10(blSettings.totalCircleV)/(2*log10(ngroups)));
         displayFloat("SURFRATIO", estSurf());
-        blSettings.totalCircleV = 0;
-        blSettings.totalLineV = 0;
     }
 
     float estSurf(int nPoints = 100){
@@ -3706,6 +3795,11 @@ public:
         potential = 0;
         maxRadius = 0;
         internalScale.initScale();
+        svgScale.initScale();
+        svgScale.setMinX(10.0f);
+        svgScale.setMinY(10.0f);
+        svgScale.setMaxX(490.0f);
+        svgScale.setMaxY(490.0f);
         initBlData(&blSettings);
         minRat = 0;
         showThis = false;
@@ -3717,15 +3811,16 @@ public:
         blSettings.totalCircleV = 0;
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
-        blSettings.maxf = 5e-2f;
-        blSettings.maxv = 1e-0f;
+        blSettings.maxf = 5e2f;
+        blSettings.maxv = 5e-0f;
         blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         blSettings.startdt = blSettings.dt;
-        blSettings.stepdt = 0.6f;
+        blSettings.stepdt = 0.04f;
         blSettings.inputFile = inputFile;
         blSettings.fname = outputFile;
         blSettings.ncycles = 0;
         blSettings.cycleInfo = "";
+        blSettings.lineAir = ngroups;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         for (i = 0; i < tw.size(); i++){
@@ -3833,7 +3928,18 @@ public:
     void setBV(float bv){
       blSettings.baseBV = bv;
     }
-
+    /** \brief Set the function to compute contacts
+     *
+     * \param f UINT 0 means contact(); 1 means contact2()
+     * \return void
+     *
+     */
+    void setContactFunction(UINT f){
+      blSettings.contactFunction = f;
+    }
+    float getTotalCircleV(){
+      return blSettings.totalCircleV;
+    }
 
     void setFixedCircles(bool fixedCircles = true){
       blSettings.fixCircles = fixedCircles;
@@ -4025,12 +4131,6 @@ public:
     fileText toSVG(){
       fileText svg;
       char temp[512];
-      scale sc;
-      sc.initScale();
-      sc.setMinX(10.0f);
-      sc.setMinY(10.0f);
-      sc.setMaxX(490.0f);
-      sc.setMaxY(490.0f);
       int fsize = 10;
       UINT i, j;
       string tst;
@@ -4102,14 +4202,14 @@ public:
       if (blSettings.doCheckTopol){
         if (blSettings.smoothSVG == true){
           for (i = 0; i < ngroups; i++){
-            point nxt = place(sc, bl[i][0]);
+            point nxt = place(svgScale, bl[i][0]);
             string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
 
             for (j = 1; j < (bl[i].size() - 2); j++){
-              point prev = place(sc, bl[i][j - 1]);
-              point curr = place(sc, bl[i][j]);
-              point next = place(sc, bl[i][j + 1]);
-              point next2 = place(sc, bl[i][j + 2]);
+              point prev = place(svgScale, bl[i][j - 1]);
+              point curr = place(svgScale, bl[i][j]);
+              point next = place(svgScale, bl[i][j + 1]);
+              point next2 = place(svgScale, bl[i][j + 2]);
               point ctrlfst = fstCtrlPoint(prev, curr, next);
               point ctrlsec = scndCtrlPoint(curr, next, next2);
               cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
@@ -4123,10 +4223,10 @@ public:
         } else{
           /* This does not */
           for (i = 0; i < ngroups; i++){
-            point nxt = place(sc, bl[i][0]);
+            point nxt = place(svgScale, bl[i][0]);
             string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
             for (j = 1; j < bl[i].size(); j++){
-              nxt = place(sc, bl[i][j]);
+              nxt = place(svgScale, bl[i][j]);
               cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
             }
             svg.addLine("<symbol id=\"bl" + num(i) + "\">");
@@ -4152,9 +4252,9 @@ public:
       for (i = 1; i < circles.size(); i++){
         //printf("%d\n", i);
         if (circles[i].radius > 0){
-          svgtemp = place(sc, circles[i]);
+          svgtemp = place(svgScale, circles[i]);
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
-          if (svgtemp.x > sc.minX() && svgtemp.x < sc.maxX()){
+          if (svgtemp.x > svgScale.minX() && svgtemp.x < svgScale.maxX()){
             string clss = "circle";
             if ((circles[i].flags & IS_OUTSIDE) > 0){
               clss = "spcircle";

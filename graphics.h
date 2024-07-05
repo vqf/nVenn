@@ -315,7 +315,10 @@ dlme.close();
               //bl.setContacts(false, true);
               bl.solve();
               bl.refreshScreen++;
-
+              float tc = bl.getTotalCircleV();
+              if (tc > 0 && tc < (1e-3*bl.ngroups / 5)){
+                bQuit = true;
+              }
               //Sleep(200);
           }
       }
@@ -348,11 +351,19 @@ dlme.close();
               //wait();
               //exit(0);
               bl.refreshScreen++;
-
+              if (bl.blSettings.totalCircleV > 0 && bl.blSettings.totalCircleV < (1e-3*bl.ngroups / 5)){
+                bQuit = true;
+              }
 
           }
       }
       bl.udt.clear();
+      bl.setCheckTopol(true);
+      bl.addLines();
+      toOGL(bl, hDC);
+      bl.setCheckTopol(false);
+      UINT b1 = bl.countOutsiders();
+      UINT bo = bl.chooseCombination();
       bQuit = false;
       while (!bQuit)
       {
@@ -377,12 +388,7 @@ dlme.close();
               //bl.addLines();
               //bl.polishLines();
               //bl.setCheckTopol(true);
-              bl.setCheckTopol(true);
-              bl.addLines();
-              toOGL(bl, hDC);
-              bl.setCheckTopol(false);
-              UINT b1 = bl.countOutsiders();
-              UINT bo = bl.chooseCombination();
+
               do{
                 //tolog("One more\n");
                 b1 = bo;
@@ -392,7 +398,7 @@ dlme.close();
                 toOGL(bl, hDC);
                 bl.setCheckTopol(false);
                 tolog("Outsiders lowered to " + toString(bo) + "\n");
-              } while (bo < b1);
+              } while (bo < b1 && bo > 0);
               //bl.chooseCrossings();
               bl.setCheckTopol(true);
               bl.addLines();
@@ -414,7 +420,7 @@ dlme.close();
         //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
-        bl.interpolateToDist(bl.minCircRadius * 1.2);
+        bl.interpolateToDist(bl.minCircRadius * AIR);
         bl.setPrevState();
         bl.setSecureState();
       }
@@ -460,6 +466,7 @@ dlme.close();
       bl.setFixedCircles(false);*/
       bQuit = false;
       bl.resetTimer();
+      float cdt = bl.blSettings.dt;
       while (!bQuit)
       {
           /* check for messages */
@@ -484,7 +491,12 @@ dlme.close();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.solve();
               bl.refreshScreen++;
-
+              if (bl.blSettings.dt < cdt){
+                cdt = bl.blSettings.dt;
+              }
+              else{
+                bQuit = true;
+              }
           }
       }
           // Debug topol
@@ -509,7 +521,7 @@ dlme.close();
           else
           {
               bl.setCheckTopol(true);
-              bl.setBV(0.5);
+              bl.setBV(1);
               bl.setCircleAttraction(1e-4);
               bl.setForces1();
               //bl.setGravityForces();
