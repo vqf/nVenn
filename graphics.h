@@ -486,6 +486,7 @@ dlme.close();
           else
           {
               bl.setCheckTopol(true);
+              bl.setSoftContact(true);
               bl.setForces1();
               bl.setContacts();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);

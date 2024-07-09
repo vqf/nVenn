@@ -263,6 +263,8 @@ typedef struct blData{
   UINT ncyclesInterrupted;
   float maxf;
   float maxv;
+  bool softcontact; /**< When in contact, speed is limited */
+  float maxvcontact; /**< When in contact, maxv is maxv / maxvcontact */
   float simTime; /**< Simulated time since start */
   string cycleInfo; /**< Debuggin info from last cycle */
   float lineAir; /**< Added to radii so that there is room for lines between circles */
@@ -2856,8 +2858,6 @@ class borderLine
           //radius += blSettings.margin;
           //check contact
           d = distance(p0.x, p0.y, p1.x, p1.y);
-
-
           if (d <= (radius))
           {
               if (d <= radius){
@@ -2873,6 +2873,20 @@ class borderLine
                   p1.fy -= result.fy;
                   p0.inContact = true;
                   p1.inContact = true;
+                  if (blSettings.softcontact){
+                    float dvx = p0.vx - p1.vx;
+                    float dvy = p0.vy - p1.vy;
+                    float dv = dvx * dvx + dvy * dvy;
+                    float mdv = blSettings.maxv / blSettings.maxvcontact;
+                    if (dv > mdv){
+                      float rv = blSettings.maxv / (blSettings.maxvcontact * dv);
+                      p0.vx *= rv;
+                      p0.vy *= rv;
+                      p1.vx *= rv;
+                      p1.vy *= rv;
+                    }
+                  }
+
   //                attention(p0.x, p0.y, 1, 1);
               }
               else{
@@ -2897,7 +2911,7 @@ class borderLine
               p1.softenVel = true;
               p1.inContact = false;
             }
-            return zero;
+            return result;
           }
       }
       return result;
@@ -2921,8 +2935,8 @@ class borderLine
              distance(p0.x, p0.y, p1.x, p1.y);
         virt.vx = p0.vx + (p1.vx-p0.vx) * d0;
         virt.fx = p0.fx + (p1.fx-p0.fx) * d0;
-        virt.vy = p0.vy - (p1.vy-p0.vy) * d0;
-        virt.fy = p0.fy - (p1.fy-p0.fy) * d0;
+        virt.vy = p0.vy + (p1.vy-p0.vy) * d0;
+        virt.fy = p0.fy + (p1.fy-p0.fy) * d0;
         virt.mass = p0.mass;
         d = distance(circ.x, circ.y, virt.x, virt.y);
         if (d < circ.radius && isInside(p0, p1, virt))
@@ -3474,8 +3488,9 @@ class borderLine
               circles[i].fx -= kb * 10 * circles[i].vx;
               circles[i].fy -= kb * 10 * circles[i].vy;
               //Limit force to avoid artifacts
-              if (circles[i].softenVel == true){
-                //limitVel(circle[i], blSettings.maxv);
+              if (circles[i].softenVel && blSettings.softcontact){
+                limitVel(circles[i], blSettings.maxv / blSettings.maxvcontact);
+                limitForce(circles[i], blSettings.maxf / blSettings.maxvcontact);
                 circles[i].softenVel = false;
               }
               //
@@ -3812,7 +3827,9 @@ public:
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
         blSettings.maxf = 5e2f;
-        blSettings.maxv = 5e-0f;
+        blSettings.maxv = 5e0f;
+        blSettings.softcontact = false;
+        blSettings.maxvcontact = 5;
         blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         blSettings.startdt = blSettings.dt;
         blSettings.stepdt = 0.04f;
@@ -3936,6 +3953,9 @@ public:
      */
     void setContactFunction(UINT f){
       blSettings.contactFunction = f;
+    }
+    void setSoftContact(bool soft = false){
+      blSettings.softcontact = soft;
     }
     float getTotalCircleV(){
       return blSettings.totalCircleV;
