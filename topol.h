@@ -12,7 +12,7 @@
 //#include <windows.h>
 
 #define CIRCLE_MASS 200.0f
-#define POINT_MASS 20
+#define POINT_MASS 50
 #define AIR 1.2    // polish and embellish multiply maxRad() by this factor
 
 // Flags for points
@@ -1375,7 +1375,7 @@ class borderLine
     bool showThis;
 
     void initBlData(blData* b){
-      b->sk = 1e3f;
+      b->sk = 5e3f;
       b->dt = 2.5e-2f;
       b->mindt = b->dt / 100;
       b->maxdt = b->dt;
@@ -2379,13 +2379,13 @@ class borderLine
           tangent up(0, 1);
           point current = bl[i][0];
           point p1 = rev.transformPoint(current, current.radius);
-          p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
+          //p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
           point p2 = dwn.transformPoint(current, current.radius);
-          p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
+          //p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
           point p3 = lft.transformPoint(current, current.radius);
-          p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
+          //p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
           point p4 = up.transformPoint(current, current.radius);
-          p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
+          //p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
           newpoints.push_back(p1);
           newpoints.push_back(p2);
           newpoints.push_back(p3);
@@ -2831,7 +2831,7 @@ class borderLine
       }
     }
 
-    point contact(point &p0, point &p1, float hardness = 5e1f, float radius = 0 )
+    point contact(point &p0, point &p1, float hardness = 5e1f, float radius = 0, float air = 0)
     {
       point result;
       if (blSettings.contactFunction == 1){
@@ -2851,7 +2851,7 @@ class borderLine
           zero.fy = 0;
           dx = p1.x - p0.x;
           dy = p1.y - p0.y;
-          float trueRadius = p0.radius + p1.radius;
+          float trueRadius = p0.radius + p1.radius + air;
           if (radius == 0){
             radius = (trueRadius) * AIR;
           }
@@ -2933,10 +2933,12 @@ class borderLine
              distance(p0.x, p0.y, p1.x, p1.y);
         d1 = distance(p1.x, p1.y, virt.x, virt.y) /
              distance(p0.x, p0.y, p1.x, p1.y);
-        virt.vx = p0.vx + (p1.vx-p0.vx) * d0;
-        virt.fx = p0.fx + (p1.fx-p0.fx) * d0;
-        virt.vy = p0.vy + (p1.vy-p0.vy) * d0;
-        virt.fy = p0.fy + (p1.fy-p0.fy) * d0;
+        float td = d0 + d1;
+        float rd = d0 / td;
+        virt.vx = p0.vx + (p1.vx-p0.vx) * rd;
+        virt.fx = p0.fx + (p1.fx-p0.fx) * rd;
+        virt.vy = p0.vy + (p1.vy-p0.vy) * rd;
+        virt.fy = p0.fy + (p1.fy-p0.fy) * rd;
         virt.mass = p0.mass;
         d = distance(circ.x, circ.y, virt.x, virt.y);
         if (d < circ.radius && isInside(p0, p1, virt))
@@ -3104,7 +3106,7 @@ class borderLine
               for (j = i + 1; j < circles.size(); j++)
               {
                   //f = eqforce(circles[i], circles[j]);
-                  f = contact(circles[i], circles[j], 0, radius);
+                  f = contact(circles[i], circles[j], 0, radius, 1);
               }
           }
         }
@@ -3826,7 +3828,7 @@ public:
         blSettings.totalCircleV = 0;
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
-        blSettings.maxf = 5e2f;
+        blSettings.maxf = 5e1f;
         blSettings.maxv = 5e0f;
         blSettings.softcontact = false;
         blSettings.maxvcontact = 5;
