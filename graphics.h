@@ -114,7 +114,7 @@ class glGraphics{
       ogl.initScale();
       //define vectors
       vector<point> attn = bl.getWarnings();
-      if (bl.blSettings.doCheckTopol == true){
+      //if (bl.blSettings.doCheckTopol == true){
         for (i = 0; i < blp.size(); i++)
         {
             //attention(blp[i][0].x, blp[i][0].y);
@@ -161,10 +161,10 @@ class glGraphics{
           glEnd ();
         }
         bl.clearWarnings();
-      }
-      else{
+      //}
+      //else{
 
-        for (i = 0; i < bl.circles.size() -1; i++)
+        for (UINT i = 0; i < bl.circles.size() -1; i++)
         {
           if (bl.circles[i].radius > 0){
               //attention(blp[i][0].x, blp[i][0].y);
@@ -172,7 +172,8 @@ class glGraphics{
 
                //Show forces
                //-----------
-/*              glBegin (GL_LINES);
+               /**********
+              glBegin (GL_LINES);
 
               point t = showForce(bl.circles[i], 0.01);
 
@@ -181,7 +182,7 @@ class glGraphics{
               P = bl.place(ogl, t);
               glVertex2f(P.x, P.y);
               glEnd ();
-*/
+              /**********/
               //-----------
               /*
               // Show relationships
@@ -206,7 +207,7 @@ class glGraphics{
 
               glLineWidth(1);
           }
-        }
+        //}
 
       }
 
@@ -523,7 +524,7 @@ dlme.close();
           {
               bl.setCheckTopol(true);
               bl.setBV(1);
-              bl.setCircleAttraction(1e-4);
+              bl.setCircleAttraction(1e-3 / bl.ncircles());
               bl.setForces1();
               //bl.setGravityForces();
               bl.setContacts();

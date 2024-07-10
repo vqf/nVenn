@@ -8,11 +8,12 @@
 #include <sstream>
 #include <cstdarg>
 #include <algorithm>
+#include <iostream>
 #include <math.h>
 //#include <windows.h>
 
 #define CIRCLE_MASS 200.0f
-#define POINT_MASS 50
+#define POINT_MASS 20
 #define AIR 1.2    // polish and embellish multiply maxRad() by this factor
 
 // Flags for points
@@ -54,6 +55,8 @@ void tolog(string t){
   f.close();
 }
 )
+
+
 
 
 UINT setFlag(UINT flag, UINT mask){
@@ -1021,6 +1024,43 @@ public:
       Y = max(p1.y, p2.y);
     }
 
+    point place(scale s, point m){
+      point r;
+      scale tempScale;
+      tempScale.initScale();
+      float offset;
+      float Scale;
+      if (s.ratio() <= ratio())
+      {
+          offset = s.xSpan() - s.ySpan() / ratio();
+          offset /= 2;
+          tempScale.setMinX(offset + s.minX());
+          tempScale.setMaxX(s.maxX() - offset);
+          tempScale.setMinY(s.minY());
+          tempScale.setMaxY(s.maxY());
+      }
+      else
+      {
+          offset = s.ySpan() - ratio() * s.xSpan();
+          offset /= 2;
+          tempScale.setMinX(s.minX());
+          tempScale.setMaxX(s.maxX());
+          tempScale.setMinY(offset + s.minY());
+          tempScale.setMaxY(s.maxY() - offset);
+      }
+      r.x = m.x - minX();
+      r.y = m.y - minY();
+      r.x /= xSpan();
+      r.y /= ySpan();
+      r.x *= tempScale.xSpan();
+      r.y *= tempScale.ySpan();
+      r.x += tempScale.minX();
+      r.y += tempScale.minY();
+      Scale = tempScale.xSpan() / xSpan();
+      r.radius = Scale * m.radius;
+      return r;
+    }
+
     void initScale(){
       x = -1;
       X = 1;
@@ -1375,7 +1415,7 @@ class borderLine
     bool showThis;
 
     void initBlData(blData* b){
-      b->sk = 5e3f;
+      b->sk = 1e3f;
       b->dt = 2.5e-2f;
       b->mindt = b->dt / 100;
       b->maxdt = b->dt;
@@ -1865,10 +1905,10 @@ class borderLine
         if (p1.radius == 0 || p0.radius == 0){
           return p0;
         }
-        float repulsion = 0; //-blSettings.sk * kattr;
+        float repulsion = -kattr;
         point result;
         //float factor = (float) getRelationships(p0.n, p1.n);
-        float radius = p0.radius + p1.radius;
+        float radius = p0.radius + p1.radius + 4 * blSettings.margin;
         //radius *= 1.2;
         float dx = p1.x - p0.x;
         float dy = p1.y - p0.y;
@@ -1911,6 +1951,9 @@ class borderLine
     void embellishTopology(bool logit = false){
       tangent lft(0, -1);
       tangent rgh(0, 1);
+      for (UINT k = 0; k < circles.size(); k++){
+        circles[k].flags = unsetFlag(circles[k].flags, USED);
+      }
       for (UINT i = 0; i < bl.size(); i++){
         bool again = true;
         while (again){
@@ -2873,6 +2916,7 @@ class borderLine
                   p1.fy -= result.fy;
                   p0.inContact = true;
                   p1.inContact = true;
+                  attention(p1.x, p1.y);
                   if (blSettings.softcontact){
                     float dvx = p0.vx - p1.vx;
                     float dvy = p0.vy - p1.vy;
@@ -2944,10 +2988,10 @@ class borderLine
         if (d < circ.radius && isInside(p0, p1, virt))
         {
             result = contact(circ, virt);
-            p0.fx = d1 * virt.fx;
-            p0.fy = d1 * virt.fy;
-            p1.fx = d0 * virt.fx;
-            p1.fy = d0 * virt.fy;
+            p0.fx = d1 * virt.fx * rd;
+            p0.fy = d1 * virt.fy * rd;
+            p1.fx = d0 * virt.fx * rd;
+            p1.fy = d0 * virt.fy * rd;
             //attention(p0.x, p0.y, p0.x+1e-3*p0.fx, p0.y+1e-3*p0.fy);
             //attention(p1.x, p1.y, p1.x+1e-3*p1.fx, p1.y+1e-3*p1.fy);
             //Sleep(100);
@@ -2997,11 +3041,11 @@ class borderLine
     }
 
     void setCircleAttraction(float G = 1e-5){
-      float minDist = maxRad()  * sqrt((float) circles.size());
+      float minDist = 4 * maxRad(); //  * sqrt((float) circles.size());
       for (UINT i = 0; i < (circles.size() - 1); i++){
         for (UINT j = i + 1; j < circles.size(); j++){
           if (distance(circles[i].x, circles[i].y, circles[j].x, circles[j].y) > minDist){
-            selforce(circles[i], circles[j], G);
+            selforce2(circles[i], circles[j], G);
           }
         }
       }
@@ -3106,7 +3150,7 @@ class borderLine
               for (j = i + 1; j < circles.size(); j++)
               {
                   //f = eqforce(circles[i], circles[j]);
-                  f = contact(circles[i], circles[j], 0, radius, 1);
+                  f = contact(circles[i], circles[j], 0, radius, 4* blSettings.margin);
               }
           }
         }
@@ -3824,15 +3868,13 @@ public:
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
         blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
-        blSettings.marginScale = 0.02f;
         blSettings.totalCircleV = 0;
         blSettings.totalLineV   = 0;
         blSettings.minSurfRatio = 0;
         blSettings.maxf = 5e1f;
-        blSettings.maxv = 5e0f;
+        blSettings.maxv = 5e1f;
         blSettings.softcontact = false;
-        blSettings.maxvcontact = 5;
-        blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
+        blSettings.maxvcontact = 50;
         blSettings.startdt = blSettings.dt;
         blSettings.stepdt = 0.04f;
         blSettings.inputFile = inputFile;
@@ -3852,6 +3894,12 @@ public:
         setCircles(*bm, origw, tlabels);
         setRelationships(); /* How many bits does each pair of circles share */
 
+        /**/
+        // Set the width of a line
+        point labs(1 / svgScale.xSpan(), 0);
+        point lsvg = place(internalScale, labs);
+        blSettings.marginScale = lsvg.x;
+        blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         /**/
         ostringstream l;
         l << "\t";
@@ -3955,6 +4003,15 @@ public:
      */
     void setContactFunction(UINT f){
       blSettings.contactFunction = f;
+    }
+    UINT ncircles(){
+      UINT result = 0;
+      for (UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          result++;
+        }
+      }
+      return result;
     }
     void setSoftContact(bool soft = false){
       blSettings.softcontact = soft;
@@ -4729,6 +4786,184 @@ public:
         dataDisplay.clear();
     }
 
+};
+
+string getFile(string prompt, string errorPrompt)
+{
+    string fname;
+    cout << prompt << endl;
+    cin >> fname;
+    ifstream isfile;
+    isfile.open(fname.c_str());
+    if (!isfile.is_open())
+    {
+        isfile.close();
+        cout << errorPrompt << endl;
+        fname = getFile(prompt, errorPrompt);
+    }
+    isfile.close();
+    return fname;
+}
+
+
+//--------------------------------------------
+void printv(vector<int> v)
+{
+    UINT i;
+    for (i = 0; i < v.size(); i++)
+    {
+        cout << v[i];
+    }
+    cout << " ";
+}
+//--------------------------------------------
+
+
+borderLine getFileInfo(string fname, string outputFile){
+    ifstream vFile;
+    string header;
+    vector<string> groupNames;
+    vector<int> temp;
+    vector<float> weights;
+    vector<string> labels;
+    int i;
+    vFile.open(fname.c_str());
+    getline(vFile, header);
+    cout << header;
+    getline(vFile, header);
+    int number = atoi(header.c_str());
+    cout << endl << number << " groups:" << endl;
+    for (i = 0; i < number; i++){
+        getline(vFile, header);
+        groupNames.insert(groupNames.end(), header);
+        cout << header << endl;
+    }
+    int n = twoPow(number);
+    for (i = 0; i < n; i++){
+        getline(vFile, header); //  get the whole line
+        string w = header.substr(0,header.find_first_of(" "));
+        weights.insert (weights.end(), atoi(w.c_str())); // it take the first number
+        string label;
+        try
+        {
+            label = header.substr(header.find_first_of(" "));
+        }
+        catch (const std::exception& e)
+        {
+            cout << i << endl;
+            label = "";
+        }
+        labels.insert (labels.end(), label);
+        cout << "w=" << w << "  label:" << label << endl;
+        //getline(vFile, header, ' '); /// get the number
+        //weights.insert (weights.end(), atoi(header.c_str()));
+        //getline(vFile, header) ;  ///  get the rest of the line with the labels
+        //labels.insert (labels.end(), header);
+        temp = toBin(i, number);
+        printv(temp);
+        cout << ".- " << weights[i] << " : " << labels[i] << endl;
+    }
+    vFile.close();
+    binMap mymap(number);
+    string dataFile = outputFile + ".data";
+    borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
+
+    vFile.open(dataFile.c_str());
+    if (vFile.good() == true){ // Unfinished
+        vFile.close();
+        lines.setCoords(dataFile);
+    }
+
+
+    return lines;
+}
+
+typedef struct springLink{
+  UINT from;
+  UINT to;
+  float k;
+  float d;
+} springLink;
+
+class scene{
+
+  vector<point> points;
+  vector<springLink> springs;
+
+  void effectSprings(float dt){
+    for (UINT i = 0; i < springs.size(); i++){
+      point result;
+      float springK = springs[i].k;
+      float eqd = springs[i].d;
+      point *p0 = &(points[springs[i].from]);
+      point *p1 = &(points[springs[i].to]);
+      float dx = p1->x - p0->x;
+      float dy = p1->y - p0->y;
+      float d = sqrt(dx * dx + dy * dy);
+      float eqx = eqd * dx / d;
+      float eqy = eqd * dy / d;
+      result.fx = springK * (dx - eqx);
+      result.fy = springK * (dy - eqy);
+      p0->fx += result.fx;
+      p1->fx -= result.fx;
+      p0->fy += result.fy;
+      p1->fy -= result.fy;
+    }
+  }
+  void update(float dt){
+    for (UINT i = 0; i < points.size(); i++){
+      point *p = &points[i];
+      float ax = p->fx / p->mass;
+      float ay = p->fy / p->mass;
+      float vx = ax * dt;
+      float vy = ay * dt;
+      p->x += vx * dt;
+      p->y += vy * dt;
+    }
+  }
+public:
+  scene(){}
+  void addPoint(point p){
+    points.push_back(p);
+  }
+  bool addLink(UINT from, UINT to, float k = 1, float d = 0){
+    bool result = false;
+    if (from != to &&
+        from >= 0 && from < points.size() &&
+        to >= 0 && to < points.size()){
+      result = true;
+      springLink sl;
+      sl.from = from;
+      sl.to = to;
+      sl.k = k;
+      sl.d = d;
+      springs.push_back(sl);
+    }
+    return result;
+  }
+  vector<point> getPoints(){
+    return points;
+  }
+  vector<springLink> getLinks(){
+    return springs;
+  }
+  void solve(float dt){
+    effectSprings(dt);
+    update(dt);
+  }
+  string croack(){
+    ostringstream result;
+    result << "Points: " << endl;
+    for (UINT i = 0; i < points.size(); i++){
+        result << points[i].croack();
+    }
+    result << "Links: " << endl;
+    for (UINT i = 0; i < springs.size(); i++){
+      result << i + 1 << ": From " << springs[i].from << " to " << springs[i].to << endl;
+      result << "\tk: " << springs[i].k << ", d0: " << springs[i].d << endl;
+    }
+    return result.str();
+  }
 };
 
 
