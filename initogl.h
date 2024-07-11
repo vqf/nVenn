@@ -3,14 +3,6 @@
 
 HWND publich;
 
-void temp(int n, string a="")
-{
-    char t[200];
-    string temp;
-    sprintf(t, "%d", n);
-    temp = t;
-    MessageBox(publich, temp.c_str(), a.c_str(), MB_ICONINFORMATION | MB_OK);
-}
 
 void showText(char* n, string a="")
 {

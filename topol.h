@@ -340,7 +340,8 @@ public:
     }
     string croack(){
       ostringstream r;
-      r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius << "\tFx: " << fx << "\tFy: " << fy << "\n";
+      r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius;
+      r << "\tvx: " << vx << "\tvy: " << vy << "\tFx: " << fx << "\tFy: " << fy << "\n";
       return r.str();
     }
 };
@@ -4889,6 +4890,7 @@ class scene{
 
   vector<point> points;
   vector<springLink> springs;
+  vector<springLink> rods;
 
   void effectSprings(float dt){
     for (UINT i = 0; i < springs.size(); i++){
@@ -4900,6 +4902,34 @@ class scene{
       float dx = p1->x - p0->x;
       float dy = p1->y - p0->y;
       float d = sqrt(dx * dx + dy * dy);
+      float eqx = eqd * dx / d;
+      float eqy = eqd * dy / d;
+      result.fx = springK * (dx - eqx);
+      result.fy = springK * (dy - eqy);
+      p0->fx += result.fx;
+      p1->fx -= result.fx;
+      p0->fy += result.fy;
+      p1->fy -= result.fy;
+    }
+  }
+  void effectRods(float dt){
+    for (UINT i = 0; i < rods.size(); i++){
+      point result;
+      float springK = 1e4;
+      point *p0 = &(points[rods[i].from]);
+      point *p1 = &(points[rods[i].to]);
+      float dx = p1->x - p0->x;
+      float dy = p1->y - p0->y;
+      float dsq = dx * dx + dy * dy;
+      float d = sqrt(dsq);
+      float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
+      float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
+      p0->fx -= f01 * dx;
+      p1->fx -= f10 * dx;
+      p0->fy -= f01 * dy;
+      p1->fy -= f10 * dy;
+      // Adjust with a spring
+      float eqd = rods[i].d;
       float eqx = eqd * dx / d;
       float eqy = eqd * dy / d;
       result.fx = springK * (dx - eqx);
@@ -4941,14 +4971,35 @@ public:
     }
     return result;
   }
+  bool addRod(UINT from, UINT to){
+    bool result = false;
+    if (from != to &&
+        from >= 0 && from < points.size() &&
+        to >= 0 && to < points.size()){
+      result = true;
+      springLink sl;
+      sl.from = from;
+      sl.to = to;
+      sl.k = 0;
+      float dx = points[to].x - points[from].x;
+      float dy = points[to].y - points[from].y;
+      sl.d = sqrt(dx * dx + dy * dy);
+      rods.push_back(sl);
+    }
+    return result;
+  }
   vector<point> getPoints(){
     return points;
   }
   vector<springLink> getLinks(){
     return springs;
   }
+  vector<springLink> getRods(){
+    return rods;
+  }
   void solve(float dt){
     effectSprings(dt);
+    effectRods(dt);
     update(dt);
   }
   string croack(){

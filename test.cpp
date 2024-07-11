@@ -4,10 +4,10 @@
 #include "initogl.h"
 #include "graphics.h"
 
-void addCircle(point P){
+void addCircle(point P, vector<float> color = {0, 1, 0}){
   vector<point> temp = glCircle(P.x, P.y, P.radius);
   glBegin (GL_LINE_LOOP);
-  glColor3f (0.0f, 1.0f, 0.0f);
+  glColor3f (color[0], color[1], color[2]);
   for (UINT j = 0; j < temp.size(); j++)
   {
       glVertex2f (temp[j].x, temp[j].y);
@@ -15,9 +15,9 @@ void addCircle(point P){
   glEnd ();
 }
 
-void addLine(point p0, point p1){
+void addLine(point p0, point p1, vector<float> color = {0, 0, 1}){
   glBegin (GL_LINE_LOOP);
-  glColor3f (0.0f, 0.0f, 1.0f);
+  glColor3f (color[0], color[1], color[2]);
   glVertex2f(p0.x, p0.y);
   glVertex2f(p1.x, p1.y);
   glEnd ();
@@ -35,6 +35,7 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
     addCircle(tp);
   }
   vector<springLink> springs = s.getLinks();
+  vector<springLink> rods = s.getRods();
   for (UINT i = 0; i < springs.size(); i++){
     point p0 = circles[springs[i].from];
     point p1 = circles[springs[i].to];
@@ -42,6 +43,14 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
     point s0 = sc.place(ogl, p0);
     point s1 = sc.place(ogl, p1);
     addLine(s0, s1);
+  }
+  for (UINT i = 0; i < rods.size(); i++){
+    point p0 = circles[rods[i].from];
+    point p1 = circles[rods[i].to];
+    //tolog(p0.croack()); exit(0);
+    point s0 = sc.place(ogl, p0);
+    point s1 = sc.place(ogl, p1);
+    addLine(s0, s1, {1, 0, 0});
   }
   SwapBuffers (hDC);
   time_t end_time = time(nullptr);
@@ -85,7 +94,7 @@ WinMain (HINSTANCE hInstance,
     hWnd = CreateWindow (
                "GLSample", "nVenn",
                WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-               0, 0, 1200, 800,
+               0, 0, 800.0f, 800.0f,
                NULL, NULL, hInstance, NULL);
     publich = hWnd;
     //MessageBox(hWnd, "hi", "yo", MB_ICONINFORMATION | MB_OK);
@@ -102,22 +111,16 @@ WinMain (HINSTANCE hInstance,
 
     scene univ;
     point fp;
-    fp.x = 5;
+    fp.x = 10;
     fp.y = 5;
     fp.radius = 1;
     univ.addPoint(fp);
-    fp.x = 10;
+    fp.x = 15;
     fp.y = 7;
     univ.addPoint(fp);
-    fp.x = 5;
-    fp.y = 9;
-    fp.mass = 2000;
-    univ.addPoint(fp);
-    float d = distance(10, 7, 5, 9);
-    univ.addLink(0, 1, 2e5, 5);
-    univ.addLink(0, 2, 200, 7);
-    univ.addLink(1, 2, 1000, d);
-    scale scscale(point(0, 0), point(20, 20));
+    univ.addLink(0, 1, 2e2, 0);
+    univ.addRod(0, 1);
+    scale scscale(point(-10, -10), point(30, 30));
     //tolog(univ.croack());
 
     /* program main loop */
