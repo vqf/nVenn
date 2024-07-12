@@ -4891,6 +4891,7 @@ class scene{
   vector<point> points;
   vector<springLink> springs;
   vector<springLink> rods;
+  vector<bool> contacts;
 
   void effectSprings(float dt){
     for (UINT i = 0; i < springs.size(); i++){
@@ -4912,32 +4913,89 @@ class scene{
       p1->fy -= result.fy;
     }
   }
+  void rod(point *p0, point *p1, float eqd, int neg = 1){
+    point result;
+    float springK = 1e5;
+    float dx = p1->x - p0->x;
+    float dy = p1->y - p0->y;
+    float dsq = dx * dx + dy * dy;
+    float d = sqrt(dsq);
+    float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
+    float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
+    p0->fx -= f01 * dx;
+    p1->fx -= f10 * dx;
+    p0->fy -= f01 * dy;
+    p1->fy -= f10 * dy;
+    // Adjust with a spring
+    float eqx = eqd * dx / d;
+    float eqy = eqd * dy / d;
+    result.fx = springK * (dx - eqx);
+    result.fy = springK * (dy - eqy);
+    p0->fx += neg * result.fx;
+    p1->fx -= neg * result.fx;
+    p0->fy += neg * result.fy;
+    p1->fy -= neg * result.fy;
+  }
   void effectRods(float dt){
     for (UINT i = 0; i < rods.size(); i++){
-      point result;
-      float springK = 1e4;
       point *p0 = &(points[rods[i].from]);
       point *p1 = &(points[rods[i].to]);
-      float dx = p1->x - p0->x;
-      float dy = p1->y - p0->y;
-      float dsq = dx * dx + dy * dy;
-      float d = sqrt(dsq);
-      float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
-      float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
-      p0->fx -= f01 * dx;
-      p1->fx -= f10 * dx;
-      p0->fy -= f01 * dy;
-      p1->fy -= f10 * dy;
-      // Adjust with a spring
-      float eqd = rods[i].d;
-      float eqx = eqd * dx / d;
-      float eqy = eqd * dy / d;
-      result.fx = springK * (dx - eqx);
-      result.fy = springK * (dy - eqy);
-      p0->fx += result.fx;
-      p1->fx -= result.fx;
-      p0->fy += result.fy;
-      p1->fy -= result.fy;
+      rod(p0, p1, rods[i].d);
+    }
+  }
+  UINT convertLinkCoordinates(UINT i, UINT j) {
+    UINT a = i < j ? i : j;
+    UINT b = i < j ? j : i;
+    UINT start = 0;
+    UINT k = points.size();
+    UINT t = k - 1;
+    UINT q = k - a - 1;
+    if (a > 0) {
+      start = ((t * (t + 1)) - (q * (q + 1))) / 2;
+    }
+    UINT result = start + b - a - 1;
+    return result;
+  }
+  void icontacts(){
+    // First pass
+    for (UINT i = 0; i < (points.size()-1); i++){
+      point *p0 = &(points[i]);
+      for (UINT j = i + 1; j < points.size(); j++){
+        point *p1 = &(points[j]);
+        float r = p0->radius + p1->radius;
+        float rsq = r * r;
+        float dx = p1->x - p0->x;
+        float dy = p1->y - p0->y;
+        float dsq = dx * dx + dy * dy;
+        if (dsq <= rsq){
+          rod(p0, p1, r);
+        }
+      }
+    }
+    // Second round
+    for (UINT i = 0; i < (points.size()-1); i++){
+      point *p0 = &(points[i]);
+      for (UINT j = i + 1; j < points.size(); j++){
+        point *p1 = &(points[j]);
+        float r = p0->radius + p1->radius;
+        float rsq = r * r;
+        float dx = p1->x - p0->x;
+        float dy = p1->y - p0->y;
+        float dsq = dx * dx + dy * dy;
+        if (dsq <= rsq){
+          rod(p0, p1, r, -1);
+          float fx = p0->fx - p1->fx;
+          float fy = p0->fy - p1->fy;
+          float scprod = fx * dx + fy * dy;
+          if (scprod > 0){
+            rod(p0, p1, r);
+            float vx = (p0->mass * p0->vx + p1.mass * p1->vx) / (p0->mass + p1->mass);
+            float vy = (p0->mass * p0.vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+            p0->vx = vx; p0->vy = vy;
+            p1->vx = vx; p1->vy = vy;
+          }
+        }
+      }
     }
   }
   void update(float dt){
@@ -4955,6 +5013,12 @@ public:
   scene(){}
   void addPoint(point p){
     points.push_back(p);
+    contacts.clear();
+    for (UINT i = 0; i < (points.size() - 1); i++){
+      for (UINT j = i + 1; j < points.size(); j++){
+        contacts.push_back(false);
+      }
+    }
   }
   bool addLink(UINT from, UINT to, float k = 1, float d = 0){
     bool result = false;
@@ -4971,7 +5035,7 @@ public:
     }
     return result;
   }
-  bool addRod(UINT from, UINT to){
+  bool addRod(UINT from, UINT to, float d = 0){
     bool result = false;
     if (from != to &&
         from >= 0 && from < points.size() &&
@@ -4983,7 +5047,10 @@ public:
       sl.k = 0;
       float dx = points[to].x - points[from].x;
       float dy = points[to].y - points[from].y;
-      sl.d = sqrt(dx * dx + dy * dy);
+      sl.d = d * d;
+      if (d == 0){
+        sl.d = sqrt(dx * dx + dy * dy);
+      }
       rods.push_back(sl);
     }
     return result;
@@ -5000,6 +5067,8 @@ public:
   void solve(float dt){
     effectSprings(dt);
     effectRods(dt);
+    icontacts();
+    //effectContacts(dt);
     update(dt);
   }
   string croack(){

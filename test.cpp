@@ -3,6 +3,7 @@
 #include "topol.h"
 #include "initogl.h"
 #include "graphics.h"
+#include <math.h>
 
 void addCircle(point P, vector<float> color = {0, 1, 0}){
   vector<point> temp = glCircle(P.x, P.y, P.radius);
@@ -110,17 +111,24 @@ WinMain (HINSTANCE hInstance,
     dlme.close();
 
     scene univ;
-    point fp;
-    fp.x = 10;
-    fp.y = 5;
-    fp.radius = 1;
-    univ.addPoint(fp);
-    fp.x = 15;
-    fp.y = 7;
-    univ.addPoint(fp);
-    univ.addLink(0, 1, 2e2, 0);
-    univ.addRod(0, 1);
-    scale scscale(point(-10, -10), point(30, 30));
+    UINT ncirc = 20;
+    for (UINT i = 0; i < ncirc; i++){
+      float r = ncirc / 2;
+      float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
+      float y = 15 + r * sin(2 * 3.141593 * i / ncirc);
+      point p;
+      p.x = x;
+      p.y = y;
+      p.radius = 0.5;
+      univ.addPoint(p);
+    }
+    UINT cc = ncirc - 1;
+    for (UINT i = 0; i < ncirc; i++){
+      univ.addLink(cc, i, 2e4, 0);
+      cc = i;
+    }
+    scale scscale(point(0, 0), point(30, 30));
+
     //tolog(univ.croack());
 
     /* program main loop */
