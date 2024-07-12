@@ -111,15 +111,15 @@ WinMain (HINSTANCE hInstance,
     dlme.close();
 
     scene univ;
-    UINT ncirc = 20;
+    UINT ncirc = 100;
     for (UINT i = 0; i < ncirc; i++){
-      float r = ncirc / 2;
+      float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
       float y = 15 + r * sin(2 * 3.141593 * i / ncirc);
       point p;
       p.x = x;
       p.y = y;
-      p.radius = 0.5;
+      p.radius = 0;
       univ.addPoint(p);
     }
     UINT cc = ncirc - 1;
@@ -127,6 +127,13 @@ WinMain (HINSTANCE hInstance,
       univ.addLink(cc, i, 2e4, 0);
       cc = i;
     }
+    point p;
+    p.x = 10;
+    p.y = 15;
+    p.radius = 5;
+    univ.addPoint(p);
+    //univ.addRod(0, ncirc >> 1, 2);
+    //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
     scale scscale(point(0, 0), point(30, 30));
 
     //tolog(univ.croack());

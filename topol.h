@@ -4989,8 +4989,8 @@ class scene{
           float scprod = fx * dx + fy * dy;
           if (scprod > 0){
             rod(p0, p1, r);
-            float vx = (p0->mass * p0->vx + p1.mass * p1->vx) / (p0->mass + p1->mass);
-            float vy = (p0->mass * p0.vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+            float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
+            float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
             p0->vx = vx; p0->vy = vy;
             p1->vx = vx; p1->vy = vy;
           }
