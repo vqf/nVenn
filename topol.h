@@ -4941,6 +4941,70 @@ class scene{
       point *p0 = &(points[rods[i].from]);
       point *p1 = &(points[rods[i].to]);
       rod(p0, p1, rods[i].d);
+      for (UINT j = 0; j < points.size(); j++){
+        rope(&(points[j]), p0, p1);
+      }
+    }
+  }
+  bool isInside(point *p0, point *p1, point *target)
+  {
+      /**
+      Returns true if target is inside the box limited
+      by p0 and p1. False otherwise
+      **/
+
+      bool result = true;
+      float xdiscr, ydiscr;
+      xdiscr = (target->x - p0->x) * (target->x - p1->x);
+      ydiscr = (target->y - p0->y) * (target->y - p1->y);
+      if (xdiscr > 0 || ydiscr > 0)
+      {
+          result = false;
+      }
+      return result;
+  }
+  void rope(point *circ, point *p0, point *p1)
+    {
+      float rght = circ->x + circ->radius;
+      float lft  = circ->x - circ->radius;
+      float top  = circ->y - circ->radius;
+      float bttm = circ->y + circ->radius;
+      if ((p0->x <= lft  && p1->x >= lft  ||
+          p0->x <= rght && p1->x >= rght) &&
+          (p1->y <= top  && p1->y >= top  ||
+          p1->y <= bttm && p1->y >= bttm)){
+
+        float a, b;
+        float d;
+        float d0, d1;
+        a = (p1->y - p0->y)/(p1->x - p0->x);
+        b = p0->y - a * p0->x;
+        point virt;
+        virt.x = ((circ->x + a*circ->y - a * b)/(a*a + 1));
+        virt.y = (a * circ->x + a*a*circ->y + b)/(a*a + 1);
+        d0 = distance(p0->x, p0->y, virt.x, virt.y) /
+             distance(p0->x, p0->y, p1->x, p1->y);
+        d1 = distance(p1->x, p1->y, virt.x, virt.y) /
+             distance(p0->x, p0->y, p1->x, p1->y);
+        float td = d0 + d1;
+        float rd = d0 / td;
+        virt.vx = p0->vx + (p1->vx-p0->vx) * rd;
+        virt.fx = p0->fx + (p1->fx-p0->fx) * rd;
+        virt.vy = p0->vy + (p1->vy-p0->vy) * rd;
+        virt.fy = p0->fy + (p1->fy-p0->fy) * rd;
+        virt.mass = (p0->mass + p1->mass) / 2;
+        d = distance(circ->x, circ->y, virt.x, virt.y);
+        if (d < circ->radius && isInside(p0, p1, &virt))
+        {
+            contact(circ, &virt);
+            p0->fx = d1 * virt.fx * rd;
+            p0->fy = d1 * virt.fy * rd;
+            p1->fx = d0 * virt.fx * rd;
+            p1->fy = d0 * virt.fy * rd;
+            //attention(p0->x, p0->y, p0->x+1e-3*p0->fx, p0->y+1e-3*p0->fy);
+            //attention(p1->x, p1->y, p1->x+1e-3*p1->fx, p1->y+1e-3*p1->fy);
+            //Sleep(100);
+        }
     }
   }
   UINT convertLinkCoordinates(UINT i, UINT j) {
@@ -4956,20 +5020,23 @@ class scene{
     UINT result = start + b - a - 1;
     return result;
   }
+  point contact(point *p0, point *p1){
+    float r = p0->radius + p1->radius;
+    float rsq = r * r;
+    float dx = p1->x - p0->x;
+    float dy = p1->y - p0->y;
+    float dsq = dx * dx + dy * dy;
+    if (dsq <= rsq){
+      rod(p0, p1, r);
+    }
+  }
   void icontacts(){
     // First pass
     for (UINT i = 0; i < (points.size()-1); i++){
       point *p0 = &(points[i]);
       for (UINT j = i + 1; j < points.size(); j++){
         point *p1 = &(points[j]);
-        float r = p0->radius + p1->radius;
-        float rsq = r * r;
-        float dx = p1->x - p0->x;
-        float dy = p1->y - p0->y;
-        float dsq = dx * dx + dy * dy;
-        if (dsq <= rsq){
-          rod(p0, p1, r);
-        }
+        contact(p0, p1);
       }
     }
     // Second round

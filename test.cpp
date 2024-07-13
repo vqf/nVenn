@@ -4,6 +4,7 @@
 #include "initogl.h"
 #include "graphics.h"
 #include <math.h>
+#include <random>
 
 void addCircle(point P, vector<float> color = {0, 1, 0}){
   vector<point> temp = glCircle(P.x, P.y, P.radius);
@@ -109,9 +110,12 @@ WinMain (HINSTANCE hInstance,
     dlme.open("log.txt", std::ios_base::out);
     dlme.write("", 0);
     dlme.close();
+    std::random_device rd;  // Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<> dis(-1.0, 1.0);
 
     scene univ;
-    UINT ncirc = 100;
+    UINT ncirc = 30;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -119,19 +123,27 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
+      p.mass = 400;
       p.radius = 0;
       univ.addPoint(p);
     }
     UINT cc = ncirc - 1;
     for (UINT i = 0; i < ncirc; i++){
-      univ.addLink(cc, i, 2e4, 0);
+      univ.addLink(cc, i, 1e2, 0);
       cc = i;
     }
-    point p;
-    p.x = 10;
-    p.y = 15;
-    p.radius = 5;
-    univ.addPoint(p);
+    ncirc = 19;
+    for (UINT i = 0; i < ncirc; i++){
+      float r = 10;
+      float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
+      float y = 15 + r * sin(2 * 3.141593 * i / ncirc);
+      point p;
+      p.x = x;
+      p.y = y;
+      p.mass = 10;
+      p.radius = 1;
+      univ.addPoint(p);
+    }
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
     scale scscale(point(0, 0), point(30, 30));
