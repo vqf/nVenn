@@ -4889,11 +4889,19 @@ typedef struct springLink{
 class scene{
 
   vector<point> points;
-  vector<point*> virtualPoints;
+  vector<point> virtualPoints;
   vector<springLink> springs;
   vector<springLink> rods;
   vector<bool> contacts;
+  bool dump;
 
+  void clearForces(){
+    for (UINT i = 0; i < points.size(); i++){
+      point *p = &(points[i]);
+      p->fx = 0;
+      p->fy = 0;
+    }
+  }
   void effectSprings(float dt){
     for (UINT i = 0; i < springs.size(); i++){
       point result;
@@ -5007,8 +5015,9 @@ class scene{
           float dsq = dx * dx + dy * dy;
           float rsq = circ->radius * circ->radius;
           if (dsq <= rsq){
-            virtualPoints.push_back(&virt);
+            //dumpthis();
             contact(circ, &virt);
+            virtualPoints.push_back(virt);
           }
         }
     }
@@ -5088,7 +5097,7 @@ class scene{
       }
     }
     for (UINT i = 0; i < virtualPoints.size(); i++){
-      point *virt = virtualPoints[i];
+      point *virt = &(virtualPoints[i]);
       UINT f = springs[virt->n].from;
       UINT t = springs[virt->n].to;
       point *p0 = &(points[f]);
@@ -5106,15 +5115,18 @@ class scene{
                        distance(p0->x, p0->y, p1->x, p1->y);
             float td = d0 + d1;
             float rd = d0 / td;
-            p0->fx = d1 * virt->fx * rd;
-            p0->fy = d1 * virt->fy * rd;
-            p1->fx = d0 * virt->fx * rd;
-            p1->fy = d0 * virt->fy * rd;
+            p0->fx += 10 * d1 * virt->fx * rd;
+            p0->fy += 10 * d1 * virt->fy * rd;
+            p1->fx += 10 * d0 * virt->fx * rd;
+            p1->fy += 10 * d0 * virt->fy * rd;
+            //dumpthis();
           }
         }
       }
     }
-    virtualPoints.clear();
+    if (virtualPoints.size() > 0 && !dump){
+      virtualPoints.clear();
+    }
   }
   void update(float dt){
     for (UINT i = 0; i < points.size(); i++){
@@ -5133,6 +5145,20 @@ public:
     springs.clear();
     virtualPoints.clear();
     rods.clear();
+    dump = false;
+  }
+  bool dumpme(){
+    return dump;
+  }
+  void dumpthis(){
+    dump = true;
+  }
+  vector<point> getVirtual(){
+    vector<point> result = virtualPoints;
+    return result;
+  }
+  void clearVirtual(){
+    virtualPoints.clear();
   }
   void addPoint(point p){
     points.push_back(p);
@@ -5188,6 +5214,7 @@ public:
     return rods;
   }
   void solve(float dt){
+    clearForces();
     effectSprings(dt);
     effectRods(dt);
     icontacts();
@@ -5202,7 +5229,7 @@ public:
     }
     result << "Virtual points: " << endl;
     for (UINT i = 0; i < virtualPoints.size(); i++){
-        point vp = *(virtualPoints[i]);
+        point vp = virtualPoints[i];
         result << vp.croack();
     }
     result << "Links: " << endl;

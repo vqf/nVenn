@@ -6,6 +6,8 @@
 #include <math.h>
 #include <random>
 
+bool showForces = true;
+
 
 void addCircle(point P, vector<float> color = {0, 1, 0}){
   vector<point> temp = glCircle(P.x, P.y, P.radius);
@@ -33,6 +35,7 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   scale ogl;
   ogl.initScale();
   vector<point> circles = s.getPoints();
+  vector<point> v = s.getVirtual();
   for (UINT i = 0; i < circles.size(); i++){
     point tp = sc.place(ogl, circles[i]);
     addCircle(tp);
@@ -55,7 +58,39 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
     point s1 = sc.place(ogl, p1);
     addLine(s0, s1, {1, 0, 0});
   }
+  if (showForces){
+    for (UINT i = 0; i < circles.size(); i++){
+      point a = circles[i];
+      point f;
+      point att = sc.place(ogl, a);
+      a.x += a.fx / 1e3;
+      a.y += a.fy / 1e3;
+      point a2 = sc.place(ogl, a);
+      addLine(att, a2, {1, 0, 0});
+    }
+  }
+  /**
+  if (v.size() > 0){
+    for (UINT i = 0; i < v.size(); i++){
+      point a = v[i];
+      a.radius = 2;
+      point f;
+      f.x = a.fx;
+      f.y = a.fy;
+      point att = sc.place(ogl, a);
+      addCircle(att, {1, 0, 0});
+      point a2 = sc.place(ogl, f);
+      a2.x += att.x;
+      a2.y += att.y;
+      addLine(att, a2);
+    }
+  }
+  /***/
   SwapBuffers (hDC);
+  if (v.size() > 0){
+    s.clearVirtual();
+    wait();
+  }
   time_t end_time = time(nullptr);
   time_t diff = end_time - start_time;
   time_t tdt = time_t(dt * 1000);
@@ -124,16 +159,16 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 300;
+      p.mass = 30;
       p.radius = 0;
       univ.addPoint(p);
     }
     UINT cc = ncirc - 1;
     for (UINT i = 0; i < ncirc; i++){
-      univ.addLink(cc, i, 1e2, 0);
+      univ.addLink(cc, i, 1e3, 0);
       cc = i;
     }
-    ncirc = 1;
+    ncirc = 10;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
@@ -141,7 +176,7 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 15;
+      p.mass = 30;
       p.radius = 1;
       univ.addPoint(p);
     }
@@ -171,7 +206,7 @@ WinMain (HINSTANCE hInstance,
         else
         {
           Keyboard_Input();
-          if (DUMP){
+          if (DUMP || univ.dumpme()){
             tolog(univ.croack()); exit(0);
           }
           univ.solve(1e-2);

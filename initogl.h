@@ -3,7 +3,7 @@
 
 HWND publich;
 float DUMP = false; // Debugging;
-
+void Keyboard_Input();
 
 void showText(char* n, string a="")
 {
@@ -137,10 +137,14 @@ void wait(){
           {
               bQuit = TRUE;
           }
+          else
           {
               TranslateMessage (&msg);
               DispatchMessage (&msg);
           }
+      }
+      else{
+        //Keyboard_Input();
       }
     }
   }
