@@ -6,6 +6,7 @@
 #include <math.h>
 #include <random>
 
+
 void addCircle(point P, vector<float> color = {0, 1, 0}){
   vector<point> temp = glCircle(P.x, P.y, P.radius);
   glBegin (GL_LINE_LOOP);
@@ -115,7 +116,7 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);
 
     scene univ;
-    UINT ncirc = 30;
+    UINT ncirc = 5;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -123,7 +124,7 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 400;
+      p.mass = 300;
       p.radius = 0;
       univ.addPoint(p);
     }
@@ -132,15 +133,15 @@ WinMain (HINSTANCE hInstance,
       univ.addLink(cc, i, 1e2, 0);
       cc = i;
     }
-    ncirc = 19;
+    ncirc = 1;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
-      float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
-      float y = 15 + r * sin(2 * 3.141593 * i / ncirc);
+      float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
+      float y = 15 + r * sin(2 * 3.141593 * i / ncirc-5);
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 10;
+      p.mass = 15;
       p.radius = 1;
       univ.addPoint(p);
     }
@@ -169,6 +170,10 @@ WinMain (HINSTANCE hInstance,
         }
         else
         {
+          Keyboard_Input();
+          if (DUMP){
+            tolog(univ.croack()); exit(0);
+          }
           univ.solve(1e-2);
           OGLShow(univ, scscale, hDC, 1e-2);
         }

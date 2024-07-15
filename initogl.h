@@ -2,6 +2,7 @@
 #define INITOGL_H_INCLUDED
 
 HWND publich;
+float DUMP = false; // Debugging;
 
 
 void showText(char* n, string a="")
@@ -94,6 +95,8 @@ WndProc (HWND hWnd, UINT message,
  *
  *******************/
 
+
+
 void
 EnableOpenGL (HWND hWnd, HDC *hDC, HGLRC *hRC)
 {
@@ -122,6 +125,39 @@ EnableOpenGL (HWND hWnd, HDC *hDC, HGLRC *hRC)
 
 }
 
+void wait(){
+    bool bQuit = false;
+    MSG msg;
+
+    while (!bQuit){
+      if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+      {
+
+          if (msg.message == WM_QUIT)
+          {
+              bQuit = TRUE;
+          }
+          {
+              TranslateMessage (&msg);
+              DispatchMessage (&msg);
+          }
+      }
+    }
+  }
+
+void Keyboard_Input()
+{
+
+	if((GetKeyState(VK_LEFT) & 0x80))
+	{
+		wait();
+	}
+
+      if(GetKeyState('D')& 0x80)
+	{
+	  DUMP = true;
+	}
+}
 
 /******************
  * Disable OpenGL

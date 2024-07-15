@@ -4889,6 +4889,7 @@ typedef struct springLink{
 class scene{
 
   vector<point> points;
+  vector<point*> virtualPoints;
   vector<springLink> springs;
   vector<springLink> rods;
   vector<bool> contacts;
@@ -4941,9 +4942,6 @@ class scene{
       point *p0 = &(points[rods[i].from]);
       point *p1 = &(points[rods[i].to]);
       rod(p0, p1, rods[i].d);
-      for (UINT j = 0; j < points.size(); j++){
-        rope(&(points[j]), p0, p1);
-      }
     }
   }
   bool isInside(point *p0, point *p1, point *target)
@@ -4963,47 +4961,55 @@ class scene{
       }
       return result;
   }
-  void rope(point *circ, point *p0, point *p1)
+  void rope(point *circ, UINT nspring, point *p0, point *p1, int neg = 1)
     {
+      if (circ->radius == 0){
+        return;
+      }
       float rght = circ->x + circ->radius;
       float lft  = circ->x - circ->radius;
       float top  = circ->y - circ->radius;
       float bttm = circ->y + circ->radius;
-      if ((p0->x <= lft  && p1->x >= lft  ||
-          p0->x <= rght && p1->x >= rght) &&
-          (p1->y <= top  && p1->y >= top  ||
-          p1->y <= bttm && p1->y >= bttm)){
-
-        float a, b;
-        float d;
-        float d0, d1;
-        a = (p1->y - p0->y)/(p1->x - p0->x);
-        b = p0->y - a * p0->x;
+      if (((p0->x <= lft && p1->x >= lft)  ||
+           (p1->x <= lft && p0->x >= lft)  ||
+          (p0->x <= rght && p1->x >= rght) ||
+          (p1->x <= rght && p0->x >= rght)) ||
+          ((p0->y <= top && p1->y >= top)  ||
+           (p1->y <= top && p0->y >= top)  ||
+          (p0->y <= bttm && p1->y >= bttm) ||
+          (p1->y <= bttm && p0->y >= bttm))){
         point virt;
-        virt.x = ((circ->x + a*circ->y - a * b)/(a*a + 1));
-        virt.y = (a * circ->x + a*a*circ->y + b)/(a*a + 1);
-        d0 = distance(p0->x, p0->y, virt.x, virt.y) /
-             distance(p0->x, p0->y, p1->x, p1->y);
-        d1 = distance(p1->x, p1->y, virt.x, virt.y) /
-             distance(p0->x, p0->y, p1->x, p1->y);
-        float td = d0 + d1;
-        float rd = d0 / td;
-        virt.vx = p0->vx + (p1->vx-p0->vx) * rd;
-        virt.fx = p0->fx + (p1->fx-p0->fx) * rd;
-        virt.vy = p0->vy + (p1->vy-p0->vy) * rd;
-        virt.fy = p0->fy + (p1->fy-p0->fy) * rd;
-        virt.mass = (p0->mass + p1->mass) / 2;
-        d = distance(circ->x, circ->y, virt.x, virt.y);
-        if (d < circ->radius && isInside(p0, p1, &virt))
-        {
+        if (p1->x == p0->x){
+          virt.x = p0->x;
+          virt.y = circ->y;
+        }
+        else{
+          float a = (p1->y - p0->y)/(p1->x - p0->x);
+          float b = p0->y - a * p0->x;
+          virt.x = ((circ->x + a*circ->y - a * b)/(a*a + 1));
+          virt.y = (a * circ->x + a*a*circ->y + b)/(a*a + 1);
+        }
+        if (isInside(p0, p1, &virt)){
+          float d0 = distance(p0->x, p0->y, virt.x, virt.y) /
+                   distance(p0->x, p0->y, p1->x, p1->y);
+          float d1 = distance(p1->x, p1->y, virt.x, virt.y) /
+                     distance(p0->x, p0->y, p1->x, p1->y);
+          float td = d0 + d1;
+          float rd = d0 / td;
+          virt.vx = p0->vx + (p1->vx-p0->vx) * rd;
+          virt.fx = p0->fx + (p1->fx-p0->fx) * rd;
+          virt.vy = p0->vy + (p1->vy-p0->vy) * rd;
+          virt.fy = p0->fy + (p1->fy-p0->fy) * rd;
+          virt.mass = (p0->mass + p1->mass) / 2;
+          virt.n = nspring;
+          float dx = virt.x - circ->x;
+          float dy = virt.y - circ->y;
+          float dsq = dx * dx + dy * dy;
+          float rsq = circ->radius * circ->radius;
+          if (dsq <= rsq){
+            virtualPoints.push_back(&virt);
             contact(circ, &virt);
-            p0->fx = d1 * virt.fx * rd;
-            p0->fy = d1 * virt.fy * rd;
-            p1->fx = d0 * virt.fx * rd;
-            p1->fy = d0 * virt.fy * rd;
-            //attention(p0->x, p0->y, p0->x+1e-3*p0->fx, p0->y+1e-3*p0->fy);
-            //attention(p1->x, p1->y, p1->x+1e-3*p1->fx, p1->y+1e-3*p1->fy);
-            //Sleep(100);
+          }
         }
     }
   }
@@ -5030,6 +5036,28 @@ class scene{
       rod(p0, p1, r);
     }
   }
+
+  void isContact(point *p0, point *p1){
+    float r = p0->radius + p1->radius;
+    float rsq = r * r;
+    float dx = p1->x - p0->x;
+    float dy = p1->y - p0->y;
+    float dsq = dx * dx + dy * dy;
+    if (dsq <= rsq){
+      rod(p0, p1, r, -1);
+      float fx = p0->fx - p1->fx;
+      float fy = p0->fy - p1->fy;
+      float scprod = fx * dx + fy * dy;
+      if (scprod > 0){
+        rod(p0, p1, r);
+        float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
+        float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+        p0->vx = vx; p0->vy = vy;
+        p1->vx = vx; p1->vy = vy;
+      }
+    }
+  }
+
   void icontacts(){
     // First pass
     for (UINT i = 0; i < (points.size()-1); i++){
@@ -5039,31 +5067,54 @@ class scene{
         contact(p0, p1);
       }
     }
-    // Second round
+    for (UINT i = 0; i < springs.size(); i++){
+      UINT f = springs[i].from;
+      UINT t = springs[i].to;
+      point *a = &(points[f]);
+      point *b = &(points[t]);
+      for (UINT j = 0; j < points.size(); j++){
+        if (j != f && j != t){
+          point *c = &(points[j]);
+          rope(c, i, a, b);
+        }
+      }
+    }
+    // Second pass
     for (UINT i = 0; i < (points.size()-1); i++){
       point *p0 = &(points[i]);
       for (UINT j = i + 1; j < points.size(); j++){
         point *p1 = &(points[j]);
-        float r = p0->radius + p1->radius;
-        float rsq = r * r;
-        float dx = p1->x - p0->x;
-        float dy = p1->y - p0->y;
-        float dsq = dx * dx + dy * dy;
-        if (dsq <= rsq){
-          rod(p0, p1, r, -1);
-          float fx = p0->fx - p1->fx;
-          float fy = p0->fy - p1->fy;
-          float scprod = fx * dx + fy * dy;
-          if (scprod > 0){
-            rod(p0, p1, r);
-            float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
-            float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
-            p0->vx = vx; p0->vy = vy;
-            p1->vx = vx; p1->vy = vy;
+        isContact(p0, p1);
+      }
+    }
+    for (UINT i = 0; i < virtualPoints.size(); i++){
+      point *virt = virtualPoints[i];
+      UINT f = springs[virt->n].from;
+      UINT t = springs[virt->n].to;
+      point *p0 = &(points[f]);
+      point *p1 = &(points[t]);
+      for (UINT j = 0; j < points.size(); j++){
+        if (j != f && j != t){
+          point *circ = &(points[j]);
+          float d = distance(circ->x, circ->y, virt->x, virt->y);
+          float r = circ->radius + virt->radius;
+          if (d <= r){
+            isContact(circ, virt);
+            float d0 = distance(p0->x, p0->y, virt->x, virt->y) /
+                       distance(p0->x, p0->y, p1->x, p1->y);
+            float d1 = distance(p1->x, p1->y, virt->x, virt->y) /
+                       distance(p0->x, p0->y, p1->x, p1->y);
+            float td = d0 + d1;
+            float rd = d0 / td;
+            p0->fx = d1 * virt->fx * rd;
+            p0->fy = d1 * virt->fy * rd;
+            p1->fx = d0 * virt->fx * rd;
+            p1->fy = d0 * virt->fy * rd;
           }
         }
       }
     }
+    virtualPoints.clear();
   }
   void update(float dt){
     for (UINT i = 0; i < points.size(); i++){
@@ -5077,7 +5128,12 @@ class scene{
     }
   }
 public:
-  scene(){}
+  scene(){
+    points.clear();
+    springs.clear();
+    virtualPoints.clear();
+    rods.clear();
+  }
   void addPoint(point p){
     points.push_back(p);
     contacts.clear();
@@ -5144,10 +5200,20 @@ public:
     for (UINT i = 0; i < points.size(); i++){
         result << points[i].croack();
     }
+    result << "Virtual points: " << endl;
+    for (UINT i = 0; i < virtualPoints.size(); i++){
+        point vp = *(virtualPoints[i]);
+        result << vp.croack();
+    }
     result << "Links: " << endl;
     for (UINT i = 0; i < springs.size(); i++){
       result << i + 1 << ": From " << springs[i].from << " to " << springs[i].to << endl;
       result << "\tk: " << springs[i].k << ", d0: " << springs[i].d << endl;
+    }
+    result << "Rods: " << endl;
+    for (UINT i = 0; i < rods.size(); i++){
+      result << i + 1 << ": From " << rods[i].from << " to " << rods[i].to << endl;
+      result << "\tk: " << rods[i].k << ", d0: " << rods[i].d << endl;
     }
     return result.str();
   }
