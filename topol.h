@@ -4917,10 +4917,14 @@ class scene{
       float eqy = eqd * dy / d;
       result.fx = springK * (dx - eqx);
       result.fy = springK * (dy - eqy);
-      p0->fx += result.fx;
-      p1->fx -= result.fx;
-      p0->fy += result.fy;
-      p1->fy -= result.fy;
+      float fx1 = result.fx;
+      float fy1 = result.fy;
+      float fx2 = result.fx;
+      float fy2 = result.fy;
+      p0->fx += fx1;
+      p1->fx -= fx2;
+      p0->fy += fy1;
+      p1->fy -= fy2;
     }
   }
   void rod(point *p0, point *p1, float eqd, int neg = 1){
@@ -5139,38 +5143,28 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt, float b = 5e-2){
+  void update(float dt, float b = 500){
     info.clear();
     float fsq = 0;
     float netvx = 0;
     float netvy = 0;
-    vector<point> delta;
     for (UINT i = 0; i < points.size(); i++){
       point *p = &points[i];
-      point d;
       fsq += p->fx * p->fx + p->fy + p->fy;
       netvx += p->vx;
       netvy += p->vy;
-      float ax = p->fx / p->mass;
-      float ay = p->fy / p->mass;
-      float oldvx = p->vx;
-      float oldvy = p->vy;
+      float fx = p->fx;
+      float fy = p->fy;
+      fx -= b * p->vx;
+      fy -= b * p->vy;
+      float ax = fx / p->mass;
+      float ay = fy / p->mass;
       p->vx += ax * dt;
       p->vy += ay * dt;
-      p->vx *= 1 - b;
-      p->vy *= 1 - b;
       float deltax = p->vx * dt;
       float deltay = p->vy * dt;
-      float deltarsq = deltax * deltax + deltay * deltay;
-      if (deltarsq > 0.1){
-        p->vx = oldvx;
-        p->vy = oldvy;
-        update(dt / 2, b);
-      }
-      else{
-        p->x += deltax;
-        p->y += deltay;
-      }
+      p->x += deltax;
+      p->y += deltay;
     }
     addInfo("FSQ: ", fsq);
     addInfo("NETVX: ", netvx);

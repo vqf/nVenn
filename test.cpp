@@ -175,7 +175,7 @@ WinMain (HINSTANCE hInstance,
     }
     UINT cc = ncirc - 1;
     for (UINT i = 0; i < ncirc; i++){
-      univ.addLink(cc, i, 1e3, 0);
+      univ.addLink(cc, i, 1e2, 0);
       cc = i;
     }
     ncirc = 29;
