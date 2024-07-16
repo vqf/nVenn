@@ -4892,6 +4892,7 @@ class scene{
   vector<point> virtualPoints;
   vector<springLink> springs;
   vector<springLink> rods;
+  vector<string> info;
   vector<bool> contacts;
   bool dump;
 
@@ -5067,6 +5068,16 @@ class scene{
     }
   }
 
+  template<typename T, typename T2>
+  void addInfo(T input, T2 ninput){
+      ostringstream result;
+      result << input;
+      result << ninput;
+      string td = result.str();
+      info.push_back(td);
+  }
+
+
   void icontacts(){
     // First pass
     for (UINT i = 0; i < (points.size()-1); i++){
@@ -5115,10 +5126,10 @@ class scene{
                        distance(p0->x, p0->y, p1->x, p1->y);
             float td = d0 + d1;
             float rd = d0 / td;
-            p0->fx += 10 * d1 * virt->fx * rd;
-            p0->fy += 10 * d1 * virt->fy * rd;
-            p1->fx += 10 * d0 * virt->fx * rd;
-            p1->fy += 10 * d0 * virt->fy * rd;
+            p0->fx += d1 * virt->fx * rd;
+            p0->fy += d1 * virt->fy * rd;
+            p1->fx += d0 * virt->fx * rd;
+            p1->fy += d0 * virt->fy * rd;
             //dumpthis();
           }
         }
@@ -5128,16 +5139,42 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt){
+  void update(float dt, float b = 5e-2){
+    info.clear();
+    float fsq = 0;
+    float netvx = 0;
+    float netvy = 0;
+    vector<point> delta;
     for (UINT i = 0; i < points.size(); i++){
       point *p = &points[i];
+      point d;
+      fsq += p->fx * p->fx + p->fy + p->fy;
+      netvx += p->vx;
+      netvy += p->vy;
       float ax = p->fx / p->mass;
       float ay = p->fy / p->mass;
-      float vx = ax * dt;
-      float vy = ay * dt;
-      p->x += vx * dt;
-      p->y += vy * dt;
+      float oldvx = p->vx;
+      float oldvy = p->vy;
+      p->vx += ax * dt;
+      p->vy += ay * dt;
+      p->vx *= 1 - b;
+      p->vy *= 1 - b;
+      float deltax = p->vx * dt;
+      float deltay = p->vy * dt;
+      float deltarsq = deltax * deltax + deltay * deltay;
+      if (deltarsq > 0.1){
+        p->vx = oldvx;
+        p->vy = oldvy;
+        update(dt / 2, b);
+      }
+      else{
+        p->x += deltax;
+        p->y += deltay;
+      }
     }
+    addInfo("FSQ: ", fsq);
+    addInfo("NETVX: ", netvx);
+    addInfo("NETVY: ", netvy);
   }
 public:
   scene(){
@@ -5145,6 +5182,7 @@ public:
     springs.clear();
     virtualPoints.clear();
     rods.clear();
+    info.clear();
     dump = false;
   }
   bool dumpme(){
@@ -5152,6 +5190,10 @@ public:
   }
   void dumpthis(){
     dump = true;
+  }
+  vector<string> getInfo(){
+    vector<string> result = info;
+    return result;
   }
   vector<point> getVirtual(){
     vector<point> result = virtualPoints;

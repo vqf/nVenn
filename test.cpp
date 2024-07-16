@@ -36,6 +36,7 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   ogl.initScale();
   vector<point> circles = s.getPoints();
   vector<point> v = s.getVirtual();
+  vector<string> w = s.getInfo();
   for (UINT i = 0; i < circles.size(); i++){
     point tp = sc.place(ogl, circles[i]);
     addCircle(tp);
@@ -68,6 +69,15 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
       point a2 = sc.place(ogl, a);
       addLine(att, a2, {1, 0, 0});
     }
+  }
+  glColor3f(0.0f, 0.0f, 1.0f);
+  float yd = 0.8f;
+  for (UINT i = 0; i < w.size(); i++){
+    string mymsg = w[i];
+    //showText(mymsg); exit(0);
+    glRasterPos2f(-0.9f, yd);
+    printString(mymsg);
+    yd -= 0.1;
   }
   /**
   if (v.size() > 0){
@@ -151,7 +161,7 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);
 
     scene univ;
-    UINT ncirc = 5;
+    UINT ncirc = 6;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -168,7 +178,7 @@ WinMain (HINSTANCE hInstance,
       univ.addLink(cc, i, 1e3, 0);
       cc = i;
     }
-    ncirc = 10;
+    ncirc = 29;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
