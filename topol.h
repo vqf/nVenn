@@ -1062,6 +1062,40 @@ public:
       return r;
     }
 
+    void addToScale(point p){
+      if (clear){
+        x = p.x - p.radius;
+        X = p.x + p.radius;
+        y = p.y - p.radius;
+        Y = p.y + p.radius;
+        clear = false;
+      }
+      else{
+        float possib[4] = {
+          p.x - p.radius,
+          p.x + p.radius,
+          p.y - p.radius,
+          p.y + p.radius
+        };
+        for (UINT i = 0; i < 2; i++){
+          if (possib[i] < x){
+            x = possib[i];
+          }
+          else if (possib[i] > X){
+            X = possib[i];
+          }
+        }
+        for (UINT i = 2; i < 4; i++){
+          if (possib[i] < y){
+            y = possib[i];
+          }
+          else if (possib[i] > Y){
+            Y = possib[i];
+          }
+        }
+      }
+    }
+
     void initScale(){
       x = -1;
       X = 1;
@@ -4894,6 +4928,8 @@ class scene{
   vector<springLink> rods;
   vector<string> info;
   vector<bool> contacts;
+  float defaultK;
+  float maxK;
   bool dump;
 
   void clearForces(){
@@ -4907,6 +4943,9 @@ class scene{
     for (UINT i = 0; i < springs.size(); i++){
       point result;
       float springK = springs[i].k;
+      if (springK == 0){
+        springK = defaultK;
+      }
       float eqd = springs[i].d;
       point *p0 = &(points[springs[i].from]);
       point *p1 = &(points[springs[i].to]);
@@ -5143,7 +5182,7 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt, float b = 500){
+  void update(float dt, float b = 20){
     info.clear();
     float fsq = 0;
     float netvx = 0;
@@ -5169,6 +5208,7 @@ class scene{
     addInfo("FSQ: ", fsq);
     addInfo("NETVX: ", netvx);
     addInfo("NETVY: ", netvy);
+    addInfo("K: ", defaultK);
   }
 public:
   scene(){
@@ -5178,6 +5218,8 @@ public:
     rods.clear();
     info.clear();
     dump = false;
+    defaultK = 1e2;
+    maxK = defaultK;
   }
   bool dumpme(){
     return dump;
@@ -5205,7 +5247,7 @@ public:
       }
     }
   }
-  bool addLink(UINT from, UINT to, float k = 1, float d = 0){
+  bool addLink(UINT from, UINT to, float k = 0, float d = 0){
     bool result = false;
     if (from != to &&
         from >= 0 && from < points.size() &&
@@ -5249,13 +5291,28 @@ public:
   vector<springLink> getRods(){
     return rods;
   }
-  void solve(float dt){
+  float solve(float dt){
     clearForces();
     effectSprings(dt);
     effectRods(dt);
     icontacts();
-    //effectContacts(dt);
+    float maxfsq = 0;
+    for (UINT i = 0; i < points.size(); i++){
+      float fx = points[i].fx;
+      float fy = points[i].fy;
+      float fsq = fx * fx + fy * fy;
+      if (fsq > maxfsq){
+        maxfsq = fsq;
+      }
+    }
+    if (maxfsq > 1e5){
+      defaultK = 1e5 / maxfsq;
+    }
+    else{
+      defaultK = maxK;
+    }
     update(dt);
+    return dt;
   }
   string croack(){
     ostringstream result;

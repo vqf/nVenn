@@ -35,6 +35,10 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   scale ogl;
   ogl.initScale();
   vector<point> circles = s.getPoints();
+  sc.setClear();
+  for (UINT i = 0; i < circles.size(); i++){
+    sc.addToScale(circles[i]);
+  }
   vector<point> v = s.getVirtual();
   vector<string> w = s.getInfo();
   for (UINT i = 0; i < circles.size(); i++){
@@ -161,7 +165,7 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);
 
     scene univ;
-    UINT ncirc = 6;
+    UINT ncirc = 60;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -175,10 +179,10 @@ WinMain (HINSTANCE hInstance,
     }
     UINT cc = ncirc - 1;
     for (UINT i = 0; i < ncirc; i++){
-      univ.addLink(cc, i, 1e2, 0);
+      univ.addLink(cc, i);
       cc = i;
     }
-    ncirc = 29;
+    ncirc = 129;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
@@ -186,8 +190,8 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 30;
-      p.radius = 1;
+      p.mass = 15;
+      p.radius = 0.1;
       univ.addPoint(p);
     }
     //univ.addRod(0, ncirc >> 1, 2);
@@ -219,8 +223,8 @@ WinMain (HINSTANCE hInstance,
           if (DUMP || univ.dumpme()){
             tolog(univ.croack()); exit(0);
           }
-          univ.solve(1e-2);
-          OGLShow(univ, scscale, hDC, 1e-2);
+          float dt = univ.solve(1e-2);
+          OGLShow(univ, scscale, hDC, dt);
         }
     }
 
