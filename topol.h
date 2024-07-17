@@ -5182,7 +5182,7 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt, float b = 20){
+  void update(float dt, float b = 40){
     info.clear();
     float fsq = 0;
     float netvx = 0;
@@ -5218,7 +5218,7 @@ public:
     rods.clear();
     info.clear();
     dump = false;
-    defaultK = 1e2;
+    defaultK = 1e3;
     maxK = defaultK;
   }
   bool dumpme(){

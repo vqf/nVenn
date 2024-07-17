@@ -4,7 +4,7 @@
 #include "initogl.h"
 #include "graphics.h"
 #include <math.h>
-#include <random>
+//#include <random>
 
 bool showForces = true;
 
@@ -160,12 +160,12 @@ WinMain (HINSTANCE hInstance,
     dlme.open("log.txt", std::ios_base::out);
     dlme.write("", 0);
     dlme.close();
-    std::random_device rd;  // Will be used to obtain a seed for the random number engine
+    /*std::random_device rd;  // Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-    std::uniform_real_distribution<> dis(-1.0, 1.0);
+    std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    UINT ncirc = 60;
+    UINT ncirc = 6;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -182,7 +182,7 @@ WinMain (HINSTANCE hInstance,
       univ.addLink(cc, i);
       cc = i;
     }
-    ncirc = 129;
+    ncirc = 20;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
@@ -191,7 +191,7 @@ WinMain (HINSTANCE hInstance,
       p.x = x;
       p.y = y;
       p.mass = 15;
-      p.radius = 0.1;
+      p.radius = 1;
       univ.addPoint(p);
     }
     //univ.addRod(0, ncirc >> 1, 2);
