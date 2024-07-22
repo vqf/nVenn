@@ -33,6 +33,11 @@
 					<Add option="-static-libgcc" />
 				</Linker>
 			</Target>
+			<Target title="test">
+				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -46,11 +51,21 @@
 		</Linker>
 		<Unit filename="bmpfont.h">
 			<Option target="default" />
+			<Option target="test" />
 		</Unit>
 		<Unit filename="graphics.h">
 			<Option target="default" />
 		</Unit>
-		<Unit filename="main.cpp" />
+		<Unit filename="initogl.h">
+			<Option target="test" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option target="default" />
+			<Option target="plain" />
+		</Unit>
+		<Unit filename="test.cpp">
+			<Option target="test" />
+		</Unit>
 		<Unit filename="topol.h" />
 		<Extensions>
 			<code_completion />

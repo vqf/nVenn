@@ -4930,6 +4930,8 @@ class scene{
   vector<bool> contacts;
   float defaultK;
   float maxK;
+  float maxAllowedForce;
+  float friction;
   bool dump;
 
   void clearForces(){
@@ -5182,7 +5184,8 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt, float b = 40){
+  void update(float dt){
+    float b = friction * sqrt(points.size());
     info.clear();
     float fsq = 0;
     float netvx = 0;
@@ -5218,7 +5221,9 @@ public:
     rods.clear();
     info.clear();
     dump = false;
-    defaultK = 1e3;
+    defaultK = 5e1;
+    friction = 50.0f;
+    maxAllowedForce = 1e5;
     maxK = defaultK;
   }
   bool dumpme(){
@@ -5305,11 +5310,11 @@ public:
         maxfsq = fsq;
       }
     }
-    if (maxfsq > 1e5){
-      defaultK = 1e5 / maxfsq;
+    if (maxfsq > maxAllowedForce * (points.size())){
+      defaultK *= maxAllowedForce * points.size() / maxfsq;
     }
     else{
-      defaultK = maxK;
+      defaultK = maxK * points.size();
     }
     update(dt);
     return dt;
