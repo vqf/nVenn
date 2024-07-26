@@ -4927,10 +4927,11 @@ class scene{
   vector<springLink> springs;
   vector<springLink> rods;
   vector<string> info;
-  vector<bool> contacts;
+  float dt;
   float defaultK;
   float maxK;
   float maxAllowedForce;
+  float maxAllowedVel;
   float friction;
   bool dump;
 
@@ -5184,7 +5185,7 @@ class scene{
       virtualPoints.clear();
     }
   }
-  void update(float dt){
+  void update(float cdt){
     float b = friction * sqrt(points.size());
     info.clear();
     float fsq = 0;
@@ -5201,10 +5202,10 @@ class scene{
       fy -= b * p->vy;
       float ax = fx / p->mass;
       float ay = fy / p->mass;
-      p->vx += ax * dt;
-      p->vy += ay * dt;
-      float deltax = p->vx * dt;
-      float deltay = p->vy * dt;
+      p->vx += ax * cdt;
+      p->vy += ay * cdt;
+      float deltax = p->vx * cdt;
+      float deltay = p->vy * cdt;
       p->x += deltax;
       p->y += deltay;
     }
@@ -5224,7 +5225,9 @@ public:
     defaultK = 5e1;
     friction = 50.0f;
     maxAllowedForce = 1e5;
+    maxAllowedVel = 5e1;
     maxK = defaultK;
+    dt = 1e-2;
   }
   bool dumpme(){
     return dump;
@@ -5245,12 +5248,9 @@ public:
   }
   void addPoint(point p){
     points.push_back(p);
-    contacts.clear();
-    for (UINT i = 0; i < (points.size() - 1); i++){
-      for (UINT j = i + 1; j < points.size(); j++){
-        contacts.push_back(false);
-      }
-    }
+  }
+  void addPoint(point *p){
+    points.push_back(*p);
   }
   bool addLink(UINT from, UINT to, float k = 0, float d = 0){
     bool result = false;
@@ -5296,28 +5296,38 @@ public:
   vector<springLink> getRods(){
     return rods;
   }
-  float solve(float dt){
+  float solve(){
+    float cdt = dt;
     clearForces();
     effectSprings(dt);
     effectRods(dt);
     icontacts();
     float maxfsq = 0;
+    float maxvsq = 0;
     for (UINT i = 0; i < points.size(); i++){
       float fx = points[i].fx;
       float fy = points[i].fy;
+      float vx = points[i].vx;
+      float vy = points[i].vy;
       float fsq = fx * fx + fy * fy;
+      float vsq = vx * vx + vy * vy;
       if (fsq > maxfsq){
         maxfsq = fsq;
       }
+      if (vsq > maxvsq){
+        maxvsq = vsq;
+      }
     }
-    if (maxfsq > maxAllowedForce * (points.size())){
+    //tolog(toString(maxfsq) + "\t" + toString(maxvsq) + "\n");
+    if ((maxfsq > maxAllowedForce * (points.size())) || (maxvsq > maxAllowedVel)){
       defaultK *= maxAllowedForce * points.size() / maxfsq;
     }
     else{
       defaultK = maxK * points.size();
     }
-    update(dt);
-    return dt;
+    update(cdt);
+    addInfo("DT: ", cdt);
+    return cdt;
   }
   string croack(){
     ostringstream result;

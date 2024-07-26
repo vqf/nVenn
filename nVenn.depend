@@ -102,7 +102,7 @@
 
 1568886543 d:\cpp\venn\1.3\github\bmpfont.h
 
-1694979482 source:d:\proyectos\nvenn2\gh\main.cpp
+1720636966 source:d:\proyectos\nvenn2\gh\main.cpp
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -116,8 +116,9 @@
 	<windows.h>
 	<Windows.h>
 	"graphics.h"
+	"initogl.h"
 
-1721577877 d:\proyectos\nvenn2\gh\topol.h
+1721924549 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -135,7 +136,7 @@
 
 1693566312 d:\proyectos\nvenn2\gh\bmpfont.h
 
-1721577769 source:d:\proyectos\nvenn2\gh\test.cpp
+1721920992 source:d:\proyectos\nvenn2\gh\test.cpp
 	<windows.h>
 	<Windows.h>
 	"topol.h"

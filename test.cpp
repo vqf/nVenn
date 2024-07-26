@@ -165,7 +165,7 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    UINT ncirc = 6;
+    UINT ncirc = 16;
     for (UINT i = 0; i < ncirc; i++){
       float r = 20;
       float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
@@ -182,6 +182,23 @@ WinMain (HINSTANCE hInstance,
       univ.addLink(cc, i);
       cc = i;
     }
+    UINT ncirc2 = 16;
+    for (UINT i = ncirc; i < (ncirc + ncirc2); i++){
+      float r = 20;
+      float x = 25 + r * cos(2 * 3.141593 * i / ncirc);
+      float y = 25 + r * sin(2 * 3.141593 * i / ncirc);
+      point p;
+      p.x = x;
+      p.y = y;
+      p.mass = 30;
+      p.radius = 0;
+      univ.addPoint(p);
+    }
+    UINT cc2 = ncirc + ncirc2 - 1;
+    for (UINT i = ncirc; i < (ncirc + ncirc2); i++){
+      univ.addLink(cc2, i);
+      cc2 = i;
+    }
     ncirc = 20;
     for (UINT i = 0; i < ncirc; i++){
       float r = 10;
@@ -190,7 +207,7 @@ WinMain (HINSTANCE hInstance,
       point p;
       p.x = x;
       p.y = y;
-      p.mass = 15;
+      p.mass = 25;
       p.radius = 1;
       univ.addPoint(p);
     }
@@ -223,7 +240,7 @@ WinMain (HINSTANCE hInstance,
           if (DUMP || univ.dumpme()){
             tolog(univ.croack()); exit(0);
           }
-          float dt = univ.solve(1e-2);
+          float dt = univ.solve();
           OGLShow(univ, scscale, hDC, dt);
         }
     }
