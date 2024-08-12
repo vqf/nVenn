@@ -3,6 +3,7 @@
 #include "topol.h"
 #include "initogl.h"
 #include "graphics.h"
+#include "scene.h"
 #include <math.h>
 //#include <random>
 
@@ -165,52 +166,7 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    UINT ncirc = 16;
-    for (UINT i = 0; i < ncirc; i++){
-      float r = 20;
-      float x = 15 + r * cos(2 * 3.141593 * i / ncirc);
-      float y = 15 + r * sin(2 * 3.141593 * i / ncirc);
-      point p;
-      p.x = x;
-      p.y = y;
-      p.mass = 30;
-      p.radius = 0;
-      univ.addPoint(p);
-    }
-    UINT cc = ncirc - 1;
-    for (UINT i = 0; i < ncirc; i++){
-      univ.addLink(cc, i);
-      cc = i;
-    }
-    UINT ncirc2 = 16;
-    for (UINT i = ncirc; i < (ncirc + ncirc2); i++){
-      float r = 20;
-      float x = 25 + r * cos(2 * 3.141593 * i / ncirc);
-      float y = 25 + r * sin(2 * 3.141593 * i / ncirc);
-      point p;
-      p.x = x;
-      p.y = y;
-      p.mass = 30;
-      p.radius = 0;
-      univ.addPoint(p);
-    }
-    UINT cc2 = ncirc + ncirc2 - 1;
-    for (UINT i = ncirc; i < (ncirc + ncirc2); i++){
-      univ.addLink(cc2, i);
-      cc2 = i;
-    }
-    ncirc = 20;
-    for (UINT i = 0; i < ncirc; i++){
-      float r = 10;
-      float x = 15 + r * cos(2 * 3.141593 * i / ncirc- 15);
-      float y = 15 + r * sin(2 * 3.141593 * i / ncirc-5);
-      point p;
-      p.x = x;
-      p.y = y;
-      p.mass = 25;
-      p.radius = 1;
-      univ.addPoint(p);
-    }
+    univ.loadScene();
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
     scale scscale(point(0, 0), point(30, 30));
@@ -241,7 +197,7 @@ WinMain (HINSTANCE hInstance,
             tolog(univ.croack()); exit(0);
           }
           float dt = univ.solve();
-          OGLShow(univ, scscale, hDC, dt);
+          OGLShow(univ, scscale, hDC, 0);
         }
     }
 

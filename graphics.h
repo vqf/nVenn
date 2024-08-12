@@ -5,7 +5,7 @@
 #include "bmpfont.h"
 //#include <windows.h>
 
-
+bool showContacts = false;
 
 class glGraphics{
   public:
@@ -137,29 +137,32 @@ class glGraphics{
       /**********/
       //vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
       //addRectangle(bl, ogl, bnd);
-      for (i = 0; i < attn.size();  i++)
-      {
-          P = bl.place(ogl, attn[i]);
-          //point tp;
-          /*tp.x = warn[i].fx;
-          tp.y = warn[i].fy;
-          point P2;
-          P2 = place(ogl, tp);
-          glBegin (GL_LINES);
-              glColor3f (0.0f, 1.0f, 0.0f);
-              glVertex2f (P.x, P.y);
-              glVertex2f (P2.x,P2.y);
-          glEnd ();
-          */
-          temp = glCircle(P.x, P.y, P.radius);
-          glBegin (GL_LINE_LOOP);
-          glColor3f (0.0f, 1.0f, 0.0f);
-          for (j = 0; j < temp.size(); j++)
-          {
-              glVertex2f (temp[j].x, temp[j].y);
+      if (showContacts){
+        for (i = 0; i < attn.size();  i++)
+        {
+            P = bl.place(ogl, attn[i]);
+            //point tp;
+            /*tp.x = warn[i].fx;
+            tp.y = warn[i].fy;
+            point P2;
+            P2 = place(ogl, tp);
+            glBegin (GL_LINES);
+                glColor3f (0.0f, 1.0f, 0.0f);
+                glVertex2f (P.x, P.y);
+                glVertex2f (P2.x,P2.y);
+            glEnd ();
+            */
+            temp = glCircle(P.x, P.y, P.radius);
+            glBegin (GL_LINE_LOOP);
+            glColor3f (0.0f, 1.0f, 0.0f);
+            for (j = 0; j < temp.size(); j++)
+            {
+                glVertex2f (temp[j].x, temp[j].y);
+            }
+            glEnd ();
           }
-          glEnd ();
-        }
+      }
+
         bl.clearWarnings();
       //}
       //else{
@@ -394,10 +397,6 @@ dlme.close();
                 //tolog("One more\n");
                 b1 = bo;
                 bo = bl.chooseCombination();
-                bl.setCheckTopol(true);
-                bl.addLines();
-                toOGL(bl, hDC);
-                bl.setCheckTopol(false);
                 tolog("Outsiders lowered to " + toString(bo) + "\n");
               } while (bo < b1 && bo > 0);
               //bl.chooseCrossings();
@@ -421,7 +420,8 @@ dlme.close();
         //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
-        bl.interpolateToDist(bl.minCircRadius * AIR);
+
+        //bl.interpolateToDist(bl.minCircRadius * AIR);
         bl.setPrevState();
         bl.setSecureState();
       }
@@ -467,7 +467,8 @@ dlme.close();
       bl.setFixedCircles(false);*/
       bQuit = false;
       bl.resetTimer();
-      float cdt = bl.blSettings.dt;
+      bl.setCheckTopol(true);
+      bl.attachScene();
       while (!bQuit)
       {
           /* check for messages */
@@ -486,23 +487,18 @@ dlme.close();
           }
           else
           {
-              bl.setCheckTopol(true);
-              bl.setSoftContact(true);
-              bl.setForces1();
-              bl.setContacts();
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.solve();
-              bl.refreshScreen++;
-              if (bl.blSettings.dt < cdt){
-                cdt = bl.blSettings.dt;
-              }
-              else{
-                bQuit = true;
-              }
+            if (bl.refreshScreen.isMax()) {
+                toOGL(bl, hDC);
+            }
+            bl.refreshScreen++;
+            //bl.writeSVG("result.svg");
+            //tolog(bl.scCroack());
+            bl.scSolve();
+
           }
       }
           // Debug topol
-          bQuit = false;
+          bQuit = true;
       bl.resetTimer();
       while (!bQuit)
       {

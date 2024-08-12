@@ -53,6 +53,7 @@
 			<Option target="default" />
 			<Option target="test" />
 		</Unit>
+		<Unit filename="debug.h" />
 		<Unit filename="graphics.h">
 			<Option target="default" />
 		</Unit>
@@ -63,6 +64,7 @@
 			<Option target="default" />
 			<Option target="plain" />
 		</Unit>
+		<Unit filename="scene.h" />
 		<Unit filename="test.cpp">
 			<Option target="test" />
 		</Unit>
