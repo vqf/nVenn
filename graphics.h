@@ -469,6 +469,7 @@ dlme.close();
       bl.resetTimer();
       bl.setCheckTopol(true);
       bl.attachScene();
+      bl.scSave();
       while (!bQuit)
       {
           /* check for messages */

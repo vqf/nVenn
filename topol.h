@@ -3914,6 +3914,9 @@ public:
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
     }
+    void scSave(string fname = ""){
+      tosolve.saveScene();
+    }
 
     string scCroack(){
       return tosolve.croack();

@@ -35,43 +35,45 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   glClear (GL_COLOR_BUFFER_BIT);
   scale ogl;
   ogl.initScale();
-  vector<point> circles = s.getPoints();
+  vector<point*> circles = s.getPoints();
   sc.setClear();
   for (UINT i = 0; i < circles.size(); i++){
-    sc.addToScale(circles[i]);
+    sc.addToScale(*(circles[i]));
   }
+  s.addInfo("HX: ", sc.xSpan());
   vector<point> v = s.getVirtual();
   vector<string> w = s.getInfo();
   for (UINT i = 0; i < circles.size(); i++){
-    point tp = sc.place(ogl, circles[i]);
+    point tp = sc.place(ogl, *(circles[i]));
     addCircle(tp);
   }
   vector<springLink> springs = s.getLinks();
   vector<springLink> rods = s.getRods();
   for (UINT i = 0; i < springs.size(); i++){
-    point p0 = circles[springs[i].from];
-    point p1 = circles[springs[i].to];
+    point *p0 = circles[springs[i].from];
+    point *p1 = circles[springs[i].to];
     //tolog(p0.croack()); exit(0);
-    point s0 = sc.place(ogl, p0);
-    point s1 = sc.place(ogl, p1);
+    point s0 = sc.place(ogl, *p0);
+    point s1 = sc.place(ogl, *p1);
     addLine(s0, s1);
   }
   for (UINT i = 0; i < rods.size(); i++){
-    point p0 = circles[rods[i].from];
-    point p1 = circles[rods[i].to];
+    point *p0 = circles[rods[i].from];
+    point *p1 = circles[rods[i].to];
     //tolog(p0.croack()); exit(0);
-    point s0 = sc.place(ogl, p0);
-    point s1 = sc.place(ogl, p1);
+    point s0 = sc.place(ogl, *p0);
+    point s1 = sc.place(ogl, *p1);
     addLine(s0, s1, {1, 0, 0});
   }
   if (showForces){
     for (UINT i = 0; i < circles.size(); i++){
-      point a = circles[i];
+      point *a = circles[i];
       point f;
-      point att = sc.place(ogl, a);
-      a.x += a.fx / 1e3;
-      a.y += a.fy / 1e3;
-      point a2 = sc.place(ogl, a);
+      point att = sc.place(ogl, *a);
+      float dx = a->fx * (1 + 1/ 1e4);
+      float dy = a->fy * (1 + 1/ 1e4);
+      point t; t.x = dx; t.y = dy;
+      point a2 = sc.place(ogl, t);
       addLine(att, a2, {1, 0, 0});
     }
   }
@@ -157,16 +159,22 @@ WinMain (HINSTANCE hInstance,
     init(); // Init bitmap font
 
     //restart logger
-    std::ofstream dlme;
-    dlme.open("log.txt", std::ios_base::out);
-    dlme.write("", 0);
-    dlme.close();
+    restart_log();
     /*std::random_device rd;  // Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    univ.loadScene();
+    univ.setFriction(0);
+    UINT np = 2;
+    for (UINT i = 0; i < np; i++){
+      point t;
+      t.x = i; t.y = 0; t.radius = 0.2;
+      univ.addPoint(t);
+    }
+    for (UINT i = 1; i < np; i++){
+      univ.addLink(i - 1, i, 10, 5);
+    }
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
     scale scscale(point(0, 0), point(30, 30));
@@ -197,7 +205,7 @@ WinMain (HINSTANCE hInstance,
             tolog(univ.croack()); exit(0);
           }
           float dt = univ.solve();
-          OGLShow(univ, scscale, hDC, 0);
+          OGLShow(univ, scscale, hDC, dt);
         }
     }
 

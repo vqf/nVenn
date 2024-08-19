@@ -17,6 +17,7 @@ Only in that case the function tolog(toString(__LINE__) + "\n" + ) will be avail
 #define DEBUGONLY(a) a
 #else
 #define DEBUGONLY(a)
+#define restart_log
 #define tolog(toString(__LINE__) + "\n" + a)
 #endif // DEBUG
 
@@ -26,6 +27,13 @@ using namespace std;
 
 DEBUGONLY(
 
+
+void restart_log(){
+  std::ofstream dlme;
+  dlme.open("log.txt", std::ios_base::out);
+  dlme.write("", 0);
+  dlme.close();
+}
 
 void tolog(string t){
   ofstream f;

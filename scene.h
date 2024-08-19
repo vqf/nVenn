@@ -94,6 +94,20 @@ public:
         fx = 0;
         fy = 0;
     }
+    point clone(){
+      point result;
+      result.x = x;
+      result.y = y;
+      result.cancelForce = cancelForce;
+      result.flags = flags;
+      result.fx = fx;
+      result.fy = fy;
+      result.inContact = inContact;
+      result.mass = mass;
+      result.n = n;
+      result.orig = orig;
+      return result;
+    }
     string croack(){
       ostringstream r;
       r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius;
@@ -125,6 +139,7 @@ typedef struct springLink{
 class scene{
 
   vector<point*> points;
+  vector<point> shadowPoints;
   vector<point> virtualPoints;
   vector<springLink> springs;
   vector<springLink> rods;
@@ -148,6 +163,7 @@ class scene{
 
   void clearScene(){
     points.clear();
+    shadowPoints.clear();
     springs.clear();
     virtualPoints.clear();
     rods.clear();
@@ -182,7 +198,7 @@ class scene{
         float fy2 = result.fy;
         if (p0->fx != p0->fx){
             tolog("Distance is still zero: " + p0->croack() + p1->croack());
-          exit(0);
+            exit(0);
         }
         p0->fx += fx1;
         p1->fx -= fx2;
@@ -193,26 +209,28 @@ class scene{
   }
   void rod(point *p0, point *p1, float eqd, int neg = 1){
     point result;
-    float springK = 1e5;
+    float springK = 1e3;
     float dx = p1->x - p0->x;
     float dy = p1->y - p0->y;
     float dsq = dx * dx + dy * dy;
     float d = sqrt(dsq);
-    float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
-    float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
-    p0->fx -= f01 * dx;
-    p1->fx -= f10 * dx;
-    p0->fy -= f01 * dy;
-    p1->fy -= f10 * dy;
-    // Adjust with a spring
-    float eqx = eqd * dx / d;
-    float eqy = eqd * dy / d;
-    result.fx = springK * (dx - eqx);
-    result.fy = springK * (dy - eqy);
-    p0->fx += neg * result.fx;
-    p1->fx -= neg * result.fx;
-    p0->fy += neg * result.fy;
-    p1->fy -= neg * result.fy;
+    if (d != 0){
+      float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
+      float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
+      p0->fx -= f01 * dx;
+      p1->fx -= f10 * dx;
+      p0->fy -= f01 * dy;
+      p1->fy -= f10 * dy;
+      // Adjust with a spring
+      float eqx = eqd * dx / d;
+      float eqy = eqd * dy / d;
+      result.fx = springK * (dx - eqx);
+      result.fy = springK * (dy - eqy);
+      p0->fx += neg * result.fx;
+      p1->fx -= neg * result.fx;
+      p0->fy += neg * result.fy;
+      p1->fy -= neg * result.fy;
+    }
   }
   void effectRods(float dt){
     for (UINT i = 0; i < rods.size(); i++){
@@ -339,15 +357,6 @@ class scene{
     }
   }
 
-  template<typename T, typename T2>
-  void addInfo(T input, T2 ninput){
-      ostringstream result;
-      result << input;
-      result << ninput;
-      string td = result.str();
-      info.push_back(td);
-  }
-
 
   void icontacts(){
     // First pass
@@ -427,12 +436,12 @@ class scene{
       netvy += p->vy;
       float fx = p->fx;
       float fy = p->fy;
-      fx -= b * p->vx;
-      fy -= b * p->vy;
       float ax = fx / p->mass;
       float ay = fy / p->mass;
       p->vx += ax * cdt;
       p->vy += ay * cdt;
+      fx -= b * p->vx;
+      fy -= b * p->vy;
       float deltax = p->vx * cdt;
       float deltay = p->vy * cdt;
       p->x += deltax;
@@ -451,9 +460,20 @@ public:
     defaultK = 5e1;
     friction = 50.0f;
     maxAllowedForce = 1e5;
-    maxAllowedVel = 5e1;
+    maxAllowedVel = 5e2;
     maxK = defaultK;
     dt = 1e-2;
+  }
+  template<typename T, typename T2>
+  void addInfo(T input, T2 ninput){
+      ostringstream result;
+      result << input;
+      result << ninput;
+      string td = result.str();
+      info.push_back(td);
+  }
+  void setFriction(float coefficient = 50){
+    friction = coefficient;
   }
   bool dumpme(){
     return dump;
@@ -473,9 +493,15 @@ public:
     virtualPoints.clear();
   }
   void addPoint(point p){
-    points.push_back(&p);
+    shadowPoints.push_back(p);
+    points.clear();
+    for (UINT i = 0; i < shadowPoints.size(); i++){
+      point *pt = &(shadowPoints[i]);
+      points.push_back(pt);
+    }
   }
   void addPointP(point *p){
+    shadowPoints.push_back(*p);
     points.push_back(p);
   }
   void doSomething(){
@@ -602,7 +628,7 @@ public:
       float fsq = fx * fx + fy * fy;
       float vsq = vx * vx + vy * vy;
       if (fsq != fsq){
-        tolog("L527 " + croack()); exit(0);
+
       }
       if (fsq > maxfsq){
         maxfsq = fsq;
@@ -621,6 +647,7 @@ public:
     update(cdt);
     addInfo("DT: ", cdt);
     simtime += cdt;
+    addInfo("ST: ", simtime);
     return cdt;
   }
   float simTime(){
