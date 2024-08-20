@@ -421,7 +421,7 @@ dlme.close();
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
 
-        //bl.interpolateToDist(bl.minCircRadius * AIR);
+        bl.interpolateToDist(10 * bl.minCircRadius * AIR);
         bl.setPrevState();
         bl.setSecureState();
       }

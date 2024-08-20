@@ -150,6 +150,7 @@ class scene{
   float maxK;
   float maxAllowedForce;
   float maxAllowedVel;
+  float rodStiffness;
   float friction;
   bool dump;
 
@@ -209,7 +210,7 @@ class scene{
   }
   void rod(point *p0, point *p1, float eqd, int neg = 1){
     point result;
-    float springK = 1e3;
+    float springK = rodStiffness;
     float dx = p1->x - p0->x;
     float dy = p1->y - p0->y;
     float dsq = dx * dx + dy * dy;
@@ -424,7 +425,7 @@ class scene{
     }
   }
   void update(float cdt){
-    float b = friction * sqrt(points.size());
+    float b = friction;
     info.clear();
     float fsq = 0;
     float netvx = 0;
@@ -436,12 +437,12 @@ class scene{
       netvy += p->vy;
       float fx = p->fx;
       float fy = p->fy;
+      fx -= b * p->vx;
+      fy -= b * p->vy;
       float ax = fx / p->mass;
       float ay = fy / p->mass;
       p->vx += ax * cdt;
       p->vy += ay * cdt;
-      fx -= b * p->vx;
-      fy -= b * p->vy;
       float deltax = p->vx * cdt;
       float deltay = p->vy * cdt;
       p->x += deltax;
@@ -457,10 +458,11 @@ public:
     clearScene();
     dump = false;
     simtime = 0;
-    defaultK = 5e1;
-    friction = 50.0f;
+    defaultK = 100;
+    friction = 0.0f;
     maxAllowedForce = 1e5;
     maxAllowedVel = 5e2;
+    rodStiffness = 1e5;
     maxK = defaultK;
     dt = 1e-2;
   }
@@ -645,6 +647,14 @@ public:
       defaultK = maxK * points.size();
     }
     update(cdt);
+    float tb = friction;
+    friction *= 10;
+    for (UINT i = 0; i < 4; i++){
+      clearForces();
+      icontacts();
+      update(cdt);
+    }
+    friction /= 10;
     addInfo("DT: ", cdt);
     simtime += cdt;
     addInfo("ST: ", simtime);

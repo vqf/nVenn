@@ -14,7 +14,7 @@
 #include "scene.h"
 //#include <windows.h>
 
-#define AIR 1.2    // polish and embellish multiply maxRad() by this factor
+#define AIR 2    // polish and embellish multiply maxRad() by this factor
 
 // Flags for points
 #define IS_OUTSIDE        0x01  // The circle is in an incorrect space. Set to 0x01 to highlight
@@ -3905,6 +3905,7 @@ public:
           tosolve.addPointP(&(circles[i]));
         }
       }
+      tosolve.setFriction(10);
       tosolve.saveScene();
     }
 

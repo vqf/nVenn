@@ -68,10 +68,9 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   if (showForces){
     for (UINT i = 0; i < circles.size(); i++){
       point *a = circles[i];
-      point f;
       point att = sc.place(ogl, *a);
-      float dx = a->fx * (1 + 1/ 1e4);
-      float dy = a->fy * (1 + 1/ 1e4);
+      float dx = a->x + a->fx * 1e-2;
+      float dy = a->y + a->fy * 1e-2;
       point t; t.x = dx; t.y = dy;
       point a2 = sc.place(ogl, t);
       addLine(att, a2, {1, 0, 0});
@@ -165,15 +164,15 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    univ.setFriction(0);
-    UINT np = 2;
+    univ.setFriction(0.5);
+    UINT np = 8;
     for (UINT i = 0; i < np; i++){
       point t;
-      t.x = i; t.y = 0; t.radius = 0.2;
+      t.x = i; t.y = std::sin(i); t.radius = 0.2;
       univ.addPoint(t);
     }
     for (UINT i = 1; i < np; i++){
-      univ.addLink(i - 1, i, 10, 5);
+      univ.addLink(i - 1, i, 100, 0);
     }
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);

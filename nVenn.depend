@@ -118,7 +118,7 @@
 	"graphics.h"
 	"initogl.h"
 
-1723576692 d:\proyectos\nvenn2\gh\topol.h
+1724181261 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -131,14 +131,14 @@
 	"debug.h"
 	"scene.h"
 
-1723576702 d:\proyectos\nvenn2\gh\graphics.h
+1724183596 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"
 
 1693566312 d:\proyectos\nvenn2\gh\bmpfont.h
 
-1724080410 source:d:\proyectos\nvenn2\gh\test.cpp
+1724180606 source:d:\proyectos\nvenn2\gh\test.cpp
 	<windows.h>
 	<Windows.h>
 	"topol.h"
@@ -149,7 +149,7 @@
 
 1721076336 d:\proyectos\nvenn2\gh\initogl.h
 
-1724080481 d:\proyectos\nvenn2\gh\scene.h
+1724184247 d:\proyectos\nvenn2\gh\scene.h
 	<vector>
 	<fstream>
 	<sstream>
