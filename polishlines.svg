@@ -77,16 +77,16 @@
 ]]>
 </style>
 <symbol id="bl0">
-<path d="M 75.05 439.52 L -10.77 395.97 L -55.74 481.05 L 28.59 527.43 L 76.36 443.88 L 303.55 384.01 L 339.08 427.83 L 395.44 430.22 L 434.54 389.56 L 429.97 333.33 L 429.94 333.35 L 520.44 361.66 L 552.81 272.52 L 465.23 236.16 L 424.95 322.00 Z" />
+<path d="M 245.29 404.72 L 153.92 461.07 L 196.49 559.62 L 300.15 531.74 L 287.53 425.13 L 287.48 425.19 L 369.82 442.09 L 423.84 377.68 L 392.86 299.55 L 309.39 289.64 L 309.42 289.70 L 354.98 192.50 L 265.38 133.37 L 193.94 213.50 L 262.90 295.77 Z" />
 </symbol>
 <symbol id="bl1">
-<path d="M 152.44 338.95 L 72.33 377.92 L 98.23 463.17 L 186.48 450.99 L 188.34 361.92 L 188.25 362.00 L 251.06 386.48 L 304.52 345.40 L 297.02 278.40 L 235.80 250.15 L 226.95 141.34 L 290.01 73.11 L 227.30 4.57 L 153.76 61.34 L 204.17 139.37 Z" />
+<path d="M 188.60 107.51 L 84.00 83.94 L 45.36 183.95 L 138.63 236.83 L 204.61 152.31 L 340.94 145.62 L 415.26 223.31 L 502.70 160.76 L 453.19 65.33 L 351.70 100.79 L 336.08 91.84 L 334.66 7.83 L 260.09 -30.89 L 190.55 16.26 L 198.92 99.86 Z" />
 </symbol>
 <symbol id="bl2">
-<path d="M 208.46 213.97 L 172.58 132.04 L 86.19 155.16 L 96.03 244.05 L 185.39 247.72 L 198.82 264.71 L 173.30 327.26 L 213.76 381.37 L 280.97 374.59 L 309.80 313.49 L 421.57 305.22 L 488.70 368.77 L 558.19 307.80 L 503.93 232.96 L 424.38 280.07 Z" />
+<path d="M 77.78 367.97 L -31.44 391.97 L -15.32 502.63 L 96.20 494.48 L 96.06 382.65 L 215.99 270.74 L 291.28 295.38 L 352.32 244.89 L 342.25 166.32 L 270.44 132.87 L 270.44 132.91 L 346.67 57.80 L 283.81 -28.82 L 188.76 20.36 L 223.16 121.70 Z" />
 </symbol>
 <symbol id="bl3">
-<path d="M 189.40 363.25 L 100.14 346.40 L 72.36 432.88 L 154.73 471.16 L 202.93 394.16 L 302.21 377.73 L 346.74 431.11 L 415.05 418.20 L 437.02 352.24 L 390.11 300.94 L 407.87 243.27 L 489.81 207.64 L 467.06 121.23 L 378.19 130.56 L 373.89 219.81 Z" />
+<path d="M 182.26 212.73 L 179.50 97.16 L 63.91 99.01 L 64.85 214.61 L 180.46 214.58 L 396.05 431.76 L 394.81 546.98 L 510.00 549.87 L 514.53 434.73 L 399.47 428.56 L 397.23 426.03 L 424.83 367.75 L 401.80 307.52 L 342.35 282.52 L 283.20 308.20 Z" />
 </symbol>
 </defs>
 <!-- isDone: 0 -->
@@ -99,30 +99,38 @@
 <use class="q1 outLine" xlink:href="#bl1"/>
 <use class="q2 outLine" xlink:href="#bl2"/>
 <use class="q3 outLine" xlink:href="#bl3"/>
-<circle onclick="fromCircle(2)" class="circle" cx="221.3908" cy="72.9409" r="34.3106" />
-<text class="tLabel" x="221.39" y="52.94"></text>
-<text class="nLabel" x="221.39" y="67.94">1806</text>
-<text class="belong" x="221.39" y="77.94">(2)</text>
-<circle onclick="fromCircle(6)" class="spcircle" cx="241.3671" cy="318.5488" r="4.2274" />
-<text class="tLabel" x="241.37" y="298.55"></text>
-<text class="nLabel" x="241.37" y="313.55">8</text>
-<text class="belong" x="241.37" y="323.55">(2, 3)</text>
-<circle onclick="fromCircle(10)" class="circle" cx="135.2255" cy="405.3711" r="4.3478" />
-<text class="tLabel" x="135.23" y="385.37"></text>
-<text class="nLabel" x="135.23" y="400.37">29</text>
-<text class="belong" x="135.23" y="410.37">(2, 4)</text>
-<circle onclick="fromCircle(4)" class="circle" cx="142.8401" cy="193.8791" r="6.7549" />
-<text class="tLabel" x="142.84" y="173.88"></text>
-<text class="nLabel" x="142.84" y="188.88">70</text>
-<text class="belong" x="142.84" y="198.88">(3)</text>
-<circle onclick="fromCircle(8)" class="circle" cx="428.0681" cy="177.6922" r="5.0420" />
-<text class="tLabel" x="428.07" y="157.69"></text>
-<text class="nLabel" x="428.07" y="172.69">39</text>
-<text class="belong" x="428.07" y="182.69">(4)</text>
-<circle onclick="fromCircle(9)" class="circle" cx="369.9049" cy="366.5221" r="4.2274" />
-<text class="tLabel" x="369.90" y="346.52"></text>
-<text class="nLabel" x="369.90" y="361.52">6</text>
-<text class="belong" x="369.90" y="371.52">(1, 4)</text>
+<circle onclick="fromCircle(1)" class="spcircle" cx="232.1945" cy="485.7318" r="35.8424" />
+<text class="tLabel" x="232.19" y="465.73"></text>
+<text class="nLabel" x="232.19" y="480.73">1378</text>
+<text class="belong" x="232.19" y="490.73">(1)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="422.9039" cy="141.5972" r="41.0328" />
+<text class="tLabel" x="422.90" y="121.60"></text>
+<text class="nLabel" x="422.90" y="136.60">1806</text>
+<text class="belong" x="422.90" y="146.60">(2)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="264.8819" cy="51.0328" r="4.2787" />
+<text class="tLabel" x="264.88" y="31.03"></text>
+<text class="nLabel" x="264.88" y="46.03">8</text>
+<text class="belong" x="264.88" y="56.03">(2, 3)</text>
+<circle onclick="fromCircle(10)" class="circle" cx="122.6385" cy="156.3376" r="5.1996" />
+<text class="tLabel" x="122.64" y="136.34"></text>
+<text class="nLabel" x="122.64" y="151.34">29</text>
+<text class="belong" x="122.64" y="161.34">(2, 4)</text>
+<circle onclick="fromCircle(4)" class="spcircle" cx="36.0633" cy="438.6405" r="8.0783" />
+<text class="tLabel" x="36.06" y="418.64"></text>
+<text class="nLabel" x="36.06" y="433.64">70</text>
+<text class="belong" x="36.06" y="443.64">(3)</text>
+<circle onclick="fromCircle(5)" class="circle" cx="275.9935" cy="214.7520" r="6.5486" />
+<text class="tLabel" x="275.99" y="194.75"></text>
+<text class="nLabel" x="275.99" y="209.75">46</text>
+<text class="belong" x="275.99" y="219.75">(1, 3)</text>
+<circle onclick="fromCircle(8)" class="circle" cx="453.8700" cy="490.0000" r="6.0298" />
+<text class="tLabel" x="453.87" y="470.00"></text>
+<text class="nLabel" x="453.87" y="485.00">39</text>
+<text class="belong" x="453.87" y="495.00">(4)</text>
+<circle onclick="fromCircle(9)" class="circle" cx="342.8231" cy="364.5889" r="4.2787" />
+<text class="tLabel" x="342.82" y="344.59"></text>
+<text class="nLabel" x="342.82" y="359.59">6</text>
+<text class="belong" x="342.82" y="369.59">(1, 4)</text>
 <rect class="p0 borderLine" x="500.00" y="50.00" width="30.00" height="15.00" />
 <rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
 <text class="legend" x="540.00" y="65.00">Up_in_POU3F2_KO_iNs</text>

@@ -172,7 +172,7 @@ WinMain (HINSTANCE hInstance,
       univ.addPoint(t);
     }
     for (UINT i = 1; i < np; i++){
-      univ.addLink(i - 1, i, 100, 0);
+      univ.addLink(i - 1, i, 10000, 0);
     }
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);

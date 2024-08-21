@@ -3894,7 +3894,7 @@ public:
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
           tosolve.addPointP(&(bl[i][j]));
-          tosolve.addLink(cnt + lp, cnt + j, 1e2);
+          tosolve.addLink(cnt + lp, cnt + j, 1e3);
           lp = j;
         }
         tosolve.addLink(cnt + lp, cnt, 1e2);

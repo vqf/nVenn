@@ -640,16 +640,15 @@ public:
       }
     }
     //tolog(toString(maxfsq) + "\t" + toString(maxvsq) + "\n");
-    if ((maxfsq > maxAllowedForce * (points.size())) || (maxvsq > maxAllowedVel)){
-      defaultK *= maxAllowedForce * points.size() / maxfsq;
-    }
-    else{
-      defaultK = maxK * points.size();
-    }
+    //if ((maxfsq > maxAllowedForce * (points.size())) || (maxvsq > maxAllowedVel)){
+    //  defaultK *= maxAllowedForce * points.size() / maxfsq;
+    //}
+//    else{
+//      defaultK = maxK * points.size();
+//    }
     update(cdt);
-    float tb = friction;
     friction *= 10;
-    for (UINT i = 0; i < 4; i++){
+    for (UINT i = 0; i < 10; i++){
       clearForces();
       icontacts();
       update(cdt);
