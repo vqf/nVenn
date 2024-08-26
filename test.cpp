@@ -164,16 +164,33 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
-    univ.setFriction(0.5);
-    UINT np = 8;
-    for (UINT i = 0; i < np; i++){
-      point t;
-      t.x = i; t.y = std::sin(i); t.radius = 0.2;
-      univ.addPoint(t);
+    univ.setFriction(0);
+    UINT np = 15;
+    UINT nr = 5;
+    float r = 0.3;
+    float d = 1;
+    for (UINT j = 0; j < nr; j++){
+      for (UINT i = 0; i < np; i++){
+        point t;
+        t.x = i + 0.1*std::sin(i); t.y = j + 0.1*std::cos(j); t.radius = r;
+        univ.addPoint(t);
+      }
     }
-    for (UINT i = 1; i < np; i++){
-      univ.addLink(i - 1, i, 10000, 0);
+    for (UINT j = 0; j < nr; j++){
+      for (UINT i = 1; i < np; i++){
+        UINT f = j * np + i - 1;
+        UINT t = j * np + i;
+        univ.addLink(f, t, 1000, d);
+      }
     }
+    for (UINT j = 1; j < nr; j++){
+      for (UINT i = 1; i < np; i++){
+        UINT f = (j-1) * np + i;
+        UINT t = j * np + i;
+        univ.addLink(f, t, 1000, d);
+      }
+    }
+
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
     scale scscale(point(0, 0), point(30, 30));

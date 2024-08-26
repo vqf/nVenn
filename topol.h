@@ -1028,6 +1028,14 @@ public:
         result = ySpan() / xSpan();
         return result;
     }
+    string croack(){
+      string result;
+      result += "MinX: " + toString(minX()) + "\n";
+      result += "MaxX: " + toString(maxX()) + "\n";
+      result += "MinY: " + toString(minY()) + "\n";
+      result += "MaxY: " + toString(maxY()) + "\n";
+      return result;
+    }
 };
 
 struct rgb
@@ -2621,10 +2629,10 @@ class borderLine
       UINT bestout = countOutsiders();
       for (UINT i = 0; i < circles.size(); i++){
         UINT n = circles[i].n;
-        while ((n > 0) && ((n & 0x1) == 0)){
+        /*while ((n > 0) && ((n & 0x1) == 0)){
           n = n >> 1;
-        }
-        if (n == 1){
+        }*/
+        if (/*n == */1){
           vector<point> q = getOutsidePoints();
           if (logit){
             tolog(_L_ +  "Checking on circle " + circles[i].croack());
@@ -3360,9 +3368,6 @@ class borderLine
         blSettings.ncycles++;
     }
 
-    void collisions(){
-    }
-
     void updPos(float kb, bool resetVelocity = false)
     {
         UINT i, j;
@@ -3888,16 +3893,16 @@ public:
         /*writeSVG()*/
     }
 
-    void attachScene(){
+    void attachScene(float springK = 5e3){
       UINT cnt = 0;
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
           tosolve.addPointP(&(bl[i][j]));
-          tosolve.addLink(cnt + lp, cnt + j, 1e3);
+          tosolve.addLink(cnt + lp, cnt + j, springK);
           lp = j;
         }
-        tosolve.addLink(cnt + lp, cnt, 1e2);
+        tosolve.addLink(cnt + lp, cnt, springK);
         cnt += lp + 1;
       }
       for (UINT i = 0; i < circles.size(); i++){
@@ -3905,13 +3910,31 @@ public:
           tosolve.addPointP(&(circles[i]));
         }
       }
-      tosolve.setFriction(10);
-      tosolve.saveScene();
+      tosolve.setFriction(15);
+      //tosolve.saveScene();
+    }
+
+    void resetScale(){
+      for (UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          setScale(circles[i]);
+        }
+      }
+      if (checkTopol()){
+        for (UINT i = 0; i < bl.size(); i++){
+          for (UINT j = 0; j < bl[i].size(); j++){
+              setScale(bl[i][j]);
+          }
+        }
+      }
     }
 
     void scSolve(){
       dataDisplay.clear();
       blSettings.dt = tosolve.solve();
+      internalScale.setClear(true);
+      resetScale();
+      resetCircleRadius();
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
     }

@@ -397,9 +397,9 @@ dlme.close();
                 //tolog("One more\n");
                 b1 = bo;
                 bo = bl.chooseCombination();
-                tolog("Outsiders lowered to " + toString(bo) + "\n");
+                //tolog("Outsiders lowered to " + toString(bo) + "\n");
               } while (bo < b1 && bo > 0);
-              //bl.chooseCrossings();
+              bl.chooseCrossings(false);
               bl.setCheckTopol(true);
               bl.addLines();
               bl.polishLines();
@@ -421,7 +421,7 @@ dlme.close();
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
 
-        bl.interpolateToDist(10 * bl.minCircRadius * AIR);
+        bl.interpolateToDist(5 * bl.minCircRadius * AIR);
         bl.setPrevState();
         bl.setSecureState();
       }

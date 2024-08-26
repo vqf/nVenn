@@ -647,13 +647,11 @@ public:
 //      defaultK = maxK * points.size();
 //    }
     update(cdt);
-    friction *= 10;
     for (UINT i = 0; i < 10; i++){
       clearForces();
       icontacts();
       update(cdt);
     }
-    friction /= 10;
     addInfo("DT: ", cdt);
     simtime += cdt;
     addInfo("ST: ", simtime);
