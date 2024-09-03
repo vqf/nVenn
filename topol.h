@@ -1942,9 +1942,7 @@ class borderLine
      */
     void fixTopology(bool logit = false){
       addLines();
-      //writeSVG("addlines.svg");
       polishLines();
-      writeSVG("polishlines.svg");
       for (UINT k = 0; k < bl.size(); k++){
         bool goon = true;
         while (goon){
@@ -1990,8 +1988,6 @@ class borderLine
                         float d = sqrt(dsq);
                         float dsena = (dsq + d1sq - d2sq) / (2*d);
                         float ddsq = d1sq - dsena * dsena;
-                        tolog(_L_ +  "\nLine: " + toString(k) + ", segment" + toString(i) + ", circle " + toString(circles[j].n) + "\n");
-                        tolog(_L_ + "minV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
                         if ((minV < 0 || (ddsq < minV))){
                           minV = ddsq;
                           //tolog(toString(__LINE__) + "\tminV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
@@ -2009,7 +2005,7 @@ class borderLine
                   }
                 }
                 if (goon){
-                  oilog(oi);
+                  //oilog(oi);
                   vector<point> newpoints;
                   for (UINT i = 0; i <= oi.vertex; i++){
                     newpoints.push_back(bl[k][i]);
@@ -2041,7 +2037,7 @@ class borderLine
                     newpoints.push_back(c4);
                     newpoints.push_back(c1);
                     newpoints.push_back(q);
-                    tolog(_L_ + t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
+                    //tolog(_L_ + t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
                   //}
                   if (oi.nextVertex > 0){
                     for (UINT i = oi.nextVertex; i < bl[k].size(); i++){
@@ -2049,23 +2045,23 @@ class borderLine
                     }
                   }
                   bl[k] = newpoints;
-                  tolog(_L_ +  toString(circleTopol(p3, belong, k)) + "\n");
+                  //tolog(_L_ +  toString(circleTopol(p3, belong, k)) + "\n");
                   //writeSVG("delme.svg");
                   //exit(0);
                   //tolog(toString(circleTopol(p3, belong, k)) + "\n");
                 }
                 else{
-                  tolog(_L_ + "Somehow, this one did not make it.\n");
-                  tolog(_L_ + "Line " + toString(k) + ", segment " + toString(oi.vertex) + "\n");
-                  tolog(_L_ + oi.outsider.croack());
+                  //tolog(_L_ + "Somehow, this one did not make it.\n");
+                  //tolog(_L_ + "Line " + toString(k) + ", segment " + toString(oi.vertex) + "\n");
+                  //tolog(_L_ + oi.outsider.croack());
                   writeSVG("delme.svg");
-                  exit(1);
+                  //exit(1);
                 }
                 incorrect = circleTopol(circles[j], belong, k); //Was it fixed?
                 if (incorrect){
-                  writeSVG("error.svg");
-                  tolog(_L_ + "Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n");
-                  exit(1);
+                  //writeSVG("error.svg");
+                  //tolog(_L_ + "Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n");
+                  //exit(1);
                 }
               }
             }
@@ -2187,7 +2183,7 @@ class borderLine
                     newpoints.push_back(c4);
                     newpoints.push_back(c1);
                     newpoints.push_back(q);
-                    tolog(_L_ + t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
+                    //tolog(_L_ + t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
                   }
                   for (UINT i = oi.nextVertex; i < bl[k].size(); i++){
                     newpoints.push_back(bl[k][i]);
@@ -2511,7 +2507,7 @@ class borderLine
       vector<point> backup = circles;
       vector<point> best   = circles;
       addLines();
-      //polishLines();
+      polishLines();
       UINT bestout = countOutsiders();
       UINT bestcrs = countCrossings();
       if (logit){
@@ -2525,7 +2521,7 @@ class borderLine
               if (circles[j].radius > 0){
                 swapCoords(i, j);
                 addLines();
-                //polishLines();
+                polishLines();
                 UINT out = countOutsiders();
                 if (out <= bestout){
                   UINT crs = countCrossings();
@@ -2561,70 +2557,54 @@ class borderLine
           }
         }
       }
-      // See if getting a circle out is better
-      bool goon = true;
-      UINT deb = 0;
-      do{
-        goon = false;
-        vector<point> q = getOutsidePoints();
-        /***********
-        vector<point> qq;
-        for (UINT i = 0; i < q.size(); i++){
-          point tp = q[i];
-          point np = q[0];
-          if (i < (q.size()-1)){
-            np = q[i+1];
-          }
-          point r;
-          r.x = (tp.x + np.x) / 2;
-          r.y = (tp.y + np.y) / 2;
-          qq.push_back(r);
-        }
-        for (UINT i = 0; i < qq.size(); i++){
-          q.push_back(qq[i]);
-        }
-        /***********/
-        for (UINT i = 0; i < circles.size(); i++){
-          if (circles[i].radius > 0){
-            for (UINT j = 0; j < q.size(); j++){
-              point t; t.x = circles[i].x; t.y = circles[i].y;
-              circles[i].x = q[j].x;
-              circles[i].y = q[j].y;
-              addLines();
-              polishLines();
-              UINT out = countOutsiders();
-              UINT crs = countCrossings();
-              if (logit){
-                tolog(_L_ +  toString(out) + "-" + toString(bestout) + "\n");
-              }
-              if (out < bestout || (out == bestout && crs < bestcrs)){
-                  bestout = out;
-                  bestcrs = crs;
-                  goon = true;
-                  circles[i].flags = circles[i].flags | TAKEN_OUT;
-                  setScale(circles[i]);
-                  if (logit){
-                    tolog(_L_ +  "i: " + toString(i) + ", " +
-                          "j: " + toString(j) + ", " + "outer: " + toString(out) + "\n");
-                    tolog(_L_ +  "Change : \n" + t.croack() + circles[i].croack());
-                  }
-              }
-              else{
-                //tolog(toString(__LINE__) + "\n" + toString(i) + " with " + toString(j) + " was no better\n");
-                circles[i].flags = circles[i].flags & (~TAKEN_OUT);
-                circles[i].x = t.x;
-                circles[i].y = t.y;
-              }
-            }
-          }
-        }
-      } while (goon);
+
       return bestout;
     }
 
     void chooseCrossings(bool logit = false){
+      fixTopology();
+      UINT bc = countCrossings();
+      tolog("Best crossings: " + toString(bc) + "\n");
+      UINT nbc = setCrossings();
+      while (nbc < bc){
+        if (logit){
+          tolog("New best crossings: " + toString(nbc) + "\n");
+        }
+        bc = nbc;
+        nbc = setCrossings();
+      }
+    }
+
+    UINT setCrossings(bool logit = false){
+      fixTopology();
+      UINT bestcross = countCrossings();
+      UINT bestout = countOutsiders();
+      for (UINT i = 0; i < circles.size() - 1; i++){
+        if (circles[i].radius > 0){
+          for (UINT j = i + 1; j < circles.size(); j++){
+            if (circles[j].radius > 0){
+              swapCoords(i, j);
+              fixTopology();
+              UINT newcross = countCrossings();
+              UINT newout = countOutsiders();
+              if (newout <= bestout && newcross < bestcross){
+                bestcross = newcross;
+                bestout = newout;
+              }
+              else{
+                swapCoords(i, j);
+              }
+            }
+          }
+        }
+      }
+      return bestcross;
+    }
+
+    UINT setCrossingsBack(bool logit = false){
       addLines();
       polishLines();
+      fixTopology();
       UINT bestcross = countCrossings();
       UINT bestout = countOutsiders();
       for (UINT i = 0; i < circles.size(); i++){
@@ -2634,23 +2614,16 @@ class borderLine
         }*/
         if (/*n == */1){
           vector<point> q = getOutsidePoints();
-          if (logit){
-            tolog(_L_ +  "Checking on circle " + circles[i].croack());
-          }
           for (UINT j = 0; j < q.size(); j++){
             point u; u.x = circles[i].x; u.y = circles[i].y;
             circles[i].x = q[j].x;
             circles[i].y = q[j].y;
             addLines();
             polishLines();
+            fixTopology();
             UINT newcross = countCrossings();
             UINT newout = countOutsiders();
             if ((newout <= bestout) && (newcross < bestcross)){
-              if (logit){
-                tolog(_L_ + "Better newcross with circle " + circles[i].croack());
-                tolog(_L_ + toString(newout) + " outs from " + toString(bestout) + "\n");
-                tolog(_L_ + toString(newcross) + " crosses\n");
-              }
               bestout = newout;
               bestcross = newcross;
             }
@@ -2662,6 +2635,7 @@ class borderLine
           }
         }
       }
+      return bestcross;
     }
 
     point spring(point &p0, point &p1, float dampen = 0, float springK = -1)

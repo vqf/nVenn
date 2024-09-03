@@ -366,7 +366,7 @@ dlme.close();
       bl.addLines();
       toOGL(bl, hDC);
       bl.setCheckTopol(false);
-      UINT b1 = bl.countOutsiders();
+      //UINT b1 = bl.countOutsiders();
       UINT bo = bl.chooseCombination();
       bQuit = false;
       while (!bQuit)
@@ -387,24 +387,9 @@ dlme.close();
           }
           else
           {
-        //      bl.setForces3();
-              //bl.chooseCombination();
-              //bl.addLines();
-              //bl.polishLines();
-              //bl.setCheckTopol(true);
-
-              /*do{
-                //tolog("One more\n");
-                b1 = bo;
-                bo = bl.chooseCombination();
-                //tolog("Outsiders lowered to " + toString(bo) + "\n");
-              } while (bo < b1 && bo > 0);
-              */
-              bl.chooseCrossings(false);
+              bl.chooseCrossings(true);
               bl.setCheckTopol(true);
-              bl.addLines();
-              bl.polishLines();
-              bl.fixTopology(true);
+              bl.fixTopology();
 
               bl.setCheckTopol(false);
               toOGL(bl, hDC);
