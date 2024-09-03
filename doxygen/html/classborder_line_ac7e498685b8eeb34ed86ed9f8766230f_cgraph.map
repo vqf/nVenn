@@ -1,17 +1,15 @@
 <map id="borderLine::addLines" name="borderLine::addLines">
-<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,132,147,159"/>
+<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,107,147,133"/>
 <area shape="rect" id="Node000002" href="$classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60" title=" " alt="" coords="231,5,327,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,130,132,87,161,63,193,42,215,32,217,37,196,46,164,67,135,91,92,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,104,138,73,194,42,215,33,217,38,196,46,141,78,97,108"/>
 <area shape="rect" id="Node000003" href="$classccwangle.html#af9b6a231f2f7187e4dd8d2fc080fc167" title=" " alt="" coords="218,56,340,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,129,225,86,227,91,115,134"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,103,207,84,209,90,133,109"/>
 <area shape="rect" id="Node000005" href="$classborder_line.html#ae73fab0d3edeb32b1ece09e26adc6426" title=" " alt="" coords="195,157,363,184"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="147,151,180,156,179,161,146,157"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="133,131,209,150,207,156,132,137"/>
 <area shape="rect" id="Node000006" href="$classgroup_iterator.html#a9a39d8603801f7c1aeeb3845ea3fb150" title=" " alt="" coords="411,119,530,145"/>
-<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="147,140,395,132,396,137,147,146"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="147,119,396,127,395,132,147,125"/>
 <area shape="rect" id="Node000009" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="413,195,529,221"/>
-<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="103,157,145,177,195,193,247,203,300,208,397,209,397,215,300,213,247,208,194,199,143,182,101,162"/>
-<area shape="rect" id="Node000010" href="$topol_8h.html#a79c729e556b12420c94aeabf8061b0da" title=" " alt="" coords="246,259,312,285"/>
-<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="93,157,137,196,196,238,232,255,230,259,193,242,134,200,90,161"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="94,132,138,165,166,181,195,193,247,206,299,212,397,212,397,218,299,217,246,211,194,199,163,186,135,169,91,136"/>
 <area shape="rect" id="Node000004" href="$classtangent.html#a1427c41a62f28c3fa3b44f8adfe3f04c" title=" " alt="" coords="415,56,526,83"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="341,67,400,67,400,72,341,72"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="348,154,395,144,396,150,349,159"/>

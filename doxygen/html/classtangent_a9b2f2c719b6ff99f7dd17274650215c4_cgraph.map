@@ -1,7 +1,5 @@
 <map id="tangent::tangent" name="tangent::tangent">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,121,57"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,121,32"/>
 <area shape="rect" id="Node000002" href="$classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60" title=" " alt="" coords="169,5,265,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,32,153,26,154,32,121,37"/>
-<area shape="rect" id="Node000003" href="$topol_8h.html#a79c729e556b12420c94aeabf8061b0da" title=" " alt="" coords="184,56,250,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,51,169,59,168,64,121,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,16,153,16,153,21,121,21"/>
 </map>

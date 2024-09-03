@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['graphics_2eh_0',['graphics.h',['../graphics_8h.html',1,'']]]
+  ['debug_2eh_0',['debug.h',['../debug_8h.html',1,'']]]
 ];

@@ -393,12 +393,13 @@ dlme.close();
               //bl.polishLines();
               //bl.setCheckTopol(true);
 
-              do{
+              /*do{
                 //tolog("One more\n");
                 b1 = bo;
                 bo = bl.chooseCombination();
                 //tolog("Outsiders lowered to " + toString(bo) + "\n");
               } while (bo < b1 && bo > 0);
+              */
               bl.chooseCrossings(false);
               bl.setCheckTopol(true);
               bl.addLines();
@@ -469,7 +470,7 @@ dlme.close();
       bl.resetTimer();
       bl.setCheckTopol(true);
       bl.attachScene();
-      bl.scSave();
+      //bl.scSave();
       while (!bQuit)
       {
           /* check for messages */

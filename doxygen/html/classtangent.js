@@ -4,6 +4,7 @@ var classtangent =
     [ "tangent", "classtangent.html#a9b2f2c719b6ff99f7dd17274650215c4", null ],
     [ "bisect", "classtangent.html#aeab7bcf5b95a49fe7fc98d6ed4c9309c", null ],
     [ "croack", "classtangent.html#a1427c41a62f28c3fa3b44f8adfe3f04c", null ],
+    [ "error", "classtangent.html#a7f1ffed87e2e8008118deb5b06f7ae9c", null ],
     [ "getQuadrant", "classtangent.html#a2cfeaf0a7ece2a36a35e955eff587e71", null ],
     [ "getSlope", "classtangent.html#a36893ad5770e972a562bcdf04cd529fa", null ],
     [ "leftIntermediate", "classtangent.html#a2870e8fb4b876786de4619cad27dd566", null ],
@@ -16,6 +17,7 @@ var classtangent =
     [ "operator==", "classtangent.html#aea5cacbd10a2d0f4ad5887cf894ec613", null ],
     [ "rotate", "classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6", null ],
     [ "transformPoint", "classtangent.html#a93192645af418200291773c09866a038", null ],
+    [ "err", "classtangent.html#aa60b1b9ce4db0e5a3e2c4fd893ce75ec", null ],
     [ "quadrant", "classtangent.html#a557f8211ea92e33dc0655970d4da1d9d", null ],
     [ "slope", "classtangent.html#a9d6f85de08cb124725870e07641575e4", null ]
 ];

@@ -140,6 +140,7 @@ class scene{
 
   vector<point*> points;
   vector<point> shadowPoints;
+  vector<vector<point>> gcopies;
   vector<point> virtualPoints;
   vector<springLink> springs;
   vector<springLink> rods;
@@ -509,6 +510,40 @@ public:
   void doSomething(){
     points[0]->x += 10;
   }
+
+  /** \brief Saves the coordinates of all points.
+   * Recover with \ref grestore()
+   * \return void
+   *
+   */
+  void gsave(){
+    vector<point> cp;
+    for (UINT i = 0; i < points.size(); i++){
+      point t = *(points[i]);
+      cp.push_back(t);
+    }
+    gcopies.push_back(cp);
+  }
+
+  /** \brief Recovers coordinates of all points.
+   * Coordinates must have been saved with \ref gsave().
+   * Velocities and forces are reset to zero.
+   * \return void
+   *
+   */
+  void grestore(){
+    vector<point> cp = gcopies[gcopies.size() - 1];
+    gcopies.pop_back();
+    for (UINT i = 0; i < cp.size(); i++){
+      points[i]->x = cp[i].x;
+      points[i]->y = cp[i].y;
+      points[i]->vx = 0;
+      points[i]->vy = 0;
+      points[i]->fx = 0;
+      points[i]->fy = 0;
+    }
+  }
+
   void saveScene(string fname="scene.unv"){
     ofstream result;
     result.open(fname);

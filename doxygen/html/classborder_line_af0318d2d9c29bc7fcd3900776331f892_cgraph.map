@@ -1,0 +1,10 @@
+<map id="borderLine::setCircleAttraction" name="borderLine::setCircleAttraction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,22,202,49"/>
+<area shape="rect" id="Node000002" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="439,22,509,49"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,19,271,5,332,3,391,8,425,15,423,21,391,13,332,8,272,10,167,24"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="252,22,389,49"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,33,236,33,236,38,202,38"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#a0aa35477985f3198a343682ab7704bfd" title=" " alt="" coords="250,73,391,100"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,47,246,66,245,72,163,52"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="363,70,423,50,425,55,364,75"/>
+</map>

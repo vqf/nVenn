@@ -1,41 +1,48 @@
-D:/Proyectos/nVenn2/gh/topol.h:2338: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:355: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:1493: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:1494: warning: expected whitespace after \p command
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:442: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:130: warning: argument '0' of command @param is not found in the argument list of toBin(int number, UINT nBits=0)
-D:/Proyectos/nVenn2/gh/topol.h:130: warning: The following parameter of toBin(int number, UINT nBits=0) is not documented:
+D:/Proyectos/nVenn2/gh/graphics.h:541: warning: Reached end of file while still inside a (nested) comment. Nesting level 2 (probable line reference: 178, 131)
+D:/Proyectos/nVenn2/gh/test.cpp:240: warning: Reached end of file while still inside a (nested) comment. Nesting level 1 (probable line reference: 88)
+D:/Proyectos/nVenn2/gh/topol.h:4844: warning: Reached end of file while still inside a (nested) comment. Nesting level 2 (probable line reference: 3530, 2570)
+D:/Proyectos/nVenn2/gh/topol.h:2318: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:236: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:1472: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:1473: warning: expected whitespace after \p command
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:323: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:99: warning: argument '0' of command @param is not found in the argument list of toBin(int number, UINT nBits=0)
+D:/Proyectos/nVenn2/gh/topol.h:99: warning: The following parameter of toBin(int number, UINT nBits=0) is not documented:
   parameter 'nBits'
-D:/Proyectos/nVenn2/gh/topol.h:1493: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:1494: warning: expected whitespace after \p command
-D:/Proyectos/nVenn2/gh/topol.h:2338: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:2248: warning: found documented return type for borderLine::addLines that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:1493: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:1494: warning: expected whitespace after \p command
-D:/Proyectos/nVenn2/gh/topol.h:1960: warning: argument 'false' of command @param is not found in the argument list of borderLine::fixTopology(bool logit=false)
-D:/Proyectos/nVenn2/gh/topol.h:1960: warning: The following parameter of borderLine::fixTopology(bool logit=false) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:1472: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:1473: warning: expected whitespace after \p command
+D:/Proyectos/nVenn2/gh/topol.h:2318: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:2228: warning: found documented return type for borderLine::addLines that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:1472: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:1473: warning: expected whitespace after \p command
+D:/Proyectos/nVenn2/gh/topol.h:1938: warning: argument 'false' of command @param is not found in the argument list of borderLine::fixTopology(bool logit=false)
+D:/Proyectos/nVenn2/gh/topol.h:1938: warning: The following parameter of borderLine::fixTopology(bool logit=false) is not documented:
   parameter 'logit'
-D:/Proyectos/nVenn2/gh/topol.h:1960: warning: found documented return type for borderLine::fixTopology that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:2104: warning: argument 'false' of command @param is not found in the argument list of borderLine::fTopology(bool logit=false)
-D:/Proyectos/nVenn2/gh/topol.h:2104: warning: The following parameter of borderLine::fTopology(bool logit=false) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:1938: warning: found documented return type for borderLine::fixTopology that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2084: warning: argument 'false' of command @param is not found in the argument list of borderLine::fTopology(bool logit=false)
+D:/Proyectos/nVenn2/gh/topol.h:2084: warning: The following parameter of borderLine::fTopology(bool logit=false) is not documented:
   parameter 'logit'
-D:/Proyectos/nVenn2/gh/topol.h:2104: warning: found documented return type for borderLine::fTopology that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:2338: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:2341: warning: found documented return type for borderLine::polishLines that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:1594: warning: found documented return type for borderLine::randomizeCircles that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:3718: warning: found documented return type for borderLine::setCoords that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:3547: warning: found documented return type for borderLine::setRelationships that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:2328: warning: argument 'true' of command @param is not found in the argument list of borderLine::surroundCircle(point p1, point p2, point c, bool onTheLeft=true)
-D:/Proyectos/nVenn2/gh/topol.h:2328: warning: The following parameter of borderLine::surroundCircle(point p1, point p2, point c, bool onTheLeft=true) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:2084: warning: found documented return type for borderLine::fTopology that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2318: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:2321: warning: found documented return type for borderLine::polishLines that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:1573: warning: found documented return type for borderLine::randomizeCircles that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:3951: warning: found documented return type for borderLine::setBV that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:3960: warning: found documented return type for borderLine::setContactFunction that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4005: warning: found documented return type for borderLine::setCoords that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:3735: warning: found documented return type for borderLine::setRelationships that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2306: warning: argument 'true' of command @param is not found in the argument list of borderLine::surroundCircle(point p1, point p2, point c, bool onTheLeft=true)
+D:/Proyectos/nVenn2/gh/topol.h:2306: warning: The following parameter of borderLine::surroundCircle(point p1, point p2, point c, bool onTheLeft=true) is not documented:
   parameter 'onTheLeft'
-D:/Proyectos/nVenn2/gh/topol.h:355: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:355: warning: Found unknown command '@group'
-D:/Proyectos/nVenn2/gh/topol.h:357: warning: argument 'group' of command @param is not found in the argument list of groupIterator::nextInGroup(UINT n)
-D:/Proyectos/nVenn2/gh/topol.h:357: warning: argument 'size' of command @param is not found in the argument list of groupIterator::nextInGroup(UINT n)
-D:/Proyectos/nVenn2/gh/topol.h:360: warning: Found unknown command '@size'
-D:/Proyectos/nVenn2/gh/topol.h:361: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:236: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:236: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/topol.h:238: warning: argument 'group' of command @param is not found in the argument list of groupIterator::nextInGroup(UINT n)
+D:/Proyectos/nVenn2/gh/topol.h:238: warning: argument 'size' of command @param is not found in the argument list of groupIterator::nextInGroup(UINT n)
+D:/Proyectos/nVenn2/gh/topol.h:241: warning: Found unknown command '@size'
+D:/Proyectos/nVenn2/gh/topol.h:242: warning: Found unknown command '@group'
+D:/Proyectos/nVenn2/gh/scene.h:523: warning: found documented return type for scene::grestore that does not return anything
+D:/Proyectos/nVenn2/gh/scene.h:515: warning: found documented return type for scene::gsave that does not return anything

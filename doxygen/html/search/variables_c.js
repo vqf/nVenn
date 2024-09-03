@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['p_0',['p',['../classborder_line.html#a7c368318edefd97510955b016af20b9e',1,'borderLine']]],
-  ['potential_1',['potential',['../classborder_line.html#ac481dc9d882031db535a43de9228c2b2',1,'borderLine']]]
+  ['orig_0',['orig',['../classpoint.html#a173feffdb6426b4365506ab85eea50a6',1,'point']]],
+  ['origw_1',['origw',['../classborder_line.html#a8c3e44b4c97c21b2dad2b5f64795bfd9',1,'borderLine']]],
+  ['outsider_2',['outsider',['../structoutsider_info.html#a338bb5a9edf5612ff95c4a177e2995ea',1,'outsiderInfo']]]
 ];

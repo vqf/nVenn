@@ -2,6 +2,7 @@ var classpoint =
 [
     [ "point", "classpoint.html#a5fe21d4a4539320bf0f5caf1218d31c8", null ],
     [ "point", "classpoint.html#aa570be78b44b9fc64b9678893d486598", null ],
+    [ "clone", "classpoint.html#af12233aa6fb4462ec966f588cf4a9819", null ],
     [ "croack", "classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60", null ],
     [ "initPoint", "classpoint.html#a837c8aba0b781050e0470eee24bcd4c8", null ],
     [ "reset", "classpoint.html#afa366584306e660e58604735faf13f92", null ],

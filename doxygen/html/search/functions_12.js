@@ -8,8 +8,7 @@ var searchData=
   ['toogl_5',['toOGL',['../classgl_graphics.html#a12846965314c7ee99536980cc6999631',1,'glGraphics']]],
   ['tops_6',['toPS',['../classborder_line.html#a6a752ffcd8070d148b9eb9d36b8f3027',1,'borderLine']]],
   ['torgb_7',['toRGB',['../classborder_line.html#a819f72dc4e8e0a98d2e6c22f7900d94c',1,'borderLine']]],
-  ['tostring_8',['toString',['../topol_8h.html#a79c729e556b12420c94aeabf8061b0da',1,'topol.h']]],
-  ['tosvg_9',['toSVG',['../classborder_line.html#acc673ec0072f0cda327dd7c2f9123284',1,'borderLine']]],
-  ['transformpoint_10',['transformPoint',['../classtangent.html#a93192645af418200291773c09866a038',1,'tangent']]],
-  ['twopow_11',['twoPow',['../topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570',1,'topol.h']]]
+  ['tosvg_8',['toSVG',['../classborder_line.html#acc673ec0072f0cda327dd7c2f9123284',1,'borderLine']]],
+  ['transformpoint_9',['transformPoint',['../classtangent.html#a93192645af418200291773c09866a038',1,'tangent']]],
+  ['twopow_10',['twoPow',['../topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570',1,'topol.h']]]
 ];

@@ -1,7 +1,9 @@
 <map id="borderLine::keepDist" name="borderLine::keepDist">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,146,57"/>
-<area shape="rect" id="Node000002" href="$topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="196,5,267,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,30,180,24,181,29,147,35"/>
-<area shape="rect" id="Node000003" href="$topol_8h.html#a6864ceb482fc9a3c818bce8b203e6937" title=" " alt="" coords="194,56,269,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,53,179,58,178,63,146,58"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,146,83"/>
+<area shape="rect" id="Node000002" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="255,5,325,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,53,239,28,240,33,136,58"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a6839426915449e47b7521286a540e35c" title=" " alt="" coords="194,56,386,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,67,178,67,178,72,146,72"/>
+<area shape="rect" id="Node000004" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="257,107,323,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,81,243,106,241,111,135,86"/>
 </map>

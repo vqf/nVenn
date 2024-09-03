@@ -13,6 +13,8 @@ var annotated_dup =
     [ "point", "classpoint.html", "classpoint" ],
     [ "rgb", "structrgb.html", "structrgb" ],
     [ "scale", "classscale.html", "classscale" ],
+    [ "scene", "classscene.html", "classscene" ],
+    [ "springLink", "structspring_link.html", "structspring_link" ],
     [ "tangent", "classtangent.html", "classtangent" ],
     [ "timeMaster", "classtime_master.html", "classtime_master" ]
 ];

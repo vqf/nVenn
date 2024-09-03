@@ -94,8 +94,8 @@ $(document).ready(function(){initNavTree('topol_8h.html',''); initResizable(); }
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">topol.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -106,29 +106,46 @@ $(document).ready(function(){initNavTree('topol_8h.html',''); initResizable(); }
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;cstdarg&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="scene_8h_source.html">scene.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for topol.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="topol_8h__incl.png" border="0" usemap="#atopol_8h" alt=""/></div>
 <map name="atopol_8h" id="atopol_8h">
-<area shape="rect" title=" " alt="" coords="295,5,355,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,61,107"/>
-<area shape="poly" title=" " alt="" coords="295,29,76,82,75,77,294,24"/>
-<area shape="rect" title=" " alt="" coords="84,80,142,107"/>
-<area shape="poly" title=" " alt="" coords="295,33,157,80,155,75,293,28"/>
-<area shape="rect" title=" " alt="" coords="166,80,223,107"/>
-<area shape="poly" title=" " alt="" coords="304,35,232,74,229,70,301,30"/>
-<area shape="rect" title=" " alt="" coords="248,80,312,107"/>
-<area shape="poly" title=" " alt="" coords="319,34,298,68,293,65,315,31"/>
-<area shape="rect" title=" " alt="" coords="336,80,405,107"/>
-<area shape="poly" title=" " alt="" coords="335,31,357,65,352,68,331,34"/>
-<area shape="rect" title=" " alt="" coords="429,80,493,107"/>
-<area shape="poly" title=" " alt="" coords="350,30,425,70,423,75,347,35"/>
-<area shape="rect" title=" " alt="" coords="517,80,592,107"/>
-<area shape="poly" title=" " alt="" coords="356,27,503,73,501,78,355,32"/>
-<area shape="rect" title=" " alt="" coords="616,80,677,107"/>
-<area shape="poly" title=" " alt="" coords="356,23,601,77,600,82,355,29"/>
+<area shape="rect" title=" " alt="" coords="280,5,341,32"/>
+<area shape="rect" title=" " alt="" coords="27,155,82,181"/>
+<area shape="poly" title=" " alt="" coords="280,21,235,23,181,31,126,50,101,64,79,82,70,94,63,109,57,140,52,139,58,107,65,92,75,78,98,59,124,45,180,26,234,18,279,16"/>
+<area shape="rect" title=" " alt="" coords="282,80,339,107"/>
+<area shape="poly" title=" " alt="" coords="313,33,313,64,308,64,308,33"/>
+<area shape="rect" title=" " alt="" coords="363,80,420,107"/>
+<area shape="poly" title=" " alt="" coords="326,31,368,68,365,72,323,35"/>
+<area shape="rect" title=" " alt="" coords="80,229,144,256"/>
+<area shape="poly" title=" " alt="" coords="280,22,233,25,175,34,114,52,85,65,59,82,32,104,15,127,8,152,17,180,39,205,67,222,64,227,35,209,12,183,3,152,10,124,29,100,55,78,83,61,112,47,174,29,233,20,280,17"/>
+<area shape="rect" title=" " alt="" coords="272,155,341,181"/>
+<area shape="poly" title=" " alt="" coords="301,34,285,55,273,81,271,96,274,112,289,141,284,143,269,113,266,96,268,79,281,52,297,31"/>
+<area shape="rect" title=" " alt="" coords="445,80,509,107"/>
+<area shape="poly" title=" " alt="" coords="340,30,435,71,433,76,338,35"/>
+<area shape="rect" title=" " alt="" coords="533,80,608,107"/>
+<area shape="poly" title=" " alt="" coords="341,26,519,75,517,80,340,31"/>
+<area shape="rect" title=" " alt="" coords="632,80,703,107"/>
+<area shape="poly" title=" " alt="" coords="341,23,617,77,616,82,340,28"/>
+<area shape="rect" title=" " alt="" coords="728,80,789,107"/>
+<area shape="poly" title=" " alt="" coords="341,21,497,40,602,56,713,77,712,82,601,62,496,45,341,26"/>
+<area shape="rect" href="debug_8h.html" title=" " alt="" coords="157,155,224,181"/>
+<area shape="poly" title=" " alt="" coords="302,34,212,144,208,141,298,31"/>
+<area shape="rect" href="scene_8h.html" title=" " alt="" coords="89,80,156,107"/>
+<area shape="poly" title=" " alt="" coords="281,34,170,77,168,72,279,29"/>
+<area shape="poly" title=" " alt="" coords="178,184,138,221,135,217,175,180"/>
+<area shape="poly" title=" " alt="" coords="225,151,242,155,248,160,251,168,248,177,241,182,238,178,244,174,245,168,244,163,240,159,224,157"/>
+<area shape="rect" title=" " alt="" coords="168,229,229,256"/>
+<area shape="poly" title=" " alt="" coords="194,182,198,213,193,214,189,182"/>
+<area shape="poly" title=" " alt="" coords="112,109,78,145,75,141,109,105"/>
+<area shape="poly" title=" " alt="" coords="124,107,116,214,111,214,119,107"/>
+<area shape="poly" title=" " alt="" coords="155,105,261,146,259,151,153,110"/>
+<area shape="poly" title=" " alt="" coords="136,105,170,141,166,145,132,109"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -136,9 +153,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="topol_8h__dep__incl.png" border="0" usemap="#atopol_8hdep" alt=""/></div>
 <map name="atopol_8hdep" id="atopol_8hdep">
-<area shape="rect" title=" " alt="" coords="12,5,73,32"/>
+<area shape="rect" title=" " alt="" coords="60,5,121,32"/>
 <area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,80,80,107"/>
-<area shape="poly" title=" " alt="" coords="45,48,45,80,40,80,40,48"/>
+<area shape="poly" title=" " alt="" coords="76,47,53,81,49,78,72,44"/>
+<area shape="rect" href="test_8cpp.html" title=" " alt="" coords="104,80,173,107"/>
+<area shape="poly" title=" " alt="" coords="109,44,132,78,128,81,105,47"/>
 </map>
 </div>
 </div>
@@ -150,8 +169,6 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages a text stream.  <a href="classfile_text.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbl_data.html">blData</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpoint.html">point</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgroup_iterator.html">groupIterator</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,10 +195,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a13b3f1d250a180cc41c50996f3ffb423" id="r_a13b3f1d250a180cc41c50996f3ffb423"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a13b3f1d250a180cc41c50996f3ffb423">CIRCLE_MASS</a>&#160;&#160;&#160;200.0f</td></tr>
-<tr class="separator:a13b3f1d250a180cc41c50996f3ffb423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2236a992b00645bc0dc5932f02ad9d4" id="r_ac2236a992b00645bc0dc5932f02ad9d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ac2236a992b00645bc0dc5932f02ad9d4">POINT_MASS</a>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:ac2236a992b00645bc0dc5932f02ad9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9ed176f84de328afaf7f514ded7df3" id="r_a9c9ed176f84de328afaf7f514ded7df3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a9c9ed176f84de328afaf7f514ded7df3">AIR</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a9c9ed176f84de328afaf7f514ded7df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a595b3bdb31e0c542382b0135f4f1df5b" id="r_a595b3bdb31e0c542382b0135f4f1df5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a595b3bdb31e0c542382b0135f4f1df5b">IS_OUTSIDE</a>&#160;&#160;&#160;0x01</td></tr>
 <tr class="separator:a595b3bdb31e0c542382b0135f4f1df5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e4660cab25d46af8737e8adfc464307" id="r_a4e4660cab25d46af8737e8adfc464307"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a4e4660cab25d46af8737e8adfc464307">DO_NOT_EMBELLISH</a>&#160;&#160;&#160;0X02</td></tr>
@@ -190,28 +205,29 @@ Macros</h2></td></tr>
 <tr class="separator:a508ca18070e649e0ff6f8c9dd270f7af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcd0a22ee4346cad5706adb6d2119429" id="r_abcd0a22ee4346cad5706adb6d2119429"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#abcd0a22ee4346cad5706adb6d2119429">USED</a>&#160;&#160;&#160;0x08</td></tr>
 <tr class="separator:abcd0a22ee4346cad5706adb6d2119429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83" id="r_ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a></td></tr>
-<tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb4c8d35a332bd694679c69e9d133a65" id="r_abb4c8d35a332bd694679c69e9d133a65"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#abb4c8d35a332bd694679c69e9d133a65">DEBUGONLY</a>(a)&#160;&#160;&#160;a</td></tr>
-<tr class="separator:abb4c8d35a332bd694679c69e9d133a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab595bf7acf6739b46789063ebad51964" id="r_ab595bf7acf6739b46789063ebad51964"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ab595bf7acf6739b46789063ebad51964">DELME</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:ab595bf7acf6739b46789063ebad51964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a36cb3b01d81ffd844bbbfb54003e06ec" id="r_a36cb3b01d81ffd844bbbfb54003e06ec"><td class="memItemLeft" align="right" valign="top">typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a></td></tr>
-<tr class="separator:a36cb3b01d81ffd844bbbfb54003e06ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22fc9834a08134d3443f2436b790abb0" id="r_a22fc9834a08134d3443f2436b790abb0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structbl_data.html">blData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a22fc9834a08134d3443f2436b790abb0">blData</a></td></tr>
 <tr class="separator:a22fc9834a08134d3443f2436b790abb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ab1493d7f38e275524a171f2be7927771" id="r_ab1493d7f38e275524a171f2be7927771"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ab1493d7f38e275524a171f2be7927771">crossResult</a> { <a class="el" href="topol_8h.html#ab1493d7f38e275524a171f2be7927771a7400dd3b7d7b599a12e94942b37076e6">crosses</a>
+, <a class="el" href="topol_8h.html#ab1493d7f38e275524a171f2be7927771aadef1aaabf91ca1bfe30bdd789c8e6a5">doesnotcross</a>
+, <a class="el" href="topol_8h.html#ab1493d7f38e275524a171f2be7927771a37a1cc6c35e50ff31a8bda2d00998c1e">cont</a>
+ }</td></tr>
+<tr class="separator:ab1493d7f38e275524a171f2be7927771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af21b3c4c5a52f8239d7d8d5a52244321" id="r_af21b3c4c5a52f8239d7d8d5a52244321"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#af21b3c4c5a52f8239d7d8d5a52244321">DEBUGONLY</a> (void tolog(string t){ ofstream f;f.open(&quot;log.txt&quot;, std::ios_base::app);f.write(t.c_str(), t.size());f.close();}) <a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> setFlag(<a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> flag</td></tr>
-<tr class="separator:af21b3c4c5a52f8239d7d8d5a52244321"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34e2cb67f2b4fc7fb1f8b3e10e1186a2" id="r_a34e2cb67f2b4fc7fb1f8b3e10e1186a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a34e2cb67f2b4fc7fb1f8b3e10e1186a2">unsetFlag</a> (<a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> flag, <a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> <a class="el" href="topol_8h.html#ad725c5492582d98e4e58090dee182599">mask</a>)</td></tr>
+<tr class="memitem:a76f712d8471177ab9a4e7545c9b94fb2" id="r_a76f712d8471177ab9a4e7545c9b94fb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a76f712d8471177ab9a4e7545c9b94fb2">setFlag</a> (<a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> flag, <a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> mask)</td></tr>
+<tr class="separator:a76f712d8471177ab9a4e7545c9b94fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e2cb67f2b4fc7fb1f8b3e10e1186a2" id="r_a34e2cb67f2b4fc7fb1f8b3e10e1186a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a34e2cb67f2b4fc7fb1f8b3e10e1186a2">unsetFlag</a> (<a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> flag, <a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> mask)</td></tr>
 <tr class="separator:a34e2cb67f2b4fc7fb1f8b3e10e1186a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79c729e556b12420c94aeabf8061b0da" id="r_a79c729e556b12420c94aeabf8061b0da"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a79c729e556b12420c94aeabf8061b0da"><td class="memTemplItemLeft" align="right" valign="top">string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="topol_8h.html#a79c729e556b12420c94aeabf8061b0da">toString</a> (T input)</td></tr>
-<tr class="separator:a79c729e556b12420c94aeabf8061b0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30600ac38391dd9e00f70e8ae27a9570" id="r_a30600ac38391dd9e00f70e8ae27a9570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570">twoPow</a> (<a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> n)</td></tr>
+<tr class="memitem:a30600ac38391dd9e00f70e8ae27a9570" id="r_a30600ac38391dd9e00f70e8ae27a9570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570">twoPow</a> (<a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> n)</td></tr>
 <tr class="memdesc:a30600ac38391dd9e00f70e8ae27a9570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fast computing of 2**n.  <br /></td></tr>
 <tr class="separator:a30600ac38391dd9e00f70e8ae27a9570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada7b4aca29a3824271fbb4931081c4b7" id="r_ada7b4aca29a3824271fbb4931081c4b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ada7b4aca29a3824271fbb4931081c4b7">isNAN</a> (float n)</td></tr>
@@ -221,19 +237,12 @@ Functions</h2></td></tr>
 <tr class="separator:ab173b5dbfbb32b87594373581c7aa6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61325d210b2bc562551e4929ce970535" id="r_a61325d210b2bc562551e4929ce970535"><td class="memItemLeft" align="right" valign="top">vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a61325d210b2bc562551e4929ce970535">arr2vec</a> (float arr[], int n)</td></tr>
 <tr class="separator:a61325d210b2bc562551e4929ce970535"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a097440c725e87260f8c1788d2625c45c" id="r_a097440c725e87260f8c1788d2625c45c"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a097440c725e87260f8c1788d2625c45c">toBin</a> (int number, <a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> nBits=0)</td></tr>
+<tr class="memitem:a097440c725e87260f8c1788d2625c45c" id="r_a097440c725e87260f8c1788d2625c45c"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a097440c725e87260f8c1788d2625c45c">toBin</a> (int number, <a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> nBits=0)</td></tr>
 <tr class="memdesc:a097440c725e87260f8c1788d2625c45c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a number into a vector of integers with the binary representation of the number.  <br /></td></tr>
 <tr class="separator:a097440c725e87260f8c1788d2625c45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c77626f8b856b4b6a2078b5c73796ba" id="r_a0c77626f8b856b4b6a2078b5c73796ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a0c77626f8b856b4b6a2078b5c73796ba">toInt</a> (vector&lt; int &gt; v)</td></tr>
 <tr class="memdesc:a0c77626f8b856b4b6a2078b5c73796ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a vector containing the binary representation of an integer and returns that integer.  <br /></td></tr>
 <tr class="separator:a0c77626f8b856b4b6a2078b5c73796ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c3aa637043402e0303bfefa6b9e14e4" id="r_a9c3aa637043402e0303bfefa6b9e14e4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4">distance</a> (float x0, float y0, float x1, float y1)</td></tr>
-<tr class="memdesc:a9c3aa637043402e0303bfefa6b9e14e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cartesian distance between points (<code>x0</code>, <code>y0</code>) and (<code>x1</code>, <code>y1</code>)  <br /></td></tr>
-<tr class="separator:a9c3aa637043402e0303bfefa6b9e14e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a106e73163e4f0f4cd0c53f5b1682cd" id="r_a1a106e73163e4f0f4cd0c53f5b1682cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a1a106e73163e4f0f4cd0c53f5b1682cd">operator==</a> (<a class="el" href="classpoint.html">point</a> p1, <a class="el" href="classpoint.html">point</a> p2)</td></tr>
-<tr class="separator:a1a106e73163e4f0f4cd0c53f5b1682cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a171d5c2f4110c0924507cc937bb014a3" id="r_a171d5c2f4110c0924507cc937bb014a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a171d5c2f4110c0924507cc937bb014a3">operator!=</a> (<a class="el" href="classpoint.html">point</a> p1, <a class="el" href="classpoint.html">point</a> p2)</td></tr>
-<tr class="separator:a171d5c2f4110c0924507cc937bb014a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab73ab1c73aebaa90f3ddf9cfe76e98c5" id="r_ab73ab1c73aebaa90f3ddf9cfe76e98c5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ab73ab1c73aebaa90f3ddf9cfe76e98c5">sqDistance</a> (<a class="el" href="classpoint.html">point</a> p0, <a class="el" href="classpoint.html">point</a> p1)</td></tr>
 <tr class="memdesc:ab73ab1c73aebaa90f3ddf9cfe76e98c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the square of the cartesian distance between points (@p0) and (@p1). If the distance itself is not important, this spares a sqrt calculation.  <br /></td></tr>
 <tr class="separator:ab73ab1c73aebaa90f3ddf9cfe76e98c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -242,66 +251,47 @@ Functions</h2></td></tr>
 <tr class="separator:a258eb1d0a2c58cb0379f3ef6a9deb7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6864ceb482fc9a3c818bce8b203e6937" id="r_a6864ceb482fc9a3c818bce8b203e6937"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a6864ceb482fc9a3c818bce8b203e6937">perimeter</a> (vector&lt; <a class="el" href="classpoint.html">point</a> &gt; v, bool close=false)</td></tr>
 <tr class="separator:a6864ceb482fc9a3c818bce8b203e6937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb93f84c68dff9114cfa35df1c08a93d" id="r_adb93f84c68dff9114cfa35df1c08a93d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#adb93f84c68dff9114cfa35df1c08a93d">oilog</a> (<a class="el" href="structoutsider_info.html">outsiderInfo</a> oi)</td></tr>
+<tr class="separator:adb93f84c68dff9114cfa35df1c08a93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a298d8608b46cb51c8e644b0a24cd8cdf" id="r_a298d8608b46cb51c8e644b0a24cd8cdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a298d8608b46cb51c8e644b0a24cd8cdf">outsorter</a> (<a class="el" href="structoutsider_info.html">outsiderInfo</a> a, <a class="el" href="structoutsider_info.html">outsiderInfo</a> b)</td></tr>
 <tr class="separator:a298d8608b46cb51c8e644b0a24cd8cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ad725c5492582d98e4e58090dee182599" id="r_ad725c5492582d98e4e58090dee182599"><td class="memItemLeft" align="right" valign="top"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ad725c5492582d98e4e58090dee182599">mask</a></td></tr>
-<tr class="separator:ad725c5492582d98e4e58090dee182599"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade6d6d18a46c8aa95eed5e179d003e45" id="r_ade6d6d18a46c8aa95eed5e179d003e45"><td class="memItemLeft" align="right" valign="top">return&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a></td></tr>
-<tr class="separator:ade6d6d18a46c8aa95eed5e179d003e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a378a9b69eca171daa04c7813efbb32ee" id="r_a378a9b69eca171daa04c7813efbb32ee"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a378a9b69eca171daa04c7813efbb32ee">getFile</a> (string prompt, string errorPrompt)</td></tr>
+<tr class="separator:a378a9b69eca171daa04c7813efbb32ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf9d094ff6bca06ea3b3f66d60f6cc7f" id="r_aaf9d094ff6bca06ea3b3f66d60f6cc7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#aaf9d094ff6bca06ea3b3f66d60f6cc7f">printv</a> (vector&lt; int &gt; v)</td></tr>
+<tr class="separator:aaf9d094ff6bca06ea3b3f66d60f6cc7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c361e522d4342cac3e3b2317c4c8295" id="r_a0c361e522d4342cac3e3b2317c4c8295"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classborder_line.html">borderLine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="topol_8h.html#a0c361e522d4342cac3e3b2317c4c8295">getFileInfo</a> (string fname, string outputFile)</td></tr>
+<tr class="separator:a0c361e522d4342cac3e3b2317c4c8295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a13b3f1d250a180cc41c50996f3ffb423" name="a13b3f1d250a180cc41c50996f3ffb423"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13b3f1d250a180cc41c50996f3ffb423">&#9670;&#160;</a></span>CIRCLE_MASS</h2>
+<a id="a9c9ed176f84de328afaf7f514ded7df3" name="a9c9ed176f84de328afaf7f514ded7df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c9ed176f84de328afaf7f514ded7df3">&#9670;&#160;</a></span>AIR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CIRCLE_MASS&#160;&#160;&#160;200.0f</td>
+          <td class="memname">#define AIR&#160;&#160;&#160;2</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00014">14</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00017">17</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
-<a id="ad72dbcf6d0153db1b8d8a58001feed83" name="ad72dbcf6d0153db1b8d8a58001feed83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad72dbcf6d0153db1b8d8a58001feed83">&#9670;&#160;</a></span>DEBUG</h2>
+<a id="ab595bf7acf6739b46789063ebad51964" name="ab595bf7acf6739b46789063ebad51964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab595bf7acf6739b46789063ebad51964">&#9670;&#160;</a></span>DELME</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEBUG</td>
+          <td class="memname">#define DELME&#160;&#160;&#160;0x10</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00030">30</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
-<a id="abb4c8d35a332bd694679c69e9d133a65" name="abb4c8d35a332bd694679c69e9d133a65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb4c8d35a332bd694679c69e9d133a65">&#9670;&#160;</a></span>DEBUGONLY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEBUGONLY</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">a</td><td>)</td>
-          <td>&#160;&#160;&#160;a</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00034">34</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00024">24</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +307,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00019">19</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00021">21</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -333,23 +323,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00018">18</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
-<a id="ac2236a992b00645bc0dc5932f02ad9d4" name="ac2236a992b00645bc0dc5932f02ad9d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2236a992b00645bc0dc5932f02ad9d4">&#9670;&#160;</a></span>POINT_MASS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define POINT_MASS&#160;&#160;&#160;20</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00015">15</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00020">20</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -365,7 +339,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00020">20</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00022">22</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -381,7 +355,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00021">21</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00023">23</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -400,20 +374,25 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a36cb3b01d81ffd844bbbfb54003e06ec" name="a36cb3b01d81ffd844bbbfb54003e06ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36cb3b01d81ffd844bbbfb54003e06ec">&#9670;&#160;</a></span>UINT</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ab1493d7f38e275524a171f2be7927771" name="ab1493d7f38e275524a171f2be7927771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1493d7f38e275524a171f2be7927771">&#9670;&#160;</a></span>crossResult</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef unsigned int <a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a></td>
+          <td class="memname">enum <a class="el" href="topol_8h.html#ab1493d7f38e275524a171f2be7927771">crossResult</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Code enclosed into <a class="el" href="topol_8h.html#abb4c8d35a332bd694679c69e9d133a65">DEBUGONLY()</a> will only appear if DEBUG is defined. Only in that case the function tolog(toString(<b>LINE</b>) + "\n" + ) will be available and executed. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ab1493d7f38e275524a171f2be7927771a7400dd3b7d7b599a12e94942b37076e6" name="ab1493d7f38e275524a171f2be7927771a7400dd3b7d7b599a12e94942b37076e6"></a>crosses&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ab1493d7f38e275524a171f2be7927771aadef1aaabf91ca1bfe30bdd789c8e6a5" name="ab1493d7f38e275524a171f2be7927771aadef1aaabf91ca1bfe30bdd789c8e6a5"></a>doesnotcross&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ab1493d7f38e275524a171f2be7927771a37a1cc6c35e50ff31a8bda2d00998c1e" name="ab1493d7f38e275524a171f2be7927771a37a1cc6c35e50ff31a8bda2d00998c1e"></a>cont&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00023">23</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00177">177</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -446,17 +425,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01080">1080</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="topol_8h_a258eb1d0a2c58cb0379f3ef6a9deb7eb_cgraph.png" border="0" usemap="#atopol_8h_a258eb1d0a2c58cb0379f3ef6a9deb7eb_cgraph" alt=""/></div>
-<map name="atopol_8h_a258eb1d0a2c58cb0379f3ef6a9deb7eb_cgraph" id="atopol_8h_a258eb1d0a2c58cb0379f3ef6a9deb7eb_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,50,32"/>
-<area shape="rect" href="topol_8h.html#a79c729e556b12420c94aeabf8061b0da" title=" " alt="" coords="98,5,164,32"/>
-<area shape="poly" title=" " alt="" coords="50,16,82,16,82,21,50,21"/>
-</map>
-</div>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01051">1051</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -486,57 +455,27 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00115">115</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00084">84</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
-<a id="af21b3c4c5a52f8239d7d8d5a52244321" name="af21b3c4c5a52f8239d7d8d5a52244321"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af21b3c4c5a52f8239d7d8d5a52244321">&#9670;&#160;</a></span>DEBUGONLY()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DEBUGONLY </td>
-          <td>(</td>
-          <td class="paramtype">void tolog(string t){ ofstream f;f.open(&quot;log.txt&quot;, std::ios_base::app);f.write(t.c_str(), t.size());f.close();}&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9c3aa637043402e0303bfefa6b9e14e4" name="a9c3aa637043402e0303bfefa6b9e14e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c3aa637043402e0303bfefa6b9e14e4">&#9670;&#160;</a></span>distance()</h2>
+<a id="a378a9b69eca171daa04c7813efbb32ee" name="a378a9b69eca171daa04c7813efbb32ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a378a9b69eca171daa04c7813efbb32ee">&#9670;&#160;</a></span>getFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float distance </td>
+          <td class="memname">string getFile </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x0</em>, </td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>prompt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y0</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y1</em>&#160;</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>errorPrompt</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -546,19 +485,84 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the cartesian distance between points (<code>x0</code>, <code>y0</code>) and (<code>x1</code>, <code>y1</code>) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x0</td><td>float </td></tr>
-    <tr><td class="paramname">y0</td><td>float </td></tr>
-    <tr><td class="paramname">x1</td><td>float </td></tr>
-    <tr><td class="paramname">y1</td><td>float </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l04751">4751</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="topol_8h_a378a9b69eca171daa04c7813efbb32ee_cgraph.png" border="0" usemap="#atopol_8h_a378a9b69eca171daa04c7813efbb32ee_cgraph" alt=""/></div>
+<map name="atopol_8h_a378a9b69eca171daa04c7813efbb32ee_cgraph" id="atopol_8h_a378a9b69eca171daa04c7813efbb32ee_cgraph">
+<area shape="rect" title=" " alt="" coords="5,29,66,56"/>
+<area shape="poly" title=" " alt="" coords="23,29,23,12,27,5,36,3,44,6,48,12,44,15,41,10,35,8,31,10,28,14,29,29"/>
+</map>
+</div>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00217">217</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+</div>
+</div>
+<a id="a0c361e522d4342cac3e3b2317c4c8295" name="a0c361e522d4342cac3e3b2317c4c8295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c361e522d4342cac3e3b2317c4c8295">&#9670;&#160;</a></span>getFileInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classborder_line.html">borderLine</a> getFileInfo </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>outputFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l04782">4782</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="topol_8h_a0c361e522d4342cac3e3b2317c4c8295_cgraph.png" border="0" usemap="#atopol_8h_a0c361e522d4342cac3e3b2317c4c8295_cgraph" alt=""/></div>
+<map name="atopol_8h_a0c361e522d4342cac3e3b2317c4c8295_cgraph" id="atopol_8h_a0c361e522d4342cac3e3b2317c4c8295_cgraph">
+<area shape="rect" title=" " alt="" coords="5,259,86,285"/>
+<area shape="rect" href="topol_8h.html#aaf9d094ff6bca06ea3b3f66d60f6cc7f" title=" " alt="" coords="182,183,234,209"/>
+<area shape="poly" title=" " alt="" coords="67,256,133,219,166,206,168,211,135,224,69,260"/>
+<area shape="rect" href="classborder_line.html#a441d555c7972af990874f2b9ad63b12a" title="Sets the starting coordinates from a previous execution." alt="" coords="134,233,282,260"/>
+<area shape="poly" title=" " alt="" coords="86,263,118,258,119,263,87,268"/>
+<area shape="rect" href="topol_8h.html#a097440c725e87260f8c1788d2625c45c" title="Converts a number into a vector of integers with the binary representation of the number." alt="" coords="182,284,234,311"/>
+<area shape="poly" title=" " alt="" coords="87,276,167,288,166,294,86,281"/>
+<area shape="rect" href="topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="175,335,241,361"/>
+<area shape="poly" title=" " alt="" coords="69,284,135,320,161,331,159,336,133,325,67,288"/>
+<area shape="rect" href="classborder_line.html#ae6ebe55db16ea136ffc636ea97919c95" title=" " alt="" coords="330,233,470,260"/>
+<area shape="poly" title=" " alt="" coords="282,244,314,244,314,249,282,249"/>
+<area shape="rect" href="classscale.html#af203918d6494bae5a3da290f3791e49b" title=" " alt="" coords="524,5,625,32"/>
+<area shape="poly" title=" " alt="" coords="404,232,418,195,441,145,474,91,516,42,521,38,524,42,520,46,479,94,446,148,423,197,409,234"/>
+<area shape="rect" href="classscale.html#ac4e3c850624f113eccc5e68a5b1fd30b" title=" " alt="" coords="528,56,621,83"/>
+<area shape="poly" title=" " alt="" coords="407,231,449,167,480,128,517,93,522,89,525,93,520,97,484,131,453,170,411,234"/>
+<area shape="rect" href="classscale.html#ac8a46d7a4a18c5a8de71a80e2d90b3b2" title=" " alt="" coords="527,107,622,133"/>
+<area shape="poly" title=" " alt="" coords="413,231,457,189,517,143,525,138,527,143,520,148,461,193,417,235"/>
+<area shape="rect" href="classscale.html#a2336cd35ce690f95ad489fa188d68d3d" title=" " alt="" coords="530,157,619,184"/>
+<area shape="poly" title=" " alt="" coords="432,230,527,188,529,193,434,235"/>
+<area shape="rect" href="classscale.html#aa39771c26bedd6166840b8756375ccc8" title=" " alt="" coords="529,208,620,235"/>
+<area shape="poly" title=" " alt="" coords="470,234,513,227,514,233,471,239"/>
+<area shape="rect" href="classscale.html#a4be9d3252d93b93c756c73a6de112a53" title=" " alt="" coords="520,259,629,285"/>
+<area shape="poly" title=" " alt="" coords="471,254,505,259,505,265,470,260"/>
+<area shape="rect" href="classscale.html#a78273d1fe33b7e86197c1d87c1dff233" title=" " alt="" coords="519,309,630,336"/>
+<area shape="poly" title=" " alt="" coords="434,258,529,300,527,305,432,263"/>
+<area shape="rect" href="classscale.html#aba5fcf890b3702019ccd5ef2b7762895" title=" " alt="" coords="518,360,631,387"/>
+<area shape="poly" title=" " alt="" coords="417,259,461,300,520,346,527,350,525,355,517,350,457,304,413,262"/>
+<area shape="rect" href="classscale.html#a6d74962bb6d448225c3f4582e84b3c48" title=" " alt="" coords="521,411,628,437"/>
+<area shape="poly" title=" " alt="" coords="411,259,453,324,484,362,520,397,525,401,522,405,517,401,480,366,449,327,407,262"/>
+<area shape="rect" href="classscale.html#a272f2be0ff114bbc61dc2aa749e1f3b2" title=" " alt="" coords="520,461,629,488"/>
+<area shape="poly" title=" " alt="" coords="409,259,423,296,446,346,479,399,520,447,524,451,521,455,516,451,474,403,441,348,418,298,404,261"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -578,67 +582,27 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00091">91</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00060">60</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
-<a id="a171d5c2f4110c0924507cc937bb014a3" name="a171d5c2f4110c0924507cc937bb014a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a171d5c2f4110c0924507cc937bb014a3">&#9670;&#160;</a></span>operator!=()</h2>
+<a id="adb93f84c68dff9114cfa35df1c08a93d" name="adb93f84c68dff9114cfa35df1c08a93d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb93f84c68dff9114cfa35df1c08a93d">&#9670;&#160;</a></span>oilog()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool operator!= </td>
+          <td class="memname">void oilog </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classpoint.html">point</a>&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structoutsider_info.html">outsiderInfo</a>&#160;</td>
+          <td class="paramname"><em>oi</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classpoint.html">point</a>&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00340">340</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
-<a id="a1a106e73163e4f0f4cd0c53f5b1682cd" name="a1a106e73163e4f0f4cd0c53f5b1682cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a106e73163e4f0f4cd0c53f5b1682cd">&#9670;&#160;</a></span>operator==()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool operator== </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classpoint.html">point</a>&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classpoint.html">point</a>&#160;</td>
-          <td class="paramname"><em>p2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00333">333</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01088">1088</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -668,7 +632,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01295">1295</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01270">1270</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -698,7 +662,57 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01090">1090</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l01061">1061</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+
+</div>
+</div>
+<a id="aaf9d094ff6bca06ea3b3f66d60f6cc7f" name="aaf9d094ff6bca06ea3b3f66d60f6cc7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf9d094ff6bca06ea3b3f66d60f6cc7f">&#9670;&#160;</a></span>printv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printv </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l04770">4770</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+
+</div>
+</div>
+<a id="a76f712d8471177ab9a4e7545c9b94fb2" name="a76f712d8471177ab9a4e7545c9b94fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f712d8471177ab9a4e7545c9b94fb2">&#9670;&#160;</a></span>setFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> setFlag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramname"><em>flag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00032">32</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -738,7 +752,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00103">103</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00072">72</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +792,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00450">450</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00331">331</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -797,7 +811,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
           <td class="paramname"><em>nBits</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -818,7 +832,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>vector&lt;int&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00135">135</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00104">104</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -847,7 +861,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00168">168</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00137">137</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -861,28 +875,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a79c729e556b12420c94aeabf8061b0da" name="a79c729e556b12420c94aeabf8061b0da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79c729e556b12420c94aeabf8061b0da">&#9670;&#160;</a></span>toString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">string toString </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00066">66</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
 <a id="a30600ac38391dd9e00f70e8ae27a9570" name="a30600ac38391dd9e00f70e8ae27a9570"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30600ac38391dd9e00f70e8ae27a9570">&#9670;&#160;</a></span>twoPow()</h2>
 
@@ -890,9 +882,9 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> twoPow </td>
+          <td class="memname"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> twoPow </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
           <td></td>
         </tr>
@@ -908,7 +900,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>UINT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00081">81</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00050">50</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>
@@ -919,15 +911,15 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> unsetFlag </td>
+          <td class="memname"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> unsetFlag </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
           <td class="paramname"><em>flag</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
           <td class="paramname"><em>mask</em>&#160;</td>
         </tr>
         <tr>
@@ -938,45 +930,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00060">60</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ad725c5492582d98e4e58090dee182599" name="ad725c5492582d98e4e58090dee182599"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad725c5492582d98e4e58090dee182599">&#9670;&#160;</a></span>mask</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> mask</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">  <a class="code hl_typedef" href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> <a class="code hl_variable" href="topol_8h.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a> = flag | <a class="code hl_variable" href="topol_8h.html#ad725c5492582d98e4e58090dee182599">mask</a></div>
-<div class="ttc" id="atopol_8h_html_a36cb3b01d81ffd844bbbfb54003e06ec"><div class="ttname"><a href="topol_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a></div><div class="ttdeci">unsigned int UINT</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00023">topol.h:23</a></div></div>
-<div class="ttc" id="atopol_8h_html_ad725c5492582d98e4e58090dee182599"><div class="ttname"><a href="topol_8h.html#ad725c5492582d98e4e58090dee182599">mask</a></div><div class="ttdeci">UINT mask</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00055">topol.h:55</a></div></div>
-<div class="ttc" id="atopol_8h_html_ade6d6d18a46c8aa95eed5e179d003e45"><div class="ttname"><a href="topol_8h.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a></div><div class="ttdeci">return result</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00057">topol.h:57</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00055">55</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-
-</div>
-</div>
-<a id="ade6d6d18a46c8aa95eed5e179d003e45" name="ade6d6d18a46c8aa95eed5e179d003e45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade6d6d18a46c8aa95eed5e179d003e45">&#9670;&#160;</a></span>result</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">return result</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00057">57</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00037">37</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
 
 </div>
 </div>

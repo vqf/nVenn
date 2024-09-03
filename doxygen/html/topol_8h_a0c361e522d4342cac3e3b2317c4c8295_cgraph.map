@@ -1,0 +1,33 @@
+<map id="getFileInfo" name="getFileInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,259,86,285"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#aaf9d094ff6bca06ea3b3f66d60f6cc7f" title=" " alt="" coords="182,183,234,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,256,133,219,166,206,168,211,135,224,69,260"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a441d555c7972af990874f2b9ad63b12a" title="Sets the starting coordinates from a previous execution." alt="" coords="134,233,282,260"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="86,263,118,258,119,263,87,268"/>
+<area shape="rect" id="Node000015" href="$topol_8h.html#a097440c725e87260f8c1788d2625c45c" title="Converts a number into a vector of integers with the binary representation of the number." alt="" coords="182,284,234,311"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="87,276,167,288,166,294,86,281"/>
+<area shape="rect" id="Node000016" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="175,335,241,361"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="69,284,135,320,161,331,159,336,133,325,67,288"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#ae6ebe55db16ea136ffc636ea97919c95" title=" " alt="" coords="330,233,470,260"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="282,244,314,244,314,249,282,249"/>
+<area shape="rect" id="Node000005" href="$classscale.html#af203918d6494bae5a3da290f3791e49b" title=" " alt="" coords="524,5,625,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="404,232,418,195,441,145,474,91,516,42,521,38,524,42,520,46,479,94,446,148,423,197,409,234"/>
+<area shape="rect" id="Node000006" href="$classscale.html#ac4e3c850624f113eccc5e68a5b1fd30b" title=" " alt="" coords="528,56,621,83"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="407,231,449,167,480,128,517,93,522,89,525,93,520,97,484,131,453,170,411,234"/>
+<area shape="rect" id="Node000007" href="$classscale.html#ac8a46d7a4a18c5a8de71a80e2d90b3b2" title=" " alt="" coords="527,107,622,133"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="413,231,457,189,517,143,525,138,527,143,520,148,461,193,417,235"/>
+<area shape="rect" id="Node000008" href="$classscale.html#a2336cd35ce690f95ad489fa188d68d3d" title=" " alt="" coords="530,157,619,184"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="432,230,527,188,529,193,434,235"/>
+<area shape="rect" id="Node000009" href="$classscale.html#aa39771c26bedd6166840b8756375ccc8" title=" " alt="" coords="529,208,620,235"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="470,234,513,227,514,233,471,239"/>
+<area shape="rect" id="Node000010" href="$classscale.html#a4be9d3252d93b93c756c73a6de112a53" title=" " alt="" coords="520,259,629,285"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="471,254,505,259,505,265,470,260"/>
+<area shape="rect" id="Node000011" href="$classscale.html#a78273d1fe33b7e86197c1d87c1dff233" title=" " alt="" coords="519,309,630,336"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="434,258,529,300,527,305,432,263"/>
+<area shape="rect" id="Node000012" href="$classscale.html#aba5fcf890b3702019ccd5ef2b7762895" title=" " alt="" coords="518,360,631,387"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="417,259,461,300,520,346,527,350,525,355,517,350,457,304,413,262"/>
+<area shape="rect" id="Node000013" href="$classscale.html#a6d74962bb6d448225c3f4582e84b3c48" title=" " alt="" coords="521,411,628,437"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="411,259,453,324,484,362,520,397,525,401,522,405,517,401,480,366,449,327,407,262"/>
+<area shape="rect" id="Node000014" href="$classscale.html#a272f2be0ff114bbc61dc2aa749e1f3b2" title=" " alt="" coords="520,461,629,488"/>
+<area shape="poly" id="edge13_Node000004_Node000014" title=" " alt="" coords="409,259,423,296,446,346,479,399,520,447,524,451,521,455,516,451,474,403,441,348,418,298,404,261"/>
+</map>

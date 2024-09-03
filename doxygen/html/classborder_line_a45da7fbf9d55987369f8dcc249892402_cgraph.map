@@ -1,0 +1,7 @@
+<map id="borderLine::cross" name="borderLine::cross">
+<area shape="rect" id="Node000001" title="Do segments p1&#45;p2 and p3&#45;p4 cross? Points p5 is used in the particular case where p1&#45;p2 crosses p4 ex..." alt="" coords="5,31,127,57"/>
+<area shape="rect" id="Node000002" href="$classtangent.html#a1427c41a62f28c3fa3b44f8adfe3f04c" title=" " alt="" coords="175,5,286,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,32,159,27,160,32,127,37"/>
+<area shape="rect" id="Node000003" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="178,56,283,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,51,163,56,162,62,127,56"/>
+</map>

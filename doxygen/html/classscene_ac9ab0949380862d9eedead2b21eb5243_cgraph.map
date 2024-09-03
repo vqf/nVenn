@@ -1,0 +1,34 @@
+<map id="scene::solve" name="scene::solve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,120,99,147"/>
+<area shape="rect" id="Node000002" href="$classscene.html#a913189fed388d96c3609550d360c32ae" title=" " alt="" coords="341,5,446,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,118,92,72,117,48,145,30,190,14,238,6,284,5,326,6,325,12,284,10,238,12,192,19,148,34,120,53,96,76,63,121"/>
+<area shape="rect" id="Node000003" href="$classscene.html#aeadb577d6821477fcb669c9dbe6727f6" title=" " alt="" coords="150,44,283,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,117,146,80,159,74,161,79,148,85,78,122"/>
+<area shape="rect" id="Node000004" href="$classscene.html#ae40b96f2667ecca481cd6eb4a95b740c" title=" " alt="" coords="501,335,627,361"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="65,146,98,188,122,212,148,232,189,256,232,276,323,307,411,327,486,339,485,344,410,332,322,312,231,281,187,261,145,237,118,216,94,192,60,149"/>
+<area shape="rect" id="Node000006" href="$classscene.html#a946c8d5c7f60d03db179287fe167388c" title=" " alt="" coords="147,145,286,172"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="100,138,132,143,131,148,99,143"/>
+<area shape="rect" id="Node000008" href="$classscene.html#a45117b277b3c8bb99545476c57e9e93e" title=" " alt="" coords="158,196,275,223"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="78,145,148,182,161,187,159,192,146,186,75,150"/>
+<area shape="rect" id="Node000014" href="$classscene.html#aba84b0a3d640e7e2765dd3310d3fb6f8" title=" " alt="" coords="165,95,268,121"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="99,124,149,116,150,121,100,129"/>
+<area shape="rect" id="Node000005" href="$classscene.html#aba5213dc4de2459ad5159818234a00cd" title=" " alt="" coords="675,284,757,311"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="606,331,659,313,661,318,607,337"/>
+<area shape="rect" id="Node000007" href="$classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60" title=" " alt="" coords="346,81,442,108"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="255,142,340,111,341,116,256,147"/>
+<area shape="rect" id="Node000009" href="$classscene.html#a185a4eeb43a5ad34e13b6a2b42637dd2" title=" " alt="" coords="510,284,618,311"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="239,221,282,247,335,269,417,287,495,294,494,299,416,292,333,275,279,251,236,225"/>
+<area shape="rect" id="Node000010" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="529,183,599,209"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="275,204,513,195,513,201,276,210"/>
+<area shape="rect" id="Node000011" href="$classscene.html#aad18f6f1ee79b2bb6a9a0054a4707391" title=" " alt="" coords="334,132,453,159"/>
+<area shape="poly" id="edge11_Node000008_Node000011" title=" " alt="" coords="255,193,340,162,341,167,256,198"/>
+<area shape="rect" id="Node000012" href="$classscene.html#a5b8c64d3df9b22a48a4efb11f7fd2dff" title=" " alt="" coords="349,233,438,260"/>
+<area shape="poly" id="edge13_Node000008_Node000012" title=" " alt="" coords="276,219,334,232,333,237,275,224"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="618,295,659,295,659,300,618,300"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="454,136,495,136,540,139,585,150,628,168,655,190,677,216,706,269,701,271,672,219,651,193,625,173,584,155,539,145,494,141,454,141"/>
+<area shape="poly" id="edge14_Node000012_Node000009" title=" " alt="" coords="439,257,503,277,502,282,438,262"/>
+<area shape="poly" id="edge15_Node000012_Node000010" title=" " alt="" coords="438,231,513,208,515,213,439,236"/>
+<area shape="rect" id="Node000013" href="$classscene.html#af61197667481413936ea9f2ca44347d1" title=" " alt="" coords="510,233,618,260"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="439,244,495,244,495,249,439,249"/>
+<area shape="poly" id="edge18_Node000014_Node000002" title=" " alt="" coords="258,92,285,80,358,38,361,43,287,85,260,97"/>
+</map>

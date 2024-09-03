@@ -1,11 +1,15 @@
 <map id="borderLine::polishLines" name="borderLine::polishLines">
-<area shape="rect" id="Node000001" title="Take the lines generated with @addLines and set the points to the outside of each circle." alt="" coords="5,56,160,83"/>
-<area shape="rect" id="Node000002" href="$topol_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="253,5,323,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,53,237,28,238,33,140,58"/>
+<area shape="rect" id="Node000001" title="Take the lines generated with @addLines and set the points to the outside of each circle." alt="" coords="5,107,160,133"/>
+<area shape="rect" id="Node000002" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="253,5,323,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,104,148,73,207,42,237,30,239,35,209,46,151,78,105,108"/>
 <area shape="rect" id="Node000003" href="$classtangent.html#a2870e8fb4b876786de4619cad27dd566" title=" " alt="" coords="208,56,368,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,67,192,67,192,72,160,72"/>
-<area shape="rect" id="Node000006" href="$classtangent.html#a93192645af418200291773c09866a038" title=" " alt="" coords="210,107,366,133"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="140,81,217,100,215,105,139,86"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,103,215,84,217,90,140,109"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#a754217543a26b2df2af42e099d622d3a" title=" " alt="" coords="216,107,360,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="160,117,200,117,200,123,160,123"/>
+<area shape="rect" id="Node000007" href="$topol_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="256,157,320,184"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="140,131,241,157,240,162,139,137"/>
+<area shape="rect" id="Node000008" href="$classtangent.html#a93192645af418200291773c09866a038" title=" " alt="" coords="210,208,366,235"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="105,132,151,162,209,194,224,200,222,205,207,198,148,167,102,136"/>
 <area shape="rect" id="Node000004" href="$classtangent.html#aeab7bcf5b95a49fe7fc98d6ed4c9309c" title=" " alt="" coords="416,56,523,83"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="368,67,400,67,400,72,368,72"/>
 <area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="571,56,677,83"/>
