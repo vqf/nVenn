@@ -23,7 +23,9 @@
 #define USED              0x08  // The point has been used in a procedure. Remember to reset at the end
 #define DELME             0x10  // The point will be deleted
 
-
+#ifndef INGRAVID
+#define INGRAVID          0x20
+#endif // INGRAVID
 
 using namespace std;
 
@@ -646,98 +648,53 @@ public:
   }
 };
 
-class timeMaster
-{
-    UINT count;
-    UINT backcount;
-    UINT topcount;
-    float unstable;
-    float currentdt;
-    float defaultst;
-    float stepdt;
-public:
-
-    timeMaster()
-    {}
-
-    void init(float unst, float mystepdt)
-    {
-        count = 0;
-        topcount = 50;
-        backcount = topcount;
-        unstable = unst;
-        defaultst = unst;
-        currentdt = unst;
-        stepdt = mystepdt;
+class timeMaster{
+  vector<float> times;
+  vector<UINT> reports;
+  UINT icdt;
+  UINT unstableCounter;
+  float imindt;
+  float imaxdt;
+  float istepdt;
+  public:
+  timeMaster(){}
+  void init(float mindt = 1e-4, float maxdt = 0.02, float stepdt = 0.5){
+    if (stepdt >= 1){
+      stepdt = 0.9;
     }
-
-    void reset(){
-      count = 0;
-        backcount = topcount;
-        unstable = defaultst;
-        currentdt = defaultst;
+    if (mindt > maxdt){
+      float interm = mindt;
+      mindt = maxdt;
+      maxdt = interm;
     }
-
-    void clear()
-    {
-        init(unstable, stepdt);
+    imindt = mindt;
+    imaxdt = maxdt;
+    istepdt = stepdt;
+    icdt = 0;
+    unstableCounter = 5;
+    for (float i = maxdt; i >= mindt; i *= stepdt){
+      times.push_back(i);
+      reports.push_back(0);
     }
-
-    float cdt(){
-      return currentdt;
+  }
+  void reset(){
+    init(imindt, imaxdt, istepdt);
+  }
+  float cdt(){
+    return times[icdt];
+  }
+  void report(){
+    reports[icdt] = reports[icdt] + 1;
+    if (icdt < reports.size()){
+      icdt++;
     }
-
-    UINT counter(){
-      return count;
+  }
+  void poke(){
+    toString(_L_ + "Poke: i - " + toString(icdt) + ", Reports: " + toString(reports[icdt - 1]) + "\n");
+    if ((icdt > 0) &&(reports[icdt - 1] < unstableCounter)){
+      icdt--;
     }
-
-    UINT backcounter(){
-      if (backcount > topcount){
-        backcount = topcount;
-        count = 0;
-      }
-      return backcount;
-    }
-
-    void report()
-    {
-      if (currentdt >= unstable){
-        ++count;
-      }
-      else
-      {
-          count = 0;
-          unstable = currentdt;
-          ++backcount;
-      }
-      if (count >= 5)
-      {
-          backcount = topcount;
-          count = 0;
-          unstable = currentdt * stepdt;
-      }
-      currentdt *= stepdt;
-    }
-
-    void poke(){
-      if (currentdt < unstable)
-      {
-          currentdt /= stepdt;
-      }
-      else{
-        --backcount;
-        if (backcount <= 0 && unstable < defaultst){ // Ok, try again
-          unstable /= stepdt;
-          currentdt = unstable;
-          backcount = topcount;
-        }
-      }
-    }
-
-    float unstabledt()
-    {
-        return unstable;
-    }
+  }
 };
 
 class lCounter
@@ -1326,7 +1283,7 @@ class borderLine
 
     void initBlData(blData* b){
       b->sk = 1e3f;
-      b->dt = 2.5e-2f;
+      b->dt = 0.025f;
       b->mindt = b->dt / 100;
       b->maxdt = b->dt;
       b->baseBV = 5.0f;
@@ -1608,34 +1565,6 @@ class borderLine
     }
 
 
-    void setScale(point p)
-    {
-      UINT r = 0;
-      if (p.radius > 0){
-        r = p.radius;
-      }
-        if (internalScale.isClear() == true)
-        {
-            internalScale.setMinX(p.x - 2 * r);
-            internalScale.setMinY(p.y - 2 * r);
-            internalScale.setMaxX(p.x + 2 * r);
-            internalScale.setMaxY(p.y + 2 * r);
-            internalScale.setClear(false);
-        }
-        else
-        {
-            if (p.x < internalScale.minX())
-                internalScale.setMinX(p.x - r);
-            if (p.y < internalScale.minY())
-                internalScale.setMinY(p.y - r);
-            if (p.x > internalScale.maxX())
-                internalScale.setMaxX(p.x + r);
-            if (p.y > internalScale.maxY())
-                internalScale.setMaxY(p.y + r);
-        }
-    }
-
-
     void setPoints(binMap b, UINT ngroup)
     {
         int i, counter;
@@ -1660,7 +1589,7 @@ class borderLine
         }
         fpoint.x = -6 * (1 + cstart);
         fpoint.y = 6 * (height + 1 + cstart);
-        setScale(fpoint);
+        internalScale.addToScale(fpoint);
         p.push_back(fpoint);
         // Variable points
         width = b.row.size();
@@ -1692,10 +1621,10 @@ class borderLine
                 counter--;
             }
             cpoint.y = 6 * (omyheight + counter) - 3;
-            setScale(cpoint);
+            internalScale.addToScale(cpoint);
             p.push_back(cpoint);
             cpoint.x = 6 * i + 2;
-            setScale(cpoint);
+            internalScale.addToScale(cpoint);
             p.push_back(cpoint);
             // add circles
         }
@@ -1703,7 +1632,7 @@ class borderLine
         cpoint.x = 6 * (width + 1 + cstart);
         cpoint.y = 6 * (height + 1 + cstart);
         cpoint.mass = POINT_MASS;
-        setScale(cpoint);
+        internalScale.addToScale(cpoint);
         p.push_back(cpoint);
         initOlds();
     }
@@ -3262,9 +3191,6 @@ class borderLine
         displayFloat("DT", blSettings.dt);
         displayUINT("CYCLES", blSettings.ncycles);
         displayUINT("NPOINTS", bl[0].size());
-        displayFloat("UNST", udt.unstabledt());
-        displayUINT("COUNT", udt.counter());
-        displayUINT("BACKCOUNT", udt.backcounter());
         displayFloat("POTENTIAL", log10(potential));
 
         potential = 0;
@@ -3375,7 +3301,7 @@ class borderLine
                   //Prepare the scale for the new frame
 
 
-                  setScale(bl[i][j]);
+                  internalScale.addToScale(bl[i][j]);
 
 
                   if (resetVelocity)
@@ -3433,7 +3359,7 @@ class borderLine
                   circles[i].vx = 0;
                   circles[i].vy = 0;
               }
-              setScale(circles[i]);
+              internalScale.addToScale(circles[i]);
           }
         }
         displayFloat("LINEV", log(blSettings.totalLineV));
@@ -3804,16 +3730,16 @@ public:
         }
 
         //init counters
-        blCounter.setLimits(0, 5u);
-        deciderCounter.setLimits(0, 5u);
+        blCounter.setLimits(0, 50u);
+        deciderCounter.setLimits(0, 50u);
         keepDistCounter.setLimits(0, 149u);
-        refreshScreen.setLimits(1, 50);
+        refreshScreen.setLimits(1, 5);
 
         //init internal scale
         internalScale.setClear(true);
 
         //init time parameters
-        udt.init(blSettings.startdt, blSettings.stepdt);
+        udt.init();
 
         //init points
         for (i = 0; i < ngroups; i++)
@@ -3872,6 +3798,7 @@ public:
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
+          bl[i][i].flags = bl[i][j].flags | INGRAVID;
           tosolve.addPointP(&(bl[i][j]));
           tosolve.addLink(cnt + lp, cnt + j, springK);
           lp = j;
@@ -3889,28 +3816,61 @@ public:
     }
 
     void resetScale(){
+      internalScale.setClear(true);
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
-          setScale(circles[i]);
+          internalScale.addToScale(circles[i]);
         }
       }
       if (checkTopol()){
         for (UINT i = 0; i < bl.size(); i++){
           for (UINT j = 0; j < bl[i].size(); j++){
-              setScale(bl[i][j]);
+              internalScale.addToScale(bl[i][j]);
           }
         }
       }
     }
 
+    void scFriction(float f = 50){
+      tosolve.setFriction(f);
+    }
+    void scG(float G = 0){
+      tosolve.setG(G);
+    }
     void scSolve(){
       dataDisplay.clear();
-      blSettings.dt = tosolve.solve();
-      internalScale.setClear(true);
+      blSettings.dt = tosolve.solve(blSettings.dt);
+      bool incorrect = checkTopol();
+      while (incorrect){
+        restorePrevState();
+        //tolog(_L_ + "Bad topol\n");
+        udt.report();
+        if (blSettings.dt < blSettings.mindt){
+          tolog(_L_ + "Cannot solve topol problems\n");
+          exit(0);
+        }
+        blSettings.dt = udt.cdt();
+        //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
+        tosolve.solve(blSettings.dt);
+        incorrect = checkTopol();
+      }
+      if (blCounter == 0){
+          setPrevState();
+      }
+      if (deciderCounter.isMax()){
+          setPrevState();
+          udt.poke();
+          blSettings.dt = udt.cdt();
+      }
       resetScale();
       resetCircleRadius();
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
+      //displayUINT("DECIDER", deciderCounter);
+      blCounter++;
+      deciderCounter++;
+      keepDistCounter++;
+      blSettings.ncycles++;
     }
     void scSave(string fname = ""){
       tosolve.saveScene();
@@ -4006,7 +3966,7 @@ public:
                     float y = atof(line.c_str());
                     point p;
                     p.x = x; p.y = y;
-                    setScale(p);
+                    internalScale.addToScale(p);
                     thisline.push_back(p);
                     getline(vFile, line);
                 }

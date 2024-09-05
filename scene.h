@@ -10,6 +10,8 @@ using namespace std;
 #define CIRCLE_MASS 200.0f
 #define POINT_MASS 20
 
+#define INGRAVID 0x20
+
 typedef unsigned int UINT;
 
 /** \brief Computes the cartesian distance between
@@ -153,6 +155,7 @@ class scene{
   float maxAllowedVel;
   float rodStiffness;
   float friction;
+  float G; // Gravity constant
   bool dump;
 
   void clearForces(){
@@ -171,6 +174,34 @@ class scene{
     rods.clear();
     info.clear();
   }
+
+  void effectGravity(float dt){
+    if (G != 0){
+      for (UINT i = 0; i < (points.size() - 1); i++){
+        point *p0 = points[i];
+        if ((p0->flags & INGRAVID) == 0){
+          for (UINT j = i + 1; j < points.size(); j++){
+            point *p1 = points[j];
+            if ((p1->flags * INGRAVID == 0)){
+              float dx = p1->x - p0->x;
+              float dy = p1->y - p0->y;
+              float d = sqrt(dx * dx + dy * dy);
+              if (d > 0){
+                point result;
+                result.fx = G * p0->mass * p1->mass * dx / (d * d *d);
+                result.fy = G * p0->mass * p1->mass * dy / (d * d *d);
+                p0->fx += result.fx;
+                p1->fx -= result.fx;
+                p0->fy += result.fy;
+                p1->fy -= result.fy;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 
   void effectSprings(float dt){
     for (UINT i = 0; i < springs.size(); i++){
@@ -234,6 +265,7 @@ class scene{
       p1->fy -= neg * result.fy;
     }
   }
+
   void effectRods(float dt){
     for (UINT i = 0; i < rods.size(); i++){
       point *p0 = points[rods[i].from];
@@ -460,6 +492,7 @@ public:
     dump = false;
     simtime = 0;
     defaultK = 100;
+    G = 0;
     friction = 0.0f;
     maxAllowedForce = 1e5;
     maxAllowedVel = 5e2;
@@ -477,6 +510,9 @@ public:
   }
   void setFriction(float coefficient = 50){
     friction = coefficient;
+  }
+  void setG(float gravity = 0){
+    G = gravity;
   }
   bool dumpme(){
     return dump;
@@ -649,11 +685,14 @@ public:
   vector<springLink> getRods(){
     return rods;
   }
-  float solve(){
-    float cdt = dt;
+  float solve(float cdt = 0){
+    if (cdt == 0){
+      cdt = dt;
+    }
     clearForces();
-    effectSprings(dt);
-    effectRods(dt);
+    effectSprings(cdt);
+    effectRods(cdt);
+    effectGravity(cdt);
     icontacts();
     float maxfsq = 0;
     float maxvsq = 0;

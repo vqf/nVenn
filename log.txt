@@ -1,6 +1,2 @@
-Best crossings: 150
-New best crossings: 116
-New best crossings: 102
-New best crossings: 92
-New best crossings: 90
-New best crossings: 88
+Best crossings: 40
+New best crossings: 24

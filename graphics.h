@@ -262,10 +262,7 @@ class glGraphics{
 
   borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
   {
-    std::ofstream dlme;
-dlme.open("log.txt", std::ios_base::out);
-dlme.write("", 0);
-dlme.close();
+    restart_log();
 
       borderLine bl = *blp;
       bl.refreshScreen.setLimits(1,1);
@@ -326,7 +323,6 @@ dlme.close();
               //Sleep(200);
           }
       }
-      bl.udt.clear();
       bQuit = false;
       while (!bQuit)
       {
@@ -361,7 +357,6 @@ dlme.close();
 
           }
       }
-      bl.udt.clear();
       bl.setCheckTopol(true);
       bl.addLines();
       toOGL(bl, hDC);
@@ -400,7 +395,7 @@ dlme.close();
       }
       bl.setCheckTopol(true);
       if (bl.checkTopol() == false){
-        bl.udt.clear();
+
         //vector<point> s = bl.getBoundaries();
         //scale sc = scale(s[0], s[1]);
         //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
@@ -485,7 +480,7 @@ dlme.close();
           }
       }
           // Debug topol
-          bQuit = true;
+          bQuit = false;
       bl.resetTimer();
       while (!bQuit)
       {
@@ -505,14 +500,10 @@ dlme.close();
           }
           else
           {
-              bl.setCheckTopol(true);
-              bl.setBV(1);
-              bl.setCircleAttraction(1e-3 / bl.ncircles());
-              bl.setForces1();
-              //bl.setGravityForces();
-              bl.setContacts();
+              bl.scFriction(200);
+              bl.scG(0);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.solve(false, true);
+              bl.scSolve();
               bl.refreshScreen++;
 
           }

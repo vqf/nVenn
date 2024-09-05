@@ -165,6 +165,7 @@ WinMain (HINSTANCE hInstance,
 
     scene univ;
     univ.setFriction(0);
+    univ.setG(2e-3);
     UINT np = 15;
     UINT nr = 5;
     float r = 0.3;
