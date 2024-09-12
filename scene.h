@@ -166,15 +166,6 @@ class scene{
     }
   }
 
-  void clearScene(){
-    points.clear();
-    shadowPoints.clear();
-    springs.clear();
-    virtualPoints.clear();
-    rods.clear();
-    info.clear();
-  }
-
   void effectGravity(float dt){
     if (G != 0){
       for (UINT i = 0; i < (points.size() - 1); i++){
@@ -499,6 +490,14 @@ public:
     rodStiffness = 1e5;
     maxK = defaultK;
     dt = 1e-2;
+  }
+  void clearScene(){
+    points.clear();
+    shadowPoints.clear();
+    springs.clear();
+    virtualPoints.clear();
+    rods.clear();
+    info.clear();
   }
   template<typename T, typename T2>
   void addInfo(T input, T2 ninput){

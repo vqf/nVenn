@@ -3795,6 +3795,7 @@ public:
 
     void attachScene(float springK = 5e3){
       UINT cnt = 0;
+      tosolve.clearScene();
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
@@ -3811,8 +3812,6 @@ public:
           tosolve.addPointP(&(circles[i]));
         }
       }
-      tosolve.setFriction(15);
-      //tosolve.saveScene();
     }
 
     void resetScale(){
@@ -4551,6 +4550,7 @@ public:
         }
         bl[i] = tempbl;
       }
+      attachScene();
     }
 
     void interpolate(UINT npoints)
@@ -4599,6 +4599,7 @@ public:
         bl.clear();
         bl = tempbl;
         initOlds();
+        attachScene();
     }
 
     void writeSVG(string fname = ""){

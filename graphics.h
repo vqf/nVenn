@@ -450,6 +450,7 @@ class glGraphics{
       bl.resetTimer();
       bl.setCheckTopol(true);
       bl.attachScene();
+      bl.scFriction(15);
       //bl.scSave();
       while (!bQuit)
       {
@@ -500,6 +501,7 @@ class glGraphics{
           }
           else
           {
+            bl.interpolateToDist(bl.minCircRadius / 2);
               bl.scFriction(200);
               bl.scG(0);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
