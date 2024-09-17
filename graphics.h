@@ -351,7 +351,7 @@ class glGraphics{
               //wait();
               //exit(0);
               bl.refreshScreen++;
-              if (bl.blSettings.totalCircleV > 0 && bl.blSettings.totalCircleV < (1e-3*bl.ngroups / 5)){
+              if (bl.blSettings.totalCircleV > 0 && bl.blSettings.totalCircleV < (5e-3*bl.ngroups / 5)){
                 bQuit = true;
               }
 
@@ -362,7 +362,7 @@ class glGraphics{
       toOGL(bl, hDC);
       bl.setCheckTopol(false);
       //UINT b1 = bl.countOutsiders();
-      UINT bo = bl.chooseCombination();
+      //UINT bo = bl.chooseCombination();
       bQuit = false;
       while (!bQuit)
       {
@@ -483,6 +483,11 @@ class glGraphics{
           // Debug topol
           bQuit = false;
       bl.resetTimer();
+      bl.interpolateToDist(bl.minCircRadius);
+      bl.scSpringK(1e2);
+      bl.scFriction(70);
+      bl.scG(0);
+
       while (!bQuit)
       {
           /* check for messages */
@@ -501,9 +506,6 @@ class glGraphics{
           }
           else
           {
-            bl.interpolateToDist(bl.minCircRadius / 2);
-              bl.scFriction(200);
-              bl.scG(0);
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.scSolve();
               bl.refreshScreen++;

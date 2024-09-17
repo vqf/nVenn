@@ -7,7 +7,7 @@
 #include "debug.h"
 using namespace std;
 
-#define CIRCLE_MASS 200.0f
+#define CIRCLE_MASS 100.0f
 #define POINT_MASS 20
 
 #define INGRAVID 0x20
@@ -155,6 +155,7 @@ class scene{
   float maxAllowedVel;
   float rodStiffness;
   float friction;
+  float damp; // Spring damping constant
   float G; // Gravity constant
   bool dump;
 
@@ -166,7 +167,7 @@ class scene{
     }
   }
 
-  void effectGravity(float dt){
+  void effectGravity(){
     if (G != 0){
       for (UINT i = 0; i < (points.size() - 1); i++){
         point *p0 = points[i];
@@ -194,7 +195,7 @@ class scene{
   }
 
 
-  void effectSprings(float dt){
+  void effectSprings(){
     for (UINT i = 0; i < springs.size(); i++){
       point result;
       float springK = springs[i].k;
@@ -216,10 +217,10 @@ class scene{
         float eqy = eqd * dy / d;
         result.fx = springK * (dx - eqx);
         result.fy = springK * (dy - eqy);
-        float fx1 = result.fx;
-        float fy1 = result.fy;
-        float fx2 = result.fx;
-        float fy2 = result.fy;
+        float fx1 = result.fx - damp * p0->vx;
+        float fy1 = result.fy - damp * p0->vy;
+        float fx2 = result.fx + damp * p1->vx;
+        float fy2 = result.fy + damp * p1->vy;
         if (p0->fx != p0->fx){
             tolog("Distance is still zero: " + p0->croack() + p1->croack());
             exit(0);
@@ -257,7 +258,7 @@ class scene{
     }
   }
 
-  void effectRods(float dt){
+  void effectRods(){
     for (UINT i = 0; i < rods.size(); i++){
       point *p0 = points[rods[i].from];
       point *p1 = points[rods[i].to];
@@ -486,8 +487,9 @@ public:
     G = 0;
     friction = 0.0f;
     maxAllowedForce = 1e5;
-    maxAllowedVel = 5e2;
+    maxAllowedVel = 5e1;
     rodStiffness = 1e5;
+    damp = 1;
     maxK = defaultK;
     dt = 1e-2;
   }
@@ -512,6 +514,10 @@ public:
   }
   void setG(float gravity = 0){
     G = gravity;
+  }
+  void setSpringK(float k = 1e3){
+    defaultK = k;
+    maxK = defaultK;
   }
   bool dumpme(){
     return dump;
@@ -689,9 +695,9 @@ public:
       cdt = dt;
     }
     clearForces();
-    effectSprings(cdt);
-    effectRods(cdt);
-    effectGravity(cdt);
+    effectSprings();
+    effectRods();
+    effectGravity();
     icontacts();
     float maxfsq = 0;
     float maxvsq = 0;

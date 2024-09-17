@@ -3836,6 +3836,9 @@ public:
     void scG(float G = 0){
       tosolve.setG(G);
     }
+    void scSpringK(float k = 1e3){
+      tosolve.setSpringK(k);
+    }
     void scSolve(){
       dataDisplay.clear();
       blSettings.dt = tosolve.solve(blSettings.dt);
