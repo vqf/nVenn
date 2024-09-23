@@ -11,6 +11,7 @@ using namespace std;
 #define POINT_MASS 20
 
 #define INGRAVID 0x20
+#define GHOST    0x40  // Only interact gravitationally if one of them is not ghost
 
 typedef unsigned int UINT;
 
@@ -113,7 +114,8 @@ public:
     string croack(){
       ostringstream r;
       r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius;
-      r << "\tvx: " << vx << "\tvy: " << vy << "\tFx: " << fx << "\tFy: " << fy << "\n";
+      r << "\tvx: " << vx << "\tvy: " << vy << "\tFx: " << fx << "\tFy: " << fy;
+      r << "\tFlags: " << unsigned(flags) << "\n";
       return r.str();
     }
 };
@@ -147,6 +149,7 @@ class scene{
   vector<springLink> springs;
   vector<springLink> rods;
   vector<string> info;
+  vector<float> cushions;
   float dt;
   float simtime;
   float defaultK;
@@ -171,22 +174,27 @@ class scene{
     if (G != 0){
       for (UINT i = 0; i < (points.size() - 1); i++){
         point *p0 = points[i];
+        bool g1 = (p0->flags & GHOST) == 0;
         if ((p0->flags & INGRAVID) == 0){
           for (UINT j = i + 1; j < points.size(); j++){
             point *p1 = points[j];
-            if ((p1->flags * INGRAVID == 0)){
-              float dx = p1->x - p0->x;
-              float dy = p1->y - p0->y;
-              float d = sqrt(dx * dx + dy * dy);
-              if (d > 0){
-                point result;
-                result.fx = G * p0->mass * p1->mass * dx / (d * d *d);
-                result.fy = G * p0->mass * p1->mass * dy / (d * d *d);
-                p0->fx += result.fx;
-                p1->fx -= result.fx;
-                p0->fy += result.fy;
-                p1->fy -= result.fy;
+            if ((p1->flags & INGRAVID) == 0){
+              bool g2 = (p1->flags & GHOST) == 0;
+              if (g1 || g2){
+                float dx = p1->x - p0->x;
+                float dy = p1->y - p0->y;
+                float d = sqrt(dx * dx + dy * dy);
+                if (d > 0){
+                  point result;
+                  result.fx = G * p0->mass * p1->mass * dx / (d * d *d);
+                  result.fy = G * p0->mass * p1->mass * dy / (d * d *d);
+                  p0->fx += result.fx;
+                  p1->fx -= result.fx;
+                  p0->fy += result.fy;
+                  p1->fy -= result.fy;
+                }
               }
+
             }
           }
         }
@@ -348,8 +356,8 @@ class scene{
     UINT result = start + b - a - 1;
     return result;
   }
-  point contact(point *p0, point *p1){
-    float r = p0->radius + p1->radius;
+  point contact(point *p0, point *p1, float cushion = 0){
+    float r = p0->radius + p1->radius + cushion;
     float rsq = r * r;
     float dx = p1->x - p0->x;
     float dy = p1->y - p0->y;
@@ -359,8 +367,8 @@ class scene{
     }
   }
 
-  void isContact(point *p0, point *p1){
-    float r = p0->radius + p1->radius;
+  void isContact(point *p0, point *p1, float cushion = 0){
+    float r = p0->radius + p1->radius + cushion;
     if (r == 0){
       return;
     }
@@ -375,10 +383,10 @@ class scene{
       float scprod = fx * dx + fy * dy;
       if (scprod > 0){
         rod(p0, p1, r);
-        float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
-        float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
-        p0->vx = vx; p0->vy = vy;
-        p1->vx = vx; p1->vy = vy;
+        //float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
+        //float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+        //p0->vx = vx; p0->vy = vy;
+        //p1->vx = vx; p1->vy = vy;
       }
     }
   }
@@ -388,10 +396,14 @@ class scene{
     // First pass
     for (UINT i = 0; i < (points.size()-1); i++){
       point *p0 = points[i];
+      float cushion = 0;
+      if (i < cushions.size()){
+        cushion = cushions[i];
+      }
       for (UINT j = i + 1; j < points.size(); j++){
         point *p1 = points[j];
         if (p0->radius != 0 || p1->radius != 0){
-          contact(p0, p1);
+          contact(p0, p1, cushion);
         }
       }
     }
@@ -412,9 +424,15 @@ class scene{
     // Second pass
     for (UINT i = 0; i < (points.size()-1); i++){
       point *p0 = points[i];
+      float cushion = 0;
+      if (i < cushions.size()){
+        cushion = cushions[i];
+      }
       for (UINT j = i + 1; j < points.size(); j++){
         point *p1 = points[j];
-        isContact(p0, p1);
+        if (p0->radius != 0 || p1->radius != 0){
+          isContact(p0, p1, cushion);
+        }
       }
     }
     for (UINT i = 0; i < virtualPoints.size(); i++){
@@ -489,7 +507,7 @@ public:
     maxAllowedForce = 1e5;
     maxAllowedVel = 5e1;
     rodStiffness = 1e5;
-    damp = 1;
+    damp = 0;
     maxK = defaultK;
     dt = 1e-2;
   }
@@ -500,6 +518,7 @@ public:
     virtualPoints.clear();
     rods.clear();
     info.clear();
+    cushions.clear();
   }
   template<typename T, typename T2>
   void addInfo(T input, T2 ninput){
@@ -508,6 +527,9 @@ public:
       result << ninput;
       string td = result.str();
       info.push_back(td);
+  }
+  void setCushions(vector<float> c){
+    cushions = c;
   }
   void setFriction(float coefficient = 50){
     friction = coefficient;
@@ -518,6 +540,9 @@ public:
   void setSpringK(float k = 1e3){
     defaultK = k;
     maxK = defaultK;
+  }
+  void setDampingConstant(float dmp = 0){
+    damp = dmp;
   }
   bool dumpme(){
     return dump;

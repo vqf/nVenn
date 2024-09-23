@@ -27,6 +27,11 @@
 #define INGRAVID          0x20
 #endif // INGRAVID
 
+#ifndef GHOST
+#define GHOST             0x40  // Two points with this bit set will not receive cushion
+#endif // GHOST
+
+
 using namespace std;
 
 
@@ -1242,6 +1247,7 @@ class borderLine
 
     binMap* bm;
     scene tosolve;
+    vector<float> pairDistances;
     vector<string> groups;
     vector<point> p;
     vector<vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
@@ -2147,6 +2153,24 @@ class borderLine
       embellishTopology(logit);
     }
 
+    float compactness(){
+      float result = 0;
+      for (UINT i = 0; i < circles.size() - 1; i++){
+        if (circles[i].radius > 0){
+          for (UINT j = i + 1; j < circles.size(); j++){
+            if (circles[j].radius > 0){
+              UINT n = getRelationships(i, j);
+              if (n > 0){
+                float sqd = sqDistance(circles[i], circles[j]);
+                result += (float) n * sqd;
+              }
+            }
+          }
+        }
+      }
+      return result;
+    }
+
 
     /** \brief Adds group lines
      *
@@ -2507,18 +2531,24 @@ class borderLine
     UINT setCrossings(bool logit = false){
       fixTopology();
       UINT bestcross = countCrossings();
-      UINT bestout = countOutsiders();
+      float bestComp = compactness();
+      //UINT bestout = countOutsiders();
       for (UINT i = 0; i < circles.size() - 1; i++){
         if (circles[i].radius > 0){
           for (UINT j = i + 1; j < circles.size(); j++){
             if (circles[j].radius > 0){
               swapCoords(i, j);
               fixTopology();
+              float comp = compactness();
               UINT newcross = countCrossings();
               UINT newout = countOutsiders();
-              if (newout <= bestout && newcross < bestcross){
+              if (newcross < bestcross){
                 bestcross = newcross;
-                bestout = newout;
+                //bestout = newout;
+              }
+              else if (newcross == bestcross && comp < bestComp){
+                bestcross = newcross;
+                bestComp = comp;
               }
               else{
                 swapCoords(i, j);
@@ -2528,6 +2558,41 @@ class borderLine
         }
       }
       return bestcross;
+    }
+
+    void chooseCompact(bool logit = false){
+      float best = compactness();
+      float newc = setCompact();
+      while (newc < best){
+        if (logit){
+          tolog("Better compact: " + toString(best) + " to " + toString(newc) + "\n");
+        }
+        best = newc;
+        newc = compactness();
+      }
+    }
+
+    float setCompact(){
+      float bestComp = compactness();
+      for (UINT i = 0; i < circles.size() - 1; i++){
+        if (circles[i].radius > 0){
+          for (UINT j = i + 1; j < circles.size(); j++){
+            if (circles[j].radius > 0){
+              swapCoords(i, j);
+              fixTopology();
+              float comp = compactness();
+              if (comp < bestComp){
+                bestComp = comp;
+                //bestout = newout;
+              }
+              else{
+                swapCoords(i, j);
+              }
+            }
+          }
+        }
+      }
+      return bestComp;
     }
 
     UINT setCrossingsBack(bool logit = false){
@@ -3670,7 +3735,7 @@ public:
         svgScale.setMaxY(490.0f);
         initBlData(&blSettings);
         minRat = 0;
-        showThis = false;
+        showThis = true;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -3796,22 +3861,31 @@ public:
     void attachScene(float springK = 5e3){
       UINT cnt = 0;
       tosolve.clearScene();
+      pairDistances.clear();
+      UINT level = 1;
+      float cushion = 0.05;
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
-          bl[i][i].flags = bl[i][j].flags | INGRAVID;
+          //bl[i][j].flags = bl[i][j].flags | INGRAVID;
+          bl[i][j].flags = bl[i][j].flags | GHOST;
           tosolve.addPointP(&(bl[i][j]));
           tosolve.addLink(cnt + lp, cnt + j, springK);
           lp = j;
+          pairDistances.push_back(cushion * (float) level);
         }
         tosolve.addLink(cnt + lp, cnt, springK);
         cnt += lp + 1;
+        level++;
       }
+      level++;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           tosolve.addPointP(&(circles[i]));
+          pairDistances.push_back(cushion * (float) level);
         }
       }
+      tosolve.setCushions(pairDistances);
     }
 
     void resetScale(){
@@ -3835,6 +3909,9 @@ public:
     }
     void scG(float G = 0){
       tosolve.setG(G);
+    }
+    void scD(float D = 0){
+      tosolve.setDampingConstant(D);
     }
     void scSpringK(float k = 1e3){
       tosolve.setSpringK(k);
@@ -3866,8 +3943,10 @@ public:
       }
       resetScale();
       resetCircleRadius();
+      float d = compactness();
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
+      displayFloat("COMPACTNESS", d);
       //displayUINT("DECIDER", deciderCounter);
       blCounter++;
       deciderCounter++;

@@ -165,9 +165,9 @@ WinMain (HINSTANCE hInstance,
 
     scene univ;
     univ.setFriction(0);
-    //univ.setG(2e-3);
-    UINT np = 15;
-    UINT nr = 5;
+    univ.setG(5e-3);
+    UINT np = 10;
+    UINT nr = 10;
     float r = 0.3;
     float d = 1;
     for (UINT j = 0; j < nr; j++){
@@ -184,8 +184,8 @@ WinMain (HINSTANCE hInstance,
         univ.addLink(f, t, 1000, d);
       }
     }
-    for (UINT j = 1; j < nr; j++){
-      for (UINT i = 1; i < np; i++){
+    for (UINT j = 0; j < nr; j++){
+      for (UINT i = 0; i < np; i++){
         UINT f = (j-1) * np + i;
         UINT t = j * np + i;
         univ.addLink(f, t, 1000, d);

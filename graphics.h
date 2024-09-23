@@ -105,6 +105,7 @@ class glGraphics{
       point P;     //coordinates
       vector<point> temp; //stores perimeters
       vector<vector<point> > blp = bl.bl;
+      bool showPoints = bl.showThis;
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
       //define openGL scale
@@ -127,6 +128,21 @@ class glGraphics{
                 glVertex2f (P.x, P.y);
             }
             glEnd ();
+        }
+        if (showPoints){
+          for (i = 0; i < blp.size(); i++){
+            for (j = 0; j < blp[i].size(); j++){
+              P = bl.place(ogl, blp[i][j]);
+              glBegin (GL_LINE_LOOP);
+              vector<point> cr = glCircle(P.x, P.y, 0.01);
+              for (UINT k = 0; k < cr.size(); k++)
+              {
+                  glVertex2f (cr[k].x, cr[k].y);
+              }
+              glEnd ();
+            }
+          }
+
         }
         /**********
       for (UINT i = 0; i < bl.ngroups; i++){
@@ -382,6 +398,7 @@ class glGraphics{
           }
           else
           {
+              bl.chooseCompact(true);
               bl.chooseCrossings(true);
               bl.setCheckTopol(true);
               bl.fixTopology();
@@ -451,6 +468,8 @@ class glGraphics{
       bl.setCheckTopol(true);
       bl.attachScene();
       bl.scFriction(15);
+      bl.scD(1e2);
+      bl.scG(1e-1);
       //bl.scSave();
       while (!bQuit)
       {
@@ -486,7 +505,7 @@ class glGraphics{
       bl.interpolateToDist(bl.minCircRadius);
       bl.scSpringK(1e2);
       bl.scFriction(70);
-      bl.scG(0);
+
 
       while (!bQuit)
       {
