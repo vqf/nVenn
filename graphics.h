@@ -469,7 +469,7 @@ class glGraphics{
       bl.attachScene();
       bl.scFriction(15);
       bl.scD(1e2);
-      bl.scG(1e-1);
+      bl.scG(1e-2);
       //bl.scSave();
       while (!bQuit)
       {
@@ -496,7 +496,10 @@ class glGraphics{
             //bl.writeSVG("result.svg");
             //tolog(bl.scCroack());
             bl.scSolve();
-
+            bool bq = bl.isSimulationComplete();
+            if (bq){
+              bQuit = true;
+            }
           }
       }
           // Debug topol
@@ -527,6 +530,10 @@ class glGraphics{
           {
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.scSolve();
+              bool bq = bl.isSimulationComplete();
+              if (bq){
+                bQuit = true;
+              }
               bl.refreshScreen++;
 
           }

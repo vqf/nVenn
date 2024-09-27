@@ -218,6 +218,7 @@ typedef struct blData{
   float maxvcontact; /**< When in contact, maxv is maxv / maxvcontact */
   float simTime; /**< Simulated time since start */
   string cycleInfo; /**< Debuggin info from last cycle */
+  UINT cyclesForStability; /**< After this number of cycles without improvement, finish sim */
   float lineAir; /**< Added to radii so that there is room for lines between circles */
   UINT contactFunction;
   int checkFor; // If any of the previous or following 10 point is sticking to
@@ -1240,6 +1241,12 @@ bool outsorter(outsiderInfo a, outsiderInfo b){
 }
 
 
+typedef struct dcd{
+  bool finish;
+  UINT cyclesWithoutImprovement;
+  float bestCompactness;
+} decider;
+
 class borderLine
 {
     friend class glGraphics;
@@ -1251,9 +1258,11 @@ class borderLine
     vector<string> groups;
     vector<point> p;
     vector<vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
+    vector<vector<point> > bestBl; /**< Best result */
     vector<vector<point> > bl_secure; /**< For changes in the number of points */
     vector<vector<point> > bl_old10;
     vector<point> circles;
+    vector<point> bestCircles;  /**< Best result */
     vector<point> scircles; /**< Circles sorted according to @n */
     vector<point> circles_secure;
     vector<point> circles_old10;
@@ -1267,6 +1276,7 @@ class borderLine
     UINT nPointsMin;  /**< Minimum number of points per line */
     float avgStartDist; /**< Average distance between points at start */
     float potential; /**< Potential energy, some parameter to minimize */
+    decider evaluation;
     lCounter blCounter;
     lCounter deciderCounter;
     lCounter refreshScreen;
@@ -1314,6 +1324,7 @@ class borderLine
       b->checkFor = 30;
       b->ncycles = 0;
       b->ncyclesInterrupted = 0;
+      b->cyclesForStability = 100;
       b->contactFunction = 0; // contact()
       b->maxRunningTime = 200; // 300 seconds to finish the first part
       b->simTime = 0;
@@ -2162,7 +2173,7 @@ class borderLine
               UINT n = getRelationships(i, j);
               if (n > 0){
                 float sqd = sqDistance(circles[i], circles[j]);
-                result += (float) n * sqd;
+                result += log((float) n * sqd);
               }
             }
           }
@@ -2557,6 +2568,7 @@ class borderLine
           }
         }
       }
+      evaluation.bestCompactness = bestComp;
       return bestcross;
     }
 
@@ -2570,6 +2582,7 @@ class borderLine
         best = newc;
         newc = compactness();
       }
+      evaluation.bestCompactness = best;
     }
 
     float setCompact(){
@@ -3236,6 +3249,32 @@ class borderLine
         }
     }
 
+    void setBestSoFar(){
+      bestCircles = circles;
+      bestBl = bl;
+    }
+
+    void getBestSoFar(){
+      circles = bestCircles;
+      bl = bestBl;
+    }
+
+    void evaluatePosition(float comp = 0){
+      if (comp == 0){
+        comp = compactness();
+      }
+      if (comp < evaluation.bestCompactness){
+        evaluation.cyclesWithoutImprovement = 0;
+        evaluation.bestCompactness = comp;
+        setBestSoFar();
+      }
+      else{
+        evaluation.cyclesWithoutImprovement++;
+        if (evaluation.cyclesWithoutImprovement > blSettings.cyclesForStability){
+          evaluation.finish = true;
+        }
+      }
+    }
 
     void solve(bool resetVelocity = false, bool breakOnTopol = false)
     {
@@ -3735,7 +3774,9 @@ public:
         svgScale.setMaxY(490.0f);
         initBlData(&blSettings);
         minRat = 0;
-        showThis = true;
+        showThis = false;
+        evaluation.finish = false;
+        evaluation.cyclesWithoutImprovement = 0;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -3858,6 +3899,16 @@ public:
         /*writeSVG()*/
     }
 
+    bool isSimulationComplete(){
+      bool result = evaluation.finish;
+      if (result){
+        getBestSoFar();
+        evaluation.finish = false;
+        evaluation.cyclesWithoutImprovement = 0;
+      }
+      return result;
+    }
+
     void attachScene(float springK = 5e3){
       UINT cnt = 0;
       tosolve.clearScene();
@@ -3944,6 +3995,7 @@ public:
       resetScale();
       resetCircleRadius();
       float d = compactness();
+      evaluatePosition(d);
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
       displayFloat("COMPACTNESS", d);
