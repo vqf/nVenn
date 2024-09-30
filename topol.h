@@ -216,7 +216,6 @@ typedef struct blData{
   float maxv;
   bool softcontact; /**< When in contact, speed is limited */
   float maxvcontact; /**< When in contact, maxv is maxv / maxvcontact */
-  float simTime; /**< Simulated time since start */
   string cycleInfo; /**< Debuggin info from last cycle */
   UINT cyclesForStability; /**< After this number of cycles without improvement, finish sim */
   float lineAir; /**< Added to radii so that there is room for lines between circles */
@@ -1244,8 +1243,21 @@ bool outsorter(outsiderInfo a, outsiderInfo b){
 typedef struct dcd{
   bool finish;
   UINT cyclesWithoutImprovement;
+  UINT canFinish;
   float bestCompactness;
 } decider;
+
+typedef struct blst{
+  vector<point> bestCircles;
+  vector<vector<point> > bestBl; /**< Best result */
+  vector<vector<point> > bl_secure; /**< For changes in the number of points */
+  vector<vector<point> > bl_old10;
+  vector<point> circles_secure;
+  vector<point> circles_old10;
+  decider prevDecider;
+  float simTime;
+  bool hasBeenSet;
+} blState;
 
 class borderLine
 {
@@ -1254,18 +1266,14 @@ class borderLine
 
     binMap* bm;
     scene tosolve;
+    blState savedState;
+    float simulationTime;
     vector<float> pairDistances;
     vector<string> groups;
     vector<point> p;
     vector<vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
-    vector<vector<point> > bestBl; /**< Best result */
-    vector<vector<point> > bl_secure; /**< For changes in the number of points */
-    vector<vector<point> > bl_old10;
     vector<point> circles;
-    vector<point> bestCircles;  /**< Best result */
     vector<point> scircles; /**< Circles sorted according to @n */
-    vector<point> circles_secure;
-    vector<point> circles_old10;
     vector<UINT> relationships;
     UINT ncycles_secure;
     UINT ncyles_old10;
@@ -1327,7 +1335,6 @@ class borderLine
       b->cyclesForStability = 100;
       b->contactFunction = 0; // contact()
       b->maxRunningTime = 200; // 300 seconds to finish the first part
-      b->simTime = 0;
     }
 
     UINT leftmostCircle(UINT group){
@@ -1397,9 +1404,9 @@ class borderLine
 
     void initOlds()
     {
-        bl_old10 = bl;
+        savedState.bl_old10 = bl;
         ncyles_old10 = blSettings.ncycles;
-        circles_old10 = circles;
+        savedState.circles_old10 = circles;
     }
 
     point place(scale s, point m)
@@ -1677,18 +1684,18 @@ class borderLine
     void resetOld()
     {
         UINT i, j;
-        for (i = 0; i < bl_secure.size(); i++)
+        for (i = 0; i < savedState.bl_secure.size(); i++)
         {
-            for(j = 0; j < bl_secure[i].size(); j++)
+            for(j = 0; j < savedState.bl_secure[i].size(); j++)
             {
-                bl_secure[i][j].reset();
+                savedState.bl_secure[i][j].reset();
             }
         }
-        for (i = 0; i < bl_old10.size(); i++)
+        for (i = 0; i < savedState.bl_old10.size(); i++)
         {
-            for (j = 0; j < bl_old10[i].size(); j++)
+            for (j = 0; j < savedState.bl_old10[i].size(); j++)
             {
-                bl_old10[i][j].reset();
+                savedState.bl_old10[i][j].reset();
             }
         }
         blSettings.surfRatio = estSurf();
@@ -2716,37 +2723,44 @@ class borderLine
 
     void setSecureState(){
       if (minRat < 10){
-        bl_secure = bl;
+        savedState.bl_secure = bl;
         ncycles_secure = blSettings.ncycles;
         resetOld();
-        circles_secure = circles;
+        savedState.circles_secure = circles;
+        savedState.prevDecider = evaluation;
       }
     }
 
     void restoreSecureState(){
-      bl = bl_secure;
-      circles = circles_secure;
+      bl = savedState.bl_secure;
+      circles = savedState.circles_secure;
       deciderCounter = 0;
       keepDistCounter = 0;
       blSettings.ncycles = ncycles_secure;
+      evaluation.cyclesWithoutImprovement = savedState.prevDecider.cyclesWithoutImprovement;
+      evaluation.bestCompactness = savedState.prevDecider.bestCompactness;
     }
 
     void setPrevState(){
-      bl_old10 = bl;
+      savedState.bl_old10 = bl;
       ncyles_old10 = blSettings.ncycles;
       resetOld();
-      circles_old10 = circles;
+      savedState.circles_old10 = circles;
+      savedState.prevDecider = evaluation;
     }
 
     void restorePrevState(){
-      bl = bl_old10;
-      circles = circles_old10;
+      bl = savedState.bl_old10;
+      circles = savedState.circles_old10;
       for (UINT i = 0; i < circles.size(); i++){
         circles[i].resetv();
       }
       deciderCounter = 0;
       keepDistCounter = 0;
       blSettings.ncycles = ncyles_old10;
+      evaluation.cyclesWithoutImprovement = 50;
+      evaluation.cyclesWithoutImprovement = savedState.prevDecider.cyclesWithoutImprovement;
+      evaluation.bestCompactness = savedState.prevDecider.bestCompactness;
     }
 
     void contact2(point &p0, point &p1){
@@ -3250,25 +3264,34 @@ class borderLine
     }
 
     void setBestSoFar(){
-      bestCircles = circles;
-      bestBl = bl;
+      savedState.bestCircles = circles;
+      savedState.bestBl = bl;
+      savedState.simTime = simulationTime;
+      savedState.hasBeenSet = true;
     }
 
     void getBestSoFar(){
-      circles = bestCircles;
-      bl = bestBl;
+      if (savedState.hasBeenSet){
+        circles = savedState.bestCircles;
+        bl = savedState.bestBl;
+        simulationTime = savedState.simTime;
+        attachScene();
+      }
     }
 
     void evaluatePosition(float comp = 0){
       if (comp == 0){
         comp = compactness();
       }
-      if (comp < evaluation.bestCompactness){
+      if (evaluation.canFinish > 0 && comp <= evaluation.bestCompactness){
         evaluation.cyclesWithoutImprovement = 0;
         evaluation.bestCompactness = comp;
         setBestSoFar();
       }
       else{
+        if (evaluation.canFinish > 0){
+          evaluation.canFinish--;
+        }
         evaluation.cyclesWithoutImprovement++;
         if (evaluation.cyclesWithoutImprovement > blSettings.cyclesForStability){
           evaluation.finish = true;
@@ -3291,7 +3314,7 @@ class borderLine
         updPos(kb, resetVelocity);
         clearForces();
 //Show dt
-        displayFloat("SIMTIME", blSettings.simTime);
+        displayFloat("SIMTIME", simulationTime);
         displayFloat("DT", blSettings.dt);
         displayUINT("CYCLES", blSettings.ncycles);
         displayUINT("NPOINTS", bl[0].size());
@@ -3397,7 +3420,7 @@ class borderLine
 
                   bl[i][j].x += bl[i][j].vx * blSettings.dt;
                   bl[i][j].y += bl[i][j].vy * blSettings.dt;
-                  blSettings.simTime += blSettings.dt;
+                  savedState.simTime += blSettings.dt;
                   /*******/
                   //attention(bl[i][j].x, bl[i][j].y);
                   /*******/
@@ -3775,8 +3798,6 @@ public:
         initBlData(&blSettings);
         minRat = 0;
         showThis = false;
-        evaluation.finish = false;
-        evaluation.cyclesWithoutImprovement = 0;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -3795,6 +3816,7 @@ public:
         blSettings.ncycles = 0;
         blSettings.cycleInfo = "";
         blSettings.lineAir = ngroups;
+        simulationTime = 0;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         for (i = 0; i < tw.size(); i++){
@@ -3858,10 +3880,13 @@ public:
         UINT np = (UINT) (0.5f * (float) startPerim);
         interpolate(np);
 
+        initEvaluation();
         setPrevState();
         setSecureState();
 
         randomizeCircles();
+
+
 
         int arr[] = {
           0xE6194B,
@@ -3899,12 +3924,41 @@ public:
         /*writeSVG()*/
     }
 
+    /** \brief Minimal distance between two circles. Used to
+     *         finish the second step
+     *
+     * \return float
+     *
+     */
+    float minCircDist(){
+      float r = sqDistance(circles[0], circles[1]);
+      for (UINT i = 0; i < (circles.size() - 1); i++){
+        for (UINT j = i + 1; j < circles.size(); j++){
+          float nr = sqDistance(circles[i], circles[j]);
+          if (nr < r){
+            r = nr;
+          }
+        }
+      }
+      float result = sqrt(r);
+      return result;
+    }
+
+    void initEvaluation(){
+      evaluation.finish = false;
+      evaluation.canFinish = 50;
+      evaluation.cyclesWithoutImprovement = 0;
+      savedState.bestCircles = circles;
+      savedState.bestBl = bl;
+      savedState.prevDecider = evaluation;
+      savedState.hasBeenSet = false;
+    }
+
     bool isSimulationComplete(){
       bool result = evaluation.finish;
-      if (result){
+      if ((evaluation.canFinish == 0) && result){
         getBestSoFar();
-        evaluation.finish = false;
-        evaluation.cyclesWithoutImprovement = 0;
+        initEvaluation();
       }
       return result;
     }
@@ -3999,6 +4053,7 @@ public:
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
       displayFloat("COMPACTNESS", d);
+      displayUINT("CANFINISH", evaluation.canFinish);
       //displayUINT("DECIDER", deciderCounter);
       blCounter++;
       deciderCounter++;
@@ -4079,8 +4134,8 @@ public:
         UINT ncI = 0;
         if (vFile.good() == true){
             bl.clear();
-            bl_secure.clear();
-            bl_old10.clear();
+            savedState.bl_secure.clear();
+            savedState.bl_old10.clear();
             string line;
             getline(vFile, line); // _F
             getline(vFile, line); // ncyclesInterrupted or _L
@@ -4235,6 +4290,7 @@ public:
     }
 
     fileText toSVG(){
+      getBestSoFar();
       fileText svg;
       char temp[512];
       int fsize = 10;
@@ -4750,18 +4806,17 @@ public:
 
     void simulate(int maxRel = 0)
     {
-        UINT i;
-        UINT it1 = (UINT) 7e3;
-        UINT it2 = (UINT) 2e2;
-        point minP;
-        point maxP;
-        printf("Starting...\n");
+        cout << "Starting...\n";
 
         // This loop is limited to maxRunningTime
-        time_t start = time(NULL);
-        if (blSettings.ncyclesInterrupted >= it1) blSettings.ncyclesInterrupted = 0;
-        for (i = blSettings.ncyclesInterrupted; i < it1; i++){
+        /*time_t start = time(NULL);
+        bl.refreshScreen.setLimits(1,50);
+        bool bQuit = false;
+        while (!bQuit){
           //setForces1();
+          if (bl.refreshScreen.isMax() == true) writeSVG();
+          bl.refreshScreen++;
+
           setForcesFirstStep();
           blSettings.doCheckTopol = false;
           if (refreshScreen.isMax() == true){

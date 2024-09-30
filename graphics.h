@@ -509,7 +509,6 @@ class glGraphics{
       bl.scSpringK(1e2);
       bl.scFriction(70);
 
-
       while (!bQuit)
       {
           /* check for messages */
