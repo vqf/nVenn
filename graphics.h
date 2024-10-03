@@ -308,6 +308,7 @@ class glGraphics{
           }
       }
       bQuit = false;
+      bl.setCheckTopol(false);
       while (!bQuit)
       {
           /* check for messages */
@@ -328,7 +329,6 @@ class glGraphics{
               bl.setForcesFirstStep();
               //bl.setForces1();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.setCheckTopol(false);
               //bl.setContacts(false, true);
               bl.solve();
               bl.refreshScreen++;
@@ -340,6 +340,7 @@ class glGraphics{
           }
       }
       bQuit = false;
+      bl.setCheckTopol(false);
       while (!bQuit)
       {
           /* check for messages */
@@ -361,13 +362,12 @@ class glGraphics{
               bl.setForcesSecondStep();
               //bl.setForces1();
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.setCheckTopol(false);
-              bl.setContacts(false, true, 2*bl.maxRad()*AIR);
+              bl.setContacts(false, true, 3*bl.maxRad()*AIR);
               bl.solve(true);
               //wait();
               //exit(0);
               bl.refreshScreen++;
-              if (bl.blSettings.totalCircleV > 0 && bl.blSettings.totalCircleV < (5e-3*bl.ngroups / 5)){
+              if (bl.minCircDist() > (2*bl.maxRad()*AIR)){
                 bQuit = true;
               }
 
@@ -419,7 +419,7 @@ class glGraphics{
         //point P = bl.place(sc, pt);
         //bl.interpolateToDist(P.radius);
 
-        bl.interpolateToDist(5 * bl.minCircRadius * AIR);
+        bl.interpolateToDist(3 * bl.correctedMinCircRadius() * AIR);
         bl.setPrevState();
         bl.setSecureState();
       }
@@ -467,9 +467,10 @@ class glGraphics{
       bl.resetTimer();
       bl.setCheckTopol(true);
       bl.attachScene();
-      bl.scFriction(15);
-      bl.scD(1e2);
-      bl.scG(1e-2);
+      bl.scFriction(25);
+      bl.scD(1e1);
+      bl.scG(1e-1);
+      bl.scGhostGrav(false);
       //bl.scSave();
       while (!bQuit)
       {
@@ -505,9 +506,12 @@ class glGraphics{
           // Debug topol
           bQuit = false;
       bl.resetTimer();
-      bl.interpolateToDist(bl.minCircRadius);
+      bl.interpolateToDist(bl.correctedMinCircRadius());
       bl.scSpringK(1e2);
       bl.scFriction(70);
+      bl.scG(1e-2);
+      bl.scD(1e2);
+      bl.scGhostGrav(true);
 
       while (!bQuit)
       {

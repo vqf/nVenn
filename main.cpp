@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     borderLine lines = getFileInfo(fname, outputFile);
     lines.showInfo();
     //lines.interpolate(50);
-    lines.simulate(7);
+    lines.simulate();
     //mymap.textOut();
     //psfile = lines.toPS();
     //result.open("result.ps");

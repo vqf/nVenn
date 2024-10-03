@@ -160,6 +160,7 @@ class scene{
   float friction;
   float damp; // Spring damping constant
   float G; // Gravity constant
+  bool ghostGrav; // Do Particles with rad==0 feel gravity?
   bool dump;
 
   void clearForces(){
@@ -180,7 +181,11 @@ class scene{
             point *p1 = points[j];
             if ((p1->flags & INGRAVID) == 0){
               bool g2 = (p1->flags & GHOST) == 0;
-              if (g1 || g2){
+              bool dog = g1 && g2;
+              if (ghostGrav){
+                dog = g1 || g2;
+              }
+              if (dog){
                 float dx = p1->x - p0->x;
                 float dy = p1->y - p0->y;
                 float d = sqrt(dx * dx + dy * dy);
@@ -356,7 +361,7 @@ class scene{
     UINT result = start + b - a - 1;
     return result;
   }
-  point contact(point *p0, point *p1, float cushion = 0){
+  void contact(point *p0, point *p1, float cushion = 0){
     float r = p0->radius + p1->radius + cushion;
     float rsq = r * r;
     float dx = p1->x - p0->x;
@@ -368,25 +373,27 @@ class scene{
   }
 
   void isContact(point *p0, point *p1, float cushion = 0){
-    float r = p0->radius + p1->radius + cushion;
-    if (r == 0){
-      return;
-    }
-    float rsq = r * r;
-    float dx = p1->x - p0->x;
-    float dy = p1->y - p0->y;
-    float dsq = dx * dx + dy * dy;
-    if (dsq <= rsq){
-      rod(p0, p1, r, -1);
-      float fx = p0->fx - p1->fx;
-      float fy = p0->fy - p1->fy;
-      float scprod = fx * dx + fy * dy;
-      if (scprod > 0){
-        rod(p0, p1, r);
-        //float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
-        //float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
-        //p0->vx = vx; p0->vy = vy;
-        //p1->vx = vx; p1->vy = vy;
+    if (p0->radius > 0 || p1->radius > 0){
+      float r = p0->radius + p1->radius + cushion;
+      if (r == 0){
+        return;
+      }
+      float rsq = r * r;
+      float dx = p1->x - p0->x;
+      float dy = p1->y - p0->y;
+      float dsq = dx * dx + dy * dy;
+      if (dsq <= rsq){
+        rod(p0, p1, r, -1);
+        float fx = p0->fx - p1->fx;
+        float fy = p0->fy - p1->fy;
+        float scprod = fx * dx + fy * dy;
+        if (scprod > 0){
+          rod(p0, p1, r);
+          //float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
+          //float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+          //p0->vx = vx; p0->vy = vy;
+          //p1->vx = vx; p1->vy = vy;
+        }
       }
     }
   }
@@ -549,6 +556,17 @@ public:
   }
   void dumpthis(){
     dump = true;
+  }
+  /** \brief Do GHOST particles feel gravity?
+   *  By default, they do feel gravity, but do not
+   *  affect other bodies
+   *
+   * \param true bool setGhost=
+   * \return void
+   *
+   */
+  void setGhostGravity(bool setGhost = true){
+    ghostGrav = setGhost;
   }
   vector<string> getInfo(){
     vector<string> result = info;

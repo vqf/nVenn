@@ -1,5 +1,4 @@
-Better compact: 189.316 to 180.766
-Best crossings: 78
-New best crossings: 48
-New best crossings: 35
-New best crossings: 32
+Better compact: 221.098 to 205.976
+Best crossings: 94
+New best crossings: 42
+New best crossings: 36

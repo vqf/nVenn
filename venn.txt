@@ -5,7 +5,7 @@ Other
 GAS
 GCS/GGS
 0
-20
+2
 12
 0
 28

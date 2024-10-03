@@ -102,7 +102,7 @@
 
 1568886543 d:\cpp\venn\1.3\github\bmpfont.h
 
-1722508342 source:d:\proyectos\nvenn2\gh\main.cpp
+1727709957 source:d:\proyectos\nvenn2\gh\main.cpp
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -118,7 +118,7 @@
 	"graphics.h"
 	"initogl.h"
 
-1727706874 d:\proyectos\nvenn2\gh\topol.h
+1727950882 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -131,14 +131,14 @@
 	"debug.h"
 	"scene.h"
 
-1727706466 d:\proyectos\nvenn2\gh\graphics.h
+1727881355 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"
 
 1693566312 d:\proyectos\nvenn2\gh\bmpfont.h
 
-1727101816 source:d:\proyectos\nvenn2\gh\test.cpp
+1727802840 source:d:\proyectos\nvenn2\gh\test.cpp
 	<windows.h>
 	<Windows.h>
 	"topol.h"
@@ -149,7 +149,7 @@
 
 1721076336 d:\proyectos\nvenn2\gh\initogl.h
 
-1727117643 d:\proyectos\nvenn2\gh\scene.h
+1727774877 d:\proyectos\nvenn2\gh\scene.h
 	<vector>
 	<fstream>
 	<sstream>
