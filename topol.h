@@ -7,9 +7,12 @@
 #include <fstream>
 #include <sstream>
 #include <cstdarg>
+#include <iterator>
 #include <algorithm>
 #include <iostream>
 #include <math.h>
+#include <random>
+#include <set>
 #include "debug.h"
 #include "scene.h"
 //#include <windows.h>
@@ -1350,6 +1353,7 @@ class borderLine
     scene tosolve;
     blState savedState;
     float simulationTime;
+
     vector<float> pairDistances;
     vector<string> groups;
     vector<point> p;
@@ -2584,6 +2588,11 @@ class borderLine
       return bestout;
     }
 
+
+    /***********************/
+    /* Extensive search    */
+    /***********************/
+
     void chooseCrossings(bool logit = false){
       fixTopology();
       UINT bc = countCrossings();
@@ -2663,6 +2672,77 @@ class borderLine
         }
       }
       return bestComp;
+    }
+
+    /***********************/
+    /* /Extensive search   */
+    /***********************/
+
+
+    vector<UINT> sampleUINT(vector<UINT> from, UINT n, std::mt19937 *gen){
+      UINT nc = from.size() - 1;
+      vector<UINT> cp = from;
+      vector<UINT> result;
+      std::set<UINT> offsets;
+      for (UINT i = 0; i < n; i++){
+        std::uniform_int_distribution<UINT> distrib(0, nc);
+        UINT ni = distrib(*gen);
+        std::set<UINT>::iterator it;
+        for (it = offsets.begin(); it != offsets.end(); it++){
+          UINT v = *it;
+          if (v <= ni){
+            ni++;
+          }
+        }
+        offsets.insert(ni);
+        result.push_back(from[ni]);
+        nc--;
+      }
+      return result;
+    }
+
+
+    /** \brief Look for the best combination compactness
+     *  using a Metropolis-Hastings-like algorithm
+     *
+     *
+     * \return float Best compactness achieved
+     *
+     */
+    float MHCompact(){
+      UINT nstep = 2; // Number of circles exchanged in each step
+      UINT maxSteps = 1000;
+      std::random_device rd;  // Will be used to obtain a seed for the random number engine
+      std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+      std::uniform_real_distribution<float> alpha(0.0, 1.0);
+      UINT cyclesWithoutImprovement = 0;
+      float bestCompactness = compactness();
+      vector<UINT> existingCircles = ncircles();
+
+      UINT nc = existingCircles.size() - 1;
+      UINT counter = 0;
+      while (cyclesWithoutImprovement < 100 && counter < maxSteps){
+        vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
+        UINT ci = exch[0];
+        UINT cj = exch[1];
+        tolog("Exchanging " + toString(ci) + " with " + toString(cj) + "\n");
+        swapCoords(ci, cj);
+        float newCompactness = compactness();
+        tolog("Old comp: " + toString(bestCompactness) + "\tNew comp: " + toString(newCompactness) + "\n");
+        if (newCompactness < bestCompactness){
+          cyclesWithoutImprovement = 0;
+          bestCompactness = newCompactness;
+        }
+        else{
+          float decd = alpha(gen);
+          float rtio = newCompactness / bestCompactness;
+          if (decd > rtio){
+            swapCoords(ci, cj);
+          }
+          cyclesWithoutImprovement++;
+        }
+        counter++;
+      }
     }
 
     UINT setCrossingsBack(bool logit = false){
@@ -3904,7 +3984,7 @@ public:
         UINT np = (UINT) (0.5f * (float) startPerim);
         interpolate(np);
 
-        evaluation.setConstants(200, 100);
+        evaluation.setConstants(100, 50);
         setPrevState();
         setSecureState();
 
@@ -4136,11 +4216,11 @@ public:
     void setContactFunction(UINT f){
       blSettings.contactFunction = f;
     }
-    UINT ncircles(){
-      UINT result = 0;
+    vector<UINT> ncircles(){
+      vector<UINT> result;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
-          result++;
+          result.push_back(i);
         }
       }
       return result;

@@ -1,4 +1,211 @@
-Better compact: 221.098 to 205.976
-Best crossings: 94
-New best crossings: 42
-New best crossings: 36
+Exchanging 28 with 40
+Old comp: 999.283	New comp: 998.021
+Exchanging 16 with 53
+Old comp: 998.021	New comp: 998.125
+Exchanging 32 with 52
+Old comp: 998.021	New comp: 997.331
+Exchanging 25 with 59
+Old comp: 997.331	New comp: 1003.32
+Exchanging 4 with 39
+Old comp: 997.331	New comp: 1008.88
+Exchanging 28 with 40
+Old comp: 997.331	New comp: 1006.1
+Exchanging 8 with 2
+Old comp: 997.331	New comp: 1009.43
+Exchanging 12 with 16
+Old comp: 997.331	New comp: 1016.56
+Exchanging 8 with 1
+Old comp: 997.331	New comp: 1017.09
+Exchanging 53 with 59
+Old comp: 997.331	New comp: 1026.77
+Exchanging 39 with 48
+Old comp: 997.331	New comp: 1025.49
+Exchanging 12 with 2
+Old comp: 997.331	New comp: 1025.05
+Exchanging 1 with 24
+Old comp: 997.331	New comp: 1028.74
+Exchanging 52 with 9
+Old comp: 997.331	New comp: 1032.21
+Exchanging 53 with 28
+Old comp: 997.331	New comp: 1033.88
+Exchanging 1 with 32
+Old comp: 997.331	New comp: 1032.64
+Exchanging 52 with 40
+Old comp: 997.331	New comp: 1035.91
+Exchanging 40 with 8
+Old comp: 997.331	New comp: 1038.41
+Exchanging 12 with 7
+Old comp: 997.331	New comp: 1041.01
+Exchanging 52 with 24
+Old comp: 997.331	New comp: 1040.18
+Exchanging 59 with 51
+Old comp: 997.331	New comp: 1038.34
+Exchanging 12 with 40
+Old comp: 997.331	New comp: 1036.43
+Exchanging 4 with 33
+Old comp: 997.331	New comp: 1038.06
+Exchanging 2 with 39
+Old comp: 997.331	New comp: 1040.59
+Exchanging 39 with 51
+Old comp: 997.331	New comp: 1038.13
+Exchanging 4 with 28
+Old comp: 997.331	New comp: 1030.23
+Exchanging 12 with 25
+Old comp: 997.331	New comp: 1026.02
+Exchanging 3 with 24
+Old comp: 997.331	New comp: 1022.04
+Exchanging 28 with 33
+Old comp: 997.331	New comp: 1021.98
+Exchanging 41 with 28
+Old comp: 997.331	New comp: 1027.47
+Exchanging 12 with 48
+Old comp: 997.331	New comp: 1023.81
+Exchanging 41 with 28
+Old comp: 997.331	New comp: 1018.31
+Exchanging 23 with 4
+Old comp: 997.331	New comp: 1014.23
+Exchanging 24 with 4
+Old comp: 997.331	New comp: 1019.4
+Exchanging 33 with 28
+Old comp: 997.331	New comp: 1019.46
+Exchanging 23 with 4
+Old comp: 997.331	New comp: 1007.14
+Exchanging 3 with 25
+Old comp: 997.331	New comp: 1007.5
+Exchanging 28 with 51
+Old comp: 997.331	New comp: 1009.61
+Exchanging 33 with 3
+Old comp: 997.331	New comp: 1009.68
+Exchanging 3 with 4
+Old comp: 997.331	New comp: 1012.66
+Exchanging 48 with 23
+Old comp: 997.331	New comp: 1007.45
+Exchanging 7 with 2
+Old comp: 997.331	New comp: 1004.73
+Exchanging 12 with 16
+Old comp: 997.331	New comp: 1006.18
+Exchanging 51 with 48
+Old comp: 997.331	New comp: 1005.2
+Exchanging 16 with 48
+Old comp: 997.331	New comp: 1006.21
+Exchanging 12 with 9
+Old comp: 997.331	New comp: 1000.15
+Exchanging 7 with 3
+Old comp: 997.331	New comp: 998.608
+Exchanging 24 with 40
+Old comp: 997.331	New comp: 1000.87
+Exchanging 7 with 52
+Old comp: 997.331	New comp: 1010.41
+Exchanging 40 with 12
+Old comp: 997.331	New comp: 1014.53
+Exchanging 59 with 52
+Old comp: 997.331	New comp: 1019.85
+Exchanging 32 with 3
+Old comp: 997.331	New comp: 1015.6
+Exchanging 2 with 16
+Old comp: 997.331	New comp: 1017.25
+Exchanging 41 with 28
+Old comp: 997.331	New comp: 1018.87
+Exchanging 23 with 51
+Old comp: 997.331	New comp: 1015.83
+Exchanging 16 with 2
+Old comp: 997.331	New comp: 1017.2
+Exchanging 4 with 8
+Old comp: 997.331	New comp: 1011.69
+Exchanging 24 with 4
+Old comp: 997.331	New comp: 1013.26
+Exchanging 23 with 16
+Old comp: 997.331	New comp: 1013.72
+Exchanging 4 with 1
+Old comp: 997.331	New comp: 1013.44
+Exchanging 28 with 32
+Old comp: 997.331	New comp: 1019.62
+Exchanging 51 with 24
+Old comp: 997.331	New comp: 1029.39
+Exchanging 24 with 59
+Old comp: 997.331	New comp: 1025.26
+Exchanging 53 with 1
+Old comp: 997.331	New comp: 1026.3
+Exchanging 23 with 52
+Old comp: 997.331	New comp: 1025.72
+Exchanging 48 with 59
+Old comp: 997.331	New comp: 1027.18
+Exchanging 52 with 12
+Old comp: 997.331	New comp: 1025.61
+Exchanging 16 with 7
+Old comp: 997.331	New comp: 1019.41
+Exchanging 8 with 51
+Old comp: 997.331	New comp: 1005.76
+Exchanging 39 with 24
+Old comp: 997.331	New comp: 1005.5
+Exchanging 8 with 39
+Old comp: 997.331	New comp: 1012.63
+Exchanging 12 with 33
+Old comp: 997.331	New comp: 1013.02
+Exchanging 53 with 9
+Old comp: 997.331	New comp: 1017.93
+Exchanging 48 with 3
+Old comp: 997.331	New comp: 1024.44
+Exchanging 2 with 32
+Old comp: 997.331	New comp: 1023.91
+Exchanging 2 with 33
+Old comp: 997.331	New comp: 1020.31
+Exchanging 7 with 4
+Old comp: 997.331	New comp: 1030.72
+Exchanging 9 with 25
+Old comp: 997.331	New comp: 1031.61
+Exchanging 52 with 8
+Old comp: 997.331	New comp: 1029.84
+Exchanging 12 with 9
+Old comp: 997.331	New comp: 1035.71
+Exchanging 4 with 32
+Old comp: 997.331	New comp: 1027.33
+Exchanging 51 with 32
+Old comp: 997.331	New comp: 1025
+Exchanging 25 with 7
+Old comp: 997.331	New comp: 1010.69
+Exchanging 12 with 2
+Old comp: 997.331	New comp: 1011.47
+Exchanging 23 with 9
+Old comp: 997.331	New comp: 1012.51
+Exchanging 16 with 23
+Old comp: 997.331	New comp: 1017.08
+Exchanging 12 with 40
+Old comp: 997.331	New comp: 1019.02
+Exchanging 51 with 23
+Old comp: 997.331	New comp: 1020.12
+Exchanging 33 with 24
+Old comp: 997.331	New comp: 1021.57
+Exchanging 32 with 41
+Old comp: 997.331	New comp: 1023.68
+Exchanging 3 with 1
+Old comp: 997.331	New comp: 1021.45
+Exchanging 3 with 40
+Old comp: 997.331	New comp: 1017.42
+Exchanging 40 with 51
+Old comp: 997.331	New comp: 1019.55
+Exchanging 59 with 4
+Old comp: 997.331	New comp: 1026.84
+Exchanging 52 with 12
+Old comp: 997.331	New comp: 1024.69
+Exchanging 59 with 40
+Old comp: 997.331	New comp: 1013.81
+Exchanging 25 with 7
+Old comp: 997.331	New comp: 1029.57
+Exchanging 8 with 51
+Old comp: 997.331	New comp: 1033.8
+Exchanging 2 with 40
+Old comp: 997.331	New comp: 1034.73
+Exchanging 40 with 25
+Old comp: 997.331	New comp: 1032.26
+Exchanging 2 with 41
+Old comp: 997.331	New comp: 1026.12
+Exchanging 12 with 24
+Old comp: 997.331	New comp: 1028.66
+Exchanging 3 with 52
+Old comp: 997.331	New comp: 1027.29
+Best crossings: 1276
+New best crossings: 216
+New best crossings: 96
+New best crossings: 72
+Line 1876 - : Incorrect topology of circle 8 with line 5, X: 69.6303, Y: 58.8564	N: 8	radius: 1.10074	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 0

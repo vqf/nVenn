@@ -398,7 +398,8 @@ class glGraphics{
           }
           else
           {
-              bl.chooseCompact(true);
+              //bl.chooseCompact(true);
+              bl.MHCompact();
               bl.chooseCrossings(true);
               bl.setCheckTopol(true);
               bl.fixTopology();

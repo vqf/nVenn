@@ -118,20 +118,23 @@
 	"graphics.h"
 	"initogl.h"
 
-1727950882 d:\proyectos\nvenn2\gh\topol.h
+1727979864 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
 	<fstream>
 	<sstream>
 	<cstdarg>
+	<iterator>
 	<algorithm>
 	<iostream>
 	<math.h>
+	<random>
+	<set>
 	"debug.h"
 	"scene.h"
 
-1727881355 d:\proyectos\nvenn2\gh\graphics.h
+1727978178 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"
