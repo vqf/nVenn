@@ -283,8 +283,6 @@ class glGraphics{
       borderLine bl = *blp;
       bl.refreshScreen.setLimits(1,1);
       MSG msg;
-      point minP;
-      point maxP;
       bool bQuit = false;
       while (!bQuit)
       {
@@ -373,13 +371,17 @@ class glGraphics{
 
           }
       }
+
       bl.setCheckTopol(true);
-      bl.addLines();
-      toOGL(bl, hDC);
-      bl.setCheckTopol(false);
       //UINT b1 = bl.countOutsiders();
       //UINT bo = bl.chooseCombination();
       bQuit = false;
+
+      float bestOut = bl.compactness();
+      optimizationStep opt(bestOut);
+      bestOut = bl.outCompactness(&opt);
+      UINT outCount = 0;
+
       while (!bQuit)
       {
           /* check for messages */
@@ -398,15 +400,26 @@ class glGraphics{
           }
           else
           {
+              // Testing methods for compact and cross
               //bl.chooseCompact(true);
-              bl.MHCompact();
-              bl.chooseCrossings(true);
-              bl.setCheckTopol(true);
+              //bl.MHCompact();
+              //bl.MHCrosses();
+              //bl.chooseCrossings(true);
+              bestOut = bl.outCompactness(&opt);
+              if (opt.hasEnded()){
+                if (bestOut > opt.getBestCompactness()){
+                  bestOut = opt.getBestCompactness();
+                }
+                else{
+                  outCount++;
+                }
+              }
+              //**********//
               bl.fixTopology();
-
-              bl.setCheckTopol(false);
               toOGL(bl, hDC);
-              bQuit = true;
+              if (outCount > 8){
+                bQuit = true;
+              }
               //bQuit = true;
 
           }
@@ -507,7 +520,7 @@ class glGraphics{
           // Debug topol
           bQuit = false;
       bl.resetTimer();
-      bl.interpolateToDist(bl.correctedMinCircRadius());
+      bl.interpolateToDist(2 * bl.correctedMinCircRadius());
       bl.scSpringK(1e2);
       bl.scFriction(70);
       bl.scG(1e-2);

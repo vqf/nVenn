@@ -34,9 +34,9 @@
 #define GHOST             0x40  // Two points with this bit set will not receive cushion
 #endif // GHOST
 
+#define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
 
 using namespace std;
-
 
 
 UINT setFlag(UINT flag, UINT mask){
@@ -149,10 +149,9 @@ int toInt(vector<int> v)
     // Takes a vector containing the binary representation
     // of an integer and returns that integer
 
-    int i;                          // decreasing iterator
     int counter = 0;                // increasing iterator
     int result = 0;
-    for (i = 0; i < v.size(); i++)
+    for (UINT i = 0; i < v.size(); i++)
     {
         result = result + v[i] * twoPow(counter);
         counter++;
@@ -355,20 +354,8 @@ class circleIterator {
   UINT first;
   UINT sze;
   UINT mask;
+  bool finished;
   vector<point> circles;
-
-public:
-  circleIterator(vector<point> circs, UINT npoints, UINT starting = 0) {
-    first = 0;
-    circles = circs;
-    sze = npoints;
-    setval(starting);
-    first = current;
-  }
-  /*~groupIterator(){
-    tolog(toString(__LINE__) + "\n" + "Called destructor\n");
-  }*/
-  UINT val() { return current; }
 
   void setval(UINT v){
     UINT sanity = v;
@@ -386,30 +373,47 @@ public:
           exit(1);
         }
         current = v;
-        if (current == first && first > 0){
-          current = 0;
-          return;
-        }
       }
     }
   }
 
-  void reset(UINT from = 0){
-    setval(from);
+public:
+  circleIterator(vector<point> circs, UINT npoints, UINT starting = 0) {
+    circles = circs;
+    sze = npoints;
+    setval(starting);
+    first = current;
+    finished = false;
+  }
+  /*~groupIterator(){
+    tolog(toString(__LINE__) + "\n" + "Called destructor\n");
+  }*/
+  UINT val() {
+    setval(current);
+    return current;
   }
 
-  UINT nxt(UINT from = 0) {
-    if (from > 0){
-      setval(from);
-    }
-    if (current == 0){
-      return 0;
+  void reset(UINT from = 0){
+    setval(from);
+    finished = false;
+  }
+
+  bool isFinished(){
+    return finished;
+  }
+
+  UINT nxt() {
+    if (finished){
+      cerr << "Nxt past finished in circleIterator\n";
+      tolog("Nxt past finished in circleIterator\n");
+      exit(1);
     }
     current++;
     setval(current);
-    if (current == first) {
+    if (current == first){
       current = 0;
-      return 0;
+      finished = true;
+      return current;
     }
     return current;
   }
@@ -499,10 +503,10 @@ public:
     }
     return result;
   }
-  void operator=(tangent t) {
-    quadrant = t.quadrant;
-    slope = t.slope;
-  }
+  //void operator=(tangent t) {
+  //  quadrant = t.quadrant;
+  //  slope = t.slope;
+  //}
   void rotate(tangent t) {
     if (t.quadrant == quadrant && t.slope == slope){
       slope = 0;
@@ -1054,6 +1058,54 @@ void oilog(outsiderInfo oi){
   tolog(_L_ + "Vertex: " + toString(oi.vertex) + "\nNextVertex: " + toString(oi.nextVertex) + "\n");
 }
 
+class optimizationStep{
+  UINT counter;
+  UINT candidate;
+  bool ended;
+  float bestComp;
+public:
+  optimizationStep(float comp){
+    bestComp = comp;
+    startCycle();
+    ended = true;
+  }
+  UINT getCounter(){
+    return counter;
+  }
+  void next(){
+    counter++;
+    ended = false;
+  }
+  void setOptimus(float comp){
+    bestComp = comp;
+  }
+  void setCandidate(UINT cand){
+    candidate = cand;
+  }
+  void startCycle(){
+    counter = 0;
+    candidate = 0;
+    ended = false;
+  }
+  void endCycle(){
+    ended = true;
+  }
+  bool hasEnded(){
+    return ended;
+  }
+  UINT getCandidate(){
+    return candidate;
+  }
+  void setBestCompactness(float comp){
+    bestComp = comp;
+  }
+  float getBestCompactness(){
+    return bestComp;
+  }
+
+};
+
+
 class binMap
 {
 
@@ -1353,6 +1405,7 @@ class borderLine
     scene tosolve;
     blState savedState;
     float simulationTime;
+    UINT internalCounter;
 
     vector<float> pairDistances;
     vector<string> groups;
@@ -1561,21 +1614,23 @@ class borderLine
         if (internalScale.ySpan() < minCoord) minCoord = internalScale.ySpan();
         minRat = 0.02 * minCoord;
         for (i = 0; i < circles.size(); i++){
-            float trad = circles[i].radius;
-            float tr = circRadii[i];
-            point t; t.radius = tr; t.x = 0; t.y = 0;
-            point test = place(internalScale, t);
-            float rat = test.radius / minRat;
-            if (rat < 1){
-              trad = tr / rat;
+            if (circles[i].radius > 0){
+              float trad = circles[i].radius;
+              float tr = circRadii[i];
+              point t; t.radius = tr; t.x = 0; t.y = 0;
+              point test = place(internalScale, t);
+              float rat = test.radius / minRat;
+              if (rat < 1 && rat > 0){
+                trad = tr / rat;
+              }
+              else if (trad != tr){
+                trad = tr;
+              }
+              circles[i].radius = trad;
+              //if (trad > maxRadius){
+              //  maxRadius = trad;
+              //}
             }
-            else if (trad != tr){
-              trad = tr;
-            }
-            circles[i].radius = trad;
-            //if (trad > maxRadius){
-            //  maxRadius = trad;
-            //}
         }
 
     }
@@ -1629,7 +1684,6 @@ class borderLine
      *
      */
     void randomizeCircles(){
-      UINT ncircles = circles.size();
       UINT gstep = 1;
       UINT gridSize = twoPow(ngroups >> 1);
       if ((ngroups & 1) > 0){ // Odd number of groups
@@ -1904,41 +1958,41 @@ class borderLine
                 UINT fcirc = 0;
                 for (UINT k = fcirc; k < circles.size(); k++){
                   point c = circles[k];
-                  float lrad = maxRad() * AIR;
-                  if (!again && ((c.flags & USED) == 0)){
-                    bool inside = (c.n & twoPow(i)) > 0 ? true : false;
-                    float dsq1 = sqDistance(c, current);
-                    float dsq2 = sqDistance(c, nxt);
-                    float rsq = c.radius * c.radius;
-                    if (dsq3 > dsq1 && dsq3 > dsq2 && dsq1 > rsq && dsq2 > rsq){
-                      float h = sqrt(-(dsq1 * dsq1 + dsq2 * dsq2 + dsq3 * dsq3) +
-                                     2 * dsq1 * dsq2 + 2 * dsq1 * dsq3 + 2 * dsq2 * dsq3) / (2 * sq3);
-                      //tolog(toString(__LINE__) + "\n" + toString(h) + "\t" + toString(dsq1) + "\t" + toString(dsq2) + "\t" + toString(dsq3) + "\t" + toString(sq3) + "\n");
-                      if (h > 0 && h < c.radius){
-                        again = true;
-                        fcirc = k + 1;
-                        tangent tp(nxt.x - current.x, nxt.y - current.y);
-                        float t = sqrt(lrad * lrad - h * h);
-                        float d1 = sqrt(dsq1 - h * h);
-                        float d2 = sqrt(dsq2 - h * h);
-                        float x1 = d1 - t;
-                        float x2 = d2 - t;
-                        point pst1 = tp.transformPoint(current, x1);
-                        point pst2 = tp.transformPoint(current, d1 + t) ;
-                        newbl.push_back(pst1);
-                        tangent tr = tp + rgh;
-                        //tolog(toString(__LINE__) + "\n" + "Outside: \n" + tp.croack() + tr.croack());
-                        if (inside || (!inside && ((c.flags & USED) > 0))){
-                          tr = tp + lft;
-                          //tolog(toString(__LINE__) + "\n" + "Inside: \n" + tp.croack() + tr.croack());
-                        }
-                        c.flags = setFlag(c.flags, USED);
-                        point newp = tr.transformPoint(c, lrad);
-                        newbl.push_back(newp);
-                        newbl.push_back(pst2);
-                        // Close the bl for the next cycle
-                        for (UINT l = j+1; l < bl[i].size(); l++){
-                          newbl.push_back(bl[i][l]);
+                  if (c.radius > 0){
+                    float lrad = maxRad() * AIR;
+                    if (!again && ((c.flags & USED) == 0)){
+                      bool inside = (c.n & twoPow(i)) > 0 ? true : false;
+                      float dsq1 = sqDistance(c, current);
+                      float dsq2 = sqDistance(c, nxt);
+                      float rsq = c.radius * c.radius;
+                      if (dsq3 > dsq1 && dsq3 > dsq2 && dsq1 > rsq && dsq2 > rsq){
+                        float h = sqrt(-(dsq1 * dsq1 + dsq2 * dsq2 + dsq3 * dsq3) +
+                                       2 * dsq1 * dsq2 + 2 * dsq1 * dsq3 + 2 * dsq2 * dsq3) / (2 * sq3);
+                        //tolog(toString(__LINE__) + "\n" + toString(h) + "\t" + toString(dsq1) + "\t" + toString(dsq2) + "\t" + toString(dsq3) + "\t" + toString(sq3) + "\n");
+                        if (h > 0 && h < c.radius){
+                          again = true;
+                          fcirc = k + 1;
+                          tangent tp(nxt.x - current.x, nxt.y - current.y);
+                          float t = sqrt(lrad * lrad - h * h);
+                          float d1 = sqrt(dsq1 - h * h);
+                          float x1 = d1 - t;
+                          point pst1 = tp.transformPoint(current, x1);
+                          point pst2 = tp.transformPoint(current, d1 + t) ;
+                          newbl.push_back(pst1);
+                          tangent tr = tp + rgh;
+                          //tolog(toString(__LINE__) + "\n" + "Outside: \n" + tp.croack() + tr.croack());
+                          if (inside || (!inside && ((c.flags & USED) > 0))){
+                            tr = tp + lft;
+                            //tolog(toString(__LINE__) + "\n" + "Inside: \n" + tp.croack() + tr.croack());
+                          }
+                          c.flags = setFlag(c.flags, USED);
+                          point newp = tr.transformPoint(c, lrad);
+                          newbl.push_back(newp);
+                          newbl.push_back(pst2);
+                          // Close the bl for the next cycle
+                          for (UINT l = j+1; l < bl[i].size(); l++){
+                            newbl.push_back(bl[i][l]);
+                          }
                         }
                       }
                     }
@@ -1967,6 +2021,9 @@ class borderLine
     void fixTopology(bool logit = false){
       addLines();
       polishLines();
+      for (UINT i = 0; i < circles.size(); i++){
+        circles[i].flags = unsetFlag(circles[i].flags, USED);
+      }
       for (UINT k = 0; k < bl.size(); k++){
         bool goon = true;
         while (goon){
@@ -1998,7 +2055,6 @@ class borderLine
                     //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack());
                     t2.rotate(t1);
                     t3.rotate(t1);
-                    float mindsena = 0;
                     //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack() + "Line " + toString(k) + ", circle " + toString(circles[j].n) + "\n");
                     if ((t2.getQuadrant() == 4 && t3.getQuadrant() == 3)){
                       //tolog(toString(__LINE__) + "\n" + "Line " + toString(k) + ", circle " + toString(j) + " " + toString(circles[j].n) + "\n");
@@ -2146,7 +2202,6 @@ class borderLine
                     //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack());
                     t2.rotate(t1);
                     t3.rotate(t1);
-                    float mindsena = 0;
                     //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack() + "Line " + toString(k) + ", circle " + toString(circles[j].n) + "\n");
                     if (t2.getQuadrant() == 4 && t3.getQuadrant() == 3){
                       //tolog(toString(__LINE__) + "\n" + "Line " + toString(k) + ", circle " + toString(j) + " " + toString(circles[j].n) + "\n");
@@ -2251,7 +2306,7 @@ class borderLine
               UINT n = getRelationships(i, j);
               if (n > 0){
                 float sqd = sqDistance(circles[i], circles[j]);
-                result += log((float) n * sqd);
+                result += log(sqd) + log(n);
               }
             }
           }
@@ -2267,7 +2322,6 @@ class borderLine
      *
      */
     void addLines(bool logit = false){
-      uint8_t mask = (uint8_t) 0x1;
       for (UINT i = 0; i < circles.size(); i++){
         scircles[circles[i].n] = circles[i];
       }
@@ -2543,7 +2597,7 @@ class borderLine
       for (UINT i = 0; i < circles.size() - 1; i++){
         if (circles[i].radius > 0){
           //vector<int> b = toBin(circles[i].n, twoPow(ngroups));
-          //if (!isTopolCorrect(circles[i], b)){
+          //if (!isTopolIncorrect(circles[i], b)){
             for (UINT j = i + 1; j < circles.size(); j++){
               if (circles[j].radius > 0){
                 swapCoords(i, j);
@@ -2620,7 +2674,6 @@ class borderLine
               fixTopology();
               float comp = compactness();
               UINT newcross = countCrossings();
-              UINT newout = countOutsiders();
               if (newcross < bestcross){
                 bestcross = newcross;
                 //bestout = newout;
@@ -2701,6 +2754,10 @@ class borderLine
       return result;
     }
 
+    /***********************/
+    /* Metropolis-Hastings */
+    /***********************/
+
 
     /** \brief Look for the best combination compactness
      *  using a Metropolis-Hastings-like algorithm
@@ -2711,17 +2768,15 @@ class borderLine
      */
     float MHCompact(){
       UINT nstep = 2; // Number of circles exchanged in each step
-      UINT maxSteps = 1000;
+      UINT maxSteps = 100000;
       std::random_device rd;  // Will be used to obtain a seed for the random number engine
       std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
       std::uniform_real_distribution<float> alpha(0.0, 1.0);
       UINT cyclesWithoutImprovement = 0;
       float bestCompactness = compactness();
       vector<UINT> existingCircles = ncircles();
-
-      UINT nc = existingCircles.size() - 1;
       UINT counter = 0;
-      while (cyclesWithoutImprovement < 100 && counter < maxSteps){
+      while (cyclesWithoutImprovement < 1000 && counter < maxSteps){
         vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
         UINT ci = exch[0];
         UINT cj = exch[1];
@@ -2735,15 +2790,162 @@ class borderLine
         }
         else{
           float decd = alpha(gen);
-          float rtio = newCompactness / bestCompactness;
+          float rtio = bestCompactness / newCompactness;
+          tolog("Decider: " + toString(decd) + ", " + "Ration: " + toString(rtio) + "\n");
           if (decd > rtio){
             swapCoords(ci, cj);
+            tolog("Bailed\n");
           }
           cyclesWithoutImprovement++;
         }
         counter++;
       }
+      return bestCompactness;
     }
+
+    float MHCrosses(){
+      UINT nstep = 2; // Number of circles exchanged in each step
+      UINT maxSteps = 10000;
+      std::random_device rd;  // Will be used to obtain a seed for the random number engine
+      std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+      std::uniform_real_distribution<float> alpha(0.0, 1.0);
+      UINT cyclesWithoutImprovement = 0;
+      fixTopology();
+      float bestCrossings   = countCrossings();
+      vector<UINT> existingCircles = ncircles();
+      UINT counter = 0;
+      while (cyclesWithoutImprovement < 500 && counter < maxSteps){
+        vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
+        UINT ci = exch[0];
+        UINT cj = exch[1];
+        tolog("Exchanging " + toString(ci) + " with " + toString(cj) + "\n");
+        swapCoords(ci, cj);
+        fixTopology();
+        if (checkTopol()){
+          swapCoords(ci, cj);
+        }
+        else{
+          float newCrossings = countCrossings();
+          tolog("Old cross: " + toString(bestCrossings) + "\tNew cross: " + toString(newCrossings) + "\n");
+          if (newCrossings < bestCrossings){
+            cyclesWithoutImprovement = 0;
+            bestCrossings = newCrossings;
+          }
+          else{
+            float decd = alpha(gen);
+            float rtio = bestCrossings / newCrossings;
+            tolog("Decider: " + toString(decd) + ", " + "Ration: " + toString(rtio) + "\n");
+            if (decd > rtio){
+              swapCoords(ci, cj);
+              tolog("Bailed\n");
+            }
+            cyclesWithoutImprovement++;
+          }
+          counter++;
+        }
+      }
+      return bestCrossings;
+    }
+
+    /***********************/
+    /* /Metropolis-Hastings*/
+    /***********************/
+
+
+    /***********************/
+    /* Restrict to outliers*/
+    /***********************/
+
+    UINT furthestPoint(){
+      UINT result = 0;
+      float best = 0;
+      for (UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          float val = 0;
+          if ((circles[i].flags & DO_NOT_OPTIMIZE) == 0){
+            for (UINT j = 0; j < circles.size(); j++){
+              if (i != j){
+                UINT rel = getRelationships(i, j);
+                if (rel > 0){
+                  float dsq = sqDistance(circles[i], circles[j]);
+                  val += log(rel) + log(dsq);
+                  //tolog(toString(val) + "\n");
+                }
+              }
+            }
+            if ((best == 0) || (val > best)){
+              result = i;
+            }
+          }
+        }
+      }
+      //tolog(_L_ + circles[result].croack());
+      circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
+      return result;
+    }
+
+    float outCompactness(optimizationStep *opt, bool logit = false){
+      if (opt->hasEnded()){
+        opt->startCycle();
+        opt->setCandidate(furthestPoint());
+      }
+      else{
+        UINT candidate = opt->getCandidate();
+        UINT i = opt->getCounter();
+        if (i != candidate && circles[i].radius > 0){
+          swapCoords(i, candidate);
+          fixTopology();
+          if (checkTopol()){
+            swapCoords(i, candidate);
+          }
+          else{
+            float newComp = compactness();
+            if (newComp < opt->getBestCompactness()){
+              opt->setBestCompactness(newComp);
+              //tolog("Swapping " + toString(i) + " with " + toString(candidate) + "\n");
+            }
+            else{
+              swapCoords(i, candidate);
+            }
+          }
+        }
+        opt->next();
+        if (opt->getCounter() >= circles.size()){
+          opt->endCycle();
+        }
+      }
+      return opt->getBestCompactness();
+    }
+
+    UINT outCrosses(bool logit = false){
+      UINT candidate = furthestPoint();
+      fixTopology();
+      UINT bestCross = countCrossings();
+      for (UINT i = 0; i < circles.size(); i++){
+        if (i != candidate){
+          swapCoords(i, candidate);
+          fixTopology();
+          if (checkTopol()){
+            swapCoords(i, candidate);
+          }
+          else{
+            UINT newCross = countCrossings();
+            if (newCross < bestCross){
+              bestCross = newCross;
+              tolog("Swapping " + toString(i) + " with " + toString(candidate) + "\n");
+            }
+            else{
+              swapCoords(i, candidate);
+            }
+          }
+        }
+      }
+      return bestCross;
+    }
+
+    /***********************/
+    /*/Restrict to outliers*/
+    /***********************/
 
     UINT setCrossingsBack(bool logit = false){
       addLines();
@@ -2752,8 +2954,8 @@ class borderLine
       UINT bestcross = countCrossings();
       UINT bestout = countOutsiders();
       for (UINT i = 0; i < circles.size(); i++){
-        UINT n = circles[i].n;
-        /*while ((n > 0) && ((n & 0x1) == 0)){
+        /*UINT n = circles[i].n;
+        while ((n > 0) && ((n & 0x1) == 0)){
           n = n >> 1;
         }*/
         if (/*n == */1){
@@ -2891,7 +3093,7 @@ class borderLine
       float trueRadius = p0.radius + p1.radius;
       float dx = p1.x - p0.x;
       float dy = p1.y - p0.y;
-      float d = (p0.x, p0.y, p1.x, p1.y);
+      float d = distance(p0.x, p0.y, p1.x, p1.y);
       if (d <= trueRadius){
         float fx = p0.fx + p1.fx;
         float fy = p0.fy + p1.fy;
@@ -3092,7 +3294,6 @@ class borderLine
 
     void setForcesFirstStep(){
       UINT i, j;
-      UINT size;
       point f;
       /** Circle-circle **/
         for (i = 0; i < circles.size() - 1; i++){
@@ -3114,7 +3315,6 @@ class borderLine
 
     void setForcesSecondStep(){
       UINT i, j;
-      UINT size;
       point f;
       /** Circle-circle **/
         for (i = 0; i < circles.size() - 1; i++){
@@ -3405,7 +3605,6 @@ class borderLine
 
     void solve(bool resetVelocity = false, bool breakOnTopol = false)
     {
-        UINT i;
         float kb = blSettings.baseBV;
         warn.clear();
         dataDisplay.clear();
@@ -3606,7 +3805,6 @@ class borderLine
     }
 
     bool circleTopol(point P, vector<int> belong, UINT j){
-      int lastPoint;
       bool mustBeIn = (belong[j] == 1);  //Must the circle be inside the curve?
       bool isIn = false;      //Is the circle inside the curve?
       vector<point> bnd = getBoundaries();
@@ -3661,14 +3859,14 @@ class borderLine
           /*******
           tolog(toString(__LINE__) + "\n" + "Line " + toString(j) + ", " + P.croack() + "isIn: " + toString(isIn) + " mustBeIn: " +
                 toString(mustBeIn) + "\n\n");
-          /*******/
+          *******/
           return true;
       }
       return false;
     }
 
 
-    bool isTopolCorrect(point P, vector<int> belong){
+    bool isTopolIncorrect(point P, vector<int> belong){
       if (!(P.radius > 0)){
         tolog(_L_ + "Called isTopoloCorrect with radius 0\n"); exit(1);
       }
@@ -3691,13 +3889,12 @@ class borderLine
         return false;
       }
       UINT i;
-      UINT j = circles.size();
       for (i = 0; i < circles.size(); i++)
       {
           if (circles[i].radius > 0)
           { /* Circle has radius */
               vector<int> belong = toBin(circles[i].n, bl.size());
-              bool result = isTopolCorrect(circles[i], belong);
+              bool result = isTopolIncorrect(circles[i], belong);
               if (result){
                 return result;
               }
@@ -3784,14 +3981,12 @@ class borderLine
 
     UINT countOutsiders(){
       UINT result = 0;
-      UINT j = circles.size();
-      //tolog(toString(__LINE__) + "\n" + "---\n");
       for (UINT i = 0; i < circles.size(); i++)
       {
           if (circles[i].radius > 0)
           { /* Circle has radius */
               vector<int> belong = toBin(circles[i].n, bl.size());
-              bool incorrect = isTopolCorrect(circles[i], belong);
+              bool incorrect = isTopolIncorrect(circles[i], belong);
               if (incorrect){
                 circles[i].flags = circles[i].flags | IS_OUTSIDE;
                 //tolog(toString(__LINE__) + "\n" + "Circle " + toString(circles[i].n)+ "\n");
@@ -3869,7 +4064,6 @@ UINT ones(UINT n){
 void setRelationships(){
   UINT i;
   UINT j;
-  UINT k;
   for (i = 0; i < (circles.size() - 1); i++){
     for (j = i + 1; j < circles.size(); j++){
       UINT r = 0;
@@ -3987,7 +4181,7 @@ public:
         evaluation.setConstants(100, 50);
         setPrevState();
         setSecureState();
-
+        savedState.hasBeenSet = false;
         randomizeCircles();
 
 
@@ -4049,15 +4243,27 @@ public:
      *
      */
     float minCircDist(){
-      float r = sqDistance(circles[0], circles[1]);
-      for (UINT i = 0; i < (circles.size() - 1); i++){
-        for (UINT j = i + 1; j < circles.size(); j++){
-          float nr = sqDistance(circles[i], circles[j]);
+      circleIterator ci(circles, circles.size());
+      UINT fst = ci.val();
+      UINT scnd = ci.nxt();
+      float r = sqDistance(circles[fst], circles[scnd]);
+      ci.reset();
+      circleIterator ci2(circles, circles.size());
+      while (!ci.isFinished()){
+        UINT v = ci.val();
+        ci2.reset(v);
+        UINT w = ci2.nxt();
+        while (!ci2.isFinished()){
+          w = ci2.val();
+          float nr = sqDistance(circles[v], circles[w]);
           if (nr < r){
             r = nr;
           }
+          ci2.nxt();
         }
+        ci.nxt();
       }
+
       float result = sqrt(r);
       return result;
     }
@@ -4368,6 +4574,14 @@ public:
       return std::string(zc.data(), iLen);
     }
 
+    string croack(){
+      string result = internalScale.croack();
+      for (UINT i = 0; i < circles.size(); i++){
+        result += circles[i].croack();
+      }
+      return result;
+    }
+
     void clearWarnings(){
       warn.clear();
     }
@@ -4422,7 +4636,6 @@ public:
     fileText toSVG(){
       getBestSoFar();
       fileText svg;
-      char temp[512];
       int fsize = 10;
       UINT i, j;
       string tst;
@@ -4575,14 +4788,13 @@ public:
         }
       }
       // Legend
-      int l;
       float cx = 500.0f;
       float cy = 50.0f;
       float rw = 30.0f;
       float rh = 15.0f;
       float dy = 40.0f;
       float dx = 40.0f;
-      for (l = 0; l < ngroups; l++){
+      for (UINT l = 0; l < ngroups; l++){
         string g = groups[l];
         string myg = vformat("p%d", l);
         string myq = vformat("q%d", l);
@@ -4937,19 +5149,19 @@ public:
     }
 
     bool simulate(int maxRel = 0){
-      bool result = false;
       cout << "Starting...\n";
-      refreshScreen.setLimits(1,50);
+      refreshScreen.setLimits(1,10);
       bool bQuit = false;
       setCheckTopol(false);
       float tc = 0;
       cout << "First step...\n";
+      //setBestSoFar();
       while (!bQuit){
-        if (refreshScreen.isMax() == true) writeSVG();
-        refreshScreen++;
         setForcesFirstStep();
         solve();
         tc = getTotalCircleV();
+        if (refreshScreen.isMax() == true) writeSVG();
+        refreshScreen++;
         if (tc > 0 && tc < (1e-3*ngroups / 5)){
           bQuit = true;
         }
@@ -4957,21 +5169,41 @@ public:
       cout << "Second step...\n";
       bQuit = false;
       while (!bQuit){
-        if (refreshScreen.isMax() == true) writeSVG();
-        refreshScreen++;
         setForcesSecondStep();
         setContacts(false, true, 3 * maxRad() * AIR);
         solve(true);
         if (minCircDist() > (2 * maxRad()*AIR)){
           bQuit = true;
         }
+        //cout << croack() << endl; exit(0);
+        if (refreshScreen.isMax() == true) writeSVG();
+        refreshScreen++;
       }
       bQuit = false;
       cout << "Third step (finding best geometry)...\n";
-      chooseCompact(true);
-      chooseCrossings(true);
       setCheckTopol(true);
-      fixTopology();
+      float bestOut = compactness();
+      optimizationStep opt(bestOut);
+      bestOut = outCompactness(&opt);
+      UINT outCount = 0;
+      while (!bQuit){
+        bestOut = outCompactness(&opt);
+        if (opt.hasEnded()){
+          if (bestOut > opt.getBestCompactness()){
+            bestOut = opt.getBestCompactness();
+          }
+          else{
+            outCount++;
+            //cout << "OutCount: " << outCount << endl;
+          }
+        }
+        fixTopology();
+        writeSVG();
+        if (outCount > 8){
+          bQuit = true;
+        }
+      }
+
       if (checkTopol() == false){
         interpolateToDist(5 * minCircRadius * AIR);
         setPrevState();
@@ -4986,9 +5218,10 @@ public:
       resetTimer();
       setCheckTopol(true);
       attachScene();
-      scFriction(15);
-      scD(1e2);
-      scG(1e-2);
+      scFriction(25);
+      scD(1e1);
+      scG(1e-1);
+      scGhostGrav(false);
       while (!bQuit){
       //for (UINT i = 0; i < 10; i++){
         if (refreshScreen.isMax()) {
@@ -5002,12 +5235,14 @@ public:
         }
       }
       cout << "Fifth step (Refining)...\n";
-      return true;
       bQuit = false;
       resetTimer();
-      interpolateToDist(minCircRadius);
+      interpolateToDist(2 * correctedMinCircRadius());
       scSpringK(1e2);
       scFriction(70);
+      scG(1e-2);
+      scD(1e2);
+      scGhostGrav(true);
       while (!bQuit){
         if (refreshScreen.isMax()) {
             writeSVG();
@@ -5103,7 +5338,6 @@ borderLine getFileInfo(string fname, string outputFile){
     binMap mymap(number);
     string dataFile = outputFile + ".data";
     borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
-
     vFile.open(dataFile.c_str());
     if (vFile.good() == true){ // Unfinished
         vFile.close();

@@ -13,6 +13,7 @@
 #include <sstream>
 #include <fstream>
 #include "topol.h"
+#include <signal.h>
 
 
 //#ifndef GRAPHICS
@@ -37,8 +38,20 @@ using namespace std;
 
 
 #ifndef GRAPHICS
+borderLine lines;
+int c = 0;
+
+volatile sig_atomic_t gSignalStatus;
+void handleSignal(int s){
+  cout << lines.croack() << endl;
+  c++;
+  if (c > 5){
+    exit(0);
+  }
+}
 int main(int argc, char** argv)
 {
+    signal(SIGINT, handleSignal);
     string fname;
     string outputFile;
     ofstream result;
@@ -56,7 +69,7 @@ int main(int argc, char** argv)
     else{
       outputFile = "result.svg";
     }
-    borderLine lines = getFileInfo(fname, outputFile);
+    lines = getFileInfo(fname, outputFile);
     lines.showInfo();
     //lines.interpolate(50);
     lines.simulate();

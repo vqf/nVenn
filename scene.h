@@ -692,8 +692,8 @@ public:
   bool addLink(UINT from, UINT to, float k = 0, float d = 0){
     bool result = false;
     if (from != to &&
-        from >= 0 && from < points.size() &&
-        to >= 0 && to < points.size()){
+        from < points.size() &&
+        to < points.size()){
       result = true;
       springLink sl;
       sl.from = from;
@@ -707,8 +707,8 @@ public:
   bool addRod(UINT from, UINT to, float d = 0){
     bool result = false;
     if (from != to &&
-        from >= 0 && from < points.size() &&
-        to >= 0 && to < points.size()){
+        from < points.size() &&
+        to < points.size()){
       result = true;
       springLink sl;
       sl.from = from;
