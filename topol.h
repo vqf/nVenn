@@ -233,122 +233,6 @@ typedef struct blData{
 
 class borderLine;
 
-class groupIterator {
-  UINT current;
-  UINT cgroup;
-  UINT first;
-  UINT bits;
-  UINT sze;
-  UINT mask;
-  vector<point> circles;
-
-  /** \brief Next number counting from @n that has bit @group set to 1
-   *
-   * \param n UINT Starting number
-   * \param group UINT Set number
-   * \param size UINT Total number of elements
-   * \return UINT If the next number is higher than @size, the function returns
-   *         the first number in @group
-   *
-   */
-  UINT nextInGroup(UINT n) {
-    UINT result = n;
-    if (mask == (mask + 1)) {
-      return result;
-    }
-    result++;
-    if ((result & mask) == 0){
-      UINT anti = mask - 1;
-      anti = ~anti;
-      result = result & anti;
-      result += mask;
-    }
-    if (bits > 0 && result > sze) {
-      result = mask;
-    }
-    return result;
-  }
-
-public:
-  groupIterator(vector<point> circs, UINT group, UINT nBits, UINT starting = 0) {
-    first = 0;
-    circles = circs;
-    cgroup = group;
-    UINT s = 1 << cgroup;
-    mask = s;
-    bits = nBits;
-    sze = 1 << bits;
-    setval(starting);
-    first = current;
-  }
-  /*~groupIterator(){
-    tolog(toString(__LINE__) + "\n" + "Called destructor\n");
-  }*/
-  UINT val() { return current; }
-
-  void setval(UINT v){
-    UINT sanity = v;
-    if ((v & mask) > 0 && circles[v].radius > 0){
-      current = v;
-    }
-    else{
-      current = nextInGroup(v);
-      while (circles[v].radius == 0){
-        v = nextInGroup(v);
-        if (v == sanity){
-          exit(1);
-        }
-        current = v;
-        if (current == first && first > 0){
-          current = 0;
-          return;
-        }
-      }
-    }
-  }
-
-  void reset(UINT from = 0){
-    setval(from);
-  }
-
-  UINT nxt(UINT from = 0) {
-    if (from > 0){
-      setval(from);
-    }
-    if (current == 0){
-      return 0;
-    }
-    current = nextInGroup(current);
-    setval(current);
-    if (current == first) {
-      current = 0;
-      return 0;
-    }
-    return current;
-  }
-};
-
-/** \brief Computes the square of the cartesian distance between
- * points (@p0) and (@p1). If the distance itself is not
- * important, this spares a sqrt calculation
- *
- * \param p0 point
- * \param p1 point
- * \return float
- *
- */
-float sqDistance(point p0, point p1)
-{
-    float result = 0;
-    float rx = p1.x - p0.x;
-    float ry = p1.y - p0.y;
-    rx *= rx;
-    ry *= ry;
-    result = rx + ry;
-    return result;
-}
-
-
 class circleIterator {
   UINT current;
   UINT first;
@@ -378,6 +262,7 @@ class circleIterator {
   }
 
 public:
+  circleIterator(){}
   circleIterator(vector<point> circs, UINT npoints, UINT starting = 0) {
     circles = circs;
     sze = npoints;
@@ -404,7 +289,7 @@ public:
 
   UINT nxt() {
     if (finished){
-      cerr << "Nxt past finished in circleIterator\n";
+      cout << "Nxt past finished in circleIterator\n";
       tolog("Nxt past finished in circleIterator\n");
       exit(1);
     }
@@ -418,6 +303,59 @@ public:
     return current;
   }
 };
+
+
+class groupIterator{
+  circleIterator ci;
+  vector<point> circles;
+  UINT mask;
+public:
+  groupIterator(vector<point> circs, UINT group, UINT nBits, UINT starting = 0) {
+    mask = 1 << group;
+    circles = circs;
+    ci = circleIterator(circs, circs.size(), starting);
+  }
+  UINT val(){
+    UINT r = ci.val();
+    while ((circles[r].n & mask) == 0 && !ci.isFinished()){
+      ci.nxt();
+      r = ci.val();
+    }
+    return r;
+  }
+  bool isFinished(){
+    return ci.isFinished();
+  }
+  UINT nxt(){
+    if (!ci.isFinished()){
+      ci.nxt();
+    }
+    UINT r = val();
+    return r;
+  }
+};
+
+/** \brief Computes the square of the cartesian distance between
+ * points (@p0) and (@p1). If the distance itself is not
+ * important, this spares a sqrt calculation
+ *
+ * \param p0 point
+ * \param p1 point
+ * \return float
+ *
+ */
+float sqDistance(point p0, point p1)
+{
+    float result = 0;
+    float rx = p1.x - p0.x;
+    float ry = p1.y - p0.y;
+    rx *= rx;
+    ry *= ry;
+    result = rx + ry;
+    return result;
+}
+
+
 
 
 
@@ -448,6 +386,7 @@ public:
       slope = -dx / dy;
     }
   }
+  tangent(){}
   tangent(point p1, point p2){
     float dx = p2.x - p1.x;
     float dy = p2.y - p1.y;
@@ -629,26 +568,18 @@ public:
 
 class ccwangle {
 
-  tangent *t;
+  tangent t;
 
 public:
   ccwangle(point p0, point p1, point p2) {
-    t = NULL;
-    float dx0 = p0.x - p1.x;
-    float dy0 = (p0.y - p1.y);
-    float dx1 = p2.x - p1.x;
-    float dy1 = (p2.y - p1.y);
-    //tangent g(dx1, dy1);
-    t = new tangent(dx1, dy1);
-    tangent u(dx0, dy0);
-    t->rotate(u);
-    //t = &g;
-    //tolog(toString(__LINE__) + "\n" + t->croack() + "-\n");
+    t = tangent(p1, p2);
+    tangent u(p1, p0);
+    t.rotate(u);
   }
 
   bool operator<(ccwangle c) {
     //tolog(toString(__LINE__) + "\n" + t->croack() + "\n" + c.t->croack() + "\n\n");
-    if (*t < *(c.t)){
+    if (t < c.t){
       return true;
     }
     else{
@@ -656,7 +587,7 @@ public:
     }
   }
   string croack(){
-    return t->croack();
+    return t.croack();
   }
 };
 
@@ -1477,15 +1408,16 @@ class borderLine
     }
 
     UINT leftmostCircle(UINT group){
-      groupIterator git(scircles, group, bl.size(), 1);
+      groupIterator git(circles, group, bl.size(), 1);
       UINT result = git.val();
-      float lx = scircles[result].x;
-      while(git.nxt() > 0){
+      float lx = circles[result].x;
+      while(!git.isFinished()){
         UINT n = git.val();
-        if (scircles[n].radius > 0 && scircles[n].x < lx){
+        if (circles[n].radius > 0 && circles[n].x < lx){
           result = n;
-          lx = scircles[n].x;
+          lx = circles[n].x;
         }
+        git.nxt();
       }
       return result;
     }
@@ -2134,7 +2066,7 @@ class borderLine
                   //tolog(_L_ + "Somehow, this one did not make it.\n");
                   //tolog(_L_ + "Line " + toString(k) + ", segment " + toString(oi.vertex) + "\n");
                   //tolog(_L_ + oi.outsider.croack());
-                  writeSVG("delme.svg");
+                  //writeSVG("delme.svg");
                   //exit(1);
                 }
                 incorrect = circleTopol(circles[j], belong, k); //Was it fixed?
@@ -2315,6 +2247,30 @@ class borderLine
       return result;
     }
 
+    UINT nextLeftmostPoint(UINT ngroup, UINT n1, UINT n2){
+      point anchor = circles[n1];
+      if (n1 == n2){
+        anchor.x -= 1;
+      }
+      groupIterator git(circles, ngroup, bl.size(), n2);
+      git.nxt();
+      bool first = true;
+      ccwangle best(anchor, circles[n2], anchor);
+      UINT result = git.val();
+      while (!git.isFinished()){
+        UINT n3 = git.val();
+        if (n3 != n2){
+          ccwangle test(anchor, circles[n2], circles[n3]);
+          if (first || best < test){
+            first = false;
+            best = test;
+            result = n3;
+          }
+        }
+        git.nxt();
+      }
+      return result;
+    }
 
     /** \brief Adds group lines
      *
@@ -2322,73 +2278,26 @@ class borderLine
      *
      */
     void addLines(bool logit = false){
-      for (UINT i = 0; i < circles.size(); i++){
+      /*for (UINT i = 0; i < circles.size(); i++){
         scircles[circles[i].n] = circles[i];
-      }
+      }*/
       for (UINT i = 0; i < bl.size(); i++){
         bl[i].clear();
+        //cout << "---" << i << "----\n";
         UINT lm = leftmostCircle(i);
-        bl[i].push_back(scircles[lm]);
-        point prev = point(scircles[lm].x - 1, scircles[lm].y);
-        UINT l = lm;
-        groupIterator git(scircles, i, bl.size(), lm);
-        UINT tmp = git.nxt();
-        if (tmp > 0){
-          ccwangle fst = ccwangle(prev, scircles[l], scircles[tmp]);
-          UINT counter = 0;
-          do{
-            groupIterator secgit(scircles, i, bl.size(), 1);
-            UINT j = secgit.val();
-            //tolog(toString(__LINE__) + "\n" + "Group " + toString(i) + " Starting at " + toString(j) + "\n");
-            if (j > 0){
-              UINT maxl = tmp;
-              while (j > 0){
-                if (scircles[j].radius > 0 && j != l){
-                  ccwangle scnd = ccwangle(prev, scircles[l], scircles[j]);
-                  if (fst < scnd){
-                    if (logit){
-                      tolog(_L_ +  "Circle: " + toString(j) + "\t" +  "From: " + toString(l) + "\t" +  "Best: " + toString(maxl) + "\n");
-                      tolog(_L_ +  "Points1: \n\t" + prev.croack() + "\t" + scircles[l].croack() + "\t" + scircles[tmp].croack() + "\n");
-                      tolog(_L_ +  "Points2: \n\t" + prev.croack() + "\t" + scircles[l].croack() + "\t" + scircles[j].croack() + "\n");
-                      tolog(_L_ +  fst.croack() + "\t\t");
-                      tolog(_L_ +  scnd.croack() + "\n");
-                      tolog(_L_ +  "First lower? " + toString(fst < scnd) + ";\t" + "Second lower?: " + toString(scnd < fst) + "\n");
-                    }
-                    fst = ccwangle(prev, scircles[l], scircles[j]);
-                    maxl = j;
-                  }
-                }
-                j = secgit.nxt();
-              }
-              prev = scircles[l];
-              l = maxl;
-            }
-            else{
-              l = lm;
-            }
-            //if (l == 0){
-            //  tolog(toString(__LINE__) + "\n" + "Error\nFirst: " + fst.croack() + "\n"); exit(0);
-            //}
-            bl[i].push_back(scircles[l]);
-            git = groupIterator(scircles, i, bl.size(), l);
-            tmp = git.nxt();
-            //git.setval(l);
-            fst = ccwangle(prev, scircles[l], scircles[tmp]);
-            counter++;
-          } while (counter < 100 && l != lm && git.val() > 0);
+        bl[i].push_back(circles[lm]);
+        //cout << "-> " << circles[lm].n << endl;
+        UINT an = lm;
+        UINT st = lm;
+        UINT np = nextLeftmostPoint(i, an, st);
+        while (np != lm){
+          bl[i].push_back(circles[np]);
+          //cout << circles[np].n << endl;
+          an = st;
+          st = np;
+          np = nextLeftmostPoint(i, an, st);
         }
-        else{
-          bl[i].push_back(scircles[lm]);
-        }
-        bl[i].pop_back();
-        //tolog(toString(__LINE__) + "\n" + "---Group " + toString(i) + ": ");
-        //for (UINT k = 0; k < bl[i].size(); k++){
-        //  tolog(toString(__LINE__) + "\n" + toString((UINT)bl[i][k].n) + "\t");
-        //}
-        //tolog(toString(__LINE__) + "\n" + "\n");
-
       }
-      //exit(0);
     }
 
 
@@ -2490,6 +2399,8 @@ class borderLine
         }
         bl[i] = newpoints;
       }
+      //setCheckTopol(true);
+      //writeSVG(); exit(0);
     }
 
     void swapCoords(UINT i, UINT j){
@@ -3816,19 +3727,21 @@ class borderLine
       blSettings.cycleInfo = "";
       for (UINT i = 0; i < bl[j].size(); i++){
         point p3 = bl[j][i];
-        crossResult cr = cont;
         UINT np = nextPoint(j, i);
         point p4 = bl[j][np];
+        crossResult cr = cross(p1, p2, p3, p4); //cont;
+        //cout << i << "\t" << j << "\t" << np << endl;
         while (cr == cont){
           cr = cross(p1, p2, p3, p4);
           np = nextPoint(j, np);
           p4 = bl[j][np];
+          //cout << "--" <<  i << "\t" << j << "\t" << np << endl;
         }
 
         if (cr == crosses){
           isIn = !isIn;
-          blSettings.cycleInfo += "Cross: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack() + "\n";
-          blSettings.cycleInfo += "i: " + toString(i) + ", j: " + toString(j) + "\n";
+          //blSettings.cycleInfo += "Cross: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack() + "\n";
+          //blSettings.cycleInfo += "i: " + toString(i) + ", j: " + toString(j) + "\n";
         }
       }
       if (isIn ^ mustBeIn)
@@ -3852,7 +3765,7 @@ class borderLine
                 //isIn = !isIn;
                 attention(p3.x, p3.y);
                 attention(p4.x, p4.y);
-                blSettings.cycleInfo += "Crossing with: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack();
+                //blSettings.cycleInfo += "Crossing with: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack();
               }
             }
           }
@@ -3946,7 +3859,7 @@ class borderLine
             result = crosses;
           }
         }
-        blSettings.cycleInfo += "Tangents: \n" + t1.croack() + t2.croack() + t3.croack() + t4.croack();
+        //blSettings.cycleInfo += "Tangents: \n" + t1.croack() + t2.croack() + t3.croack() + t4.croack();
       }
       return result;
     }
@@ -5198,7 +5111,7 @@ public:
           }
         }
         fixTopology();
-        writeSVG();
+        //writeSVG();
         if (outCount > 8){
           bQuit = true;
         }
