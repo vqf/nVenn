@@ -1373,6 +1373,7 @@ class borderLine
     timeMaster udt;
     blData blSettings;
     float minRat;
+    float minCircScreenRadius;
     bool showThis;
 
     void initBlData(blData* b){
@@ -1545,6 +1546,9 @@ class borderLine
         float minCoord = internalScale.xSpan();
         if (internalScale.ySpan() < minCoord) minCoord = internalScale.ySpan();
         minRat = 0.02 * minCoord;
+
+        minCircScreenRadius = correctedMinCircRadius();
+
         for (i = 0; i < circles.size(); i++){
             if (circles[i].radius > 0){
               float trad = circles[i].radius;
@@ -1799,9 +1803,9 @@ class borderLine
         if (p1.radius == 0 || p0.radius == 0){
           return p0;
         }
-        float repulsion = blSettings.sk * kattr * 4;
+        float repulsion = blSettings.sk * kattr * 5;
         point result;
-        float factor = (float) getRelationships(p0.n, p1.n);
+        float factor = (float) getRelationships(p0.n, p1.n) + 1;
         float radius = radiusFactor * (p0.radius + p1.radius);
         //radius *= 1.2;
         float dx = p1.x - p0.x;
@@ -1933,6 +1937,7 @@ class borderLine
               }
             }
           }
+          bl[i].clear();
           bl[i] = newbl;
           for (UINT k = 0; k < circles.size(); k++){
             circles[k].flags = unsetFlag(circles[k].flags, USED);
@@ -1964,7 +1969,8 @@ class borderLine
             if (circles[j].radius > 0 && ((circles[j].flags & USED) == 0) && !goon){
               circles[j].flags = setFlag(circles[j].flags, USED);
               point p3 = circles[j];
-              vector<int> belong = toBin(p3.n, bl.size());
+              UINT p3n = p3.n;
+              vector<int> belong = toBin(p3n, bl.size());
               bool incorrect = circleTopol(circles[j], belong, k);
               if (incorrect){
                 if (logit){
@@ -2282,9 +2288,9 @@ class borderLine
         scircles[circles[i].n] = circles[i];
       }*/
       for (UINT i = 0; i < bl.size(); i++){
-        bl[i].clear();
         //cout << "---" << i << "----\n";
         UINT lm = leftmostCircle(i);
+        bl[i].clear();
         bl[i].push_back(circles[lm]);
         //cout << "-> " << circles[lm].n << endl;
         UINT an = lm;
@@ -2795,7 +2801,7 @@ class borderLine
       return result;
     }
 
-    float outCompactness(optimizationStep *opt, bool logit = false){
+    float outCompactness(optimizationStep *opt, float (borderLine::*funct)(), bool logit = false){
       if (opt->hasEnded()){
         opt->startCycle();
         opt->setCandidate(furthestPoint());
@@ -2810,7 +2816,7 @@ class borderLine
             swapCoords(i, candidate);
           }
           else{
-            float newComp = compactness();
+            float newComp = (this->*funct)();
             if (newComp < opt->getBestCompactness()){
               opt->setBestCompactness(newComp);
               //tolog("Swapping " + toString(i) + " with " + toString(candidate) + "\n");
@@ -2828,7 +2834,7 @@ class borderLine
       return opt->getBestCompactness();
     }
 
-    UINT outCrosses(bool logit = false){
+    UINT outCrosses(optimizationStep *opt, bool logit = false){
       UINT candidate = furthestPoint();
       fixTopology();
       UINT bestCross = countCrossings();
@@ -3578,7 +3584,7 @@ class borderLine
               udt.poke();
           }
           if (keepDistCounter.isMax()){
-              keepDist(avgStartDist);
+              keepDist(0);
               if (checkTopol()){
                 writeSVG("error.svg");
                 listOutsiders();
@@ -3864,8 +3870,8 @@ class borderLine
       return result;
     }
 
-    UINT countCrossings(){
-      UINT result = 0;
+    float countCrossings(){
+      float result = 0;
       for (UINT i = 0; i < bl.size()-1; i++){
         for (UINT ii = 0; ii < bl[i].size(); ii++){
           point p1 = bl[i][ii];
@@ -4921,6 +4927,10 @@ public:
 
     void keepDist(float minDist){
       if (blSettings.doCheckTopol){
+        //float md = minDist;
+        //if (md < minCircScreenRadius){
+          float md = minCircScreenRadius;
+        //}
         for (UINT i = 0; i < bl.size(); i++){
           UINT n = twoPow(i);
           vector<point> q = getSetBoundaries(n, 2*maxRadius*AIR, true);
@@ -4940,24 +4950,38 @@ public:
               bl[i][j].y = q[1].y;
             }
           }
+          UINT counter = 0;
+          UINT lastConserved = 0;
           for (UINT j = 0; j < bl[i].size() - 2; j++){
-            float d = distance(cx, cy, bl[i][j+1].x, bl[i][j+1].y);
-            if (d < minCircRadius){
+            float d = distance(bl[i][lastConserved].x, bl[i][lastConserved].y, bl[i][j+1].x, bl[i][j+1].y);
+            if (d < (md)){
               bl[i][j].flags = bl[i][j].flags | DELME;
+              counter++;
+              //tolog("Distance between " + toString(lastConserved) + " and " +
+              //      toString(j+1) + " is " + toString(d) + "\n");
               //bl[i].erase(bl[i].begin() + j+ 1);
             }
             else{
-              cx = bl[i][j].x;
-              cy = bl[i][j].y;
+              lastConserved = j + 1;
             }
           }
+          //if (counter > 0){
+            //tolog("Took " + toString(counter) + " points from line " + toString(i + 1) + "\n");
+            //tolog("Using minCircScreenRadius " + toString(md) + "\n");
+          //}
           vector<point> rb;
+          vector<point> backup = bl[i];
           for (UINT j = 0; j < bl[i].size(); j++){
             if (!(bl[i][j].flags & DELME)){
               rb.push_back(bl[i][j]);
             }
           }
           bl[i] = rb;
+          if (checkTopol()){
+            writeSVG("error.svg");
+            tolog("Backup after keepDist\n");
+            bl[i] = backup;
+          }
         }
         //writeSVG("error.svg");
         //exit(0);
@@ -5097,10 +5121,10 @@ public:
       setCheckTopol(true);
       float bestOut = compactness();
       optimizationStep opt(bestOut);
-      bestOut = outCompactness(&opt);
+      bestOut = outCompactness(&opt, &this->compactness);
       UINT outCount = 0;
       while (!bQuit){
-        bestOut = outCompactness(&opt);
+        bestOut = outCompactness(&opt, &compactness);
         if (opt.hasEnded()){
           if (bestOut > opt.getBestCompactness()){
             bestOut = opt.getBestCompactness();
@@ -5116,7 +5140,6 @@ public:
           bQuit = true;
         }
       }
-
       if (checkTopol() == false){
         interpolateToDist(5 * minCircRadius * AIR);
         setPrevState();

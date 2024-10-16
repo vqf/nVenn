@@ -379,7 +379,7 @@ class glGraphics{
 
       float bestOut = bl.compactness();
       optimizationStep opt(bestOut);
-      bestOut = bl.outCompactness(&opt);
+      bestOut = bl.outCompactness(&opt, &bl.compactness);
       UINT outCount = 0;
 
       while (!bQuit)
@@ -405,7 +405,7 @@ class glGraphics{
               //bl.MHCompact();
               //bl.MHCrosses();
               //bl.chooseCrossings(true);
-              bestOut = bl.outCompactness(&opt);
+              bestOut = bl.outCompactness(&opt, &bl.compactness);
               if (opt.hasEnded()){
                 if (bestOut > opt.getBestCompactness()){
                   bestOut = opt.getBestCompactness();
@@ -424,6 +424,59 @@ class glGraphics{
 
           }
       }
+      //Minimize crossings
+
+      float bestCross = bl.countCrossings();
+      optimizationStep cropt(bestCross);
+      bestCross = bl.outCompactness(&cropt, &bl.countCrossings);
+      UINT crossCount = 0;
+
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              // Testing methods for compact and cross
+              //bl.chooseCompact(true);
+              //bl.MHCompact();
+              //bl.MHCrosses();
+              //bl.chooseCrossings(true);
+              bestCross = bl.outCompactness(&cropt, &bl.countCrossings);
+              if (cropt.hasEnded()){
+                if (bestCross > cropt.getBestCompactness()){
+                  bestCross = cropt.getBestCompactness();
+                }
+                else{
+                  crossCount++;
+                }
+              }
+              //**********//
+              bl.fixTopology();
+              toOGL(bl, hDC);
+              if (crossCount > 8){
+                bQuit = true;
+              }
+              //bQuit = true;
+
+          }
+      }
+
+
+
+
       bl.setCheckTopol(true);
       if (bl.checkTopol() == false){
 
