@@ -1,25 +1,335 @@
-Next: 11
-Swapping 1 with 11 -> 209.758
-Swapping 5 with 11 -> 203.944
-Swapping 7 with 11 -> 203.713
-Swapping 9 with 11 -> 202.892
+Next: 63
+Swapping 8 with 63 -> 504.593
+Swapping 21 with 63 -> 503.921
+Swapping 23 with 63 -> 502.176
+Swapping 24 with 63 -> 501.589
+Next: 31
+Swapping 7 with 31 -> 498.673
+Swapping 12 with 31 -> 497.054
+Swapping 13 with 31 -> 491.043
+Swapping 21 with 31 -> 490.406
+Next: 9
+Swapping 13 with 9 -> 489.344
+Next: 13
+Swapping 28 with 13 -> 489.086
+Next: 21
+Next: 32
+Swapping 12 with 32 -> 487.185
+Swapping 39 with 32 -> 485.401
+Swapping 63 with 32 -> 484.959
+Next: 12
+Next: 28
+Swapping 9 with 28 -> 483.879
+Next: 36
+Swapping 23 with 36 -> 482.368
+Swapping 59 with 36 -> 482.252
+Next: 8
+Next: 24
+Swapping 63 with 24 -> 481.772
+Next: 51
+Swapping 39 with 51 -> 480.89
+Next: 1
+Next: 39
+Next: 23
 Next: 7
-Swapping 11 with 7 -> 202.142
-Swapping 12 with 7 -> 200.982
-Next: 10
-Swapping 1 with 10 -> 199.791
-Swapping 6 with 10 -> 197.944
-Swapping 13 with 10 -> 194.845
-Next: 6
-Swapping 9 with 6 -> 193.144
+Next: 59
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+45
+-> 1-> 2-> 3Swapping 51 with 39 -> 43
+New bestCross: 43
+-> 1Swapping 36 with 59 -> 42
+New bestCross: 42
+-> 1Swapping 32 with 12 -> 41
+New bestCross: 41
+-> 1Swapping 9 with 28 -> 40
+Swapping 21 with 28 -> 33
+New bestCross: 33
+-> 1-> 2-> 3Swapping 39 with 13 -> 32
+New bestCross: 32
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9-> 10-> 11Next: 63
+Swapping 7 with 63 -> 535.697
+Swapping 8 with 63 -> 533.347
+Swapping 13 with 63 -> 532.037
+Swapping 21 with 63 -> 529.018
+Next: 31
+Swapping 7 with 31 -> 527.56
+Swapping 13 with 31 -> 526.829
+Swapping 21 with 31 -> 526.704
+Next: 13
+Swapping 7 with 13 -> 525.129
+Next: 9
+Swapping 8 with 9 -> 524.143
+Swapping 23 with 9 -> 521.413
+Swapping 24 with 9 -> 521.219
+Next: 21
+Swapping 31 with 21 -> 520.382
+Next: 36
+Swapping 39 with 36 -> 520.067
+Next: 32
+Swapping 23 with 32 -> 520.024
+Swapping 28 with 32 -> 519.513
+Next: 28
+Swapping 24 with 28 -> 518.468
+Next: 24
+Swapping 36 with 24 -> 517.561
+Next: 12
+Swapping 21 with 12 -> 514.884
+Next: 8
+Swapping 9 with 8 -> 514.819
+Next: 1
+Next: 59
+Swapping 39 with 59 -> 514.639
+Next: 39
+Next: 51
+Next: 7
+Swapping 13 with 7 -> 514.471
+Next: 23
+Swapping 51 with 23 -> 513.793
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+66
+Swapping 24 with 1 -> 65
+Swapping 36 with 1 -> 54
+New bestCross: 54
+-> 1Swapping 8 with 23 -> 51
+Swapping 9 with 23 -> 50
+Swapping 13 with 23 -> 47
+New bestCross: 47
+-> 1-> 2Swapping 9 with 59 -> 45
+New bestCross: 45
+-> 1Swapping 9 with 12 -> 43
+New bestCross: 43
+-> 1Swapping 31 with 28 -> 38
+New bestCross: 38
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7Swapping 51 with 0 -> 36
+New bestCross: 36
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9Next: 11
+Swapping 5 with 11 -> 209.452
+Swapping 9 with 11 -> 207.383
+Next: 7
+Swapping 6 with 7 -> 206.954
+Swapping 8 with 7 -> 205.535
+Swapping 11 with 7 -> 205.39
+Swapping 13 with 7 -> 205
 Next: 14
-Swapping 13 with 14 -> 190.501
+Swapping 6 with 14 -> 204.827
+Swapping 9 with 14 -> 203.677
+Swapping 10 with 14 -> 202.899
+Swapping 13 with 14 -> 201.894
+Next: 6
+Swapping 13 with 6 -> 200.504
+Swapping 14 with 6 -> 198.854
+Next: 8
+Swapping 12 with 8 -> 198.441
+Next: 12
+Next: 10
+Next: 5
+Next: 9
+Swapping 14 with 9 -> 198.319
+Next: 13
+Next: 1
+Error in getting furthest point
+Next: 0
+Swapping 5 with 0 -> 196.021
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+26
+Swapping 12 with 1 -> 25
+New bestCross: 25
+Swapping 13 with 5 -> 24
+New bestCross: 24
+Swapping 10 with 9 -> 23
+Swapping 12 with 9 -> 21
+New bestCross: 21
+Swapping 14 with 13 -> 18
+New bestCross: 18
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7Swapping 13 with 0 -> 17
+New bestCross: 17
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9Next: 11
+Swapping 1 with 11 -> 213.077
+Swapping 5 with 11 -> 206.994
+Swapping 9 with 11 -> 206.916
+Swapping 13 with 11 -> 206.472
+Next: 7
+Swapping 6 with 7 -> 205.243
+Swapping 9 with 7 -> 204.13
+Swapping 11 with 7 -> 203.937
+Swapping 12 with 7 -> 203.142
+Swapping 13 with 7 -> 202.597
+Next: 14
+Swapping 6 with 14 -> 201.896
+Next: 6
+Swapping 12 with 6 -> 201.585
+Swapping 13 with 6 -> 201.347
+Next: 10
+Swapping 13 with 10 -> 201.342
+Swapping 14 with 10 -> 201.313
+Next: 12
+Swapping 5 with 12 -> 200.852
+Swapping 6 with 12 -> 200.558
+Swapping 7 with 12 -> 199.426
+Next: 8
+Swapping 9 with 8 -> 195.603
+Next: 5
+Next: 1
+Next: 9
+Swapping 6 with 9 -> 193.823
+Next: 13
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+17
+-> 1Swapping 6 with 5 -> 13
+New bestCross: 13
+Swapping 10 with 9 -> 12
+New bestCross: 12
+Swapping 8 with 13 -> 11
+New bestCross: 11
+Swapping 5 with 6 -> 10
+New bestCross: 10
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9Next: 7
+Swapping 5 with 7 -> 203.284
+Swapping 6 with 7 -> 201.81
+Swapping 9 with 7 -> 200.841
+Swapping 11 with 7 -> 200.023
+Next: 11
+Next: 14
+Swapping 5 with 14 -> 199.341
+Swapping 9 with 14 -> 199.196
+Swapping 10 with 14 -> 198.342
+Next: 8
+Swapping 10 with 8 -> 195.95
+Next: 10
+Swapping 1 with 10 -> 194.833
+Next: 6
+Next: 12
+Swapping 7 with 12 -> 194.223
+Next: 1
+Next: 9
+Next: 5
+Next: 13
+Error in getting furthest point
+Next: 0
+Swapping 10 with 0 -> 193.674
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+45
+Swapping 6 with 1 -> 42
+Swapping 7 with 1 -> 25
+Swapping 13 with 1 -> 21
+New bestCross: 21
+-> 1-> 2Swapping 14 with 13 -> 20
+New bestCross: 20
+-> 1-> 2-> 3Swapping 9 with 12 -> 16
+New bestCross: 16
+-> 1-> 2-> 3Swapping 9 with 0 -> 15
+Swapping 10 with 0 -> 13
+New bestCross: 13
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9Next: 11
+Swapping 5 with 11 -> 206.872
+Swapping 6 with 11 -> 205.899
+Swapping 8 with 11 -> 204.747
+Swapping 9 with 11 -> 202.83
+Next: 7
+Swapping 8 with 7 -> 202.302
+Swapping 9 with 7 -> 202.081
+Swapping 11 with 7 -> 201.08
+Swapping 12 with 7 -> 199.822
+Swapping 13 with 7 -> 197.915
+Next: 14
+Swapping 6 with 14 -> 195.878
+Next: 6
+Swapping 13 with 6 -> 195.862
+Next: 10
+Swapping 13 with 10 -> 195.391
 Next: 8
 Next: 12
 Next: 1
-Next: 9
+Swapping 13 with 1 -> 194.93
 Next: 13
 Next: 5
+Next: 9
+Swapping 10 with 9 -> 192.746
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
+Error in getting furthest point
+Next: 0
 Error in getting furthest point
 Next: 0
 Error in getting furthest point
@@ -31,10 +341,8 @@ Next: 0
 Error in getting furthest point
 Next: 0
 14
-Swapping 9 with 1 -> 11
+Swapping 10 with 1 -> 11
 New bestCross: 11
--> 1Swapping 10 with 9 -> 10
+-> 1-> 2Swapping 14 with 13 -> 10
 New bestCross: 10
--> 1-> 2-> 3Swapping 1 with 10 -> 7
-New bestCross: 7
--> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9-> 10-> 11
+-> 1-> 2-> 3-> 4-> 5-> 6-> 7-> 8-> 9

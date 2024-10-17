@@ -2062,6 +2062,7 @@ class borderLine
                       newpoints.push_back(bl[k][i]);
                     }
                   }
+                  bl[k].clear();
                   bl[k] = newpoints;
                   //tolog(_L_ +  toString(circleTopol(p3, belong, k)) + "\n");
                   //writeSVG("delme.svg");
@@ -4993,8 +4994,6 @@ public:
         for (UINT i = 0; i < bl.size(); i++){
           UINT n = twoPow(i);
           vector<point> q = getSetBoundaries(n, 2*maxRadius*AIR, true);
-          float cx = bl[i][0].x;
-          float cy = bl[i][0].y;
           for (UINT j = 0; j < bl[i].size(); j++){
             if (bl[i][j].x < q[0].x ){
               bl[i][j].x = q[0].x;
@@ -5177,28 +5176,63 @@ public:
       }
       bQuit = false;
       cout << "Third step (finding best geometry)...\n";
-      setCheckTopol(true);
+      bQuit = false;
+      // Compactness
       float bestOut = compactness();
       optimizationStep opt(bestOut);
-      bestOut = outCompactness(&opt, &furthestPoint, &compactness);
+      bestOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness);
       UINT outCount = 0;
+      UINT maxOutCount = 8;
+
       while (!bQuit){
-        bestOut = outCompactness(&opt, &furthestPoint, &compactness);
+        float thisOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness);
         if (opt.hasEnded()){
-          if (bestOut > opt.getBestCompactness()){
-            bestOut = opt.getBestCompactness();
+          if (thisOut < bestOut){
+            bestOut = thisOut;
+            outCount = 0;
           }
           else{
             outCount++;
-            //cout << "OutCount: " << outCount << endl;
           }
         }
+        //**********//
         fixTopology();
-        //writeSVG();
-        if (outCount > 8){
+        //toOGL(bl, hDC);
+        if (outCount > maxOutCount){
           bQuit = true;
         }
       }
+
+      //Crossings
+      resetOptimize();
+      bQuit = false;
+
+      float bestCross = countCrossings();
+      optimizationStep cropt(bestCross);
+      bestCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings);
+      tolog(toString(bestCross) + "\n");
+      UINT crossCount = 0;
+      while (!bQuit){
+        float thisCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings);
+        if (cropt.hasEnded()){
+          if (thisCross < bestCross){
+            bestCross = thisCross;
+            crossCount = 0;
+            tolog("New bestCross: " + toString(bestCross) + "\n");
+          }
+          else{
+            crossCount++;
+            tolog("-> " + toString(crossCount));
+          }
+        }
+        //**********//
+        fixTopology();
+        //toOGL(bl, hDC);
+        if (crossCount > maxOutCount){
+          bQuit = true;
+        }
+      }
+
       if (checkTopol() == false){
         interpolateToDist(5 * minCircRadius * AIR);
         setPrevState();
@@ -5334,7 +5368,7 @@ borderLine getFileInfo(string fname, string outputFile){
     string dataFile = outputFile + ".data";
     borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
     vFile.open(dataFile.c_str());
-    if (vFile.good() == true){ // Unfinished
+    if (false){ //vFile.good() == true){ // Unfinished
         vFile.close();
         lines.setCoords(dataFile);
     }

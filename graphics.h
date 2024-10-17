@@ -382,9 +382,7 @@ class glGraphics{
       bestOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness);
       UINT outCount = 0;
       UINT maxOutCount = 10;
-      if (maxOutCount < ((float) bl.nregions() / 4)){
-        maxOutCount = ((float) bl.nregions() / 4);
-      }
+
 
       while (!bQuit)
       {
