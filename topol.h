@@ -2324,13 +2324,13 @@ class borderLine
           tangent up(0, 1);
           point current = bl[i][0];
           point p1 = rev.transformPoint(current, current.radius);
-          //p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
+          p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
           point p2 = dwn.transformPoint(current, current.radius);
-          //p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
+          p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
           point p3 = lft.transformPoint(current, current.radius);
-          //p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
+          p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
           point p4 = up.transformPoint(current, current.radius);
-          //p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
+          p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
           newpoints.push_back(p1);
           newpoints.push_back(p2);
           newpoints.push_back(p3);
@@ -2773,9 +2773,16 @@ class borderLine
     /* Restrict to outliers*/
     /***********************/
 
+    void resetOptimize(){
+      for (UINT i = 0; i < circles.size(); i++){
+        circles[i].flags = unsetFlag(circles[i].flags, DO_NOT_OPTIMIZE);
+      }
+    }
+
     UINT furthestPoint(){
       UINT result = 0;
       float best = 0;
+      bool first = true;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           float val = 0;
@@ -2790,21 +2797,56 @@ class borderLine
                 }
               }
             }
-            if ((best == 0) || (val > best)){
+            if ((first) || (val > best)){
               result = i;
+              best = val;
+              first = false;
             }
           }
         }
       }
       //tolog(_L_ + circles[result].croack());
       circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
+      if (result == 0){
+        tolog("Error in getting furthest point\n");
+      }
+      tolog("Next: " + toString(result) + "\n");
       return result;
     }
 
-    float outCompactness(optimizationStep *opt, float (borderLine::*funct)(), bool logit = false){
+    /** \brief Gets (one of) the circle that belongs to the least number of sets
+     * The result must be higher than 0 and must have radius > 0. Never returns the same circle twice
+     * until resetOptimize() is run.
+     *
+     * \return UINT
+     *
+     */
+    UINT crossestPoint(){
+      UINT result = 0;
+      UINT crossest = 0;
+      UINT mask = (1 << (ngroups)) - 1;
+      bool first = true;
+      for (UINT i = 1; i < circles.size(); i++){
+        if (circles[i].radius > 0 && !(circles[i].flags & DO_NOT_OPTIMIZE)){
+          UINT val = ones(circles[i].n & mask);
+          //tolog(toString(circles[i].n) + ": " + toString(val) + "\n");
+          if (first || val < crossest){
+            result = i;
+            crossest = val;
+            first = false;
+          }
+        }
+      }
+      circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
+      //tolog("CNext: " + toString(circles[result].n) + "\n");
+      return result;
+    }
+
+    float outCompactness(optimizationStep *opt, UINT (borderLine::*chooseCandidate)(),
+                         float (borderLine::*countFunct)(), bool logit = false){
       if (opt->hasEnded()){
         opt->startCycle();
-        opt->setCandidate(furthestPoint());
+        opt->setCandidate((this->*chooseCandidate)());
       }
       else{
         UINT candidate = opt->getCandidate();
@@ -2816,10 +2858,10 @@ class borderLine
             swapCoords(i, candidate);
           }
           else{
-            float newComp = (this->*funct)();
+            float newComp = (this->*countFunct)();
             if (newComp < opt->getBestCompactness()){
               opt->setBestCompactness(newComp);
-              //tolog("Swapping " + toString(i) + " with " + toString(candidate) + "\n");
+              tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
             }
             else{
               swapCoords(i, candidate);
@@ -3870,25 +3912,33 @@ class borderLine
       return result;
     }
 
+
+
     float countCrossings(){
       float result = 0;
       for (UINT i = 0; i < bl.size()-1; i++){
         for (UINT ii = 0; ii < bl[i].size(); ii++){
           point p1 = bl[i][ii];
           point p2 = bl[i][nextPoint(i, ii)];
-          for (UINT j = i + 1; j < bl.size(); j++){
-            for (UINT jj = 0; jj < bl[j].size(); jj++){
-              point p3 = bl[j][jj];
-              UINT np = nextPoint(j, jj);
-              point p4 = bl[j][np];
-              crossResult cr = cont;
-              while (cr == cont){
-                p4 = bl[j][np];
-                cr = cross(p1, p2, p3, p4);
-                np = nextPoint(j, np);
-              }
-              if (cr == crosses){
-                result++;
+          if (((p1.flags & DO_NOT_EMBELLISH) == 0 ) ||
+              ((p2.flags & DO_NOT_EMBELLISH) == 0 ) ){
+            for (UINT j = i + 1; j < bl.size(); j++){
+              for (UINT jj = 0; jj < bl[j].size(); jj++){
+                point p3 = bl[j][jj];
+                UINT np = nextPoint(j, jj);
+                point p4 = bl[j][np];
+                if (((p3.flags & DO_NOT_EMBELLISH) == 0 ) ||
+                    ((p4.flags & DO_NOT_EMBELLISH) == 0 ) ){
+                  crossResult cr = cont;
+                  while (cr == cont){
+                    p4 = bl[j][np];
+                    cr = cross(p1, p2, p3, p4);
+                    np = nextPoint(j, np);
+                  }
+                  if (cr == crosses){
+                    result++;
+                  }
+                }
               }
             }
           }
@@ -4014,7 +4064,7 @@ public:
         svgScale.setMaxY(490.0f);
         initBlData(&blSettings);
         minRat = 0;
-        showThis = true;
+        showThis = false;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -4346,6 +4396,15 @@ public:
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           result.push_back(i);
+        }
+      }
+      return result;
+    }
+    UINT nregions(){
+      UINT result = 0;
+      for (UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          result++;
         }
       }
       return result;
@@ -5121,10 +5180,10 @@ public:
       setCheckTopol(true);
       float bestOut = compactness();
       optimizationStep opt(bestOut);
-      bestOut = outCompactness(&opt, &this->compactness);
+      bestOut = outCompactness(&opt, &furthestPoint, &compactness);
       UINT outCount = 0;
       while (!bQuit){
-        bestOut = outCompactness(&opt, &compactness);
+        bestOut = outCompactness(&opt, &furthestPoint, &compactness);
         if (opt.hasEnded()){
           if (bestOut > opt.getBestCompactness()){
             bestOut = opt.getBestCompactness();
