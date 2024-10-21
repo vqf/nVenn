@@ -88,12 +88,11 @@ void init(void)
    makeRasterFont();
 }
 
-void printString(string s)
+void printString(char *s)
 {
-   char* ts = (char*) s.c_str();
    glPushAttrib (GL_LIST_BIT);
    glListBase(fontOffset);
-   glCallLists(strlen(ts), GL_UNSIGNED_BYTE, (GLubyte *) ts);
+   glCallLists(strlen(s), GL_UNSIGNED_BYTE, (GLubyte *) s);
    glPopAttrib ();
 }
 
