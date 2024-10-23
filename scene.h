@@ -12,6 +12,7 @@ using namespace std;
 
 #define INGRAVID 0x20
 #define GHOST    0x40  // Only interact gravitationally if one of them is not ghost
+#define ANCHORED 0x04
 
 typedef unsigned int UINT;
 
@@ -482,21 +483,23 @@ class scene{
     float netvy = 0;
     for (UINT i = 0; i < points.size(); i++){
       point *p = points[i];
-      fsq += p->fx * p->fx + p->fy + p->fy;
-      netvx += p->vx;
-      netvy += p->vy;
-      float fx = p->fx;
-      float fy = p->fy;
-      fx -= b * p->vx;
-      fy -= b * p->vy;
-      float ax = fx / p->mass;
-      float ay = fy / p->mass;
-      p->vx += ax * cdt;
-      p->vy += ay * cdt;
-      float deltax = p->vx * cdt;
-      float deltay = p->vy * cdt;
-      p->x += deltax;
-      p->y += deltay;
+      if ((p->flags & ANCHORED) == 0){
+        fsq += p->fx * p->fx + p->fy + p->fy;
+        netvx += p->vx;
+        netvy += p->vy;
+        float fx = p->fx;
+        float fy = p->fy;
+        fx -= b * p->vx;
+        fy -= b * p->vy;
+        float ax = fx / p->mass;
+        float ay = fy / p->mass;
+        p->vx += ax * cdt;
+        p->vy += ay * cdt;
+        float deltax = p->vx * cdt;
+        float deltay = p->vy * cdt;
+        p->x += deltax;
+        p->y += deltay;
+      }
     }
     addInfo("FSQ: ", fsq);
     addInfo("NETVX: ", netvx);

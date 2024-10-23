@@ -1,549 +1,302 @@
-Next: 63
-Swapping 7 with 63 -> 493.995
-Swapping 8 with 63 -> 491.391
-Swapping 21 with 63 -> 490.094
-Swapping 39 with 63 -> 488.165
-Next: 31
-Swapping 1 with 31 -> 487.76
-Swapping 7 with 31 -> 486.662
-Swapping 12 with 31 -> 485.746
-Swapping 13 with 31 -> 484.746
-Next: 9
-Swapping 8 with 9 -> 484.487
-Swapping 21 with 9 -> 484.094
-Swapping 63 with 9 -> 482.792
-Next: 21
-Swapping 1 with 21 -> 482.183
-Swapping 7 with 21 -> 482.141
-Swapping 8 with 21 -> 481.307
-Swapping 13 with 21 -> 478.981
-Next: 13
-Next: 36
-Swapping 1 with 36 -> 477.483
-Swapping 8 with 36 -> 476.688
-Swapping 23 with 36 -> 476.469
-Swapping 24 with 36 -> 476.131
-Swapping 28 with 36 -> 475.626
-Swapping 32 with 36 -> 473.279
-Next: 12
-Next: 8
-Swapping 24 with 8 -> 472.023
-Swapping 28 with 8 -> 471.145
-Next: 24
-Swapping 23 with 24 -> 470.037
-Swapping 39 with 24 -> 468.56
-Next: 32
-Next: 28
-Swapping 9 with 28 -> 468.415
-Next: 1
-Swapping 39 with 1 -> 467.821
-Next: 51
-Next: 59
-Swapping 39 with 59 -> 467.445
-Next: 39
-Next: 7
-Next: 23
-Swapping 36 with 23 -> 467.382
+Next candidate: 14
+Checking 1
+Checking 2
+Swapping 5 with 7 -> 210.664
+Checking 6
+Swapping 6 with 7 -> 209.371
+Checking 10
+Checking 4
+Swapping 9 with 7 -> 207.978
+Checking 5
+Checking 13
+Swapping 11 with 7 -> 207.088
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 13
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Swapping 8 with 11 -> 206.93
+Checking 4
+Checking 5
+Swapping 10 with 11 -> 204.449
+Checking 12
+Swapping 12 with 11 -> 203.703
+Checking 8
+Checking 9
+Next candidate: 9
+Checking 1
+Checking 2
+Checking 6
+Swapping 6 with 14 -> 202.139
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Next candidate: 12
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 8
+Checking 9
+Next candidate: 6
+Checking 1
+Checking 2
+Checking 14
+Checking 10
+Checking 4
+Swapping 9 with 6 -> 201.754
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 5
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 10
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Swapping 7 with 8 -> 200.217
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 2
+Checking 1
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 4
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+Next candidate: 8
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 9
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
+Next candidate: 0
 Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Next: 63
-New bestCross: 23
-Swapping 31 with 63 -> 20
-New new bestCross: 20
-Next: 13
-Prev untie: 467.496, new untie: 470.725
+Next candidate: 0
+Next candidate: 1
+New bestCross: 13
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+-> 1Next candidate: 2
+Checking 1
+Checking 6
+Checking 14
+Checking 10
+Prev untie: 200.217, new untie: 201.796
 Did not swap on untie
-Prev untie: 467.496, new untie: 469.278
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Swapping 13 with 5 -> 12
+Checking 9
+New new bestCross: 12
+Next candidate: 4
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 5
+Checking 13
+Checking 12
+Prev untie: 201.053, new untie: 201.623
 Did not swap on untie
--> 1Next: 9
-Swapping 8 with 9 -> 19
-Swapping 21 with 9 -> 14
-New new bestCross: 14
-Next: 31
--> 1Next: 21
-Swapping 8 with 21 -> 12
-Swapping 23 with 21 -> 10
-New new bestCross: 10
-Next: 36
-Prev untie: 467.558, new untie: 466.97
-Prev untie: 466.97, new untie: 466.055
-Next: 63
-Swapping 1 with 63 -> 541.772
-Swapping 7 with 63 -> 538.25
-Swapping 8 with 63 -> 537.875
-Swapping 13 with 63 -> 537.345
-Swapping 21 with 63 -> 537.333
-Swapping 23 with 63 -> 536.34
-Next: 13
-Swapping 8 with 13 -> 532.067
-Swapping 9 with 13 -> 530.689
-Swapping 28 with 13 -> 528.716
-Swapping 32 with 13 -> 528.183
-Next: 31
-Swapping 1 with 31 -> 526.948
-Swapping 7 with 31 -> 524.212
-Swapping 23 with 31 -> 523.934
-Swapping 24 with 31 -> 523.013
-Swapping 63 with 31 -> 520.632
-Next: 9
-Swapping 28 with 9 -> 519.738
-Next: 21
-Next: 36
-Next: 12
-Swapping 63 with 12 -> 519.483
-Next: 24
-Next: 32
-Swapping 12 with 32 -> 518.126
-Next: 28
-Next: 8
-Swapping 9 with 8 -> 517.241
-Swapping 13 with 8 -> 516.925
-Swapping 39 with 8 -> 513.929
-Next: 1
-Swapping 7 with 1 -> 513.235
-Next: 51
-Swapping 7 with 51 -> 512.73
-Next: 59
-Next: 7
-Next: 23
-Next: 39
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Next: 63
-New bestCross: 47
-Swapping 8 with 63 -> 46
-Swapping 9 with 63 -> 31
-New new bestCross: 31
-Next: 9
-Swapping 23 with 9 -> 23
-Prev untie: 516.8, new untie: 516.158
-Swapping 32 with 9 -> 20
-New new bestCross: 20
-Next: 21
--> 1Next: 31
--> 2Next: 13
--> 3Next: 28
-Prev untie: 516.472, new untie: 515.355
-Prev untie: 515.355, new untie: 515.859
-Did not swap on untie
-Prev untie: 515.355, new untie: 513.961
-Swapping 51 with 28 -> 19
-New new bestCross: 19
-Next: 36
-Swapping 1 with 36 -> 13
-Swapping 21 with 36 -> 12
-Swapping 63 with 36 -> 11
-New new bestCross: 11
-Next: 32
--> 1Next: 12
-Prev untie: 522.721, new untie: 522.648
--> 2Next: 24
--> 3Next: 8
--> 4Next: 51
-Prev untie: 522.648, new untie: 522.372
--> 5Next: 1
--> 6Next: 59
--> 7Next: 23
--> 8Next: 7
-Swapping 13 with 7 -> 10
-Swapping 28 with 7 -> 9
-Prev untie: 518.245, new untie: 522.3
+Checking 8
+Checking 9
+-> 1Next candidate: 8
+Checking 1
+Checking 2
+Checking 6
+Swapping 6 with 13 -> 11
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Swapping 10 with 13 -> 9
+Checking 13
+Checking 12
+Checking 9
+Prev untie: 207.488, new untie: 207.992
 Did not swap on untie
 New new bestCross: 9
-Next: 39
-Swapping 28 with 39 -> 6
-New new bestCross: 6
-Error in getting furthest point
-Next: 0
--> 1Error in getting furthest point
-Next: 0
--> 2Error in getting furthest point
-Next: 0
--> 3Error in getting furthest point
-Next: 0
--> 4Error in getting furthest point
-Next: 0
--> 5Error in getting furthest point
-Next: 0
--> 6Error in getting furthest point
-Next: 0
--> 7Error in getting furthest point
-Next: 0
--> 8Error in getting furthest point
-Next: 0
--> 9Error in getting furthest point
-Next: 0
--> 10Error in getting furthest point
-Next: 0
--> 11Next: 63
-Swapping 8 with 63 -> 485.363
-Swapping 13 with 63 -> 484.647
-Swapping 21 with 63 -> 483.64
-Swapping 23 with 63 -> 481.356
-Swapping 24 with 63 -> 479.298
-Next: 31
-Swapping 7 with 31 -> 477.719
-Swapping 8 with 31 -> 476.185
-Next: 9
-Swapping 12 with 9 -> 475.933
-Swapping 13 with 9 -> 475.695
-Next: 13
-Swapping 12 with 13 -> 473.973
-Next: 21
-Next: 36
-Swapping 1 with 36 -> 472.476
-Swapping 8 with 36 -> 472.014
-Swapping 23 with 36 -> 470.899
-Next: 32
-Swapping 1 with 32 -> 467.729
-Swapping 12 with 32 -> 467.222
-Swapping 63 with 32 -> 465.771
-Next: 12
-Swapping 39 with 12 -> 465.658
-Next: 8
-Swapping 24 with 8 -> 465.085
-Swapping 32 with 8 -> 464.601
-Next: 24
-Swapping 23 with 24 -> 463.919
-Next: 28
-Next: 51
-Next: 1
-Next: 39
-Next: 7
-Swapping 59 with 7 -> 463.822
-Next: 59
-Next: 23
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Next: 63
-New bestCross: 56
-Swapping 8 with 63 -> 32
-New new bestCross: 32
-Next: 31
-Swapping 32 with 31 -> 14
-New new bestCross: 14
-Next: 13
--> 1Next: 21
--> 2Next: 9
--> 3Next: 32
-Swapping 1 with 32 -> 13
-Swapping 39 with 32 -> 10
-New new bestCross: 10
-Next: 24
-Swapping 1 with 24 -> 9
-Swapping 28 with 24 -> 5
+Next candidate: 6
+Checking 1
+Checking 2
+Prev untie: 207.488, new untie: 203.261
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Prev untie: 203.261, new untie: 203.541
+Did not swap on untie
+Checking 8
+Checking 9
+-> 1Next candidate: 10
+Checking 1
+Checking 2
+Prev untie: 203.261, new untie: 203.321
+Did not swap on untie
+Checking 6
+Checking 14
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+Checking 9
+-> 2Next candidate: 5
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Swapping 9 with 10 -> 8
+Checking 13
+Swapping 11 with 10 -> 7
+Checking 12
+Checking 8
+Swapping 13 with 10 -> 5
+Checking 9
 New new bestCross: 5
-Next: 28
--> 1Next: 12
-Prev untie: 466.305, new untie: 468.612
+Next candidate: 12
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Prev untie: 204.149, new untie: 205.594
 Did not swap on untie
--> 2Next: 36
--> 3Next: 8
--> 4Next: 51
--> 5Next: 39
-Prev untie: 466.305, new untie: 468.612
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 8
+Checking 9
+-> 1Next candidate: 9
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Checking 8
+-> 2Next candidate: 14
+Checking 1
+Checking 2
+Checking 6
+Checking 10
+Checking 4
+Checking 5
+Checking 13
+Checking 12
+Prev untie: 204.149, new untie: 205.594
 Did not swap on untie
--> 6Next: 59
--> 7Next: 1
--> 8Next: 7
--> 9Next: 23
--> 10Error in getting furthest point
-Next: 0
--> 11Distance is zero: X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1212.39	Fy: 2690.96	Flags: 64
-X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1212.39	Fy: 2690.96	Flags: 64
-X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 64.2705, Y: 83.7199	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Next: 63
-Swapping 7 with 63 -> 496.805
-Swapping 8 with 63 -> 496.035
-Swapping 9 with 63 -> 495.449
-Swapping 21 with 63 -> 493.95
-Swapping 23 with 63 -> 492.389
-Swapping 24 with 63 -> 490.942
-Swapping 32 with 63 -> 490.564
-Swapping 39 with 63 -> 488.542
-Next: 31
-Swapping 7 with 31 -> 487.189
-Swapping 8 with 31 -> 486.687
-Swapping 9 with 31 -> 485.826
-Swapping 63 with 31 -> 485.785
-Next: 9
-Swapping 23 with 9 -> 483.998
-Next: 63
-Swapping 7 with 63 -> 506.948
-Swapping 8 with 63 -> 506.174
-Swapping 13 with 63 -> 505.712
-Swapping 21 with 63 -> 503.151
-Swapping 24 with 63 -> 501.642
-Swapping 31 with 63 -> 501.587
-Swapping 36 with 63 -> 499.857
-Swapping 39 with 63 -> 498.44
-Next: 9
-Swapping 8 with 9 -> 498.312
-Swapping 13 with 9 -> 497.002
-Swapping 31 with 9 -> 496.259
-Next: 13
-Swapping 8 with 13 -> 493.821
-Next: 21
-Swapping 9 with 21 -> 493.736
-Next: 31
-Swapping 9 with 31 -> 492.385
-Next: 36
-Swapping 1 with 36 -> 488.511
-Swapping 24 with 36 -> 488.305
-Swapping 63 with 36 -> 485.214
-Next: 32
-Next: 12
-Next: 24
-Swapping 23 with 24 -> 484.751
-Next: 8
-Swapping 24 with 8 -> 483.008
-Swapping 28 with 8 -> 482.223
-Next: 28
-Next: 51
-Next: 1
-Next: 59
-Swapping 39 with 59 -> 481.092
-Next: 39
-Next: 7
-Next: 23
-Swapping 24 with 23 -> 481.089
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Next: 63
-New bestCross: 30
--> 1Next: 13
-Swapping 32 with 13 -> 29
-New new bestCross: 29
-Next: 31
-Swapping 8 with 31 -> 28
-Swapping 23 with 31 -> 26
-Swapping 59 with 31 -> 21
-New new bestCross: 21
-Next: 21
-Prev untie: 494.612, new untie: 493.584
--> 1Next: 9
--> 2Next: 32
-Prev untie: 493.584, new untie: 493.128
--> 3Next: 12
-Prev untie: 493.128, new untie: 494.744
+Checking 8
+Checking 9
+-> 3Next candidate: 13
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 4
+Prev untie: 204.149, new untie: 203.371
+Checking 5
+Prev untie: 203.371, new untie: 204.887
 Did not swap on untie
-Swapping 8 with 12 -> 18
-Prev untie: 489.777, new untie: 493.671
-Did not swap on untie
-New new bestCross: 18
-Next: 24
--> 1Next: 36
--> 2Next: 8
--> 3Next: 28
-Prev untie: 489.777, new untie: 493.671
-Did not swap on untie
-Prev untie: 489.777, new untie: 490.805
-Did not swap on untie
-Swapping 31 with 28 -> 15
-New new bestCross: 15
-Next: 51
--> 1Next: 1
--> 2Next: 7
-Swapping 28 with 7 -> 11
-New new bestCross: 11
-Next: 39
--> 1Next: 59
--> 2Next: 23
-Prev untie: 488.748, new untie: 489.204
-Did not swap on untie
--> 3Error in getting furthest point
-Next: 0
--> 4Error in getting furthest point
-Next: 0
--> 5Error in getting furthest point
-Next: 0
--> 6Error in getting furthest point
-Next: 0
--> 7Error in getting furthest point
-Next: 0
--> 8Error in getting furthest point
-Next: 0
--> 9Error in getting furthest point
-Next: 0
--> 10Error in getting furthest point
-Next: 0
--> 11Next: 63
-Swapping 8 with 63 -> 511.431
-Swapping 21 with 63 -> 510.532
-Swapping 24 with 63 -> 510.174
-Next: 13
-Swapping 1 with 13 -> 509.05
-Swapping 8 with 13 -> 504.829
-Swapping 12 with 13 -> 502.878
-Swapping 28 with 13 -> 501.881
-Swapping 39 with 13 -> 501.857
-Swapping 51 with 13 -> 496.616
-Next: 31
-Swapping 1 with 31 -> 496.403
-Swapping 7 with 31 -> 493.957
-Swapping 9 with 31 -> 493.147
-Swapping 28 with 31 -> 492.397
-Next: 9
-Swapping 8 with 9 -> 492.32
-Swapping 21 with 9 -> 490.273
-Next: 21
-Next: 36
-Swapping 23 with 36 -> 489.676
-Swapping 24 with 36 -> 489.43
-Next: 24
-Swapping 8 with 24 -> 489.204
-Next: 12
-Next: 8
-Swapping 36 with 8 -> 488.363
-Next: 32
-Swapping 51 with 32 -> 486.978
-Next: 28
-Next: 1
-Next: 59
-Swapping 7 with 59 -> 485.581
-Next: 51
-Next: 7
-Next: 23
-Next: 39
-Swapping 13 with 39 -> 484.988
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Error in getting furthest point
-Next: 0
-Next: 63
-New bestCross: 44
-Swapping 8 with 63 -> 35
-Swapping 21 with 63 -> 34
-New new bestCross: 34
-Next: 13
-Swapping 39 with 13 -> 32
-New new bestCross: 32
-Next: 31
-Swapping 7 with 31 -> 19
-Swapping 63 with 31 -> 17
-New new bestCross: 17
-Next: 21
-Prev untie: 487.587, new untie: 488.755
-Did not swap on untie
--> 1Next: 9
-Swapping 28 with 9 -> 16
-New new bestCross: 16
-Next: 24
-Prev untie: 487.429, new untie: 487.837
-Did not swap on untie
-Swapping 36 with 24 -> 13
-Swapping 59 with 24 -> 9
-New new bestCross: 9
-Next: 36
-Swapping 59 with 36 -> 8
-New new bestCross: 8
-Next: 12
-Swapping 7 with 12 -> 6
-New new bestCross: 6
-Next: 32
--> 1Next: 28
--> 2Next: 8
--> 3Next: 1
--> 4Next: 59
--> 5Next: 51
--> 6Next: 23
-Prev untie: 487.078, new untie: 487.857
-Did not swap on untie
--> 7Next: 39
--> 8Next: 7
--> 9Error in getting furthest point
-Next: 0
--> 10Error in getting furthest point
-Next: 0
--> 11
+Checking 12
+Checking 8
+Checking 9
+-> 4Next candidate: 0
+-> 5Next candidate: 0
+-> 6Next candidate: 0
+-> 7Next candidate: 0
+-> 8Next candidate: 0
+-> 9Next candidate: 0
+-> 10Next candidate: 0
+-> 11Line 4504 - Cannot solve topol problems

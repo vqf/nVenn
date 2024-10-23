@@ -22,7 +22,7 @@
 // Flags for points
 #define IS_OUTSIDE        0x01  // The circle is in an incorrect space. Set to 0x01 to highlight
 #define DO_NOT_EMBELLISH  0X02  // The point has already been corrected
-#define TAKEN_OUT         0x04  // The point has been moved outside
+#define ANCHORED          0x04  // The point will not move
 #define USED              0x08  // The point has been used in a procedure. Remember to reset at the end
 #define DELME             0x10  // The point will be deleted
 
@@ -2861,7 +2861,6 @@ class borderLine
       if (result == 0){
         tolog("Error in getting furthest point\n");
       }
-      tolog("Next: " + toString(result) + "\n");
       return result;
     }
 
@@ -2904,6 +2903,9 @@ class borderLine
       if (opt->hasEnded()){
         opt->startCycle();
         opt->setCandidate((this->*chooseCandidate)());
+        UINT n = opt->getCandidate();
+        tolog("Next candidate: " + toString(circles[n].n) + "\n");
+        cout << circles[n].n << endl;
       }
       else{
         UINT candidate = opt->getCandidate();
@@ -2911,8 +2913,12 @@ class borderLine
           UINT i = opt->getCounter();
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
+            tolog("Checking " + toString(circles[i].n) + "\n");
+            cout << circles[i].n << ", ";
             fixTopology();
+            writeSVG("starting.svg");
             if (checkTopol()){
+              tolog("Undo on checkTopol\n");
               swapCoords(i, candidate);
             }
             else{
@@ -4042,14 +4048,15 @@ class borderLine
               point p4 = useme[j][np];
               if (p1 != p3 && p1 != p4 && p2 != p3 && p2 != p4){
                 crossResult cr = cont;
-                while (cr == cont){
+                UINT refn = np;
+                do{
                   p4 = useme[j][np];
                   cr = cross(p1, p2, p3, p4);
                   np =  0;
                   if (jj < (useme[j].size() - 1)){
                     np = jj + 1;
                   }
-                }
+                } while (cr == cont && np != refn);
                 if (cr == crosses){
                   result = result + 1;
                   /*point crss = getCross(p1, p2, p3, p4);
@@ -4084,7 +4091,8 @@ class borderLine
             cunem = bl[i][j].n;
           }
         }
-      }for (UINT i = 0; i < useme.size()-1; i++){
+      }
+      for (UINT i = 0; i < useme.size()-1; i++){
         for (UINT ii = 0; ii < useme[i].size(); ii++){
           point p1 = useme[i][ii];
           UINT npi =  0;
@@ -4594,7 +4602,9 @@ public:
     }
 
     void setFixedCircles(bool fixedCircles = true){
-      blSettings.fixCircles = fixedCircles;
+      for (UINT i = 0; i < circles.size(); i++){
+        circles[i].flags = setFlag(circles[i].flags, ANCHORED);
+      }
     }
 
     void setCheckTopol(bool doCheck = true){
@@ -5337,6 +5347,7 @@ public:
     }
 
     bool simulate(int maxRel = 0){
+      restart_log();
       cout << "Starting...\n";
       refreshScreen.setLimits(1,10);
       bool bQuit = false;
@@ -5383,10 +5394,12 @@ public:
           if (thisOut < bestOut || opt.hasUntied()){
             bestOut = thisOut;
             outCount = 0;
-            showCrossings();
+            //showCrossings();
+            cout << endl;
           }
           else{
             outCount++;
+            cout << ".";
           }
         }
         //**********//
@@ -5394,6 +5407,7 @@ public:
         //toOGL(bl, hDC);
         if (outCount > maxOutCount){
           bQuit = true;
+          cout << endl;
         }
       }
 
@@ -5402,12 +5416,12 @@ public:
       fixTopology(false);
       float bestCross = countCrossings();
       optimizationStep cropt(bestCross);
-      bestCross = outCompactness(&cropt, &borderLine::furthestPoint, &borderLine::countCrossings, &borderLine::compactness);
+      bestCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings, &borderLine::compactness);
       tolog("New bestCross: " + toString(bestCross) + "\n");
       UINT crossCount = 0;
       bQuit = false;
       while (!bQuit){
-        float thisCross = outCompactness(&cropt, &borderLine::furthestPoint, &borderLine::countCrossings, &borderLine::compactness);
+        float thisCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings, &borderLine::compactness);
         if (cropt.hasEnded()){
           if (thisCross < bestCross || opt.hasUntied()){
             bestCross = thisCross;

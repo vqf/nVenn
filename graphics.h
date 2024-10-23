@@ -434,7 +434,7 @@ class glGraphics{
       bl.fixTopology(false);
       float bestCross = bl.countCrossings();
       optimizationStep cropt(bestCross);
-      bestCross = bl.outCompactness(&cropt, &bl.furthestPoint, &bl.countCrossings, &bl.compactness);
+      bestCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings, &bl.compactness);
       tolog("New bestCross: " + toString(bestCross) + "\n");
       UINT crossCount = 0;
       bQuit = false;
@@ -461,7 +461,7 @@ class glGraphics{
               //bl.MHCompact();
               //bl.MHCrosses();
               //bl.chooseCrossings(true);
-              float thisCross = bl.outCompactness(&cropt, &bl.furthestPoint, &bl.countCrossings, &bl.compactness);
+              float thisCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings, &bl.compactness);
               if (cropt.hasEnded()){
                 if (thisCross < bestCross || opt.hasUntied()){
                   bestCross = thisCross;
@@ -474,7 +474,6 @@ class glGraphics{
                   tolog("-> " + toString(crossCount));
                 }
               }
-
               bl.fixTopology(false);
               toOGL(bl, hDC);
               if (crossCount > maxOutCount){
@@ -618,6 +617,39 @@ class glGraphics{
           }
       }
 
+      // Embellish
+      bQuit = false;
+      bl.setFixedCircles();
+      bl.interpolateToDist(bl.minCircDist()/10);
+      bl.scSpringK(1e2);
+      bl.scFriction(70);
+      bl.scG(1e1);
+      bl.scD(1e2);
+      while (!bQuit)
+      {
+          /* check for messages */
+          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+          {
+              /* handle or dispatch messages */
+              if (msg.message == WM_QUIT)
+              {
+                  bQuit = TRUE;
+              }
+              else
+              {
+                  TranslateMessage (&msg);
+                  DispatchMessage (&msg);
+              }
+          }
+          else
+          {
+              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+              bl.scSolve();
+
+              bl.refreshScreen++;
+
+          }
+      }
 
       return bl;
   }
