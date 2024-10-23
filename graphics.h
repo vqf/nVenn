@@ -376,10 +376,10 @@ class glGraphics{
       //UINT b1 = bl.countOutsiders();
       //UINT bo = bl.chooseCombination();
       bQuit = false;
-
+      bl.fixTopology();
       float bestOut = bl.compactness();
       optimizationStep opt(bestOut);
-      bestOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness);
+      bestOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness, &bl.countCrossings);
       UINT outCount = 0;
       UINT maxOutCount = 10;
 
@@ -407,11 +407,12 @@ class glGraphics{
               //bl.MHCompact();
               //bl.MHCrosses();
               //bl.chooseCrossings(true);
-              float thisOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness);
+              float thisOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness, &bl.countCrossings);
               if (opt.hasEnded()){
-                if (thisOut < bestOut){
+                if (thisOut < bestOut || opt.hasUntied()){
                   bestOut = thisOut;
                   outCount = 0;
+                  bl.showCrossings();
                 }
                 else{
                   outCount++;
@@ -427,20 +428,22 @@ class glGraphics{
 
           }
       }
+
       //Minimize crossings
       bl.resetOptimize();
+      bl.fixTopology(false);
       float bestCross = bl.countCrossings();
       optimizationStep cropt(bestCross);
-      bestCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings);
-      tolog(toString(bestCross) + "\n");
+      bestCross = bl.outCompactness(&cropt, &bl.furthestPoint, &bl.countCrossings, &bl.compactness);
+      tolog("New bestCross: " + toString(bestCross) + "\n");
       UINT crossCount = 0;
       bQuit = false;
       while (!bQuit)
       {
-          /* check for messages */
+
           if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
           {
-              /* handle or dispatch messages */
+
               if (msg.message == WM_QUIT)
               {
                   bQuit = TRUE;
@@ -458,20 +461,21 @@ class glGraphics{
               //bl.MHCompact();
               //bl.MHCrosses();
               //bl.chooseCrossings(true);
-              float thisCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings);
+              float thisCross = bl.outCompactness(&cropt, &bl.furthestPoint, &bl.countCrossings, &bl.compactness);
               if (cropt.hasEnded()){
-                if (thisCross < bestCross){
+                if (thisCross < bestCross || opt.hasUntied()){
                   bestCross = thisCross;
                   crossCount = 0;
-                  tolog("New bestCross: " + toString(bestCross) + "\n");
+                  tolog("New new bestCross: " + toString(bestCross) + "\n");
+                  bl.showCrossings();
                 }
                 else{
                   crossCount++;
                   tolog("-> " + toString(crossCount));
                 }
               }
-              //**********//
-              bl.fixTopology();
+
+              bl.fixTopology(false);
               toOGL(bl, hDC);
               if (crossCount > maxOutCount){
                 bQuit = true;
@@ -481,9 +485,7 @@ class glGraphics{
           }
       }
       bl.resetOptimize();
-
-
-
+      bl.fixTopology();
       bl.setCheckTopol(true);
       if (bl.checkTopol() == false){
 

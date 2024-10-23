@@ -243,18 +243,21 @@ class circleIterator {
 
   void setval(UINT v){
     UINT sanity = v;
-    if (circles[v].radius > 0){
+    if (v < sze && circles[v].radius > 0){
       current = v;
     }
     else{
       current = v + 1;
-      while (circles[v].radius == 0){
+      if (v >= sze){
+        v = 0;
+      }
+      while (circles[v].radius == 0 && !finished){
         v++;
         if (v >= sze){
           v = 0;
         }
         if (v == sanity){
-          exit(1);
+          finished = true;
         }
         current = v;
       }
@@ -317,9 +320,14 @@ public:
   }
   UINT val(){
     UINT r = ci.val();
-    while ((circles[r].n & mask) == 0 && !ci.isFinished()){
-      ci.nxt();
-      r = ci.val();
+    if (r < circles.size()){
+      while ((circles[r].n & mask) == 0 && !ci.isFinished()){
+        ci.nxt();
+        r = ci.val();
+      }
+    }
+    else{
+      r = 0;
     }
     return r;
   }
@@ -993,12 +1001,14 @@ class optimizationStep{
   UINT counter;
   UINT candidate;
   bool ended;
+  bool untied;
   float bestComp;
 public:
   optimizationStep(float comp){
     bestComp = comp;
     startCycle();
     ended = true;
+    untied = false;
   }
   UINT getCounter(){
     return counter;
@@ -1023,6 +1033,14 @@ public:
   }
   bool hasEnded(){
     return ended;
+  }
+  void setUntie(){
+    untied = true;
+  }
+  bool hasUntied(){
+    bool result = untied;
+    untied = false;
+    return result;
   }
   UINT getCandidate(){
     return candidate;
@@ -1344,6 +1362,7 @@ class borderLine
     vector<vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
     vector<point> circles;
     vector<point> scircles; /**< Circles sorted according to @n */
+    vector<point> debug;
     vector<UINT> relationships;
     UINT ncycles_secure;
     UINT ncyles_old10;
@@ -1895,7 +1914,7 @@ class borderLine
                 for (UINT k = fcirc; k < circles.size(); k++){
                   point c = circles[k];
                   if (c.radius > 0){
-                    float lrad = maxRad() * AIR;
+                    float lrad = maxRad();
                     if (!again && ((c.flags & USED) == 0)){
                       bool inside = (c.n & twoPow(i)) > 0 ? true : false;
                       float dsq1 = sqDistance(c, current);
@@ -1913,7 +1932,13 @@ class borderLine
                           float d1 = sqrt(dsq1 - h * h);
                           float x1 = d1 - t;
                           point pst1 = tp.transformPoint(current, x1);
+                          pst1.flags = setFlag(pst1.flags, DO_NOT_EMBELLISH);
+                          pst1.flags = setFlag(pst1.flags, DELME);
+                          pst1.n = k;
                           point pst2 = tp.transformPoint(current, d1 + t) ;
+                          pst2.flags = setFlag(pst2.flags, DO_NOT_EMBELLISH);
+                          pst2.flags = setFlag(pst2.flags, DELME);
+                          pst2.n = k;
                           newbl.push_back(pst1);
                           tangent tr = tp + rgh;
                           //tolog(toString(__LINE__) + "\n" + "Outside: \n" + tp.croack() + tr.croack());
@@ -1923,6 +1948,9 @@ class borderLine
                           }
                           c.flags = setFlag(c.flags, USED);
                           point newp = tr.transformPoint(c, lrad);
+                          newp.flags = setFlag(newp.flags, DO_NOT_EMBELLISH);
+                          newp.flags = setFlag(newp.flags, DELME);
+                          newp.n = k;
                           newbl.push_back(newp);
                           newbl.push_back(pst2);
                           // Close the bl for the next cycle
@@ -2048,6 +2076,8 @@ class borderLine
                     point c3 = toc1.transformPoint(pt, lrad);
                     tangent toc4 = toc2 + rv;
                     point c4 = toc4.transformPoint(pt, lrad);
+                    q.n = j; c1.n = j; c2.n = j;
+                    c3.n = j; c4.n = j;
                     newpoints.push_back(q);
                     newpoints.push_back(c1);
                     newpoints.push_back(c2);
@@ -2292,13 +2322,17 @@ class borderLine
         //cout << "---" << i << "----\n";
         UINT lm = leftmostCircle(i);
         bl[i].clear();
-        bl[i].push_back(circles[lm]);
+        point toadd = circles[lm];
+        toadd.n = lm;
+        bl[i].push_back(toadd);
         //cout << "-> " << circles[lm].n << endl;
         UINT an = lm;
         UINT st = lm;
         UINT np = nextLeftmostPoint(i, an, st);
         while (np != lm){
-          bl[i].push_back(circles[np]);
+          point toadd = circles[np];
+          toadd.n = np;
+          bl[i].push_back(toadd);
           //cout << circles[np].n << endl;
           an = st;
           st = np;
@@ -2324,14 +2358,19 @@ class borderLine
           tangent lft(-1, 0);
           tangent up(0, 1);
           point current = bl[i][0];
+          UINT n = current.n;
           point p1 = rev.transformPoint(current, current.radius);
           p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
+          p1.n = n;
           point p2 = dwn.transformPoint(current, current.radius);
           p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
+          p2.n = n;
           point p3 = lft.transformPoint(current, current.radius);
           p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
+          p3.n = n;
           point p4 = up.transformPoint(current, current.radius);
           p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
+          p4.n = n;
           newpoints.push_back(p1);
           newpoints.push_back(p2);
           newpoints.push_back(p3);
@@ -2342,11 +2381,12 @@ class borderLine
 
             for (UINT j = 0; j < sz; j++){
               point current = bl[i][j];
+              UINT n = current.n;
               int nj = nextPoint(i, j);
               point next = bl[i][nj];
               if (current.radius > 0){
                 // Point 1
-                float r = maxRadius * AIR;// current.radius;
+                float r = maxRadius;// current.radius;
                 float d = distance(current.x, current.y, prev.x, prev.y);
                 if (d > 0){
                   float ndx = (current.x - prev.x) * (1 - r/d);
@@ -2354,6 +2394,8 @@ class borderLine
                   point np;
                   np.x = prev.x + ndx;
                   np.y = prev.y + ndy;
+                  np.flags = setFlag(np.flags, DELME);
+                  np.n = n;
                   newpoints.push_back(np);
                   tangent t1(current.x - prev.x, current.y - prev.y);
                   tangent t2(next.x - current.x, next.y - current.y);
@@ -2364,14 +2406,20 @@ class borderLine
                   // Point 2
                   point tt2 = t4.transformPoint(current, r);
                   tt2.flags = setFlag(tt2.flags, DO_NOT_EMBELLISH);
+                  tt2.flags = setFlag(tt2.flags, DELME);
+                  tt2.n = n;
 
                   // Point 3
                   point tt3 = t3.transformPoint(current, r);
                   tt3.flags = setFlag(tt3.flags, DO_NOT_EMBELLISH);
+                  tt3.flags = setFlag(tt3.flags, DELME);
+                  tt3.n = n;
 
                   // Point 4
                   point tt4 = t5.transformPoint(current, r);
                   tt4.flags = setFlag(tt4.flags, DO_NOT_EMBELLISH);
+                  tt4.flags = setFlag(tt4.flags, DELME);
+                  tt4.n = n;
 
                   /*if ((current.flags & RIGHT_SIDE) > 0){
                     newpoints.push_back(tt4);
@@ -2395,6 +2443,8 @@ class borderLine
                   point np;
                   np.x = current.x + ndx;
                   np.y = current.y + ndy;
+                  np.flags = setFlag(np.flags, DELME);
+                  np.n = n;
                   newpoints.push_back(np);
                 }
               }
@@ -2843,29 +2893,46 @@ class borderLine
       return result;
     }
 
+    float doNothing(){
+      return 0;
+    }
+
     float outCompactness(optimizationStep *opt, UINT (borderLine::*chooseCandidate)(),
-                         float (borderLine::*countFunct)(), bool logit = false){
+                         float (borderLine::*countFunct)(), float (borderLine::*untieFunct)(),
+                         bool logit = false){
+      float untie = (this->*untieFunct)();
       if (opt->hasEnded()){
         opt->startCycle();
         opt->setCandidate((this->*chooseCandidate)());
       }
       else{
         UINT candidate = opt->getCandidate();
-        UINT i = opt->getCounter();
-        if (i != candidate && circles[i].radius > 0){
-          swapCoords(i, candidate);
-          fixTopology();
-          if (checkTopol()){
+        if (candidate > 0){
+          UINT i = opt->getCounter();
+          if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
-          }
-          else{
-            float newComp = (this->*countFunct)();
-            if (newComp < opt->getBestCompactness()){
-              opt->setBestCompactness(newComp);
-              tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
+            fixTopology();
+            if (checkTopol()){
+              swapCoords(i, candidate);
             }
             else{
-              swapCoords(i, candidate);
+              float newComp = (this->*countFunct)();
+              if (newComp < opt->getBestCompactness()){
+                opt->setBestCompactness(newComp);
+                tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
+              }
+              else if (newComp == opt->getBestCompactness()){
+                float newUntie = (this->*untieFunct)();
+                tolog("Prev untie: " + toString(untie) + ", new untie: " + toString(newUntie) + "\n");
+                opt->setUntie();
+                if (newUntie > untie){
+                  swapCoords(i, candidate);
+                  tolog("Did not swap on untie\n");
+                }
+              }
+              else{
+                swapCoords(i, candidate);
+              }
             }
           }
         }
@@ -3865,15 +3932,39 @@ class borderLine
       return false;
     }
 
+    point getCross(point p1, point p2, point p3, point p4){
+      point result;
+      if (max(p1.x, p2.x) >= min(p3.x, p4.x) &&
+          max(p1.y, p2.y) >= min(p3.y, p4.y) &&
+          min(p1.x, p2.x) <= max(p3.x, p4.x) &&
+          min(p1.y, p2.y) <= max(p3.y, p4.y)){
+        if (p2.x == p1.x){
+          result.x = p1.x;
+          result.y = p3.y + (result.x - p3.x) * (p4.y - p3.y) / (p4.x - p3.x);
+        }
+        else if (p4.x == p3.x){
+          result.x = p3.x;
+          result.y = p1.y + (result.x - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
+        }
+        else{
+          float m1 = (p2.y - p1.y) / (p2.x - p1.x);
+          float m3 = (p4.y - p3.y) / (p4.x - p3.x);
+          result.x = (p3.y - m3 * p3.x - p1.y + m1 * p1.x) / (m1 - m3);
+          result.y = p1.y + m1 * (result.x - p1.x);
+        }
+      }
+      return result;
+    }
+
     /** \brief Do segments p1-p2 and p3-p4 cross?
-     * Points p5 is used in the particular case where p1-p2 crosses p4 exactly.
-     * In that case, the result is positive if p1-p2 crosses p3-p5.
      *
      * \param p1 point
      * \param p2 point
      * \param p3 point
      * \param p4 point
-     * \return bool true if segments cross.
+     * \return crossResult Three possible results: cross, doesnotcross
+     * or cont. The last one means that the answer is ambiguous
+     * and must be deferred.
      *
      */
     crossResult cross(point p1, point p2, point p3, point p4){
@@ -3914,31 +4005,59 @@ class borderLine
     }
 
 
-
     float countCrossings(){
       float result = 0;
-      for (UINT i = 0; i < bl.size()-1; i++){
-        for (UINT ii = 0; ii < bl[i].size(); ii++){
-          point p1 = bl[i][ii];
-          point p2 = bl[i][nextPoint(i, ii)];
-          if (((p1.flags & DO_NOT_EMBELLISH) == 0 ) ||
-              ((p2.flags & DO_NOT_EMBELLISH) == 0 ) ){
-            for (UINT j = i + 1; j < bl.size(); j++){
-              for (UINT jj = 0; jj < bl[j].size(); jj++){
-                point p3 = bl[j][jj];
-                UINT np = nextPoint(j, jj);
-                point p4 = bl[j][np];
-                if (((p3.flags & DO_NOT_EMBELLISH) == 0 ) ||
-                    ((p4.flags & DO_NOT_EMBELLISH) == 0 ) ){
-                  crossResult cr = cont;
-                  while (cr == cont){
-                    p4 = bl[j][np];
-                    cr = cross(p1, p2, p3, p4);
-                    np = nextPoint(j, np);
+      debug.clear();
+      vector<vector<point>> useme = bl;
+      // Unembellish
+      for (UINT i = 0; i < bl.size(); i++){
+        UINT cunem = 0;
+        useme[i].clear();
+        for (UINT j = 0; j < bl[i].size(); j++){
+          if ((bl[i][j].flags & DELME) == 0){
+            useme[i].push_back(bl[i][j]);
+          }
+          else if (bl[i][j].n != cunem){
+            useme[i].push_back(circles[bl[i][j].n]);
+            cunem = bl[i][j].n;
+          }
+        }
+      }
+      //
+      for (UINT i = 0; i < useme.size()-1; i++){
+        for (UINT ii = 0; ii < useme[i].size(); ii++){
+          point p1 = useme[i][ii];
+          UINT npi =  0;
+          if (ii < (useme[i].size() - 1)){
+            npi = ii + 1;
+          }
+          point p2 = useme[i][npi];
+          for (UINT j = i + 1; j < useme.size(); j++){
+            for (UINT jj = 0; jj < useme[j].size(); jj++){
+              point p3 = useme[j][jj];
+              UINT np =  0;
+              if (jj < (useme[j].size() - 1)){
+                np = jj + 1;
+              }
+              point p4 = useme[j][np];
+              if (p1 != p3 && p1 != p4 && p2 != p3 && p2 != p4){
+                crossResult cr = cont;
+                while (cr == cont){
+                  p4 = useme[j][np];
+                  cr = cross(p1, p2, p3, p4);
+                  np =  0;
+                  if (jj < (useme[j].size() - 1)){
+                    np = jj + 1;
                   }
-                  if (cr == crosses){
-                    result++;
-                  }
+                }
+                if (cr == crosses){
+                  result = result + 1;
+                  /*point crss = getCross(p1, p2, p3, p4);
+                  tolog("----------\n");
+                  tolog(p1.croack() + p2.croack() + p3.croack()+p4.croack() + crss.croack());
+                  tolog(toString(result) + "\n");
+                  tolog("----------");
+                  debug.push_back(crss);*/
                 }
               }
             }
@@ -3947,6 +4066,63 @@ class borderLine
       }
 
       return result;
+    }
+
+    void showCrossings(){
+      debug.clear();
+      vector<vector<point>> useme = bl;
+      // Unembellish
+      for (UINT i = 0; i < bl.size(); i++){
+        UINT cunem = 0;
+        useme[i].clear();
+        for (UINT j = 0; j < bl[i].size(); j++){
+          if ((bl[i][j].flags & DELME) == 0){
+            useme[i].push_back(bl[i][j]);
+          }
+          else if (bl[i][j].n != cunem){
+            useme[i].push_back(circles[bl[i][j].n]);
+            cunem = bl[i][j].n;
+          }
+        }
+      }for (UINT i = 0; i < useme.size()-1; i++){
+        for (UINT ii = 0; ii < useme[i].size(); ii++){
+          point p1 = useme[i][ii];
+          UINT npi =  0;
+          if (ii < (useme[i].size() - 1)){
+            npi = ii + 1;
+          }
+          point p2 = useme[i][npi];
+          for (UINT j = i + 1; j < useme.size(); j++){
+            for (UINT jj = 0; jj < useme[j].size(); jj++){
+              point p3 = useme[j][jj];
+              UINT np =  0;
+              if (jj < (useme[j].size() - 1)){
+                np = jj + 1;
+              }
+              point p4 = useme[j][np];
+              if (p1 != p3 && p1 != p4 && p2 != p3 && p2 != p4){
+                crossResult cr = cont;
+                while (cr == cont){
+                  p4 = useme[j][np];
+                  cr = cross(p1, p2, p3, p4);
+                  np =  0;
+                  if (jj < (useme[j].size() - 1)){
+                    np = jj + 1;
+                  }
+                }
+                if (cr == crosses){
+                  point crss = getCross(p1, p2, p3, p4);
+                  debug.push_back(crss);
+                }
+              }
+            }
+          }
+        }
+      }
+      vector<vector<point>> delme = bl;
+      bl = useme;
+      writeSVG("starting.svg");
+      bl = delme;
     }
 
     UINT countOutsiders(){
@@ -4065,7 +4241,7 @@ public:
         svgScale.setMaxY(490.0f);
         initBlData(&blSettings);
         minRat = 0;
-        showThis = false;
+        showThis = true;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -4733,6 +4909,22 @@ public:
           svg.addLine("<use class=\"q" + num(i) + " outLine\" xlink:href=\"#bl" + num(i) + "\"/>");
         }
       }
+      if (showThis){
+        for (UINT i = 0; i < bl.size(); i++){
+          for (UINT j = 0; j < bl[i].size(); j++){
+            point nxt = place(svgScale, bl[i][j]);
+            if ((bl[i][j].flags & DELME) > 0){
+              string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", nxt.x, nxt.y);
+              svg.addLine(tmp);
+            }
+          }
+        }
+        for (UINT i = 0; i < debug.size(); i++){
+          point t = place(svgScale, debug[i]);
+          string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", t.x, t.y);
+          svg.addLine(tmp);
+        }
+      }
       for (i = 1; i < circles.size(); i++){
         //printf("%d\n", i);
         if (circles[i].radius > 0){
@@ -5133,6 +5325,7 @@ public:
 
     void writeSVG(string fname = ""){
         fileText tmp = toSVG();
+        resetScale();
         ofstream result;
         if (fname == ""){
           fname = blSettings.fname.c_str();
@@ -5176,20 +5369,21 @@ public:
       }
       bQuit = false;
       cout << "Third step (finding best geometry)...\n";
-      bQuit = false;
       // Compactness
+      fixTopology();
       float bestOut = compactness();
       optimizationStep opt(bestOut);
-      bestOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness);
+      bestOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness, &borderLine::countCrossings);
       UINT outCount = 0;
-      UINT maxOutCount = 8;
+      UINT maxOutCount = 10;
 
       while (!bQuit){
-        float thisOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness);
+        float thisOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness, &borderLine::countCrossings);
         if (opt.hasEnded()){
-          if (thisOut < bestOut){
+          if (thisOut < bestOut || opt.hasUntied()){
             bestOut = thisOut;
             outCount = 0;
+            showCrossings();
           }
           else{
             outCount++;
@@ -5205,28 +5399,28 @@ public:
 
       //Crossings
       resetOptimize();
-      bQuit = false;
-
+      fixTopology(false);
       float bestCross = countCrossings();
       optimizationStep cropt(bestCross);
-      bestCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings);
-      tolog(toString(bestCross) + "\n");
+      bestCross = outCompactness(&cropt, &borderLine::furthestPoint, &borderLine::countCrossings, &borderLine::compactness);
+      tolog("New bestCross: " + toString(bestCross) + "\n");
       UINT crossCount = 0;
+      bQuit = false;
       while (!bQuit){
-        float thisCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings);
+        float thisCross = outCompactness(&cropt, &borderLine::furthestPoint, &borderLine::countCrossings, &borderLine::compactness);
         if (cropt.hasEnded()){
-          if (thisCross < bestCross){
+          if (thisCross < bestCross || opt.hasUntied()){
             bestCross = thisCross;
             crossCount = 0;
-            tolog("New bestCross: " + toString(bestCross) + "\n");
+            tolog("New new bestCross: " + toString(bestCross) + "\n");
           }
           else{
             crossCount++;
             tolog("-> " + toString(crossCount));
           }
         }
-        //**********//
-        fixTopology();
+
+        fixTopology(false);
         //toOGL(bl, hDC);
         if (crossCount > maxOutCount){
           bQuit = true;

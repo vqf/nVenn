@@ -1,0 +1,359 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="500">
+<defs>
+<style type="text/css"><![CDATA[
+  .borderLine {
+	   stroke: none;
+	   fill-opacity: 0.4;
+  }
+  .outLine {
+	   stroke-width: 1;
+	   fill: none;
+  }
+  .circle {
+	   stroke: #888888;
+	   stroke-width: 0.5;
+	   fill: none;
+    pointer-events: all;
+  }
+  .spcircle {
+	   stroke: #FF2222;
+	   stroke-width: 1;
+	   fill: none;
+    pointer-events: all;
+  }
+  .tLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 14px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .nLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 10px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .belong {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 5px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .p0{
+    stroke: none;
+    fill: #e6194b;
+  }
+  .q0{
+    fill: none;
+    stroke: #e6194b;
+  }
+  .p1{
+    stroke: none;
+    fill: #3cb44b;
+  }
+  .q1{
+    fill: none;
+    stroke: #3cb44b;
+  }
+  .p2{
+    stroke: none;
+    fill: #ffe119;
+  }
+  .q2{
+    fill: none;
+    stroke: #ffe119;
+  }
+  .p3{
+    stroke: none;
+    fill: #0082c8;
+  }
+  .q3{
+    fill: none;
+    stroke: #0082c8;
+  }
+  .p4{
+    stroke: none;
+    fill: #f58231;
+  }
+  .q4{
+    fill: none;
+    stroke: #f58231;
+  }
+  .p5{
+    stroke: none;
+    fill: #911eb4;
+  }
+  .q5{
+    fill: none;
+    stroke: #911eb4;
+  }
+]]>
+</style>
+</defs>
+<!-- isDone: 0 -->
+<rect width="700" height="500" style="fill:#fff;stroke-width:0" />
+<circle class="spcircle" cx="355.5567" cy="345.6955" r="2" />
+<circle class="spcircle" cx="295.4193" cy="280.3477" r="2" />
+<circle class="spcircle" cx="287.7778" cy="272.0442" r="2" />
+<circle class="spcircle" cx="294.4853" cy="279.3328" r="2" />
+<circle class="spcircle" cx="355.5567" cy="345.6955" r="2" />
+<circle class="spcircle" cx="296.9700" cy="282.0327" r="2" />
+<circle class="spcircle" cx="345.2426" cy="354.7415" r="2" />
+<circle class="spcircle" cx="345.2426" cy="354.7415" r="2" />
+<circle class="spcircle" cx="346.2007" cy="315.8891" r="2" />
+<circle class="spcircle" cx="385.8303" cy="311.1913" r="2" />
+<circle class="spcircle" cx="418.0197" cy="267.9914" r="2" />
+<circle class="spcircle" cx="301.9122" cy="125.4951" r="2" />
+<circle class="spcircle" cx="326.8405" cy="156.0891" r="2" />
+<circle class="spcircle" cx="381.9184" cy="223.6850" r="2" />
+<circle class="spcircle" cx="290.8350" cy="111.9004" r="2" />
+<circle class="spcircle" cx="224.5684" cy="137.7536" r="2" />
+<circle class="spcircle" cx="224.9956" cy="117.6339" r="2" />
+<circle class="spcircle" cx="217.2582" cy="146.4572" r="2" />
+<circle class="spcircle" cx="249.4217" cy="112.1099" r="2" />
+<circle class="spcircle" cx="251.2678" cy="110.3406" r="2" />
+<circle class="spcircle" cx="232.4109" cy="128.4134" r="2" />
+<circle class="spcircle" cx="249.4217" cy="112.1099" r="2" />
+<circle class="spcircle" cx="245.5228" cy="115.8467" r="2" />
+<circle class="spcircle" cx="279.2389" cy="135.4525" r="2" />
+<circle class="spcircle" cx="259.2984" cy="114.6469" r="2" />
+<circle class="spcircle" cx="271.2697" cy="127.1376" r="2" />
+<circle class="spcircle" cx="289.3427" cy="145.9946" r="2" />
+<circle class="spcircle" cx="272.5455" cy="165.9967" r="2" />
+<circle class="spcircle" cx="253.6886" cy="184.0695" r="2" />
+<circle class="spcircle" cx="239.6385" cy="173.4825" r="2" />
+<circle class="spcircle" cx="233.6867" cy="167.2726" r="2" />
+<circle class="spcircle" cx="215.6138" cy="148.4155" r="2" />
+<circle class="spcircle" cx="217.2582" cy="146.4572" r="2" />
+<circle class="spcircle" cx="223.0907" cy="207.3488" r="2" />
+<circle class="spcircle" cx="222.5545" cy="232.6062" r="2" />
+<circle class="spcircle" cx="222.5545" cy="232.6062" r="2" />
+<circle class="spcircle" cx="222.1354" cy="252.3426" r="2" />
+<circle class="spcircle" cx="222.2776" cy="245.6464" r="2" />
+<circle class="spcircle" cx="224.1123" cy="159.2337" r="2" />
+<circle class="spcircle" cx="233.5104" cy="257.4097" r="2" />
+<circle class="spcircle" cx="260.4900" cy="234.2934" r="2" />
+<circle class="spcircle" cx="243.4592" cy="250.6161" r="2" />
+<circle class="spcircle" cx="239.6101" cy="254.3051" r="2" />
+<circle class="spcircle" cx="241.5696" cy="252.4270" r="2" />
+<circle class="spcircle" cx="259.1610" cy="235.5671" r="2" />
+<circle class="spcircle" cx="245.3337" cy="248.8194" r="2" />
+<circle class="spcircle" cx="261.9707" cy="232.8742" r="2" />
+<circle class="spcircle" cx="282.8004" cy="226.6292" r="2" />
+<circle class="spcircle" cx="299.1231" cy="243.6601" r="2" />
+<circle class="spcircle" cx="280.9894" cy="224.7397" r="2" />
+<circle class="spcircle" cx="297.8493" cy="242.3310" r="2" />
+<circle class="spcircle" cx="297.8036" cy="242.2834" r="2" />
+<circle class="spcircle" cx="284.5969" cy="228.5037" r="2" />
+<circle class="spcircle" cx="300.5421" cy="245.1407" r="2" />
+<circle class="spcircle" cx="279.4823" cy="292.1399" r="2" />
+<circle class="spcircle" cx="306.7872" cy="265.9703" r="2" />
+<circle class="spcircle" cx="289.7564" cy="282.2930" r="2" />
+<circle class="spcircle" cx="281.7356" cy="289.9803" r="2" />
+<circle class="spcircle" cx="304.4791" cy="268.1826" r="2" />
+<circle class="spcircle" cx="291.0854" cy="281.0193" r="2" />
+<circle class="spcircle" cx="308.6768" cy="264.1594" r="2" />
+<circle class="spcircle" cx="304.4791" cy="268.1826" r="2" />
+<circle class="spcircle" cx="296.6212" cy="275.7136" r="2" />
+<circle class="spcircle" cx="298.3849" cy="274.0233" r="2" />
+<circle class="spcircle" cx="288.2757" cy="283.7122" r="2" />
+<circle class="spcircle" cx="304.9127" cy="267.7670" r="2" />
+<circle class="spcircle" cx="257.0139" cy="279.0724" r="2" />
+<circle class="spcircle" cx="267.4460" cy="289.9572" r="2" />
+<circle class="spcircle" cx="251.1233" cy="272.9263" r="2" />
+<circle class="spcircle" cx="269.4829" cy="292.0824" r="2" />
+<circle class="spcircle" cx="269.2570" cy="291.8467" r="2" />
+<circle class="spcircle" cx="252.3971" cy="274.2554" r="2" />
+<circle class="spcircle" cx="257.0139" cy="279.0724" r="2" />
+<circle class="spcircle" cx="239.4417" cy="260.7379" r="2" />
+<circle class="spcircle" cx="265.6495" cy="288.0827" r="2" />
+<circle class="spcircle" cx="249.7042" cy="271.4457" r="2" />
+<circle class="spcircle" cx="233.5104" cy="257.4097" r="2" />
+<circle class="spcircle" cx="220.6827" cy="320.7617" r="2" />
+<circle class="spcircle" cx="220.6827" cy="320.7617" r="2" />
+<circle class="spcircle" cx="221.6630" cy="274.5933" r="2" />
+<circle class="spcircle" cx="221.9317" cy="261.9370" r="2" />
+<circle class="spcircle" cx="231.4476" cy="347.5724" r="2" />
+<circle class="spcircle" cx="247.8758" cy="331.8274" r="2" />
+<circle class="spcircle" cx="286.9901" cy="350.4343" r="2" />
+<circle class="spcircle" cx="270.5823" cy="333.3146" r="2" />
+<circle class="spcircle" cx="286.3273" cy="349.7428" r="2" />
+<circle class="spcircle" cx="263.7842" cy="326.2216" r="2" />
+<circle class="spcircle" cx="268.0332" cy="330.6549" r="2" />
+<circle class="spcircle" cx="289.2776" cy="368.1962" r="2" />
+<circle class="spcircle" cx="268.4119" cy="388.1942" r="2" />
+<circle class="spcircle" cx="284.8401" cy="372.4492" r="2" />
+<circle class="spcircle" cx="245.7055" cy="386.7071" r="2" />
+<circle class="spcircle" cx="229.9604" cy="370.2789" r="2" />
+<circle class="spcircle" cx="232.1561" cy="336.7561" r="2" />
+<circle class="spcircle" cx="235.3060" cy="331.0041" r="2" />
+<circle class="spcircle" cx="257.2861" cy="290.8659" r="2" />
+<circle class="spcircle" cx="259.0440" cy="287.6557" r="2" />
+<circle class="spcircle" cx="258.0011" cy="289.5602" r="2" />
+<circle class="spcircle" cx="255.5944" cy="280.7012" r="2" />
+<circle class="spcircle" cx="204.8779" cy="338.8951" r="2" />
+<circle class="spcircle" cx="252.2363" cy="284.5544" r="2" />
+<circle class="spcircle" cx="279.9043" cy="295.4166" r="2" />
+<circle class="spcircle" cx="278.8329" cy="287.0970" r="2" />
+<circle class="spcircle" cx="293.4007" cy="400.2098" r="2" />
+<circle class="spcircle" cx="278.6367" cy="285.5739" r="2" />
+<circle class="spcircle" cx="293.4007" cy="400.2098" r="2" />
+<circle class="spcircle" cx="262.6865" cy="332.7974" r="2" />
+<circle class="spcircle" cx="267.2116" cy="333.0938" r="2" />
+<circle class="spcircle" cx="293.4007" cy="400.2098" r="2" />
+<circle class="spcircle" cx="401.0977" cy="195.3224" r="2" />
+<circle class="spcircle" cx="280.5076" cy="134.8953" r="2" />
+<circle class="spcircle" cx="240.0584" cy="172.6233" r="2" />
+<circle class="spcircle" cx="264.5198" cy="232.9090" r="2" />
+<circle class="spcircle" cx="289.0037" cy="224.4981" r="2" />
+<circle class="spcircle" cx="243.6455" cy="240.0799" r="2" />
+<circle class="spcircle" cx="268.0258" cy="231.7046" r="2" />
+<circle class="spcircle" cx="307.9487" cy="269.3513" r="2" />
+<circle class="spcircle" cx="308.9183" cy="272.1738" r="2" />
+<circle class="spcircle" cx="300.5074" cy="247.6899" r="2" />
+<circle class="spcircle" cx="307.9487" cy="269.3513" r="2" />
+<circle class="spcircle" cx="298.2227" cy="241.0391" r="2" />
+<circle class="spcircle" cx="293.3365" cy="226.8154" r="2" />
+<circle class="spcircle" cx="301.7118" cy="251.1957" r="2" />
+<circle class="spcircle" cx="269.9832" cy="289.0857" r="2" />
+<circle class="spcircle" cx="283.6144" cy="284.4030" r="2" />
+<circle class="spcircle" cx="285.7266" cy="283.6774" r="2" />
+<circle class="spcircle" cx="261.2427" cy="292.0883" r="2" />
+<circle class="spcircle" cx="300.2796" cy="278.6780" r="2" />
+<circle class="spcircle" cx="303.5879" cy="277.5415" r="2" />
+<circle class="spcircle" cx="282.2206" cy="284.8818" r="2" />
+<circle class="spcircle" cx="306.6009" cy="276.5065" r="2" />
+<circle class="spcircle" cx="244.9317" cy="254.9026" r="2" />
+<circle class="spcircle" cx="249.7390" cy="268.8965" r="2" />
+<circle class="spcircle" cx="241.3281" cy="244.4126" r="2" />
+<circle class="spcircle" cx="254.3031" cy="282.1827" r="2" />
+<circle class="spcircle" cx="246.7639" cy="260.2361" r="2" />
+<circle class="spcircle" cx="256.9099" cy="289.7710" r="2" />
+<circle class="spcircle" cx="248.5346" cy="265.3907" r="2" />
+<circle class="spcircle" cx="202.6190" cy="250.1510" r="2" />
+<circle class="spcircle" cx="209.0159" cy="236.5030" r="2" />
+<circle class="spcircle" cx="184.8889" cy="286.5577" r="2" />
+<circle class="spcircle" cx="196.2152" cy="263.6996" r="2" />
+<circle class="spcircle" cx="167.3163" cy="325.9565" r="2" />
+<circle class="spcircle" cx="181.9053" cy="365.2550" r="2" />
+<circle class="spcircle" cx="164.8098" cy="384.8709" r="2" />
+<circle class="spcircle" cx="133.7815" cy="394.1605" r="2" />
+<circle class="spcircle" cx="177.2646" cy="247.3037" r="2" />
+<circle class="spcircle" cx="174.0378" cy="246.9413" r="2" />
+<circle class="spcircle" cx="233.9050" cy="253.6644" r="2" />
+<circle class="spcircle" cx="246.5437" cy="255.0837" r="2" />
+<circle class="spcircle" cx="270.3005" cy="287.1843" r="2" />
+<circle class="spcircle" cx="288.7032" cy="269.2975" r="2" />
+<circle class="spcircle" cx="289.2029" cy="267.8142" r="2" />
+<circle class="spcircle" cx="283.5390" cy="284.6270" r="2" />
+<circle class="spcircle" cx="305.0287" cy="268.3677" r="2" />
+<circle class="spcircle" cx="298.5807" cy="277.3014" r="2" />
+<circle class="spcircle" cx="301.2643" cy="275.9703" r="2" />
+<circle class="spcircle" cx="283.9859" cy="284.5408" r="2" />
+<circle class="spcircle" cx="306.0397" cy="273.6016" r="2" />
+<circle class="spcircle" cx="255.5944" cy="280.7013" r="2" />
+<circle class="spcircle" cx="245.4867" cy="260.3238" r="2" />
+<circle class="spcircle" cx="259.8148" cy="289.2098" r="2" />
+<circle class="spcircle" cx="248.8756" cy="267.1560" r="2" />
+<circle class="spcircle" cx="244.2067" cy="242.9848" r="2" />
+<circle class="spcircle" cx="266.2605" cy="232.0456" r="2" />
+<circle class="spcircle" cx="290.4315" cy="227.3766" r="2" />
+<circle class="spcircle" cx="301.3708" cy="249.4304" r="2" />
+<circle class="spcircle" cx="305.0287" cy="268.3677" r="2" />
+<circle class="spcircle" cx="299.1934" cy="238.1580" r="2" />
+<circle class="spcircle" cx="252.2363" cy="284.5544" r="2" />
+<circle class="spcircle" cx="302.9855" cy="280.8707" r="2" />
+<circle class="spcircle" cx="200.7631" cy="297.5035" r="2" />
+<circle class="spcircle" cx="197.3945" cy="263.6189" r="2" />
+<circle class="spcircle" cx="185.4599" cy="286.9514" r="2" />
+<circle class="spcircle" cx="196.2778" cy="263.6953" r="2" />
+<circle onclick="fromCircle(1)" class="circle" cx="480.9706" cy="345.2497" r="9.0294" />
+<text class="tLabel" x="480.97" y="325.25"></text>
+<text class="nLabel" x="480.97" y="340.25">7</text>
+<text class="belong" x="480.97" y="350.25">(1)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="434.4066" cy="245.9993" r="9.0294" />
+<text class="tLabel" x="434.41" y="226.00"></text>
+<text class="nLabel" x="434.41" y="241.00">10</text>
+<text class="belong" x="434.41" y="251.00">(2)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="252.4782" cy="147.2050" r="9.0294" />
+<text class="tLabel" x="252.48" y="127.21"></text>
+<text class="nLabel" x="252.48" y="142.21">49</text>
+<text class="belong" x="252.48" y="152.21">(2, 3)</text>
+<circle onclick="fromCircle(14)" class="circle" cx="197.2042" cy="261.7038" r="9.0294" />
+<text class="tLabel" x="197.20" y="241.70"></text>
+<text class="nLabel" x="197.20" y="256.70">2</text>
+<text class="belong" x="197.20" y="266.70">(2, 3, 4)</text>
+<circle onclick="fromCircle(10)" class="circle" cx="368.7280" cy="334.1435" r="9.0294" />
+<text class="tLabel" x="368.73" y="314.14"></text>
+<text class="nLabel" x="368.73" y="329.14">3</text>
+<text class="belong" x="368.73" y="339.14">(2, 4)</text>
+<circle onclick="fromCircle(26)" class="circle" cx="100.0323" cy="459.1989" r="9.0294" />
+<text class="tLabel" x="100.03" y="439.20"></text>
+<text class="nLabel" x="100.03" y="454.20">1</text>
+<text class="belong" x="100.03" y="464.20">(2, 4, 5)</text>
+<circle onclick="fromCircle(38)" class="circle" cx="343.2650" cy="107.3341" r="9.0294" />
+<text class="tLabel" x="343.26" y="87.33"></text>
+<text class="nLabel" x="343.26" y="102.33">4</text>
+<text class="belong" x="343.26" y="112.33">(2, 3, 6)</text>
+<circle onclick="fromCircle(4)" class="circle" cx="43.6879" cy="116.8145" r="19.4116" />
+<text class="tLabel" x="43.69" y="96.81"></text>
+<text class="nLabel" x="43.69" y="111.81">287</text>
+<text class="belong" x="43.69" y="121.81">(3)</text>
+<circle onclick="fromCircle(5)" class="circle" cx="226.7863" cy="33.2947" r="9.0294" />
+<text class="tLabel" x="226.79" y="13.29"></text>
+<text class="nLabel" x="226.79" y="28.29">1</text>
+<text class="belong" x="226.79" y="38.29">(1, 3)</text>
+<circle onclick="fromCircle(12)" class="circle" cx="151.2464" cy="360.5034" r="9.0294" />
+<text class="tLabel" x="151.25" y="340.50"></text>
+<text class="nLabel" x="151.25" y="355.50">16</text>
+<text class="belong" x="151.25" y="365.50">(3, 4)</text>
+<circle onclick="fromCircle(44)" class="circle" cx="258.1439" cy="360.0108" r="9.0294" />
+<text class="tLabel" x="258.14" y="340.01"></text>
+<text class="nLabel" x="258.14" y="355.01">1</text>
+<text class="belong" x="258.14" y="365.01">(3, 4, 6)</text>
+<circle onclick="fromCircle(20)" class="circle" cx="19.0294" cy="229.5339" r="9.0294" />
+<text class="tLabel" x="19.03" y="209.53"></text>
+<text class="nLabel" x="19.03" y="224.53">2</text>
+<text class="belong" x="19.03" y="234.53">(3, 5)</text>
+<circle onclick="fromCircle(36)" class="circle" cx="154.5625" cy="123.7687" r="9.0294" />
+<text class="tLabel" x="154.56" y="103.77"></text>
+<text class="nLabel" x="154.56" y="118.77">39</text>
+<text class="belong" x="154.56" y="128.77">(3, 6)</text>
+<circle onclick="fromCircle(8)" class="circle" cx="217.5840" cy="466.7053" r="9.0294" />
+<text class="tLabel" x="217.58" y="446.71"></text>
+<text class="nLabel" x="217.58" y="461.71">20</text>
+<text class="belong" x="217.58" y="471.71">(4)</text>
+<circle onclick="fromCircle(16)" class="circle" cx="41.6097" cy="342.1363" r="9.0294" />
+<text class="tLabel" x="41.61" y="322.14"></text>
+<text class="nLabel" x="41.61" y="337.14">2</text>
+<text class="belong" x="41.61" y="347.14">(5)</text>
+<circle onclick="fromCircle(32)" class="circle" cx="440.9993" cy="136.3153" r="9.0294" />
+<text class="tLabel" x="441.00" y="116.32"></text>
+<text class="nLabel" x="441.00" y="131.32">39</text>
+<text class="belong" x="441.00" y="141.32">(6)</text>
+<circle onclick="fromCircle(47)" class="circle" cx="275.1232" cy="258.2932" r="9.0294" />
+<text class="tLabel" x="275.12" y="238.29"></text>
+<text class="nLabel" x="275.12" y="253.29">1</text>
+<text class="belong" x="275.12" y="263.29">(1, 2, 3, 4, 6)</text>
+<rect class="p0 borderLine" x="500.00" y="50.00" width="30.00" height="15.00" />
+<rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="65.00">iba</text>
+<rect class="p1 borderLine" x="500.00" y="90.00" width="30.00" height="15.00" />
+<rect class="q1" x="500.00" y="90.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="105.00">ic</text>
+<rect class="p2 borderLine" x="500.00" y="130.00" width="30.00" height="15.00" />
+<rect class="q2" x="500.00" y="130.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="145.00">ida</text>
+<rect class="p3 borderLine" x="500.00" y="170.00" width="30.00" height="15.00" />
+<rect class="q3" x="500.00" y="170.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="185.00">iea</text>
+<rect class="p4 borderLine" x="500.00" y="210.00" width="30.00" height="15.00" />
+<rect class="q4" x="500.00" y="210.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="225.00">iss</text>
+<rect class="p5 borderLine" x="500.00" y="250.00" width="30.00" height="15.00" />
+<rect class="q5" x="500.00" y="250.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="265.00">nas</text>
+</svg>
