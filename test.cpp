@@ -170,10 +170,15 @@ WinMain (HINSTANCE hInstance,
     UINT nr = 5;
     float r = 0.3;
     float d = 1;
+    UINT counter = 0;
     for (UINT j = 0; j < nr; j++){
       for (UINT i = 0; i < np; i++){
         point t;
         t.x = i + 0.1*std::sin(i); t.y = j + 0.1*std::cos(j); t.radius = r;
+        if (counter < 11){
+          counter++;
+          t.flags = setFlag(t.flags, ANCHORED);
+        }
         univ.addPoint(t);
       }
     }

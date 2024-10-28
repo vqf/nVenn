@@ -1,302 +1,696 @@
+Next candidate: 47
+Checking 1
+Undo on checkTopol
+Checking 2
+Undo on checkTopol
+Checking 6
+Undo on checkTopol
+Checking 14
+Undo on checkTopol
+Checking 10
+Swapping 12 with 63 -> 509.681
+Checking 26
+Undo on checkTopol
+Checking 38
+Swapping 21 with 63 -> 509.215
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Undo on checkTopol
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Next candidate: 26
+Checking 1
+Checking 2
+Swapping 7 with 13 -> 506.965
+Checking 6
+Checking 14
+Swapping 9 with 13 -> 504.478
+Checking 10
+Checking 38
+Undo on checkTopol
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Swapping 31 with 13 -> 503.547
+Checking 20
+Checking 36
+Checking 8
+Swapping 39 with 13 -> 502.97
+Checking 16
+Checking 32
+Checking 47
 Next candidate: 14
 Checking 1
 Checking 2
-Swapping 5 with 7 -> 210.664
 Checking 6
-Swapping 6 with 7 -> 209.371
+Swapping 8 with 9 -> 501.64
 Checking 10
+Checking 26
+Checking 38
 Checking 4
-Swapping 9 with 7 -> 207.978
 Checking 5
-Checking 13
-Swapping 11 with 7 -> 207.088
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
-Next candidate: 13
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 44
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
-Swapping 8 with 11 -> 206.93
+Checking 26
+Swapping 13 with 31 -> 501.379
+Checking 38
+Swapping 21 with 31 -> 501.044
 Checking 4
 Checking 5
-Swapping 10 with 11 -> 204.449
 Checking 12
-Swapping 12 with 11 -> 203.703
+Checking 20
+Checking 36
 Checking 8
-Checking 9
-Next candidate: 9
+Undo on checkTopol
+Checking 16
+Checking 32
+Undo on checkTopol
+Checking 47
+Next candidate: 38
 Checking 1
 Checking 2
 Checking 6
-Swapping 6 with 14 -> 202.139
+Swapping 8 with 21 -> 500.959
 Checking 14
+Swapping 9 with 21 -> 500.716
 Checking 10
+Checking 26
 Checking 4
 Checking 5
-Checking 13
 Checking 12
+Checking 44
+Swapping 31 with 21 -> 500.559
+Checking 20
+Checking 36
 Checking 8
+Undo on checkTopol
+Checking 16
+Checking 32
+Undo on checkTopol
+Checking 47
+Next candidate: 36
+Checking 1
+Swapping 1 with 36 -> 499.794
+Checking 2
+Checking 6
+Swapping 8 with 36 -> 498.315
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Swapping 23 with 36 -> 498.054
+Checking 5
+Swapping 24 with 36 -> 497.868
+Checking 12
+Swapping 28 with 36 -> 495.232
+Checking 44
+Checking 20
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 6
+Checking 1
+Checking 2
+Checking 14
+Swapping 9 with 8 -> 494.467
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Swapping 24 with 8 -> 494.272
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 10
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Swapping 63 with 12 -> 493.584
+Next candidate: 5
+Checking 1
+Checking 2
+Checking 6
+Swapping 8 with 24 -> 493.553
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Swapping 23 with 24 -> 493.468
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 20
+Checking 1
+Checking 2
+Undo on checkTopol
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
 Next candidate: 12
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Undo on checkTopol
+Checking 38
+Swapping 21 with 28 -> 493.448
 Checking 4
 Checking 5
-Checking 13
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
-Next candidate: 6
-Checking 1
-Checking 2
-Checking 14
-Checking 10
-Checking 4
-Swapping 9 with 6 -> 201.754
-Checking 5
-Checking 13
-Checking 12
-Checking 8
-Checking 9
-Next candidate: 5
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 16
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
-Checking 4
-Checking 13
-Checking 12
-Checking 8
-Checking 9
-Next candidate: 10
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Swapping 7 with 8 -> 200.217
+Checking 26
+Checking 38
+Undo on checkTopol
 Checking 4
 Checking 5
-Checking 13
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
-Next candidate: 2
-Checking 1
-Checking 6
-Checking 14
-Checking 10
-Checking 4
-Checking 5
-Checking 13
-Checking 12
-Checking 8
-Checking 9
+Checking 32
+Checking 47
 Next candidate: 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
-Next candidate: 4
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 32
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Checking 38
+Checking 4
 Checking 5
-Checking 13
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
+Checking 16
+Checking 47
 Next candidate: 8
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
 Checking 12
-Checking 9
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Error in getting furthest point
-Next candidate: 0
-Next candidate: 1
-New bestCross: 13
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 4
-Checking 5
-Checking 13
-Checking 12
-Checking 8
-Checking 9
--> 1Next candidate: 2
+Checking 44
+Checking 20
+Checking 36
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 2
 Checking 1
 Checking 6
 Checking 14
+Swapping 9 with 7 -> 493.034
 Checking 10
-Prev untie: 200.217, new untie: 201.796
-Did not swap on untie
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Swapping 13 with 5 -> 12
-Checking 9
-New new bestCross: 12
+Checking 16
+Checking 32
+Checking 47
 Next candidate: 4
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Checking 38
 Checking 5
-Checking 13
 Checking 12
-Prev untie: 201.053, new untie: 201.623
-Did not swap on untie
+Checking 44
+Checking 20
+Checking 36
+Swapping 36 with 23 -> 492.58
 Checking 8
-Checking 9
--> 1Next candidate: 8
-Checking 1
-Checking 2
-Checking 6
-Swapping 6 with 13 -> 11
-Checking 14
-Checking 10
-Checking 4
-Checking 5
-Swapping 10 with 13 -> 9
-Checking 13
-Checking 12
-Checking 9
-Prev untie: 207.488, new untie: 207.992
-Did not swap on untie
-New new bestCross: 9
-Next candidate: 6
-Checking 1
-Checking 2
-Prev untie: 207.488, new untie: 203.261
-Checking 14
-Checking 10
-Checking 4
-Checking 5
-Checking 13
-Checking 12
-Prev untie: 203.261, new untie: 203.541
-Did not swap on untie
-Checking 8
-Checking 9
--> 1Next candidate: 10
-Checking 1
-Checking 2
-Prev untie: 203.261, new untie: 203.321
-Did not swap on untie
-Checking 6
-Checking 14
-Checking 4
-Checking 5
-Checking 13
-Checking 12
-Checking 8
-Checking 9
--> 2Next candidate: 5
-Checking 1
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 0
+Next candidate: 1
+New bestCross: 52
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Swapping 13 with 1 -> 39
+Checking 38
 Checking 4
-Swapping 9 with 10 -> 8
-Checking 13
-Swapping 11 with 10 -> 7
+Checking 5
+Swapping 24 with 1 -> 38
 Checking 12
+Checking 44
+Checking 20
+Swapping 32 with 1 -> 30
+Checking 36
 Checking 8
-Swapping 13 with 10 -> 5
-Checking 9
-New new bestCross: 5
-Next candidate: 12
+Checking 16
+Swapping 51 with 1 -> 29
+Checking 32
+Checking 47
+New new bestCross: 29
+Next candidate: 2
 Checking 1
-Checking 2
 Checking 6
-Checking 14
-Prev untie: 204.149, new untie: 205.594
+Prev untie: 498.426, new untie: 503.04
 Did not swap on untie
+Checking 14
+Swapping 9 with 7 -> 26
 Checking 10
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
+Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
--> 1Next candidate: 9
+Prev untie: 498.994, new untie: 500.363
+Did not swap on untie
+Checking 16
+Undo on checkTopol
+Checking 32
+Checking 47
+Undo on checkTopol
+New new bestCross: 26
+Next candidate: 4
+Checking 1
+Checking 2
+Checking 6
+Undo on checkTopol
+Checking 14
+Undo on checkTopol
+Checking 10
+Undo on checkTopol
+Checking 26
+Swapping 13 with 23 -> 22
+Checking 38
+Undo on checkTopol
+Checking 5
+Prev untie: 500.028, new untie: 500.948
+Did not swap on untie
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Swapping 36 with 23 -> 17
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+New new bestCross: 17
+Next candidate: 8
+Checking 1
+Undo on checkTopol
+Checking 2
+Prev untie: 498.843, new untie: 500.211
+Did not swap on untie
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 16
+Checking 32
+Checking 47
+-> 1Next candidate: 16
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
 Checking 12
+Undo on checkTopol
+Checking 44
+Checking 20
+Swapping 32 with 51 -> 16
+Checking 36
 Checking 8
+Checking 32
+Checking 47
+New new bestCross: 16
+Next candidate: 32
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Undo on checkTopol
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 47
+-> 1Next candidate: 6
+Checking 1
+Checking 2
+Checking 14
+Checking 10
+Checking 26
+Prev untie: 497.301, new untie: 497.406
+Did not swap on untie
+Checking 38
+Checking 4
+Prev untie: 497.301, new untie: 497.414
+Did not swap on untie
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Undo on checkTopol
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+-> 2Next candidate: 10
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Prev untie: 497.301, new untie: 495.085
+Checking 26
+Checking 38
+Undo on checkTopol
+Checking 4
+Swapping 23 with 12 -> 15
+Checking 5
+Checking 12
+Undo on checkTopol
+Checking 44
+Checking 20
+Checking 36
+Undo on checkTopol
+Checking 8
+Swapping 39 with 12 -> 14
+Checking 16
+Checking 32
+Checking 47
+New new bestCross: 14
+Next candidate: 5
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+-> 1Next candidate: 12
+Checking 1
+Checking 2
+Undo on checkTopol
+Checking 6
+Checking 14
+Checking 10
+Undo on checkTopol
+Checking 26
+Undo on checkTopol
+Checking 38
+Checking 4
+Swapping 23 with 28 -> 12
+Checking 5
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Swapping 39 with 28 -> 11
+Checking 16
+Checking 32
+Checking 47
+Swapping 63 with 28 -> 10
+New new bestCross: 10
+Next candidate: 20
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Undo on checkTopol
+Checking 10
+Undo on checkTopol
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Undo on checkTopol
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Undo on checkTopol
+-> 1Next candidate: 36
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 8
+Checking 16
+Checking 32
+Prev untie: 498.406, new untie: 499.028
+Did not swap on untie
+Checking 47
 -> 2Next candidate: 14
 Checking 1
 Checking 2
 Checking 6
 Checking 10
+Checking 26
+Checking 38
 Checking 4
 Checking 5
-Checking 13
 Checking 12
-Prev untie: 204.149, new untie: 205.594
-Did not swap on untie
+Checking 44
+Checking 20
+Undo on checkTopol
+Checking 36
 Checking 8
-Checking 9
--> 3Next candidate: 13
+Checking 16
+Checking 32
+Checking 47
+Undo on checkTopol
+-> 3Next candidate: 26
 Checking 1
 Checking 2
 Checking 6
 Checking 14
 Checking 10
+Checking 38
 Checking 4
-Prev untie: 204.149, new untie: 203.371
+Undo on checkTopol
 Checking 5
-Prev untie: 203.371, new untie: 204.887
-Did not swap on untie
 Checking 12
+Checking 44
+Checking 20
+Checking 36
 Checking 8
-Checking 9
--> 4Next candidate: 0
--> 5Next candidate: 0
--> 6Next candidate: 0
+Checking 16
+Checking 32
+Checking 47
+-> 4Next candidate: 38
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Undo on checkTopol
+Checking 16
+Checking 32
+Checking 47
+-> 5Next candidate: 44
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Prev untie: 498.406, new untie: 497.169
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+-> 6Next candidate: 47
+Checking 1
+Checking 2
+Undo on checkTopol
+Checking 6
+Checking 14
+Undo on checkTopol
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Undo on checkTopol
+Checking 36
+Checking 8
+Checking 16
+Checking 32
 -> 7Next candidate: 0
 -> 8Next candidate: 0
 -> 9Next candidate: 0
 -> 10Next candidate: 0
--> 11Line 4504 - Cannot solve topol problems
+-> 11

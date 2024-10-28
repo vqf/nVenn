@@ -162,6 +162,7 @@ class scene{
   float damp; // Spring damping constant
   float G; // Gravity constant
   bool ghostGrav; // Do Particles with rad==0 feel gravity?
+  bool pseudoGravity; // Pseudo-grav is a 1/d force
   bool dump;
 
   void clearForces(){
@@ -189,11 +190,16 @@ class scene{
               if (dog){
                 float dx = p1->x - p0->x;
                 float dy = p1->y - p0->y;
-                float d = sqrt(dx * dx + dy * dy);
-                if (d > 0){
+                float dsq = dx * dx + dy * dy;
+                float denom = dsq;
+                if (!pseudoGravity){
+                  float d = sqrt(dsq);
+                  denom = dsq * d;
+                }
+                if (denom > 0){
                   point result;
-                  result.fx = G * p0->mass * p1->mass * dx / (d * d *d);
-                  result.fy = G * p0->mass * p1->mass * dy / (d * d *d);
+                  result.fx = G * p0->mass * p1->mass * dx / denom;
+                  result.fy = G * p0->mass * p1->mass * dy / denom;
                   p0->fx += result.fx;
                   p1->fx -= result.fx;
                   p0->fy += result.fy;
@@ -510,6 +516,7 @@ public:
   scene(){
     clearScene();
     dump = false;
+    pseudoGravity = false;
     simtime = 0;
     defaultK = 100;
     G = 0;
@@ -529,6 +536,9 @@ public:
     rods.clear();
     info.clear();
     cushions.clear();
+  }
+  void setPseudoGravity(bool ps = true){
+    pseudoGravity = ps;
   }
   template<typename T, typename T2>
   void addInfo(T input, T2 ninput){

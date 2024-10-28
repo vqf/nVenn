@@ -546,6 +546,7 @@ class glGraphics{
       bl.scD(1e2);
       bl.scG(1e-1);
       bl.scGhostGrav(false);
+      bl.getBestSoFar();
       //bl.scSave();
       while (!bQuit)
       {
@@ -587,7 +588,7 @@ class glGraphics{
       bl.scG(1e-2);
       bl.scD(1e2);
       bl.scGhostGrav(true);
-
+      bl.getBestSoFar();
       while (!bQuit)
       {
           /* check for messages */
@@ -619,12 +620,10 @@ class glGraphics{
 
       // Embellish
       bQuit = false;
-      bl.setFixedCircles();
-      bl.interpolateToDist(bl.minCircDist()/10);
-      bl.scSpringK(1e2);
-      bl.scFriction(70);
-      bl.scG(1e1);
-      bl.scD(1e2);
+      bl.startRefiningSteps();
+      bl.scG(5e-3);
+      bl.scSpringK(1e1);
+      UINT counter = 0;
       while (!bQuit)
       {
           /* check for messages */
@@ -645,12 +644,16 @@ class glGraphics{
           {
               if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
               bl.scSolve();
-
               bl.refreshScreen++;
-
+              if (counter < 70){
+                counter++;
+              }
+              else{
+                bQuit = true;
+              }
           }
       }
-
+      bl.setBestSoFar();
       return bl;
   }
 };

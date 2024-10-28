@@ -197,6 +197,7 @@ typedef struct blData{
   bool fixCircles; /**< If true, circles do not move */
   bool signalEnd;
   bool smoothSVG;
+  bool optimize;
   float surfRatio;
   float minSurfRatio;  /**< Possible condition for ending the simulation if the relationship
                         between the total area of the circles and the area of the figure
@@ -610,6 +611,8 @@ class timeMaster{
   public:
   timeMaster(){}
   void init(float mindt = 1e-4, float maxdt = 0.02, float stepdt = 0.5){
+    times.clear();
+    reports.clear();
     if (stepdt >= 1){
       stepdt = 0.9;
     }
@@ -1254,6 +1257,7 @@ class decider{
   UINT counter;
   float totalCompactness;
   float lastCompactness;
+  float bestUntie;
   bool keep;
 public:
   void setConstants(UINT numberForAverage, UINT numberForStability){
@@ -2314,12 +2318,18 @@ class borderLine
      * \return void
      *
      */
-    void addLines(bool logit = false){
+    void addLines(vector<UINT> onlyTouch = {}, bool logit = false){
       /*for (UINT i = 0; i < circles.size(); i++){
         scircles[circles[i].n] = circles[i];
       }*/
-      for (UINT i = 0; i < bl.size(); i++){
+      if (onlyTouch.size() == 0){
+        for (UINT i = 0; i < bl.size(); i++){
+          onlyTouch.push_back(i);
+        }
+      }
+      for (UINT ti = 0; ti < onlyTouch.size(); ti++){
         //cout << "---" << i << "----\n";
+        UINT i = onlyTouch[ti];
         UINT lm = leftmostCircle(i);
         bl[i].clear();
         point toadd = circles[lm];
@@ -2858,9 +2868,6 @@ class borderLine
       }
       //tolog(_L_ + circles[result].croack());
       circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
-      if (result == 0){
-        tolog("Error in getting furthest point\n");
-      }
       return result;
     }
 
@@ -2905,6 +2912,9 @@ class borderLine
         opt->setCandidate((this->*chooseCandidate)());
         UINT n = opt->getCandidate();
         tolog("Next candidate: " + toString(circles[n].n) + "\n");
+        if (n == 0){
+          opt->endCycle();
+        }
         cout << circles[n].n << endl;
       }
       else{
@@ -4243,13 +4253,13 @@ public:
         maxRadius = 0;
         internalScale.initScale();
         svgScale.initScale();
-        svgScale.setMinX(10.0f);
-        svgScale.setMinY(10.0f);
-        svgScale.setMaxX(490.0f);
-        svgScale.setMaxY(490.0f);
+        svgScale.setMinX(20.0f);
+        svgScale.setMinY(20.0f);
+        svgScale.setMaxX(480.0f);
+        svgScale.setMaxY(480.0f);
         initBlData(&blSettings);
         minRat = 0;
-        showThis = true;
+        showThis = false;
         blSettings.signalEnd = false;
         blSettings.contacts = 0;
         blSettings.fixCircles = false;
@@ -4268,6 +4278,7 @@ public:
         blSettings.ncycles = 0;
         blSettings.cycleInfo = "";
         blSettings.lineAir = ngroups;
+        blSettings.optimize = true;
         simulationTime = 0;
         srand(time(0));
         w = tw;         //keep a copy of the weights
@@ -4390,6 +4401,25 @@ public:
       return result;
     }
 
+    void doOptimize(bool opt = false){
+      blSettings.optimize = opt;
+    }
+
+    /** \brief From here on, every step is recorded independently of
+     *         optimizations
+     * \return void
+     *
+     */
+    void startRefiningSteps(){
+      getBestSoFar();
+      interpolateToDist(minCircDist()/5);
+      setFixedCircles();
+      setSecureState();
+      setPrevState();
+      doOptimize(false);
+      udt.init(1e-4, 0.01);
+    }
+
     /** \brief Minimal distance between two circles. Used to
      *         finish the second step
      *
@@ -4436,7 +4466,7 @@ public:
       tosolve.clearScene();
       pairDistances.clear();
       UINT level = 1;
-      float cushion = 0.05;
+      float cushion = 0.02;
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
@@ -4451,7 +4481,7 @@ public:
         cnt += lp + 1;
         level++;
       }
-      level++;
+      level *= 2;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           tosolve.addPointP(&(circles[i]));
@@ -4459,6 +4489,7 @@ public:
         }
       }
       tosolve.setCushions(pairDistances);
+      tosolve.setPseudoGravity(true);
     }
 
     void resetScale(){
@@ -4518,7 +4549,7 @@ public:
           udt.poke();
           blSettings.dt = udt.cdt();
       }
-      if (keepDistCounter.isMax()){
+      if (blSettings.optimize && keepDistCounter.isMax()){
           keepDist(avgStartDist);
           if (checkTopol()){
             writeSVG("error.svg");
@@ -4532,15 +4563,17 @@ public:
       }
       resetScale();
       resetCircleRadius();
-      float d = compactness();
-      evaluation.add(d);
-      if (evaluation.keepState()){
-        setBestSoFar();
+      if (blSettings.optimize){
+        float d = compactness();
+        evaluation.add(d);
+        displayFloat("COMPACTNESS", d);
+        displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
+        if (evaluation.keepState()){
+          setBestSoFar();
+        }
       }
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
-      displayFloat("COMPACTNESS", d);
-      displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
       displayUINT("COUNTER", evaluation.viewCounter());
       displayUINT("CANFINISH", evaluation.viewCanFinish());
       displayUINT("CWI", evaluation.viewCyclesWithoutImprovement());
@@ -4605,6 +4638,7 @@ public:
       for (UINT i = 0; i < circles.size(); i++){
         circles[i].flags = setFlag(circles[i].flags, ANCHORED);
       }
+      attachScene();
     }
 
     void setCheckTopol(bool doCheck = true){
@@ -4799,7 +4833,9 @@ public:
     }
 
     fileText toSVG(){
-      getBestSoFar();
+      if (blSettings.optimize){
+        getBestSoFar();
+      }
       fileText svg;
       int fsize = 10;
       UINT i, j;
@@ -4887,7 +4923,7 @@ public:
                                coord(next.x) + " " + coord(next.y);
             }
             svg.addLine("<symbol id=\"bl" + num(i) + "\">");
-            svg.addLine("<path class=\"p" + num(i) + " borderLine\" d=\"" + cpath + " Z\" />");
+            svg.addLine("<path d=\"" + cpath + " Z\" />");
             svg.addLine("</symbol>");
           }
         } else{
