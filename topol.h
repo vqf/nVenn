@@ -5462,21 +5462,20 @@ public:
           if (thisCross < bestCross || opt.hasUntied()){
             bestCross = thisCross;
             crossCount = 0;
-            tolog("New new bestCross: " + toString(bestCross) + "\n");
+            //tolog("New new bestCross: " + toString(bestCross) + "\n");
           }
           else{
             crossCount++;
-            tolog("-> " + toString(crossCount));
+            //tolog("-> " + toString(crossCount));
           }
         }
-
         fixTopology(false);
         //toOGL(bl, hDC);
         if (crossCount > maxOutCount){
           bQuit = true;
         }
       }
-
+      resetOptimize();
       if (checkTopol() == false){
         interpolateToDist(5 * minCircRadius * AIR);
         setPrevState();
@@ -5495,6 +5494,7 @@ public:
       scD(1e1);
       scG(1e-1);
       scGhostGrav(false);
+      getBestSoFar();
       while (!bQuit){
       //for (UINT i = 0; i < 10; i++){
         if (refreshScreen.isMax()) {
@@ -5508,7 +5508,6 @@ public:
         }
       }
       cout << "Fifth step (Refining)...\n";
-      bQuit = false;
       resetTimer();
       interpolateToDist(2 * correctedMinCircRadius());
       scSpringK(1e2);
@@ -5516,6 +5515,8 @@ public:
       scG(1e-2);
       scD(1e2);
       scGhostGrav(true);
+      getBestSoFar();
+      bQuit = false;
       while (!bQuit){
         if (refreshScreen.isMax()) {
             writeSVG();
@@ -5524,6 +5525,25 @@ public:
         scSolve();
         bool bq = isSimulationComplete();
         if (bq){
+          bQuit = true;
+        }
+      }
+      cout << "Sixth step (Embellishing)...\n";
+      startRefiningSteps();
+      scG(5e-3);
+      scSpringK(1e1);
+      UINT counter = 0;
+      bQuit = false;
+      while (!bQuit){
+        if (refreshScreen.isMax()) {
+            writeSVG();
+        }
+        refreshScreen++;
+        scSolve();
+        if (counter < 70){
+          counter++;
+        }
+        else{
           bQuit = true;
         }
       }
