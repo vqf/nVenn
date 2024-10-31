@@ -1007,7 +1007,11 @@ class optimizationStep{
   bool untied;
   float bestComp;
 public:
+  optimizationStep(){}
   optimizationStep(float comp){
+    init(comp);
+  }
+  void init(float comp){
     bestComp = comp;
     startCycle();
     ended = true;
@@ -1349,6 +1353,12 @@ typedef struct blst{
   bool hasBeenSet;
 } blState;
 
+typedef struct outc{
+  UINT outCount;
+  UINT maxOutCount;
+  float optVal;
+} outCounters;
+
 class borderLine
 {
     friend class glGraphics;
@@ -1359,6 +1369,8 @@ class borderLine
     blState savedState;
     float simulationTime;
     UINT internalCounter;
+    outCounters oc;
+    optimizationStep optStep;
 
     vector<float> pairDistances;
     vector<string> groups;
@@ -5382,6 +5394,171 @@ public:
 
     }
 
+    bool setStep(UINT stepNumber = 0){
+      bool result = true;
+      if (stepNumber == 1){
+        refreshScreen.setLimits(1,1);
+        setCheckTopol(false);
+      }
+      else if (stepNumber == 2){
+        setCheckTopol(false);
+      }
+      else if (stepNumber == 3){
+        resetOptimize();
+        fixTopology();
+        oc.maxOutCount = 10;
+        oc.outCount = 0;
+        oc.optVal = compactness();
+        optStep.init(oc.optVal);
+        oc.optVal = outCompactness(&optStep, &borderLine::furthestPoint,
+                                   &borderLine::compactness, &borderLine::countCrossings);
+      }
+      else if (stepNumber == 4){
+        resetOptimize();
+        fixTopology();
+        oc.maxOutCount = 10;
+        oc.outCount = 0;
+        oc.optVal = countCrossings();
+        optStep.init(oc.optVal);
+        oc.optVal = outCompactness(&optStep, &borderLine::crossestPoint,
+                                   &borderLine::countCrossings, &borderLine::compactness);
+      }
+      else if (stepNumber == 5){
+        resetOptimize();
+        fixTopology();
+        setCheckTopol(true);
+        if (checkTopol() == false){
+          interpolateToDist(3 * correctedMinCircRadius() * AIR);
+          setPrevState();
+          setSecureState();
+        }
+        else{
+          listOutsiders();
+          ofstream result;
+          fileText svgfile = toSVG();
+          result.open("error.svg");
+          result.write(svgfile.getText().c_str(), svgfile.getText().size());
+          result.close();
+          exit(1);
+        }
+        resetTimer();
+        attachScene();
+        scFriction(25);
+        scD(1e2);
+        scG(1e-1);
+        scGhostGrav(false);
+        getBestSoFar();
+      }
+      else if (stepNumber == 6){
+        resetTimer();
+        interpolateToDist(2 * correctedMinCircRadius());
+        scSpringK(1e2);
+        scFriction(70);
+        scG(1e-2);
+        scD(1e2);
+        scGhostGrav(true);
+        getBestSoFar();
+      }
+      else if (stepNumber == 7){
+        startRefiningSteps();
+        scG(5e-3);
+        scSpringK(1e1);
+        oc.maxOutCount = 70;
+        oc.outCount = 0;
+        oc.optVal = 0;
+      }
+      else{
+        result = false;
+      }
+      return result;
+    }
+    bool setCycle(UINT stepNumber = 0){
+      bool result = true;
+      if (stepNumber == 1){
+        setForcesFirstStep();
+        solve();
+        refreshScreen++;
+      }
+      else if (stepNumber == 2){
+        setForcesSecondStep();
+        setContacts(false, true, 3*maxRad()*AIR);
+        solve(true);
+        refreshScreen++;
+      }
+      else if (stepNumber == 3){
+        float thisOut = outCompactness(&optStep, &borderLine::furthestPoint,
+                                       &borderLine::compactness, &borderLine::countCrossings);
+        if (optStep.hasEnded()){
+          if (thisOut < oc.optVal || optStep.hasUntied()){
+            oc.optVal = thisOut;
+            oc.outCount = 0;
+            //showCrossings();
+          }
+          else{
+            oc.outCount = oc.outCount + 1;
+          }
+          fixTopology();
+        }
+      }
+      else if (stepNumber == 4){
+        float thisCross = outCompactness(&optStep, &borderLine::furthestPoint,
+                                         &borderLine::compactness, &borderLine::countCrossings);
+        if (optStep.hasEnded()){
+          if (thisCross < oc.optVal || optStep.hasUntied()){
+            oc.optVal = thisCross;
+            oc.outCount = 0;
+            //showCrossings();
+          }
+          else{
+            oc.outCount = oc.outCount + 1;
+          }
+          fixTopology();
+        }
+      }
+      else if (stepNumber == 5 || stepNumber == 6){
+        scSolve();
+      }
+      else if (stepNumber == 7){
+        scSolve();
+        oc.outCount++;
+      }
+      else{
+        result = false;
+      }
+      return result;
+    }
+    bool isStepFinished(UINT stepNumber = 0){
+      bool result = false;
+      if (stepNumber == 1){
+        float tc = getTotalCircleV();
+        if (tc > 0 && tc < (1e-3*ngroups / 5)){
+          result = true;
+        }
+      }
+      else if (stepNumber == 2){
+        if (minCircDist() > (2*maxRad()*AIR)){
+          result = true;
+        }
+      }
+      else if (stepNumber == 3 || stepNumber == 4){
+        if (oc.outCount > oc.maxOutCount){
+          result = true;
+        }
+      }
+      else if (stepNumber == 5 || stepNumber == 6){
+        bool bq = isSimulationComplete();
+        if (bq){
+          result = true;
+        }
+      }
+      else if (stepNumber == 7){
+        if (oc.outCount > oc.maxOutCount){
+          result = true;
+        }
+      }
+      return result;
+    }
+
     bool simulate(int maxRel = 0){
       restart_log();
       cout << "Starting...\n";
@@ -5491,7 +5668,7 @@ public:
       setCheckTopol(true);
       attachScene();
       scFriction(25);
-      scD(1e1);
+      scD(1e2);
       scG(1e-1);
       scGhostGrav(false);
       getBestSoFar();

@@ -1,63 +1,27 @@
 Next candidate: 47
 Checking 1
 Checking 2
+Swapping 7 with 63 -> 498.749
 Checking 6
+Swapping 8 with 63 -> 497.476
 Checking 14
 Checking 10
-Swapping 12 with 63 -> 480.453
 Checking 26
-Swapping 13 with 63 -> 478.412
+Swapping 13 with 63 -> 495.941
 Checking 38
+Swapping 21 with 63 -> 493.049
 Checking 4
-Swapping 23 with 63 -> 477.371
 Checking 5
-Swapping 24 with 63 -> 476.57
+Swapping 24 with 63 -> 492.391
 Checking 12
 Checking 44
+Swapping 31 with 63 -> 492.16
 Checking 20
 Checking 36
 Checking 8
+Swapping 39 with 63 -> 483.471
 Checking 16
 Checking 32
-Next candidate: 44
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Swapping 12 with 31 -> 475.046
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 26
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Swapping 9 with 13 -> 472.896
-Checking 10
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Swapping 28 with 13 -> 472.432
-Checking 44
-Checking 20
-Swapping 32 with 13 -> 470.473
-Checking 36
-Checking 8
-Checking 16
-Swapping 51 with 13 -> 469.469
-Checking 32
-Checking 47
 Next candidate: 38
 Checking 1
 Checking 2
@@ -80,15 +44,50 @@ Checking 1
 Checking 2
 Checking 6
 Checking 10
+Swapping 12 with 9 -> 482.973
+Checking 26
+Swapping 13 with 9 -> 481.544
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 26
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Swapping 12 with 13 -> 479.786
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 44
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
 Checking 26
 Checking 38
 Checking 4
 Checking 5
 Checking 12
-Swapping 28 with 9 -> 469.41
-Checking 44
 Checking 20
-Swapping 32 with 9 -> 468.725
 Checking 36
 Checking 8
 Checking 16
@@ -98,12 +97,13 @@ Next candidate: 36
 Checking 1
 Checking 2
 Checking 6
+Swapping 8 with 36 -> 479.754
 Checking 14
 Checking 10
-Swapping 12 with 36 -> 463.653
 Checking 26
 Checking 38
 Checking 4
+Swapping 23 with 36 -> 479.277
 Checking 5
 Checking 12
 Checking 44
@@ -112,29 +112,10 @@ Checking 8
 Checking 16
 Checking 32
 Checking 47
-Next candidate: 10
+Next candidate: 6
 Checking 1
 Checking 2
-Checking 6
 Checking 14
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 20
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Swapping 9 with 32 -> 463.214
 Checking 10
 Checking 26
 Checking 38
@@ -142,6 +123,8 @@ Checking 4
 Checking 5
 Checking 12
 Checking 44
+Swapping 31 with 8 -> 478.256
+Checking 20
 Checking 36
 Checking 8
 Checking 16
@@ -164,7 +147,41 @@ Checking 8
 Checking 16
 Checking 32
 Checking 47
-Swapping 63 with 24 -> 462.908
+Swapping 63 with 24 -> 477.363
+Next candidate: 10
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 20
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
 Next candidate: 12
 Checking 1
 Checking 2
@@ -182,28 +199,9 @@ Checking 8
 Checking 16
 Checking 32
 Checking 47
-Next candidate: 6
-Checking 1
-Checking 2
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Swapping 63 with 8 -> 462.701
 Next candidate: 16
 Checking 1
 Checking 2
-Swapping 7 with 51 -> 461.63
 Checking 6
 Checking 14
 Checking 10
@@ -247,6 +245,7 @@ Checking 4
 Checking 5
 Checking 12
 Checking 44
+Swapping 31 with 59 -> 477.171
 Checking 20
 Checking 36
 Checking 8
@@ -263,11 +262,13 @@ Checking 4
 Checking 5
 Checking 12
 Checking 44
+Swapping 31 with 7 -> 476.637
 Checking 20
 Checking 36
 Checking 8
 Checking 16
 Checking 32
+Swapping 59 with 7 -> 476.254
 Checking 47
 Next candidate: 8
 Checking 1
@@ -275,7 +276,6 @@ Checking 2
 Checking 6
 Checking 14
 Checking 10
-Swapping 12 with 39 -> 460.851
 Checking 26
 Checking 38
 Checking 4
@@ -296,7 +296,6 @@ Checking 10
 Checking 26
 Checking 38
 Checking 5
-Swapping 24 with 23 -> 460.692
 Checking 12
 Checking 44
 Checking 20
@@ -305,8 +304,6 @@ Checking 8
 Checking 16
 Checking 32
 Checking 47
-Next candidate: 0
-Next candidate: 0
 Next candidate: 0
 Next candidate: 0
 Next candidate: 0
@@ -317,7 +314,6 @@ Next candidate: 0
 Next candidate: 0
 Next candidate: 0
 Next candidate: 1
-New bestCross: 21
 Checking 2
 Checking 6
 Checking 14
@@ -328,273 +324,6 @@ Checking 4
 Checking 5
 Checking 12
 Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 2
-Checking 1
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Swapping 39 with 7 -> 18
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 4
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 5
-Swapping 24 with 23 -> 17
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 8
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 16
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 32
-Checking 47
-Next candidate: 32
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 47
-Next candidate: 6
-Checking 1
-Checking 2
-Swapping 7 with 8 -> 15
-Checking 14
-Prev untie: 466.672, new untie: 468.118
-Did not swap on untie
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 10
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Swapping 9 with 12 -> 14
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 5
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 12
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 20
-Checking 1
-Prev untie: 469.818, new untie: 473.19
-Did not swap on untie
-Checking 2
-Swapping 7 with 32 -> 10
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 36
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Swapping 21 with 36 -> 9
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 14
-Checking 1
-Checking 2
-Prev untie: 468.316, new untie: 463.789
-Checking 6
-Swapping 8 with 9 -> 8
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 26
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 38
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 38
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 4
-Checking 5
-Checking 12
-Checking 44
-Checking 20
-Checking 36
-Checking 8
-Checking 16
-Checking 32
-Checking 47
-Next candidate: 44
-Checking 1
-Checking 2
-Checking 6
-Checking 14
-Checking 10
-Checking 26
-Checking 38
-Checking 4
-Checking 5
-Checking 12
 Checking 20
 Checking 36
 Checking 8
@@ -618,10 +347,160 @@ Checking 36
 Checking 8
 Checking 16
 Checking 32
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
+Next candidate: 44
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 38
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 26
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 14
+Checking 1
+Checking 2
+Checking 6
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 10
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 20
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 5
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 36
+Checking 1
+Checking 2
+Checking 6
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Next candidate: 6
+Checking 1
+Checking 2
+Checking 14
+Checking 10
+Checking 26
+Checking 38
+Checking 4
+Checking 5
+Checking 12
+Checking 44
+Checking 20
+Checking 36
+Checking 8
+Checking 16
+Checking 32
+Checking 47
+Distance is zero: X: 72.2092, Y: 96.3744	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4164.01	Fy: 4296.91	Flags: 64
+X: 72.2092, Y: 96.3744	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Distance is zero: X: 72.2092, Y: 96.3744	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4164.01	Fy: 4296.91	Flags: 64
+X: 72.2092, Y: 96.3744	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64

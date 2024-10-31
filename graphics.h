@@ -281,8 +281,8 @@ class glGraphics{
     restart_log();
 
       borderLine bl = *blp;
-      bl.refreshScreen.setLimits(1,1);
       MSG msg;
+      bl.setStep(1);
       bool bQuit = false;
       while (!bQuit)
       {
@@ -305,355 +305,35 @@ class glGraphics{
               bl.refreshScreen++;
           }
       }
-      bQuit = false;
-      bl.setCheckTopol(false);
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              bl.setForcesFirstStep();
-              //bl.setForces1();
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              //bl.setContacts(false, true);
-              bl.solve();
-              bl.refreshScreen++;
-              float tc = bl.getTotalCircleV();
-              if (tc > 0 && tc < (1e-3*bl.ngroups / 5)){
-                bQuit = true;
-              }
-              //Sleep(200);
-          }
-      }
-      bQuit = false;
-      bl.setCheckTopol(false);
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              bl.setForcesSecondStep();
-              //bl.setForces1();
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.setContacts(false, true, 3*bl.maxRad()*AIR);
-              bl.solve(true);
-              //wait();
-              //exit(0);
-              bl.refreshScreen++;
-              if (bl.minCircDist() > (2*bl.maxRad()*AIR)){
-                bQuit = true;
-              }
-
-          }
-      }
-
-      bl.setCheckTopol(true);
-      //UINT b1 = bl.countOutsiders();
-      //UINT bo = bl.chooseCombination();
-      bQuit = false;
-      bl.fixTopology();
-      float bestOut = bl.compactness();
-      optimizationStep opt(bestOut);
-      bestOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness, &bl.countCrossings);
-      UINT outCount = 0;
-      UINT maxOutCount = 10;
-
-
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              // Testing methods for compact and cross
-              //bl.chooseCompact(true);
-              //bl.MHCompact();
-              //bl.MHCrosses();
-              //bl.chooseCrossings(true);
-              float thisOut = bl.outCompactness(&opt, &bl.furthestPoint, &bl.compactness, &bl.countCrossings);
-              if (opt.hasEnded()){
-                if (thisOut < bestOut || opt.hasUntied()){
-                  bestOut = thisOut;
-                  outCount = 0;
-                  bl.showCrossings();
+      for (UINT step = 0; step < 8; step++){
+        bQuit = false;
+        bl.setStep(step);
+        while (!bQuit)
+        {
+            /* check for messages */
+            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
+            {
+                /* handle or dispatch messages */
+                if (msg.message == WM_QUIT)
+                {
+                    bQuit = TRUE;
                 }
-                else{
-                  outCount++;
+                {
+                    TranslateMessage (&msg);
+                    DispatchMessage (&msg);
                 }
-              }
-              //**********//
-              bl.fixTopology();
-              toOGL(bl, hDC);
-              if (outCount > maxOutCount){
-                bQuit = true;
-              }
-              //bQuit = true;
-
-          }
-      }
-
-      //Minimize crossings
-      bl.resetOptimize();
-      bl.fixTopology(false);
-      float bestCross = bl.countCrossings();
-      optimizationStep cropt(bestCross);
-      bestCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings, &bl.compactness);
-      tolog("New bestCross: " + toString(bestCross) + "\n");
-      UINT crossCount = 0;
-      bQuit = false;
-      while (!bQuit)
-      {
-
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              // Testing methods for compact and cross
-              //bl.chooseCompact(true);
-              //bl.MHCompact();
-              //bl.MHCrosses();
-              //bl.chooseCrossings(true);
-              float thisCross = bl.outCompactness(&cropt, &bl.crossestPoint, &bl.countCrossings, &bl.compactness);
-              if (cropt.hasEnded()){
-                if (thisCross < bestCross || opt.hasUntied()){
-                  bestCross = thisCross;
-                  crossCount = 0;
-                  tolog("New new bestCross: " + toString(bestCross) + "\n");
-                  bl.showCrossings();
-                }
-                else{
-                  crossCount++;
-                  tolog("-> " + toString(crossCount));
-                }
-              }
-              bl.fixTopology(false);
-              toOGL(bl, hDC);
-              if (crossCount > maxOutCount){
-                bQuit = true;
-              }
-              //bQuit = true;
-
-          }
-      }
-      bl.resetOptimize();
-      bl.fixTopology();
-      bl.setCheckTopol(true);
-      if (bl.checkTopol() == false){
-
-        //vector<point> s = bl.getBoundaries();
-        //scale sc = scale(s[0], s[1]);
-        //point pt; pt.x = 0; pt.y = 0; pt.radius = bl.minCircRadius;
-        //point P = bl.place(sc, pt);
-        //bl.interpolateToDist(P.radius);
-
-        bl.interpolateToDist(3 * bl.correctedMinCircRadius() * AIR);
-        bl.setPrevState();
-        bl.setSecureState();
-      }
-      else{
-        bl.listOutsiders();
-        ofstream result;
-        fileText svgfile = bl.toSVG();
-        result.open("error.svg");
-        result.write(svgfile.getText().c_str(), svgfile.getText().size());
-        result.close();
-        exit(1);
-      }
-      bQuit = false;
-      /*bl.setFixedCircles(true);
-      while (!bQuit)
-      {
-
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              bl.setCheckTopol(true);
-              bl.setForces1();
-              bl.setContacts();
-              bl.displayUINT("STATE: ", 1);
-              toOGL(bl, hDC);
-              bl.solve();
-              bl.refreshScreen++;
-
-          }
-      }
-      bl.setFixedCircles(false);*/
-      bQuit = false;
-      bl.resetTimer();
-      bl.setCheckTopol(true);
-      bl.attachScene();
-      bl.scFriction(25);
-      bl.scD(1e2);
-      bl.scG(1e-1);
-      bl.scGhostGrav(false);
-      bl.getBestSoFar();
-      //bl.scSave();
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-            if (bl.refreshScreen.isMax()) {
-                toOGL(bl, hDC);
             }
-            bl.refreshScreen++;
-            //bl.writeSVG("result.svg");
-            //tolog(bl.scCroack());
-            bl.scSolve();
-            bool bq = bl.isSimulationComplete();
-            if (bq){
-              bQuit = true;
+            else
+            {
+                bl.setCycle(step);
+                if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
+                if (bl.isStepFinished(step)){
+                  bQuit = true;
+                }
+                //Sleep(200);
             }
-          }
+        }
       }
-          // Debug topol
-          bQuit = false;
-      bl.resetTimer();
-      bl.interpolateToDist(2 * bl.correctedMinCircRadius());
-      bl.scSpringK(1e2);
-      bl.scFriction(70);
-      bl.scG(1e-2);
-      bl.scD(1e2);
-      bl.scGhostGrav(true);
-      bl.getBestSoFar();
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.scSolve();
-              bool bq = bl.isSimulationComplete();
-              if (bq){
-                bQuit = true;
-              }
-              bl.refreshScreen++;
-
-          }
-      }
-
-      // Embellish
-      bQuit = false;
-      bl.startRefiningSteps();
-      bl.scG(5e-3);
-      bl.scSpringK(1e1);
-      UINT counter = 0;
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              else
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-              bl.scSolve();
-              bl.refreshScreen++;
-              if (counter < 70){
-                counter++;
-              }
-              else{
-                bQuit = true;
-              }
-          }
-      }
-      bl.setBestSoFar();
       return bl;
   }
 };
