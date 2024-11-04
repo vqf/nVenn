@@ -1,18 +1,11 @@
 var searchData=
 [
-  ['randomizecircles_0',['randomizeCircles',['../classborder_line.html#a0b589b1aa6cb156e7220e85824c7e2a2',1,'borderLine']]],
-  ['ratio_1',['ratio',['../classscale.html#a62faa44b6f705bf7084c8440f6d41534',1,'scale']]],
-  ['report_2',['report',['../classtime_master.html#a729a37c39d0a67625d31a77099d90f39',1,'timeMaster']]],
-  ['reset_3',['reset',['../classpoint.html#afa366584306e660e58604735faf13f92',1,'point::reset()'],['../classgroup_iterator.html#a11c20d531f76a42fdb1c0c9d1b7faa6a',1,'groupIterator::reset()'],['../classcircle_iterator.html#a663053300f4e9c864473caf4db1ffb5e',1,'circleIterator::reset()'],['../classtime_master.html#a7acd764e7ee0e3020827426bfe693898',1,'timeMaster::reset()']]],
-  ['resetcircleradius_4',['resetCircleRadius',['../classborder_line.html#a8f8a7efcbf2e9f6164d9d81041951053',1,'borderLine']]],
-  ['resetf_5',['resetf',['../classpoint.html#ae9f791ab383aedded54134b5ebc8cf37',1,'point']]],
-  ['resetold_6',['resetOld',['../classborder_line.html#aa3a41b1ac800c6489e5f1748115024c5',1,'borderLine']]],
-  ['resetscale_7',['resetScale',['../classborder_line.html#af51558f40d5ee973643ac4e991d82cdb',1,'borderLine']]],
-  ['resettimer_8',['resetTimer',['../classborder_line.html#a4075ffbaa2f1c36e6463b6e4d5628034',1,'borderLine']]],
-  ['resetv_9',['resetv',['../classpoint.html#afdad6b0a34f07f6e60c8acc0f304dd97',1,'point']]],
-  ['restoreprevstate_10',['restorePrevState',['../classborder_line.html#a5554b863c76191e069e48413e45a6325',1,'borderLine']]],
-  ['restoresecurestate_11',['restoreSecureState',['../classborder_line.html#ad7470df3901678876b15f700917e51ce',1,'borderLine']]],
-  ['rod_12',['rod',['../classscene.html#aba5213dc4de2459ad5159818234a00cd',1,'scene']]],
-  ['rope_13',['rope',['../classscene.html#a5b8c64d3df9b22a48a4efb11f7fd2dff',1,'scene::rope()'],['../classborder_line.html#a061f6deff435e34445a03d0ad032d273',1,'borderLine::rope()']]],
-  ['rotate_14',['rotate',['../classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6',1,'tangent']]]
+  ['perimeter_0',['perimeter',['../topol_8h.html#a6864ceb482fc9a3c818bce8b203e6937',1,'topol.h']]],
+  ['place_1',['place',['../classscale.html#a8685fd8d66a1d4e9142d3c69531a919a',1,'scale::place()'],['../classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57',1,'borderLine::place()']]],
+  ['point_2',['point',['../classpoint.html#a5fe21d4a4539320bf0f5caf1218d31c8',1,'point::point()'],['../classpoint.html#aa570be78b44b9fc64b9678893d486598',1,'point::point(float px, float py)']]],
+  ['poke_3',['poke',['../classtime_master.html#adcb628538af426c264a209766a88d267',1,'timeMaster']]],
+  ['polishlines_4',['polishLines',['../classborder_line.html#a62f1fa285af08ec3997e191a819f2a33',1,'borderLine']]],
+  ['prevpoint_5',['prevPoint',['../classborder_line.html#a285bdf3e23139b464dcc0c62eff1fe4d',1,'borderLine']]],
+  ['printstring_6',['printString',['../bmpfont_8h.html#a97867203486aff2c9e63da6051abf556',1,'bmpfont.h']]],
+  ['printv_7',['printv',['../topol_8h.html#aaf9d094ff6bca06ea3b3f66d60f6cc7f',1,'topol.h']]]
 ];

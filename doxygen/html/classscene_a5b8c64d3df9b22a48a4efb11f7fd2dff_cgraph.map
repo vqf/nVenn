@@ -1,6 +1,6 @@
 <map id="scene::rope" name="scene::rope">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,56,95,83"/>
-<area shape="rect" id="Node000002" href="$classscene.html#a185a4eeb43a5ad34e13b6a2b42637dd2" title=" " alt="" coords="143,5,251,32"/>
+<area shape="rect" id="Node000002" href="$classscene.html#a120da7a7e1202fa7c173e80f00be49bf" title=" " alt="" coords="143,5,251,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,53,141,35,142,40,92,58"/>
 <area shape="rect" id="Node000004" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="162,56,232,83"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,67,146,67,146,72,95,72"/>

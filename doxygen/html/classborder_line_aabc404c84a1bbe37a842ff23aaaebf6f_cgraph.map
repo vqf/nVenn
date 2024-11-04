@@ -1,0 +1,7 @@
+<map id="borderLine::compactness" name="borderLine::compactness">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,173,57"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a90d2d1ae20a559c94c5df69795acd060" title="Gets the relationship as calculated with setRelationships()" alt="" coords="221,5,406,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,32,205,28,205,34,173,37"/>
+<area shape="rect" id="Node000003" href="$topol_8h.html#ab73ab1c73aebaa90f3ddf9cfe76e98c5" title="Computes the square of the cartesian distance between points (@p0) and (@p1). If the distance itself ..." alt="" coords="270,56,357,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,51,255,60,254,65,173,56"/>
+</map>

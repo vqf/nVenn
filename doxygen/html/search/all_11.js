@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['radius_0',['radius',['../classpoint.html#ada8d252f6a8e7a53585bca19f35120d9',1,'point']]],
-  ['randomizecircles_1',['randomizeCircles',['../classborder_line.html#a0b589b1aa6cb156e7220e85824c7e2a2',1,'borderLine']]],
-  ['ratio_2',['ratio',['../classscale.html#a62faa44b6f705bf7084c8440f6d41534',1,'scale']]],
-  ['readme_2emd_3',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['red_4',['red',['../structrgb.html#ac9c71515dfe56f70d3f93d42308c0f35',1,'rgb']]],
-  ['refreshscreen_5',['refreshScreen',['../classborder_line.html#a35a26fa0e557a853097340e99e4cf709',1,'borderLine']]],
-  ['relationships_6',['relationships',['../classborder_line.html#a54854470a3e1ce8a087f5448051883af',1,'borderLine']]],
-  ['report_7',['report',['../classtime_master.html#a729a37c39d0a67625d31a77099d90f39',1,'timeMaster']]],
-  ['reset_8',['reset',['../classpoint.html#afa366584306e660e58604735faf13f92',1,'point::reset()'],['../classgroup_iterator.html#a11c20d531f76a42fdb1c0c9d1b7faa6a',1,'groupIterator::reset()'],['../classcircle_iterator.html#a663053300f4e9c864473caf4db1ffb5e',1,'circleIterator::reset()'],['../classtime_master.html#a7acd764e7ee0e3020827426bfe693898',1,'timeMaster::reset()']]],
-  ['resetcircleradius_9',['resetCircleRadius',['../classborder_line.html#a8f8a7efcbf2e9f6164d9d81041951053',1,'borderLine']]],
-  ['resetf_10',['resetf',['../classpoint.html#ae9f791ab383aedded54134b5ebc8cf37',1,'point']]],
-  ['resetold_11',['resetOld',['../classborder_line.html#aa3a41b1ac800c6489e5f1748115024c5',1,'borderLine']]],
-  ['resetscale_12',['resetScale',['../classborder_line.html#af51558f40d5ee973643ac4e991d82cdb',1,'borderLine']]],
-  ['resettimer_13',['resetTimer',['../classborder_line.html#a4075ffbaa2f1c36e6463b6e4d5628034',1,'borderLine']]],
-  ['resetv_14',['resetv',['../classpoint.html#afdad6b0a34f07f6e60c8acc0f304dd97',1,'point']]],
-  ['restoreprevstate_15',['restorePrevState',['../classborder_line.html#a5554b863c76191e069e48413e45a6325',1,'borderLine']]],
-  ['restoresecurestate_16',['restoreSecureState',['../classborder_line.html#ad7470df3901678876b15f700917e51ce',1,'borderLine']]],
-  ['rgb_17',['rgb',['../structrgb.html',1,'']]],
-  ['rod_18',['rod',['../classscene.html#aba5213dc4de2459ad5159818234a00cd',1,'scene']]],
-  ['rods_19',['rods',['../classscene.html#ae2e7bbcaf5a3fb1cce8299a8bda554fb',1,'scene']]],
-  ['rodstiffness_20',['rodStiffness',['../classscene.html#a2ebf27804523c27cfed5dec96c7fdb86',1,'scene']]],
-  ['rope_21',['rope',['../classscene.html#a5b8c64d3df9b22a48a4efb11f7fd2dff',1,'scene::rope()'],['../classborder_line.html#a061f6deff435e34445a03d0ad032d273',1,'borderLine::rope()']]],
-  ['rotate_22',['rotate',['../classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6',1,'tangent']]],
-  ['row_23',['row',['../classbin_map.html#a733e4dee814fe40b7c2a6de4fae1d04d',1,'binMap']]]
+  ['quadrant_0',['quadrant',['../classtangent.html#a557f8211ea92e33dc0655970d4da1d9d',1,'tangent']]]
 ];

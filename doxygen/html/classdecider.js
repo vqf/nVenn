@@ -1,0 +1,24 @@
+var classdecider =
+[
+    [ "add", "classdecider.html#ac93fda949091f7582c268272cc666635", null ],
+    [ "finished", "classdecider.html#a3cba04b2505de1e6f2de6fc3208d238b", null ],
+    [ "init", "classdecider.html#afab804ef4ce9ec64e1bd9cc62c28aade", null ],
+    [ "keepState", "classdecider.html#a1cde50cf0ee3f8af1fb86130a22094d7", null ],
+    [ "setConstants", "classdecider.html#a875d12a89ff6b75bdf1684a05a30e5c2", null ],
+    [ "viewCanFinish", "classdecider.html#a2f418b2651e58300333205f4d043cb8b", null ],
+    [ "viewCounter", "classdecider.html#adfdcbc31fc08077fd28d1a4d7f799588", null ],
+    [ "viewCyclesWithoutImprovement", "classdecider.html#a2a7bbe5914aab2e257e7f2a27249725e", null ],
+    [ "viewLastComp", "classdecider.html#a55a534f31206a0a86e2d8ee80e6e0a38", null ],
+    [ "bestCompactness", "classdecider.html#a4fa8fd354efc5d29d048b890557758b5", null ],
+    [ "bestUntie", "classdecider.html#a66987e240b67a9c9561cf419df9fb902", null ],
+    [ "canFinish", "classdecider.html#a30a4972e7ec40282536d7d9bec343a07", null ],
+    [ "counter", "classdecider.html#a65ef4f4c907902ba08c7a401fabbfabe", null ],
+    [ "cyclesWithoutImprovement", "classdecider.html#af45c0fa279c6b1615c64c9f860ae1272", null ],
+    [ "finish", "classdecider.html#ad2af890f317b1f294665729f980a705a", null ],
+    [ "finishAfter", "classdecider.html#aa72dcd26dec677566a856b387e7c549a", null ],
+    [ "first", "classdecider.html#a24ffa256808b9f41d714704c30d660fc", null ],
+    [ "keep", "classdecider.html#a70cd37fb9566b65494b019b410e82dc6", null ],
+    [ "lastCompactness", "classdecider.html#a99e50ad727842ada3124211378d691c0", null ],
+    [ "nAvg", "classdecider.html#a9f41dfb52ec975bad65bfb7353d46bb3", null ],
+    [ "totalCompactness", "classdecider.html#a2ca984fe5f10245dbc9891f7bacf928d", null ]
+];

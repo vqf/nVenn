@@ -1,0 +1,7 @@
+<map id="borderLine::crossestPoint" name="borderLine::crossestPoint">
+<area shape="rect" id="Node000001" title="Gets (one of) the circle that belongs to the least number of sets The result must be higher than 0 an..." alt="" coords="5,31,175,57"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a55ec4358837f41e5a15797305a3067de" title="Count the number of ones in the binary representation of a number." alt="" coords="223,5,340,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,30,207,26,208,31,176,35"/>
+<area shape="rect" id="Node000003" href="$topol_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="249,56,314,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,53,234,61,234,66,175,58"/>
+</map>

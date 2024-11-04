@@ -1,10 +1,10 @@
 <map id="scene::icontacts" name="scene::icontacts">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,81,123,108"/>
-<area shape="rect" id="Node000002" href="$classscene.html#a185a4eeb43a5ad34e13b6a2b42637dd2" title=" " alt="" coords="339,5,446,32"/>
+<area shape="rect" id="Node000002" href="$classscene.html#a120da7a7e1202fa7c173e80f00be49bf" title=" " alt="" coords="339,5,446,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,78,125,59,170,41,249,25,323,18,324,23,250,31,171,47,127,64,90,83"/>
 <area shape="rect" id="Node000004" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="357,107,427,133"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="123,97,342,113,341,119,123,102"/>
-<area shape="rect" id="Node000005" href="$classscene.html#aad18f6f1ee79b2bb6a9a0054a4707391" title=" " alt="" coords="171,157,290,184"/>
+<area shape="rect" id="Node000005" href="$classscene.html#ae347e46ec1614552c34e05566e4ec532" title=" " alt="" coords="171,157,290,184"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="96,106,187,148,184,153,94,111"/>
 <area shape="rect" id="Node000006" href="$classscene.html#a5b8c64d3df9b22a48a4efb11f7fd2dff" title=" " alt="" coords="186,56,275,83"/>
 <area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="123,83,170,76,171,81,123,88"/>

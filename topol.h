@@ -631,6 +631,12 @@ class timeMaster{
       reports.push_back(0);
     }
   }
+  void setDt(UINT level){
+    if (level < times.size()){
+      reset();
+      icdt = level;
+    }
+  }
   void reset(){
     init(imindt, imaxdt, istepdt);
   }
@@ -1284,6 +1290,9 @@ public:
     totalCompactness = 0;
     lastCompactness = 0;
   }
+  void setCanFinish(){
+    canFinish = true;
+  }
   bool keepState(){
     return keep;
   }
@@ -1368,9 +1377,12 @@ class borderLine
     scene tosolve;
     blState savedState;
     float simulationTime;
+    float maxLineVsq;
+    float maxCircleVsq;
     UINT internalCounter;
     outCounters oc;
     optimizationStep optStep;
+    float (borderLine::*currentMeasure)();
 
     vector<float> pairDistances;
     vector<string> groups;
@@ -2282,6 +2294,10 @@ class borderLine
       embellishTopology(logit);
     }
 
+    float getMaxVsq(){
+      return tosolve.getMaxVsq();
+    }
+
     float compactness(){
       float result = 0;
       for (UINT i = 0; i < circles.size() - 1; i++){
@@ -2935,10 +2951,10 @@ class borderLine
           UINT i = opt->getCounter();
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
-            tolog("Checking " + toString(circles[i].n) + "\n");
+            tolog("Checking " + toString(circles[i].n) + " with " + toString(opt->getBestCompactness()) + "\n");
             cout << circles[i].n << ", ";
             fixTopology();
-            writeSVG("starting.svg");
+            //writeSVG("starting.svg");
             if (checkTopol()){
               tolog("Undo on checkTopol\n");
               swapCoords(i, candidate);
@@ -3666,6 +3682,8 @@ class borderLine
 
         blSettings.totalCircleV = 0;
         blSettings.totalLineV = 0;
+        maxLineVsq = 0;
+        maxCircleVsq = 0;
 
         //Init the scale for the new frame
         internalScale.setClear(true);
@@ -3774,7 +3792,11 @@ class borderLine
 
                   bl[i][j].vx += bl[i][j].fx * blSettings.dt / bl[i][j].mass;
                   bl[i][j].vy += bl[i][j].fy * blSettings.dt / bl[i][j].mass;
-                  blSettings.totalLineV += bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
+                  float cvelsq = bl[i][j].vx * bl[i][j].vx + bl[i][j].vy * bl[i][j].vy;
+                  blSettings.totalLineV += cvelsq;
+                  if (cvelsq > maxLineVsq){
+                    maxLineVsq = cvelsq;
+                  }
 
                   bl[i][j].x += bl[i][j].vx * blSettings.dt;
                   bl[i][j].y += bl[i][j].vy * blSettings.dt;
@@ -3834,7 +3856,11 @@ class borderLine
               //
               circles[i].vx += circles[i].fx * blSettings.dt / (CIRCLE_MASS);
               circles[i].vy += circles[i].fy * blSettings.dt / (CIRCLE_MASS);
-              blSettings.totalCircleV += circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
+              float cvelsq = circles[i].vx * circles[i].vx + circles[i].vy * circles[i].vy;
+              blSettings.totalCircleV += cvelsq;
+              if (cvelsq > maxCircleVsq){
+                maxCircleVsq = cvelsq;
+              }
               //limitVel(circles[i], maxv);
 
               circles[i].x += circles[i].vx * blSettings.dt;
@@ -3847,9 +3873,9 @@ class borderLine
               internalScale.addToScale(circles[i]);
           }
         }
-        displayFloat("LINEV", log(blSettings.totalLineV));
+        displayFloat("MAXLINEV", log(maxLineVsq));
         displayFloat("MINRAT", minRat);
-        displayFloat("CIRCLEV", log10(blSettings.totalCircleV)/(2*log10(ngroups)));
+        displayFloat("MAXCIRCLEV", log10(maxCircleVsq));
         displayFloat("SURFRATIO", estSurf());
     }
 
@@ -4292,6 +4318,9 @@ public:
         blSettings.lineAir = ngroups;
         blSettings.optimize = true;
         simulationTime = 0;
+        maxLineVsq = 0;
+        maxCircleVsq = 0;
+        borderLine::currentMeasure = &borderLine::compactness;
         srand(time(0));
         w = tw;         //keep a copy of the weights
         for (i = 0; i < tw.size(); i++){
@@ -4428,7 +4457,9 @@ public:
       setFixedCircles();
       setSecureState();
       setPrevState();
-      doOptimize(false);
+      attachScene();
+      tosolve.solve();
+      doOptimize(true);
       udt.init(1e-4, 0.01);
     }
 
@@ -4576,7 +4607,7 @@ public:
       resetScale();
       resetCircleRadius();
       if (blSettings.optimize){
-        float d = compactness();
+        float d = (this->*currentMeasure)();
         evaluation.add(d);
         displayFloat("COMPACTNESS", d);
         displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
@@ -4586,6 +4617,7 @@ public:
       }
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
+      displayFloat("MAXV", log10(tosolve.getMaxVsq()));
       displayUINT("COUNTER", evaluation.viewCounter());
       displayUINT("CANFINISH", evaluation.viewCanFinish());
       displayUINT("CWI", evaluation.viewCyclesWithoutImprovement());
@@ -4641,9 +4673,6 @@ public:
     }
     void setSoftContact(bool soft = false){
       blSettings.softcontact = soft;
-    }
-    float getTotalCircleV(){
-      return blSettings.totalCircleV;
     }
 
     void setFixedCircles(bool fixedCircles = true){
@@ -5394,6 +5423,42 @@ public:
 
     }
 
+
+    /** \addtogroup API
+     *  @{
+     *  Functions exposed to run the algorithm in different
+     *  settings. Briefly, setStep() will leave the object
+     *  ready for a step, setCycle() will perform each cycle
+     *  of the step and isStepFinished() will inform whether
+     *  the conditions for ending the step have been met.
+     *  When used with a graphical interface,
+     *  bl.refreshScreen.isMax() is true after a given number of
+     *  cycles after the last true value.
+     *  It can be used to avoid drawing each step.
+     *
+     *  Thus, if bl is an exported borderLine object,
+     *
+     *       <pseudocode>
+     *        for step in 1:7
+     *         setStep(step)
+     *         quit = false
+     *         while !quit
+     *           setCycle(step)
+     *           if bl.refreshScreen.isMax()
+     *             draw_svg_result
+     *           if isStepFinished(step)
+     *             quit = true
+     *        </pseudocode>
+     *
+     */
+
+
+    /** \brief Inits the conditions for a given step
+     *
+     * \param 0 UINT stepNumber
+     * \return bool
+     *
+     */
     bool setStep(UINT stepNumber = 0){
       bool result = true;
       if (stepNumber == 1){
@@ -5404,6 +5469,7 @@ public:
         setCheckTopol(false);
       }
       else if (stepNumber == 3){
+        setCheckTopol(true);
         resetOptimize();
         fixTopology();
         oc.maxOutCount = 10;
@@ -5453,14 +5519,17 @@ public:
         resetTimer();
         interpolateToDist(2 * correctedMinCircRadius());
         scSpringK(1e2);
-        scFriction(70);
-        scG(1e-2);
+        scFriction(700);
+        scG(1e-1);
         scD(1e2);
         scGhostGrav(true);
         getBestSoFar();
       }
       else if (stepNumber == 7){
         startRefiningSteps();
+        evaluation.init();
+        evaluation.setCanFinish();
+        this->currentMeasure = &borderLine::getMaxVsq;
         scG(5e-3);
         scSpringK(1e1);
         oc.maxOutCount = 70;
@@ -5501,8 +5570,8 @@ public:
         }
       }
       else if (stepNumber == 4){
-        float thisCross = outCompactness(&optStep, &borderLine::furthestPoint,
-                                         &borderLine::compactness, &borderLine::countCrossings);
+        float thisCross = outCompactness(&optStep, &borderLine::crossestPoint,
+                                         &borderLine::countCrossings, &borderLine::compactness);
         if (optStep.hasEnded()){
           if (thisCross < oc.optVal || optStep.hasUntied()){
             oc.optVal = thisCross;
@@ -5530,8 +5599,8 @@ public:
     bool isStepFinished(UINT stepNumber = 0){
       bool result = false;
       if (stepNumber == 1){
-        float tc = getTotalCircleV();
-        if (tc > 0 && tc < (1e-3*ngroups / 5)){
+        float tc = maxCircleVsq;
+        if (tc > 0 && tc < 1e-2){
           result = true;
         }
       }
@@ -5545,186 +5614,30 @@ public:
           result = true;
         }
       }
-      else if (stepNumber == 5 || stepNumber == 6){
+      else if (stepNumber == 5 || stepNumber == 6 || stepNumber == 7){
         bool bq = isSimulationComplete();
         if (bq){
-          result = true;
-        }
-      }
-      else if (stepNumber == 7){
-        if (oc.outCount > oc.maxOutCount){
           result = true;
         }
       }
       return result;
     }
+    /** @} */
 
     bool simulate(int maxRel = 0){
       restart_log();
-      cout << "Starting...\n";
-      refreshScreen.setLimits(1,10);
-      bool bQuit = false;
-      setCheckTopol(false);
-      float tc = 0;
-      cout << "First step...\n";
-      //setBestSoFar();
-      while (!bQuit){
-        setForcesFirstStep();
-        solve();
-        tc = getTotalCircleV();
-        if (refreshScreen.isMax() == true) writeSVG();
-        refreshScreen++;
-        if (tc > 0 && tc < (1e-3*ngroups / 5)){
-          bQuit = true;
-        }
-      }
-      cout << "Second step...\n";
-      bQuit = false;
-      while (!bQuit){
-        setForcesSecondStep();
-        setContacts(false, true, 3 * maxRad() * AIR);
-        solve(true);
-        if (minCircDist() > (2 * maxRad()*AIR)){
-          bQuit = true;
-        }
-        //cout << croack() << endl; exit(0);
-        if (refreshScreen.isMax() == true) writeSVG();
-        refreshScreen++;
-      }
-      bQuit = false;
-      cout << "Third step (finding best geometry)...\n";
-      // Compactness
-      fixTopology();
-      float bestOut = compactness();
-      optimizationStep opt(bestOut);
-      bestOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness, &borderLine::countCrossings);
-      UINT outCount = 0;
-      UINT maxOutCount = 10;
-
-      while (!bQuit){
-        float thisOut = outCompactness(&opt, &borderLine::furthestPoint, &borderLine::compactness, &borderLine::countCrossings);
-        if (opt.hasEnded()){
-          if (thisOut < bestOut || opt.hasUntied()){
-            bestOut = thisOut;
-            outCount = 0;
-            //showCrossings();
-            cout << endl;
-          }
-          else{
-            outCount++;
-            cout << ".";
+      for (UINT step = 1; step < 8; step++){
+        bool bQuit = false;
+        cout << "Step " << step << endl;
+        setStep(step);
+        while (!bQuit){
+          setCycle(step);
+          if (refreshScreen.isMax()) writeSVG();
+          if (isStepFinished(step)){
+            bQuit = true;
           }
         }
-        //**********//
-        fixTopology();
-        //toOGL(bl, hDC);
-        if (outCount > maxOutCount){
-          bQuit = true;
-          cout << endl;
-        }
       }
-
-      //Crossings
-      resetOptimize();
-      fixTopology(false);
-      float bestCross = countCrossings();
-      optimizationStep cropt(bestCross);
-      bestCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings, &borderLine::compactness);
-      tolog("New bestCross: " + toString(bestCross) + "\n");
-      UINT crossCount = 0;
-      bQuit = false;
-      while (!bQuit){
-        float thisCross = outCompactness(&cropt, &borderLine::crossestPoint, &borderLine::countCrossings, &borderLine::compactness);
-        if (cropt.hasEnded()){
-          if (thisCross < bestCross || opt.hasUntied()){
-            bestCross = thisCross;
-            crossCount = 0;
-            //tolog("New new bestCross: " + toString(bestCross) + "\n");
-          }
-          else{
-            crossCount++;
-            //tolog("-> " + toString(crossCount));
-          }
-        }
-        fixTopology(false);
-        //toOGL(bl, hDC);
-        if (crossCount > maxOutCount){
-          bQuit = true;
-        }
-      }
-      resetOptimize();
-      if (checkTopol() == false){
-        interpolateToDist(5 * minCircRadius * AIR);
-        setPrevState();
-        setSecureState();
-      }
-      else{
-       // cout << "Could not fix topology. Starting again...\n");
-        return false;
-      }
-      cout << "Fourth step (Simulation)...\n";
-      bQuit = false;
-      resetTimer();
-      setCheckTopol(true);
-      attachScene();
-      scFriction(25);
-      scD(1e2);
-      scG(1e-1);
-      scGhostGrav(false);
-      getBestSoFar();
-      while (!bQuit){
-      //for (UINT i = 0; i < 10; i++){
-        if (refreshScreen.isMax()) {
-            writeSVG();
-        }
-        refreshScreen++;
-        scSolve();
-        bool bq = isSimulationComplete();
-        if (bq){
-          bQuit = true;
-        }
-      }
-      cout << "Fifth step (Refining)...\n";
-      resetTimer();
-      interpolateToDist(2 * correctedMinCircRadius());
-      scSpringK(1e2);
-      scFriction(70);
-      scG(1e-2);
-      scD(1e2);
-      scGhostGrav(true);
-      getBestSoFar();
-      bQuit = false;
-      while (!bQuit){
-        if (refreshScreen.isMax()) {
-            writeSVG();
-        }
-        refreshScreen++;
-        scSolve();
-        bool bq = isSimulationComplete();
-        if (bq){
-          bQuit = true;
-        }
-      }
-      cout << "Sixth step (Embellishing)...\n";
-      startRefiningSteps();
-      scG(5e-3);
-      scSpringK(1e1);
-      UINT counter = 0;
-      bQuit = false;
-      while (!bQuit){
-        if (refreshScreen.isMax()) {
-            writeSVG();
-        }
-        refreshScreen++;
-        scSolve();
-        if (counter < 70){
-          counter++;
-        }
-        else{
-          bQuit = true;
-        }
-      }
-      return true;
     }
 
 };

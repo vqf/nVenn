@@ -1,0 +1,5 @@
+<map id="borderLine::scGhostGrav" name="borderLine::scGhostGrav">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,170,32"/>
+<area shape="rect" id="Node000002" href="$classscene.html#a2da5fdfb9cc19e60219820ae7663f152" title="Do GHOST particles feel gravity? By default, they do feel gravity, but do not affect other bodies." alt="" coords="218,5,375,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,16,202,16,202,21,170,21"/>
+</map>

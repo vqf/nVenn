@@ -151,6 +151,7 @@ class scene{
   vector<springLink> rods;
   vector<string> info;
   vector<float> cushions;
+  bool debugSignal;
   float dt;
   float simtime;
   float defaultK;
@@ -159,6 +160,7 @@ class scene{
   float maxAllowedVel;
   float rodStiffness;
   float friction;
+  float maxvsq;
   float damp; // Spring damping constant
   float G; // Gravity constant
   bool ghostGrav; // Do Particles with rad==0 feel gravity?
@@ -517,6 +519,8 @@ public:
     clearScene();
     dump = false;
     pseudoGravity = false;
+    debugSignal = false;
+    maxvsq = 0;
     simtime = 0;
     defaultK = 100;
     G = 0;
@@ -527,6 +531,9 @@ public:
     damp = 0;
     maxK = defaultK;
     dt = 1e-2;
+  }
+  void setDebugSignal(){
+    debugSignal = true;
   }
   void clearScene(){
     points.clear();
@@ -584,6 +591,9 @@ public:
   vector<string> getInfo(){
     vector<string> result = info;
     return result;
+  }
+  float getMaxVsq(){
+    return maxvsq;
   }
   vector<point> getVirtual(){
     vector<point> result = virtualPoints;
@@ -756,7 +766,7 @@ public:
     effectGravity();
     icontacts();
     float maxfsq = 0;
-    float maxvsq = 0;
+    maxvsq = 0;
     for (UINT i = 0; i < points.size(); i++){
       float fx = points[i]->fx;
       float fy = points[i]->fy;
@@ -767,11 +777,13 @@ public:
       if (fsq != fsq){
 
       }
-      if (fsq > maxfsq){
-        maxfsq = fsq;
-      }
-      if (vsq > maxvsq){
-        maxvsq = vsq;
+      if (((points[i]->flags & ANCHORED) == 0)){
+        if (fsq > maxfsq){
+          maxfsq = fsq;
+        }
+        if (vsq > maxvsq){
+          maxvsq = vsq;
+        }
       }
     }
     //tolog(toString(maxfsq) + "\t" + toString(maxvsq) + "\n");
@@ -790,6 +802,7 @@ public:
     addInfo("DT: ", cdt);
     simtime += cdt;
     addInfo("ST: ", simtime);
+    addInfo("MV: ", getMaxVsq());
     return cdt;
   }
   float simTime(){

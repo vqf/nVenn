@@ -4,14 +4,16 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,104,148,73,207,42,237,30,239,35,209,46,151,78,105,108"/>
 <area shape="rect" id="Node000003" href="$classtangent.html#a2870e8fb4b876786de4619cad27dd566" title=" " alt="" coords="208,56,368,83"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,103,215,84,217,90,140,109"/>
-<area shape="rect" id="Node000006" href="$classborder_line.html#a754217543a26b2df2af42e099d622d3a" title=" " alt="" coords="216,107,360,133"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="160,117,200,117,200,123,160,123"/>
-<area shape="rect" id="Node000007" href="$topol_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="256,157,320,184"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="140,131,241,157,240,162,139,137"/>
-<area shape="rect" id="Node000008" href="$classtangent.html#a93192645af418200291773c09866a038" title=" " alt="" coords="210,208,366,235"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="105,132,151,162,209,194,224,200,222,205,207,198,148,167,102,136"/>
+<area shape="rect" id="Node000007" href="$classborder_line.html#a754217543a26b2df2af42e099d622d3a" title=" " alt="" coords="216,107,360,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="160,117,200,117,200,123,160,123"/>
+<area shape="rect" id="Node000008" href="$topol_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="256,157,320,184"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="140,131,241,157,240,162,139,137"/>
+<area shape="rect" id="Node000009" href="$classtangent.html#a93192645af418200291773c09866a038" title=" " alt="" coords="210,208,366,235"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="105,132,151,162,209,194,224,200,222,205,207,198,148,167,102,136"/>
 <area shape="rect" id="Node000004" href="$classtangent.html#aeab7bcf5b95a49fe7fc98d6ed4c9309c" title=" " alt="" coords="416,56,523,83"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="368,67,400,67,400,72,368,72"/>
-<area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="571,56,677,83"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="524,67,556,67,556,72,524,72"/>
+<area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="576,31,682,57"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="523,58,561,52,561,57,524,63"/>
+<area shape="rect" id="Node000006" href="$classtangent.html#ae0843d0374c9c1c31d856885c94bcf89" title=" " alt="" coords="571,81,687,108"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="524,75,557,81,556,86,523,80"/>
 </map>

@@ -1,0 +1,36 @@
+<map id="scene::solve" name="scene::solve">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,99,184"/>
+<area shape="rect" id="Node000002" href="$classscene.html#a913189fed388d96c3609550d360c32ae" title=" " alt="" coords="341,31,446,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,171,140,172,188,168,238,159,285,143,311,128,334,108,372,68,375,72,338,112,314,132,287,148,239,164,188,174,140,177,99,177"/>
+<area shape="rect" id="Node000003" href="$classscene.html#aeadb577d6821477fcb669c9dbe6727f6" title=" " alt="" coords="150,56,283,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="65,155,100,124,145,92,156,87,158,92,148,97,103,129,69,159"/>
+<area shape="rect" id="Node000004" href="$classscene.html#a41ef26bf1da4e42da7b799670e3b2289" title=" " alt="" coords="149,107,284,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="97,154,155,136,157,141,99,159"/>
+<area shape="rect" id="Node000005" href="$classscene.html#ac279eed67ea4553d51b5041ac2a4393a" title=" " alt="" coords="501,385,627,412"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="62,183,94,238,118,269,148,295,189,319,232,339,323,368,411,385,486,393,486,399,410,390,321,373,230,344,186,324,145,299,115,273,89,241,57,186"/>
+<area shape="rect" id="Node000007" href="$classscene.html#a70767a719b389d6f4cad19154e3d8799" title=" " alt="" coords="147,208,286,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="99,182,157,200,155,205,97,187"/>
+<area shape="rect" id="Node000009" href="$classscene.html#a45117b277b3c8bb99545476c57e9e93e" title=" " alt="" coords="158,259,275,285"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="69,182,103,213,148,244,158,250,156,254,145,249,100,217,65,186"/>
+<area shape="rect" id="Node000015" href="$classscene.html#aba84b0a3d640e7e2765dd3310d3fb6f8" title=" " alt="" coords="165,5,268,32"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="58,155,90,101,115,70,145,42,152,37,155,42,148,46,119,73,95,104,62,158"/>
+<area shape="rect" id="Node000006" href="$classscene.html#aba5213dc4de2459ad5159818234a00cd" title=" " alt="" coords="675,335,757,361"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="606,382,659,364,661,369,607,387"/>
+<area shape="rect" id="Node000008" href="$classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60" title=" " alt="" coords="346,132,442,159"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="249,205,333,168,345,163,347,168,335,173,251,210"/>
+<area shape="rect" id="Node000010" href="$classscene.html#a120da7a7e1202fa7c173e80f00be49bf" title=" " alt="" coords="510,335,618,361"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="244,283,286,303,335,320,418,336,495,343,495,348,417,341,333,325,284,308,242,288"/>
+<area shape="rect" id="Node000011" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="529,233,599,260"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="275,265,513,248,514,253,276,270"/>
+<area shape="rect" id="Node000012" href="$classscene.html#ae347e46ec1614552c34e05566e4ec532" title=" " alt="" coords="334,183,453,209"/>
+<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="256,256,285,244,351,214,353,219,287,249,258,261"/>
+<area shape="rect" id="Node000013" href="$classscene.html#a5b8c64d3df9b22a48a4efb11f7fd2dff" title=" " alt="" coords="349,284,438,311"/>
+<area shape="poly" id="edge14_Node000009_Node000013" title=" " alt="" coords="276,278,334,286,333,291,275,283"/>
+<area shape="poly" id="edge10_Node000010_Node000006" title=" " alt="" coords="618,345,659,345,659,351,618,351"/>
+<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="454,187,495,186,540,190,585,200,628,219,655,240,677,267,706,319,701,322,672,270,651,244,625,224,584,205,539,195,494,192,454,192"/>
+<area shape="poly" id="edge15_Node000013_Node000010" title=" " alt="" coords="439,308,503,327,502,332,438,313"/>
+<area shape="poly" id="edge16_Node000013_Node000011" title=" " alt="" coords="438,282,513,259,515,264,439,287"/>
+<area shape="rect" id="Node000014" href="$classscene.html#af61197667481413936ea9f2ca44347d1" title=" " alt="" coords="510,284,618,311"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="439,295,495,295,495,300,439,300"/>
+<area shape="poly" id="edge19_Node000015_Node000002" title=" " alt="" coords="269,23,326,32,325,37,268,29"/>
+</map>

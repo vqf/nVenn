@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['is_5foutside_0',['IS_OUTSIDE',['../topol_8h.html#a595b3bdb31e0c542382b0135f4f1df5b',1,'topol.h']]]
+  ['ghost_0',['GHOST',['../scene_8h.html#ac78161bfad133896feb36d9395fe8ba6',1,'scene.h']]]
 ];

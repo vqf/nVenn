@@ -1,24 +1,9 @@
 var searchData=
 [
-  ['margin_0',['margin',['../structbl_data.html#aa067b9a2cd02388b9322d9bb08b84ba4',1,'blData']]],
-  ['marginscale_1',['marginScale',['../structbl_data.html#a605c099db1af30aa99e18c73965fedaf',1,'blData']]],
-  ['mask_2',['mask',['../classgroup_iterator.html#ada00b50aefa95a0253f8576c18e95a2d',1,'groupIterator::mask'],['../classcircle_iterator.html#aa13f5f14ac3df89102d76ee3eebab1b3',1,'circleIterator::mask']]],
-  ['mass_3',['mass',['../classpoint.html#a43de4e71bb9c1a62f53fda4a2fa88dda',1,'point']]],
-  ['maxallowedforce_4',['maxAllowedForce',['../classscene.html#a4ab064a747f26c40fc7dac0016199507',1,'scene']]],
-  ['maxallowedvel_5',['maxAllowedVel',['../classscene.html#a8ca7d7cb836200bfb452ef1e3c532b3d',1,'scene']]],
-  ['maxdt_6',['maxdt',['../structbl_data.html#a3b5e428728e6a6f0e205055a8dca9ebe',1,'blData']]],
-  ['maxf_7',['maxf',['../structbl_data.html#aa36ab793476325600533b4a72871dc0d',1,'blData']]],
-  ['maxk_8',['maxK',['../classscene.html#a73444c265fcc488e2d9a772a6f498526',1,'scene']]],
-  ['maxradius_9',['maxRadius',['../classborder_line.html#ae0187d4afc33f137b7de88118be6ef72',1,'borderLine']]],
-  ['maxrunningtime_10',['maxRunningTime',['../structbl_data.html#a1aeeb68e4ea36c90947c0817fb70953f',1,'blData']]],
-  ['maxsurfratio_11',['maxSurfRatio',['../structbl_data.html#ae29ce51202e301a7fa82d0412793edbc',1,'blData']]],
-  ['maxv_12',['maxv',['../structbl_data.html#a170da78646ec90e61548af5bc1ee831f',1,'blData']]],
-  ['maxvcontact_13',['maxvcontact',['../structbl_data.html#a0d0ba41073d42671ab43997d7efe7d01',1,'blData']]],
-  ['mincircradius_14',['minCircRadius',['../classborder_line.html#a4898f999bcc7a740f657ff8510842192',1,'borderLine']]],
-  ['mindt_15',['mindt',['../structbl_data.html#a45076f72e38d9b5851bd594ad55d922a',1,'blData']]],
-  ['mindx_16',['minDx',['../structbl_data.html#a80494f1a54300c76b3bd820942b94052',1,'blData']]],
-  ['mindy_17',['minDy',['../structbl_data.html#a6c3060cdcffa1c271be094c6a0ba5f00',1,'blData']]],
-  ['minrat_18',['minRat',['../classborder_line.html#a3b52bef1b7800a38df66fb0d16706a2e',1,'borderLine']]],
-  ['minratio_19',['minratio',['../structbl_data.html#ae15f1fbb6361d96d22d88d6851b74abb',1,'blData']]],
-  ['minsurfratio_20',['minSurfRatio',['../structbl_data.html#a00d5aaa581c87209a23ee7091db988d2',1,'blData']]]
+  ['labels_0',['labels',['../classborder_line.html#a63bfdb6df977f09581ad5d7c7e97d586',1,'borderLine']]],
+  ['lastcompactness_1',['lastCompactness',['../classdecider.html#a99e50ad727842ada3124211378d691c0',1,'decider']]],
+  ['letters_2',['letters',['../bmpfont_8h.html#ae962e1c5a90951be11bd3bcb11d7ea65',1,'bmpfont.h']]],
+  ['lineair_3',['lineAir',['../structbl_data.html#a3d8b09e10a6dfad88edcff97b4350814',1,'blData']]],
+  ['lines_4',['lines',['../main_8cpp.html#ac0221310a037ccff457a0537b8c465d5',1,'main.cpp']]],
+  ['llimit_5',['lLimit',['../classl_counter.html#ab27de95c01d6bf3316fce1281af93c98',1,'lCounter']]]
 ];

@@ -1,0 +1,22 @@
+<map id="borderLine::nextLeftmostPoint" name="borderLine::nextLeftmostPoint">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,48,170,91"/>
+<area shape="rect" id="Node000002" href="$classgroup_iterator.html#a7fcf587d0750100c33bd9d5228201308" title=" " alt="" coords="385,5,545,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,55,217,48,369,28,370,33,218,53,171,60"/>
+<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a5a60a0876ca3f292356b1b452f461ff1" title=" " alt="" coords="218,107,337,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="171,89,211,100,209,105,169,94"/>
+<area shape="rect" id="Node000007" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="407,107,523,133"/>
+<area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="170,73,337,92,392,102,391,107,337,97,170,78"/>
+<area shape="rect" id="Node000003" href="$classcircle_iterator.html#aa9aa6cf5fbb3a065815346eda75523cd" title=" " alt="" coords="593,56,753,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="524,30,601,49,600,54,522,35"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="330,103,385,92,484,79,578,72,578,77,485,85,385,97,331,109"/>
+<area shape="rect" id="Node000005" href="$classcircle_iterator.html#a8f0f08f268454b6154f602cef12dadae" title=" " alt="" coords="614,157,732,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="331,131,385,143,497,157,599,165,599,170,497,162,385,148,330,137"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="337,117,392,117,392,123,337,123"/>
+<area shape="rect" id="Node000006" href="$classcircle_iterator.html#a444f0ed0012b005eb0523234d34350b2" title=" " alt="" coords="801,132,934,159"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="732,160,785,153,786,159,733,166"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="522,103,600,84,601,89,524,109"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="524,131,601,151,600,156,522,137"/>
+<area shape="rect" id="Node000008" href="$classcircle_iterator.html#a3dd1266028ddcceb588153936028744f" title=" " alt="" coords="615,107,731,133"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="524,117,600,117,600,123,524,123"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="732,125,786,132,785,137,731,130"/>
+</map>

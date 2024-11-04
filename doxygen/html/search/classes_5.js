@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outsiderinfo_0',['outsiderInfo',['../structoutsider_info.html',1,'']]]
+  ['lcounter_0',['lCounter',['../classl_counter.html',1,'']]]
 ];

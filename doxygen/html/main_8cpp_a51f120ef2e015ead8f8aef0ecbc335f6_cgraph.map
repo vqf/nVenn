@@ -1,0 +1,15 @@
+<map id="handleSignal" name="handleSignal">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,101,108"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a42d8050d8cc57002b7e18aa791009017" title=" " alt="" coords="149,81,277,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,92,133,92,133,97,101,97"/>
+<area shape="rect" id="Node000003" href="$classscale.html#a862030b95f8b223cdfb6254641f2fc22" title=" " alt="" coords="325,81,424,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="278,92,309,92,309,97,278,97"/>
+<area shape="rect" id="Node000004" href="$classscale.html#ac4e3c850624f113eccc5e68a5b1fd30b" title=" " alt="" coords="473,5,566,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="401,78,478,37,480,42,403,83"/>
+<area shape="rect" id="Node000005" href="$classscale.html#ac8a46d7a4a18c5a8de71a80e2d90b3b2" title=" " alt="" coords="472,56,567,83"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="424,83,457,78,458,83,425,89"/>
+<area shape="rect" id="Node000006" href="$classscale.html#a2336cd35ce690f95ad489fa188d68d3d" title=" " alt="" coords="475,107,564,133"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="425,101,460,107,459,112,424,106"/>
+<area shape="rect" id="Node000007" href="$classscale.html#aa39771c26bedd6166840b8756375ccc8" title=" " alt="" coords="474,157,565,184"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="403,106,480,147,478,152,401,111"/>
+</map>

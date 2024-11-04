@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['x_0',['x',['../classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf',1,'point::x'],['../classscale.html#ace0507940b35aef3c6ed1a3276142843',1,'scale::x'],['../classscale.html#a3b59d4a3eebdb5fdaede06d1272ccc02',1,'scale::X']]]
+  ['w_0',['w',['../classborder_line.html#ac841e1ec2b61ed910daa52d51e9d27a0',1,'borderLine']]],
+  ['warn_1',['warn',['../classborder_line.html#afde7c99cc3c6aedc767c246a5d61391a',1,'borderLine']]]
 ];

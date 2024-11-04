@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "nVenn", "index.html", [
     [ "nVenn", "md__d_1_2_proyectos_2n_venn2_2gh_2_r_e_a_d_m_e.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -54,8 +55,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classpoint.html#a837c8aba0b781050e0470eee24bcd4c8",
-"structbl_data.html#aa36ab793476325600533b4a72871dc0d"
+"classfile_text.html",
+"functions_k.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

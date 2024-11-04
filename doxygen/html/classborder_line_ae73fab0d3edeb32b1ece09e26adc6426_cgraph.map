@@ -1,12 +1,22 @@
 <map id="borderLine::leftmostCircle" name="borderLine::leftmostCircle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,174,57"/>
-<area shape="rect" id="Node000002" href="$classgroup_iterator.html#a9a39d8603801f7c1aeeb3845ea3fb150" title=" " alt="" coords="222,5,341,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,30,206,26,207,31,174,36"/>
-<area shape="rect" id="Node000005" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="223,56,340,83"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="174,52,208,57,207,62,173,58"/>
-<area shape="rect" id="Node000003" href="$classgroup_iterator.html#ac6fd6d91ce3ebf43be39a7d12e12a692" title="Next number counting from &#160;&#160;that has bit @group set to 1." alt="" coords="571,5,743,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,16,556,16,556,21,341,21"/>
-<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a0b338d3eb42b0b2bc251db90c57b6765" title=" " alt="" coords="389,31,523,57"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="342,25,374,29,373,35,341,30"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="523,33,556,29,556,34,524,38"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,174,83"/>
+<area shape="rect" id="Node000002" href="$classgroup_iterator.html#a7fcf587d0750100c33bd9d5228201308" title=" " alt="" coords="389,5,549,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,55,221,48,373,28,374,33,222,53,175,60"/>
+<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a5a60a0876ca3f292356b1b452f461ff1" title=" " alt="" coords="222,107,341,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,81,214,100,213,105,142,86"/>
+<area shape="rect" id="Node000007" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="411,107,527,133"/>
+<area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="174,73,341,92,396,102,395,107,341,97,174,78"/>
+<area shape="rect" id="Node000003" href="$classcircle_iterator.html#aa9aa6cf5fbb3a065815346eda75523cd" title=" " alt="" coords="597,56,757,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="528,30,605,49,604,54,526,35"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="334,103,389,92,488,79,582,72,582,77,489,85,389,97,335,109"/>
+<area shape="rect" id="Node000005" href="$classcircle_iterator.html#a8f0f08f268454b6154f602cef12dadae" title=" " alt="" coords="618,157,736,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="335,131,389,143,501,157,603,165,603,170,501,162,389,148,334,137"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="341,117,396,117,396,123,341,123"/>
+<area shape="rect" id="Node000006" href="$classcircle_iterator.html#a444f0ed0012b005eb0523234d34350b2" title=" " alt="" coords="805,132,938,159"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="736,160,789,153,790,159,737,166"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="526,103,604,84,605,89,528,109"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="528,131,605,151,604,156,526,137"/>
+<area shape="rect" id="Node000008" href="$classcircle_iterator.html#a3dd1266028ddcceb588153936028744f" title=" " alt="" coords="619,107,735,133"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="528,117,604,117,604,123,528,123"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="736,125,790,132,789,137,735,130"/>
 </map>

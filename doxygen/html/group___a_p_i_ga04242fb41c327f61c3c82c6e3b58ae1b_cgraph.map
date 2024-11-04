@@ -1,0 +1,43 @@
+<map id="borderLine::isStepFinished" name="borderLine::isStepFinished">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,172,181,199"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#aadb22519500eb4f893196afe1622a953" title=" " alt="" coords="229,84,406,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,169,169,145,228,120,247,113,249,118,230,125,172,150,122,174"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a511ef1b4db7fce2a2af66b8bc7b214c8" title=" " alt="" coords="237,135,398,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,171,222,166,222,171,182,176"/>
+<area shape="rect" id="Node000013" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="249,201,386,228"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="182,194,233,201,233,206,181,199"/>
+<area shape="rect" id="Node000014" href="$classborder_line.html#a50688dd360d6ab155881619ac0292516" title="Minimal distance between two circles. Used to finish the second step." alt="" coords="239,273,396,300"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="126,197,273,264,271,269,124,202"/>
+<area shape="rect" id="Node000004" href="$classdecider.html#a3cba04b2505de1e6f2de6fc3208d238b" title=" " alt="" coords="481,56,596,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="379,132,405,120,429,106,453,92,470,86,472,91,455,97,431,111,407,125,381,137"/>
+<area shape="rect" id="Node000005" href="$classborder_line.html#a015d26297480b217584645fb5abee990" title=" " alt="" coords="454,107,623,133"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="397,140,438,134,439,139,398,146"/>
+<area shape="rect" id="Node000012" href="$classdecider.html#afab804ef4ce9ec64e1bd9cc62c28aade" title=" " alt="" coords="495,157,583,184"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="398,159,479,164,479,169,397,164"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#ad0eb901192d34d6c6caa7e65c219a292" title=" " alt="" coords="671,107,834,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="623,117,656,117,656,123,623,123"/>
+<area shape="rect" id="Node000007" href="$classscene.html#a1720091e2f4b190b6c1417cd493bb080" title=" " alt="" coords="910,5,1020,32"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="772,104,821,73,881,42,896,35,898,40,883,46,823,78,775,108"/>
+<area shape="rect" id="Node000008" href="$classscene.html#ab40c6a10865eade7a6ee8793a718e9a4" title=" " alt="" coords="903,56,1027,83"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="811,103,890,84,892,89,812,109"/>
+<area shape="rect" id="Node000009" href="$classscene.html#afa9e44b1bf5761c2e0a37d171064fe9a" title=" " alt="" coords="900,107,1030,133"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="834,117,885,117,885,123,834,123"/>
+<area shape="rect" id="Node000010" href="$classscene.html#a12e5a6488f290d6c0e82d86ac63dc7d2" title=" " alt="" coords="897,157,1033,184"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="812,131,892,151,890,156,811,137"/>
+<area shape="rect" id="Node000011" href="$classscene.html#a9f3ed5ca9bcd0b7c0653a86215dc6a24" title=" " alt="" coords="882,208,1048,235"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="775,132,823,162,883,194,898,200,896,205,881,198,821,167,772,136"/>
+<area shape="rect" id="Node000015" href="$classcircle_iterator.html#aa9aa6cf5fbb3a065815346eda75523cd" title=" " alt="" coords="459,208,618,235"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="364,270,475,237,477,242,366,275"/>
+<area shape="rect" id="Node000016" href="$classcircle_iterator.html#a8f0f08f268454b6154f602cef12dadae" title=" " alt="" coords="480,259,598,285"/>
+<area shape="poly" id="edge15_Node000014_Node000016" title=" " alt="" coords="396,279,464,274,464,280,396,284"/>
+<area shape="rect" id="Node000018" href="$classcircle_iterator.html#a663053300f4e9c864473caf4db1ffb5e" title=" " alt="" coords="474,309,603,336"/>
+<area shape="poly" id="edge17_Node000014_Node000018" title=" " alt="" coords="396,297,459,307,458,312,395,302"/>
+<area shape="rect" id="Node000019" href="$topol_8h.html#ab73ab1c73aebaa90f3ddf9cfe76e98c5" title="Computes the square of the cartesian distance between points (@p0) and (@p1). If the distance itself ..." alt="" coords="496,360,582,387"/>
+<area shape="poly" id="edge19_Node000014_Node000019" title=" " alt="" coords="347,298,455,346,482,355,480,360,453,350,345,303"/>
+<area shape="rect" id="Node000020" href="$classcircle_iterator.html#a3dd1266028ddcceb588153936028744f" title=" " alt="" coords="481,411,596,437"/>
+<area shape="poly" id="edge20_Node000014_Node000020" title=" " alt="" coords="333,298,384,346,418,373,455,396,468,402,465,407,453,401,415,377,381,350,330,302"/>
+<area shape="rect" id="Node000017" href="$classcircle_iterator.html#a444f0ed0012b005eb0523234d34350b2" title=" " alt="" coords="686,309,819,336"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="599,283,679,303,678,308,598,289"/>
+<area shape="poly" id="edge18_Node000018_Node000017" title=" " alt="" coords="604,320,670,320,670,325,604,325"/>
+<area shape="poly" id="edge21_Node000020_Node000017" title=" " alt="" coords="592,408,622,396,673,370,717,343,720,347,675,375,624,401,594,413"/>
+</map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['y_0',['y',['../classpoint.html#a616ad85a2096d1566f5971666bbc3b3f',1,'point::y'],['../classscale.html#a915cbbebb79abf2ea0b7bed6a163efe0',1,'scale::y'],['../classscale.html#a5b32b55f9647eeda2d6176bb9c547adf',1,'scale::Y']]],
-  ['yspan_1',['ySpan',['../classscale.html#ace505d3010c0fd26e71210f05c287747',1,'scale']]]
+  ['x_0',['x',['../classscale.html#a3b59d4a3eebdb5fdaede06d1272ccc02',1,'scale::X'],['../classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf',1,'point::x'],['../classscale.html#ace0507940b35aef3c6ed1a3276142843',1,'scale::x']]],
+  ['xspan_1',['xSpan',['../classscale.html#a1cd116a8f255c3660eae870504576311',1,'scale']]]
 ];

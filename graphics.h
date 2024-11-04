@@ -282,7 +282,7 @@ class glGraphics{
 
       borderLine bl = *blp;
       MSG msg;
-      bl.setStep(1);
+      //bl.setStep(1);
       bool bQuit = false;
       while (!bQuit)
       {
@@ -305,7 +305,7 @@ class glGraphics{
               bl.refreshScreen++;
           }
       }
-      for (UINT step = 0; step < 8; step++){
+      for (UINT step = 1; step < 8; step++){
         bQuit = false;
         bl.setStep(step);
         while (!bQuit)

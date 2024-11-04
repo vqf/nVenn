@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['wait_0',['wait',['../classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0',1,'glGraphics::wait()'],['../initogl_8h.html#aa3b21853f890838c88d047d6c2786917',1,'wait():&#160;initogl.h']]],
-  ['winmain_1',['winmain',['../main_8cpp.html#a5d7bd9473df0a58ac2bffb9f7cd84c7c',1,'WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int iCmdShow):&#160;main.cpp'],['../test_8cpp.html#a5d7bd9473df0a58ac2bffb9f7cd84c7c',1,'WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int iCmdShow):&#160;test.cpp']]],
-  ['wlimit_2',['wlimit',['../classborder_line.html#a7dd0e4247ce1be6e833a75b3e8ea981e',1,'borderLine']]],
-  ['wndproc_3',['WndProc',['../initogl_8h.html#a30a1e3b0304f1b083637664cbda94e72',1,'initogl.h']]],
-  ['writecoords_4',['writeCoords',['../classborder_line.html#a151c0582b1aef6438cac0e605ada345b',1,'borderLine']]],
-  ['writesvg_5',['writeSVG',['../classborder_line.html#ae83cf8b564edcdcb31c8175bf7198e1a',1,'borderLine']]]
+  ['val_0',['val',['../classcircle_iterator.html#a3dd1266028ddcceb588153936028744f',1,'circleIterator::val()'],['../classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb',1,'groupIterator::val()']]],
+  ['vformat_1',['vformat',['../classborder_line.html#ae0a3c3299df6bf91e7bfcca08ce676f2',1,'borderLine']]],
+  ['viewcanfinish_2',['viewCanFinish',['../classdecider.html#a2f418b2651e58300333205f4d043cb8b',1,'decider']]],
+  ['viewcounter_3',['viewCounter',['../classdecider.html#adfdcbc31fc08077fd28d1a4d7f799588',1,'decider']]],
+  ['viewcycleswithoutimprovement_4',['viewCyclesWithoutImprovement',['../classdecider.html#a2a7bbe5914aab2e257e7f2a27249725e',1,'decider']]],
+  ['viewlastcomp_5',['viewLastComp',['../classdecider.html#a55a534f31206a0a86e2d8ee80e6e0a38',1,'decider']]]
 ];

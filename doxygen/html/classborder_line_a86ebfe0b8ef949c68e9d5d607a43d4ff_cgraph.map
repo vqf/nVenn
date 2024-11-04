@@ -1,5 +1,7 @@
 <map id="borderLine::contact2" name="borderLine::contact2">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,145,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,145,57"/>
 <area shape="rect" id="Node000002" href="$classborder_line.html#a631ddec3d3e984012a36803537fcc6f9" title=" " alt="" coords="193,5,332,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,16,177,16,177,21,145,21"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,32,177,28,178,33,145,37"/>
+<area shape="rect" id="Node000003" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="227,56,298,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,51,212,60,212,65,145,56"/>
 </map>

@@ -1,11 +1,20 @@
 var searchData=
 [
-  ['perimeter_0',['perimeter',['../topol_8h.html#a6864ceb482fc9a3c818bce8b203e6937',1,'topol.h']]],
-  ['place_1',['place',['../classscale.html#a8685fd8d66a1d4e9142d3c69531a919a',1,'scale::place()'],['../classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57',1,'borderLine::place()']]],
-  ['point_2',['point',['../classpoint.html#a5fe21d4a4539320bf0f5caf1218d31c8',1,'point::point()'],['../classpoint.html#aa570be78b44b9fc64b9678893d486598',1,'point::point(float px, float py)']]],
-  ['poke_3',['poke',['../classtime_master.html#adcb628538af426c264a209766a88d267',1,'timeMaster']]],
-  ['polishlines_4',['polishLines',['../classborder_line.html#a62f1fa285af08ec3997e191a819f2a33',1,'borderLine']]],
-  ['prevpoint_5',['prevPoint',['../classborder_line.html#a285bdf3e23139b464dcc0c62eff1fe4d',1,'borderLine']]],
-  ['printstring_6',['printString',['../bmpfont_8h.html#a97867203486aff2c9e63da6051abf556',1,'bmpfont.h']]],
-  ['printv_7',['printv',['../topol_8h.html#aaf9d094ff6bca06ea3b3f66d60f6cc7f',1,'topol.h']]]
+  ['oglshow_0',['OGLShow',['../test_8cpp.html#a9d091fa9e5920d21649b4b510fe23886',1,'test.cpp']]],
+  ['oilog_1',['oilog',['../topol_8h.html#adb93f84c68dff9114cfa35df1c08a93d',1,'topol.h']]],
+  ['ones_2',['ones',['../classborder_line.html#a55ec4358837f41e5a15797305a3067de',1,'borderLine']]],
+  ['operator_20uint_3',['operator UINT',['../classl_counter.html#ab31bff750e90d2e262c3104abf1e3314',1,'lCounter']]],
+  ['operator_21_3d_4',['operator!=',['../classtangent.html#ac9bf87a8942ccd2f2c5eed53296658d8',1,'tangent::operator!=()'],['../scene_8h.html#a171d5c2f4110c0924507cc937bb014a3',1,'operator!=():&#160;scene.h']]],
+  ['operator_2b_5',['operator+',['../classtangent.html#ae6ab44a2a86df4936735ec2ba484fe82',1,'tangent']]],
+  ['operator_2b_2b_6',['operator++',['../classl_counter.html#aabe5adc58c460c1ccd0a0d57bb825c4f',1,'lCounter::operator++(int)'],['../classl_counter.html#ae69f62cafd796b5d3884bae3d96cdd63',1,'lCounter::operator++()']]],
+  ['operator_2d_7',['operator-',['../classtangent.html#add691c8c088cc3fc188136b37f7527f0',1,'tangent']]],
+  ['operator_2d_2d_8',['operator--',['../classl_counter.html#a155ca9c1020b64a979baa2314670404a',1,'lCounter::operator--(int)'],['../classl_counter.html#a9a10a34915d22e4a58a9870ab55cadb0',1,'lCounter::operator--()']]],
+  ['operator_3c_9',['operator&lt;',['../classtangent.html#aa9b3acb347977823eaa107ae2832997e',1,'tangent::operator&lt;()'],['../classccwangle.html#ab2f08d3c3a23c6c4c759ee44d2dbc96b',1,'ccwangle::operator&lt;()']]],
+  ['operator_3c_3d_10',['operator&lt;=',['../classtangent.html#a2f2753315cdfda104ac2b240a4e129ac',1,'tangent']]],
+  ['operator_3d_11',['operator=',['../classl_counter.html#a2abd30e75b4119341cae9b663d83f826',1,'lCounter']]],
+  ['operator_3d_3d_12',['operator==',['../classtangent.html#aea5cacbd10a2d0f4ad5887cf894ec613',1,'tangent::operator==()'],['../scene_8h.html#a1a106e73163e4f0f4cd0c53f5b1682cd',1,'operator==():&#160;scene.h']]],
+  ['optimizationstep_13',['optimizationstep',['../classoptimization_step.html#ab1384e272bd115440affe6aaa2d18375',1,'optimizationStep::optimizationStep()'],['../classoptimization_step.html#ae7e2d6a72ff63b7645435e605f107e9d',1,'optimizationStep::optimizationStep(float comp)']]],
+  ['outcompactness_14',['outCompactness',['../classborder_line.html#aaa40c6a5c893d91e52778868a4bb35d8',1,'borderLine']]],
+  ['outcrosses_15',['outCrosses',['../classborder_line.html#a5268e89d3cdec6d5580eb46c26128bf3',1,'borderLine']]],
+  ['outsorter_16',['outsorter',['../topol_8h.html#a298d8608b46cb51c8e644b0a24cd8cdf',1,'topol.h']]]
 ];
