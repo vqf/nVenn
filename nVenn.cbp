@@ -19,6 +19,11 @@
 				<Linker>
 					<Add option="-static" />
 					<Add option="-static-libgcc" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="gdi32" />
+					<Add library="user32" />
+					<Add library="kernel32" />
 				</Linker>
 			</Target>
 			<Target title="plain">
@@ -37,18 +42,18 @@
 				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Linker>
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="gdi32" />
+					<Add library="user32" />
+					<Add library="kernel32" />
+				</Linker>
 			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
-		<Linker>
-			<Add library="opengl32" />
-			<Add library="glu32" />
-			<Add library="gdi32" />
-			<Add library="user32" />
-			<Add library="kernel32" />
-		</Linker>
 		<Unit filename="bmpfont.h">
 			<Option target="default" />
 			<Option target="test" />
@@ -69,6 +74,9 @@
 			<Option target="test" />
 		</Unit>
 		<Unit filename="topol.h" />
+		<Unit filename="towasm.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

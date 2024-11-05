@@ -1268,9 +1268,10 @@ class decider{
   float totalCompactness;
   float lastCompactness;
   float bestUntie;
+  float wRoom;
   bool keep;
 public:
-  void setConstants(UINT numberForAverage, UINT numberForStability){
+  void setConstants(UINT numberForAverage, UINT numberForStability, float wiggleRoom = 1){
     finish = false;
     canFinish = false;
     cyclesWithoutImprovement = 0;
@@ -1280,6 +1281,7 @@ public:
     totalCompactness = 0;
     first = true;
     keep = false;
+    wRoom = wiggleRoom;
   }
   void init(){
     finish = false;
@@ -1292,6 +1294,9 @@ public:
   }
   void setCanFinish(){
     canFinish = true;
+    if (finishAfter == 0){
+      finish = true;
+    }
   }
   bool keepState(){
     return keep;
@@ -1305,7 +1310,10 @@ public:
       lastCompactness = comp;
     }
     if (canFinish){
-      if (comp < bestCompactness){
+      if (finishAfter == 0){
+        finish = true;
+      }
+      if (comp < (bestCompactness * wRoom)){
         bestCompactness = comp;
         keep = true;
         cyclesWithoutImprovement = 0;
@@ -2951,8 +2959,8 @@ class borderLine
           UINT i = opt->getCounter();
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
-            tolog("Checking " + toString(circles[i].n) + " with " + toString(opt->getBestCompactness()) + "\n");
-            cout << circles[i].n << ", ";
+            //tolog("Checking " + toString(circles[i].n) + " with " + toString(opt->getBestCompactness()) + "\n");
+            //cout << circles[i].n << ", ";
             fixTopology();
             //writeSVG("starting.svg");
             if (checkTopol()){
@@ -2964,6 +2972,7 @@ class borderLine
               if (newComp < opt->getBestCompactness()){
                 opt->setBestCompactness(newComp);
                 tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
+                cout << "Swapping " << i << " with " << candidate << " -> " << newComp << endl;
               }
               else if (newComp == opt->getBestCompactness()){
                 float newUntie = (this->*untieFunct)();
@@ -4457,9 +4466,8 @@ public:
       setFixedCircles();
       setSecureState();
       setPrevState();
-      attachScene();
       tosolve.solve();
-      doOptimize(true);
+      doOptimize(false);
       udt.init(1e-4, 0.01);
     }
 
@@ -4498,7 +4506,9 @@ public:
     bool isSimulationComplete(){
       bool result = evaluation.finished();
       if (result){
-        getBestSoFar();
+        if (blSettings.optimize){
+          getBestSoFar();
+        }
         evaluation.init();
       }
       return result;
@@ -4606,11 +4616,11 @@ public:
       }
       resetScale();
       resetCircleRadius();
+      float d = (this->*currentMeasure)();
+      evaluation.add(d);
+      displayFloat("COMPACTNESS", d);
+      displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
       if (blSettings.optimize){
-        float d = (this->*currentMeasure)();
-        evaluation.add(d);
-        displayFloat("COMPACTNESS", d);
-        displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
         if (evaluation.keepState()){
           setBestSoFar();
         }
@@ -4874,9 +4884,9 @@ public:
     }
 
     fileText toSVG(){
-      if (blSettings.optimize){
-        getBestSoFar();
-      }
+      //if (blSettings.optimize){
+       // getBestSoFar();
+      //}
       fileText svg;
       int fsize = 10;
       UINT i, j;
@@ -5528,9 +5538,10 @@ public:
       else if (stepNumber == 7){
         startRefiningSteps();
         evaluation.init();
-        evaluation.setCanFinish();
+        evaluation.setConstants(5, 0, 1.1);
         this->currentMeasure = &borderLine::getMaxVsq;
         scG(5e-3);
+        scD(0);
         scSpringK(1e1);
         oc.maxOutCount = 70;
         oc.outCount = 0;
@@ -5546,13 +5557,11 @@ public:
       if (stepNumber == 1){
         setForcesFirstStep();
         solve();
-        refreshScreen++;
       }
       else if (stepNumber == 2){
         setForcesSecondStep();
         setContacts(false, true, 3*maxRad()*AIR);
         solve(true);
-        refreshScreen++;
       }
       else if (stepNumber == 3){
         float thisOut = outCompactness(&optStep, &borderLine::furthestPoint,
@@ -5620,6 +5629,7 @@ public:
           result = true;
         }
       }
+      refreshScreen++;
       return result;
     }
     /** @} */
