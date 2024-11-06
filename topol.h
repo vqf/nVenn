@@ -2950,6 +2950,8 @@ class borderLine
         tolog("Next candidate: " + toString(circles[n].n) + "\n");
         if (n == 0){
           opt->endCycle();
+          resetOptimize();
+          opt->startCycle();
         }
         cout << circles[n].n << endl;
       }
@@ -5567,30 +5569,32 @@ public:
         float thisOut = outCompactness(&optStep, &borderLine::furthestPoint,
                                        &borderLine::compactness, &borderLine::countCrossings);
         if (optStep.hasEnded()){
-          if (thisOut < oc.optVal || optStep.hasUntied()){
+          if (thisOut < oc.optVal){
             oc.optVal = thisOut;
             oc.outCount = 0;
             //showCrossings();
           }
           else{
             oc.outCount = oc.outCount + 1;
+            tolog("Outcount: " + toString(oc.outCount) + "\n");
           }
-          fixTopology();
+          //fixTopology();
         }
       }
       else if (stepNumber == 4){
         float thisCross = outCompactness(&optStep, &borderLine::crossestPoint,
                                          &borderLine::countCrossings, &borderLine::compactness);
         if (optStep.hasEnded()){
-          if (thisCross < oc.optVal || optStep.hasUntied()){
+          if (thisCross < oc.optVal){
             oc.optVal = thisCross;
             oc.outCount = 0;
             //showCrossings();
           }
           else{
             oc.outCount = oc.outCount + 1;
+            tolog("Outcount: " + toString(oc.outCount) + "\n");
           }
-          fixTopology();
+          //fixTopology();
         }
       }
       else if (stepNumber == 5 || stepNumber == 6){

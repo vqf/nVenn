@@ -1,82 +1,451 @@
-Next candidate: 47
+Next candidate: 127
 Undo on checkTopol
-Swapping 7 with 63 -> 502.775
-Swapping 8 with 63 -> 501.921
+Swapping 11 with 7 -> 1384.28
+Swapping 96 with 7 -> 1382.46
+Swapping 137 with 7 -> 1375.26
 Undo on checkTopol
 Undo on checkTopol
-Next candidate: 26
+Next candidate: 15
 Undo on checkTopol
-Swapping 31 with 13 -> 501.064
-Swapping 36 with 13 -> 497.315
-Swapping 39 with 13 -> 497.084
-Next candidate: 38
-Swapping 9 with 21 -> 494.648
-Swapping 12 with 21 -> 492.888
-Next candidate: 44
-Swapping 23 with 31 -> 492.331
-Swapping 32 with 31 -> 491.877
-Swapping 51 with 31 -> 491.553
-Swapping 59 with 31 -> 490.817
+Undo on checkTopol
+Swapping 3 with 4 -> 1375.02
+Undo on checkTopol
+Swapping 10 with 4 -> 1372.65
+Swapping 11 with 4 -> 1372.06
+Swapping 73 with 4 -> 1365.5
+Swapping 139 with 4 -> 1364.92
+Swapping 160 with 4 -> 1357.91
+Swapping 187 with 4 -> 1357.65
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 11
+Swapping 3 with 139 -> 1357.04
+Swapping 4 with 139 -> 1356.01
+Undo on checkTopol
+Swapping 11 with 139 -> 1355.74
+Undo on checkTopol
+Swapping 187 with 139 -> 1355.07
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 21
+Swapping 32 with 97 -> 1352.8
+Swapping 160 with 97 -> 1352.58
+Swapping 185 with 97 -> 1351.5
+Swapping 186 with 97 -> 1349.87
+Swapping 217 with 97 -> 1349.06
+Swapping 237 with 97 -> 1346.46
+Next candidate: 7
+Outcount: 1
+Next candidate: 19
+Undo on checkTopol
+Swapping 4 with 187 -> 1346.11
+Undo on checkTopol
 Next candidate: 14
-Swapping 12 with 9 -> 490.233
+Swapping 4 with 11 -> 1345.74
+Undo on checkTopol
+Next candidate: 13
+Swapping 7 with 75 -> 1345.18
+Undo on checkTopol
+Undo on checkTopol
+Swapping 187 with 75 -> 1344.59
+Next candidate: 96
+Swapping 32 with 224 -> 1337.88
+Undo on checkTopol
+Next candidate: 80
+Swapping 32 with 204 -> 1337.84
+Swapping 80 with 204 -> 1335.29
+Swapping 186 with 204 -> 1331.12
+Swapping 217 with 204 -> 1324.77
+Undo on checkTopol
+Next candidate: 130
+Swapping 1 with 68 -> 1322.67
+Swapping 2 with 68 -> 1322.36
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 3
+Undo on checkTopol
+Swapping 10 with 2 -> 1322.22
 Undo on checkTopol
 Next candidate: 6
-Swapping 21 with 8 -> 490.055
-Swapping 31 with 8 -> 489.064
+Swapping 3 with 10 -> 1322.17
+Undo on checkTopol
+Undo on checkTopol
 Next candidate: 12
-Swapping 32 with 28 -> 487.699
-Next candidate: 20
+Swapping 1 with 80 -> 1321.68
+Swapping 73 with 80 -> 1320.02
+Swapping 74 with 80 -> 1318.73
+Swapping 75 with 80 -> 1318.71
+Swapping 138 with 80 -> 1316.57
+Undo on checkTopol
+Undo on checkTopol
+Swapping 237 with 80 -> 1314.72
+Undo on checkTopol
 Next candidate: 10
-Next candidate: 36
-Swapping 1 with 36 -> 487.176
-Swapping 23 with 36 -> 486.794
-Swapping 24 with 36 -> 486.489
+Undo on checkTopol
+Outcount: 1
+Next candidate: 18
+Undo on checkTopol
+Swapping 138 with 32 -> 1314.6
+Swapping 139 with 32 -> 1313.94
+Next candidate: 40
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 9
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
 Next candidate: 5
-Swapping 21 with 24 -> 485.659
-Swapping 23 with 24 -> 485.366
-Swapping 36 with 24 -> 484.703
-Next candidate: 16
-Next candidate: 1
-Next candidate: 2
-Next candidate: 8
-Next candidate: 32
-Next candidate: 4
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 1
-Swapping 23 with 1 -> 10
-Next candidate: 2
-Next candidate: 4
-Next candidate: 8
-Next candidate: 16
-Next candidate: 32
-Prev untie: 486.229, new untie: 486.216
-Next candidate: 6
-Next candidate: 10
-Next candidate: 5
-Next candidate: 12
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 3
 Next candidate: 20
-Next candidate: 36
-Prev untie: 486.216, new untie: 486.229
-Did not swap on untie
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 4
+Next candidate: 17
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 5
+Next candidate: 64
+Undo on checkTopol
+Swapping 217 with 237 -> 1313.32
+Next candidate: 32
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 128
+Undo on checkTopol
+Swapping 3 with 249 -> 1304.63
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 2
+Undo on checkTopol
+Outcount: 1
+Next candidate: 16
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
+Next candidate: 4
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 3
+Next candidate: 8
+Undo on checkTopol
+Undo on checkTopol
+Swapping 80 with 137 -> 1303.21
+Swapping 160 with 137 -> 1302.32
+Undo on checkTopol
+Swapping 217 with 137 -> 1301.36
+Undo on checkTopol
+Next candidate: 1
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 0
+Outcount: 2
+Next candidate: 127
+Undo on checkTopol
+Outcount: 3
+Next candidate: 15
+Swapping 80 with 4 -> 1301.02
+Swapping 139 with 4 -> 1299.13
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 7
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 11
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
 Next candidate: 14
-Next candidate: 26
-Next candidate: 38
-Prev untie: 486.216, new untie: 487.801
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 3
+Next candidate: 21
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 4
+Next candidate: 13
+Undo on checkTopol
+Swapping 187 with 75 -> 1298.91
+Undo on checkTopol
+Next candidate: 19
+Undo on checkTopol
+Outcount: 1
+Next candidate: 96
+Undo on checkTopol
+Swapping 217 with 224 -> 1297.81
+Undo on checkTopol
+Next candidate: 80
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 130
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
+Next candidate: 10
+Swapping 32 with 16 -> 1296.42
+Next candidate: 18
+Outcount: 1
+Next candidate: 40
+Undo on checkTopol
+Outcount: 2
+Next candidate: 6
+Swapping 2 with 10 -> 1296
+Next candidate: 3
+Undo on checkTopol
+Outcount: 1
+Next candidate: 9
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
+Next candidate: 5
+Undo on checkTopol
+Outcount: 3
+Next candidate: 17
+Undo on checkTopol
+Outcount: 4
+Next candidate: 20
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 5
+Next candidate: 12
+Outcount: 6
+Next candidate: 64
+Undo on checkTopol
+Outcount: 7
+Next candidate: 128
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 8
+Next candidate: 32
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 9
+Next candidate: 2
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 10
+Next candidate: 16
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 11
+Next candidate: 1
+Prev untie: 1296, new untie: 1313.77
 Did not swap on untie
-Next candidate: 44
-Swapping 63 with 31 -> 8
-Next candidate: 47
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
-Next candidate: 0
+Swapping 32 with 1 -> 65
+Prev untie: 1311.4, new untie: 1309.66
+Prev untie: 1309.66, new untie: 1306.72
+Swapping 74 with 1 -> 63
+Swapping 186 with 1 -> 51
+Next candidate: 2
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Swapping 249 with 9 -> 48
+Next candidate: 4
+Undo on checkTopol
+Swapping 9 with 73 -> 46
+Undo on checkTopol
+Prev untie: 1308.24, new untie: 1308.23
+Undo on checkTopol
+Next candidate: 8
+Swapping 80 with 137 -> 45
+Prev untie: 1312.62, new untie: 1311.27
+Undo on checkTopol
+Next candidate: 16
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Swapping 186 with 185 -> 44
+Undo on checkTopol
+Next candidate: 32
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 1
+Next candidate: 64
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 2
+Next candidate: 128
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Prev untie: 1318.14, new untie: 1319.21
+Did not swap on untie
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 3
+Next candidate: 3
+Prev untie: 1318.14, new untie: 1319.24
+Did not swap on untie
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 4
+Next candidate: 6
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 5
+Next candidate: 10
+Swapping 139 with 16 -> 39
+Next candidate: 18
+Swapping 73 with 32 -> 37
+Prev untie: 1321.96, new untie: 1321.51
+Swapping 185 with 32 -> 33
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 130
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Prev untie: 1322.26, new untie: 1322.27
+Did not swap on untie
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Prev untie: 1322.26, new untie: 1323.32
+Did not swap on untie
+Outcount: 1
+Next candidate: 5
+Swapping 3 with 74 -> 31
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Next candidate: 12
+Undo on checkTopol
+Outcount: 1
+Next candidate: 20
+Undo on checkTopol
+Swapping 73 with 96 -> 29
+Swapping 185 with 96 -> 28
+Undo on checkTopol
+Next candidate: 9
+Undo on checkTopol
+Outcount: 1
+Next candidate: 40
+Undo on checkTopol
+Outcount: 2
+Next candidate: 17
+Prev untie: 1315.42, new untie: 1312.9
+Undo on checkTopol
+Outcount: 3
+Next candidate: 80
+Undo on checkTopol
+Outcount: 4
+Next candidate: 96
+Undo on checkTopol
+Outcount: 5
+Next candidate: 7
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 6
+Next candidate: 14
+Prev untie: 1312.9, new untie: 1313.94
+Did not swap on untie
+Outcount: 7
+Next candidate: 13
+Prev untie: 1312.9, new untie: 1312.66
+Undo on checkTopol
+Prev untie: 1312.66, new untie: 1314.28
+Did not swap on untie
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Undo on checkTopol
+Outcount: 8
+Next candidate: 21
+Undo on checkTopol
+Prev untie: 1312.66, new untie: 1312.98
+Did not swap on untie
+Outcount: 9
+Next candidate: 11
+Undo on checkTopol
+Outcount: 10
+Next candidate: 19
+Prev untie: 1312.66, new untie: 1312.98
+Did not swap on untie
+Outcount: 11
