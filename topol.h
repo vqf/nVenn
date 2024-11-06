@@ -184,6 +184,16 @@ public:
 
 
 enum crossResult{crosses, doesnotcross, cont};
+enum steps{
+  noaction,
+  attract,
+  disperse,
+  minimizeCompactness,
+  minimizeCrossings,
+  contract,
+  refineCircles,
+  embellishLines
+};
 
 typedef struct blData{
   float sk;  /**< Reference value for spring parameter */
@@ -5275,7 +5285,6 @@ public:
     }
 
 
-
     void keepDist(float minDist){
       if (blSettings.doCheckTopol){
         //float md = minDist;
@@ -5444,7 +5453,7 @@ public:
      *  of the step and isStepFinished() will inform whether
      *  the conditions for ending the step have been met.
      *  When used with a graphical interface,
-     *  bl.refreshScreen.isMax() is true after a given number of
+     *  refresh() is true a given number of
      *  cycles after the last true value.
      *  It can be used to avoid drawing each step.
      *
@@ -5456,7 +5465,7 @@ public:
      *         quit = false
      *         while !quit
      *           setCycle(step)
-     *           if bl.refreshScreen.isMax()
+     *           if refresh()
      *             draw_svg_result
      *           if isStepFinished(step)
      *             quit = true
@@ -5473,14 +5482,14 @@ public:
      */
     bool setStep(UINT stepNumber = 0){
       bool result = true;
-      if (stepNumber == 1){
+      if (stepNumber == attract){
         refreshScreen.setLimits(1,1);
         setCheckTopol(false);
       }
-      else if (stepNumber == 2){
+      else if (stepNumber == disperse){
         setCheckTopol(false);
       }
-      else if (stepNumber == 3){
+      else if (stepNumber == minimizeCompactness){
         setCheckTopol(true);
         resetOptimize();
         fixTopology();
@@ -5491,7 +5500,7 @@ public:
         oc.optVal = outCompactness(&optStep, &borderLine::furthestPoint,
                                    &borderLine::compactness, &borderLine::countCrossings);
       }
-      else if (stepNumber == 4){
+      else if (stepNumber == minimizeCrossings){
         resetOptimize();
         fixTopology();
         oc.maxOutCount = 10;
@@ -5501,7 +5510,7 @@ public:
         oc.optVal = outCompactness(&optStep, &borderLine::crossestPoint,
                                    &borderLine::countCrossings, &borderLine::compactness);
       }
-      else if (stepNumber == 5){
+      else if (stepNumber == contract){
         resetOptimize();
         fixTopology();
         setCheckTopol(true);
@@ -5527,7 +5536,7 @@ public:
         scGhostGrav(false);
         getBestSoFar();
       }
-      else if (stepNumber == 6){
+      else if (stepNumber == refineCircles){
         resetTimer();
         interpolateToDist(2 * correctedMinCircRadius());
         scSpringK(1e2);
@@ -5537,7 +5546,7 @@ public:
         scGhostGrav(true);
         getBestSoFar();
       }
-      else if (stepNumber == 7){
+      else if (stepNumber == embellishLines){
         startRefiningSteps();
         evaluation.init();
         evaluation.setConstants(5, 0, 1.1);
@@ -5556,16 +5565,16 @@ public:
     }
     bool setCycle(UINT stepNumber = 0){
       bool result = true;
-      if (stepNumber == 1){
+      if (stepNumber == attract){
         setForcesFirstStep();
         solve();
       }
-      else if (stepNumber == 2){
+      else if (stepNumber == disperse){
         setForcesSecondStep();
         setContacts(false, true, 3*maxRad()*AIR);
         solve(true);
       }
-      else if (stepNumber == 3){
+      else if (stepNumber == minimizeCompactness){
         float thisOut = outCompactness(&optStep, &borderLine::furthestPoint,
                                        &borderLine::compactness, &borderLine::countCrossings);
         if (optStep.hasEnded()){
@@ -5581,7 +5590,7 @@ public:
           //fixTopology();
         }
       }
-      else if (stepNumber == 4){
+      else if (stepNumber == minimizeCrossings){
         float thisCross = outCompactness(&optStep, &borderLine::crossestPoint,
                                          &borderLine::countCrossings, &borderLine::compactness);
         if (optStep.hasEnded()){
@@ -5597,10 +5606,10 @@ public:
           //fixTopology();
         }
       }
-      else if (stepNumber == 5 || stepNumber == 6){
+      else if (stepNumber == contract || stepNumber == refineCircles){
         scSolve();
       }
-      else if (stepNumber == 7){
+      else if (stepNumber == embellishLines){
         scSolve();
         oc.outCount++;
       }
@@ -5611,23 +5620,23 @@ public:
     }
     bool isStepFinished(UINT stepNumber = 0){
       bool result = false;
-      if (stepNumber == 1){
+      if (stepNumber == attract){
         float tc = maxCircleVsq;
         if (tc > 0 && tc < 1e-2){
           result = true;
         }
       }
-      else if (stepNumber == 2){
+      else if (stepNumber == disperse){
         if (minCircDist() > (2*maxRad()*AIR)){
           result = true;
         }
       }
-      else if (stepNumber == 3 || stepNumber == 4){
+      else if (stepNumber == minimizeCompactness || stepNumber == minimizeCrossings){
         if (oc.outCount > oc.maxOutCount){
           result = true;
         }
       }
-      else if (stepNumber == 5 || stepNumber == 6 || stepNumber == 7){
+      else if (stepNumber == contract || stepNumber == refineCircles || stepNumber == embellishLines){
         bool bq = isSimulationComplete();
         if (bq){
           result = true;
@@ -5636,6 +5645,10 @@ public:
       refreshScreen++;
       return result;
     }
+    bool refresh(){
+      return refreshScreen.isMax();
+    }
+
     /** @} */
 
     bool simulate(int maxRel = 0){
@@ -5686,55 +5699,63 @@ void printv(vector<int> v)
 }
 //--------------------------------------------
 
+borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", string outputFile = "result.svg"){
+  string header;
+  vector<string> groupNames;
+  vector<int> temp;
+  vector<float> weights;
+  vector<string> labels;
+  getline(vFile, header);
+  cout << header;
+  getline(vFile, header);
+  int number = atoi(header.c_str());
+  cout << endl << number << " groups:" << endl;
+  for (UINT i = 0; i < number; i++){
+      getline(vFile, header);
+      groupNames.insert(groupNames.end(), header);
+      cout << header << endl;
+  }
+  int n = twoPow(number);
+  for (UINT i = 0; i < n; i++){
+      getline(vFile, header); //  get the whole line
+      string w = header.substr(0,header.find_first_of(" "));
+      weights.insert (weights.end(), atoi(w.c_str())); // it takes the first number
+      string label;
+      try
+      {
+          label = header.substr(header.find_first_of(" "));
+      }
+      catch (const std::exception& e)
+      {
+          cout << i << endl;
+          label = "";
+      }
+      labels.insert (labels.end(), label);
+      cout << "w=" << w << "  label:" << label << endl;
+      //getline(vFile, header, ' '); /// get the number
+      //weights.insert (weights.end(), atoi(header.c_str()));
+      //getline(vFile, header) ;  ///  get the rest of the line with the labels
+      //labels.insert (labels.end(), header);
+      temp = toBin(i, number);
+      printv(temp);
+      cout << ".- " << weights[i] << " : " << labels[i] << endl;
+  }
+  binMap mymap(number);
+  borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
+  return lines;
+}
+
 
 borderLine getFileInfo(string fname, string outputFile){
     ifstream vFile;
-    string header;
-    vector<string> groupNames;
-    vector<int> temp;
-    vector<float> weights;
-    vector<string> labels;
     int i;
     vFile.open(fname.c_str());
-    getline(vFile, header);
-    cout << header;
-    getline(vFile, header);
-    int number = atoi(header.c_str());
-    cout << endl << number << " groups:" << endl;
-    for (i = 0; i < number; i++){
-        getline(vFile, header);
-        groupNames.insert(groupNames.end(), header);
-        cout << header << endl;
-    }
-    int n = twoPow(number);
-    for (i = 0; i < n; i++){
-        getline(vFile, header); //  get the whole line
-        string w = header.substr(0,header.find_first_of(" "));
-        weights.insert (weights.end(), atoi(w.c_str())); // it take the first number
-        string label;
-        try
-        {
-            label = header.substr(header.find_first_of(" "));
-        }
-        catch (const std::exception& e)
-        {
-            cout << i << endl;
-            label = "";
-        }
-        labels.insert (labels.end(), label);
-        cout << "w=" << w << "  label:" << label << endl;
-        //getline(vFile, header, ' '); /// get the number
-        //weights.insert (weights.end(), atoi(header.c_str()));
-        //getline(vFile, header) ;  ///  get the rest of the line with the labels
-        //labels.insert (labels.end(), header);
-        temp = toBin(i, number);
-        printv(temp);
-        cout << ".- " << weights[i] << " : " << labels[i] << endl;
-    }
+    stringstream content;
+    content << vFile.rdbuf();
+    borderLine lines = getInfoFromStream(content, fname, outputFile);
+
     vFile.close();
-    binMap mymap(number);
     string dataFile = outputFile + ".data";
-    borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
     vFile.open(dataFile.c_str());
     if (false){ //vFile.good() == true){ // Unfinished
         vFile.close();
@@ -5744,6 +5765,7 @@ borderLine getFileInfo(string fname, string outputFile){
 
     return lines;
 }
+
 
 
 
