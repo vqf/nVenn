@@ -249,7 +249,7 @@ class circleIterator {
   UINT first;
   UINT sze;
   UINT mask;
-  bool finished;
+  bool finishedCycle;
   vector<point> circles;
 
   void setval(UINT v){
@@ -262,15 +262,16 @@ class circleIterator {
       if (v >= sze){
         v = 0;
       }
-      while (circles[v].radius == 0 && !finished){
+      while (circles[v].radius == 0 && !finishedCycle){
         v++;
         if (v >= sze){
           v = 0;
         }
         if (v == sanity){
-          finished = true;
+          finishedCycle = true;
         }
         current = v;
+        //cout << circles[v].n << endl;
       }
     }
   }
@@ -280,9 +281,9 @@ public:
   circleIterator(vector<point> circs, UINT npoints, UINT starting = 0) {
     circles = circs;
     sze = npoints;
+    finishedCycle= false;
     setval(starting);
     first = current;
-    finished = false;
   }
   /*~groupIterator(){
     tolog(toString(__LINE__) + "\n" + "Called destructor\n");
@@ -294,15 +295,15 @@ public:
 
   void reset(UINT from = 0){
     setval(from);
-    finished = false;
+    finishedCycle = false;
   }
 
   bool isFinished(){
-    return finished;
+    return finishedCycle;
   }
 
   UINT nxt() {
-    if (finished){
+    if (finishedCycle){
       cout << "Nxt past finished in circleIterator\n";
       tolog("Nxt past finished in circleIterator\n");
       exit(1);
@@ -311,7 +312,7 @@ public:
     setval(current);
     if (current == first){
       current = 0;
-      finished = true;
+      finishedCycle = true;
       return current;
     }
     return current;
@@ -321,36 +322,52 @@ public:
 
 class groupIterator{
   circleIterator ci;
+  vector<UINT> translator;
   vector<point> circles;
   UINT mask;
+  UINT first;
+  UINT cval;
+  UINT ival;
+  bool finish;
 public:
   groupIterator(vector<point> circs, UINT group, UINT nBits, UINT starting = 0) {
     mask = 1 << group;
-    circles = circs;
-    ci = circleIterator(circs, circs.size(), starting);
-  }
-  UINT val(){
-    UINT r = ci.val();
-    if (r < circles.size()){
-      while ((circles[r].n & mask) == 0 && !ci.isFinished()){
-        ci.nxt();
-        r = ci.val();
+    circles.clear();
+    cval = starting;
+    for (UINT i = 0; i < circs.size(); i++){
+      if ((circs[i].n && mask > 0) && circs[i].radius > 0){
+        circles.push_back(circs[i]);
+        translator.push_back(i);
       }
     }
-    else{
-      r = 0;
+    setVal(starting);
+    first = val();
+    finish = false;
+  }
+  void setVal(UINT v = 0){
+    UINT i = 0;
+    while (i < circles.size() && translator[i] < v){
+      i++;
     }
-    return r;
+    ival = i;
+    cval = translator[i];
+  }
+  UINT val(){
+    return cval;
   }
   bool isFinished(){
-    return ci.isFinished();
+    return finish;
   }
   UINT nxt(){
-    if (!ci.isFinished()){
-      ci.nxt();
+    ival++;
+    if (ival >= circles.size()){
+      ival = 0;
     }
-    UINT r = val();
-    return r;
+    cval = translator[ival];
+    if (cval == first){
+      finish = true;
+    }
+    return cval;
   }
 };
 
@@ -1676,6 +1693,7 @@ class borderLine
           if (circRadii[j] > 0 && circRadii[j] < minCircRadius) minCircRadius = circRadii[j];
           if (circRadii[j] > 0 && circRadii[j] > maxRadius) maxRadius = circRadii[j];
         }
+        //circles[0].radius = 0;
     }
 
     /** \brief Gets the coordinates of circles from setCircles() and sets them
@@ -1701,7 +1719,9 @@ class borderLine
       for (UINT i = 0; i < circles.size(); i++){
         order.push_back(i);
       }
-      std::random_shuffle(order.begin(), order.end());
+      random_device rd;
+      mt19937 g(rd());
+      shuffle(order.begin(), order.end(), g);
       UINT sy = 0; UINT sx = 0;
       for (UINT i = 0; i < circles.size(); i++){
         float cx = (sx + 0.5) * xstep + internalScale.minX();
@@ -2364,35 +2384,40 @@ class borderLine
      * \return void
      *
      */
-    void addLines(vector<UINT> onlyTouch = {}, bool logit = false){
+    void addLines(bool logit = false){
       /*for (UINT i = 0; i < circles.size(); i++){
         scircles[circles[i].n] = circles[i];
       }*/
-      if (onlyTouch.size() == 0){
-        for (UINT i = 0; i < bl.size(); i++){
-          onlyTouch.push_back(i);
-        }
-      }
-      for (UINT ti = 0; ti < onlyTouch.size(); ti++){
-        //cout << "---" << i << "----\n";
-        UINT i = onlyTouch[ti];
+
+      for (UINT i = 0; i < bl.size(); i++){
+        //tolog("Val: " + toString(i) + "\n");
         UINT lm = leftmostCircle(i);
+        //tolog(toString(circles[lm].n) + "\n");
         bl[i].clear();
         point toadd = circles[lm];
         toadd.n = lm;
         bl[i].push_back(toadd);
-        //cout << "-> " << circles[lm].n << endl;
         UINT an = lm;
         UINT st = lm;
         UINT np = nextLeftmostPoint(i, an, st);
+        //tolog(" - "+toString(circles[np].n) + "\n");
+        //cout << circles[lm].n << "\t" << circles[np].n << endl;
+        //cout << circles[lm].radius << "\t" << circles[np].radius << endl;
         while (np != lm){
           point toadd = circles[np];
           toadd.n = np;
           bl[i].push_back(toadd);
-          //cout << circles[np].n << endl;
           an = st;
           st = np;
           np = nextLeftmostPoint(i, an, st);
+          if (np == toadd.n){
+            cout << "Error in group " << i << endl;
+            cout << "The set is empty\n";
+            tolog("Error in group " + toString(i) + "\nThe set is empty\n");
+            exit(0);
+          }
+          //tolog(toString(circles[np].n) + "\n");
+
         }
       }
     }
@@ -4841,6 +4866,13 @@ public:
       for (UINT i = 0; i < circles.size(); i++){
         result += circles[i].croack();
       }
+      result += "\nLines\n";
+      for (UINT i = 0; i < bl.size(); i++){
+        result += "Line " + toString(i) + "\n";
+        for (UINT j = 0; j < bl[i].size(); j++){
+          result += bl[i][j].croack();
+        }
+      }
       return result;
     }
 
@@ -5538,6 +5570,8 @@ public:
       }
       else if (stepNumber == refineCircles){
         resetTimer();
+        evaluation.init();
+        evaluation.setConstants(100, 50);
         interpolateToDist(2 * correctedMinCircRadius());
         scSpringK(1e2);
         scFriction(700);
@@ -5665,6 +5699,7 @@ public:
           }
         }
       }
+      return true;
     }
 
 };
@@ -5708,14 +5743,14 @@ borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", st
   getline(vFile, header);
   cout << header;
   getline(vFile, header);
-  int number = atoi(header.c_str());
+  UINT number = (UINT) atoi(header.c_str());
   cout << endl << number << " groups:" << endl;
   for (UINT i = 0; i < number; i++){
       getline(vFile, header);
       groupNames.insert(groupNames.end(), header);
       cout << header << endl;
   }
-  int n = twoPow(number);
+  UINT n = (UINT) twoPow(number);
   for (UINT i = 0; i < n; i++){
       getline(vFile, header); //  get the whole line
       string w = header.substr(0,header.find_first_of(" "));
@@ -5748,7 +5783,6 @@ borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", st
 
 borderLine getFileInfo(string fname, string outputFile){
     ifstream vFile;
-    int i;
     vFile.open(fname.c_str());
     stringstream content;
     content << vFile.rdbuf();

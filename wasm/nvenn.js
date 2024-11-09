@@ -19,46 +19,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-
-  if (!Module.expectedDataFileDownloads) {
-    Module.expectedDataFileDownloads = 0;
-  }
-  Module.expectedDataFileDownloads++;
-  (function() {
-   var loadPackage = function(metadata) {
-  
-    function runWithFS() {
-  
-      function assert(check, msg) {
-        if (!check) throw msg + new Error().stack;
-      }
-  var fileData0 = [];
-fileData0.push.apply(fileData0, [110, 86, 101, 110, 110, 49, 46, 50, 13, 10, 51, 13, 10, 66, 97, 108, 108, 50, 48, 49, 55, 13, 10, 67, 111, 117, 114, 116, 111, 105, 115, 50, 48, 49, 53, 13, 10, 72, 105, 108, 116, 111, 110, 50, 48, 49, 55, 13, 10, 48, 13, 10, 52, 13, 10, 49, 13, 10, 48, 13, 10, 51, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 50, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 52, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 56, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 53, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 50, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 55, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 49, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10, 48, 13, 10]);
-Module['FS_createDataFile']('/', 'venn.txt', fileData0, true, true, false);
-
-    }
-    if (Module['calledRun']) {
-      runWithFS();
-    } else {
-      if (!Module['preRun']) Module['preRun'] = [];
-      Module["preRun"].push(runWithFS); // FS is not initialized yet, wait for it
-    }
-  
-   }
-   loadPackage({"files": []});
-  
-  })();
-  
-
-    // All the pre-js content up to here must remain later on, we need to run
-    // it.
-    var necessaryPreJSTasks = Module['preRun'].slice();
-  
-    if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
-    necessaryPreJSTasks.forEach(function(task) {
-      if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
-    });
-  
+// {{PRE_JSES}}
 
 // Sometimes an existing Module object exists with properties
 // meant to overwrite the default module functionality. Here
@@ -663,8 +624,8 @@ var wasmMemory;
 // so this creates a (non-native-wasm) table for us.
 
 var wasmTable = new WebAssembly.Table({
-  'initial': 377,
-  'maximum': 377,
+  'initial': 403,
+  'maximum': 403,
   'element': 'anyfunc'
 });
 
@@ -1284,11 +1245,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5266304,
+    STACK_BASE = 5268672,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 23424,
-    DYNAMIC_BASE = 5266304,
-    DYNAMICTOP_PTR = 23408;
+    STACK_MAX = 25792,
+    DYNAMIC_BASE = 5268672,
+    DYNAMICTOP_PTR = 25776;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1665,7 +1626,7 @@ function createExportWrapper(name, fixedasm) {
   };
 }
 
-var wasmBinaryFile = 'nvenn2.wasm';
+var wasmBinaryFile = 'nvenn.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }
@@ -1808,7 +1769,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 22400;
+// STATICTOP = STATIC_BASE + 24768;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4551,16 +4512,22 @@ var ASM_CONSTS = {
   }
   }
 
+  function ___sys_read(fd, buf, count) {try {
+  
+      var stream = SYSCALLS.getStreamFromFD(fd);
+      return FS.read(stream, HEAP8,buf, count);
+    } catch (e) {
+    if (typeof FS === 'undefined' || !(e instanceof FS.ErrnoError)) abort(e);
+    return -e.errno;
+  }
+  }
+
   function _abort() {
       abort();
     }
 
-  function _difftime(time1, time0) {
-      return time1 - time0;
-    }
-
   function _emscripten_get_sbrk_ptr() {
-      return 23408;
+      return 25776;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -4630,6 +4597,12 @@ var ASM_CONSTS = {
       });
       HEAP32[((penviron_buf_size)>>2)]=bufSize;
       return 0;
+    }
+
+  function _exit(status) {
+      // void _exit(int status);
+      // http://pubs.opengroup.org/onlinepubs/000095399/functions/exit.html
+      exit(status);
     }
 
   function _fd_close(fd) {try {
@@ -5064,7 +5037,6 @@ var ASM_CONSTS = {
       }
       return ret;
     }
-
 var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
     if (!parent) {
       parent = this;  // root node sets parent to itself
@@ -5110,7 +5082,7 @@ var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
    }
   });
   FS.FSNode = FSNode;
-  FS.staticInit();Module["FS_createFolder"] = FS.createFolder;Module["FS_createPath"] = FS.createPath;Module["FS_createDataFile"] = FS.createDataFile;Module["FS_createPreloadedFile"] = FS.createPreloadedFile;Module["FS_createLazyFile"] = FS.createLazyFile;Module["FS_createLink"] = FS.createLink;Module["FS_createDevice"] = FS.createDevice;Module["FS_unlink"] = FS.unlink;;
+  FS.staticInit();;
 var ASSERTIONS = true;
 
 
@@ -5140,22 +5112,37 @@ function intArrayToString(array) {
 }
 
 
-var asmLibraryArg = { "__cxa_allocate_exception": ___cxa_allocate_exception, "__cxa_atexit": ___cxa_atexit, "__cxa_throw": ___cxa_throw, "__map_file": ___map_file, "__sys_fcntl64": ___sys_fcntl64, "__sys_ioctl": ___sys_ioctl, "__sys_munmap": ___sys_munmap, "__sys_open": ___sys_open, "abort": _abort, "difftime": _difftime, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_resize_heap": _emscripten_resize_heap, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "table": wasmTable, "time": _time };
+var asmLibraryArg = { "__cxa_allocate_exception": ___cxa_allocate_exception, "__cxa_atexit": ___cxa_atexit, "__cxa_throw": ___cxa_throw, "__map_file": ___map_file, "__sys_fcntl64": ___sys_fcntl64, "__sys_ioctl": ___sys_ioctl, "__sys_munmap": ___sys_munmap, "__sys_open": ___sys_open, "__sys_read": ___sys_read, "abort": _abort, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_resize_heap": _emscripten_resize_heap, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "exit": _exit, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "table": wasmTable, "time": _time };
 var asm = createWasm();
 /** @type {function(...*):?} */
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__wasm_call_ctors");
 
 /** @type {function(...*):?} */
-var _main = Module["_main"] = createExportWrapper("main");
+var _init_bl = Module["_init_bl"] = createExportWrapper("init_bl");
 
 /** @type {function(...*):?} */
-var _free = Module["_free"] = createExportWrapper("free");
+var _set_step = Module["_set_step"] = createExportWrapper("set_step");
+
+/** @type {function(...*):?} */
+var _set_cycle = Module["_set_cycle"] = createExportWrapper("set_cycle");
+
+/** @type {function(...*):?} */
+var _finished = Module["_finished"] = createExportWrapper("finished");
+
+/** @type {function(...*):?} */
+var _draw = Module["_draw"] = createExportWrapper("draw");
+
+/** @type {function(...*):?} */
+var _svg = Module["_svg"] = createExportWrapper("svg");
 
 /** @type {function(...*):?} */
 var _fflush = Module["_fflush"] = createExportWrapper("fflush");
 
 /** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = createExportWrapper("__errno_location");
+
+/** @type {function(...*):?} */
+var _free = Module["_free"] = createExportWrapper("free");
 
 /** @type {function(...*):?} */
 var _malloc = Module["_malloc"] = createExportWrapper("malloc");
@@ -5203,7 +5190,7 @@ if (!Object.getOwnPropertyDescriptor(Module, "cwrap")) Module["cwrap"] = functio
 if (!Object.getOwnPropertyDescriptor(Module, "setValue")) Module["setValue"] = function() { abort("'setValue' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "getValue")) Module["getValue"] = function() { abort("'getValue' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "allocate")) Module["allocate"] = function() { abort("'allocate' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-Module["getMemory"] = getMemory;
+if (!Object.getOwnPropertyDescriptor(Module, "getMemory")) Module["getMemory"] = function() { abort("'getMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
 if (!Object.getOwnPropertyDescriptor(Module, "UTF8ArrayToString")) Module["UTF8ArrayToString"] = function() { abort("'UTF8ArrayToString' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "UTF8ToString")) Module["UTF8ToString"] = function() { abort("'UTF8ToString' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "stringToUTF8Array")) Module["stringToUTF8Array"] = function() { abort("'stringToUTF8Array' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
@@ -5218,16 +5205,16 @@ if (!Object.getOwnPropertyDescriptor(Module, "addOnPostRun")) Module["addOnPostR
 if (!Object.getOwnPropertyDescriptor(Module, "writeStringToMemory")) Module["writeStringToMemory"] = function() { abort("'writeStringToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeArrayToMemory")) Module["writeArrayToMemory"] = function() { abort("'writeArrayToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeAsciiToMemory")) Module["writeAsciiToMemory"] = function() { abort("'writeAsciiToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-Module["addRunDependency"] = addRunDependency;
-Module["removeRunDependency"] = removeRunDependency;
-Module["FS_createFolder"] = FS.createFolder;
-Module["FS_createPath"] = FS.createPath;
-Module["FS_createDataFile"] = FS.createDataFile;
-Module["FS_createPreloadedFile"] = FS.createPreloadedFile;
-Module["FS_createLazyFile"] = FS.createLazyFile;
-Module["FS_createLink"] = FS.createLink;
-Module["FS_createDevice"] = FS.createDevice;
-Module["FS_unlink"] = FS.unlink;
+if (!Object.getOwnPropertyDescriptor(Module, "addRunDependency")) Module["addRunDependency"] = function() { abort("'addRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "removeRunDependency")) Module["removeRunDependency"] = function() { abort("'removeRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createFolder")) Module["FS_createFolder"] = function() { abort("'FS_createFolder' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createPath")) Module["FS_createPath"] = function() { abort("'FS_createPath' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createDataFile")) Module["FS_createDataFile"] = function() { abort("'FS_createDataFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createPreloadedFile")) Module["FS_createPreloadedFile"] = function() { abort("'FS_createPreloadedFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createLazyFile")) Module["FS_createLazyFile"] = function() { abort("'FS_createLazyFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createLink")) Module["FS_createLink"] = function() { abort("'FS_createLink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createDevice")) Module["FS_createDevice"] = function() { abort("'FS_createDevice' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_unlink")) Module["FS_unlink"] = function() { abort("'FS_unlink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
 if (!Object.getOwnPropertyDescriptor(Module, "dynamicAlloc")) Module["dynamicAlloc"] = function() { abort("'dynamicAlloc' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "loadDynamicLibrary")) Module["loadDynamicLibrary"] = function() { abort("'loadDynamicLibrary' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "loadWebAssemblyModule")) Module["loadWebAssemblyModule"] = function() { abort("'loadWebAssemblyModule' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
@@ -5388,55 +5375,6 @@ dependenciesFulfilled = function runCaller() {
   if (!calledRun) dependenciesFulfilled = runCaller; // try this again later, after new deps are fulfilled
 };
 
-function callMain(args) {
-  assert(runDependencies == 0, 'cannot call main when async dependencies remain! (listen on Module["onRuntimeInitialized"])');
-  assert(__ATPRERUN__.length == 0, 'cannot call main when preRun functions remain to be called');
-
-  var entryFunction = Module['_main'];
-
-
-  args = args || [];
-
-  var argc = args.length+1;
-  var argv = stackAlloc((argc + 1) * 4);
-  HEAP32[argv >> 2] = allocateUTF8OnStack(thisProgram);
-  for (var i = 1; i < argc; i++) {
-    HEAP32[(argv >> 2) + i] = allocateUTF8OnStack(args[i - 1]);
-  }
-  HEAP32[(argv >> 2) + argc] = 0;
-
-  try {
-
-
-    var ret = entryFunction(argc, argv);
-
-
-    // In PROXY_TO_PTHREAD builds, we should never exit the runtime below, as execution is asynchronously handed
-    // off to a pthread.
-    // if we're not running an evented main loop, it's time to exit
-      exit(ret, /* implicit = */ true);
-  }
-  catch(e) {
-    if (e instanceof ExitStatus) {
-      // exit() throws this once it's done to make sure execution
-      // has been stopped completely
-      return;
-    } else if (e == 'unwind') {
-      // running an evented main loop, don't immediately exit
-      noExitRuntime = true;
-      return;
-    } else {
-      var toLog = e;
-      if (e && typeof e === 'object' && e.stack) {
-        toLog = [e, e.stack];
-      }
-      err('exception thrown: ' + toLog);
-      quit_(1, e);
-    }
-  } finally {
-    calledMain = true;
-  }
-}
 
 
 
@@ -5470,7 +5408,7 @@ function run(args) {
 
     if (Module['onRuntimeInitialized']) Module['onRuntimeInitialized']();
 
-    if (shouldRunNow) callMain(args);
+    assert(!Module['_main'], 'compiled without a main, but one is present. if you added it from JS, use Module["onRuntimeInitialized"]');
 
     postRun();
   }
@@ -5568,11 +5506,6 @@ if (Module['preInit']) {
     Module['preInit'].pop()();
   }
 }
-
-// shouldRunNow refers to calling main(), not run().
-var shouldRunNow = true;
-
-if (Module['noInitialRun']) shouldRunNow = false;
 
 
   noExitRuntime = true;

@@ -9,18 +9,20 @@
 
 using namespace std;
 borderLine bl;
+string svgcode;
 
 extern "C" {
- bool init_bl(string description);
+ bool init_bl(const char* description);
  void set_step(UINT step_number);
  void set_cycle(UINT step_number);
  bool finished(UINT step_number);
  bool draw();
- string svg();
+ const char* svg();
 }
 
-bool init_bl(string description){
-  stringstream info(description);
+bool init_bl(const char* description){
+  stringstream info;
+  info << description;
   bl = getInfoFromStream(info);
   return true;
 }
@@ -41,8 +43,10 @@ bool draw(){
   return bl.refresh();
 }
 
-string svg(){
-  return bl.toSVG().getText();
+const char* svg(){
+  svgcode = bl.toSVG().getText();
+  const char* result = svgcode.c_str();
+  return result;
 }
 
 int main(){
@@ -58,5 +62,7 @@ int main(){
       }
     }
   }
+  const char* s = svg();
+  cout << (string) s << endl;
   return 0;
 }

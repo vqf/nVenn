@@ -45,9 +45,9 @@ volatile sig_atomic_t gSignalStatus;
 void handleSignal(int s){
   cout << lines.croack() << endl;
   c++;
-  if (c > 5){
+  //if (c > 5){
     exit(0);
-  }
+  //}
 }
 int main(int argc, char** argv)
 {
