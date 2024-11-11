@@ -233,6 +233,8 @@ class scene{
       if (d == 0){
         tolog("Distance is zero: " + p0->croack() + p1->croack());
         d = 1e-4;
+        p0->flags = p0->flags | 0x10;
+        setDebugSignal();
       }
       else{
         float eqx = eqd * dx / d;
@@ -534,6 +536,9 @@ public:
   }
   void setDebugSignal(){
     debugSignal = true;
+  }
+  bool getDebugSignal(){
+    return debugSignal;
   }
   void clearScene(){
     points.clear();

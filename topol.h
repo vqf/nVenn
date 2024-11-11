@@ -329,28 +329,48 @@ class groupIterator{
   UINT cval;
   UINT ival;
   bool finish;
+
+  void init(UINT v){
+    cval = v;
+    setVal(v);
+    first = val();
+    finish = false;
+  }
 public:
-  groupIterator(vector<point> circs, UINT group, UINT nBits, UINT starting = 0) {
-    mask = 1 << group;
+  groupIterator(vector<point> circs, UINT group, UINT starting = 0, UINT msk = 0) {
+    if (msk > 0){
+      mask = msk;
+    }
+    else{
+      mask = 1 << group;
+    }
     circles.clear();
-    cval = starting;
     for (UINT i = 0; i < circs.size(); i++){
-      if ((circs[i].n && mask > 0) && circs[i].radius > 0){
+      if (((circs[i].n & mask) > 0) && circs[i].radius > 0){
         circles.push_back(circs[i]);
         translator.push_back(i);
       }
     }
-    setVal(starting);
-    first = val();
-    finish = false;
+    init(starting);
+  }
+  void reset(UINT v){
+    init(v);
   }
   void setVal(UINT v = 0){
     UINT i = 0;
-    while (i < circles.size() && translator[i] < v){
+    bool found = false;
+    while (!found && translator[i] < v){
       i++;
+      if (i >= circles.size()){
+        i = 0;
+        found = true;
+      }
     }
     ival = i;
     cval = translator[i];
+    if (cval == first){
+      finish = true;
+    }
   }
   UINT val(){
     return cval;
@@ -363,10 +383,8 @@ public:
     if (ival >= circles.size()){
       ival = 0;
     }
-    cval = translator[ival];
-    if (cval == first){
-      finish = true;
-    }
+    UINT v = translator[ival];
+    setVal(v);
     return cval;
   }
 };
@@ -1491,7 +1509,7 @@ class borderLine
     }
 
     UINT leftmostCircle(UINT group){
-      groupIterator git(circles, group, bl.size(), 1);
+      groupIterator git(circles, group, 1);
       UINT result = git.val();
       float lx = circles[result].x;
       while(!git.isFinished()){
@@ -2052,6 +2070,7 @@ class borderLine
     void fixTopology(bool logit = false){
       addLines();
       polishLines();
+      writeSVG("polishlines.svg");
       for (UINT i = 0; i < circles.size(); i++){
         circles[i].flags = unsetFlag(circles[i].flags, USED);
       }
@@ -2187,6 +2206,7 @@ class borderLine
         }
       }
       embellishTopology(logit);
+      writeSVG("embellish.svg");
     }
 
 
@@ -2359,7 +2379,7 @@ class borderLine
       if (n1 == n2){
         anchor.x -= 1;
       }
-      groupIterator git(circles, ngroup, bl.size(), n2);
+      groupIterator git(circles, ngroup, n2);
       git.nxt();
       bool first = true;
       ccwangle best(anchor, circles[n2], anchor);
@@ -4515,23 +4535,24 @@ public:
      *
      */
     float minCircDist(){
-      circleIterator ci(circles, circles.size());
+      UINT flg = twoPow(ngroups) - 1;
+      groupIterator ci(circles, 0, 0, flg);
       UINT fst = ci.val();
       UINT scnd = ci.nxt();
       float r = sqDistance(circles[fst], circles[scnd]);
-      ci.reset();
-      circleIterator ci2(circles, circles.size());
+      ci = groupIterator(circles, 0, 0, flg);
+      groupIterator ci2(circles, 0, 0, flg);
       while (!ci.isFinished()){
         UINT v = ci.val();
         ci2.reset(v);
-        UINT w = ci2.nxt();
         while (!ci2.isFinished()){
-          w = ci2.val();
-          float nr = sqDistance(circles[v], circles[w]);
-          if (nr < r){
-            r = nr;
+          UINT w = ci2.nxt();
+          if (v != w){
+            float nr = sqDistance(circles[v], circles[w]);
+            if (nr < r){
+              r = nr;
+            }
           }
-          ci2.nxt();
         }
         ci.nxt();
       }
@@ -5642,6 +5663,10 @@ public:
       }
       else if (stepNumber == contract || stepNumber == refineCircles){
         scSolve();
+        /*if (tosolve.getDebugSignal()){
+          writeSVG();
+          exit(0);
+        }*/
       }
       else if (stepNumber == embellishLines){
         scSolve();

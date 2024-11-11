@@ -8,8 +8,8 @@ low_(fig2
 low_(fig3_xenograft)
 0
 0
-10
 0
+3
 0
 0
 0
