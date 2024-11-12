@@ -5400,13 +5400,17 @@ public:
       attachScene();
     }
 
-    void interpolateToDist(float pointDist){
-      if (pointDist <= 0){
-        pointDist = 1;
+    void interpolateToDist(float pDist){
+      if (pDist <= 0){
+        pDist = 1;
       }
 
       for (UINT i = 0; i < bl.size(); i++){
         vector<point>tempbl;
+        float pointDist = pDist;
+        if (bl[i].size() < 5){
+          pointDist = pDist / 10;
+        }
         for(UINT j = 0; j < bl[i].size(); j++){
           point current = bl[i][j];
           point nxt = bl[i][nextPoint(i, j)];
@@ -5431,7 +5435,7 @@ public:
         }
         bl[i] = tempbl;
       }
-      avgStartDist = pointDist;
+      avgStartDist = pDist;
       attachScene();
     }
 

@@ -44,6 +44,7 @@ int c = 0;
 volatile sig_atomic_t gSignalStatus;
 void handleSignal(int s){
   cout << lines.croack() << endl;
+  tolog(lines.croack());
   c++;
   //if (c > 5){
     exit(0);
