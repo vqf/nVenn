@@ -50,6 +50,11 @@
 					<Add library="kernel32" />
 				</Linker>
 			</Target>
+			<Target title="towasm">
+				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -58,7 +63,11 @@
 			<Option target="default" />
 			<Option target="test" />
 		</Unit>
-		<Unit filename="debug.h" />
+		<Unit filename="debug.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="test" />
+		</Unit>
 		<Unit filename="graphics.h">
 			<Option target="default" />
 		</Unit>
@@ -75,7 +84,7 @@
 		</Unit>
 		<Unit filename="topol.h" />
 		<Unit filename="towasm.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="towasm" />
 		</Unit>
 		<Extensions>
 			<code_completion />

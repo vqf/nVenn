@@ -3008,7 +3008,7 @@ class borderLine
           resetOptimize();
           opt->startCycle();
         }
-        cout << circles[n].n << endl;
+        //cout << circles[n].n << endl;
       }
       else{
         UINT candidate = opt->getCandidate();
@@ -3029,7 +3029,7 @@ class borderLine
               if (newComp < opt->getBestCompactness()){
                 opt->setBestCompactness(newComp);
                 tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
-                cout << "Swapping " << i << " with " << candidate << " -> " << newComp << endl;
+                //cout << "Swapping " << i << " with " << candidate << " -> " << newComp << endl;
               }
               else if (newComp == opt->getBestCompactness()){
                 float newUntie = (this->*untieFunct)();
@@ -4822,6 +4822,7 @@ public:
     }
 
     void showInfo(){
+      return;
       cout << "Number of groups: " << ngroups << "\n";
       cout << "Number of circles: " << circles.size() << "\n";
       for (UINT i = 0; i < circles.size(); i++){
@@ -5770,39 +5771,43 @@ borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", st
   vector<float> weights;
   vector<string> labels;
   getline(vFile, header);
-  cout << header;
+  //cout << header << endl;
   getline(vFile, header);
   UINT number = (UINT) atoi(header.c_str());
-  cout << endl << number << " groups:" << endl;
+  //cout << endl << number << " groups:" << endl;
   for (UINT i = 0; i < number; i++){
       getline(vFile, header);
       groupNames.insert(groupNames.end(), header);
-      cout << header << endl;
+      //cout << header << endl;
   }
   UINT n = (UINT) twoPow(number);
   for (UINT i = 0; i < n; i++){
       getline(vFile, header); //  get the whole line
-      string w = header.substr(0,header.find_first_of(" "));
+      int l = header.find_first_of(" ");
+      string w = header;
+      if (l > 0){
+        w = header.substr(0,l);
+      }
       weights.insert (weights.end(), atoi(w.c_str())); // it takes the first number
-      string label;
-      try
+      string label = "";
+      /*try
       {
           label = header.substr(header.find_first_of(" "));
       }
       catch (const std::exception& e)
       {
-          cout << i << endl;
+          //cout << i << endl;
           label = "";
-      }
+      }*/
       labels.insert (labels.end(), label);
-      cout << "w=" << w << "  label:" << label << endl;
+      //cout << "w=" << w << "  label:" << label << endl;
       //getline(vFile, header, ' '); /// get the number
       //weights.insert (weights.end(), atoi(header.c_str()));
       //getline(vFile, header) ;  ///  get the rest of the line with the labels
       //labels.insert (labels.end(), header);
       temp = toBin(i, number);
-      printv(temp);
-      cout << ".- " << weights[i] << " : " << labels[i] << endl;
+      //printv(temp);
+      //cout << ".- " << weights[i] << " : " << labels[i] << endl;
   }
   binMap mymap(number);
   borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);

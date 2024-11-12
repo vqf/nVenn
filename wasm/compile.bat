@@ -1,2 +1,3 @@
 emcmdprompt.bat
-em++ ../towasm.cpp -s WASM=1 -s EXPORTED_FUNCTIONS="[_init_bl, _set_step, _set_cycle, _finished, _draw, _svg]" -s EXPORTED_RUNTIME_METHODS="[UTF8ToString, stringToNewUTF8]" -o nvenn.js || exit 1
+em++ ../towasm.cpp -s WASM=1 -sEXPORTED_FUNCTIONS="[_init_bl, _set_step, _set_cycle, _finished, _draw, _svg]" -sDEFAULT_LIBRARY_FUNCS_TO_INCLUDE="[$stringToNewUTF8,$stringToNewUTF8]" -o nvenn.js
+pause

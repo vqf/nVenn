@@ -22,8 +22,9 @@ extern "C" {
 
 bool init_bl(const char* description){
   stringstream info;
-  info << description;
+  info << description << endl;
   bl = getInfoFromStream(info);
+  //free(&description);
   return true;
 }
 
@@ -64,5 +65,7 @@ int main(){
   }
   const char* s = svg();
   cout << (string) s << endl;
+  string yo;
+  getline(cin, yo);
   return 0;
 }

@@ -9,16 +9,18 @@
 Only in that case the function tolog(toString(__LINE__) + "\n" + ) will be available and executed.
  */
 
-#define DEBUG
-//#undef DEBUG
+//#define DEBUG
+#undef DEBUG
 
 #ifdef DEBUG
 #define _L_ "Line " + toString(__LINE__) + " - "
 #define DEBUGONLY(a) a
 #else
 #define DEBUGONLY(a)
-#define restart_log
-#define tolog(toString(__LINE__) + "\n" + a)
+#define restart_log()
+#define tolog(a)
+//#define cout cout << __LINE__ << endl
+//#define tolog(toString(__LINE__) + "\n" + a)
 #endif // DEBUG
 
 
