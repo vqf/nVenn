@@ -5125,6 +5125,9 @@ var asm = createWasm();
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__wasm_call_ctors");
 
 /** @type {function(...*):?} */
+var _return_true = Module["_return_true"] = createExportWrapper("return_true");
+
+/** @type {function(...*):?} */
 var _init_bl = Module["_init_bl"] = createExportWrapper("init_bl");
 
 /** @type {function(...*):?} */

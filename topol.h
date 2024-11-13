@@ -5541,7 +5541,7 @@ public:
     bool setStep(UINT stepNumber = 0){
       bool result = true;
       if (stepNumber == attract){
-        refreshScreen.setLimits(1,1);
+        refreshScreen.setLimits(1,10);
         setCheckTopol(false);
       }
       else if (stepNumber == disperse){

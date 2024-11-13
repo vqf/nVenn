@@ -16,8 +16,13 @@ extern "C" {
  void set_step(UINT step_number);
  void set_cycle(UINT step_number);
  bool finished(UINT step_number);
+ bool return_true();
  bool draw();
  const char* svg();
+}
+
+bool return_true(){
+  return true;
 }
 
 bool init_bl(const char* description){

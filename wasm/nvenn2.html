@@ -9,9 +9,26 @@
     Module.onRuntimeInitialized = function() {
       const tr = stringToNewUTF8("nVenn12 jsons/49CE6E11.json\n4\nS_salivarius\nOther\nGAS\nGCS/GGS\n0\n2\n12\n0\n28\n7\n6\n0\n84\n15\n11\n0\n16\n2\n1\n0\n");
       Module._init_bl(tr);
-      console.log(UTF8ToString(Module._svg()));
+      UTF8ToString(Module._svg());
+      const bod = document.getElementById('screen');
+      bod.innerHTML = UTF8ToString(Module._svg());
+      requestAnimationFrame
+      for (let i = 1; i < 8; i++){
+        Module._set_step(i);
+        let f = Module._finished();
+        console.log(i);
+        //while (f === 0){
+        //  Module._set_cycle(i);
+        //  f = Module._finished();
+        //  requestAnimationFrame(function(){bod.innerHTML = UTF8ToString(Module._svg())});
+        //}
+      }
     }
     </script>
+  </head>
+  <body>
+  <div id="screen">
+  </div>
   </body>
 </html>
 
