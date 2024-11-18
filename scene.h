@@ -160,6 +160,8 @@ class scene{
   float maxAllowedVel;
   float rodStiffness;
   float friction;
+  float maxdsq;
+  float maxfsq;
   float maxvsq;
   float damp; // Spring damping constant
   float G; // Gravity constant
@@ -507,6 +509,18 @@ class scene{
         float deltay = p->vy * cdt;
         p->x += deltax;
         p->y += deltay;
+        float fsq = fx * fx + fy * fy;
+        float vsq = p->vx * p->vx + p->vy * p->vy;
+        float dsq = deltax * deltax + deltay * deltay;
+        if (dsq > maxdsq){
+          maxdsq = dsq;
+        }
+        if (fsq > maxfsq){
+          maxfsq = fsq;
+        }
+        if (vsq > maxvsq){
+          maxvsq = vsq;
+        }
       }
     }
     addInfo("FSQ: ", fsq);
@@ -591,6 +605,12 @@ public:
   vector<string> getInfo(){
     vector<string> result = info;
     return result;
+  }
+  float getMaxDsq(){
+    return maxdsq;
+  }
+  float getMaxFsq(){
+    return maxfsq;
   }
   float getMaxVsq(){
     return maxvsq;
@@ -765,26 +785,14 @@ public:
     effectRods();
     effectGravity();
     icontacts();
-    float maxfsq = 0;
+    maxdsq = 0;
+    maxfsq = 0;
     maxvsq = 0;
     for (UINT i = 0; i < points.size(); i++){
       float fx = points[i]->fx;
       float fy = points[i]->fy;
       float vx = points[i]->vx;
       float vy = points[i]->vy;
-      float fsq = fx * fx + fy * fy;
-      float vsq = vx * vx + vy * vy;
-      if (fsq != fsq){
-
-      }
-      if (((points[i]->flags & ANCHORED) == 0)){
-        if (fsq > maxfsq){
-          maxfsq = fsq;
-        }
-        if (vsq > maxvsq){
-          maxvsq = vsq;
-        }
-      }
     }
     //tolog(toString(maxfsq) + "\t" + toString(maxvsq) + "\n");
     //if ((maxfsq > maxAllowedForce * (points.size())) || (maxvsq > maxAllowedVel)){

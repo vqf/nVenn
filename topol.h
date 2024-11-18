@@ -420,6 +420,9 @@ class tangent {
 
 public:
   tangent(float dx, float dy) {
+    init(dx, dy);
+  }
+  void init(float dx, float dy){
     slope = 0;
     err = false;
     if (dx == 0 && dy == 0){
@@ -440,29 +443,20 @@ public:
       slope = -dx / dy;
     }
   }
-  tangent(){}
-  tangent(point p1, point p2){
+  void init(point p1, point p2){
     float dx = p2.x - p1.x;
     float dy = p2.y - p1.y;
     slope = 0;
     err = false;
-    if (dx < 0 && dy <= 0) {
-      quadrant = 1;
-      slope = dy / dx;
-    } else if (dx >= 0 && dy < 0) {
-      quadrant = 2;
-      slope = -dx / dy;
-    } else if (dx > 0 && dy >= 0) {
-      quadrant = 3;
-      slope = dy / dx;
-    } else {
-      quadrant = 4;
-      slope = -dx / dy;
-    }
+    init(dx, dy);
     if (slope != slope){
       tolog(_L_ + "Incorrect tangent: \n" + p1.croack() + p2.croack());
       err = true;
     }
+  }
+  tangent(){}
+  tangent(point p1, point p2){
+    init(p1, p2);
   }
   bool error(){
     return err;
@@ -1358,7 +1352,7 @@ public:
       if (finishAfter == 0){
         finish = true;
       }
-      if (comp < (bestCompactness * wRoom)){
+      if (comp < (bestCompactness)){
         bestCompactness = comp;
         keep = true;
         cyclesWithoutImprovement = 0;
@@ -1374,8 +1368,8 @@ public:
       totalCompactness += comp;
       counter++;
       if (counter > nAvg){
-        float newAvg = totalCompactness / ((float)counter);
-        if (newAvg > lastCompactness){
+        float newAvg = totalCompactness / ((float)(nAvg));
+        if (newAvg > (lastCompactness / wRoom)){
           canFinish = true;
         }
         counter = 1;
@@ -1488,7 +1482,7 @@ class borderLine
       b->doCheckTopol = true;
       b->fixCircles = false;
       b->signalEnd = false;
-      b->smoothSVG = false;
+      b->smoothSVG = true;
       b->surfRatio = 0;
       b->minSurfRatio = 0;
       b->maxSurfRatio = 10;
@@ -2350,6 +2344,32 @@ class borderLine
         }
       }
       embellishTopology(logit);
+    }
+
+    float getArea(){
+      float area = 0;
+      for (UINT i = 0; i < bl.size(); i++){
+        for (UINT j = 0; j < bl[i].size(); j++){
+          point p1 = bl[i][j];
+          UINT np2 = nextPoint(i, j);
+          point p2 = bl[i][np2];
+          float dx = p2.x - p1.x;
+          float dy = p2.y - p1.y;
+          float neg = 1;
+          if (dx < 0){
+            neg = -1;
+          }
+          area += p1.y * dx + dx * dy / 2;
+        }
+      }
+      return area;
+    }
+
+    float getMaxDsq(){
+      return tosolve.getMaxDsq();
+    }
+    float getMaxFsq(){
+      return tosolve.getMaxFsq();
     }
 
     float getMaxVsq(){
@@ -4676,8 +4696,11 @@ public:
       resetCircleRadius();
       float d = (this->*currentMeasure)();
       evaluation.add(d);
-      displayFloat("COMPACTNESS", d);
-      displayFloat("LASTCOMPACTNESS", evaluation.viewLastComp());
+      float mfsq = log10(tosolve.getMaxFsq());
+      float mvsq = log10(tosolve.getMaxVsq());
+      float mdsq = log10(tosolve.getMaxDsq());
+      displayFloat("EVALUATE", d);
+      displayFloat("LASTEVALUATE", evaluation.viewLastComp());
       if (blSettings.optimize){
         if (evaluation.keepState()){
           setBestSoFar();
@@ -4685,7 +4708,8 @@ public:
       }
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
-      displayFloat("MAXV", log10(tosolve.getMaxVsq()));
+      displayFloat("MAXV", mvsq);
+      displayFloat("MAXF", mfsq);
       displayUINT("COUNTER", evaluation.viewCounter());
       displayUINT("CANFINISH", evaluation.viewCanFinish());
       displayUINT("CWI", evaluation.viewCyclesWithoutImprovement());
@@ -4918,19 +4942,13 @@ public:
       return result;
     }
 
-    point fstCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
+    point ctrlPoint(point start, point curr, point nxt, float sc = 0.2f){
       point result;
-      result.x = start.x + sc * (nxt.x - prev.x);
-      result.y = start.y + sc * (nxt.y - prev.y);
+      result.x = curr.x + sc * (nxt.x - start.x);
+      result.y = curr.y + sc * (nxt.y - start.y);
       return result;
     }
 
-    point scndCtrlPoint(point prev, point start, point nxt, float sc = 0.5f){
-      point result;
-      result.x = start.x - sc * (nxt.x - prev.x);
-      result.y = start.y - sc * (nxt.y - prev.y);
-      return result;
-    }
 
     string join(string interm, vector<string> arr) {
       int i;
@@ -5028,13 +5046,13 @@ public:
             point nxt = place(svgScale, bl[i][0]);
             string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
 
-            for (j = 1; j < (bl[i].size() - 2); j++){
-              point prev = place(svgScale, bl[i][j - 1]);
+            for (j = 0; j < (bl[i].size()); j++){
+              point prev = place(svgScale, bl[i][prevPoint(i, j)]);
               point curr = place(svgScale, bl[i][j]);
-              point next = place(svgScale, bl[i][j + 1]);
-              point next2 = place(svgScale, bl[i][j + 2]);
-              point ctrlfst = fstCtrlPoint(prev, curr, next);
-              point ctrlsec = scndCtrlPoint(curr, next, next2);
+              point next = place(svgScale, bl[i][nextPoint(i, j)]);
+              point next2 = place(svgScale, bl[i][nextPoint(i, nextPoint(i, j))]);
+              point ctrlfst = ctrlPoint(prev, curr, next);
+              point ctrlsec = ctrlPoint(next2, next, curr);
               cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
                                coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
                                coord(next.x) + " " + coord(next.y);
@@ -5541,7 +5559,7 @@ public:
     bool setStep(UINT stepNumber = 0){
       bool result = true;
       if (stepNumber == attract){
-        refreshScreen.setLimits(1,10);
+        refreshScreen.setLimits(1,1);
         setCheckTopol(false);
       }
       else if (stepNumber == disperse){
@@ -5597,22 +5615,23 @@ public:
       else if (stepNumber == refineCircles){
         resetTimer();
         evaluation.init();
-        evaluation.setConstants(100, 50);
+        evaluation.setConstants(10, 50);
         interpolateToDist(2 * correctedMinCircRadius());
-        scSpringK(1e2);
+        scSpringK(1e-1);
         scFriction(700);
-        scG(1e-1);
+        scG(1e-2);
         scD(1e2);
         scGhostGrav(true);
         getBestSoFar();
       }
       else if (stepNumber == embellishLines){
         startRefiningSteps();
+        resetTimer();
         evaluation.init();
-        evaluation.setConstants(5, 0, 1.1);
-        this->currentMeasure = &borderLine::getMaxVsq;
-        scG(5e-3);
-        scD(0);
+        evaluation.setConstants(10, 0, 1.0005);
+        this->currentMeasure = &borderLine::getArea;
+        scG(1e-2);
+        scD(10);
         scSpringK(1e1);
         oc.maxOutCount = 70;
         oc.outCount = 0;
@@ -5700,11 +5719,14 @@ public:
           result = true;
         }
       }
-      else if (stepNumber == contract || stepNumber == refineCircles || stepNumber == embellishLines){
-        bool bq = isSimulationComplete();
-        if (bq){
-          result = true;
-        }
+      else if (stepNumber == contract || stepNumber == refineCircles){
+        result = isSimulationComplete();
+      }
+      else if (stepNumber == embellishLines){
+        result = isSimulationComplete();
+        //if (getMaxVsq() > 1e-7){
+        //  result = false;
+        //}
       }
       refreshScreen++;
       return result;
