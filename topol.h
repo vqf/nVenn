@@ -49,7 +49,29 @@ UINT unsetFlag(UINT flag, UINT mask){
   return result;
 }
 
+//--------------------------------------------
+void printv(vector<UINT> v)
+{
+    UINT i;
+    for (i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << ", ";
+    }
+    cout << endl;
+}
 
+void vlog(vector<UINT> v){
+  if (v.size() > 0){
+    for (UINT i = 0; i < (v.size() - 1); i++){
+      tolog(toString(v[i]) + ", ");
+    }
+    tolog(toString(v[v.size() - 1]) + "\n");
+  }
+  else{
+    tolog("\n");
+  }
+}
+//--------------------------------------------
 
 /** \brief Fast computing of 2**n
  *
@@ -1422,6 +1444,7 @@ class borderLine
 
     binMap* bm;
     scene tosolve;
+    vector<UINT> sceneTranslator;
     blState savedState;
     float simulationTime;
     float maxLineVsq;
@@ -4592,9 +4615,42 @@ public:
       return result;
     }
 
+    void setGravityPartitions(){
+      vector<vector<UINT>> gp;
+      vector<UINT> cs;
+      for (UINT i = 0; i < circles.size(); i++){
+        cs.push_back(0);
+      }
+      tolog("st: " + toString(sceneTranslator.size()) + "\n");
+      for (UINT i = 0; i < sceneTranslator.size(); i++){
+        if (sceneTranslator[i] > 0){
+          cs[sceneTranslator[i]] = i;
+        }
+      }
+      gp.clear();
+      UINT counter = 0;
+      for (UINT i = 0; i < bl.size(); i++){
+        for (UINT k = 0; k < bl[i].size(); k++){
+          for (UINT j = 0; j < circles.size(); j++){
+            UINT mask = 1 << i;
+            if (circles[j].radius > 0 && ((circles[j].n & mask) > 0)){
+              gp.push_back({counter, cs[circles[j].n]});
+            }
+          }
+          counter++;
+        }
+      }
+      /*for (UINT i = 0; i < gp.size(); i++){
+        vlog(gp[i]);
+      }
+      exit(0);*/
+      tosolve.setGravityPartitions(gp);
+    }
+
     void attachScene(float springK = 5e3){
       UINT cnt = 0;
       tosolve.clearScene();
+      sceneTranslator.clear();
       pairDistances.clear();
       UINT level = 1;
       float cushion = 0.02;
@@ -4604,6 +4660,7 @@ public:
           //bl[i][j].flags = bl[i][j].flags | INGRAVID;
           bl[i][j].flags = bl[i][j].flags | GHOST;
           tosolve.addPointP(&(bl[i][j]));
+          sceneTranslator.push_back(bl[i][j].n);
           tosolve.addLink(cnt + lp, cnt + j, springK);
           lp = j;
           pairDistances.push_back(cushion * (float) level);
@@ -4616,6 +4673,7 @@ public:
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           tosolve.addPointP(&(circles[i]));
+          sceneTranslator.push_back(circles[i].n);
           pairDistances.push_back(cushion * (float) level);
         }
       }
@@ -5627,12 +5685,13 @@ public:
       else if (stepNumber == embellishLines){
         startRefiningSteps();
         resetTimer();
+        setGravityPartitions();
         evaluation.init();
         evaluation.setConstants(10, 0, 1.0005);
         this->currentMeasure = &borderLine::getArea;
-        scG(1e-2);
+        scG(1e-1);
         scD(10);
-        scSpringK(1e1);
+        scSpringK(0);
         oc.maxOutCount = 70;
         oc.outCount = 0;
         oc.optVal = 0;
@@ -5773,18 +5832,6 @@ string getFile(string prompt, string errorPrompt)
     return fname;
 }
 
-
-//--------------------------------------------
-void printv(vector<int> v)
-{
-    UINT i;
-    for (i = 0; i < v.size(); i++)
-    {
-        cout << v[i];
-    }
-    cout << " ";
-}
-//--------------------------------------------
 
 borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", string outputFile = "result.svg"){
   string header;

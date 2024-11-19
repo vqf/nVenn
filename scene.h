@@ -151,6 +151,7 @@ class scene{
   vector<springLink> rods;
   vector<string> info;
   vector<float> cushions;
+  vector<vector<UINT>> gpartitions; /* Specifies which subsets attract gravitationally */
   bool debugSignal;
   float dt;
   float simtime;
@@ -177,40 +178,58 @@ class scene{
     }
   }
 
+  void gforce(point *p0, point *p1){
+    bool g1 = (p0->flags & GHOST) == 0;
+    bool g2 = (p1->flags & GHOST) == 0;
+    bool dog = g1 && g2;
+    if (ghostGrav){
+      dog = g1 || g2;
+    }
+    if (dog){
+      float dx = p1->x - p0->x;
+      float dy = p1->y - p0->y;
+      float dsq = dx * dx + dy * dy;
+      float denom = dsq;
+      if (!pseudoGravity){
+        float d = sqrt(dsq);
+        denom = dsq * d;
+      }
+      if (denom > 0){
+        point result;
+        result.fx = G * p0->mass * p1->mass * dx / denom;
+        result.fy = G * p0->mass * p1->mass * dy / denom;
+        p0->fx += result.fx;
+        p1->fx -= result.fx;
+        p0->fy += result.fy;
+        p1->fy -= result.fy;
+      }
+    }
+  }
+
   void effectGravity(){
     if (G != 0){
-      for (UINT i = 0; i < (points.size() - 1); i++){
-        point *p0 = points[i];
-        bool g1 = (p0->flags & GHOST) == 0;
-        if ((p0->flags & INGRAVID) == 0){
-          for (UINT j = i + 1; j < points.size(); j++){
-            point *p1 = points[j];
+      if (gpartitions.size() > 0){
+        for (UINT i = 0; i < gpartitions.size(); i++){
+          UINT f = gpartitions[i][0];
+          point *p0 = points[f];
+          if ((p0->flags & INGRAVID) == 0){
+            UINT k = gpartitions[i][1];
+            point *p1 = points[k];
             if ((p1->flags & INGRAVID) == 0){
-              bool g2 = (p1->flags & GHOST) == 0;
-              bool dog = g1 && g2;
-              if (ghostGrav){
-                dog = g1 || g2;
+              gforce(p0, p1);
+            }
+          }
+        }
+      }
+      else{
+        for (UINT i = 0; i < (points.size() - 1); i++){
+          point *p0 = points[i];
+          if ((p0->flags & INGRAVID) == 0){
+            for (UINT j = i + 1; j < points.size(); j++){
+              point *p1 = points[j];
+              if ((p1->flags & INGRAVID) == 0){
+                gforce(p0, p1);
               }
-              if (dog){
-                float dx = p1->x - p0->x;
-                float dy = p1->y - p0->y;
-                float dsq = dx * dx + dy * dy;
-                float denom = dsq;
-                if (!pseudoGravity){
-                  float d = sqrt(dsq);
-                  denom = dsq * d;
-                }
-                if (denom > 0){
-                  point result;
-                  result.fx = G * p0->mass * p1->mass * dx / denom;
-                  result.fy = G * p0->mass * p1->mass * dy / denom;
-                  p0->fx += result.fx;
-                  p1->fx -= result.fx;
-                  p0->fy += result.fy;
-                  p1->fy -= result.fy;
-                }
-              }
-
             }
           }
         }
@@ -557,6 +576,7 @@ public:
     rods.clear();
     info.clear();
     cushions.clear();
+    gpartitions.clear();
   }
   void setPseudoGravity(bool ps = true){
     pseudoGravity = ps;
@@ -571,6 +591,9 @@ public:
   }
   void setCushions(vector<float> c){
     cushions = c;
+  }
+  void setGravityPartitions(vector<vector<UINT>> p){
+    gpartitions = p;
   }
   void setFriction(float coefficient = 50){
     friction = coefficient;
