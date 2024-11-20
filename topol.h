@@ -999,6 +999,11 @@ public:
         if (result == 0) result = 1.0f;
         return result;
     }
+    float minSpan(){
+      float minCoord = xSpan();
+      if (ySpan() < minCoord) minCoord = ySpan();
+      return minCoord;
+    }
     float ratio()
     {
         float result;
@@ -1347,7 +1352,7 @@ public:
   }
   void init(){
     finish = false;
-    //canFinish = false;
+    canFinish = false;
     first = true;
     cyclesWithoutImprovement = 0;
     counter = 0;
@@ -1514,7 +1519,7 @@ class borderLine
       b->doCheckTopol = true;
       b->fixCircles = false;
       b->signalEnd = false;
-      b->smoothSVG = true;
+      b->smoothSVG = false;
       b->part = false;
       b->surfRatio = 0;
       b->minSurfRatio = 0;
@@ -2448,6 +2453,22 @@ class borderLine
           }
         }
         git.nxt();
+      }
+      return result;
+    }
+
+    float getEmbellishDist(float rf = 0.2){
+      float result = rf;
+      float minRat = 0.02 * internalScale.minSpan();
+      float minc = minCircRadius;
+      point t; t.radius = minCircRadius; t.x = 0; t.y = 0;
+      point test = place(internalScale, t);
+      float rat = test.radius / minRat;
+      if (rat < 1){
+        minc = minCircRadius / rat;
+      }
+      if ((minc) > result){
+        result = minc;
       }
       return result;
     }
@@ -4553,8 +4574,7 @@ public:
 
     float correctedMinCircRadius(){
       float result = minCircRadius;
-      float minCoord = internalScale.xSpan();
-      if (internalScale.ySpan() < minCoord) minCoord = internalScale.ySpan();
+      float minCoord = internalScale.minSpan();
       minRat = 0.02 * minCoord;
       point t; t.radius = minCircRadius; t.x = 0; t.y = 0;
       point test = place(internalScale, t);
@@ -4576,7 +4596,6 @@ public:
      */
     void startRefiningSteps(){
       getBestSoFar();
-      interpolateToDist(minCircDist()/5);
       setFixedCircles();
       setSecureState();
       setPrevState();
@@ -4747,6 +4766,7 @@ public:
       bool incorrect = checkTopol();
       while (incorrect){
         restorePrevState();
+        evaluation.init();
         //tolog(_L_ + "Bad topol\n");
         udt.report();
         if (blSettings.dt < blSettings.mindt){
@@ -5674,11 +5694,12 @@ public:
                                    &borderLine::countCrossings, &borderLine::compactness);
       }
       else if (stepNumber == contract){
+        udt.init(1e-4, 0.01);
         resetOptimize();
         fixTopology();
         setCheckTopol(true);
         if (checkTopol() == false){
-          interpolateToDist(3 * correctedMinCircRadius() * AIR);
+          interpolateToDist(2 * minCircDist());
           setPrevState();
           setSecureState();
         }
@@ -5702,12 +5723,14 @@ public:
       }
       else if (stepNumber == refineCircles){
         resetTimer();
+        resetOptimize();
         evaluation.init();
         evaluation.setConstants(10, 50);
-        interpolateToDist(2 * correctedMinCircRadius());
-        scSpringK(5e3);
-        scFriction(700);
-        scG(1e-2);
+        float d = getEmbellishDist(3);
+        interpolateToDist(d);
+        scSpringK(1e2);
+        scFriction(1000);
+        scG(1e-1);
         scD(1e2);
         scGhostGrav(true);
         getBestSoFar();
@@ -5715,14 +5738,16 @@ public:
       else if (stepNumber == embellishLines){
         startRefiningSteps();
         resetTimer();
+        float d = getEmbellishDist(0.2);
+        interpolateToDist(d);
         setGravityPartitions();
         evaluation.init();
         evaluation.setConstants(10, 0, 1.0005);
         this->currentMeasure = &borderLine::getArea;
-        scG(5e-2);
-        scD(100);
+        scG(3e-2);
+        scD(1000);
         scSpringK(1e4);
-        scFriction(70);
+        scFriction(100);
         oc.maxOutCount = 70;
         oc.outCount = 0;
         oc.optVal = 0;
@@ -5814,6 +5839,9 @@ public:
       }
       else if (stepNumber == embellishLines){
         result = isSimulationComplete();
+        if (result){
+          blSettings.smoothSVG = true;
+        }
         //if (getMaxVsq() > 1e-7){
         //  result = false;
         //}
