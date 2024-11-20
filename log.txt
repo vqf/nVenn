@@ -132,4 +132,3 @@ Next candidate: 8
 Outcount: 10
 Next candidate: 16
 Outcount: 11
-st: 669

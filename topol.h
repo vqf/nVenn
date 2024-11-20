@@ -230,6 +230,7 @@ typedef struct blData{
   bool signalEnd;
   bool smoothSVG;
   bool optimize;
+  bool part;
   float surfRatio;
   float minSurfRatio;  /**< Possible condition for ending the simulation if the relationship
                         between the total area of the circles and the area of the figure
@@ -1437,6 +1438,13 @@ typedef struct outc{
   float optVal;
 } outCounters;
 
+typedef struct csts{
+  float K;  // Spring constant
+  float G;  // Gravitational constant
+  float D;  // Spring damping constant
+  float B;  // Newtonian resistance coefficient
+} constants;
+
 class borderLine
 {
     friend class glGraphics;
@@ -1449,6 +1457,7 @@ class borderLine
     float simulationTime;
     float maxLineVsq;
     float maxCircleVsq;
+    constants scConstants;
     UINT internalCounter;
     outCounters oc;
     optimizationStep optStep;
@@ -1506,6 +1515,7 @@ class borderLine
       b->fixCircles = false;
       b->signalEnd = false;
       b->smoothSVG = true;
+      b->part = false;
       b->surfRatio = 0;
       b->minSurfRatio = 0;
       b->maxSurfRatio = 10;
@@ -4398,6 +4408,10 @@ public:
         nPointsMin = 10;
         potential = 0;
         maxRadius = 0;
+        scConstants.B = 0;
+        scConstants.D = 0;
+        scConstants.G = 0;
+        scConstants.K = 0;
         internalScale.initScale();
         svgScale.initScale();
         svgScale.setMinX(20.0f);
@@ -4621,7 +4635,7 @@ public:
       for (UINT i = 0; i < circles.size(); i++){
         cs.push_back(0);
       }
-      tolog("st: " + toString(sceneTranslator.size()) + "\n");
+      //tolog("st: " + toString(sceneTranslator.size()) + "\n");
       for (UINT i = 0; i < sceneTranslator.size(); i++){
         if (sceneTranslator[i] > 0){
           cs[sceneTranslator[i]] = i;
@@ -4644,10 +4658,13 @@ public:
         vlog(gp[i]);
       }
       exit(0);*/
+      blSettings.part = true;
       tosolve.setGravityPartitions(gp);
     }
 
-    void attachScene(float springK = 5e3){
+
+    void attachScene(){
+      float springK = scConstants.K;
       UINT cnt = 0;
       tosolve.clearScene();
       sceneTranslator.clear();
@@ -4678,6 +4695,9 @@ public:
         }
       }
       tosolve.setCushions(pairDistances);
+      if (blSettings.part){
+        setGravityPartitions();
+      }
       tosolve.setPseudoGravity(true);
     }
 
@@ -4699,18 +4719,27 @@ public:
 
     void scFriction(float f = 50){
       tosolve.setFriction(f);
+      scConstants.B = f;
+      attachScene();
     }
     void scG(float G = 0){
       tosolve.setG(G);
+      scConstants.G = G;
+      attachScene();
     }
     void scGhostGrav(bool ghostGrav = true){
       tosolve.setGhostGravity(ghostGrav);
+      attachScene();
     }
     void scD(float D = 0){
       tosolve.setDampingConstant(D);
+      scConstants.D = D;
+      attachScene();
     }
     void scSpringK(float k = 1e3){
       tosolve.setSpringK(k);
+      scConstants.K = k;
+      attachScene();
     }
     void scSolve(){
       dataDisplay.clear();
@@ -5667,6 +5696,7 @@ public:
         scFriction(25);
         scD(1e2);
         scG(1e-1);
+        scSpringK(5e3);
         scGhostGrav(false);
         getBestSoFar();
       }
@@ -5675,7 +5705,7 @@ public:
         evaluation.init();
         evaluation.setConstants(10, 50);
         interpolateToDist(2 * correctedMinCircRadius());
-        scSpringK(1e-1);
+        scSpringK(5e3);
         scFriction(700);
         scG(1e-2);
         scD(1e2);
@@ -5689,9 +5719,10 @@ public:
         evaluation.init();
         evaluation.setConstants(10, 0, 1.0005);
         this->currentMeasure = &borderLine::getArea;
-        scG(1e-1);
-        scD(10);
-        scSpringK(0);
+        scG(5e-2);
+        scD(100);
+        scSpringK(1e4);
+        scFriction(70);
         oc.maxOutCount = 70;
         oc.outCount = 0;
         oc.optVal = 0;
