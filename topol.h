@@ -1457,6 +1457,7 @@ class borderLine
 
     binMap* bm;
     scene tosolve;
+    string signature;
     vector<UINT> sceneTranslator;
     blState savedState;
     float simulationTime;
@@ -3072,6 +3073,7 @@ class borderLine
                          float (borderLine::*countFunct)(), float (borderLine::*untieFunct)(),
                          bool logit = false){
       float untie = (this->*untieFunct)();
+      displayFloat("BEST", opt->getBestCompactness());
       if (opt->hasEnded()){
         opt->startCycle();
         opt->setCandidate((this->*chooseCandidate)());
@@ -3818,7 +3820,6 @@ class borderLine
     {
         float kb = blSettings.baseBV;
         warn.clear();
-        dataDisplay.clear();
 
         blSettings.totalCircleV = 0;
         blSettings.totalLineV = 0;
@@ -3830,11 +3831,11 @@ class borderLine
         updPos(kb, resetVelocity);
         clearForces();
 //Show dt
-        displayFloat("SIMTIME", simulationTime);
+        //displayFloat("SIMTIME", simulationTime);
         displayFloat("DT", blSettings.dt);
-        displayUINT("CYCLES", blSettings.ncycles);
-        displayUINT("NPOINTS", bl[0].size());
-        displayFloat("POTENTIAL", log10(potential));
+        //displayUINT("CYCLES", blSettings.ncycles);
+        //displayUINT("NPOINTS", bl[0].size());
+        //displayFloat("POTENTIAL", log10(potential));
 
         potential = 0;
 
@@ -4761,7 +4762,6 @@ public:
       attachScene();
     }
     void scSolve(){
-      dataDisplay.clear();
       blSettings.dt = tosolve.solve(blSettings.dt);
       bool incorrect = checkTopol();
       while (incorrect){
@@ -4815,8 +4815,8 @@ public:
       }
       displayFloat("DT", blSettings.dt);
       displayFloat("SIMTIME", tosolve.simTime());
-      displayFloat("MAXV", mvsq);
-      displayFloat("MAXF", mfsq);
+      //displayFloat("MAXV", mvsq);
+      //displayFloat("MAXF", mfsq);
       displayUINT("COUNTER", evaluation.viewCounter());
       displayUINT("CANFINISH", evaluation.viewCanFinish());
       displayUINT("CWI", evaluation.viewCyclesWithoutImprovement());
@@ -5184,7 +5184,8 @@ public:
         }
       }
       svg.addLine("</defs>");
-      svg.addLine("<!-- isDone: " + nc + " -->");
+      svg.addLine("<!-- signature: " + signature + " -->");
+      svg.addLine("<desc>" + join((string)";", dataDisplay) + "</desc>");
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
 
       // Add fills
@@ -5627,6 +5628,49 @@ public:
 
     }
 
+    /** \brief Writes the coordinates of every circle at the end
+     *         of step 2. This allows the reproduction of a simulation
+     *
+     * \return string
+     *
+     */
+    string getSignature(){
+      stringstream result;
+      result << ngroups << ";";
+      vector<UINT> c = ncircles();
+      for (UINT j = 0; j < c.size(); j++){
+        UINT i = c[j];
+        result << circles[i].n << ";" << circles[i].orig << ";";
+        result << circles[i].x << ";" << circles[i].y    << ";";
+      }
+      string r;
+      result >> r;
+      return r;
+    }
+
+    void loadSignature(string sig){
+      bl.clear();
+      circles.clear();
+      stringstream s(sig);
+      UINT ng;
+      UINT n;
+      float orig;
+      float x;
+      float y;
+      getline(s, ng, ";");
+      ngroups = ng;
+      while (getline(s, n, ";")){
+        getline(s, orig, ";");
+        getline(s, x, ";");
+        getline(s, y, ";");
+        point t;
+        t.orig = orig;
+        t.x = x;
+        t.y = y;
+        circles.push_back(t);
+      }
+    }
+
 
     /** \addtogroup API
      *  @{
@@ -5673,6 +5717,9 @@ public:
         setCheckTopol(false);
       }
       else if (stepNumber == minimizeCompactness){
+        // Start by saving signature
+        signature = getSignature();
+        //
         setCheckTopol(true);
         resetOptimize();
         fixTopology();
@@ -5744,7 +5791,7 @@ public:
         evaluation.init();
         evaluation.setConstants(10, 0, 1.0005);
         this->currentMeasure = &borderLine::getArea;
-        scG(3e-2);
+        scG(5e-2);
         scD(1000);
         scSpringK(1e4);
         scFriction(100);
@@ -5758,6 +5805,8 @@ public:
       return result;
     }
     bool setCycle(UINT stepNumber = 0){
+      dataDisplay.clear();
+      displayUINT("STEP", stepNumber);
       bool result = true;
       if (stepNumber == attract){
         setForcesFirstStep();
