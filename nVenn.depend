@@ -102,24 +102,23 @@
 
 1568886543 d:\cpp\venn\1.3\github\bmpfont.h
 
-1731349391 source:d:\proyectos\nvenn2\gh\main.cpp
+1732276016 source:d:\proyectos\nvenn2\gh\main.cpp
+	"topol.h"
 	<stdlib.h>
 	<stdio.h>
-	<math.h>
 	<time.h>
 	<iostream>
 	<vector>
 	<string>
 	<sstream>
 	<fstream>
-	"topol.h"
 	<signal.h>
 	<windows.h>
 	<Windows.h>
 	"graphics.h"
 	"initogl.h"
 
-1732207766 d:\proyectos\nvenn2\gh\topol.h
+1732295936 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -129,18 +128,18 @@
 	<iterator>
 	<algorithm>
 	<iostream>
-	<math.h>
 	<random>
 	<set>
+	<string>
 	"debug.h"
 	"scene.h"
 
-1730996910 d:\proyectos\nvenn2\gh\graphics.h
+1732272267 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
 	<gl/glu.h>
 	"bmpfont.h"
 
-1693562712 d:\proyectos\nvenn2\gh\bmpfont.h
+1732272260 d:\proyectos\nvenn2\gh\bmpfont.h
 
 1731406487 source:d:\proyectos\nvenn2\gh\test.cpp
 	<windows.h>
@@ -151,22 +150,23 @@
 	"scene.h"
 	<math.h>
 
-1730972887 d:\proyectos\nvenn2\gh\initogl.h
+1732272293 d:\proyectos\nvenn2\gh\initogl.h
 
-1732110291 d:\proyectos\nvenn2\gh\scene.h
+1732275672 d:\proyectos\nvenn2\gh\scene.h
 	<vector>
 	<fstream>
 	<sstream>
+	<cmath>
 	"debug.h"
 
-1732018932 d:\proyectos\nvenn2\gh\debug.h
+1732275510 d:\proyectos\nvenn2\gh\debug.h
 	<stdio.h>
 	<fstream>
-	"debug.h"
+	<sstream>
 
-1731430960 source:d:\proyectos\nvenn2\gh\towasm.cpp
-	"topol.h"
+1732275680 source:d:\proyectos\nvenn2\gh\towasm.cpp
 	<cstdlib>
 	<sstream>
+	"topol.h"
 	<iostream>
 

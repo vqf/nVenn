@@ -4,8 +4,10 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <cmath>
+
 #include "debug.h"
-using namespace std;
+
 
 #define CIRCLE_MASS 100.0f
 #define POINT_MASS 20
@@ -34,7 +36,7 @@ float distance(float x0, float y0, float x1, float y1)
     ry = y1 - y0;
     rx *= rx;
     ry *= ry;
-    result = sqrt(rx + ry);
+    result = std::sqrt(rx + ry);
     return result;
 }
 
@@ -112,8 +114,8 @@ public:
       result.orig = orig;
       return result;
     }
-    string croack(){
-      ostringstream r;
+    std::string croack(){
+      std::stringstream r;
       r << "X: " << x << ", Y: " << y << "\tN: " << n << "\tradius: " << radius;
       r << "\tvx: " << vx << "\tvy: " << vy << "\tFx: " << fx << "\tFy: " << fy;
       r << "\tFlags: " << unsigned(flags) << "\n";
@@ -143,15 +145,15 @@ typedef struct springLink{
 
 class scene{
 
-  vector<point*> points;
-  vector<point> shadowPoints;
-  vector<vector<point>> gcopies;
-  vector<point> virtualPoints;
-  vector<springLink> springs;
-  vector<springLink> rods;
-  vector<string> info;
-  vector<float> cushions;
-  vector<vector<UINT>> gpartitions; /* Specifies which subsets attract gravitationally */
+  std::vector<point*> points;
+  std::vector<point> shadowPoints;
+  std::vector<std::vector<point>> gcopies;
+  std::vector<point> virtualPoints;
+  std::vector<springLink> springs;
+  std::vector<springLink> rods;
+  std::vector<std::string> info;
+  std::vector<float> cushions;
+  std::vector<std::vector<UINT>> gpartitions; /* Specifies which subsets attract gravitationally */
   bool debugSignal;
   float dt;
   float simtime;
@@ -583,16 +585,16 @@ public:
   }
   template<typename T, typename T2>
   void addInfo(T input, T2 ninput){
-      ostringstream result;
+      std::stringstream result;
       result << input;
       result << ninput;
-      string td = result.str();
+      std::string td = result.str();
       info.push_back(td);
   }
-  void setCushions(vector<float> c){
+  void setCushions(std::vector<float> c){
     cushions = c;
   }
-  void setGravityPartitions(vector<vector<UINT>> p){
+  void setGravityPartitions(std::vector<std::vector<UINT>> p){
     gpartitions = p;
   }
   void setFriction(float coefficient = 50){
@@ -625,8 +627,8 @@ public:
   void setGhostGravity(bool setGhost = true){
     ghostGrav = setGhost;
   }
-  vector<string> getInfo(){
-    vector<string> result = info;
+  std::vector<std::string> getInfo(){
+    std::vector<std::string> result = info;
     return result;
   }
   float getMaxDsq(){
@@ -638,8 +640,8 @@ public:
   float getMaxVsq(){
     return maxvsq;
   }
-  vector<point> getVirtual(){
-    vector<point> result = virtualPoints;
+  std::vector<point> getVirtual(){
+    std::vector<point> result = virtualPoints;
     return result;
   }
   void clearVirtual(){
@@ -667,7 +669,7 @@ public:
    *
    */
   void gsave(){
-    vector<point> cp;
+    std::vector<point> cp;
     for (UINT i = 0; i < points.size(); i++){
       point t = *(points[i]);
       cp.push_back(t);
@@ -682,7 +684,7 @@ public:
    *
    */
   void grestore(){
-    vector<point> cp = gcopies[gcopies.size() - 1];
+    std::vector<point> cp = gcopies[gcopies.size() - 1];
     gcopies.pop_back();
     for (UINT i = 0; i < cp.size(); i++){
       points[i]->x = cp[i].x;
@@ -694,38 +696,38 @@ public:
     }
   }
 
-  void saveScene(string fname="scene.unv"){
-    ofstream result;
+  void saveScene(std::string fname="scene.unv"){
+    std::ofstream result;
     result.open(fname);
-    result << "Points" << endl;
-    result << points.size() << endl;
+    result << "Points" << std::endl;
+    result << points.size() << std::endl;
     for (UINT i = 0; i < points.size(); i++){
-      result << points[i]->x << "\t" << points[i]->y << "\t" << points[i]->radius << endl;
+      result << points[i]->x << "\t" << points[i]->y << "\t" << points[i]->radius << std::endl;
     }
-    result << "Springs" << endl;
-    result << springs.size() << endl;
+    result << "Springs" << std::endl;
+    result << springs.size() << std::endl;
     for (UINT i = 0; i < springs.size(); i++){
       result << springs[i].from << "\t";
       result << springs[i].to << "\t";
       result << springs[i].k << "\t";
-      result << springs[i].d << endl;
+      result << springs[i].d << std::endl;
     }
     result.close();
   }
-  void loadScene(string fname = "scene.unv"){
+  void loadScene(std::string fname = "scene.unv"){
     clearScene();
-    ifstream fl;
+    std::ifstream fl;
     fl.open(fname);
-    string hd;
+    std::string hd;
     getline(fl, hd);
     getline(fl, hd);
     UINT npts = atoi(hd.c_str());
     char delimiter = '\t';
     for (UINT i = 0; i < npts; i++){
       getline(fl, hd);
-      stringstream c(hd);
-      string token;
-      vector<string> tokens;
+      std::stringstream c(hd);
+      std::string token;
+      std::vector<std::string> tokens;
       while (getline(c, token, delimiter)) {
         tokens.push_back(token);
       }
@@ -740,9 +742,9 @@ public:
     UINT nspr = atoi(hd.c_str());
     for (UINT i = 0; i < nspr; i++){
       getline(fl, hd);
-      stringstream c(hd);
-      string token;
-      vector<string> tokens;
+      std::stringstream c(hd);
+      std::string token;
+      std::vector<std::string> tokens;
       while (getline(c, token, delimiter)) {
         tokens.push_back(token);
       }
@@ -790,13 +792,13 @@ public:
     }
     return result;
   }
-  vector<point*> getPoints(){
+  std::vector<point*> getPoints(){
     return points;
   }
-  vector<springLink> getLinks(){
+  std::vector<springLink> getLinks(){
     return springs;
   }
-  vector<springLink> getRods(){
+  std::vector<springLink> getRods(){
     return rods;
   }
   float solve(float cdt = 0){
@@ -839,26 +841,26 @@ public:
   float simTime(){
     return simtime;
   }
-  string croack(){
-    ostringstream result;
-    result << "Points: " << endl;
+  std::string croack(){
+    std::stringstream result;
+    result << "Points: " << std::endl;
     for (UINT i = 0; i < points.size(); i++){
         result << points[i]->croack();
     }
-    result << "Virtual points: " << endl;
+    result << "Virtual points: " << std::endl;
     for (UINT i = 0; i < virtualPoints.size(); i++){
         point vp = virtualPoints[i];
         result << vp.croack();
     }
-    result << "Links: " << endl;
+    result << "Links: " << std::endl;
     for (UINT i = 0; i < springs.size(); i++){
-      result << i + 1 << ": From " << springs[i].from << " to " << springs[i].to << endl;
-      result << "\tk: " << springs[i].k << ", d0: " << springs[i].d << endl;
+      result << i + 1 << ": From " << springs[i].from << " to " << springs[i].to << std::endl;
+      result << "\tk: " << springs[i].k << ", d0: " << springs[i].d << std::endl;
     }
-    result << "Rods: " << endl;
+    result << "Rods: " << std::endl;
     for (UINT i = 0; i < rods.size(); i++){
-      result << i + 1 << ": From " << rods[i].from << " to " << rods[i].to << endl;
-      result << "\tk: " << rods[i].k << ", d0: " << rods[i].d << endl;
+      result << i + 1 << ": From " << rods[i].from << " to " << rods[i].to << std::endl;
+      result << "\tk: " << rods[i].k << ", d0: " << rods[i].d << std::endl;
     }
     return result.str();
   }

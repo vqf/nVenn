@@ -10,11 +10,13 @@
 #include <iterator>
 #include <algorithm>
 #include <iostream>
-#include <math.h>
 #include <random>
 #include <set>
+#include <string>
+
 #include "debug.h"
 #include "scene.h"
+
 //#include <windows.h>
 
 #define AIR 2    // polish and embellish multiply maxRad() by this factor
@@ -36,7 +38,6 @@
 
 #define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
 
-using namespace std;
 
 
 UINT setFlag(UINT flag, UINT mask){
@@ -50,17 +51,17 @@ UINT unsetFlag(UINT flag, UINT mask){
 }
 
 //--------------------------------------------
-void printv(vector<UINT> v)
+void printv(std::vector<UINT> v)
 {
     UINT i;
     for (i = 0; i < v.size(); i++)
     {
-        cout << v[i] << ", ";
+        std::cout << v[i] << ", ";
     }
-    cout << endl;
+    std::cout << std::endl;
 }
 
-void vlog(vector<UINT> v){
+void vlog(std::vector<UINT> v){
   if (v.size() > 0){
     for (UINT i = 0; i < (v.size() - 1); i++){
       tolog(toString(v[i]) + ", ");
@@ -96,12 +97,12 @@ bool isNAN(float n){
 
 /** \brief Scalar product of two vectors
  *
- * \param a vector<float>
- * \param b vector<float>
+ * \param a std::vector<float>
+ * \param b std::vector<float>
  * \return float
  *
  */
-float sprod(vector<float> a, vector<float> b)
+float sprod(std::vector<float> a, std::vector<float> b)
 {
     float result;
     UINT i;
@@ -113,10 +114,10 @@ float sprod(vector<float> a, vector<float> b)
     return result;
 }
 
-vector<float> arr2vec(float arr[], int n)
+std::vector<float> arr2vec(float arr[], int n)
 {
     int i;
-    vector<float> result;
+    std::vector<float> result;
     for (i = 0; i < n; i++)
     {
         result.push_back(arr[i]);
@@ -125,22 +126,22 @@ vector<float> arr2vec(float arr[], int n)
 }
 
 
-/** \brief Converts a number into a vector of integers
+/** \brief Converts a number into a std::vector of integers
  * with the binary representation of the number
  *
  * \param number int
  * \param 0 UINT nBits=
- * \return vector<int>
+ * \return std::vector<int>
  *
  */
-vector<int> toBin(int number, UINT nBits = 0)
+std::vector<int> toBin(int number, UINT nBits = 0)
 {
-    //  Takes an integer and returns a vector containing
+    //  Takes an integer and returns a std::vector containing
     //  its binary representation
 
     UINT i;                          // iterate over each bit
     int bit;                        // temp storage of each bit
-    vector<int> bits;               // return vector
+    std::vector<int> bits;               // return vector
     while (number > 0)
     {
         bit = number & 1;
@@ -159,16 +160,16 @@ vector<int> toBin(int number, UINT nBits = 0)
 
 
 
-/** \brief Takes a vector containing the binary representation
+/** \brief Takes a std::vector containing the binary representation
  * of an integer and returns that integer
  *
- * \param v vector<int>
+ * \param v std::vector<int>
  * \return int
  *
  */
-int toInt(vector<int> v)
+int toInt(std::vector<int> v)
 {
-    // Takes a vector containing the binary representation
+    // Takes a std::vector containing the binary representation
     // of an integer and returns that integer
 
     int counter = 0;                // increasing iterator
@@ -185,20 +186,20 @@ int toInt(vector<int> v)
  */
 class fileText
 {
-    ostringstream text;
+    std::ostringstream text;
 public:
-    void addLine(string t)
+    void addLine(std::string t)
     {
         text << t << "\n";
     }
-    void addText(string t){
+    void addText(std::string t){
         text << t;
     }
     void clearText()
     {
         text.clear();
     }
-    string getText()
+    std::string getText()
     {
         return text.str();
     }
@@ -252,14 +253,14 @@ typedef struct blData{
   float maxv;
   bool softcontact; /**< When in contact, speed is limited */
   float maxvcontact; /**< When in contact, maxv is maxv / maxvcontact */
-  string cycleInfo; /**< Debuggin info from last cycle */
+  std::string cycleInfo; /**< Debuggin info from last cycle */
   UINT cyclesForStability; /**< After this number of cycles without improvement, finish sim */
   float lineAir; /**< Added to radii so that there is room for lines between circles */
   UINT contactFunction;
   int checkFor; // If any of the previous or following 10 point is sticking to
                            // the surface, the current point will also stick
-  string inputFile;
-  string fname;
+  std::string inputFile;
+  std::string fname;
 } blData;
 
 
@@ -273,7 +274,7 @@ class circleIterator {
   UINT sze;
   UINT mask;
   bool finishedCycle;
-  vector<point> circles;
+  std::vector<point> circles;
 
   void setval(UINT v){
     UINT sanity = v;
@@ -294,14 +295,14 @@ class circleIterator {
           finishedCycle = true;
         }
         current = v;
-        //cout << circles[v].n << endl;
+        //std::cout << circles[v].n << std::endl;
       }
     }
   }
 
 public:
   circleIterator(){}
-  circleIterator(vector<point> circs, UINT npoints, UINT starting = 0) {
+  circleIterator(std::vector<point> circs, UINT npoints, UINT starting = 0) {
     circles = circs;
     sze = npoints;
     finishedCycle= false;
@@ -327,7 +328,7 @@ public:
 
   UINT nxt() {
     if (finishedCycle){
-      cout << "Nxt past finished in circleIterator\n";
+      std::cout << "Nxt past finished in circleIterator\n";
       tolog("Nxt past finished in circleIterator\n");
       exit(1);
     }
@@ -345,8 +346,8 @@ public:
 
 class groupIterator{
   circleIterator ci;
-  vector<UINT> translator;
-  vector<point> circles;
+  std::vector<UINT> translator;
+  std::vector<point> circles;
   UINT mask;
   UINT first;
   UINT cval;
@@ -360,7 +361,7 @@ class groupIterator{
     finish = false;
   }
 public:
-  groupIterator(vector<point> circs, UINT group, UINT starting = 0, UINT msk = 0) {
+  groupIterator(std::vector<point> circs, UINT group, UINT starting = 0, UINT msk = 0) {
     if (msk > 0){
       mask = msk;
     }
@@ -630,9 +631,9 @@ public:
     }
     return false;
   }
-  string croack() {
-    ostringstream r;
-    r << "Slope: " << slope << "\tQuadrant: " << quadrant << endl;
+  std::string croack() {
+    std::ostringstream r;
+    r << "Slope: " << slope << "\tQuadrant: " << quadrant << std::endl;
     return r.str();
   }
 };
@@ -657,14 +658,14 @@ public:
       return false;
     }
   }
-  string croack(){
+  std::string croack(){
     return t.croack();
   }
 };
 
 class timeMaster{
-  vector<float> times;
-  vector<UINT> reports;
+  std::vector<float> times;
+  std::vector<UINT> reports;
   UINT icdt;
   UINT unstableCounter;
   float imindt;
@@ -864,10 +865,10 @@ public:
     }
 
     scale(point p1, point p2){
-      x = min(p1.x, p2.x);
-      X = max(p1.x, p2.x);
-      y = min(p1.y, p2.y);
-      Y = max(p1.y, p2.y);
+      x = std::min(p1.x, p2.x);
+      X = std::max(p1.x, p2.x);
+      y = std::min(p1.y, p2.y);
+      Y = std::max(p1.y, p2.y);
     }
 
     point place(scale s, point m){
@@ -1012,8 +1013,8 @@ public:
         result = ySpan() / xSpan();
         return result;
     }
-    string croack(){
-      string result;
+    std::string croack(){
+      std::string result;
       result += "MinX: " + toString(minX()) + "\n";
       result += "MaxX: " + toString(maxX()) + "\n";
       result += "MinY: " + toString(minY()) + "\n";
@@ -1032,8 +1033,8 @@ struct rgb
 
 
 template<typename T>
-void _D_(vector<T> v, string sep=""){
-  string r;
+void _D_(std::vector<T> v, std::string sep=""){
+  std::string r;
   for (UINT i = 0; i < v.size() - 1; i++){
     r += toString((UINT) v[i]) + sep;
   }
@@ -1042,7 +1043,7 @@ void _D_(vector<T> v, string sep=""){
 }
 
 
-float perimeter(vector<point> v, bool close = false)
+float perimeter(std::vector<point> v, bool close = false)
 {
     UINT i;
     float result = 0;
@@ -1139,10 +1140,10 @@ class binMap
 {
 
     int ngroups;
-    vector<vector<int> > column;
-    vector<vector<vector<int> > > row;
+    std::vector<std::vector<int> > column;
+    std::vector<std::vector<std::vector<int> > > row;
 
-    signed int firstUnmatched1(vector<int> v)
+    signed int firstUnmatched1(std::vector<int> v)
     {
         /***********************************************************
 
@@ -1150,7 +1151,7 @@ class binMap
             unmatched 1. If none is found, the function
             returns -1.
 
-            @v is the input vector to be searched for unmatched 1s
+            @v is the input std::vector to be searched for unmatched 1s
 
         ***********************************************************/
 
@@ -1173,7 +1174,7 @@ class binMap
         return -1;      // no unmatched @which
     }
 
-    signed int firstUnmatched0(vector<int> v)
+    signed int firstUnmatched0(std::vector<int> v)
     {
         /***********************************************************
 
@@ -1181,7 +1182,7 @@ class binMap
             unmatched 0. If none is found, the function
             returns -1.
 
-            @v is the input vector to be searched for unmatched 0s
+            @v is the input std::vector to be searched for unmatched 0s
 
         ***********************************************************/
 
@@ -1217,15 +1218,15 @@ class binMap
         }
         return -1;      // no unmatched @which
     }
-    vector<vector<int> > getBranches(vector<int> v)
+    std::vector<std::vector<int> > getBranches(std::vector<int> v)
     {
         /***********************************************************
 
-            Returns a vector containing all of the branches derived
+            Returns a std::vector containing all of the branches derived
             from the input vector. These are obtained by changing to
             1 each 0 to the right of the last 1 if the resulting
-            vector has no unmatched 1s. If there are no branches,
-            the return vector is empty.
+            std::vector has no unmatched 1s. If there are no branches,
+            the return std::vector is empty.
 
             @v input binary vector
 
@@ -1233,8 +1234,8 @@ class binMap
 
         UINT i;
         int last1=0;
-        vector<int> tempV;
-        vector<vector<int> > result;
+        std::vector<int> tempV;
+        std::vector<std::vector<int> > result;
         for (i = 0; i < v.size(); i++)
         {// Get last 1
             if (v[i]==1)
@@ -1252,9 +1253,9 @@ class binMap
         return result;
     }
 
-    void fillColumn(vector<int> v)
+    void fillColumn(std::vector<int> v)
     {
-        vector<int> result;
+        std::vector<int> result;
         int position = 0;
         result = v;
         position = firstUnmatched0(result);
@@ -1269,10 +1270,10 @@ class binMap
         column.clear();
     }
 
-    void fillRow(vector<vector<int> > c)
+    void fillRow(std::vector<std::vector<int> > c)
     {
         UINT i;
-        vector<vector<int> > tempc;
+        std::vector<std::vector<int> > tempc;
         for (i = 0; i < c.size(); i++)
         {
             fillColumn(c[i]);
@@ -1287,8 +1288,8 @@ public:
 
     binMap(int n)
     {
-        vector<int> currentV;
-        vector<vector<int> > currentC;
+        std::vector<int> currentV;
+        std::vector<std::vector<int> > currentC;
         ngroups = n;
         currentV = toBin(0, n);
         fillColumn(currentV);
@@ -1304,11 +1305,11 @@ public:
             {
                 for (k = 0; k < row[i][j].size(); k++)
                 {
-                    cout << row[i][j][k];
+                    std::cout << row[i][j][k];
                 }
-                cout << " ";
+                std::cout << " ";
             }
-            cout << endl;
+            std::cout << std::endl;
         }
     }
 };
@@ -1427,12 +1428,12 @@ public:
 };
 
 typedef struct blst{
-  vector<point> bestCircles;
-  vector<vector<point> > bestBl; /**< Best result */
-  vector<vector<point> > bl_secure; /**< For changes in the number of points */
-  vector<vector<point> > bl_old10;
-  vector<point> circles_secure;
-  vector<point> circles_old10;
+  std::vector<point> bestCircles;
+  std::vector<std::vector<point> > bestBl; /**< Best result */
+  std::vector<std::vector<point> > bl_secure; /**< For changes in the number of points */
+  std::vector<std::vector<point> > bl_old10;
+  std::vector<point> circles_secure;
+  std::vector<point> circles_old10;
   float simTime;
   bool hasBeenSet;
 } blState;
@@ -1457,26 +1458,27 @@ class borderLine
 
     binMap* bm;
     scene tosolve;
-    string signature;
-    vector<UINT> sceneTranslator;
+    std::string signature;
+    std::vector<UINT> sceneTranslator;
     blState savedState;
     float simulationTime;
     float maxLineVsq;
     float maxCircleVsq;
     constants scConstants;
     UINT internalCounter;
+    UINT currentStep;
     outCounters oc;
     optimizationStep optStep;
     float (borderLine::*currentMeasure)();
 
-    vector<float> pairDistances;
-    vector<string> groups;
-    vector<point> p;
-    vector<vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
-    vector<point> circles;
-    vector<point> scircles; /**< Circles sorted according to @n */
-    vector<point> debug;
-    vector<UINT> relationships;
+    std::vector<float> pairDistances;
+    std::vector<std::string> groups;
+    std::vector<point> p;
+    std::vector<std::vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
+    std::vector<point> circles;
+    std::vector<point> scircles; /**< Circles sorted according to @n */
+    std::vector<point> debug;
+    std::vector<UINT> relationships;
     UINT ncycles_secure;
     UINT ncyles_old10;
     UINT ngroups;
@@ -1491,17 +1493,17 @@ class borderLine
     lCounter deciderCounter;
     lCounter refreshScreen;
     lCounter keepDistCounter;
-    vector<float> circRadii;
-    vector<float> w;
-    vector<string> labels;
-    vector<float> origw;
-    vector<rgb> colors;
-    vector<string> svgcolors;
-    vector<point> warn;
+    std::vector<float> circRadii;
+    std::vector<float> w;
+    std::vector<std::string> labels;
+    std::vector<float> origw;
+    std::vector<rgb> colors;
+    std::vector<std::string> svgcolors;
+    std::vector<point> warn;
     scale internalScale;
     scale svgScale;
     int totalExpectedSurface;
-    vector<string> dataDisplay;
+    std::vector<std::string> dataDisplay;
     timeMaster udt;
     blData blSettings;
     float minRat;
@@ -1569,28 +1571,28 @@ class borderLine
         warn.push_back(temp);
     }
 
-    string float2string(float f){
-        string result = vformat("%g", f);
+    std::string float2string(float f){
+        std::string result = vformat("%g", f);
         return result;
     }
 
-    string UINT2string(UINT f){
-        string result = vformat("%u", f);
+    std::string UINT2string(UINT f){
+        std::string result = vformat("%u", f);
         return result;
     }
 
-    string bool2string(bool f){
-        string result = f ? "1" : "0";
+    std::string bool2string(bool f){
+        std::string result = f ? "1" : "0";
         return result;
     }
 
-    void displayFloat(string label, float d){
-        string dsp = vformat("%s: %g", label.c_str(), d);
+    void displayFloat(std::string label, float d){
+        std::string dsp = vformat("%s: %g", label.c_str(), d);
         dataDisplay.push_back(dsp);
     }
 
-    void displayUINT(string label, UINT d){
-        string dsp = vformat("%s: %u", label.c_str(), d);
+    void displayUINT(std::string label, UINT d){
+        std::string dsp = vformat("%s: %u", label.c_str(), d);
         dataDisplay.push_back(dsp);
     }
 
@@ -1704,7 +1706,7 @@ class borderLine
 
     }
 
-    void setCircles(binMap b, vector<float> o, vector<string> tlabels)
+    void setCircles(binMap b, std::vector<float> o, std::vector<std::string> tlabels)
     {
         UINT i, j;
         int n;
@@ -1761,17 +1763,17 @@ class borderLine
           gstep = 2;
       }
 
-      //cout << "gridSize: " << gridSize << "\n";
+      //std::cout << "gridSize: " << gridSize << "\n";
       float xstep = internalScale.xSpan() / ((gridSize + 1));
       float ystep = xstep; //internalScale.ySpan() / (gridSize + 1);
-      //cout << "xStep: " << internalScale.xSpan() << "\n";
-      //cout << "yStep: " << ystep << "\n";
-      vector<UINT> order;
+      //std::cout << "xStep: " << internalScale.xSpan() << "\n";
+      //std::cout << "yStep: " << ystep << "\n";
+      std::vector<UINT> order;
       for (UINT i = 0; i < circles.size(); i++){
         order.push_back(i);
       }
-      random_device rd;
-      mt19937 g(rd());
+      std::random_device rd;
+      std::mt19937 g(rd());
       shuffle(order.begin(), order.end(), g);
       UINT sy = 0; UINT sx = 0;
       for (UINT i = 0; i < circles.size(); i++){
@@ -1995,7 +1997,7 @@ class borderLine
     void listOutsiders(){
       for (UINT i = 0; i < bl.size(); i++){
         for (UINT j = 0; j < circles.size(); j++){
-          vector<int> belong = toBin(circles[j].n, bl.size());
+          std::vector<int> belong = toBin(circles[j].n, bl.size());
           if (circles[j].radius > 0 && belong[i] == 0){
             bool incorrect = circleTopol(circles[j], belong, i);
             if (incorrect){
@@ -2018,7 +2020,7 @@ class borderLine
         bool again = true;
         while (again){
           again = false;
-          vector<point> newbl;
+          std::vector<point> newbl;
           for (UINT j = 0; j < bl[i].size(); j++){
             if (!again){
               point nxt = bl[i][nextPoint(i, j)];
@@ -2116,7 +2118,7 @@ class borderLine
               circles[j].flags = setFlag(circles[j].flags, USED);
               point p3 = circles[j];
               UINT p3n = p3.n;
-              vector<int> belong = toBin(p3n, bl.size());
+              std::vector<int> belong = toBin(p3n, bl.size());
               bool incorrect = circleTopol(circles[j], belong, k);
               if (incorrect){
                 if (logit){
@@ -2170,7 +2172,7 @@ class borderLine
                 }
                 if (goon){
                   //oilog(oi);
-                  vector<point> newpoints;
+                  std::vector<point> newpoints;
                   for (UINT i = 0; i <= oi.vertex; i++){
                     newpoints.push_back(bl[k][i]);
                   }
@@ -2265,7 +2267,7 @@ class borderLine
             if (circles[j].radius > 0 && ((circles[j].flags & USED) == 0)){
               circles[j].flags = setFlag(circles[j].flags, USED);
               point p3 = circles[j];
-              vector<int> belong = toBin(p3.n, bl.size());
+              std::vector<int> belong = toBin(p3.n, bl.size());
               bool incorrect = circleTopol(circles[j], belong, k);
               bool safe = false;
               if (incorrect){
@@ -2320,7 +2322,7 @@ class borderLine
                   }
                 }
                 if (goon){
-                  vector<point> newpoints;
+                  std::vector<point> newpoints;
                   for (UINT i = 0; i <= oi.vertex; i++){
                     newpoints.push_back(bl[k][i]);
                   }
@@ -2474,6 +2476,20 @@ class borderLine
       return result;
     }
 
+    std::vector<std::string> split(std::string s, char d){
+      std::vector<std::string> result;
+      result.clear();
+      UINT cpos = 0;
+      UINT nxt = s.find(d);
+      while (nxt > cpos && nxt <= s.size()){
+        std::string r = s.substr(cpos, nxt - cpos);
+        result.push_back(r);
+        cpos = nxt + 1;
+        nxt = s.find(d, cpos);
+      }
+      return result;
+    }
+
     /** \brief Adds group lines
      *
      * \return void
@@ -2496,8 +2512,8 @@ class borderLine
         UINT st = lm;
         UINT np = nextLeftmostPoint(i, an, st);
         //tolog(" - "+toString(circles[np].n) + "\n");
-        //cout << circles[lm].n << "\t" << circles[np].n << endl;
-        //cout << circles[lm].radius << "\t" << circles[np].radius << endl;
+        //std::cout << circles[lm].n << "\t" << circles[np].n << std::endl;
+        //std::cout << circles[lm].radius << "\t" << circles[np].radius << std::endl;
         while (np != lm){
           point toadd = circles[np];
           toadd.n = np;
@@ -2506,8 +2522,8 @@ class borderLine
           st = np;
           np = nextLeftmostPoint(i, an, st);
           if (np == toadd.n){
-            cout << "Error in group " << i << endl;
-            cout << "The set is empty\n";
+            std::cout << "Error in group " << i << std::endl;
+            std::cout << "The set is empty\n";
             tolog("Error in group " + toString(i) + "\nThe set is empty\n");
             exit(0);
           }
@@ -2528,7 +2544,7 @@ class borderLine
       tangent rev(1, 0);
       for (UINT i = 0; i < bl.size(); i++){
         UINT sz = bl[i].size();
-        vector<point> newpoints;
+        std::vector<point> newpoints;
         if (sz < 2){
           tangent dwn(0, -1);
           tangent lft(-1, 0);
@@ -2645,11 +2661,11 @@ class borderLine
     }
 
 
-    vector<point> getSetBoundaries(UINT groups, float air = 0, bool onlyCircles = false){
+    std::vector<point> getSetBoundaries(UINT groups, float air = 0, bool onlyCircles = false){
       point ul;
       point lr;
       bool fst = true;
-      vector<point> result;
+      std::vector<point> result;
       //i = ci.nxt();
       for(UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
@@ -2703,15 +2719,15 @@ class borderLine
       result[1].y += air;
       return result;
     }
-    vector<point> getBoundaries(float air = 0, bool onlyCircles = false){
+    std::vector<point> getBoundaries(float air = 0, bool onlyCircles = false){
       UINT n = twoPow(ngroups) - 1;
-      vector<point> result = getSetBoundaries(n, air, onlyCircles);
+      std::vector<point> result = getSetBoundaries(n, air, onlyCircles);
       return result;
     }
 
-    vector<point> getOutsidePoints(bool logit = false){
-      vector<point> p = getBoundaries(2 * maxRad());
-      vector<point> q;
+    std::vector<point> getOutsidePoints(bool logit = false){
+      std::vector<point> p = getBoundaries(2 * maxRad());
+      std::vector<point> q;
       point r;
       r.x = p[0].x;
       r.y = p[0].y;
@@ -2729,8 +2745,8 @@ class borderLine
     }
 
     UINT chooseCombination(bool logit = false){
-      vector<point> backup = circles;
-      vector<point> best   = circles;
+      std::vector<point> backup = circles;
+      std::vector<point> best   = circles;
       addLines();
       polishLines();
       UINT bestout = countOutsiders();
@@ -2740,7 +2756,7 @@ class borderLine
       }
       for (UINT i = 0; i < circles.size() - 1; i++){
         if (circles[i].radius > 0){
-          //vector<int> b = toBin(circles[i].n, twoPow(ngroups));
+          //std::vector<int> b = toBin(circles[i].n, twoPow(ngroups));
           //if (!isTopolIncorrect(circles[i], b)){
             for (UINT j = i + 1; j < circles.size(); j++){
               if (circles[j].radius > 0){
@@ -2876,10 +2892,10 @@ class borderLine
     /***********************/
 
 
-    vector<UINT> sampleUINT(vector<UINT> from, UINT n, std::mt19937 *gen){
+    std::vector<UINT> sampleUINT(std::vector<UINT> from, UINT n, std::mt19937 *gen){
       UINT nc = from.size() - 1;
-      vector<UINT> cp = from;
-      vector<UINT> result;
+      std::vector<UINT> cp = from;
+      std::vector<UINT> result;
       std::set<UINT> offsets;
       for (UINT i = 0; i < n; i++){
         std::uniform_int_distribution<UINT> distrib(0, nc);
@@ -2918,10 +2934,10 @@ class borderLine
       std::uniform_real_distribution<float> alpha(0.0, 1.0);
       UINT cyclesWithoutImprovement = 0;
       float bestCompactness = compactness();
-      vector<UINT> existingCircles = ncircles();
+      std::vector<UINT> existingCircles = ncircles();
       UINT counter = 0;
       while (cyclesWithoutImprovement < 1000 && counter < maxSteps){
-        vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
+        std::vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
         UINT ci = exch[0];
         UINT cj = exch[1];
         tolog("Exchanging " + toString(ci) + " with " + toString(cj) + "\n");
@@ -2956,10 +2972,10 @@ class borderLine
       UINT cyclesWithoutImprovement = 0;
       fixTopology();
       float bestCrossings   = countCrossings();
-      vector<UINT> existingCircles = ncircles();
+      std::vector<UINT> existingCircles = ncircles();
       UINT counter = 0;
       while (cyclesWithoutImprovement < 500 && counter < maxSteps){
-        vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
+        std::vector<UINT> exch = sampleUINT(existingCircles, nstep, &gen);
         UINT ci = exch[0];
         UINT cj = exch[1];
         tolog("Exchanging " + toString(ci) + " with " + toString(cj) + "\n");
@@ -3084,7 +3100,7 @@ class borderLine
           resetOptimize();
           opt->startCycle();
         }
-        //cout << circles[n].n << endl;
+        //std::cout << circles[n].n << std::endl;
       }
       else{
         UINT candidate = opt->getCandidate();
@@ -3093,7 +3109,7 @@ class borderLine
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
             //tolog("Checking " + toString(circles[i].n) + " with " + toString(opt->getBestCompactness()) + "\n");
-            //cout << circles[i].n << ", ";
+            //std::cout << circles[i].n << ", ";
             fixTopology();
             //writeSVG("starting.svg");
             if (checkTopol()){
@@ -3105,7 +3121,7 @@ class borderLine
               if (newComp < opt->getBestCompactness()){
                 opt->setBestCompactness(newComp);
                 tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
-                //cout << "Swapping " << i << " with " << candidate << " -> " << newComp << endl;
+                //std::cout << "Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
               }
               else if (newComp == opt->getBestCompactness()){
                 float newUntie = (this->*untieFunct)();
@@ -3172,7 +3188,7 @@ class borderLine
           n = n >> 1;
         }*/
         if (/*n == */1){
-          vector<point> q = getOutsidePoints();
+          std::vector<point> q = getOutsidePoints();
           for (UINT j = 0; j < q.size(); j++){
             point u; u.x = circles[i].x; u.y = circles[i].y;
             circles[i].x = q[j].x;
@@ -3258,8 +3274,8 @@ class borderLine
     }*/
 
     void writeCoords(){
-        ofstream result;
-        string outputFigData = blSettings.fname + ".data";
+        std::ofstream result;
+        std::string outputFigData = blSettings.fname + ".data";
         fileText datafile = saveFigure();
         result.open(outputFigData.c_str());
         result.write(datafile.getText().c_str(), datafile.getText().size());
@@ -3722,7 +3738,7 @@ class borderLine
         point f;
         point previous;
         point next;
-        string temp;
+        std::string temp;
         blSettings.fixCircles = true;
         float dampen = blSettings.sk / 2;
         /*******/
@@ -3835,7 +3851,7 @@ class borderLine
         displayFloat("DT", blSettings.dt);
         //displayUINT("CYCLES", blSettings.ncycles);
         //displayUINT("NPOINTS", bl[0].size());
-        //displayFloat("POTENTIAL", log10(potential));
+        //displayFloat("POTENTIAL", std::log10(potential));
 
         potential = 0;
 
@@ -3850,7 +3866,7 @@ class borderLine
               for (UINT j = 0; j < circles.size(); j++){
                 if (circles[j].radius > 0){
                   point P = circles[j];
-                  vector<int> b = toBin(circles[j].n, bl.size());
+                  std::vector<int> b = toBin(circles[j].n, bl.size());
                   for (UINT i = 0; i < bl.size(); i++){
                     bool incorrect = circleTopol(P, b, i);
                     if (incorrect){
@@ -4016,7 +4032,7 @@ class borderLine
         }
         displayFloat("MAXLINEV", log(maxLineVsq));
         displayFloat("MINRAT", minRat);
-        displayFloat("MAXCIRCLEV", log10(maxCircleVsq));
+        displayFloat("MAXCIRCLEV", std::log10(maxCircleVsq));
         displayFloat("SURFRATIO", estSurf());
     }
 
@@ -4026,11 +4042,11 @@ class borderLine
       return tsurf;
     }
 
-    bool circleTopol(point P, vector<int> belong, UINT j){
+    bool circleTopol(point P, std::vector<int> belong, UINT j){
       bool mustBeIn = (belong[j] == 1);  //Must the circle be inside the curve?
       bool isIn = false;      //Is the circle inside the curve?
-      vector<point> bnd = getBoundaries();
-      float xmax = max(bnd[0].x, bnd[1].x) + 2 * maxRad() +  1;
+      std::vector<point> bnd = getBoundaries();
+      float xmax = std::max(bnd[0].x, bnd[1].x) + 2 * maxRad() +  1;
       point p1 = P;
       point p2;
       p2.x = xmax;
@@ -4041,12 +4057,12 @@ class borderLine
         UINT np = nextPoint(j, i);
         point p4 = bl[j][np];
         crossResult cr = cross(p1, p2, p3, p4); //cont;
-        //cout << i << "\t" << j << "\t" << np << endl;
+        //std::cout << i << "\t" << j << "\t" << np << std::endl;
         while (cr == cont){
           cr = cross(p1, p2, p3, p4);
           np = nextPoint(j, np);
           p4 = bl[j][np];
-          //cout << "--" <<  i << "\t" << j << "\t" << np << endl;
+          //std::cout << "--" <<  i << "\t" << j << "\t" << np << std::endl;
         }
 
         if (cr == crosses){
@@ -4090,7 +4106,7 @@ class borderLine
     }
 
 
-    bool isTopolIncorrect(point P, vector<int> belong){
+    bool isTopolIncorrect(point P, std::vector<int> belong){
       if (!(P.radius > 0)){
         tolog(_L_ + "Called isTopoloCorrect with radius 0\n"); exit(1);
       }
@@ -4117,7 +4133,7 @@ class borderLine
       {
           if (circles[i].radius > 0)
           { /* Circle has radius */
-              vector<int> belong = toBin(circles[i].n, bl.size());
+              std::vector<int> belong = toBin(circles[i].n, bl.size());
               bool result = isTopolIncorrect(circles[i], belong);
               if (result){
                 return result;
@@ -4129,10 +4145,10 @@ class borderLine
 
     point getCross(point p1, point p2, point p3, point p4){
       point result;
-      if (max(p1.x, p2.x) >= min(p3.x, p4.x) &&
-          max(p1.y, p2.y) >= min(p3.y, p4.y) &&
-          min(p1.x, p2.x) <= max(p3.x, p4.x) &&
-          min(p1.y, p2.y) <= max(p3.y, p4.y)){
+      if (std::max(p1.x, p2.x) >= std::min(p3.x, p4.x) &&
+          std::max(p1.y, p2.y) >= std::min(p3.y, p4.y) &&
+          std::min(p1.x, p2.x) <= std::max(p3.x, p4.x) &&
+          std::min(p1.y, p2.y) <= std::max(p3.y, p4.y)){
         if (p2.x == p1.x){
           result.x = p1.x;
           result.y = p3.y + (result.x - p3.x) * (p4.y - p3.y) / (p4.x - p3.x);
@@ -4164,10 +4180,10 @@ class borderLine
      */
     crossResult cross(point p1, point p2, point p3, point p4){
       crossResult result = doesnotcross;
-      if (max(p1.x, p2.x) >= min(p3.x, p4.x) &&
-          max(p1.y, p2.y) >= min(p3.y, p4.y) &&
-          min(p1.x, p2.x) <= max(p3.x, p4.x) &&
-          min(p1.y, p2.y) <= max(p3.y, p4.y)){
+      if (std::max(p1.x, p2.x) >= std::min(p3.x, p4.x) &&
+          std::max(p1.y, p2.y) >= std::min(p3.y, p4.y) &&
+          std::min(p1.x, p2.x) <= std::max(p3.x, p4.x) &&
+          std::min(p1.y, p2.y) <= std::max(p3.y, p4.y)){
         if (p1 == p3 || p2 == p3){
           return crosses;
         }
@@ -4203,7 +4219,7 @@ class borderLine
     float countCrossings(){
       float result = 0;
       debug.clear();
-      vector<vector<point>> useme = bl;
+      std::vector<std::vector<point>> useme = bl;
       // Unembellish
       for (UINT i = 0; i < bl.size(); i++){
         UINT cunem = 0;
@@ -4266,7 +4282,7 @@ class borderLine
 
     void showCrossings(){
       debug.clear();
-      vector<vector<point>> useme = bl;
+      std::vector<std::vector<point>> useme = bl;
       // Unembellish
       for (UINT i = 0; i < bl.size(); i++){
         UINT cunem = 0;
@@ -4316,7 +4332,7 @@ class borderLine
           }
         }
       }
-      vector<vector<point>> delme = bl;
+      std::vector<std::vector<point>> delme = bl;
       bl = useme;
       writeSVG("starting.svg");
       bl = delme;
@@ -4328,7 +4344,7 @@ class borderLine
       {
           if (circles[i].radius > 0)
           { /* Circle has radius */
-              vector<int> belong = toBin(circles[i].n, bl.size());
+              std::vector<int> belong = toBin(circles[i].n, bl.size());
               bool incorrect = isTopolIncorrect(circles[i], belong);
               if (incorrect){
                 circles[i].flags = circles[i].flags | IS_OUTSIDE;
@@ -4368,8 +4384,8 @@ class borderLine
  *
  */
 UINT getRelationships(UINT o, UINT t){
-  UINT i = min(o, t);
-  UINT j = max(o, t);
+  UINT i = std::min(o, t);
+  UINT j = std::max(o, t);
   if (i == j){
     return 0;
   }
@@ -4413,18 +4429,19 @@ void setRelationships(){
       UINT bits = circles[i].n & circles[j].n;
       r = ones(bits);
       relationships.push_back(r);
-      //cout << i << ", " << j << " - " << r << "\n";
+      //std::cout << i << ", " << j << " - " << r << "\n";
     }
   }
 }
 
 public:
     borderLine(){}
-    borderLine(binMap* b, vector<string> g, vector<float> tw, vector<string> tlabels, string inputFile = "venn.txt", string outputFile = "result.svg") /// aqui
+    borderLine(binMap* b, std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg") /// aqui
     {
         UINT i;
         bm = b;
         groups = g;
+        currentStep = 1;
         ngroups = bm->ngroups;
         minCircRadius = 1.0f;
         nPointsMin = 10;
@@ -4485,7 +4502,7 @@ public:
         blSettings.marginScale = lsvg.x;
         blSettings.margin = 1.2 * ngroups * blSettings.marginScale;
         /**/
-        ostringstream l;
+        std::ostringstream l;
         l << "\t";
         for (UINT i = 0; i < circles.size(); i++){
           l << '"' << circles[i].n << '"' << "\t";
@@ -4562,7 +4579,7 @@ public:
           0x000000
         };
         for (i = 0; i < ngroups; i++){
-          string c = vformat("#%06x", arr[i]);
+          std::string c = vformat("#%06x", arr[i]);
           svgcolors.push_back(c.c_str());
         }
         //init colors
@@ -4650,8 +4667,8 @@ public:
     }
 
     void setGravityPartitions(){
-      vector<vector<UINT>> gp;
-      vector<UINT> cs;
+      std::vector<std::vector<UINT>> gp;
+      std::vector<UINT> cs;
       for (UINT i = 0; i < circles.size(); i++){
         cs.push_back(0);
       }
@@ -4803,9 +4820,9 @@ public:
       resetCircleRadius();
       float d = (this->*currentMeasure)();
       evaluation.add(d);
-      float mfsq = log10(tosolve.getMaxFsq());
-      float mvsq = log10(tosolve.getMaxVsq());
-      float mdsq = log10(tosolve.getMaxDsq());
+      float mfsq = std::log10(tosolve.getMaxFsq());
+      float mvsq = std::log10(tosolve.getMaxVsq());
+      float mdsq = std::log10(tosolve.getMaxDsq());
       displayFloat("EVALUATE", d);
       displayFloat("LASTEVALUATE", evaluation.viewLastComp());
       if (blSettings.optimize){
@@ -4826,11 +4843,11 @@ public:
       keepDistCounter++;
       blSettings.ncycles++;
     }
-    void scSave(string fname = ""){
+    void scSave(std::string fname = ""){
       tosolve.saveScene();
     }
 
-    string scCroack(){
+    std::string scCroack(){
       return tosolve.croack();
     }
 
@@ -4852,8 +4869,8 @@ public:
     void setContactFunction(UINT f){
       blSettings.contactFunction = f;
     }
-    vector<UINT> ncircles(){
-      vector<UINT> result;
+    std::vector<UINT> ncircles(){
+      std::vector<UINT> result;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           result.push_back(i);
@@ -4893,25 +4910,25 @@ public:
       return blSettings.signalEnd;
     }
 
-    vector<vector<point> > getPoints(){
+    std::vector<std::vector<point> > getPoints(){
       return bl;
     }
 
     /** \brief Sets the starting coordinates from a previous execution
      *
-     * \param dataFile string File with coordinates from borderLine::saveFigure
+     * \param dataFile std::string File with coordinates from borderLine::saveFigure
      * \return void
      *
      */
-    void setCoords(string dataFile){
-        ifstream vFile;
+    void setCoords(std::string dataFile){
+        std::ifstream vFile;
         vFile.open(dataFile.c_str());
         UINT ncI = 0;
         if (vFile.good() == true){
             bl.clear();
             savedState.bl_secure.clear();
             savedState.bl_old10.clear();
-            string line;
+            std::string line;
             getline(vFile, line); // _F
             getline(vFile, line); // ncyclesInterrupted or _L
             if (line != "_L"){
@@ -4921,7 +4938,7 @@ public:
                 getline(vFile, line); // _L
             }
             while (line == "_L" && vFile.eof() == false){
-                vector<point> thisline;
+                std::vector<point> thisline;
                 getline(vFile, line); // First x coord
                 while (line != "_L" && line != "_C" && vFile.eof() == false){
                     float x = atof(line.c_str());
@@ -4954,37 +4971,37 @@ public:
 
     void showInfo(){
       return;
-      cout << "Number of groups: " << ngroups << "\n";
-      cout << "Number of circles: " << circles.size() << "\n";
+      std::cout << "Number of groups: " << ngroups << "\n";
+      std::cout << "Number of circles: " << circles.size() << "\n";
       for (UINT i = 0; i < circles.size(); i++){
-        cout << "\t" << "circle" << i << " - (" << circles[i].x << ", " << circles[i].y << ")\n";
-        cout << "\t" << "radius - " << circles[i].radius << "\n";
+        std::cout << "\t" << "circle" << i << " - (" << circles[i].x << ", " << circles[i].y << ")\n";
+        std::cout << "\t" << "radius - " << circles[i].radius << "\n";
       }
-      cout << "Internal scale - " << "(" << internalScale.minX() << ", " << internalScale.minY() << ") to (" <<
+      std::cout << "Internal scale - " << "(" << internalScale.minX() << ", " << internalScale.minY() << ") to (" <<
                                             internalScale.maxX() << ", " << internalScale.maxY() << ") \n";
-      cout << "Spans: " << "(" << internalScale.xSpan() << ", " << internalScale.ySpan() << ")\n";
+      std::cout << "Spans: " << "(" << internalScale.xSpan() << ", " << internalScale.ySpan() << ")\n";
     }
 
     fileText saveFigure(){
         fileText result;
         result.addLine("_F");
-        string nc = UINT2string(blSettings.ncyclesInterrupted);
+        std::string nc = UINT2string(blSettings.ncyclesInterrupted);
         result.addLine(nc);
         UINT i; UINT j;
         for (i = 0; i < bl.size(); i++){
             result.addLine("_L");
             for (j = 0; j < bl[i].size(); j++){
-                string x = float2string(bl[i][j].x);
-                string y = float2string(bl[i][j].y);
+                std::string x = float2string(bl[i][j].x);
+                std::string y = float2string(bl[i][j].y);
                 result.addLine(x);
                 result.addLine(y);
             }
         }
         result.addLine("_C");
         for (i = 0; i < circles.size(); i++){
-            string x = float2string(circles[i].x);
-            string y = float2string(circles[i].y);
-            string r = float2string(circles[i].radius);
+            std::string x = float2string(circles[i].x);
+            std::string y = float2string(circles[i].y);
+            std::string r = float2string(circles[i].radius);
             result.addLine(x);
             result.addLine(y);
             result.addLine(r);
@@ -5014,8 +5031,8 @@ public:
       return std::string(zc.data(), iLen);
     }
 
-    string croack(){
-      string result = internalScale.croack();
+    std::string croack(){
+      std::string result = internalScale.croack();
       for (UINT i = 0; i < circles.size(); i++){
         result += circles[i].croack();
       }
@@ -5033,18 +5050,18 @@ public:
       warn.clear();
     }
 
-    vector<point> getWarnings(){
-      vector<point> result = warn;
+    std::vector<point> getWarnings(){
+      std::vector<point> result = warn;
       return result;
     }
 
-    string coord(float c){
-      string result = vformat("%.2f", c);
+    std::string coord(float c){
+      std::string result = vformat("%.2f", c);
       return result;
     }
 
-    string num(int c){
-      string result = vformat("%d", c);
+    std::string num(int c){
+      std::string result = vformat("%d", c);
 
       return result;
     }
@@ -5057,9 +5074,9 @@ public:
     }
 
 
-    string join(string interm, vector<string> arr) {
+    std::string join(std::string interm, std::vector<std::string> arr) {
       int i;
-      string result = "";
+      std::string result = "";
       if (arr.size() == 1) {
         result = arr[0];
       } else if (arr.size() > 1) {
@@ -5081,7 +5098,7 @@ public:
       fileText svg;
       int fsize = 10;
       UINT i, j;
-      string tst;
+      std::string tst;
       point svgtemp;
       svg.addLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"700\" height=\"500\">");
       svg.addLine("<defs>");
@@ -5145,13 +5162,13 @@ public:
       }
       svg.addLine("]]>");
       svg.addLine("</style>");
-      string nc = bool2string(blSettings.signalEnd);
+      std::string nc = bool2string(blSettings.signalEnd);
       /* This softens the lines*/
       if (blSettings.doCheckTopol){
         if (blSettings.smoothSVG == true){
           for (i = 0; i < ngroups; i++){
             point nxt = place(svgScale, bl[i][0]);
-            string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
+            std::string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
 
             for (j = 0; j < (bl[i].size()); j++){
               point prev = place(svgScale, bl[i][prevPoint(i, j)]);
@@ -5172,7 +5189,7 @@ public:
           /* This does not */
           for (i = 0; i < ngroups; i++){
             point nxt = place(svgScale, bl[i][0]);
-            string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
+            std::string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
             for (j = 1; j < bl[i].size(); j++){
               nxt = place(svgScale, bl[i][j]);
               cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
@@ -5185,7 +5202,7 @@ public:
       }
       svg.addLine("</defs>");
       svg.addLine("<!-- signature: " + signature + " -->");
-      svg.addLine("<desc>" + join((string)";", dataDisplay) + "</desc>");
+      svg.addLine("<desc>" + join((std::string)";", dataDisplay) + "</desc>");
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
 
       // Add fills
@@ -5203,14 +5220,14 @@ public:
           for (UINT j = 0; j < bl[i].size(); j++){
             point nxt = place(svgScale, bl[i][j]);
             if ((bl[i][j].flags & DELME) > 0){
-              string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", nxt.x, nxt.y);
+              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", nxt.x, nxt.y);
               svg.addLine(tmp);
             }
           }
         }
         for (UINT i = 0; i < debug.size(); i++){
           point t = place(svgScale, debug[i]);
-          string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", t.x, t.y);
+          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", t.x, t.y);
           svg.addLine(tmp);
         }
       }
@@ -5220,7 +5237,7 @@ public:
           svgtemp = place(svgScale, circles[i]);
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
           if (svgtemp.x > svgScale.minX() && svgtemp.x < svgScale.maxX()){
-            string clss = "circle";
+            std::string clss = "circle";
             if ((circles[i].flags & IS_OUTSIDE) > 0){
               clss = "spcircle";
             }
@@ -5232,17 +5249,17 @@ public:
             tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);
             svg.addLine(tst);
             // Belongs to
-            vector<int> tb = toBin(circles[i].n, bl.size());
-            vector<string> blongs;
+            std::vector<int> tb = toBin(circles[i].n, bl.size());
+            std::vector<std::string> blongs;
             UINT m;
             for (m = 0; m < tb.size(); m++){
               if (tb[m] > 0){
-                string t = vformat("%d", m + 1);
+                std::string t = vformat("%d", m + 1);
                 blongs.push_back(t);
               }
             }
-            string bgs = join(", ", blongs);
-            string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
+            std::string bgs = join(", ", blongs);
+            std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
             svg.addLine(t);
           }
         }
@@ -5255,14 +5272,14 @@ public:
       float dy = 40.0f;
       float dx = 40.0f;
       for (UINT l = 0; l < ngroups; l++){
-        string g = groups[l];
-        string myg = vformat("p%d", l);
-        string myq = vformat("q%d", l);
-        string addRect = vformat("<rect class=\"%s borderLine\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
+        std::string g = groups[l];
+        std::string myg = vformat("p%d", l);
+        std::string myq = vformat("q%d", l);
+        std::string addRect = vformat("<rect class=\"%s borderLine\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
                 myg.c_str(), cx, cy, rw, rh);
-        string addOut = vformat("<rect class=\"%s\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
+        std::string addOut = vformat("<rect class=\"%s\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
                 myq.c_str(), cx, cy, rw, rh);
-        string addLegend = vformat("<text class=\"legend\" x=\"%.2f\" y=\"%.2f\">%s</text>", cx + dx, cy + rh, g.c_str());
+        std::string addLegend = vformat("<text class=\"legend\" x=\"%.2f\" y=\"%.2f\">%s</text>", cx + dx, cy + rh, g.c_str());
         svg.addLine(addRect);
         svg.addLine(addOut);
         svg.addLine(addLegend);
@@ -5275,7 +5292,7 @@ public:
     fileText toPS()
     {
         fileText pstext;
-        string tst;
+        std::string tst;
         UINT i, j;
         point pstemp;
         scale ps;
@@ -5355,7 +5372,7 @@ public:
         pstext.addLine("/b exch def");
         pstext.addLine("/g exch def");
         pstext.addLine("/r exch def");
-        string st = vformat("/step %u def", ngroups);
+        std::string st = vformat("/step %u def", ngroups);
         pstext.addLine(st);
         pstext.addLine("offsetx llx add step urx offsetx add{");
         pstext.addLine("/x exch def");
@@ -5407,7 +5424,7 @@ public:
                 tst = vformat("%f %f", pstemp.x, pstemp.y);
                 pstext.addLine(tst);
             }
-            tst = (string) "]";
+            tst = (std::string) "]";
             pstext.addLine(tst);
             tst = vformat("/set%d exch def", i + 1);
             pstext.addLine(tst);
@@ -5473,7 +5490,7 @@ public:
         //}
         for (UINT i = 0; i < bl.size(); i++){
           UINT n = twoPow(i);
-          vector<point> q = getSetBoundaries(n, 2*maxRadius*AIR, true);
+          std::vector<point> q = getSetBoundaries(n, 2*maxRadius*AIR, true);
           for (UINT j = 0; j < bl[i].size(); j++){
             if (bl[i][j].x < q[0].x ){
               bl[i][j].x = q[0].x;
@@ -5507,8 +5524,8 @@ public:
             //tolog("Took " + toString(counter) + " points from line " + toString(i + 1) + "\n");
             //tolog("Using minCircScreenRadius " + toString(md) + "\n");
           //}
-          vector<point> rb;
-          vector<point> backup = bl[i];
+          std::vector<point> rb;
+          std::vector<point> backup = bl[i];
           for (UINT j = 0; j < bl[i].size(); j++){
             if (!(bl[i][j].flags & DELME)){
               rb.push_back(bl[i][j]);
@@ -5533,7 +5550,7 @@ public:
       }
 
       for (UINT i = 0; i < bl.size(); i++){
-        vector<point>tempbl;
+        std::vector<point>tempbl;
         float pointDist = pDist;
         if (bl[i].size() < 5){
           pointDist = pDist / 10;
@@ -5576,8 +5593,8 @@ public:
         point startPoint;
         point endPoint;
         point tempPoint;
-        vector<point> tempv;
-        vector<vector<point> > tempbl;
+        std::vector<point> tempv;
+        std::vector<std::vector<point> > tempbl;
         npoints += (UINT) bl[0].size();
         for (i = 0; i < bl.size(); i++)
         {
@@ -5615,10 +5632,10 @@ public:
         attachScene();
     }
 
-    void writeSVG(string fname = ""){
+    void writeSVG(std::string fname = ""){
         fileText tmp = toSVG();
         resetScale();
-        ofstream result;
+        std::ofstream result;
         if (fname == ""){
           fname = blSettings.fname.c_str();
         }
@@ -5634,41 +5651,42 @@ public:
      * \return string
      *
      */
-    string getSignature(){
-      stringstream result;
+    std::string getSignature(){
+      std::stringstream result;
       result << ngroups << ";";
-      vector<UINT> c = ncircles();
+      std::vector<UINT> c = ncircles();
       for (UINT j = 0; j < c.size(); j++){
         UINT i = c[j];
         result << circles[i].n << ";" << circles[i].orig << ";";
         result << circles[i].x << ";" << circles[i].y    << ";";
       }
-      string r;
+      std::string r;
       result >> r;
       return r;
     }
 
-    void loadSignature(string sig){
+    void loadSignature(std::string sig){
       bl.clear();
       circles.clear();
-      stringstream s(sig);
-      UINT ng;
-      UINT n;
-      float orig;
-      float x;
-      float y;
-      getline(s, ng, ";");
-      ngroups = ng;
-      while (getline(s, n, ";")){
-        getline(s, orig, ";");
-        getline(s, x, ";");
-        getline(s, y, ";");
+      std::vector<std::string> nums = split(sig, ';');
+      UINT i = 0;
+      while (i < nums.size()){
+        UINT n = (UINT) atoi(nums[i].c_str());
+        i++;
+        float w = atof(nums[i].c_str());
+        i++;
+        float x = atof(nums[i].c_str());
+        i++;
+        float y = atof(nums[i].c_str());
+        i++;
         point t;
-        t.orig = orig;
+        t.n = n;
+        t.orig = w;
         t.x = x;
         t.y = y;
         circles.push_back(t);
       }
+      currentStep = 2;
     }
 
 
@@ -5752,7 +5770,7 @@ public:
         }
         else{
           listOutsiders();
-          ofstream result;
+          std::ofstream result;
           fileText svgfile = toSVG();
           result.open("error.svg");
           result.write(svgfile.getText().c_str(), svgfile.getText().size());
@@ -5890,6 +5908,7 @@ public:
         result = isSimulationComplete();
         if (result){
           blSettings.smoothSVG = true;
+          currentStep = 1;
         }
         //if (getMaxVsq() > 1e-7){
         //  result = false;
@@ -5906,9 +5925,9 @@ public:
 
     bool simulate(int maxRel = 0){
       restart_log();
-      for (UINT step = 1; step < 8; step++){
+      for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
-        cout << "Step " << step << endl;
+        std::cout << "Step " << step << std::endl;
         setStep(step);
         while (!bQuit){
           setCycle(step);
@@ -5923,17 +5942,17 @@ public:
 
 };
 
-string getFile(string prompt, string errorPrompt)
+std::string getFile(std::string prompt, std::string errorPrompt)
 {
-    string fname;
-    cout << prompt << endl;
-    cin >> fname;
-    ifstream isfile;
+    std::string fname;
+    std::cout << prompt << std::endl;
+    std::cin >> fname;
+    std::ifstream isfile;
     isfile.open(fname.c_str());
     if (!isfile.is_open())
     {
         isfile.close();
-        cout << errorPrompt << endl;
+        std::cout << errorPrompt << std::endl;
         fname = getFile(prompt, errorPrompt);
     }
     isfile.close();
@@ -5941,50 +5960,50 @@ string getFile(string prompt, string errorPrompt)
 }
 
 
-borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", string outputFile = "result.svg"){
-  string header;
-  vector<string> groupNames;
-  vector<int> temp;
-  vector<float> weights;
-  vector<string> labels;
+borderLine getInfoFromStream(std::stringstream& vFile, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
+  std::string header;
+  std::vector<std::string> groupNames;
+  std::vector<int> temp;
+  std::vector<float> weights;
+  std::vector<std::string> labels;
   getline(vFile, header);
-  //cout << header << endl;
+  //std::cout << header << std::endl;
   getline(vFile, header);
   UINT number = (UINT) atoi(header.c_str());
-  //cout << endl << number << " groups:" << endl;
+  //std::cout << std::endl << number << " groups:" << std::endl;
   for (UINT i = 0; i < number; i++){
       getline(vFile, header);
       groupNames.insert(groupNames.end(), header);
-      //cout << header << endl;
+      //std::cout << header << std::endl;
   }
   UINT n = (UINT) twoPow(number);
   for (UINT i = 0; i < n; i++){
       getline(vFile, header); //  get the whole line
       int l = header.find_first_of(" ");
-      string w = header;
+      std::string w = header;
       if (l > 0){
         w = header.substr(0,l);
       }
       weights.insert (weights.end(), atoi(w.c_str())); // it takes the first number
-      string label = "";
+      std::string label = "";
       /*try
       {
           label = header.substr(header.find_first_of(" "));
       }
       catch (const std::exception& e)
       {
-          //cout << i << endl;
+          //std::cout << i << std::endl;
           label = "";
       }*/
       labels.insert (labels.end(), label);
-      //cout << "w=" << w << "  label:" << label << endl;
+      //std::cout << "w=" << w << "  label:" << label << std::endl;
       //getline(vFile, header, ' '); /// get the number
       //weights.insert (weights.end(), atoi(header.c_str()));
       //getline(vFile, header) ;  ///  get the rest of the line with the labels
       //labels.insert (labels.end(), header);
       temp = toBin(i, number);
       //printv(temp);
-      //cout << ".- " << weights[i] << " : " << labels[i] << endl;
+      //std::cout << ".- " << weights[i] << " : " << labels[i] << std::endl;
   }
   binMap mymap(number);
   borderLine lines(&mymap, groupNames, weights, labels, fname, outputFile);
@@ -5992,15 +6011,15 @@ borderLine getInfoFromStream(stringstream& vFile, string fname = "nvenn.txt", st
 }
 
 
-borderLine getFileInfo(string fname, string outputFile){
-    ifstream vFile;
+borderLine getFileInfo(std::string fname, std::string outputFile){
+    std::ifstream vFile;
     vFile.open(fname.c_str());
-    stringstream content;
+    std::stringstream content;
     content << vFile.rdbuf();
     borderLine lines = getInfoFromStream(content, fname, outputFile);
 
     vFile.close();
-    string dataFile = outputFile + ".data";
+    std::string dataFile = outputFile + ".data";
     vFile.open(dataFile.c_str());
     if (false){ //vFile.good() == true){ // Unfinished
         vFile.close();

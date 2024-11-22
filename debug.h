@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <fstream>
-#include "debug.h"
+#include <sstream>
+
 
 /**< Code enclosed into DEBUGONLY() will only appear if DEBUG is defined.
 Only in that case the function tolog(toString(__LINE__) + "\n" + ) will be available and executed.
@@ -24,7 +25,6 @@ Only in that case the function tolog(toString(__LINE__) + "\n" + ) will be avail
 #endif // DEBUG
 
 
-using namespace std;
 
 
 DEBUGONLY(
@@ -37,17 +37,17 @@ void restart_log(){
   dlme.close();
 }
 
-void tolog(string t){
-  ofstream f;
+void tolog(std::string t){
+  std::ofstream f;
   f.open("log.txt", std::ios_base::app);
   f.write(t.c_str(), t.size());
   f.close();
 }
 )
 template<typename T>
-string toString(T input)
+std::string toString(T input)
 {
-    ostringstream result;
+    std::ostringstream result;
     result << input;
     return result.str();
 }

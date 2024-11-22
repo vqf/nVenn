@@ -13,11 +13,11 @@ bool showContacts = false;
 class glGraphics{
   public:
 
-  vector<point> glCircle(float x, float y, float r)
+  std::vector<point> glCircle(float x, float y, float r)
   {
     borderLine dummy;
       point temp;
-      vector<point> result;
+      std::vector<point> result;
       float sen = 0.7071067811f;
       temp.x = x;
       temp.y = y + r;
@@ -54,7 +54,7 @@ class glGraphics{
     return r;
   }
 
-  void addRectangle(borderLine bl, scale ogl, vector<point> p, rgb color = {0.5, 0.5, 0.5}){
+  void addRectangle(borderLine bl, scale ogl, std::vector<point> p, rgb color = {0.5, 0.5, 0.5}){
     glBegin (GL_LINE_LOOP);
     glColor3f(color.red, color.green, color.blue);
     point p0;
@@ -106,8 +106,8 @@ class glGraphics{
   {
       UINT i, j;
       point P;     //coordinates
-      vector<point> temp; //stores perimeters
-      vector<vector<point> > blp = bl.bl;
+      std::vector<point> temp; //stores perimeters
+      std::vector<std::vector<point> > blp = bl.bl;
       bool showPoints = bl.showThis;
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
@@ -117,7 +117,7 @@ class glGraphics{
       //addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));
       ogl.initScale();
       //define vectors
-      vector<point> attn = bl.getWarnings();
+      std::vector<point> attn = bl.getWarnings();
       //if (bl.blSettings.doCheckTopol == true){
         for (i = 0; i < blp.size(); i++)
         {
@@ -137,7 +137,7 @@ class glGraphics{
             for (j = 0; j < blp[i].size(); j++){
               P = bl.place(ogl, blp[i][j]);
               glBegin (GL_LINE_LOOP);
-              vector<point> cr = glCircle(P.x, P.y, 0.01);
+              std::vector<point> cr = glCircle(P.x, P.y, 0.01);
               for (UINT k = 0; k < cr.size(); k++)
               {
                   glVertex2f (cr[k].x, cr[k].y);
@@ -150,11 +150,11 @@ class glGraphics{
         /**********
       for (UINT i = 0; i < bl.ngroups; i++){
         UINT n = twoPow(i);
-        vector<point> q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);
+        std::vector<point> q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);
         addRectangle(bl, ogl, q, bl.colors[i]);
       }
       /**********/
-      //vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
+      //std::vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
       //addRectangle(bl, ogl, bnd);
       if (showContacts){
         for (i = 0; i < attn.size();  i++)
@@ -255,7 +255,7 @@ class glGraphics{
       glColor3f(0.0f, 0.0f, 1.0f);
       float yd = 0.8f;
       for (i = 0; i < bl.dataDisplay.size(); i++){
-        string mymsg = bl.dataDisplay[i];
+        std::string mymsg = bl.dataDisplay[i];
         //showText(mymsg); exit(0);
         glRasterPos2f(-0.9f, yd);
         printString(mymsg);
@@ -308,7 +308,7 @@ class glGraphics{
               bl.refreshScreen++;
           }
       }
-      for (UINT step = 1; step < 8; step++){
+      for (UINT step = bl.currentStep; step < 8; step++){
         bQuit = false;
         bl.setStep(step);
         while (!bQuit)

@@ -1,15 +1,15 @@
-#include "topol.h"
 #include <cstdlib>
 #include <sstream>
+
+#include "topol.h"
 
 //
 #include <iostream>
 
 //
 
-using namespace std;
 borderLine bl;
-string svgcode;
+std::string svgcode;
 
 extern "C" {
  bool init_bl(const char* description);
@@ -26,8 +26,8 @@ bool return_true(){
 }
 
 bool init_bl(const char* description){
-  stringstream info;
-  info << description << endl;
+  std::stringstream info;
+  info << description << std::endl;
   bl = getInfoFromStream(info);
   //free(&description);
   return true;
@@ -59,7 +59,7 @@ int main(){
   init_bl("nVenn12 jsons/49CE6E11.json\n4\nS_salivarius\nOther\nGAS\nGCS/GGS\n0\n2\n12\n0\n28\n7\n6\n0\n84\n15\n11\n0\n16\n2\n1\n0\n");
   for (UINT step = 1; step < 8; step++){
     bool bQuit = false;
-    cout << "Step " << step << endl;
+    std::cout << "Step " << step << std::endl;
     set_step(step);
     while (!bQuit){
       set_cycle(step);
@@ -69,8 +69,8 @@ int main(){
     }
   }
   const char* s = svg();
-  cout << (string) s << endl;
-  string yo;
-  getline(cin, yo);
+  std::cout << (std::string) s << std::endl;
+  std::string yo;
+  getline(std::cin, yo);
   return 0;
 }

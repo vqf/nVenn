@@ -4,14 +4,14 @@
 #include "initogl.h"
 #include "graphics.h"
 #include "scene.h"
-#include <math.h>
+//#include <math.h>
 //#include <random>
 
 bool showForces = true;
 
 
-void addCircle(point P, vector<float> color = {0, 1, 0}){
-  vector<point> temp = glCircle(P.x, P.y, P.radius);
+void addCircle(point P, std::vector<float> color = {0, 1, 0}){
+  std::vector<point> temp = glCircle(P.x, P.y, P.radius);
   glBegin (GL_LINE_LOOP);
   glColor3f (color[0], color[1], color[2]);
   for (UINT j = 0; j < temp.size(); j++)
@@ -21,7 +21,7 @@ void addCircle(point P, vector<float> color = {0, 1, 0}){
   glEnd ();
 }
 
-void addLine(point p0, point p1, vector<float> color = {0, 0, 1}){
+void addLine(point p0, point p1, std::vector<float> color = {0, 0, 1}){
   glBegin (GL_LINE_LOOP);
   glColor3f (color[0], color[1], color[2]);
   glVertex2f(p0.x, p0.y);
@@ -35,20 +35,20 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   glClear (GL_COLOR_BUFFER_BIT);
   scale ogl;
   ogl.initScale();
-  vector<point*> circles = s.getPoints();
+  std::vector<point*> circles = s.getPoints();
   sc.setClear();
   for (UINT i = 0; i < circles.size(); i++){
     sc.addToScale(*(circles[i]));
   }
   s.addInfo("HX: ", sc.xSpan());
-  vector<point> v = s.getVirtual();
-  vector<string> w = s.getInfo();
+  std::vector<point> v = s.getVirtual();
+  std::vector<std::string> w = s.getInfo();
   for (UINT i = 0; i < circles.size(); i++){
     point tp = sc.place(ogl, *(circles[i]));
     addCircle(tp);
   }
-  vector<springLink> springs = s.getLinks();
-  vector<springLink> rods = s.getRods();
+  std::vector<springLink> springs = s.getLinks();
+  std::vector<springLink> rods = s.getRods();
   for (UINT i = 0; i < springs.size(); i++){
     point *p0 = circles[springs[i].from];
     point *p1 = circles[springs[i].to];
@@ -79,7 +79,7 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   glColor3f(0.0f, 0.0f, 1.0f);
   float yd = 0.8f;
   for (UINT i = 0; i < w.size(); i++){
-    string mymsg = w[i];
+    std::string mymsg = w[i];
     //showText(mymsg); exit(0);
     glRasterPos2f(-0.9f, yd);
     printString(mymsg);

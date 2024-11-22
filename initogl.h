@@ -5,7 +5,7 @@ HWND publich;
 float DUMP = false; // Debugging;
 void Keyboard_Input();
 
-void showText(char* n, string a="")
+void showText(char* n, std::string a="")
 {
     MessageBox(publich, n, a.c_str(), MB_ICONINFORMATION | MB_OK);
 }
@@ -22,9 +22,9 @@ LRESULT CALLBACK WndProc (HWND hWnd, UINT message,
 void EnableOpenGL (HWND hWnd, HDC *hDC, HGLRC *hRC);
 void DisableOpenGL (HWND hWnd, HDC hDC, HGLRC hRC);
 
-vector<point> glCircle(float x, float y, float r){
+std::vector<point> glCircle(float x, float y, float r){
   point temp;
-  vector<point> result;
+  std::vector<point> result;
   float sen = 0.7071067811f;
   temp.x = x;
   temp.y = y + r;

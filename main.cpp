@@ -3,16 +3,15 @@
  *
  **************************/
 
+#include "topol.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 #include <time.h>
 #include <iostream>
 #include <vector>
 #include <string>
 #include <sstream>
 #include <fstream>
-#include "topol.h"
 #include <signal.h>
 
 
@@ -31,7 +30,6 @@
 
 
 
-using namespace std;
 
 
 
@@ -43,7 +41,7 @@ int c = 0;
 
 volatile sig_atomic_t gSignalStatus;
 void handleSignal(int s){
-  cout << lines.croack() << endl;
+  std::cout << lines.croack() << std::endl;
   tolog(lines.croack());
   c++;
   //if (c > 5){
@@ -53,9 +51,9 @@ void handleSignal(int s){
 int main(int argc, char** argv)
 {
     signal(SIGINT, handleSignal);
-    string fname;
-    string outputFile;
-    ofstream result;
+    std::string fname;
+    std::string outputFile;
+    std::ofstream result;
     fileText psfile;
     fileText svgfile;
     if (argc > 1){
@@ -104,12 +102,12 @@ WinMain (HINSTANCE hInstance,
     HGLRC hRC;
     MSG msg;
     BOOL bQuit = FALSE;
-    string fname;
-    ofstream result;
+    std::string fname;
+    std::ofstream result;
     fileText psfile;
     fileText svgfile;
     fname = "venn.txt";
-    string outputFile = "result.svg";
+    std::string outputFile = "result.svg";
     borderLine lines = getFileInfo(fname, outputFile);
 
     /* register window class */

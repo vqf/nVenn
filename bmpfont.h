@@ -88,7 +88,7 @@ void init(void)
    makeRasterFont();
 }
 
-void printString(string s)
+void printString(std::string s)
 {
    char* ts = (char*) s.c_str();
    glPushAttrib (GL_LIST_BIT);
