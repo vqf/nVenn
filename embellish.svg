@@ -74,86 +74,142 @@
     fill: none;
     stroke: #0082c8;
   }
+  .p4{
+    stroke: none;
+    fill: #f58231;
+  }
+  .q4{
+    fill: none;
+    stroke: #f58231;
+  }
+  .p5{
+    stroke: none;
+    fill: #911eb4;
+  }
+  .q5{
+    fill: none;
+    stroke: #911eb4;
+  }
 ]]>
 </style>
 <symbol id="bl0">
-<path d="M 47.10 317.92 L 21.21 331.07 L 29.46 358.90 L 58.33 355.83 L 60.53 326.89 L 192.95 232.68 L 214.06 242.06 L 232.45 228.07 L 229.04 205.22 L 207.37 197.21 L 191.80 111.70 L 210.17 92.75 L 198.17 69.24 L 172.04 73.01 L 167.17 98.96 L 109.31 125.88 L 91.51 112.94 L 71.10 121.19 L 67.31 142.87 L 83.70 157.57 L 65.45 237.49 L 56.41 235.43 L 110.74 201.29 L 144.87 255.62 L 90.55 289.75 L 56.41 235.43 L 65.45 237.49 Z" />
+<path d="M 149.21 130.69 L 132.96 119.97 L 117.33 131.56 L 122.89 150.22 L 142.31 151.38 L 177.61 208.82 L 169.91 226.85 L 184.35 240.11 L 201.65 230.90 L 198.72 211.51 L 296.37 117.57 L 298.88 96.17 L 320.35 94.49 L 363.66 52.82 L 386.40 54.37 L 390.16 31.88 L 368.14 25.96 L 360.11 47.30 Z" />
 </symbol>
 <symbol id="bl1">
-<path d="M 170.96 391.72 L 140.57 391.19 L 136.93 421.37 L 166.58 428.07 L 176.29 399.28 L 337.24 329.53 L 351.31 342.17 L 370.07 339.75 L 380.47 323.95 L 375.29 305.76 L 440.24 250.20 L 470.87 253.76 L 476.75 223.49 L 447.01 215.33 L 436.61 244.36 L 244.68 326.25 L 230.04 313.34 L 210.80 316.57 L 201.19 333.56 L 208.33 351.72 Z" />
+<path d="M 52.96 176.78 L 45.89 156.79 L 24.83 159.32 L 22.70 180.42 L 42.82 187.11 L 118.68 392.45 L 107.66 406.87 L 115.98 423.00 L 134.12 422.38 L 141.32 405.72 L 262.44 386.56 L 276.30 400.62 L 294.09 392.05 L 291.71 372.45 L 272.40 368.36 L 247.42 311.32 L 256.74 301.05 L 255.28 287.25 L 244.01 279.16 L 230.47 282.19 L 196.64 236.87 L 203.46 223.20 L 196.52 209.59 L 181.45 207.08 L 170.47 217.70 Z" />
 </symbol>
 <symbol id="bl2">
-<path d="M 209.73 94.96 L 199.45 69.96 L 172.54 72.54 L 167.22 99.05 L 191.03 111.83 L 203.71 198.20 L 188.99 222.82 L 210.17 242.18 L 220.52 312.71 L 201.51 331.03 L 212.73 354.94 L 238.97 352.03 L 244.68 326.25 L 436.61 244.36 L 460.70 257.91 L 480.00 238.12 L 465.85 214.38 L 439.27 221.93 L 317.02 131.09 L 320.82 112.08 L 308.55 97.08 L 289.16 97.03 L 276.82 111.99 Z" />
+<path d="M 52.93 165.52 L 35.59 154.29 L 20.25 168.14 L 29.67 186.53 L 49.87 182.18 L 97.67 222.80 L 93.81 236.25 L 101.38 248.03 L 115.21 250.11 L 125.91 241.09 L 225.30 288.48 L 224.93 302.25 L 234.89 311.75 L 248.62 310.74 L 257.08 299.87 L 448.31 347.40 L 457.64 366.88 L 478.54 361.41 L 477.13 339.86 L 455.69 337.16 L 319.73 122.73 L 327.56 107.19 L 317.61 92.93 L 300.32 94.93 L 293.89 111.09 L 150.18 134.23 L 142.73 122.74 L 129.22 120.49 L 118.46 128.95 L 117.44 142.61 Z" />
 </symbol>
 <symbol id="bl3">
-<path d="M 54.00 320.76 L 28.75 321.66 L 20.00 345.36 L 38.61 362.46 L 61.48 351.73 L 136.04 396.60 L 136.55 420.80 L 158.61 430.76 L 177.10 415.14 L 170.96 391.72 L 208.33 351.72 L 226.96 357.62 L 243.25 346.85 L 245.14 327.40 L 231.21 313.70 L 291.42 139.01 L 318.73 128.41 L 312.80 99.71 L 283.52 100.81 L 279.75 129.87 L 119.70 233.22 L 102.94 222.95 L 84.45 229.63 L 78.12 248.23 L 88.69 264.80 Z" />
+<path d="M 129.94 392.28 L 110.52 398.85 L 111.61 419.33 L 131.63 423.79 L 141.32 405.72 L 262.44 386.56 L 269.60 397.89 L 282.75 400.50 L 293.69 392.74 L 295.58 379.46 L 353.00 363.89 L 368.55 376.40 L 385.24 365.46 L 379.98 346.21 L 360.05 345.28 L 259.50 192.38 L 266.81 174.88 L 253.33 161.54 L 235.90 169.04 L 236.33 188.01 L 200.34 213.48 L 186.69 206.31 L 172.87 213.16 L 170.31 228.36 L 181.11 239.36 L 154.35 319.33 L 124.41 309.31 L 167.36 287.90 L 188.77 330.84 L 145.82 352.25 L 124.41 309.31 L 154.35 319.33 Z" />
+</symbol>
+<symbol id="bl4">
+<path d="M 295.91 380.99 L 280.42 366.98 L 263.08 378.63 L 270.18 398.27 L 290.96 396.14 L 337.77 444.85 L 333.69 463.17 L 348.98 474.04 L 364.94 464.16 L 362.03 445.62 L 452.27 362.95 L 474.35 365.50 L 480.00 344.00 L 459.52 335.36 L 448.07 354.41 L 385.27 365.38 L 372.29 376.16 L 356.43 370.42 Z" />
+</symbol>
+<symbol id="bl5">
+<path d="M 53.48 167.40 L 35.49 154.30 L 20.00 170.27 L 33.65 187.84 L 52.96 176.78 L 170.47 217.70 L 172.65 233.09 L 186.46 240.24 L 200.30 233.14 L 202.53 217.75 L 401.89 149.13 L 420.80 160.33 L 434.90 143.48 L 420.55 126.84 L 401.82 138.32 L 326.76 113.69 L 324.61 98.76 L 311.42 91.45 L 297.62 97.53 L 294.11 112.19 Z" />
 </symbol>
 </defs>
-<!-- signature: 4;1;2;21.3285;28.706;2;12;29.5536;20.0571;6;6;33.164;27.415;14;1;27.9405;9.52162;10;11;15.3027;35.1551;4;28;10.4681;20.8035;5;7;41.9299;19.9161;13;2;9.41924;11.0989;12;16;20.2367;18.5118;8;84;18.1476;7.03708;9;15;5.30218;29.1368; -->
-<desc>STEP: 4;BEST: 4</desc>
+<!-- signature: 6;-36;-3;156;78;iba;ic;ida;iea;iss;nas;0;0;0;124;93;1;7;1.1619;38.6667;7.66667;3;0;0;60;114.333;7;0;0;145.333;135.667;15;0;0;-25.3333;7.66667;31;0;0;38.6667;71.6667;63;0;0;-4;71.6667;2;10;1.1619;81.3333;7.66667;6;49;1.1619;17.3333;114.333;14;2;1.1619;81.3333;71.6667;30;0;0;102.667;29;62;0;0;145.333;7.66667;10;3;1.1619;-4;50.3333;26;1;1.1619;124;29;58;0;0;17.3333;29;42;0;0;102.667;50.3333;18;0;0;124;135.667;22;0;0;-25.3333;114.333;54;0;0;-4;135.667;50;0;0;145.333;29;34;0;0;102.667;135.667;38;4;1.1619;81.3333;135.667;46;0;0;38.6667;114.333;4;287;2;-4;7.66667;5;1;1.1619;60;50.3333;13;0;0;60;135.667;29;0;0;-25.3333;29;61;0;0;81.3333;114.333;12;16;1.1619;102.667;7.66667;28;0;0;-25.3333;135.667;60;0;0;-25.3333;93;44;1;1.1619;17.3333;50.3333;20;2;1.1619;124;71.6667;21;0;0;-4;29;53;0;0;60;93;52;0;0;102.667;93;36;39;1.1619;81.3333;29;37;0;0;102.667;71.6667;45;0;0;-25.3333;71.6667;8;20;1.1619;38.6667;93;9;0;0;17.3333;135.667;11;0;0;124;114.333;27;0;0;81.3333;50.3333;59;0;0;-25.3333;50.3333;24;0;0;102.667;114.333;25;0;0;17.3333;93;57;0;0;38.6667;50.3333;56;0;0;17.3333;7.66667;40;0;0;17.3333;71.6667;41;0;0;-25.3333;157;43;0;0;60;29;16;2;1.1619;60;7.66667;17;0;0;-4;114.333;19;0;0;38.6667;135.667;23;0;0;145.333;71.6667;55;0;0;38.6667;29;48;0;0;145.333;50.3333;49;0;0;145.333;93;51;0;0;-4;93;32;39;1.1619;81.3333;93;33;0;0;124;50.3333;35;0;0;145.333;114.333;39;0;0;60;71.6667;47;1;1.1619;124;7.66667; -->
+<desc>STEP: 4;BEST: 5</desc>
 <rect width="700" height="500" style="fill:#fff;stroke-width:0" />
 <use class="p0 borderLine" xlink:href="#bl0"/>
 <use class="p1 borderLine" xlink:href="#bl1"/>
 <use class="p2 borderLine" xlink:href="#bl2"/>
 <use class="p3 borderLine" xlink:href="#bl3"/>
+<use class="p4 borderLine" xlink:href="#bl4"/>
+<use class="p5 borderLine" xlink:href="#bl5"/>
 <use class="q0 outLine" xlink:href="#bl0"/>
 <use class="q1 outLine" xlink:href="#bl1"/>
 <use class="q2 outLine" xlink:href="#bl2"/>
 <use class="q3 outLine" xlink:href="#bl3"/>
-<circle onclick="fromCircle(1)" class="circle" cx="88.7442" cy="135.4537" r="6.9960" />
-<text class="tLabel" x="88.74" y="115.45"></text>
-<text class="nLabel" x="88.74" y="130.45">2</text>
-<text class="belong" x="88.74" y="140.45">(1)</text>
-<circle onclick="fromCircle(2)" class="circle" cx="358.0521" cy="320.5079" r="8.5736" />
-<text class="tLabel" x="358.05" y="300.51"></text>
-<text class="nLabel" x="358.05" y="315.51">12</text>
-<text class="belong" x="358.05" y="325.51">(2)</text>
-<circle onclick="fromCircle(6)" class="circle" cx="457.4738" cy="235.4565" r="6.9960" />
-<text class="tLabel" x="457.47" y="215.46"></text>
-<text class="nLabel" x="457.47" y="230.46">6</text>
-<text class="belong" x="457.47" y="240.46">(2, 3)</text>
-<circle onclick="fromCircle(14)" class="circle" cx="223.8168" cy="335.1505" r="6.9960" />
-<text class="tLabel" x="223.82" y="315.15"></text>
-<text class="nLabel" x="223.82" y="330.15">1</text>
-<text class="belong" x="223.82" y="340.15">(2, 3, 4)</text>
-<circle onclick="fromCircle(10)" class="circle" cx="155.4730" cy="408.2946" r="8.2086" />
-<text class="tLabel" x="155.47" y="388.29"></text>
-<text class="nLabel" x="155.47" y="403.29">11</text>
-<text class="belong" x="155.47" y="413.29">(2, 4)</text>
-<circle onclick="fromCircle(4)" class="circle" cx="317.1042" cy="237.0555" r="13.0964" />
-<text class="tLabel" x="317.10" y="217.06"></text>
-<text class="nLabel" x="317.10" y="232.06">28</text>
-<text class="belong" x="317.10" y="242.06">(3)</text>
-<circle onclick="fromCircle(5)" class="circle" cx="187.7392" cy="89.3855" r="6.9960" />
-<text class="tLabel" x="187.74" y="69.39"></text>
-<text class="nLabel" x="187.74" y="84.39">7</text>
-<text class="belong" x="187.74" y="94.39">(1, 3)</text>
-<circle onclick="fromCircle(13)" class="circle" cx="211.4341" cy="219.5293" r="6.9960" />
-<text class="tLabel" x="211.43" y="199.53"></text>
-<text class="nLabel" x="211.43" y="214.53">2</text>
-<text class="belong" x="211.43" y="224.53">(1, 3, 4)</text>
-<circle onclick="fromCircle(12)" class="circle" cx="298.8092" cy="117.5647" r="9.8999" />
-<text class="tLabel" x="298.81" y="97.56"></text>
-<text class="nLabel" x="298.81" y="112.56">16</text>
-<text class="belong" x="298.81" y="122.56">(3, 4)</text>
-<circle onclick="fromCircle(8)" class="circle" cx="100.6405" cy="245.5212" r="22.6836" />
-<text class="tLabel" x="100.64" y="225.52"></text>
-<text class="nLabel" x="100.64" y="240.52">84</text>
-<text class="belong" x="100.64" y="250.52">(4)</text>
-<circle onclick="fromCircle(9)" class="circle" cx="42.0492" cy="340.0361" r="9.5856" />
-<text class="tLabel" x="42.05" y="320.04"></text>
-<text class="nLabel" x="42.05" y="335.04">15</text>
-<text class="belong" x="42.05" y="345.04">(1, 4)</text>
+<use class="q4 outLine" xlink:href="#bl4"/>
+<use class="q5 outLine" xlink:href="#bl5"/>
+<circle onclick="fromCircle(1)" class="circle" cx="375.8849" cy="41.0588" r="8.6658" />
+<text class="tLabel" x="375.88" y="21.06"></text>
+<text class="nLabel" x="375.88" y="36.06">7</text>
+<text class="belong" x="375.88" y="46.06">(1)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="156.5899" cy="320.0769" r="8.6658" />
+<text class="tLabel" x="156.59" y="300.08"></text>
+<text class="nLabel" x="156.59" y="315.08">10</text>
+<text class="belong" x="156.59" y="325.08">(2)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="110.5965" cy="233.7884" r="8.6658" />
+<text class="tLabel" x="110.60" y="213.79"></text>
+<text class="nLabel" x="110.60" y="228.79">49</text>
+<text class="belong" x="110.60" y="238.79">(2, 3)</text>
+<circle onclick="fromCircle(14)" class="circle" cx="240.6167" cy="295.7829" r="8.6658" />
+<text class="tLabel" x="240.62" y="275.78"></text>
+<text class="nLabel" x="240.62" y="290.78">2</text>
+<text class="belong" x="240.62" y="300.78">(2, 3, 4)</text>
+<circle onclick="fromCircle(10)" class="circle" cx="124.5608" cy="408.3666" r="8.6658" />
+<text class="tLabel" x="124.56" y="388.37"></text>
+<text class="nLabel" x="124.56" y="403.37">3</text>
+<text class="belong" x="124.56" y="413.37">(2, 4)</text>
+<circle onclick="fromCircle(26)" class="circle" cx="279.2020" cy="383.9057" r="8.6658" />
+<text class="tLabel" x="279.20" y="363.91"></text>
+<text class="nLabel" x="279.20" y="378.91">1</text>
+<text class="belong" x="279.20" y="388.91">(2, 4, 5)</text>
+<circle onclick="fromCircle(38)" class="circle" cx="36.9400" cy="171.1991" r="8.6658" />
+<text class="tLabel" x="36.94" y="151.20"></text>
+<text class="nLabel" x="36.94" y="166.20">4</text>
+<text class="belong" x="36.94" y="176.20">(2, 3, 6)</text>
+<circle onclick="fromCircle(4)" class="circle" cx="338.8687" cy="198.8013" r="16.9654" />
+<text class="tLabel" x="338.87" y="178.80"></text>
+<text class="nLabel" x="338.87" y="193.80">287</text>
+<text class="belong" x="338.87" y="203.80">(3)</text>
+<circle onclick="fromCircle(5)" class="circle" cx="133.4295" cy="136.9276" r="8.6658" />
+<text class="tLabel" x="133.43" y="116.93"></text>
+<text class="nLabel" x="133.43" y="131.93">1</text>
+<text class="belong" x="133.43" y="141.93">(1, 3)</text>
+<circle onclick="fromCircle(12)" class="circle" cx="308.8561" cy="287.2789" r="8.6658" />
+<text class="tLabel" x="308.86" y="267.28"></text>
+<text class="nLabel" x="308.86" y="282.28">16</text>
+<text class="belong" x="308.86" y="292.28">(3, 4)</text>
+<circle onclick="fromCircle(44)" class="circle" cx="250.1791" cy="178.2075" r="8.6658" />
+<text class="tLabel" x="250.18" y="158.21"></text>
+<text class="nLabel" x="250.18" y="173.21">1</text>
+<text class="belong" x="250.18" y="183.21">(3, 4, 6)</text>
+<circle onclick="fromCircle(20)" class="circle" cx="464.7778" cy="351.4906" r="8.6658" />
+<text class="tLabel" x="464.78" y="331.49"></text>
+<text class="nLabel" x="464.78" y="346.49">2</text>
+<text class="belong" x="464.78" y="356.49">(3, 5)</text>
+<circle onclick="fromCircle(36)" class="circle" cx="310.6411" cy="108.3975" r="8.6658" />
+<text class="tLabel" x="310.64" y="88.40"></text>
+<text class="nLabel" x="310.64" y="103.40">39</text>
+<text class="belong" x="310.64" y="113.40">(3, 6)</text>
+<circle onclick="fromCircle(8)" class="circle" cx="369.3722" cy="359.4500" r="8.6658" />
+<text class="tLabel" x="369.37" y="339.45"></text>
+<text class="nLabel" x="369.37" y="354.45">20</text>
+<text class="belong" x="369.37" y="364.45">(4)</text>
+<circle onclick="fromCircle(16)" class="circle" cx="349.5236" cy="457.0798" r="8.6658" />
+<text class="tLabel" x="349.52" y="437.08"></text>
+<text class="nLabel" x="349.52" y="452.08">2</text>
+<text class="belong" x="349.52" y="462.08">(5)</text>
+<circle onclick="fromCircle(32)" class="circle" cx="417.9360" cy="143.6065" r="8.6658" />
+<text class="tLabel" x="417.94" y="123.61"></text>
+<text class="nLabel" x="417.94" y="138.61">39</text>
+<text class="belong" x="417.94" y="148.61">(6)</text>
+<circle onclick="fromCircle(47)" class="circle" cx="186.4924" cy="223.2759" r="8.6658" />
+<text class="tLabel" x="186.49" y="203.28"></text>
+<text class="nLabel" x="186.49" y="218.28">1</text>
+<text class="belong" x="186.49" y="228.28">(1, 2, 3, 4, 6)</text>
 <rect class="p0 borderLine" x="500.00" y="50.00" width="30.00" height="15.00" />
 <rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
-<text class="legend" x="540.00" y="65.00">S_salivarius</text>
+<text class="legend" x="540.00" y="65.00">iba</text>
 <rect class="p1 borderLine" x="500.00" y="90.00" width="30.00" height="15.00" />
 <rect class="q1" x="500.00" y="90.00" width="30.00" height="15.00" />
-<text class="legend" x="540.00" y="105.00">Other</text>
+<text class="legend" x="540.00" y="105.00">ic</text>
 <rect class="p2 borderLine" x="500.00" y="130.00" width="30.00" height="15.00" />
 <rect class="q2" x="500.00" y="130.00" width="30.00" height="15.00" />
-<text class="legend" x="540.00" y="145.00">GAS</text>
+<text class="legend" x="540.00" y="145.00">ida</text>
 <rect class="p3 borderLine" x="500.00" y="170.00" width="30.00" height="15.00" />
 <rect class="q3" x="500.00" y="170.00" width="30.00" height="15.00" />
-<text class="legend" x="540.00" y="185.00">GCS/GGS</text>
+<text class="legend" x="540.00" y="185.00">iea</text>
+<rect class="p4 borderLine" x="500.00" y="210.00" width="30.00" height="15.00" />
+<rect class="q4" x="500.00" y="210.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="225.00">iss</text>
+<rect class="p5 borderLine" x="500.00" y="250.00" width="30.00" height="15.00" />
+<rect class="q5" x="500.00" y="250.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="265.00">nas</text>
 </svg>

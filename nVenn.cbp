@@ -30,6 +30,7 @@
 				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="venn.txt" />
 				<Compiler>
 					<Add option="-static-libgcc -static-libstdc++" />
 				</Compiler>

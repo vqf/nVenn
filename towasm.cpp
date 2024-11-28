@@ -10,6 +10,7 @@
 
 borderLine bl;
 std::string svgcode;
+std::string errorMessage;
 
 extern "C" {
  bool init_bl(const char* description);
@@ -17,6 +18,8 @@ extern "C" {
  void set_cycle(UINT step_number);
  bool finished(UINT step_number);
  bool return_true();
+ bool error();
+ const char* errorMsg();
  bool draw();
  const char* svg();
 }
@@ -43,6 +46,16 @@ void set_cycle(UINT step_number){
 
 bool finished(UINT step_number){
   return bl.isStepFinished(step_number);
+}
+
+
+bool error(){
+  return bl.err();
+}
+
+const char* errorMsg(){
+  errorMessage = bl.errorMsg();
+  return errorMessage.c_str();
 }
 
 bool draw(){
