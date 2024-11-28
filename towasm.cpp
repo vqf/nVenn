@@ -21,12 +21,14 @@ extern "C" {
  bool error();
  const char* errorMsg();
  bool draw();
+ void load_signature(const char* signature);
  const char* svg();
 }
 
 bool return_true(){
   return true;
 }
+
 
 bool init_bl(const char* description){
   std::stringstream info;
@@ -35,6 +37,13 @@ bool init_bl(const char* description){
   //free(&description);
   return true;
 }
+
+void load_signature(const char* signature){
+  std::stringstream sig;
+  sig << signature;
+  bl.loadSignature(sig.str());
+}
+
 
 void set_step(UINT step_number){
   bl.setStep(step_number);

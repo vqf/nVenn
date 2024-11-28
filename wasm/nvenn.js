@@ -1245,11 +1245,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5268800,
+    STACK_BASE = 5268880,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 25920,
-    DYNAMIC_BASE = 5268800,
-    DYNAMICTOP_PTR = 25904;
+    STACK_MAX = 26000,
+    DYNAMIC_BASE = 5268880,
+    DYNAMICTOP_PTR = 25984;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1770,7 +1770,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 24896;
+// STATICTOP = STATIC_BASE + 24976;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4542,7 +4542,7 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 25904;
+      return 25984;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -5179,6 +5179,9 @@ var _return_true = Module["_return_true"] = createExportWrapper("return_true");
 
 /** @type {function(...*):?} */
 var _init_bl = Module["_init_bl"] = createExportWrapper("init_bl");
+
+/** @type {function(...*):?} */
+var _load_signature = Module["_load_signature"] = createExportWrapper("load_signature");
 
 /** @type {function(...*):?} */
 var _set_step = Module["_set_step"] = createExportWrapper("set_step");
