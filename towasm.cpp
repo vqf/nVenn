@@ -17,18 +17,18 @@ extern "C" {
  void set_step(UINT step_number);
  void set_cycle(UINT step_number);
  bool finished(UINT step_number);
- bool return_true();
  bool error();
  const char* errorMsg();
  bool draw();
  void load_signature(const char* signature);
+ void rotate_venn(float angle);
  const char* svg();
 }
 
-bool return_true(){
-  return true;
-}
 
+void rotate_venn(float angle){
+  bl.rotateScene(angle);
+}
 
 bool init_bl(const char* description){
   std::stringstream info;
@@ -41,7 +41,12 @@ bool init_bl(const char* description){
 void load_signature(const char* signature){
   std::stringstream sig;
   sig << signature;
+  std::string desc = buildTw(signature);
+  std::stringstream in;
+  in << desc;
+  bl = getInfoFromStream(in);
   bl.loadSignature(sig.str());
+
 }
 
 

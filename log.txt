@@ -78,11 +78,3 @@ Next candidate: 2
 Outcount: 10
 Next candidate: 4
 Outcount: 11
-Distance is zero: X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: -730.944	Fy: 6843.39	Flags: 64
-X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: -730.944	Fy: 6843.39	Flags: 64
-X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Distance is zero: X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 21.7555, Y: 18.6724	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64

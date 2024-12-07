@@ -69,7 +69,13 @@ int main(int argc, char** argv)
       outputFile = "result.svg";
     }
     lines = getFileInfo(fname, outputFile);
-    lines.showInfo();
+    //lines.showInfo();
+    //std::string sigt = "1295570370;6;iba;ic;ida;iea;iss;nas;0;7;10;0;287;1;49;0;20;0;3;0;16;0;2;0;2;0;0;0;2;0;0;0;0;0;1;0;0;0;0;0;39;0;0;0;39;0;4;0;0;0;0;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;";
+    //std::string cv = buildTw(sigt);
+    //std::stringstream vv;
+    //vv << cv;
+    //lines = getInfoFromStream(vv);
+
     //lines.interpolate(50);
     lines.simulate();
     //mymap.textOut();
@@ -77,10 +83,10 @@ int main(int argc, char** argv)
     //result.open("result.ps");
     //result.write(psfile.getText().c_str(), psfile.getText().size());
     //result.close();
-    svgfile = lines.toSVG();
-    result.open(outputFile.c_str());
-    result.write(svgfile.getText().c_str(), svgfile.getText().size());
-    result.close();
+    lines.writeSVG();
+    //lines.centerScene();
+    lines.rotateScene(10);
+    lines.writeSVG("delme.svg");
 
     return 0;
 }

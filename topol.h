@@ -38,17 +38,121 @@
 
 #define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
 
+template <typename T> void printVector(std::vector<T> v) {
+  for (UINT i = 0; i < v.size(); i++) {
+    std::cout << i << " - " << v[i] << std::endl;
+  }
+}
 
-
-UINT setFlag(UINT flag, UINT mask){
-  UINT result = flag | mask;
+std::vector<std::string> split(std::string s, const char d) {
+  std::vector<std::string> result;
+  result.clear();
+  UINT cpos = 0;
+  UINT nxt = s.find(d) + 1;
+  while (nxt > cpos && nxt <= s.size()) {
+    std::string r = s.substr(cpos, nxt - cpos - 1);
+    result.push_back(r);
+    cpos = nxt;
+    nxt = s.find(d, cpos) + 1;
+  }
+  if (cpos < s.size()){
+    std::string r = s.substr(cpos, s.size() - nxt);
+    result.push_back(r);
+  }
   return result;
 }
 
-UINT unsetFlag(UINT flag, UINT mask){
-  UINT result = flag & (~mask);
+std::string cleanString(std::string input){
+  std::string result = "";
+  for (std::basic_string<char>::const_iterator it = input.cbegin();
+       it != input.cend(); it++) {
+    UINT c = *it;
+    if ((c > 0x28) && (c != 0x3B) &&
+        (c != 0x40) && (c != 0x60)) {
+      result += *it;
+    }
+    else{
+      result += "_";
+    }
+  }
   return result;
 }
+
+std::string exchangeChar(std::string input, const char from, const char to){
+  std::string result = "";
+  for (std::basic_string<char>::const_iterator it = input.cbegin();
+       it != input.cend(); it++) {
+    UINT c = *it;
+    if (c == from) {
+      result += to;
+    }
+    else{
+      result += *it;
+    }
+  }
+  return result;
+}
+
+/** \brief Eliminates characters that cannot belong to a number.
+ *         In this version, eliminates any letter, except for e and E.
+ * \param input std::string
+ * \return std::string
+ *
+ */
+std::string purgeLetters(std::string input) {
+  std::string result = "";
+  for (std::basic_string<char>::const_iterator it = input.cbegin();
+       it != input.cend(); it++) {
+    UINT c = *it;
+    if ((c > 43 && c < 65) || c == 101 || c == 69) {
+      result += *it;
+    }
+  }
+  return result;
+}
+
+std::string getFile(std::string prompt, std::string errorPrompt)
+{
+    std::string fname;
+    std::cout << prompt << std::endl;
+    std::cin >> fname;
+    std::ifstream isfile;
+    isfile.open(fname.c_str());
+    if (!isfile.is_open())
+    {
+        isfile.close();
+        std::cout << errorPrompt << std::endl;
+        fname = getFile(prompt, errorPrompt);
+    }
+    isfile.close();
+    return fname;
+}
+
+class splitString{
+  UINT counter;
+  std::vector<std::string> v;
+public:
+  splitString(std::string input = "", const char sep = ';'){
+    v = split(input, sep);
+    counter = 0;
+  }
+  std::string next(){
+    std::string result = "";
+    if (finished()){
+      return result;
+    }
+    result = v[counter];
+    counter++;
+    return result;
+  }
+  bool finished(){
+    bool result = false;
+    if (counter >= v.size()){
+      result = true;
+    }
+    return result;
+  }
+};
 
 template<typename T>
 std::string join(std::string interm, std::vector<T> arr) {
@@ -62,6 +166,51 @@ std::string join(std::string interm, std::vector<T> arr) {
   r << arr[arr.size() - 1];
   return r.str();
 }
+
+std::string buildTw(std::string signat){
+  std::string r;
+  std::vector<std::string> rgroups;
+  splitString nums(signat, ';');
+  std::string nxt;
+  nxt = purgeLetters(nums.next());
+  UINT seed = atoi(nxt.c_str());
+  r += "nVenn\n";
+  nxt = purgeLetters(nums.next());
+  UINT ng = atoi(nxt.c_str());
+  if (ng > 0){
+    r += toString(ng) + "\n";
+    for (UINT j = 0; j < ng; j++){
+      nxt = nums.next();
+      rgroups.push_back(nxt);
+      //bl.push_back({});
+    }
+    r += join("\n", rgroups);
+    r += "0\n";
+    std::vector<float> tw;
+    while (!nums.finished()){
+      nxt = purgeLetters(nums.next());
+      float n = stof(nxt);
+      tw.push_back(n);
+    }
+    r += join("\n", tw);
+  }
+  return r;
+}
+
+
+
+
+UINT setFlag(UINT flag, UINT mask){
+  UINT result = flag | mask;
+  return result;
+}
+
+UINT unsetFlag(UINT flag, UINT mask){
+  UINT result = flag & (~mask);
+  return result;
+}
+
+
 
 //--------------------------------------------
 void printv(std::vector<UINT> v)
@@ -281,81 +430,6 @@ typedef struct blData{
 
 class borderLine;
 
-class circleIterator {
-  UINT current;
-  UINT first;
-  UINT sze;
-  UINT mask;
-  bool finishedCycle;
-  std::vector<point> circles;
-
-  void setval(UINT v){
-    UINT sanity = v;
-    if (v < sze && circles[v].radius > 0){
-      current = v;
-    }
-    else{
-      current = v + 1;
-      if (v >= sze){
-        v = 0;
-      }
-      while (circles[v].radius == 0 && !finishedCycle){
-        v++;
-        if (v >= sze){
-          v = 0;
-        }
-        if (v == sanity){
-          finishedCycle = true;
-        }
-        current = v;
-        //std::cout << circles[v].n << std::endl;
-      }
-    }
-  }
-
-public:
-  circleIterator(){}
-  circleIterator(std::vector<point> circs, UINT npoints, UINT starting = 0) {
-    circles = circs;
-    sze = npoints;
-    finishedCycle= false;
-    setval(starting);
-    first = current;
-  }
-  /*~groupIterator(){
-    tolog(toString(__LINE__) + "\n" + "Called destructor\n");
-  }*/
-  UINT val() {
-    setval(current);
-    return current;
-  }
-
-  void reset(UINT from = 0){
-    setval(from);
-    finishedCycle = false;
-  }
-
-  bool isFinished(){
-    return finishedCycle;
-  }
-
-  UINT nxt() {
-    if (finishedCycle){
-      std::cout << "Nxt past finished in circleIterator\n";
-      tolog("Nxt past finished in circleIterator\n");
-      //error = true;
-      //errorMessage = "Nxt past finished in circleIterator\n";
-    }
-    current++;
-    setval(current);
-    if (current == first){
-      current = 0;
-      finishedCycle = true;
-      return current;
-    }
-    return current;
-  }
-};
 
 
 class groupIterator{
@@ -1165,89 +1239,7 @@ public:
 
 };
 
-template <typename T> void printVector(std::vector<T> v) {
-  for (UINT i = 0; i < v.size(); i++) {
-    std::cout << i << " - " << v[i] << std::endl;
-  }
-}
 
-std::vector<std::string> split(std::string s, const char d) {
-  std::vector<std::string> result;
-  result.clear();
-  UINT cpos = 0;
-  UINT nxt = s.find(d) + 1;
-  while (nxt > cpos && nxt <= s.size()) {
-    std::string r = s.substr(cpos, nxt - cpos - 1);
-    result.push_back(r);
-    cpos = nxt;
-    nxt = s.find(d, cpos) + 1;
-  }
-  if (cpos < s.size()){
-    std::string r = s.substr(cpos, s.size() - nxt);
-    result.push_back(r);
-  }
-  return result;
-}
-
-std::string cleanString(std::string input){
-  std::string result = "";
-  for (std::basic_string<char>::const_iterator it = input.cbegin();
-       it != input.cend(); it++) {
-    UINT c = *it;
-    if ((c > 0x28) && (c != 0x3B) &&
-        (c != 0x40) && (c != 0x60)) {
-      result += *it;
-    }
-    else{
-      result += "_";
-    }
-  }
-  return result;
-}
-
-/** \brief Eliminates characters that cannot belong to a number.
- *         In this version, eliminates any letter, except for e and E.
- * \param input std::string
- * \return std::string
- *
- */
-std::string purgeLetters(std::string input) {
-  std::string result = "";
-  for (std::basic_string<char>::const_iterator it = input.cbegin();
-       it != input.cend(); it++) {
-    UINT c = *it;
-    if ((c > 43 && c < 65) || c == 101 || c == 69) {
-      result += *it;
-    }
-  }
-  return result;
-}
-
-class splitString{
-  UINT counter;
-  std::vector<std::string> v;
-public:
-  splitString(std::string input = "", const char sep = ';'){
-    v = split(input, sep);
-    counter = 0;
-  }
-  std::string next(){
-    std::string result = "";
-    if (finished()){
-      return result;
-    }
-    result = v[counter];
-    counter++;
-    return result;
-  }
-  bool finished(){
-    bool result = false;
-    if (counter >= v.size()){
-      result = true;
-    }
-    return result;
-  }
-};
 
 class binMap
 {
@@ -1602,7 +1594,7 @@ class borderLine
     UINT ngroups;
     UINT startPerim;
     float minCircRadius; /**< Minimum circ radius, to calc nPointsMin */
-    float maxRadius;   /**< Radius of the largest circlese */
+    float maxRadius;   /**< Radius of the largest circle */
     UINT nPointsMin;  /**< Minimum number of points per line */
     float avgStartDist; /**< Average distance between points at start */
     float potential; /**< Potential energy, some parameter to minimize */
@@ -1727,6 +1719,7 @@ class borderLine
 
       //init time parameters
       udt.init();
+      evaluation.init();
       evaluation.setConstants(100, 50);
       int arr[] = {
         0xE6194B,
@@ -3371,6 +3364,7 @@ class borderLine
       }
       else{
         UINT candidate = opt->getCandidate();
+        displayUINT("CANDIDATE", candidate);
         if (candidate > 0){
           UINT i = opt->getCounter();
           if (i != candidate && circles[i].radius > 0){
@@ -4298,10 +4292,10 @@ class borderLine
               internalScale.addToScale(circles[i]);
           }
         }
-        displayFloat("MAXLINEV", log(maxLineVsq));
-        displayFloat("MINRAT", minRat);
+        //displayFloat("MAXLINEV", log(maxLineVsq));
+        //displayFloat("MINRAT", minRat);
         displayFloat("MAXCIRCLEV", std::log10(maxCircleVsq));
-        displayFloat("SURFRATIO", estSurf());
+        //displayFloat("SURFRATIO", estSurf());
     }
 
     float estSurf(int nPoints = 100){
@@ -4832,6 +4826,55 @@ public:
       tosolve.setGravityPartitions(gp);
     }
 
+    void centerScene(){
+      float xmax = internalScale.maxX();
+      float xmin = internalScale.minX();
+      float ymax = internalScale.maxY();
+      float ymin = internalScale.minY();
+      float deltax = (xmax + xmin) / 2;
+      float deltay = (ymax + ymin) / 2;
+      for (UINT i = 0; i < bl.size(); i++){
+        for (UINT j = 0; j < bl[i].size(); j++){
+          bl[i][j].x -= deltax;
+          bl[i][j].y -= deltay;
+          internalScale.addToScale(bl[i][j]);
+        }
+      }
+      for (UINT i = 0; i < circles.size(); i++){
+        if (circles[i].radius > 0){
+          circles[i].x -= deltax;
+          circles[i].y -= deltay;
+          internalScale.addToScale(circles[i]);
+        }
+      }
+      resetScale();
+    }
+
+    void rotateScene(float alpha){
+      centerScene();
+      float cosa = std::cos(alpha);
+      float sina = std::sin(alpha);
+      std::vector<std::vector<point>> newbl;
+      std::vector<point> newcirc;
+      for (UINT i = 0; i < bl.size(); i++){
+        newbl.push_back({});
+        for (UINT j = 0; j < bl[i].size(); j++){
+          point t;
+          t.x =  cosa * bl[i][j].x + sina * (bl[i][j].y);
+          t.y = -sina * bl[i][j].x + cosa * (bl[i][j].y);
+          newbl[i].push_back(t);
+        }
+      }
+      for (UINT i = 0; i < circles.size(); i++){
+        point t = circles[i];
+        t.x =  cosa * circles[i].x + sina * (circles[i].y);
+        t.y = -sina * circles[i].x + cosa * (circles[i].y);
+        newcirc.push_back(t);
+      }
+      bl = newbl;
+      circles = newcirc;
+      resetScale();
+    }
 
     void attachScene(){
       float springK = scConstants.K;
@@ -5793,29 +5836,19 @@ public:
       std::stringstream result;
       result << seed << ";";
       result << ngroups << ";";
-      result << internalScale.minX() << ";";
-      result << internalScale.minY() << ";";
-      result << internalScale.maxX() << ";";
-      result << internalScale.maxY() << ";";
       for (UINT i = 0; i < groups.size(); i++){
         result << groups[i] << ";";
       }
+      std::vector<float> origs;
+      origs.assign((1 << ngroups), 0);
       for (UINT j = 0; j < circles.size(); j++){
-        float nx = std::round(circles[j].x);
-        float ny = std::round(circles[j].y);
-        std::stringstream stx;
-        stx << nx;
-        std::stringstream sty;
-        sty << ny;
-        circles[j].x = stof(stx.str());
-        circles[j].y = stof(sty.str());
-        result << circles[j].n << ";" << circles[j].orig << ";";
-        result << circles[j].radius << ";";
-        result << nx << ";" << ny    << ";";
+        UINT n = circles[j].n;
+        origs[n] = circles[j].orig;
       }
-      std::string r;
-      result >> r;
-      return r;
+      for (UINT i = 0; i < origs.size(); i++){
+        result << origs[i] << ";";
+      }
+      return result.str();
     }
 
     void setError(std::string msg){
@@ -5828,25 +5861,16 @@ public:
       circles.clear();
       circRadii.clear();
       fromSignature = true;
-      std::vector<point> pts;
       std::vector<std::string> rgroups;
       std::vector<std::string> tl;
       splitString nums(sig, ';');
       std::string nxt;
       nxt = purgeLetters(nums.next());
       seed = atoi(nxt.c_str());
-      return;
       nxt = purgeLetters(nums.next());
       UINT ng = atoi(nxt.c_str());
       if (ng > 0){
-        nxt = purgeLetters(nums.next());
-        float minx = stof(nxt);
-        nxt = purgeLetters(nums.next());
-        float miny = stof(nxt);
-        nxt = purgeLetters(nums.next());
-        float maxx = stof(nxt);
-        nxt = purgeLetters(nums.next());
-        float maxy = stof(nxt);
+        tl.assign((1 << ng), "");
         for (UINT j = 0; j < ng; j++){
           nxt = nums.next();
           rgroups.push_back(nxt);
@@ -5854,51 +5878,12 @@ public:
         }
         if (nums.finished()) setError("Incorrect input at middle");
         std::vector<float> tw;
-        tw.assign((1 << ng), 0);
         while (!nums.finished()){
           nxt = purgeLetters(nums.next());
-          UINT n = (UINT) atoi(nxt.c_str());
-          nxt = purgeLetters(nums.next());
-          float w = stof(nxt);
-          nxt = purgeLetters(nums.next());
-          float r = stof(nxt);
-          nxt = purgeLetters(nums.next());
-          float x = stof(nxt);
-          nxt = purgeLetters(nums.next());
-          if (nums.finished()) setError("Incorrect input at end");
-          float y = stof(nxt);
-          point p;
-          p.n = n;
-          p.radius = r;
-          p.orig = w;
-          p.x = x;
-          p.y = y;
-          pts.push_back(p);
-          if (n >= tw.size()){
-            setError("Incorrect input: " + toString(n) + " outside values (" + toString(tw.size()) + ")");
-            return;
-          }
-          tw[n] = w;
-          tl.push_back("");
+          float n = stof(nxt);
+          tw.push_back(n);
         }
         init(rgroups, tw, tl);
-        internalScale.setMinX(minx);
-        internalScale.setMinY(miny);
-        internalScale.setMaxX(maxx);
-        internalScale.setMaxY(maxy);
-        UINT served = 0;
-        for (UINT i = 0; i < pts.size(); i++){
-          UINT n = pts[i].n;
-          for (UINT j = 0; j < circles.size(); j++){
-            if (circles[j].n == n){
-              circles[j].x = pts[i].x;
-              circles[j].y = pts[i].y;
-              circles[j].radius = pts[i].radius;
-              circles[j].orig = pts[i].orig;
-              served++;
-            }
-          }
-        }
       }
       else{
         setError("Incorrect input\n");
@@ -6160,7 +6145,6 @@ public:
 
     bool simulate(int maxRel = 0){
       restart_log();
-      loadSignature((std::string) "4;-24;-3;60;54;S_salivarius;Other;GAS;GCS/GGS;0;0;0;-15.6;22.2;1;2;0.632456;34.8;5.4;3;0;0;-15.6;55.8;7;0;0;1.2;5.4;15;0;0;51.6;39;2;12;0.755929;-15.6;5.4;6;6;0.632456;18;39;14;1;0.632456;1.2;22.2;10;11;0.723747;34.8;39;4;28;1.1547;51.6;22.2;5;7;0.632456;-15.6;39;13;2;0.632456;18;5.4;12;16;0.872872;34.8;22.2;8;84;2;51.6;5.4;9;15;0.845154;18;22.2;11;0;0;1.2;39;");
       for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
         std::cout << "Step " << step << std::endl;
@@ -6168,6 +6152,10 @@ public:
         if (!success) return false;
         while (!bQuit){
           setCycle(step);
+          if (err()){
+            std::cout << errorMessage << std::endl;
+            bQuit = true;
+          }
           if (refreshScreen.isMax()) writeSVG();
           if (isStepFinished(step)){
             bQuit = true;
@@ -6179,32 +6167,17 @@ public:
 
 };
 
-std::string getFile(std::string prompt, std::string errorPrompt)
-{
-    std::string fname;
-    std::cout << prompt << std::endl;
-    std::cin >> fname;
-    std::ifstream isfile;
-    isfile.open(fname.c_str());
-    if (!isfile.is_open())
-    {
-        isfile.close();
-        std::cout << errorPrompt << std::endl;
-        fname = getFile(prompt, errorPrompt);
-    }
-    isfile.close();
-    return fname;
-}
-
-
-
-
-borderLine getInfoFromStream(std::stringstream& vFile, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
+borderLine getInfoFromStream(std::stringstream& vFile, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
   std::string header;
   std::vector<std::string> groupNames;
   std::vector<int> temp;
   std::vector<float> weights;
   std::vector<std::string> labels;
+  if (lineSep > 0x00){
+    std::string s = exchangeChar(vFile.str(), lineSep, '\n');
+    vFile.clear();
+    vFile << s;
+  }
   getline(vFile, header);
   //std::cout << header << std::endl;
   getline(vFile, header);
@@ -6251,7 +6224,7 @@ borderLine getInfoFromStream(std::stringstream& vFile, std::string fname = "nven
     return lines;
   }
   else{
-    borderLine l({}, {}, {});
+    borderLine l({"one"}, {0, 1}, {"", ""});
     l.setError("Malformed input string. No more than 100 groups are allowed");
     return l;
   }
@@ -6263,7 +6236,7 @@ borderLine getFileInfo(std::string fname, std::string outputFile){
     vFile.open(fname.c_str());
     std::stringstream content;
     content << vFile.rdbuf();
-    borderLine lines = getInfoFromStream(content, fname, outputFile);
+    borderLine lines = getInfoFromStream(content, 0x00, fname, outputFile);
 
     vFile.close();
     std::string dataFile = outputFile + ".data";
@@ -6276,7 +6249,6 @@ borderLine getFileInfo(std::string fname, std::string outputFile){
 
     return lines;
 }
-
 
 
 
