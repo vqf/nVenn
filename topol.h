@@ -975,6 +975,16 @@ public:
       Y = std::max(p1.y, p2.y);
     }
 
+    void setScale(scale tocopy){
+      point p1;
+      p1.x = tocopy.minX();
+      p1.y = tocopy.minY();
+      point p2;
+      p2.x = tocopy.maxX();
+      p2.y = tocopy.maxY();
+      scale(p1, p2);
+    }
+
     point place(scale s, point m){
       point r;
       scale tempScale;
@@ -1611,6 +1621,7 @@ class borderLine
     std::vector<std::string> svgcolors;
     std::vector<point> warn;
     scale internalScale;
+    scale limits;
     scale svgScale;
     int totalExpectedSurface;
     std::vector<std::string> dataDisplay;
@@ -2744,6 +2755,7 @@ class borderLine
       }
       return result;
     }
+
 
 
     /** \brief Adds group lines
@@ -4704,6 +4716,7 @@ public:
     {
         fromSignature = false;
         init(g, tw, tlabels, inputFile, outputFile);
+        limits.setClear(true);
 
         /*writeSVG()*/
     }

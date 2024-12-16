@@ -118,7 +118,7 @@
 	"graphics.h"
 	"initogl.h"
 
-1733571195 d:\proyectos\nvenn2\gh\topol.h
+1734090544 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -152,7 +152,7 @@
 
 1732272293 d:\proyectos\nvenn2\gh\initogl.h
 
-1732275672 d:\proyectos\nvenn2\gh\scene.h
+1734090524 d:\proyectos\nvenn2\gh\scene.h
 	<vector>
 	<fstream>
 	<sstream>
