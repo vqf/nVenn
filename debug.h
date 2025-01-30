@@ -37,7 +37,7 @@ void restart_log(){
   dlme.close();
 }
 
-void tolog(std::string t){
+void tologa(std::string t){
   std::ofstream f;
   f.open("log.txt", std::ios_base::app);
   f.write(t.c_str(), t.size());

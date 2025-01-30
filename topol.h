@@ -22,21 +22,7 @@
 #define AIR 2    // polish and embellish multiply maxRad() by this factor
 
 // Flags for points
-#define IS_OUTSIDE        0x01  // The circle is in an incorrect space. Set to 0x01 to highlight
-#define DO_NOT_EMBELLISH  0X02  // The point has already been corrected
-#define ANCHORED          0x04  // The point will not move
-#define USED              0x08  // The point has been used in a procedure. Remember to reset at the end
-#define DELME             0x10  // The point will be deleted
 
-#ifndef INGRAVID
-#define INGRAVID          0x20
-#endif // INGRAVID
-
-#ifndef GHOST
-#define GHOST             0x40  // Two points with this bit set will not receive cushion
-#endif // GHOST
-
-#define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
 
 template <typename T> void printVector(std::vector<T> v) {
   for (UINT i = 0; i < v.size(); i++) {
@@ -199,16 +185,6 @@ std::string buildTw(std::string signat){
 
 
 
-
-UINT setFlag(UINT flag, UINT mask){
-  UINT result = flag | mask;
-  return result;
-}
-
-UINT unsetFlag(UINT flag, UINT mask){
-  UINT result = flag & (~mask);
-  return result;
-}
 
 
 
@@ -1448,13 +1424,15 @@ class decider{
   float bestCompactness;
   UINT nAvg;
   UINT counter;
+  UINT ncycles;
+  UINT mincycles;
   float totalCompactness;
   float lastCompactness;
   float bestUntie;
   float wRoom;
   bool keep;
 public:
-  void setConstants(UINT numberForAverage, UINT numberForStability, float wiggleRoom = 1){
+  void setConstants(UINT numberForAverage, UINT numberForStability, float wiggleRoom = 1, UINT minNumberOfCycles = 0){
     finish = false;
     canFinish = false;
     cyclesWithoutImprovement = 0;
@@ -1465,6 +1443,7 @@ public:
     first = true;
     keep = false;
     wRoom = wiggleRoom;
+    mincycles = minNumberOfCycles;
   }
   void init(){
     finish = false;
@@ -1472,6 +1451,7 @@ public:
     first = true;
     cyclesWithoutImprovement = 0;
     counter = 0;
+    ncycles = 0;
     totalCompactness = 0;
     lastCompactness = 0;
   }
@@ -1486,6 +1466,7 @@ public:
   }
   void add(float comp){
     keep = false;
+    ncycles++;
     if (first){
       first = false;
       counter++;
@@ -1513,7 +1494,7 @@ public:
       counter++;
       if (counter > nAvg){
         float newAvg = totalCompactness / ((float)(nAvg));
-        if (newAvg > (lastCompactness / wRoom)){
+        if (newAvg > (lastCompactness / wRoom) && ncycles > mincycles){
           canFinish = true;
         }
         counter = 1;
@@ -1574,8 +1555,11 @@ class borderLine
     binMap* bm;
     scene tosolve;
     float wmax;
+    float cushion; /* Distance between lines */
     bool error;
     bool fromSignature;
+    bool resetV;
+    float lastV;
     UINT seed;
     std::string errorMessage;
     std::string signature;
@@ -1669,6 +1653,8 @@ class borderLine
       origw.clear();
       circRadii.clear();
       error = false;
+      resetV = false;
+      cushion = 0.02;
       errorMessage = "";
       groups = g;
       currentStep = attract;
@@ -2741,17 +2727,12 @@ class borderLine
     }
 
     float getEmbellishDist(float rf = 0.2){
-      float result = rf;
-      float minRat = 0.02 * internalScale.minSpan();
-      float minc = minCircRadius;
-      point t; t.radius = minCircRadius; t.x = 0; t.y = 0;
-      point test = place(internalScale, t);
-      float rat = test.radius / minRat;
-      if (rat < 1){
-        minc = minCircRadius / rat;
-      }
-      if ((minc) > result){
-        result = minc;
+      float mc = correctedMinCircRadius();
+      float result = rf * minCircRadius * 2;
+      float minRat = rf * mc * 2;
+      if (result < minRat){
+        result = minRat;
+        tolog("Mc: " + toString(mc) + ", minc: " + toString(minCircRadius) + ", result: " + toString(result) + "\n");
       }
       return result;
     }
@@ -3589,6 +3570,26 @@ class borderLine
       deciderCounter = 0;
       keepDistCounter = 0;
       blSettings.ncycles = ncyles_old10;
+    }
+
+    bool sensible(){
+      bool result = true;
+      float minext = cushion * ngroups;
+      for (UINT i = 0; i < (circles.size() - 1); i++){
+        if (circles[i].radius > 0){
+          for (UINT j = (i+1); j < circles.size(); j++){
+            if (circles[j].radius > 0){
+              float r0 = circles[i].radius;
+              float r1 = circles[j].radius;
+              float rd = distance(circles[i].x, circles[i].y, circles[j].x, circles[j].y);
+              if (rd < (r0 + r1 + minext)){
+                result = false;
+              }
+            }
+          }
+        }
+      }
+      return result;
     }
 
     void contact2(point &p0, point &p1){
@@ -4734,11 +4735,8 @@ public:
       float result = minCircRadius;
       float minCoord = internalScale.minSpan();
       minRat = 0.02 * minCoord;
-      point t; t.radius = minCircRadius; t.x = 0; t.y = 0;
-      point test = place(internalScale, t);
-      float rat = test.radius / minRat;
-      if (rat < 1){
-        result = minCircRadius / rat;
+      if (result < minRat){
+        result = minRat;
       }
       return result;
     }
@@ -4893,10 +4891,10 @@ public:
       float springK = scConstants.K;
       UINT cnt = 0;
       tosolve.clearScene();
+      tosolve.setRodStiffness(1e5);
       sceneTranslator.clear();
       pairDistances.clear();
       UINT level = 1;
-      float cushion = 0.02;
       for (UINT i = 0; i < bl.size(); i++){
         UINT lp = cnt;
         for (UINT j = 0; j < bl[i].size(); j++){
@@ -4968,7 +4966,7 @@ public:
       attachScene();
     }
     void scSolve(){
-      blSettings.dt = tosolve.solve(blSettings.dt);
+      blSettings.dt = tosolve.solve(blSettings.dt, resetV);
       bool incorrect = checkTopol();
       while (incorrect){
         restorePrevState();
@@ -4983,7 +4981,7 @@ public:
         }
         blSettings.dt = udt.cdt();
         //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
-        tosolve.solve(blSettings.dt);
+        tosolve.solve(blSettings.dt, resetV);
         incorrect = checkTopol();
       }
       if (blCounter == 0){
@@ -5016,7 +5014,7 @@ public:
       displayFloat("EVALUATE", d);
       displayFloat("LASTEVALUATE", evaluation.viewLastComp());
       if (blSettings.optimize){
-        if (evaluation.keepState()){
+        if (evaluation.keepState() && sensible()){
           setBestSoFar();
         }
       }
@@ -5960,6 +5958,7 @@ public:
         signature = getSignature();
         //
         refreshScreen.setLimits(1,1);
+        resetV = false;
         setCheckTopol(false);
       }
       else if (stepNumber == disperse){
@@ -6009,10 +6008,10 @@ public:
         }
         resetTimer();
         attachScene();
-        scFriction(25);
+        scFriction(100);
         scD(1e2);
         scG(1e-1);
-        scSpringK(5e3);
+        scSpringK(1e4);
         scGhostGrav(false);
         getBestSoFar();
       }
@@ -6021,9 +6020,10 @@ public:
         resetOptimize();
         evaluation.init();
         evaluation.setConstants(10, 50);
-        float d = getEmbellishDist(3);
+        float d = getEmbellishDist(2);
         interpolateToDist(d);
-        scSpringK(1e2);
+        setGravityPartitions();
+        scSpringK(1e4);
         scFriction(1000);
         scG(1e-1);
         scD(1e2);
@@ -6031,21 +6031,29 @@ public:
         getBestSoFar();
       }
       else if (stepNumber == embellishLines){
+        if (checkTopol() == true){
+          restorePrevState();
+        }
+        resetTimer();
+        resetOptimize();
+        evaluation.init();
+        evaluation.setConstants(10, 0, 1.01, 30);
         startRefiningSteps();
         resetTimer();
         float d = getEmbellishDist(0.2);
         interpolateToDist(d);
         setGravityPartitions();
-        evaluation.init();
-        evaluation.setConstants(10, 0, 1.0005);
         this->currentMeasure = &borderLine::getArea;
-        scG(5e-2);
-        scD(1000);
-        scSpringK(1e4);
-        scFriction(100);
+        resetV = true;
+        scG(2e-1);
+        scD(50);
+        scSpringK(1e5);
+        scFriction(500);
         oc.maxOutCount = 70;
         oc.outCount = 0;
         oc.optVal = 0;
+        setPrevState();
+        setSecureState();
       }
       else{
         result = false;

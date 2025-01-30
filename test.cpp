@@ -36,10 +36,10 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
   scale ogl;
   ogl.initScale();
   std::vector<point*> circles = s.getPoints();
-  sc.setClear();
-  for (UINT i = 0; i < circles.size(); i++){
-    sc.addToScale(*(circles[i]));
-  }
+  //sc.setClear();
+  //for (UINT i = 0; i < circles.size(); i++){
+  //  sc.addToScale(*(circles[i]));
+  //}
   s.addInfo("HX: ", sc.xSpan());
   std::vector<point> v = s.getVirtual();
   std::vector<std::string> w = s.getInfo();
@@ -73,7 +73,7 @@ void OGLShow(scene s, scale sc, HDC hDC, float dt){
       float dy = a->y + a->fy * 1e-2;
       point t; t.x = dx; t.y = dy;
       point a2 = sc.place(ogl, t);
-      addLine(att, a2, {1, 0, 0});
+      addLine(att, a2, {1, 1, 0});
     }
   }
   glColor3f(0.0f, 0.0f, 1.0f);
@@ -164,42 +164,45 @@ WinMain (HINSTANCE hInstance,
     std::uniform_real_distribution<> dis(-1.0, 1.0);*/
 
     scene univ;
+    univ.setRodStiffness(1e3);
     univ.setFriction(0);
-    univ.setG(5e-3);
-    UINT np = 10;
-    UINT nr = 5;
-    float r = 0.3;
-    float d = 1;
-    UINT counter = 0;
-    for (UINT j = 0; j < nr; j++){
-      for (UINT i = 0; i < np; i++){
-        point t;
-        t.x = i + 0.1*std::sin(i); t.y = j + 0.1*std::cos(j); t.radius = r;
-        if (counter < 11){
-          counter++;
-          t.flags = setFlag(t.flags, ANCHORED);
-        }
-        univ.addPoint(t);
-      }
+    univ.setDown(5e-0);
+    point p; p.x = 0; p.y = 0; p.radius = 0.5;
+    p.flags = setFlag(p.flags, ANCHORED);
+    univ.addPoint(p);
+    p.x = 2;
+    p.y = -2;
+    p.flags = unsetFlag(p.flags, ANCHORED);
+    //p.vx = 1;
+    univ.addPoint(p);
+    univ.addRod(0, 1);
+    p.x = -5;
+    univ.addPoint(p);
+    univ.addLink(1, 2, 100, 1);
+    /*float sep = 0.5;
+    float r = sep / 5;
+    float psep = 0;
+    point p; p.mass = 5; p.radius = r;
+    p.x = -4; p.y = 4;
+    p.flags = setFlag(p.flags, ANCHORED);
+    univ.addPoint(p);
+    p.flags = unsetFlag(p.flags, ANCHORED);
+    UINT lst = 15;
+    for (UINT i = 1; i < lst; i++){
+      p.x += sep;
+      univ.addPoint(p);
+      univ.addLink(i-1, i, 100, psep);
     }
-    for (UINT j = 0; j < nr; j++){
-      for (UINT i = 1; i < np; i++){
-        UINT f = j * np + i - 1;
-        UINT t = j * np + i;
-        univ.addLink(f, t, 1000, d);
-      }
-    }
-    for (UINT j = 0; j < np; j++){
-      for (UINT i = 1; i < nr; i++){
-        UINT f = (j-1) * np + i;
-        UINT t = j * np + i;
-        univ.addLink(f, t, 1000, d);
-      }
-    }
-
+    p.x += sep; //p.y += 1;
+    p.flags = setFlag(p.flags, ANCHORED);
+    univ.addPoint(p);
+    univ.addLink(lst-1, lst, 100, psep);
+    point q; q.x = 1; q.y = 6; q.radius = 1; q.mass = 5;
+    univ.addPoint(q);
     //univ.addRod(0, ncirc >> 1, 2);
     //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
-    scale scscale(point(0, 0), point(30, 30));
+    */
+    scale scscale(point(-10, -10), point(10, 10));
 
     //tolog(univ.croack());
 

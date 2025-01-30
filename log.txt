@@ -1,1 +1,137 @@
-Next candidate: 30
+Line 3350 - Next candidate: 47
+Line 3377 - Swapping 7 with 63 -> 513.312
+Line 3377 - Swapping 8 with 63 -> 511.692
+Line 3377 - Swapping 9 with 63 -> 510.964
+Line 3370 - Undo on checkTopol
+Line 3377 - Swapping 21 with 63 -> 508.449
+Line 3370 - Undo on checkTopol
+Line 3350 - Next candidate: 44
+Line 3377 - Swapping 7 with 31 -> 507.896
+Line 3377 - Swapping 12 with 31 -> 506.785
+Line 3377 - Swapping 13 with 31 -> 504.559
+Line 3377 - Swapping 32 with 31 -> 502.299
+Line 3377 - Swapping 39 with 31 -> 500.369
+Line 3377 - Swapping 63 with 31 -> 499.927
+Line 3350 - Next candidate: 38
+Line 6090 - Outcount: 1
+Line 3350 - Next candidate: 26
+Line 6090 - Outcount: 2
+Line 3350 - Next candidate: 14
+Line 3377 - Swapping 28 with 9 -> 499.763
+Line 3377 - Swapping 32 with 9 -> 497.936
+Line 3370 - Undo on checkTopol
+Line 3350 - Next candidate: 36
+Line 3377 - Swapping 39 with 36 -> 497.859
+Line 3350 - Next candidate: 10
+Line 6090 - Outcount: 1
+Line 3350 - Next candidate: 12
+Line 3377 - Swapping 21 with 28 -> 497.739
+Line 3377 - Swapping 31 with 28 -> 496.057
+Line 3377 - Swapping 63 with 28 -> 495.772
+Line 3350 - Next candidate: 5
+Line 3377 - Swapping 8 with 24 -> 495.143
+Line 3377 - Swapping 23 with 24 -> 493.448
+Line 3350 - Next candidate: 20
+Line 6090 - Outcount: 1
+Line 3350 - Next candidate: 6
+Line 6090 - Outcount: 2
+Line 3350 - Next candidate: 32
+Line 3377 - Swapping 28 with 59 -> 492.309
+Line 3377 - Swapping 36 with 59 -> 489.295
+Line 3350 - Next candidate: 8
+Line 3377 - Swapping 28 with 39 -> 488.956
+Line 3350 - Next candidate: 1
+Line 6090 - Outcount: 1
+Line 3350 - Next candidate: 16
+Line 6090 - Outcount: 2
+Line 3350 - Next candidate: 2
+Line 3370 - Undo on checkTopol
+Line 6090 - Outcount: 3
+Line 3350 - Next candidate: 4
+Line 6090 - Outcount: 4
+Line 3350 - Next candidate: 0
+Line 6090 - Outcount: 5
+Line 3350 - Next candidate: 47
+Line 3370 - Undo on checkTopol
+Line 3377 - Swapping 21 with 63 -> 488.839
+Line 3350 - Next candidate: 44
+Line 6090 - Outcount: 1
+Line 3350 - Next candidate: 38
+Line 6090 - Outcount: 2
+Line 3350 - Next candidate: 26
+Line 6090 - Outcount: 3
+Line 3350 - Next candidate: 14
+Line 6090 - Outcount: 4
+Line 3350 - Next candidate: 12
+Line 6090 - Outcount: 5
+Line 3350 - Next candidate: 36
+Line 6090 - Outcount: 6
+Line 3350 - Next candidate: 10
+Line 6090 - Outcount: 7
+Line 3350 - Next candidate: 5
+Line 6090 - Outcount: 8
+Line 3350 - Next candidate: 6
+Line 6090 - Outcount: 9
+Line 3350 - Next candidate: 20
+Line 6090 - Outcount: 10
+Line 3350 - Next candidate: 32
+Line 6090 - Outcount: 11
+Line 3350 - Next candidate: 1
+Line 6106 - Outcount: 1
+Line 3350 - Next candidate: 2
+Line 3377 - Swapping 13 with 7 -> 11
+Line 3350 - Next candidate: 4
+Line 3382 - Prev untie: 490.792, new untie: 491.754
+Line 3386 - Did not swap on untie
+Line 6106 - Outcount: 1
+Line 3350 - Next candidate: 8
+Line 6106 - Outcount: 2
+Line 3350 - Next candidate: 16
+Line 6106 - Outcount: 3
+Line 3350 - Next candidate: 32
+Line 3382 - Prev untie: 490.792, new untie: 493.548
+Line 3386 - Did not swap on untie
+Line 6106 - Outcount: 4
+Line 3350 - Next candidate: 6
+Line 3382 - Prev untie: 490.792, new untie: 491.754
+Line 3386 - Did not swap on untie
+Line 6106 - Outcount: 5
+Line 3350 - Next candidate: 10
+Line 6106 - Outcount: 6
+Line 3350 - Next candidate: 5
+Line 6106 - Outcount: 7
+Line 3350 - Next candidate: 12
+Line 3377 - Swapping 31 with 28 -> 9
+Line 3350 - Next candidate: 20
+Line 6106 - Outcount: 1
+Line 3350 - Next candidate: 36
+Line 3377 - Swapping 21 with 36 -> 8
+Line 3350 - Next candidate: 14
+Line 6106 - Outcount: 1
+Line 3350 - Next candidate: 26
+Line 3370 - Undo on checkTopol
+Line 6106 - Outcount: 2
+Line 3350 - Next candidate: 38
+Line 3382 - Prev untie: 492.677, new untie: 492.592
+Line 6106 - Outcount: 3
+Line 3350 - Next candidate: 44
+Line 6106 - Outcount: 4
+Line 3350 - Next candidate: 47
+Line 3370 - Undo on checkTopol
+Line 3382 - Prev untie: 492.592, new untie: 492.677
+Line 3386 - Did not swap on untie
+Line 6106 - Outcount: 5
+Line 3350 - Next candidate: 0
+Line 6106 - Outcount: 6
+Line 3350 - Next candidate: 1
+Line 6106 - Outcount: 7
+Line 3350 - Next candidate: 2
+Line 6106 - Outcount: 8
+Line 3350 - Next candidate: 4
+Line 3382 - Prev untie: 492.592, new untie: 493.553
+Line 3386 - Did not swap on untie
+Line 6106 - Outcount: 9
+Line 3350 - Next candidate: 8
+Line 6106 - Outcount: 10
+Line 3350 - Next candidate: 16
+Line 6106 - Outcount: 11

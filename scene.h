@@ -11,10 +11,23 @@
 
 #define CIRCLE_MASS 100.0f
 #define POINT_MASS 20
+#define IS_OUTSIDE        0x01  // The circle is in an incorrect space. Set to 0x01 to highlight
+#define DO_NOT_EMBELLISH  0X02  // The point has already been corrected
+#define ANCHORED          0x04  // The point will not move
+#define USED              0x08  // The point has been used in a procedure. Remember to reset at the end
+#define DELME             0x10  // The point will be deleted
 
-#define INGRAVID 0x20
-#define GHOST    0x40  // Only interact gravitationally if one of them is not ghost
-#define ANCHORED 0x04
+#ifndef INGRAVID
+#define INGRAVID          0x20
+#endif // INGRAVID
+
+#ifndef GHOST
+#define GHOST             0x40  // Two points with this bit set will not receive cushion
+#endif // GHOST
+
+#define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
+
+#define tolog(a) tologa(_L_ + a)
 
 typedef unsigned int UINT;
 
@@ -39,6 +52,18 @@ float distance(float x0, float y0, float x1, float y1)
     result = std::sqrt(rx + ry);
     return result;
 }
+
+UINT setFlag(UINT flag, UINT mask){
+  UINT result = flag | mask;
+  return result;
+}
+
+UINT unsetFlag(UINT flag, UINT mask){
+  UINT result = flag & (~mask);
+  return result;
+}
+
+
 
 
 class point
@@ -147,6 +172,7 @@ class scene{
 
   std::vector<point*> points;
   std::vector<point> shadowPoints;
+  std::vector<float (*)(point*, point*)> otherForces;
   std::vector<std::vector<point>> gcopies;
   std::vector<point> virtualPoints;
   std::vector<springLink> springs;
@@ -168,6 +194,7 @@ class scene{
   float maxvsq;
   float damp; // Spring damping constant
   float G; // Gravity constant
+  float g; // gravity accel. Incompatible with G
   bool ghostGrav; // Do Particles with rad==0 feel gravity?
   bool pseudoGravity; // Pseudo-grav is a 1/d force
   bool dump;
@@ -178,6 +205,17 @@ class scene{
       p->fx = 0;
       p->fy = 0;
     }
+  }
+  void clearVelocities(){
+    for (UINT i = 0; i < points.size(); i++){
+      point *p = points[i];
+      p->vx = 0;
+      p->vy = 0;
+    }
+  }
+
+  void downForce(point *p0){
+    p0->fy -= g * p0->mass;
   }
 
   void gforce(point *p0, point *p1){
@@ -208,8 +246,17 @@ class scene{
     }
   }
 
+  void effectOther(){
+
+  }
+
   void effectGravity(){
-    if (G != 0){
+    if (g != 0){
+      for (UINT i = 0; i < points.size(); i++){
+        if ((points[i]->flags & ANCHORED) == 0) downForce(points[i]);
+      }
+    }
+    else if (G != 0){
       if (gpartitions.size() > 0){
         for (UINT i = 0; i < gpartitions.size(); i++){
           UINT f = gpartitions[i][0];
@@ -277,30 +324,75 @@ class scene{
       }
     }
   }
-  void rod(point *p0, point *p1, float eqd, int neg = 1){
+  void rodback(point *p0, point *p1, float eqd, int neg = 1){
     point result;
     float springK = rodStiffness;
+    float springD = 0;
     float dx = p1->x - p0->x;
     float dy = p1->y - p0->y;
     float dsq = dx * dx + dy * dy;
     float d = sqrt(dsq);
-    if (d != 0){
+    if (dsq != 0){
       float f01 = (p0->fx * dx + p0->fy * dy) / dsq;
       float f10 = (p1->fx * dx + p1->fy * dy) / dsq;
-      p0->fx -= f01 * dx;
-      p1->fx -= f10 * dx;
-      p0->fy -= f01 * dy;
-      p1->fy -= f10 * dy;
+      /*if ((p0->flags & ANCHORED) > 0){
+        f10 *= 2;
+      }
+      if ((p1->flags & ANCHORED) > 0){
+        f01 *= 2;
+      }*/
+      //tolog(p0->croack() + p1->croack() + "F01: " + toString(f01) + ", F10: " + toString(f10) +
+        //    ", dx: " + toString(dx) + ", dy: " + toString(dy) + "\n"); exit(0);
+      p0->fx += (f10 - f01) * dx;
+      p1->fx += (f01 - f10) * dx;
+      p0->fy += (f10 - f01) * dy;
+      p1->fy += (f01 - f10) * dy;
+      float v01 = (p0->vx * dx + p0->vy * dy) / dsq;
+      float v10 = (p1->vx * dx + p1->vy * dy) / dsq;
+      //tolog(p0->croack() + p1->croack() + "F01: " + toString(f01) + ", F10: " + toString(f10) +
+        //    ", dx: " + toString(dx) + ", dy: " + toString(dy) + "\n");
+     /* if ((p0->flags & USED) == 0){
+        p0->vx += (v10 - v01) * dx;
+        p1->vx += (v01 - v10) * dx;
+        p0->vy += (v10 - v01) * dy;
+        p1->vy += (v01 - v10) * dy;
+      }*/
+      //tolog(p0->croack() + p1->croack() + "F01: " + toString(f01) + ", F10: " + toString(f10) +
+      //      ", dx: " + toString(dx) + ", dy: " + toString(dy) + "\n");
       // Adjust with a spring
+
+
       float eqx = eqd * dx / d;
       float eqy = eqd * dy / d;
       result.fx = springK * (dx - eqx);
       result.fy = springK * (dy - eqy);
-      p0->fx += neg * result.fx;
-      p1->fx -= neg * result.fx;
-      p0->fy += neg * result.fy;
-      p1->fy -= neg * result.fy;
+      float vt = v01 + v10;
+      p0->fx += neg * result.fx - springD * vt * dx;
+      p1->fx -= neg * result.fx - springD * vt * dy;
+      p0->fy += neg * result.fy + springD * vt * dx;
+      p1->fy -= neg * result.fy + springD * vt * dy;
     }
+  }
+
+  void rod(point *p0, point *p1, float eqd, int neg = 1){
+    point result;
+    float springK = rodStiffness;
+    float springD = 1e2;
+    float dx = p1->x - p0->x;
+    float dy = p1->y - p0->y;
+    float dsq = dx * dx + dy * dy;
+    float d = sqrt(dsq);
+    float eqx = eqd * dx / d;
+    float eqy = eqd * dy / d;
+    result.fx = springK * (dx - eqx);
+    result.fy = springK * (dy - eqy);
+    float v01 = (p0->vx * dx + p0->vy * dy) / dsq;
+    float v10 = (p1->vx * dx + p1->vy * dy) / dsq;
+    float vt = v01 + v10;
+    p0->fx += neg * result.fx - springD * vt * dx;
+    p1->fx -= neg * result.fx - springD * vt * dy;
+    p0->fy += neg * result.fy + springD * vt * dx;
+    p1->fy -= neg * result.fy + springD * vt * dy;
   }
 
   void effectRods(){
@@ -404,11 +496,13 @@ class scene{
     }
   }
 
-  void isContact(point *p0, point *p1, float cushion = 0){
+  bool isContact(point *p0, point *p1, float cushion = 0){
+    bool result = false;
     if (p0->radius > 0 || p1->radius > 0){
+      float elastic = 0;
       float r = p0->radius + p1->radius + cushion;
       if (r == 0){
-        return;
+        return false;
       }
       float rsq = r * r;
       float dx = p1->x - p0->x;
@@ -419,19 +513,33 @@ class scene{
         float fx = p0->fx - p1->fx;
         float fy = p0->fy - p1->fy;
         float scprod = fx * dx + fy * dy;
-        if (scprod > 0){
+        float vx = p0->vx - p1->vx;
+        float vy = p0->vy - p1->vy;
+        float svprod = vx * dx + vy * dy;
+        if (scprod >= 0 || svprod >= 0){
           rod(p0, p1, r);
-          //float vx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
-          //float vy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
-          //p0->vx = vx; p0->vy = vy;
-          //p1->vx = vx; p1->vy = vy;
+          result = true;
+          /*float elvx0 = (p1->mass * p1->vx) / p0->mass;
+          float elvx1 = (p0->mass * p0->vx) / p1->mass;
+          float elvy0 = (p1->mass * p1->vy) / p0->mass;
+          float elvy1 = (p0->mass * p0->vy) / p1->mass;
+          float inelvx = (p0->mass * p0->vx + p1->mass * p1->vx) / (p0->mass + p1->mass);
+          float inelvy = (p0->mass * p0->vy + p1->mass * p1->vy) / (p0->mass + p1->mass);
+          float vx0 = elastic * elvx0 + (1 - elastic) * inelvx;
+          float vx1 = elastic * elvx1 + (1 - elastic) * inelvx;
+          float vy0 = elastic * elvy0 + (1 - elastic) * inelvy;
+          float vy1 = elastic * elvy1 + (1 - elastic) * inelvy;
+          p0->vx = vx0; p0->vy = vy0;
+          p1->vx = vx1; p1->vy = vy1;*/
         }
       }
     }
+    return result;
   }
 
 
-  void icontacts(){
+  UINT icontacts(){
+    UINT result = 0;
     // First pass
     for (UINT i = 0; i < (points.size()-1); i++){
       point *p0 = points[i];
@@ -470,7 +578,10 @@ class scene{
       for (UINT j = i + 1; j < points.size(); j++){
         point *p1 = points[j];
         if (p0->radius != 0 || p1->radius != 0){
-          isContact(p0, p1, cushion);
+          bool c = isContact(p0, p1, cushion);
+          if (c){
+            result++;
+          }
         }
       }
     }
@@ -502,9 +613,11 @@ class scene{
         }
       }
     }
+    result += virtualPoints.size();
     if (virtualPoints.size() > 0 && !dump){
       virtualPoints.clear();
     }
+    return result;
   }
   void update(float cdt){
     float b = friction;
@@ -543,6 +656,7 @@ class scene{
           maxvsq = vsq;
         }
       }
+
     }
     addInfo("FSQ: ", fsq);
     addInfo("NETVX: ", netvx);
@@ -551,6 +665,7 @@ class scene{
   }
 public:
   scene(){
+    otherForces.clear();
     clearScene();
     dump = false;
     pseudoGravity = false;
@@ -559,10 +674,11 @@ public:
     simtime = 0;
     defaultK = 100;
     G = 0;
+    g = 0;
     friction = 0.0f;
     maxAllowedForce = 1e5;
     maxAllowedVel = 5e1;
-    rodStiffness = 1e5;
+    rodStiffness = 1e4;
     damp = 0;
     maxK = defaultK;
     dt = 1e-2;
@@ -602,6 +718,9 @@ public:
   }
   void setG(float gravity = 0){
     G = gravity;
+  }
+  void setDown(float gaccel = 0){
+    g = gaccel;
   }
   void setSpringK(float k = 1e3){
     defaultK = k;
@@ -772,6 +891,11 @@ public:
     }
     return result;
   }
+
+  void setRodStiffness(float stf = 1e4){
+    rodStiffness = stf;
+  }
+
   bool addRod(UINT from, UINT to, float d = 0){
     bool result = false;
     if (from != to &&
@@ -801,23 +925,24 @@ public:
   std::vector<springLink> getRods(){
     return rods;
   }
-  float solve(float cdt = 0){
+  float solve(float cdt = 0, bool resetVel = false){
     if (cdt == 0){
       cdt = dt;
     }
     clearForces();
     effectSprings();
-    effectRods();
     effectGravity();
-    icontacts();
+    effectRods();
+    UINT cts = icontacts();
     maxdsq = 0;
     maxfsq = 0;
     maxvsq = 0;
+    update(cdt);
+    if (resetVel){
+      clearVelocities();
+    }
     for (UINT i = 0; i < points.size(); i++){
-      float fx = points[i]->fx;
-      float fy = points[i]->fy;
-      float vx = points[i]->vx;
-      float vy = points[i]->vy;
+      points[i]->flags = setFlag(points[i]->flags, USED);
     }
     //tolog(toString(maxfsq) + "\t" + toString(maxvsq) + "\n");
     //if ((maxfsq > maxAllowedForce * (points.size())) || (maxvsq > maxAllowedVel)){
@@ -826,16 +951,25 @@ public:
 //    else{
 //      defaultK = maxK * points.size();
 //    }
-    update(cdt);
+    UINT ncont = 1;
     for (UINT i = 0; i < 10; i++){
+    //while (cts > 0 && ncont < 10){
       clearForces();
-      icontacts();
+      cts = icontacts();
       update(cdt);
+      if (resetVel){
+        clearVelocities();
+      }
+      ncont++;
+    }
+    for (UINT i = 0; i < points.size(); i++){
+      points[i]->flags = unsetFlag(points[i]->flags, USED);
     }
     addInfo("DT: ", cdt);
+    addInfo("NC: ", ncont);
     simtime += cdt;
     addInfo("ST: ", simtime);
-    addInfo("MV: ", getMaxVsq());
+    //addInfo("MV: ", getMaxVsq());
     return cdt;
   }
   float simTime(){
