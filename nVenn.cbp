@@ -69,6 +69,11 @@
 			<Option target="plain" />
 			<Option target="test" />
 		</Unit>
+		<Unit filename="elements.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="towasm" />
+		</Unit>
 		<Unit filename="graphics.h">
 			<Option target="default" />
 		</Unit>
