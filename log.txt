@@ -13,9 +13,9 @@ Line 3251 - Swapping 32 with 31 -> 502.299
 Line 3251 - Swapping 39 with 31 -> 500.369
 Line 3251 - Swapping 63 with 31 -> 499.927
 Line 3224 - Next candidate: 38
-Line 5964 - Outcount: 1
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 26
-Line 5964 - Outcount: 2
+Line 5966 - Outcount: 2
 Line 3224 - Next candidate: 14
 Line 3251 - Swapping 28 with 9 -> 499.763
 Line 3251 - Swapping 32 with 9 -> 497.936
@@ -23,7 +23,7 @@ Line 3244 - Undo on checkTopol
 Line 3224 - Next candidate: 36
 Line 3251 - Swapping 39 with 36 -> 497.859
 Line 3224 - Next candidate: 10
-Line 5964 - Outcount: 1
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 12
 Line 3251 - Swapping 21 with 28 -> 497.739
 Line 3251 - Swapping 31 with 28 -> 496.057
@@ -32,106 +32,106 @@ Line 3224 - Next candidate: 5
 Line 3251 - Swapping 8 with 24 -> 495.143
 Line 3251 - Swapping 23 with 24 -> 493.448
 Line 3224 - Next candidate: 20
-Line 5964 - Outcount: 1
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 6
-Line 5964 - Outcount: 2
+Line 5966 - Outcount: 2
 Line 3224 - Next candidate: 32
 Line 3251 - Swapping 28 with 59 -> 492.309
 Line 3251 - Swapping 36 with 59 -> 489.295
 Line 3224 - Next candidate: 8
 Line 3251 - Swapping 28 with 39 -> 488.956
 Line 3224 - Next candidate: 1
-Line 5964 - Outcount: 1
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 16
-Line 5964 - Outcount: 2
+Line 5966 - Outcount: 2
 Line 3224 - Next candidate: 2
 Line 3244 - Undo on checkTopol
-Line 5964 - Outcount: 3
+Line 5966 - Outcount: 3
 Line 3224 - Next candidate: 4
-Line 5964 - Outcount: 4
+Line 5966 - Outcount: 4
 Line 3224 - Next candidate: 0
-Line 5964 - Outcount: 5
+Line 5966 - Outcount: 5
 Line 3224 - Next candidate: 47
 Line 3244 - Undo on checkTopol
 Line 3251 - Swapping 21 with 63 -> 488.839
 Line 3224 - Next candidate: 44
-Line 5964 - Outcount: 1
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 38
-Line 5964 - Outcount: 2
+Line 5966 - Outcount: 2
 Line 3224 - Next candidate: 26
-Line 5964 - Outcount: 3
+Line 5966 - Outcount: 3
 Line 3224 - Next candidate: 14
-Line 5964 - Outcount: 4
+Line 5966 - Outcount: 4
 Line 3224 - Next candidate: 12
-Line 5964 - Outcount: 5
+Line 5966 - Outcount: 5
 Line 3224 - Next candidate: 36
-Line 5964 - Outcount: 6
+Line 5966 - Outcount: 6
 Line 3224 - Next candidate: 10
-Line 5964 - Outcount: 7
+Line 5966 - Outcount: 7
 Line 3224 - Next candidate: 5
-Line 5964 - Outcount: 8
+Line 5966 - Outcount: 8
 Line 3224 - Next candidate: 6
-Line 5964 - Outcount: 9
+Line 5966 - Outcount: 9
 Line 3224 - Next candidate: 20
-Line 5964 - Outcount: 10
+Line 5966 - Outcount: 10
 Line 3224 - Next candidate: 32
-Line 5964 - Outcount: 11
+Line 5966 - Outcount: 11
 Line 3224 - Next candidate: 1
-Line 5980 - Outcount: 1
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 2
 Line 3251 - Swapping 13 with 7 -> 11
 Line 3224 - Next candidate: 4
 Line 3256 - Prev untie: 490.792, new untie: 491.754
 Line 3260 - Did not swap on untie
-Line 5980 - Outcount: 1
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 8
-Line 5980 - Outcount: 2
+Line 5982 - Outcount: 2
 Line 3224 - Next candidate: 16
-Line 5980 - Outcount: 3
+Line 5982 - Outcount: 3
 Line 3224 - Next candidate: 32
 Line 3256 - Prev untie: 490.792, new untie: 493.548
 Line 3260 - Did not swap on untie
-Line 5980 - Outcount: 4
+Line 5982 - Outcount: 4
 Line 3224 - Next candidate: 6
 Line 3256 - Prev untie: 490.792, new untie: 491.754
 Line 3260 - Did not swap on untie
-Line 5980 - Outcount: 5
+Line 5982 - Outcount: 5
 Line 3224 - Next candidate: 10
-Line 5980 - Outcount: 6
+Line 5982 - Outcount: 6
 Line 3224 - Next candidate: 5
-Line 5980 - Outcount: 7
+Line 5982 - Outcount: 7
 Line 3224 - Next candidate: 12
 Line 3251 - Swapping 31 with 28 -> 9
 Line 3224 - Next candidate: 20
-Line 5980 - Outcount: 1
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 36
 Line 3251 - Swapping 21 with 36 -> 8
 Line 3224 - Next candidate: 14
-Line 5980 - Outcount: 1
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 26
 Line 3244 - Undo on checkTopol
-Line 5980 - Outcount: 2
+Line 5982 - Outcount: 2
 Line 3224 - Next candidate: 38
 Line 3256 - Prev untie: 492.677, new untie: 492.592
-Line 5980 - Outcount: 3
+Line 5982 - Outcount: 3
 Line 3224 - Next candidate: 44
-Line 5980 - Outcount: 4
+Line 5982 - Outcount: 4
 Line 3224 - Next candidate: 47
 Line 3244 - Undo on checkTopol
 Line 3256 - Prev untie: 492.592, new untie: 492.677
 Line 3260 - Did not swap on untie
-Line 5980 - Outcount: 5
+Line 5982 - Outcount: 5
 Line 3224 - Next candidate: 0
-Line 5980 - Outcount: 6
+Line 5982 - Outcount: 6
 Line 3224 - Next candidate: 1
-Line 5980 - Outcount: 7
+Line 5982 - Outcount: 7
 Line 3224 - Next candidate: 2
-Line 5980 - Outcount: 8
+Line 5982 - Outcount: 8
 Line 3224 - Next candidate: 4
 Line 3256 - Prev untie: 492.592, new untie: 493.553
 Line 3260 - Did not swap on untie
-Line 5980 - Outcount: 9
+Line 5982 - Outcount: 9
 Line 3224 - Next candidate: 8
-Line 5980 - Outcount: 10
+Line 5982 - Outcount: 10
 Line 3224 - Next candidate: 16
-Line 5980 - Outcount: 11
+Line 5982 - Outcount: 11

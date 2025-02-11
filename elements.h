@@ -2,6 +2,13 @@
 #define ELEMENTS_H_INCLUDED
 
 #include <unordered_set>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <string>
+
+typedef unsigned int UINT;
 
 typedef enum{unset, t, f} colInfo;
 
@@ -169,8 +176,9 @@ typedef struct nvset{
 } vset;
 
 class nvenn{
+  std::vector<std::vector<std::string>> cells;
   std::vector<vset> sets;
-
+  std::stringstream warnings;
 public:
   nvenn(){}
   nvenn(std::string desc){
@@ -183,7 +191,27 @@ public:
     if (sep == 0x00){
       separator = getSep(desc);
     }
+    warnings << "Separator: " << (UINT) separator << std::endl;
     std::vector<std::string> lines = split(desc, '\n');
+    for (UINT i = 0; i < lines.size(); i++){
+      cells.push_back({});
+      cells[i].clear();
+      std::vector<std::string> cols = split(lines[i], separator);
+      for (UINT j = 0; j < cols.size(); j++){
+        cells[i].push_back(cols[j]);
+      }
+    }
+  }
+  std::string getInfo(){
+    return warnings.str();
+  }
+  void showCells(){
+    for (UINT i = 0; i < cells.size(); i++){
+      std::cout << "Row " << i + 1 << std::endl;
+      for (UINT j = 0; j < cells[i].size(); j++){
+        std::cout << "\tColumn " << j + 1 << ": " << cells[i][j] << std::endl;
+      }
+    }
   }
 };
 

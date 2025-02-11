@@ -5865,6 +5865,8 @@ public:
         resetOptimize();
         fixTopology();
         setCheckTopol(true);
+        evaluation.init();
+        evaluation.setConstants(50, 50);
         if (checkTopol() == false){
           interpolateToDist(2 * minCircDist());
           setPrevState();

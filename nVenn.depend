@@ -118,7 +118,7 @@
 	"graphics.h"
 	"initogl.h"
 
-1738604892 d:\proyectos\nvenn2\gh\topol.h
+1739206691 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -170,6 +170,15 @@
 	"topol.h"
 	<iostream>
 
-1738860966 d:\proyectos\nvenn2\gh\elements.h
+1739293618 d:\proyectos\nvenn2\gh\elements.h
 	<unordered_set>
+	<iostream>
+	<vector>
+	<fstream>
+	<sstream>
+	<string>
+
+1739293587 source:d:\proyectos\nvenn2\gh\testinput.cpp
+	<iostream>
+	"../gh/elements.h"
 
