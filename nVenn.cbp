@@ -56,6 +56,11 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 			</Target>
+			<Target title="test_input">
+				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -73,6 +78,7 @@
 			<Option target="default" />
 			<Option target="plain" />
 			<Option target="towasm" />
+			<Option target="test_input" />
 		</Unit>
 		<Unit filename="graphics.h">
 			<Option target="default" />
@@ -84,11 +90,24 @@
 			<Option target="default" />
 			<Option target="plain" />
 		</Unit>
-		<Unit filename="scene.h" />
+		<Unit filename="scene.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="test" />
+			<Option target="towasm" />
+		</Unit>
 		<Unit filename="test.cpp">
 			<Option target="test" />
 		</Unit>
-		<Unit filename="topol.h" />
+		<Unit filename="testinput.cpp">
+			<Option target="test_input" />
+		</Unit>
+		<Unit filename="topol.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="test" />
+			<Option target="towasm" />
+		</Unit>
 		<Unit filename="towasm.cpp">
 			<Option target="towasm" />
 		</Unit>

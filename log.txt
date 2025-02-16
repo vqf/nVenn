@@ -1,137 +1,162 @@
-Line 3224 - Next candidate: 47
-Line 3251 - Swapping 7 with 63 -> 513.312
-Line 3251 - Swapping 8 with 63 -> 511.692
-Line 3251 - Swapping 9 with 63 -> 510.964
-Line 3244 - Undo on checkTopol
-Line 3251 - Swapping 21 with 63 -> 508.449
-Line 3244 - Undo on checkTopol
-Line 3224 - Next candidate: 44
-Line 3251 - Swapping 7 with 31 -> 507.896
-Line 3251 - Swapping 12 with 31 -> 506.785
-Line 3251 - Swapping 13 with 31 -> 504.559
-Line 3251 - Swapping 32 with 31 -> 502.299
-Line 3251 - Swapping 39 with 31 -> 500.369
-Line 3251 - Swapping 63 with 31 -> 499.927
-Line 3224 - Next candidate: 38
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 26
-Line 5966 - Outcount: 2
-Line 3224 - Next candidate: 14
-Line 3251 - Swapping 28 with 9 -> 499.763
-Line 3251 - Swapping 32 with 9 -> 497.936
-Line 3244 - Undo on checkTopol
-Line 3224 - Next candidate: 36
-Line 3251 - Swapping 39 with 36 -> 497.859
-Line 3224 - Next candidate: 10
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 12
-Line 3251 - Swapping 21 with 28 -> 497.739
-Line 3251 - Swapping 31 with 28 -> 496.057
-Line 3251 - Swapping 63 with 28 -> 495.772
-Line 3224 - Next candidate: 5
-Line 3251 - Swapping 8 with 24 -> 495.143
-Line 3251 - Swapping 23 with 24 -> 493.448
-Line 3224 - Next candidate: 20
-Line 5966 - Outcount: 1
+Line 3224 - Next candidate: 39
+Line 3256 - Prev untie: 218, new untie: 275
+Line 3260 - Did not swap on untie
+Line 3251 - Swapping 8 with 62 -> 593.921
+Line 3251 - Swapping 24 with 62 -> 593.492
+Line 3251 - Swapping 40 with 62 -> 590.891
+Line 3251 - Swapping 45 with 62 -> 588.587
+Line 3224 - Next candidate: 57
+Line 3251 - Swapping 2 with 46 -> 584.443
+Line 3251 - Swapping 52 with 46 -> 584.127
+Line 3224 - Next candidate: 49
+Line 3251 - Swapping 2 with 57 -> 582.516
+Line 3251 - Swapping 23 with 57 -> 581.695
+Line 3251 - Swapping 24 with 57 -> 581.556
+Line 3251 - Swapping 37 with 57 -> 579.932
+Line 3251 - Swapping 40 with 57 -> 579.695
+Line 3251 - Swapping 45 with 57 -> 579.206
+Line 3251 - Swapping 52 with 57 -> 579.206
+Line 3251 - Swapping 60 with 57 -> 579.076
+Line 3224 - Next candidate: 7
+Line 3251 - Swapping 1 with 3 -> 577.951
+Line 3251 - Swapping 2 with 3 -> 577.674
+Line 3251 - Swapping 24 with 3 -> 576.083
+Line 3256 - Prev untie: 150, new untie: 30
+Line 3224 - Next candidate: 37
+Line 3251 - Swapping 2 with 37 -> 574.13
+Line 3251 - Swapping 7 with 37 -> 571.492
+Line 3256 - Prev untie: 58, new untie: 49
+Line 3251 - Swapping 62 with 37 -> 569.834
+Line 3224 - Next candidate: 25
+Line 3251 - Swapping 1 with 45 -> 569.819
+Line 3251 - Swapping 57 with 45 -> 569.497
+Line 3251 - Swapping 60 with 45 -> 568.977
+Line 3224 - Next candidate: 24
+Line 3251 - Swapping 24 with 44 -> 567.665
+Line 3251 - Swapping 39 with 44 -> 567.619
+Line 3251 - Swapping 57 with 44 -> 565.18
 Line 3224 - Next candidate: 6
-Line 5966 - Outcount: 2
-Line 3224 - Next candidate: 32
-Line 3251 - Swapping 28 with 59 -> 492.309
-Line 3251 - Swapping 36 with 59 -> 489.295
-Line 3224 - Next candidate: 8
-Line 3251 - Swapping 28 with 39 -> 488.956
-Line 3224 - Next candidate: 1
+Line 3251 - Swapping 7 with 8 -> 563.807
+Line 3251 - Swapping 23 with 8 -> 562.967
+Line 3224 - Next candidate: 33
 Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 16
-Line 5966 - Outcount: 2
-Line 3224 - Next candidate: 2
-Line 3244 - Undo on checkTopol
-Line 5966 - Outcount: 3
+Line 3224 - Next candidate: 5
+Line 3251 - Swapping 37 with 24 -> 562.967
+Line 3251 - Swapping 40 with 24 -> 559.343
+Line 3224 - Next candidate: 9
+Line 5966 - Outcount: 1
+Line 3224 - Next candidate: 17
+Line 3251 - Swapping 45 with 52 -> 557.222
+Line 3251 - Swapping 57 with 52 -> 557.222
+Line 3224 - Next candidate: 3
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 4
-Line 5966 - Outcount: 4
-Line 3224 - Next candidate: 0
-Line 5966 - Outcount: 5
-Line 3224 - Next candidate: 47
-Line 3244 - Undo on checkTopol
-Line 3251 - Swapping 21 with 63 -> 488.839
-Line 3224 - Next candidate: 44
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 38
 Line 5966 - Outcount: 2
-Line 3224 - Next candidate: 26
+Line 3224 - Next candidate: 8
 Line 5966 - Outcount: 3
-Line 3224 - Next candidate: 14
+Line 3224 - Next candidate: 2
 Line 5966 - Outcount: 4
-Line 3224 - Next candidate: 12
+Line 3224 - Next candidate: 16
 Line 5966 - Outcount: 5
-Line 3224 - Next candidate: 36
-Line 5966 - Outcount: 6
-Line 3224 - Next candidate: 10
-Line 5966 - Outcount: 7
-Line 3224 - Next candidate: 5
-Line 5966 - Outcount: 8
+Line 3224 - Next candidate: 1
+Line 3251 - Swapping 57 with 1 -> 556.597
+Line 3224 - Next candidate: 0
+Line 5966 - Outcount: 1
+Line 3224 - Next candidate: 39
+Line 3251 - Swapping 3 with 62 -> 556.597
+Line 3224 - Next candidate: 57
+Line 3251 - Swapping 57 with 46 -> 556.395
+Line 3224 - Next candidate: 37
+Line 3251 - Swapping 24 with 37 -> 556.395
+Line 3224 - Next candidate: 7
+Line 5966 - Outcount: 1
+Line 3224 - Next candidate: 49
+Line 5966 - Outcount: 2
+Line 3224 - Next candidate: 25
+Line 5966 - Outcount: 3
 Line 3224 - Next candidate: 6
+Line 5966 - Outcount: 4
+Line 3224 - Next candidate: 33
+Line 5966 - Outcount: 5
+Line 3224 - Next candidate: 5
+Line 5966 - Outcount: 6
+Line 3224 - Next candidate: 24
+Line 5966 - Outcount: 7
+Line 3224 - Next candidate: 9
+Line 5966 - Outcount: 8
+Line 3224 - Next candidate: 17
 Line 5966 - Outcount: 9
-Line 3224 - Next candidate: 20
+Line 3224 - Next candidate: 3
 Line 5966 - Outcount: 10
-Line 3224 - Next candidate: 32
+Line 3224 - Next candidate: 4
 Line 5966 - Outcount: 11
 Line 3224 - Next candidate: 1
-Line 5982 - Outcount: 1
+Line 3251 - Swapping 37 with 1 -> 14
+Line 3251 - Swapping 62 with 1 -> 10
 Line 3224 - Next candidate: 2
-Line 3251 - Swapping 13 with 7 -> 11
+Line 3251 - Swapping 1 with 7 -> 9
 Line 3224 - Next candidate: 4
-Line 3256 - Prev untie: 490.792, new untie: 491.754
-Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 8
 Line 5982 - Outcount: 2
 Line 3224 - Next candidate: 16
-Line 5982 - Outcount: 3
-Line 3224 - Next candidate: 32
-Line 3256 - Prev untie: 490.792, new untie: 493.548
-Line 3260 - Did not swap on untie
-Line 5982 - Outcount: 4
+Line 3251 - Swapping 44 with 51 -> 8
+Line 3224 - Next candidate: 3
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 6
-Line 3256 - Prev untie: 490.792, new untie: 491.754
-Line 3260 - Did not swap on untie
-Line 5982 - Outcount: 5
-Line 3224 - Next candidate: 10
-Line 5982 - Outcount: 6
-Line 3224 - Next candidate: 5
-Line 5982 - Outcount: 7
-Line 3224 - Next candidate: 12
-Line 3251 - Swapping 31 with 28 -> 9
-Line 3224 - Next candidate: 20
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 36
-Line 3251 - Swapping 21 with 36 -> 8
-Line 3224 - Next candidate: 14
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 26
-Line 3244 - Undo on checkTopol
 Line 5982 - Outcount: 2
-Line 3224 - Next candidate: 38
-Line 3256 - Prev untie: 492.677, new untie: 492.592
+Line 3224 - Next candidate: 5
+Line 3251 - Swapping 62 with 24 -> 6
+Line 3224 - Next candidate: 9
+Line 5982 - Outcount: 1
+Line 3224 - Next candidate: 24
+Line 5982 - Outcount: 2
+Line 3224 - Next candidate: 17
+Line 3251 - Swapping 57 with 52 -> 5
+Line 3224 - Next candidate: 33
+Line 3256 - Prev untie: 567.521, new untie: 567.921
+Line 3260 - Did not swap on untie
+Line 5982 - Outcount: 1
+Line 3224 - Next candidate: 7
+Line 5982 - Outcount: 2
+Line 3224 - Next candidate: 37
+Line 3256 - Prev untie: 567.521, new untie: 567.921
+Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 3
-Line 3224 - Next candidate: 44
+Line 3224 - Next candidate: 25
+Line 3256 - Prev untie: 567.521, new untie: 567.521
 Line 5982 - Outcount: 4
-Line 3224 - Next candidate: 47
-Line 3244 - Undo on checkTopol
-Line 3256 - Prev untie: 492.592, new untie: 492.677
-Line 3260 - Did not swap on untie
+Line 3224 - Next candidate: 49
 Line 5982 - Outcount: 5
-Line 3224 - Next candidate: 0
-Line 5982 - Outcount: 6
-Line 3224 - Next candidate: 1
-Line 5982 - Outcount: 7
-Line 3224 - Next candidate: 2
-Line 5982 - Outcount: 8
-Line 3224 - Next candidate: 4
-Line 3256 - Prev untie: 492.592, new untie: 493.553
+Line 3224 - Next candidate: 57
+Line 3256 - Prev untie: 567.521, new untie: 567.521
 Line 3260 - Did not swap on untie
+Line 5982 - Outcount: 6
+Line 3224 - Next candidate: 39
+Line 5982 - Outcount: 7
+Line 3224 - Next candidate: 0
+Line 5982 - Outcount: 8
+Line 3224 - Next candidate: 1
 Line 5982 - Outcount: 9
-Line 3224 - Next candidate: 8
+Line 3224 - Next candidate: 2
 Line 5982 - Outcount: 10
-Line 3224 - Next candidate: 16
+Line 3224 - Next candidate: 4
 Line 5982 - Outcount: 11
+Line 304 - Distance is zero: X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11684	Fy: 96340.9	Flags: 64
+X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7473.91	Fy: 10569.8	Flags: 64
+X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12102	Fy: -4595.95	Flags: 64
+X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11684	Fy: 96340.9	Flags: 64
+X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7473.91	Fy: 10569.8	Flags: 64
+X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12102	Fy: -4595.95	Flags: 64
+X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 2609 - Mc: 0.209575, minc: 0.0657241, result: 0.838301
+Line 2609 - Mc: 0.205224, minc: 0.0657241, result: 0.164179

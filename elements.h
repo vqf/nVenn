@@ -179,13 +179,28 @@ class nvenn{
   std::vector<std::vector<std::string>> cells;
   std::vector<vset> sets;
   std::stringstream warnings;
+
+
+  void transpose(){
+    std::vector<std::vector<std::string>> tcells;
+    for (UINT i = 0; i < cells[0].size(); i++){
+      tcells.push_back({});
+      tcells[i].clear();
+      for (UINT j = 0; j < cells.size(); j++){
+        if (i < cells[j].size()){
+          tcells[i].push_back(cells[j][i]);
+        }
+      }
+    }
+    cells = tcells;
+  }
+
 public:
   nvenn(){}
-  nvenn(std::string desc){
-    addInfo(desc);
+  nvenn(std::string desc, const char sep = 0x00, colInfo byCol = unset){
+    addInfo(desc, sep, byCol);
   }
-  void addInfo(std::string desc, const char sep = 0x00, colInfo = unset){
-    bool bycol = true;
+  void addInfo(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     desc = exchangeChar(desc, '\r', 0x00);
     char separator = sep;
     if (sep == 0x00){
@@ -200,6 +215,28 @@ public:
       for (UINT j = 0; j < cols.size(); j++){
         cells[i].push_back(cols[j]);
       }
+    }
+    if (byCol == f){
+      transpose();
+    }
+    for (UINT i = 0; i < cells.size(); i++){
+      vset st;
+      st.setName = cells[i][0];
+      for (UINT j = 1; j < cells[i].size(); j++){
+        if (cells[i][j] != ""){
+          st.setElements.insert(cells[i][j]);
+        }
+      }
+      sets.push_back(st);
+    }
+  }
+  void showSets(){
+    for (UINT i = 0; i < sets.size(); i++){
+      std::cout << "Set " << sets[i].setName << ": ";
+      for (const std::string& el : sets[i].setElements){
+        std::cout << el << ", ";
+      }
+      std::cout << std::endl;
     }
   }
   std::string getInfo(){
