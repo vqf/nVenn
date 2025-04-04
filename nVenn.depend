@@ -118,7 +118,7 @@
 	"graphics.h"
 	"initogl.h"
 
-1739206691 d:\proyectos\nvenn2\gh\topol.h
+1742399738 d:\proyectos\nvenn2\gh\topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -133,7 +133,7 @@
 	<string>
 	"debug.h"
 	"scene.h"
-	"elements.h"
+	"strFuncts.h"
 
 1732272267 d:\proyectos\nvenn2\gh\graphics.h
 	<gl/gl.h>
@@ -152,14 +152,14 @@
 
 1732272293 d:\proyectos\nvenn2\gh\initogl.h
 
-1738147638 d:\proyectos\nvenn2\gh\scene.h
+1738151238 d:\proyectos\nvenn2\gh\scene.h
 	<vector>
 	<fstream>
 	<sstream>
 	<cmath>
 	"debug.h"
 
-1737454954 d:\proyectos\nvenn2\gh\debug.h
+1737458554 d:\proyectos\nvenn2\gh\debug.h
 	<stdio.h>
 	<fstream>
 	<sstream>
@@ -170,15 +170,19 @@
 	"topol.h"
 	<iostream>
 
-1739383775 d:\proyectos\nvenn2\gh\elements.h
+1743608537 d:\proyectos\nvenn2\gh\elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
 	<fstream>
 	<sstream>
 	<string>
+	"strFuncts.h"
+	"topol.h"
 
-1739532631 source:d:\proyectos\nvenn2\gh\testinput.cpp
+1743608207 source:d:\proyectos\nvenn2\gh\testinput.cpp
 	<iostream>
 	"../gh/elements.h"
+
+1742401374 d:\proyectos\nvenn2\gh\strfuncts.h
 

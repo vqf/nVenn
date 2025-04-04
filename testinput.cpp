@@ -1,14 +1,18 @@
 #include <iostream>
 #include "../gh/elements.h"
 
-std::string inp = "a b c\nd e g\n  e  \n";
+std::string inp = "a b c\nd e g\n e \n";
+
+
+std::vector<std::string> setn = {"set1", "set2", "set3"};
+std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b", "c"}, {"a", "b", "d", "x"}};
 
 int main(){
-    std::cout << "yo\n";
-    nvenn yo(inp, ' ', f);
-    yo.showCells();
-    yo.showSets();
 
-    std::vector<std::string> g = split(" e", ' ');
-    std::cout << g.size() << std::endl;
+    nvenn yo;
+    for (UINT i = 0; i < setn.size(); i++){
+      yo.addSet(setn[i], setinp[i]);
+    }
+    std::cout << yo.getCode() << std::endl;
+
 }

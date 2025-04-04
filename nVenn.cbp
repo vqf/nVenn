@@ -96,6 +96,7 @@
 			<Option target="test" />
 			<Option target="towasm" />
 		</Unit>
+		<Unit filename="strFuncts.h" />
 		<Unit filename="test.cpp">
 			<Option target="test" />
 		</Unit>

@@ -1,162 +1,165 @@
-Line 3224 - Next candidate: 39
-Line 3256 - Prev untie: 218, new untie: 275
-Line 3260 - Did not swap on untie
-Line 3251 - Swapping 8 with 62 -> 593.921
-Line 3251 - Swapping 24 with 62 -> 593.492
-Line 3251 - Swapping 40 with 62 -> 590.891
-Line 3251 - Swapping 45 with 62 -> 588.587
-Line 3224 - Next candidate: 57
-Line 3251 - Swapping 2 with 46 -> 584.443
-Line 3251 - Swapping 52 with 46 -> 584.127
-Line 3224 - Next candidate: 49
-Line 3251 - Swapping 2 with 57 -> 582.516
-Line 3251 - Swapping 23 with 57 -> 581.695
-Line 3251 - Swapping 24 with 57 -> 581.556
-Line 3251 - Swapping 37 with 57 -> 579.932
-Line 3251 - Swapping 40 with 57 -> 579.695
-Line 3251 - Swapping 45 with 57 -> 579.206
-Line 3251 - Swapping 52 with 57 -> 579.206
-Line 3251 - Swapping 60 with 57 -> 579.076
-Line 3224 - Next candidate: 7
-Line 3251 - Swapping 1 with 3 -> 577.951
-Line 3251 - Swapping 2 with 3 -> 577.674
-Line 3251 - Swapping 24 with 3 -> 576.083
-Line 3256 - Prev untie: 150, new untie: 30
-Line 3224 - Next candidate: 37
-Line 3251 - Swapping 2 with 37 -> 574.13
-Line 3251 - Swapping 7 with 37 -> 571.492
-Line 3256 - Prev untie: 58, new untie: 49
-Line 3251 - Swapping 62 with 37 -> 569.834
+Line 3224 - Next candidate: 29
+Line 3251 - Swapping 14 with 17 -> 356.234
+Line 3251 - Swapping 15 with 17 -> 355.955
+Line 3251 - Swapping 23 with 17 -> 355.193
+Line 3251 - Swapping 27 with 17 -> 353.799
+Line 3224 - Next candidate: 22
+Line 3251 - Swapping 6 with 13 -> 350.368
+Line 3251 - Swapping 10 with 13 -> 350.211
+Line 3224 - Next candidate: 26
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 25
-Line 3251 - Swapping 1 with 45 -> 569.819
-Line 3251 - Swapping 57 with 45 -> 569.497
-Line 3251 - Swapping 60 with 45 -> 568.977
-Line 3224 - Next candidate: 24
-Line 3251 - Swapping 24 with 44 -> 567.665
-Line 3251 - Swapping 39 with 44 -> 567.619
-Line 3251 - Swapping 57 with 44 -> 565.18
-Line 3224 - Next candidate: 6
-Line 3251 - Swapping 7 with 8 -> 563.807
-Line 3251 - Swapping 23 with 8 -> 562.967
-Line 3224 - Next candidate: 33
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 5
-Line 3251 - Swapping 37 with 24 -> 562.967
-Line 3251 - Swapping 40 with 24 -> 559.343
-Line 3224 - Next candidate: 9
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 17
-Line 3251 - Swapping 45 with 52 -> 557.222
-Line 3251 - Swapping 57 with 52 -> 557.222
-Line 3224 - Next candidate: 3
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 4
 Line 5966 - Outcount: 2
-Line 3224 - Next candidate: 8
-Line 5966 - Outcount: 3
+Line 3224 - Next candidate: 10
+Line 3251 - Swapping 7 with 10 -> 350.105
+Line 3251 - Swapping 14 with 10 -> 347.888
+Line 3251 - Swapping 15 with 10 -> 344.602
+Line 3224 - Next candidate: 20
+Line 3251 - Swapping 1 with 20 -> 344.38
+Line 3251 - Swapping 23 with 20 -> 343.737
+Line 3251 - Swapping 27 with 20 -> 343.381
+Line 3224 - Next candidate: 9
+Line 3251 - Swapping 1 with 23 -> 342.461
+Line 3224 - Next candidate: 6
+Line 3251 - Swapping 10 with 7 -> 342.065
+Line 3251 - Swapping 13 with 7 -> 340.725
+Line 3224 - Next candidate: 5
+Line 3251 - Swapping 10 with 15 -> 340.106
+Line 3224 - Next candidate: 17
+Line 3251 - Swapping 10 with 29 -> 338.372
+Line 3224 - Next candidate: 18
+Line 5966 - Outcount: 1
 Line 3224 - Next candidate: 2
-Line 5966 - Outcount: 4
-Line 3224 - Next candidate: 16
-Line 5966 - Outcount: 5
-Line 3224 - Next candidate: 1
-Line 3251 - Swapping 57 with 1 -> 556.597
-Line 3224 - Next candidate: 0
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 39
-Line 3251 - Swapping 3 with 62 -> 556.597
-Line 3224 - Next candidate: 57
-Line 3251 - Swapping 57 with 46 -> 556.395
-Line 3224 - Next candidate: 37
-Line 3251 - Swapping 24 with 37 -> 556.395
-Line 3224 - Next candidate: 7
-Line 5966 - Outcount: 1
-Line 3224 - Next candidate: 49
 Line 5966 - Outcount: 2
+Line 3224 - Next candidate: 1
+Line 5966 - Outcount: 3
+Line 3224 - Next candidate: 4
+Line 5966 - Outcount: 4
+Line 3224 - Next candidate: 0
+Line 5966 - Outcount: 5
+Line 3224 - Next candidate: 29
+Line 3251 - Swapping 27 with 17 -> 338.271
+Line 3224 - Next candidate: 26
+Line 3251 - Swapping 10 with 11 -> 337.136
 Line 3224 - Next candidate: 25
+Line 3251 - Swapping 29 with 27 -> 336.742
+Line 3224 - Next candidate: 22
+Line 3251 - Swapping 20 with 13 -> 334.811
+Line 3224 - Next candidate: 9
+Line 5966 - Outcount: 1
+Line 3224 - Next candidate: 5
+Line 5966 - Outcount: 2
+Line 3224 - Next candidate: 10
 Line 5966 - Outcount: 3
 Line 3224 - Next candidate: 6
 Line 5966 - Outcount: 4
-Line 3224 - Next candidate: 33
-Line 5966 - Outcount: 5
-Line 3224 - Next candidate: 5
-Line 5966 - Outcount: 6
-Line 3224 - Next candidate: 24
-Line 5966 - Outcount: 7
-Line 3224 - Next candidate: 9
-Line 5966 - Outcount: 8
 Line 3224 - Next candidate: 17
+Line 5966 - Outcount: 5
+Line 3224 - Next candidate: 18
+Line 5966 - Outcount: 6
+Line 3224 - Next candidate: 20
+Line 5966 - Outcount: 7
+Line 3224 - Next candidate: 2
+Line 5966 - Outcount: 8
+Line 3224 - Next candidate: 1
 Line 5966 - Outcount: 9
-Line 3224 - Next candidate: 3
-Line 5966 - Outcount: 10
 Line 3224 - Next candidate: 4
+Line 5966 - Outcount: 10
+Line 3224 - Next candidate: 0
 Line 5966 - Outcount: 11
 Line 3224 - Next candidate: 1
-Line 3251 - Swapping 37 with 1 -> 14
-Line 3251 - Swapping 62 with 1 -> 10
+Line 5982 - Outcount: 1
 Line 3224 - Next candidate: 2
-Line 3251 - Swapping 1 with 7 -> 9
+Line 5982 - Outcount: 2
 Line 3224 - Next candidate: 4
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 8
-Line 5982 - Outcount: 2
-Line 3224 - Next candidate: 16
-Line 3251 - Swapping 44 with 51 -> 8
-Line 3224 - Next candidate: 3
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 6
-Line 5982 - Outcount: 2
-Line 3224 - Next candidate: 5
-Line 3251 - Swapping 62 with 24 -> 6
-Line 3224 - Next candidate: 9
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 24
-Line 5982 - Outcount: 2
-Line 3224 - Next candidate: 17
-Line 3251 - Swapping 57 with 52 -> 5
-Line 3224 - Next candidate: 33
-Line 3256 - Prev untie: 567.521, new untie: 567.921
-Line 3260 - Did not swap on untie
-Line 5982 - Outcount: 1
-Line 3224 - Next candidate: 7
-Line 5982 - Outcount: 2
-Line 3224 - Next candidate: 37
-Line 3256 - Prev untie: 567.521, new untie: 567.921
+Line 3256 - Prev untie: 334.811, new untie: 337.95
 Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 3
-Line 3224 - Next candidate: 25
-Line 3256 - Prev untie: 567.521, new untie: 567.521
+Line 3224 - Next candidate: 6
 Line 5982 - Outcount: 4
-Line 3224 - Next candidate: 49
+Line 3224 - Next candidate: 10
+Line 3251 - Swapping 11 with 10 -> 5
+Line 3224 - Next candidate: 18
+Line 3256 - Prev untie: 335.686, new untie: 336.781
+Line 3260 - Did not swap on untie
+Line 5982 - Outcount: 1
+Line 3224 - Next candidate: 5
+Line 5982 - Outcount: 2
+Line 3224 - Next candidate: 20
+Line 3256 - Prev untie: 335.686, new untie: 338.81
+Line 3260 - Did not swap on untie
+Line 5982 - Outcount: 3
+Line 3224 - Next candidate: 9
+Line 5982 - Outcount: 4
+Line 3224 - Next candidate: 17
+Line 3256 - Prev untie: 335.686, new untie: 336.878
+Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 5
-Line 3224 - Next candidate: 57
-Line 3256 - Prev untie: 567.521, new untie: 567.521
+Line 3224 - Next candidate: 26
+Line 3256 - Prev untie: 335.686, new untie: 336.781
 Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 6
-Line 3224 - Next candidate: 39
+Line 3224 - Next candidate: 22
 Line 5982 - Outcount: 7
-Line 3224 - Next candidate: 0
+Line 3224 - Next candidate: 25
 Line 5982 - Outcount: 8
-Line 3224 - Next candidate: 1
+Line 3224 - Next candidate: 29
+Line 3256 - Prev untie: 335.686, new untie: 336.878
+Line 3260 - Did not swap on untie
 Line 5982 - Outcount: 9
-Line 3224 - Next candidate: 2
+Line 3224 - Next candidate: 0
 Line 5982 - Outcount: 10
-Line 3224 - Next candidate: 4
+Line 3224 - Next candidate: 1
 Line 5982 - Outcount: 11
-Line 304 - Distance is zero: X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11684	Fy: 96340.9	Flags: 64
-X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7473.91	Fy: 10569.8	Flags: 64
-X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12102	Fy: -4595.95	Flags: 64
-X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11684	Fy: 96340.9	Flags: 64
-X: 73.6391, Y: 39.7575	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7473.91	Fy: 10569.8	Flags: 64
-X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 75.0513, Y: 36.151	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12102	Fy: -4595.95	Flags: 64
-X: 72.603, Y: 36.2328	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 2609 - Mc: 0.209575, minc: 0.0657241, result: 0.838301
-Line 2609 - Mc: 0.205224, minc: 0.0657241, result: 0.164179
+Line 304 - Distance is zero: X: 20.0561, Y: 29.9105	N: 0	radius: 0	vx: 0	vy: 0	Fx: -16531.5	Fy: 17669.5	Flags: 64
+X: 20.0561, Y: 29.9105	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 18.7971, Y: 27.8441	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9774.42	Fy: 8211.96	Flags: 64
+X: 18.7971, Y: 27.8441	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 39.0705, Y: 50.5765	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82824.9	Fy: 13529.4	Flags: 64
+X: 39.0705, Y: 50.5765	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: -209.16	Fy: 10632.2	Flags: 64
+X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 41.5295, Y: 48.3138	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9259.57	Fy: 5229.38	Flags: 64
+X: 41.5295, Y: 48.3138	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 10.8757, Y: 45.2283	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0.00953674	Fy: 0	Flags: 64
+X: 10.8757, Y: 45.2283	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 11.5476, Y: 47.2602	N: 0	radius: 0	vx: 0	vy: 0	Fx: -6305.8	Fy: -9185.1	Flags: 64
+X: 11.5476, Y: 47.2602	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 13.6717, Y: 47.5214	N: 0	radius: 0	vx: 0	vy: 0	Fx: -0.00953674	Fy: 0	Flags: 64
+X: 13.6717, Y: 47.5214	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 14.8159, Y: 45.7129	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3098.63	Fy: 10701.8	Flags: 64
+X: 14.8159, Y: 45.7129	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7571.41	Fy: -9062.12	Flags: 64
+X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 16.8986, Y: 31.3295	N: 0	radius: 0	vx: 0	vy: 0	Fx: 11194.5	Fy: 3759.08	Flags: 64
+X: 16.8986, Y: 31.3295	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 20.0561, Y: 29.9105	N: 0	radius: 0	vx: 0	vy: 0	Fx: -16531.5	Fy: 17669.5	Flags: 64
+X: 20.0561, Y: 29.9105	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 18.7971, Y: 27.8441	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9774.42	Fy: 8211.96	Flags: 64
+X: 18.7971, Y: 27.8441	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 39.0705, Y: 50.5765	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82824.9	Fy: 13529.4	Flags: 64
+X: 39.0705, Y: 50.5765	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: -209.16	Fy: 10632.2	Flags: 64
+X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 42.9825, Y: 49.7604	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 41.5295, Y: 48.3138	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9259.57	Fy: 5229.38	Flags: 64
+X: 41.5295, Y: 48.3138	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 10.8757, Y: 45.2283	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0.00953674	Fy: 0	Flags: 64
+X: 10.8757, Y: 45.2283	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 11.5476, Y: 47.2602	N: 0	radius: 0	vx: 0	vy: 0	Fx: -6305.8	Fy: -9185.1	Flags: 64
+X: 11.5476, Y: 47.2602	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 13.6717, Y: 47.5214	N: 0	radius: 0	vx: 0	vy: 0	Fx: -0.00953674	Fy: 0	Flags: 64
+X: 13.6717, Y: 47.5214	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 14.8159, Y: 45.7129	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3098.63	Fy: 10701.8	Flags: 64
+X: 14.8159, Y: 45.7129	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7571.41	Fy: -9062.12	Flags: 64
+X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 19.1544, Y: 31.3842	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 16.8986, Y: 31.3295	N: 0	radius: 0	vx: 0	vy: 0	Fx: 11194.5	Fy: 3759.08	Flags: 64
+X: 16.8986, Y: 31.3295	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64

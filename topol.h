@@ -16,7 +16,7 @@
 
 #include "debug.h"
 #include "scene.h"
-#include "elements.h"
+#include "strFuncts.h"
 
 //#include <windows.h>
 

@@ -7,153 +7,13 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include "strFuncts.h"
+#include "topol.h"
 
 typedef unsigned int UINT;
 
 typedef enum{unset, t, f} colInfo;
 
-template <typename T> void printVector(std::vector<T> v) {
-  for (UINT i = 0; i < v.size(); i++) {
-    std::cout << i << " - " << v[i] << std::endl;
-  }
-}
-
-std::vector<std::string> split(std::string s, const char d) {
-  std::vector<std::string> result;
-  result.clear();
-  UINT cpos = 0;
-  UINT nxt = s.find(d) + 1;
-  while (nxt > cpos && nxt <= s.size()) {
-    std::string r = s.substr(cpos, nxt - cpos - 1);
-    result.push_back(r);
-    cpos = nxt;
-    nxt = s.find(d, cpos) + 1;
-  }
-  if (cpos < s.size()){
-    std::string r = s.substr(cpos, s.size() - nxt);
-    result.push_back(r);
-  }
-  return result;
-}
-
-std::string cleanString(std::string input){
-  std::string result = "";
-  for (std::basic_string<char>::const_iterator it = input.cbegin();
-       it != input.cend(); it++) {
-    UINT c = *it;
-    if ((c > 0x28) && (c != 0x3B) &&
-        (c != 0x40) && (c != 0x60)) {
-      result += *it;
-    }
-    else{
-      result += "_";
-    }
-  }
-  return result;
-}
-
-std::string exchangeChar(std::string input, const char from, const char to){
-  std::string result = "";
-  for (std::basic_string<char>::const_iterator it = input.cbegin();
-       it != input.cend(); it++) {
-    UINT c = *it;
-    if (c == from) {
-      if (to != 0x00){
-        result += to;
-      }
-    }
-    else{
-      result += *it;
-    }
-  }
-  return result;
-}
-
-/** \brief Eliminates characters that cannot belong to a number.
- *         In this version, eliminates any letter, except for e and E.
- * \param input std::string
- * \return std::string
- *
- */
-std::string purgeLetters(std::string input) {
-  std::string result = "";
-  for (std::basic_string<char>::const_iterator it = input.cbegin();
-       it != input.cend(); it++) {
-    UINT c = *it;
-    if ((c > 43 && c < 65) || c == 101 || c == 69) {
-      result += *it;
-    }
-  }
-  return result;
-}
-
-std::string getFile(std::string prompt, std::string errorPrompt)
-{
-    std::string fname;
-    std::cout << prompt << std::endl;
-    std::cin >> fname;
-    std::ifstream isfile;
-    isfile.open(fname.c_str());
-    if (!isfile.is_open())
-    {
-        isfile.close();
-        std::cout << errorPrompt << std::endl;
-        fname = getFile(prompt, errorPrompt);
-    }
-    isfile.close();
-    return fname;
-}
-
-class splitString{
-  UINT counter;
-  std::vector<std::string> v;
-public:
-  splitString(std::string input = "", const char sep = ';'){
-    v = split(input, sep);
-    counter = 0;
-  }
-  std::string next(){
-    std::string result = "";
-    if (finished()){
-      return result;
-    }
-    result = v[counter];
-    counter++;
-    return result;
-  }
-  bool finished(){
-    bool result = false;
-    if (counter >= v.size()){
-      result = true;
-    }
-    return result;
-  }
-};
-
-template<typename T>
-std::string join(std::string interm, std::vector<T> arr) {
-  if (arr.size() < 1){
-    return "";
-  }
-  std::stringstream r;
-  for (UINT i = 0; i < (arr.size() - 1); i++){
-    r << arr[i] << interm;
-  }
-  r << arr[arr.size() - 1];
-  return r.str();
-}
-
-UINT countChar(std::string t, const char c){
-  UINT result = 0;
-  for (std::basic_string<char>::const_iterator it = t.cbegin();
-       it != t.cend(); it++) {
-    UINT tc = *it;
-    if (tc == c){
-      result++;
-    }
-  }
-  return result;
-}
 
 char getSep(std::string t){
   std::vector<char> p = {',', ';', '\t', ' '};
@@ -177,13 +37,17 @@ typedef struct nvset{
 
 class nvenn{
   std::vector<std::vector<std::string>> cells;
+  std::vector<std::vector<std::string>> tcells;
+  std::vector<std::vector<std::string>> activeCells;
   std::vector<vset> sets;
+  std::vector<std::vector<std::string>> regions;
   std::stringstream warnings;
+  bool upToDate = false;
 
 
   void transpose(){
-    std::vector<std::vector<std::string>> tcells;
     for (UINT i = 0; i < cells[0].size(); i++){
+      upToDate = false;
       tcells.push_back({});
       tcells[i].clear();
       for (UINT j = 0; j < cells.size(); j++){
@@ -192,15 +56,87 @@ class nvenn{
         }
       }
     }
-    cells = tcells;
+  }
+
+  std::unordered_set<std::string> intersection(std::unordered_set<std::string> s1, std::unordered_set<std::string> s2){
+    std::unordered_set<std::string> result;
+    for (std::string o : s1){
+      if (s2.count(o) > 0){
+        result.insert(o);
+      }
+    }
+    return result;
+  }
+
+  std::unordered_set<std::string> setDiff(std::unordered_set<std::string> s1, std::unordered_set<std::string> s2){
+    std::unordered_set<std::string> result;
+    for (std::string o : s1){
+      if (s2.count(o) == 0){
+        result.insert(o);
+      }
+    }
+    return result;
+  }
+
+  void update(){
+    regions.clear();
+    UINT nreg = 1 << sets.size();
+    for (UINT i = 0; i < nreg; i++){
+      std::vector<std::string> els = getRegion(i);
+      regions.push_back(els);
+    }
+    upToDate = true;
+  }
+
+  colInfo decideByCol(){
+    colInfo result = f;
+    bool canBeByCol = true;
+    bool canBeByRow = true;
+    //byrow?
+    for (UINT i = 0; i < cells[0].size(); i++){
+      if (cells[0][i] == ""){
+        canBeByRow = false;
+      }
+    }
+    //bycol?
+    for (UINT i = 0; i < cells.size(); i++){
+      if (cells[i][0] == ""){
+        canBeByRow = false;
+      }
+    }
+    if (canBeByCol && !canBeByRow){
+      result = t;
+    }
+    else if (!canBeByCol && canBeByRow){
+      result = f;
+    }
+    else if (canBeByCol && canBeByRow){
+      UINT nrows = cells[0].size();
+      UINT ncols = cells.size();
+      result = (nrows > ncols) ? t : f;
+    }
+    return result;
   }
 
 public:
   nvenn(){}
+
   nvenn(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     addInfo(desc, sep, byCol);
   }
+  void addSet(std::string setName, std::vector<std::string> elements){
+    upToDate = false;
+    vset st;
+    st.setName = setName;
+    for (UINT j = 0; j < elements.size(); j++){
+      if (elements[j] != ""){
+        st.setElements.insert(elements[j]);
+      }
+    }
+    sets.push_back(st);
+  }
   void addInfo(std::string desc, const char sep = 0x00, colInfo byCol = unset){
+    upToDate = false;
     desc = exchangeChar(desc, '\r', 0x00);
     char separator = sep;
     if (sep == 0x00){
@@ -216,20 +152,76 @@ public:
         cells[i].push_back(cols[j]);
       }
     }
-    if (byCol == f){
-      transpose();
+    if (byCol == unset){
+      byCol = decideByCol();
     }
-    for (UINT i = 0; i < cells.size(); i++){
-      vset st;
-      st.setName = cells[i][0];
-      for (UINT j = 1; j < cells[i].size(); j++){
-        if (cells[i][j] != ""){
-          st.setElements.insert(cells[i][j]);
+    transpose();
+    activeCells = tcells;
+    if (byCol == f){
+      activeCells = cells;
+    }
+    for (UINT i = 0; i < activeCells.size(); i++){
+      std::string sn = activeCells[i][0];
+      std::vector<std::string> els;
+      for (UINT j = 1; j < activeCells[i].size(); j++){
+        if (activeCells[i][j] != ""){
+          els.push_back(activeCells[i][j]);
         }
       }
-      sets.push_back(st);
+      addSet(sn, els);
     }
   }
+
+  std::vector<std::string> getRegion(UINT n){
+    UINT tmp = n;
+    std::vector<std::string> snames;
+    UINT i = 0;
+    while (tmp > 0 && i < sets.size()){
+      if ((tmp & 1) > 0){
+        snames.push_back(sets[i].setName);
+      }
+      tmp = tmp >> 1;
+      i++;
+    }
+    return getRegion(snames);
+  }
+
+  std::vector<std::string> getRegion(std::vector<std::string> regionDesc){
+    std::vector<std::string> result;
+    std::unordered_set<std::string> r;
+    for (vset v : sets){
+      bool included = false;
+      for (std::string setName : regionDesc){
+        if (v.setName == setName){
+          included = true;
+        }
+      }
+      if (included){
+        for (std::string el : v.setElements){
+          r.insert(el);
+        }
+      }
+    }
+    for (vset v : sets){
+      bool included = false;
+      for (std::string setName : regionDesc){
+        if (v.setName == setName){
+          included = true;
+        }
+      }
+      if (included){
+        r = intersection(r, v.setElements);
+        //result.insert(result.begin(), r.begin(), r.end());
+        //printVector(result); exit(0);
+      }
+      else{
+        r = setDiff(r, v.setElements);
+      }
+    }
+    result.insert(result.begin(), r.begin(), r.end());
+    return result;
+  }
+
   void showSets(){
     for (UINT i = 0; i < sets.size(); i++){
       std::cout << "Set " << sets[i].setName << ": ";
@@ -239,6 +231,23 @@ public:
       std::cout << std::endl;
     }
   }
+
+  std::string getCode(){
+    std::stringstream result;
+    result << "nVenn_2.0" << std::endl;
+    result << sets.size() << std::endl;
+    for (vset s : sets){
+      result << s.setName << std::endl;
+    }
+    if (!upToDate){
+      update();
+    }
+    for (std::vector<std::string> r : regions){
+      result << r.size() << std::endl;
+    }
+    return result.str();
+  }
+
   std::string getInfo(){
     return warnings.str();
   }
@@ -247,6 +256,14 @@ public:
       std::cout << "Row " << i + 1 << std::endl;
       for (UINT j = 0; j < cells[i].size(); j++){
         std::cout << "\tColumn " << j + 1 << ": " << cells[i][j] << std::endl;
+      }
+    }
+  }
+  void showTCells(){
+    for (UINT i = 0; i < tcells.size(); i++){
+      std::cout << "Row " << i + 1 << std::endl;
+      for (UINT j = 0; j < tcells[i].size(); j++){
+        std::cout << "\tColumn " << j + 1 << ": " << tcells[i][j] << std::endl;
       }
     }
   }
