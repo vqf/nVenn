@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['initogl_2eh_0',['initogl.h',['../initogl_8h.html',1,'']]]
 ];

@@ -1,0 +1,39 @@
+<map id="load_signature" name="load_signature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,208,111,235"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#aa08e319f470d55490595235d731cb072" title=" " alt="" coords="211,107,275,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,205,202,139,205,143,86,210"/>
+<area shape="rect" id="Node000007" href="$topol_8h.html#a39073f0a88f60510a31b69bfd5024438" title=" " alt="" coords="177,360,309,387"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="77,233,215,348,212,352,74,237"/>
+<area shape="rect" id="Node000013" href="$classborder_line.html#a381a9afb07105eaf314c73ed3a5278e1" title=" " alt="" coords="159,208,327,235"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="111,219,143,219,143,224,111,224"/>
+<area shape="rect" id="Node000003" href="$classsplit_string.html#ab34e8acf6a4e1577a0805be4e996a0ea" title=" " alt="" coords="558,107,690,133"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,110,322,100,375,92,443,87,511,92,558,100,557,105,510,97,443,93,375,97,323,105,276,115"/>
+<area shape="rect" id="Node000004" href="$str_functs_8h.html#aff5304a7e575ec3768b3036272263642" title=" " alt="" coords="422,5,463,32"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="268,104,374,48,407,32,409,37,376,53,271,109"/>
+<area shape="rect" id="Node000005" href="$classsplit_string.html#a4d72ce4c8b05502fd4cd3e94d69476b8" title=" " alt="" coords="387,107,499,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="275,117,371,117,371,123,275,123"/>
+<area shape="rect" id="Node000006" href="$str_functs_8h.html#af184aa15c7d063f7151b3ba97b12d621" title="Eliminates characters that cannot belong to a number. In this version, eliminates any letter,..." alt="" coords="396,157,489,184"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="276,125,382,153,380,158,275,131"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="499,117,543,117,543,123,499,123"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="256,358,416,193,420,197,260,361"/>
+<area shape="rect" id="Node000008" href="$str_functs_8h.html#adec99b1205b94d3f8021d61876e30fea" title=" " alt="" coords="400,411,486,437"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="299,385,385,407,384,412,298,390"/>
+<area shape="rect" id="Node000009" href="$str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d" title=" " alt="" coords="391,461,495,488"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="267,385,316,415,376,447,389,453,387,457,374,452,313,419,264,389"/>
+<area shape="rect" id="Node000010" href="$classborder_line.html#ae7ec6d15fc0e5cc806b6a204a866e2ac" title=" " alt="" coords="375,309,510,336"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="298,357,372,338,373,343,299,362"/>
+<area shape="rect" id="Node000011" href="$topol_8h.html#ab6c3d21f2cbc970647cffef7ff777b76" title="Converts a number into a std::vector of integers with the binary representation of the number." alt="" coords="417,512,468,539"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="257,385,305,439,339,470,376,498,404,511,401,516,374,502,336,474,302,443,253,389"/>
+<area shape="rect" id="Node000012" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="410,360,476,387"/>
+<area shape="poly" id="edge13_Node000007_Node000012" title=" " alt="" coords="309,371,394,371,394,376,309,376"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="327,221,417,215,464,207,509,194,556,170,595,141,598,146,559,174,511,198,465,212,417,220,328,227"/>
+<area shape="poly" id="edge19_Node000013_Node000005" title=" " alt="" coords="264,205,313,175,374,143,387,137,389,142,376,148,316,180,267,210"/>
+<area shape="poly" id="edge20_Node000013_Node000006" title=" " alt="" coords="298,205,381,184,382,189,299,210"/>
+<area shape="poly" id="edge21_Node000013_Node000010" title=" " alt="" coords="267,233,316,263,376,295,389,301,387,305,374,300,313,267,264,237"/>
+<area shape="rect" id="Node000014" href="$bmpfont_8h.html#a2858154e2009b0e6e616f313177762bc" title=" " alt="" coords="423,259,462,285"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="299,233,409,261,408,266,298,238"/>
+<area shape="rect" id="Node000015" href="$bmpfont_8h.html#aea8559252958559714145238c8b79d46" title=" " alt="" coords="565,259,683,285"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="462,269,550,269,550,275,462,275"/>
+<area shape="rect" id="Node000016" href="$bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37" title=" " alt="" coords="738,259,814,285"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="683,269,722,269,722,275,683,275"/>
+</map>

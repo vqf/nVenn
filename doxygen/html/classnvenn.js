@@ -1,0 +1,27 @@
+var classnvenn =
+[
+    [ "nvenn", "classnvenn.html#abe691ecca72741e9da7ec60d2a49c4d0", null ],
+    [ "nvenn", "classnvenn.html#a97e3ab47c470401ef7a072f3dc0211e3", null ],
+    [ "addInfo", "classnvenn.html#a926046b5985ed3785661520db89a0d9f", null ],
+    [ "addSet", "classnvenn.html#a72635beb99421bd5425532b415355179", null ],
+    [ "decideByCol", "classnvenn.html#a1370359c905c2b79a0acbed3c0b87d59", null ],
+    [ "getCode", "classnvenn.html#ad357246d8db059c102fc607a2e05595b", null ],
+    [ "getInfo", "classnvenn.html#af552f5e262ab9110585c0349bd47fa22", null ],
+    [ "getRegion", "classnvenn.html#a1743d2768a9e4d29ac30aa75f36bc981", null ],
+    [ "getRegion", "classnvenn.html#a2348282ad964036c7405f8d1ae434926", null ],
+    [ "intersection", "classnvenn.html#a305e3ae9a5ac35294a177bbebe52f20f", null ],
+    [ "setDiff", "classnvenn.html#a9a630426ad107006771e089c3730cfc3", null ],
+    [ "showCells", "classnvenn.html#a708afefe065724a307064085431d646c", null ],
+    [ "showSets", "classnvenn.html#a50bc6cd61406df6ea4a4c7219d1ae7ae", null ],
+    [ "showTCells", "classnvenn.html#a37073adb04d0287a0dded4e4c5a6b03f", null ],
+    [ "transpose", "classnvenn.html#a4f6d0362e2796a1085365524de4ef721", null ],
+    [ "update", "classnvenn.html#a875c57e7fd4e891a83cb77ca34e0bfe9", null ],
+    [ "activeCells", "classnvenn.html#a2e52bba2672029c35d348930e53a55dd", null ],
+    [ "cells", "classnvenn.html#a91e18002fef2a0bbac14174b407ef04f", null ],
+    [ "regions", "classnvenn.html#a8ca585779cb78bb14f7c91134d36e8f8", null ],
+    [ "setNames", "classnvenn.html#a1ec715ec1856a8a40c1a3350639efa76", null ],
+    [ "sets", "classnvenn.html#abbac1ff96949605f2f055921afa14615", null ],
+    [ "tcells", "classnvenn.html#a7545f3bd4218148f124ffce34ab84f88", null ],
+    [ "upToDate", "classnvenn.html#a1ccd146f4fd84b54acd56f41f8ea5230", null ],
+    [ "warnings", "classnvenn.html#a18dd7f62a6e54be7537c07ac49009222", null ]
+];

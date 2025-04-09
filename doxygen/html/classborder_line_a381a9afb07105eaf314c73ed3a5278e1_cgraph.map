@@ -1,0 +1,18 @@
+<map id="borderLine::loadSignature" name="borderLine::loadSignature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,174,108"/>
+<area shape="rect" id="Node000002" href="$classsplit_string.html#ab34e8acf6a4e1577a0805be4e996a0ea" title=" " alt="" coords="405,5,536,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,79,155,45,187,29,221,16,264,8,308,4,390,6,390,11,308,9,264,13,222,21,189,33,158,50,109,83"/>
+<area shape="rect" id="Node000003" href="$bmpfont_8h.html#a2858154e2009b0e6e616f313177762bc" title=" " alt="" coords="270,81,309,108"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,92,254,92,254,97,174,97"/>
+<area shape="rect" id="Node000006" href="$classsplit_string.html#a4d72ce4c8b05502fd4cd3e94d69476b8" title=" " alt="" coords="233,31,346,57"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="145,78,218,59,220,64,146,83"/>
+<area shape="rect" id="Node000007" href="$str_functs_8h.html#af184aa15c7d063f7151b3ba97b12d621" title="Eliminates characters that cannot belong to a number. In this version, eliminates any letter,..." alt="" coords="243,132,336,159"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="146,106,229,127,227,133,145,111"/>
+<area shape="rect" id="Node000008" href="$classborder_line.html#ae7ec6d15fc0e5cc806b6a204a866e2ac" title=" " alt="" coords="222,183,357,209"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="113,106,163,136,223,168,235,174,233,179,220,173,160,141,111,111"/>
+<area shape="rect" id="Node000004" href="$bmpfont_8h.html#aea8559252958559714145238c8b79d46" title=" " alt="" coords="412,81,529,108"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="309,92,396,92,396,97,309,97"/>
+<area shape="rect" id="Node000005" href="$bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37" title=" " alt="" coords="584,81,661,108"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="530,92,569,92,569,97,530,97"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="345,34,390,27,390,33,346,39"/>
+</map>

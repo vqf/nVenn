@@ -170,7 +170,7 @@
 	"topol.h"
 	<iostream>
 
-1743608537 d:\proyectos\nvenn2\gh\elements.h
+1743784119 d:\proyectos\nvenn2\gh\elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
@@ -180,7 +180,7 @@
 	"strFuncts.h"
 	"topol.h"
 
-1743608207 source:d:\proyectos\nvenn2\gh\testinput.cpp
+1743768993 source:d:\proyectos\nvenn2\gh\testinput.cpp
 	<iostream>
 	"../gh/elements.h"
 

@@ -1,0 +1,11 @@
+<map id="tangent::init" name="tangent::init">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,95,57"/>
+<area shape="rect" id="Node000002" href="$classpoint.html#aece42692c6637343a9fb50ef26d47b85" title=" " alt="" coords="143,5,239,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,33,127,27,128,33,96,39"/>
+<area shape="rect" id="Node000003" href="$bmpfont_8h.html#a2858154e2009b0e6e616f313177762bc" title=" " alt="" coords="172,56,210,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="96,49,157,61,156,66,95,55"/>
+<area shape="rect" id="Node000004" href="$bmpfont_8h.html#aea8559252958559714145238c8b79d46" title=" " alt="" coords="287,56,404,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="210,67,272,67,272,72,210,72"/>
+<area shape="rect" id="Node000005" href="$bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37" title=" " alt="" coords="452,56,529,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="405,67,437,67,437,72,405,72"/>
+</map>

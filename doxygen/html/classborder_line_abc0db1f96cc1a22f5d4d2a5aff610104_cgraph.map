@@ -1,16 +1,16 @@
 <map id="borderLine::listOutsiders" name="borderLine::listOutsiders">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,220,168,247"/>
-<area shape="rect" id="Node000002" href="$classborder_line.html#a0661e7145417bf5db71d2fbafb226962" title=" " alt="" coords="216,132,367,159"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a95b23721d655561ee9b1b499637d0eaf" title=" " alt="" coords="216,132,367,159"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,217,243,163,245,168,121,222"/>
-<area shape="rect" id="Node000011" href="$classborder_line.html#a42d8050d8cc57002b7e18aa791009017" title=" " alt="" coords="227,220,356,247"/>
+<area shape="rect" id="Node000011" href="$classborder_line.html#a9ebf7fc11981fd0b943ef5b5ffb9f964" title=" " alt="" coords="227,220,356,247"/>
 <area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="168,231,212,231,212,236,168,236"/>
-<area shape="rect" id="Node000017" href="$topol_8h.html#a097440c725e87260f8c1788d2625c45c" title="Converts a number into a vector of integers with the binary representation of the number." alt="" coords="266,271,317,297"/>
+<area shape="rect" id="Node000017" href="$topol_8h.html#ab6c3d21f2cbc970647cffef7ff777b76" title="Converts a number into a std::vector of integers with the binary representation of the number." alt="" coords="266,271,317,297"/>
 <area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="144,245,251,272,250,277,143,250"/>
 <area shape="rect" id="Node000003" href="$classborder_line.html#a631ddec3d3e984012a36803537fcc6f9" title=" " alt="" coords="432,5,571,32"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="304,130,350,87,380,63,414,42,427,36,429,40,416,46,384,67,353,91,307,133"/>
 <area shape="rect" id="Node000004" href="$classborder_line.html#a45da7fbf9d55987369f8dcc249892402" title="Do segments p1&#45;p2 and p3&#45;p4 cross?" alt="" coords="441,56,562,83"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="323,129,414,92,435,85,437,90,416,97,324,134"/>
-<area shape="rect" id="Node000006" href="$classborder_line.html#a00022de953189267bde8c2e43bb0e81e" title=" " alt="" coords="415,107,587,133"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#af08f193584fdf8dafc49f571723a7650" title=" " alt="" coords="415,107,587,133"/>
 <area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="367,134,399,130,400,135,368,139"/>
 <area shape="rect" id="Node000009" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="433,157,570,184"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="368,152,418,158,417,163,367,157"/>
@@ -18,11 +18,11 @@
 <area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="324,157,416,193,437,200,435,206,414,199,323,162"/>
 <area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="679,56,784,83"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="562,67,663,67,663,72,562,72"/>
-<area shape="rect" id="Node000007" href="$classborder_line.html#a6839426915449e47b7521286a540e35c" title=" " alt="" coords="635,107,828,133"/>
+<area shape="rect" id="Node000007" href="$classborder_line.html#abcc5d1676d3dfab3e32e32e1e2903437" title=" " alt="" coords="635,107,828,133"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="588,117,620,117,620,123,588,123"/>
 <area shape="rect" id="Node000008" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="698,157,765,184"/>
 <area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="566,131,684,158,682,163,565,137"/>
-<area shape="rect" id="Node000012" href="$classscale.html#a862030b95f8b223cdfb6254641f2fc22" title=" " alt="" coords="452,259,551,285"/>
+<area shape="rect" id="Node000012" href="$classscale.html#ac7baa6478d21b99bd215783de12849bf" title=" " alt="" coords="452,259,551,285"/>
 <area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="356,243,437,258,436,263,355,248"/>
 <area shape="rect" id="Node000013" href="$classscale.html#ac4e3c850624f113eccc5e68a5b1fd30b" title=" " alt="" coords="685,208,778,235"/>
 <area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="551,259,670,232,671,237,552,264"/>

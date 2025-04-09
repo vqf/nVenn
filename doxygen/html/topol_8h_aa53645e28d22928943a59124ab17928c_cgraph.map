@@ -1,0 +1,21 @@
+<map id="getFileInfo" name="getFileInfo">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,233,86,260"/>
+<area shape="rect" id="Node000002" href="$topol_8h.html#a39073f0a88f60510a31b69bfd5024438" title=" " alt="" coords="142,157,274,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,230,163,189,165,193,77,235"/>
+<area shape="rect" id="Node000009" href="$classborder_line.html#a0795d22b1a94dc082769a0edf8be6e4f" title="Sets the starting coordinates from a previous execution." alt="" coords="134,259,282,285"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="87,250,119,255,118,261,86,256"/>
+<area shape="rect" id="Node000003" href="$str_functs_8h.html#adec99b1205b94d3f8021d61876e30fea" title=" " alt="" coords="355,5,441,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="217,155,261,101,293,70,328,42,339,36,341,40,332,46,297,74,265,105,221,159"/>
+<area shape="rect" id="Node000004" href="$str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d" title=" " alt="" coords="346,56,450,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="227,155,273,124,329,92,341,87,343,91,331,97,275,129,230,159"/>
+<area shape="rect" id="Node000005" href="$str_functs_8h.html#af184aa15c7d063f7151b3ba97b12d621" title="Eliminates characters that cannot belong to a number. In this version, eliminates any letter,..." alt="" coords="351,107,444,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="260,154,335,134,337,139,262,159"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#ae7ec6d15fc0e5cc806b6a204a866e2ac" title=" " alt="" coords="330,157,465,184"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="274,168,315,168,315,173,274,173"/>
+<area shape="rect" id="Node000007" href="$topol_8h.html#ab6c3d21f2cbc970647cffef7ff777b76" title="Converts a number into a std::vector of integers with the binary representation of the number." alt="" coords="372,208,423,235"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="262,182,358,208,356,213,260,187"/>
+<area shape="rect" id="Node000008" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="365,259,431,285"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="230,182,275,212,331,244,351,253,349,258,329,249,273,217,227,187"/>
+<area shape="rect" id="Node000010" href="$classscale.html#a4a4f38a6db2070d69b19b9fa71d11921" title=" " alt="" coords="334,309,462,336"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="262,283,331,302,330,307,260,289"/>
+</map>

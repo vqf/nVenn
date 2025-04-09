@@ -10,11 +10,22 @@
 #include "strFuncts.h"
 #include "topol.h"
 
+
+/**< Functions and objects to input sets and interrogate regions */
+
 typedef unsigned int UINT;
 
+/** \brief t for true, f for false, unset for autodetect
+ */
 typedef enum{unset, t, f} colInfo;
 
 
+/** \brief Heuristically predict which separator is being used in a table
+ *
+ * \param t std::string Input table
+ * \return char Which of the most common characters is being used as a column separator
+ *
+ */
 char getSep(std::string t){
   std::vector<char> p = {',', ';', '\t', ' '};
   char result = p[0];
@@ -30,21 +41,31 @@ char getSep(std::string t){
 }
 
 
+/** \brief A set with a name
+ */
 typedef struct nvset{
   std::string setName;
   std::unordered_set<std::string> setElements;
 } vset;
 
+/** \brief Input sets and interrogate regions
+ */
 class nvenn{
   std::vector<std::vector<std::string>> cells;
   std::vector<std::vector<std::string>> tcells;
   std::vector<std::vector<std::string>> activeCells;
   std::vector<vset> sets;
+  std::unordered_set<std::string> setNames;
   std::vector<std::vector<std::string>> regions;
   std::stringstream warnings;
   bool upToDate = false;
 
 
+  /** \brief Generate tcells from cells
+   *
+   * \return void
+   *
+   */
   void transpose(){
     for (UINT i = 0; i < cells[0].size(); i++){
       upToDate = false;
@@ -58,6 +79,13 @@ class nvenn{
     }
   }
 
+  /** \brief Intersection of two sets
+   *
+   * \param s1 std::unordered_set<std::string>
+   * \param s2 std::unordered_set<std::string>
+   * \return std::unordered_set<std::string>
+   *
+   */
   std::unordered_set<std::string> intersection(std::unordered_set<std::string> s1, std::unordered_set<std::string> s2){
     std::unordered_set<std::string> result;
     for (std::string o : s1){
@@ -68,6 +96,13 @@ class nvenn{
     return result;
   }
 
+  /** \brief Which elements belong to the first set and not to the second
+   *
+   * \param s1 std::unordered_set<std::string>
+   * \param s2 std::unordered_set<std::string>
+   * \return std::unordered_set<std::string>
+   *
+   */
   std::unordered_set<std::string> setDiff(std::unordered_set<std::string> s1, std::unordered_set<std::string> s2){
     std::unordered_set<std::string> result;
     for (std::string o : s1){
@@ -78,6 +113,11 @@ class nvenn{
     return result;
   }
 
+  /** \brief Lazily create nVenn code
+   *
+   * \return void
+   *
+   */
   void update(){
     regions.clear();
     UINT nreg = 1 << sets.size();
@@ -88,6 +128,11 @@ class nvenn{
     upToDate = true;
   }
 
+  /** \brief Heuristically decide whether sets are in rows or columns
+   *
+   * \return colInfo
+   *
+   */
   colInfo decideByCol(){
     colInfo result = f;
     bool canBeByCol = true;
@@ -124,16 +169,29 @@ public:
   nvenn(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     addInfo(desc, sep, byCol);
   }
+  /** \brief Add set with name to object
+   *
+   * \param setName std::string
+   * \param elements std::vector<std::string>
+   * \return void
+   *
+   */
   void addSet(std::string setName, std::vector<std::string> elements){
     upToDate = false;
     vset st;
-    st.setName = setName;
-    for (UINT j = 0; j < elements.size(); j++){
-      if (elements[j] != ""){
-        st.setElements.insert(elements[j]);
+    auto p = setNames.insert(setName);
+    if (p.second){
+      st.setName = setName;
+      for (UINT j = 0; j < elements.size(); j++){
+        if (elements[j] != ""){
+          st.setElements.insert(elements[j]);
+        }
       }
+      sets.push_back(st);
     }
-    sets.push_back(st);
+    else{
+      warnings << "Duplicated set name: " << setName << ". The set has not bee added" << std::endl;
+    }
   }
   void addInfo(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     upToDate = false;
@@ -250,7 +308,10 @@ public:
 
   std::string getInfo(){
     return warnings.str();
+    warnings.clear();
+    warnings.str("");
   }
+
   void showCells(){
     for (UINT i = 0; i < cells.size(); i++){
       std::cout << "Row " << i + 1 << std::endl;

@@ -1,19 +1,20 @@
 var searchData=
 [
   ['add_0',['add',['../classdecider.html#ac93fda949091f7582c268272cc666635',1,'decider']]],
-  ['addcircle_1',['addCircle',['../test_8cpp.html#a3d730c9a38a8ecfe7a080566e2ead916',1,'test.cpp']]],
+  ['addcircle_1',['addCircle',['../test_8cpp.html#abd3212038ec81c829b908c8f9a731484',1,'test.cpp']]],
   ['addglyph_2',['addGlyph',['../bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37',1,'bmpfont.h']]],
-  ['addinfo_3',['addInfo',['../classscene.html#a913189fed388d96c3609550d360c32ae',1,'scene']]],
-  ['addline_4',['addline',['../classfile_text.html#a21098c6744e6f897f852432b14181f3e',1,'fileText::addLine()'],['../test_8cpp.html#ab5392430ea4322ca34c7f613425e9303',1,'addLine():&#160;test.cpp']]],
-  ['addlines_5',['addLines',['../classborder_line.html#a6eebf93fa3c09e216a5e170e55b3e389',1,'borderLine']]],
+  ['addinfo_3',['addinfo',['../classnvenn.html#a926046b5985ed3785661520db89a0d9f',1,'nvenn::addInfo()'],['../classscene.html#a913189fed388d96c3609550d360c32ae',1,'scene::addInfo()']]],
+  ['addline_4',['addline',['../classfile_text.html#ab0c09567658f74be13d532b887a4fbc3',1,'fileText::addLine()'],['../test_8cpp.html#a0999407fddf16aa275f184fb42bf60f6',1,'addLine():&#160;test.cpp']]],
+  ['addlines_5',['addLines',['../classborder_line.html#ac7e498685b8eeb34ed86ed9f8766230f',1,'borderLine']]],
   ['addlink_6',['addLink',['../classscene.html#a1720091e2f4b190b6c1417cd493bb080',1,'scene']]],
   ['addpoint_7',['addPoint',['../classscene.html#afd9fbae2ed875b9b814185085eb50cc0',1,'scene']]],
   ['addpointp_8',['addPointP',['../classscene.html#ab40c6a10865eade7a6ee8793a718e9a4',1,'scene']]],
-  ['addrectangle_9',['addRectangle',['../classgl_graphics.html#a5c590ce88f997593f3575dfed34cf4c8',1,'glGraphics']]],
+  ['addrectangle_9',['addRectangle',['../classgl_graphics.html#ae29985129ac2a2f3f24aa1ffd3317f79',1,'glGraphics']]],
   ['addrod_10',['addRod',['../classscene.html#a5f6b1257ab7c5a2022cecb9d8d3b2e4d',1,'scene']]],
-  ['addtext_11',['addText',['../classfile_text.html#ac4e33a865b34a3267c4b0a5d4e4606bf',1,'fileText']]],
-  ['addtoscale_12',['addToScale',['../classscale.html#a4a4f38a6db2070d69b19b9fa71d11921',1,'scale']]],
-  ['arr2vec_13',['arr2vec',['../topol_8h.html#a61325d210b2bc562551e4929ce970535',1,'topol.h']]],
-  ['attachscene_14',['attachScene',['../classborder_line.html#ad0eb901192d34d6c6caa7e65c219a292',1,'borderLine']]],
-  ['attention_15',['attention',['../classborder_line.html#a631ddec3d3e984012a36803537fcc6f9',1,'borderLine']]]
+  ['addset_11',['addSet',['../classnvenn.html#a72635beb99421bd5425532b415355179',1,'nvenn']]],
+  ['addtext_12',['addText',['../classfile_text.html#a9eabc19fc666794ad587e1b49fc93771',1,'fileText']]],
+  ['addtoscale_13',['addToScale',['../classscale.html#a4a4f38a6db2070d69b19b9fa71d11921',1,'scale']]],
+  ['arr2vec_14',['arr2vec',['../topol_8h.html#a29f42e5c6a80b83e95ee114988b3d85a',1,'topol.h']]],
+  ['attachscene_15',['attachScene',['../classborder_line.html#a79ef131ece85b6ddbe926114928a8589',1,'borderLine']]],
+  ['attention_16',['attention',['../classborder_line.html#a631ddec3d3e984012a36803537fcc6f9',1,'borderLine']]]
 ];

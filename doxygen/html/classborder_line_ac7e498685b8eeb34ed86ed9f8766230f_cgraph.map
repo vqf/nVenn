@@ -1,22 +1,18 @@
 <map id="borderLine::addLines" name="borderLine::addLines">
-<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,107,147,133"/>
-<area shape="rect" id="Node000002" href="$classpoint.html#a6ba93687cb48f887e101d4c09e9b2d60" title=" " alt="" coords="231,5,327,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,104,138,73,194,42,215,33,217,38,196,46,141,78,97,108"/>
-<area shape="rect" id="Node000003" href="$classccwangle.html#af9b6a231f2f7187e4dd8d2fc080fc167" title=" " alt="" coords="218,56,340,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,103,207,84,209,90,133,109"/>
-<area shape="rect" id="Node000005" href="$classborder_line.html#ae73fab0d3edeb32b1ece09e26adc6426" title=" " alt="" coords="195,157,363,184"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="133,131,209,150,207,156,132,137"/>
-<area shape="rect" id="Node000006" href="$classgroup_iterator.html#a9a39d8603801f7c1aeeb3845ea3fb150" title=" " alt="" coords="411,119,530,145"/>
-<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="147,119,396,127,395,132,147,125"/>
-<area shape="rect" id="Node000009" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="413,195,529,221"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="94,132,138,165,166,181,195,193,247,206,299,212,397,212,397,218,299,217,246,211,194,199,163,186,135,169,91,136"/>
-<area shape="rect" id="Node000004" href="$classtangent.html#a1427c41a62f28c3fa3b44f8adfe3f04c" title=" " alt="" coords="415,56,526,83"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="341,67,400,67,400,72,341,72"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="348,154,395,144,396,150,349,159"/>
-<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="351,182,398,191,397,196,350,187"/>
-<area shape="rect" id="Node000007" href="$classgroup_iterator.html#ac6fd6d91ce3ebf43be39a7d12e12a692" title="Next number counting from &#160;&#160;that has bit @group set to 1." alt="" coords="761,119,932,145"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="531,129,745,129,745,135,531,135"/>
-<area shape="rect" id="Node000008" href="$classgroup_iterator.html#a0b338d3eb42b0b2bc251db90c57b6765" title=" " alt="" coords="578,144,713,171"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="531,138,563,143,562,148,530,143"/>
-<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="712,146,745,142,746,147,713,152"/>
+<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,56,147,83"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#ae73fab0d3edeb32b1ece09e26adc6426" title=" " alt="" coords="195,27,363,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,57,179,52,180,57,147,62"/>
+<area shape="rect" id="Node000007" href="$classborder_line.html#af416a4bb4c4894d3899f1ed9d1b3300a" title=" " alt="" coords="197,77,361,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="147,77,181,82,181,87,146,82"/>
+<area shape="rect" id="Node000003" href="$classgroup_iterator.html#a7fcf587d0750100c33bd9d5228201308" title=" " alt="" coords="411,5,571,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,29,395,26,395,31,364,34"/>
+<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a5a60a0876ca3f292356b1b452f461ff1" title=" " alt="" coords="432,56,551,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="364,49,416,56,416,62,363,54"/>
+<area shape="rect" id="Node000006" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="433,107,549,133"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="334,51,364,63,388,78,412,92,427,99,425,104,410,97,386,82,362,68,332,56"/>
+<area shape="rect" id="Node000005" href="$classgroup_iterator.html#aa5c4b65130358159457c3300bc297504" title=" " alt="" coords="619,56,758,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="551,67,604,67,604,72,551,72"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="335,74,362,63,410,42,428,35,430,40,412,46,364,68,337,79"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="361,85,416,77,416,82,362,90"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="361,104,418,110,417,115,361,110"/>
 </map>

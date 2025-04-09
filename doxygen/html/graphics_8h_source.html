@@ -107,387 +107,392 @@ $(document).ready(function(){initNavTree('graphics_8h_source.html',''); initResi
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="graphics_8h.html#ac7a7b9b9d9070fb89d55d76625436754">    8</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="graphics_8h.html#ac7a7b9b9d9070fb89d55d76625436754">showContacts</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classgl_graphics.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classgl_graphics.html">glGraphics</a>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">   13</a></span>  vector&lt;point&gt; <a class="code hl_function" href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">glCircle</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> r)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="classborder_line.html">borderLine</a> dummy;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>      <a class="code hl_class" href="classpoint.html">point</a> temp;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>      vector&lt;point&gt; result;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>      <span class="keywordtype">float</span> sen = 0.7071067811f;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + r;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + sen * r;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + sen * r;</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classgl_graphics.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classgl_graphics.html">glGraphics</a>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">   16</a></span>  std::vector&lt;point&gt; <a class="code hl_function" href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">glCircle</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> r)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_class" href="classborder_line.html">borderLine</a> dummy;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>      <a class="code hl_class" href="classpoint.html">point</a> temp;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>      std::vector&lt;point&gt; result;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      <span class="keywordtype">float</span> sen = 0.7071067811f;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + r;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + r;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + sen * r;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + sen * r;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + sen * r;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - sen * r;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + r;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x ;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - r;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x + sen * r;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - sen * r;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - sen * r;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - sen * r;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x ;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - r;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - r;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - sen * r;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y - sen * r;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - sen * r;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + sen * r;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - r;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      result.insert(result.end(), temp);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      temp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = x - sen * r;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      temp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = y + sen * r;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      result.insert(result.end(), temp);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  }</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">   46</a></span>  <a class="code hl_class" href="classpoint.html">point</a> <a class="code hl_function" href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">showForce</a>(<a class="code hl_class" href="classpoint.html">point</a> p, <span class="keywordtype">float</span> sc = 1){</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="classborder_line.html">borderLine</a> dummy;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="classpoint.html">point</a> r;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    r.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> + p.<a class="code hl_variable" href="classpoint.html#a23bbe7b59a74c7f9d28396f0228fdb0d">fx</a> * sc;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    r.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> + p.<a class="code hl_variable" href="classpoint.html#a1ec3a47579bc4216e9016a72315f7e0a">fy</a> * sc;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> r;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">   49</a></span>  <a class="code hl_class" href="classpoint.html">point</a> <a class="code hl_function" href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">showForce</a>(<a class="code hl_class" href="classpoint.html">point</a> p, <span class="keywordtype">float</span> sc = 1){</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classborder_line.html">borderLine</a> dummy;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_class" href="classpoint.html">point</a> r;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    r.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> + p.<a class="code hl_variable" href="classpoint.html#a23bbe7b59a74c7f9d28396f0228fdb0d">fx</a> * sc;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    r.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> + p.<a class="code hl_variable" href="classpoint.html#a1ec3a47579bc4216e9016a72315f7e0a">fy</a> * sc;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">return</span> r;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  }</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a5c590ce88f997593f3575dfed34cf4c8">   54</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#a5c590ce88f997593f3575dfed34cf4c8">addRectangle</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a> bl, <a class="code hl_class" href="classscale.html">scale</a> ogl, vector&lt;point&gt; p, <a class="code hl_struct" href="structrgb.html">rgb</a> color = {0.5, 0.5, 0.5}){</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    glBegin (GL_LINE_LOOP);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    glColor3f(color.red, color.green, color.blue);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_class" href="classpoint.html">point</a> p0;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classpoint.html">point</a> mp = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[1].x;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    mp = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[1].x;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[1].y;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    mp = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[1].y;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    mp = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    mp = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    glEnd();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ae29985129ac2a2f3f24aa1ffd3317f79">   57</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#ae29985129ac2a2f3f24aa1ffd3317f79">addRectangle</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a> <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>, <a class="code hl_class" href="classscale.html">scale</a> ogl, std::vector&lt;point&gt; p, <a class="code hl_struct" href="structrgb.html">rgb</a> color = {0.5, 0.5, 0.5}){</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    glBegin (GL_LINE_LOOP);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    glColor3f(color.red, color.green, color.blue);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classpoint.html">point</a> p0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="classpoint.html">point</a> mp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[1].x;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    mp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[1].x;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[1].y;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    mp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[1].y;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    mp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    p0.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a> = p[0].x;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    p0.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a> = p[0].y;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    mp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, p0);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    glVertex2d(mp.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, mp.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    glEnd();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  }</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">   82</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">wait</a>(){</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">bool</span> bQuit = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    MSG msg;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">while</span> (!bQuit){</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>          {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>              bQuit = TRUE;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">   85</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">wait</a>(){</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">bool</span> bQuit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    MSG msg;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">while</span> (!bQuit){</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>              TranslateMessage (&amp;msg);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>              DispatchMessage (&amp;msg);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>              bQuit = TRUE;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>          }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>          {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>              TranslateMessage (&amp;msg);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>              DispatchMessage (&amp;msg);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>          }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  }</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">  102</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a> bl, HDC hDC)</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>  {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      <a class="code hl_typedef" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> i, j;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <a class="code hl_class" href="classpoint.html">point</a> P;     <span class="comment">//coordinates</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      vector&lt;point&gt; temp; <span class="comment">//stores perimeters</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      vector&lt;vector&lt;point&gt; &gt; blp = bl.<a class="code hl_variable" href="classborder_line.html#af29e87238ace509c4910c91a561e1f44">bl</a>;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>      <span class="keywordtype">bool</span> showPoints = bl.<a class="code hl_variable" href="classborder_line.html#aae396c418a1c02d196e40bbe365602b1">showThis</a>;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      glClearColor (1.0f, 1.0f, 1.0f, 0.0f);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      glClear (GL_COLOR_BUFFER_BIT);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="comment">//define openGL scale</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      <a class="code hl_class" href="classscale.html">scale</a> ogl;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      <span class="comment">//addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      ogl.<a class="code hl_function" href="classscale.html#a84024d4d617a7a19d19a9b394a6bd409">initScale</a>();</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      <span class="comment">//define vectors</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      vector&lt;point&gt; attn = bl.<a class="code hl_function" href="classborder_line.html#a03afc00ab7b4258be25731de5ea4eb52">getWarnings</a>();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      <span class="comment">//if (bl.blSettings.doCheckTopol == true){</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">for</span> (i = 0; i &lt; blp.size(); i++)</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            <span class="comment">//attention(blp[i][0].x, blp[i][0].y);</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="comment">//attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            glBegin (GL_LINE_LOOP);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            glColor3f (bl.<a class="code hl_variable" href="classborder_line.html#a612076eb5b5363484988648f63a8e958">colors</a>[i].red, bl.<a class="code hl_variable" href="classborder_line.html#a612076eb5b5363484988648f63a8e958">colors</a>[i].green, bl.<a class="code hl_variable" href="classborder_line.html#a612076eb5b5363484988648f63a8e958">colors</a>[i].blue);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">for</span> (j = 0; j &lt; blp[i].size(); j++)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                P = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, blp[i][j]);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                glVertex2f (P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            }</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            glEnd ();</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (showPoints){</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>          <span class="keywordflow">for</span> (i = 0; i &lt; blp.size(); i++){</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <span class="keywordflow">for</span> (j = 0; j &lt; blp[i].size(); j++){</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>              P = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, blp[i][j]);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>              glBegin (GL_LINE_LOOP);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>              vector&lt;point&gt; cr = <a class="code hl_function" href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, 0.01);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>              <span class="keywordflow">for</span> (<a class="code hl_typedef" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> k = 0; k &lt; cr.size(); k++)</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>              {</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                  glVertex2f (cr[k].x, cr[k].y);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>              }</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>              glEnd ();</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            }</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>          }</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        }</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">        /**********</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">      for (UINT i = 0; i &lt; bl.ngroups; i++){</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">        UINT n = twoPow(i);</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">        vector&lt;point&gt; q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">        addRectangle(bl, ogl, q, bl.colors[i]);</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">      }</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment"></span><span class="comment">      /**********/</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      <span class="comment">//vector&lt;point&gt; bnd = bl.getBoundaries(bl.maxRadius, true);</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      <span class="comment">//addRectangle(bl, ogl, bnd);</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="graphics_8h.html#ac7a7b9b9d9070fb89d55d76625436754">showContacts</a>){</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">for</span> (i = 0; i &lt; attn.size();  i++)</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            P = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, attn[i]);</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="comment">//point tp;</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="comment">/*tp.x = warn[i].fx;</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">            tp.y = warn[i].fy;</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">            point P2;</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">            P2 = place(ogl, tp);</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">            glBegin (GL_LINES);</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">                glColor3f (0.0f, 1.0f, 0.0f);</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">                glVertex2f (P.x, P.y);</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">                glVertex2f (P2.x,P2.y);</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">            glEnd ();</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">            */</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            temp = <a class="code hl_function" href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, P.<a class="code hl_variable" href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">radius</a>);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            glBegin (GL_LINE_LOOP);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            glColor3f (0.0f, 1.0f, 0.0f);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <span class="keywordflow">for</span> (j = 0; j &lt; temp.size(); j++)</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                glVertex2f (temp[j].x, temp[j].y);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            glEnd ();</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>          }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>      }</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        bl.<a class="code hl_function" href="classborder_line.html#a16a472dad872f704195c00435437db5e">clearWarnings</a>();</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      <span class="comment">//}</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>      <span class="comment">//else{</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> i = 0; i &lt; bl.<a class="code hl_variable" href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">circles</a>.size() -1; i++)</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        {</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>          <span class="keywordflow">if</span> (bl.<a class="code hl_variable" href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">circles</a>[i].radius &gt; 0){</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>              <span class="comment">//attention(blp[i][0].x, blp[i][0].y);</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>              <span class="comment">//attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>               <span class="comment">//Show forces</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>               <span class="comment">//-----------</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">               /**********</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">              glBegin (GL_LINES);</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment"></span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">              point t = showForce(bl.circles[i], 0.01);</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"></span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">              P = bl.place(ogl, bl.circles[i]);</span></div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">              glVertex2f(P.x, P.y);</span></div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">              P = bl.place(ogl, t);</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">              glVertex2f(P.x, P.y);</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">              glEnd ();</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment"></span><span class="comment">              /**********/</span></div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>              <span class="comment">//-----------</span></div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>              <span class="comment">/*</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment">              // Show relationships</span></div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">              for (j = 0; j &lt; bl.circles.size(); j++)</span></div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">              {</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">                if (bl.circles[j].radius &gt; 0){</span></div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">                  for (UINT group = 0; group &lt; bl.ngroups; group++){</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">                    UINT mask = 1 &lt;&lt; group;</span></div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">                    glColor3f (bl.colors[group].red, bl.colors[group].green, bl.colors[group].blue);</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">                    if ((bl.circles[i].n &amp; mask) &gt; 0 &amp;&amp; (bl.circles[j].n &amp; mask) &gt; 0){</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">                      glLineWidth(bl.getRelationships(i, j));</span></div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">                      glBegin (GL_LINES);</span></div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">                      P = bl.place(ogl, bl.circles[i]);</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">                      glVertex2f(P.x, P.y);</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">                      P = bl.place(ogl, bl.circles[j]);</span></div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">                      glVertex2f(P.x, P.y);</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">                      glEnd ();</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">                    }</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">                  }</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">                }</span></div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">              }*/</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>              glLineWidth(1);</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>          }</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="comment">//}</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>      }</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">  105</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a> <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>, HDC hDC)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      <a class="code hl_typedef" href="elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> i, j;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>      <a class="code hl_class" href="classpoint.html">point</a> P;     <span class="comment">//coordinates</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      std::vector&lt;point&gt; temp; <span class="comment">//stores perimeters</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>      std::vector&lt;std::vector&lt;point&gt; &gt; blp = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a9a2e0f80c3e2a4e41ff3b80e383f38dd">bl</a>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>      <span class="keywordtype">bool</span> showPoints = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#aae396c418a1c02d196e40bbe365602b1">showThis</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      glClearColor (1.0f, 1.0f, 1.0f, 0.0f);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      glClear (GL_COLOR_BUFFER_BIT);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      <span class="comment">//define openGL scale</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      <a class="code hl_class" href="classscale.html">scale</a> ogl;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      <span class="comment">//addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      ogl.<a class="code hl_function" href="classscale.html#a84024d4d617a7a19d19a9b394a6bd409">initScale</a>();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      <span class="comment">//define vectors</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      std::vector&lt;point&gt; attn = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a918f3410f243300c319a702f167361b4">getWarnings</a>();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      <span class="comment">//if (bl.blSettings.doCheckTopol == true){</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">for</span> (i = 0; i &lt; blp.size(); i++)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="comment">//attention(blp[i][0].x, blp[i][0].y);</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="comment">//attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            glBegin (GL_LINE_LOOP);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            glColor3f (<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a4e6f67b38484cda3a8f4c1c726887bfd">colors</a>[i].red, <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a4e6f67b38484cda3a8f4c1c726887bfd">colors</a>[i].green, <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a4e6f67b38484cda3a8f4c1c726887bfd">colors</a>[i].blue);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">for</span> (j = 0; j &lt; blp[i].size(); j++)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                P = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, blp[i][j]);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                glVertex2f (P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            glEnd ();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">if</span> (showPoints){</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          <span class="keywordflow">for</span> (i = 0; i &lt; blp.size(); i++){</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <span class="keywordflow">for</span> (j = 0; j &lt; blp[i].size(); j++){</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>              P = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, blp[i][j]);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>              glBegin (GL_LINE_LOOP);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>              std::vector&lt;point&gt; cr = <a class="code hl_function" href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, 0.01);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>              <span class="keywordflow">for</span> (<a class="code hl_typedef" href="elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> k = 0; k &lt; cr.size(); k++)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>              {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                  glVertex2f (cr[k].x, cr[k].y);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>              }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>              glEnd ();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">        /**********</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">      for (UINT i = 0; i &lt; bl.ngroups; i++){</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">        UINT n = twoPow(i);</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">        std::vector&lt;point&gt; q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">        addRectangle(bl, ogl, q, bl.colors[i]);</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">      }</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment"></span><span class="comment">      /**********/</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="comment">//std::vector&lt;point&gt; bnd = bl.getBoundaries(bl.maxRadius, true);</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      <span class="comment">//addRectangle(bl, ogl, bnd);</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="graphics_8h.html#ac7a7b9b9d9070fb89d55d76625436754">showContacts</a>){</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">for</span> (i = 0; i &lt; attn.size();  i++)</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        {</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            P = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, attn[i]);</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <span class="comment">//point tp;</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="comment">/*tp.x = warn[i].fx;</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">            tp.y = warn[i].fy;</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">            point P2;</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">            P2 = place(ogl, tp);</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">            glBegin (GL_LINES);</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">                glColor3f (0.0f, 1.0f, 0.0f);</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">                glVertex2f (P.x, P.y);</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">                glVertex2f (P2.x,P2.y);</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">            glEnd ();</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">            */</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            temp = <a class="code hl_function" href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, P.<a class="code hl_variable" href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">radius</a>);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            glBegin (GL_LINE_LOOP);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            glColor3f (0.0f, 1.0f, 0.0f);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <span class="keywordflow">for</span> (j = 0; j &lt; temp.size(); j++)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                glVertex2f (temp[j].x, temp[j].y);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            }</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            glEnd ();</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>          }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      }</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a16a472dad872f704195c00435437db5e">clearWarnings</a>();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>      <span class="comment">//}</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>      <span class="comment">//else{</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> i = 0; i &lt; <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">circles</a>.size() -1; i++)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>          <span class="keywordflow">if</span> (<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">circles</a>[i].radius &gt; 0){</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>              <span class="comment">//attention(blp[i][0].x, blp[i][0].y);</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>              <span class="comment">//attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>               <span class="comment">//Show forces</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>               <span class="comment">//-----------</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">               /**********</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment">              glBegin (GL_LINES);</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment"></span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">              point t = showForce(bl.circles[i], 0.01);</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment"></span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment">              P = bl.place(ogl, bl.circles[i]);</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">              glVertex2f(P.x, P.y);</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">              P = bl.place(ogl, t);</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">              glVertex2f(P.x, P.y);</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">              glEnd ();</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"></span><span class="comment">              /**********/</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>              <span class="comment">//-----------</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>              <span class="comment">/*</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">              // Show relationships</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">              for (j = 0; j &lt; bl.circles.size(); j++)</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">              {</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">                if (bl.circles[j].radius &gt; 0){</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">                  for (UINT group = 0; group &lt; bl.ngroups; group++){</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">                    UINT mask = 1 &lt;&lt; group;</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">                    glColor3f (bl.colors[group].red, bl.colors[group].green, bl.colors[group].blue);</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">                    if ((bl.circles[i].n &amp; mask) &gt; 0 &amp;&amp; (bl.circles[j].n &amp; mask) &gt; 0){</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">                      glLineWidth(bl.getRelationships(i, j));</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">                      glBegin (GL_LINES);</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="comment">                      P = bl.place(ogl, bl.circles[i]);</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="comment">                      glVertex2f(P.x, P.y);</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="comment">                      P = bl.place(ogl, bl.circles[j]);</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="comment">                      glVertex2f(P.x, P.y);</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="comment">                      glEnd ();</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="comment">                    }</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span><span class="comment">                  }</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="comment">                }</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="comment">              }*/</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>              glLineWidth(1);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>          }</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="comment">//}</span></div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>      <span class="keywordflow">for</span> (i = 0; i &lt; bl.<a class="code hl_variable" href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">circles</a>.size();  i++)</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>      {</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>          P = bl.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, bl.<a class="code hl_variable" href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">circles</a>[i]);</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>          temp = <a class="code hl_function" href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, P.<a class="code hl_variable" href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">radius</a>);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>          <span class="keywordflow">if</span> ((bl.<a class="code hl_variable" href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">circles</a>[i].flags &amp; <a class="code hl_define" href="topol_8h.html#a595b3bdb31e0c542382b0135f4f1df5b">IS_OUTSIDE</a>) &gt; 0){</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            glColor3f (0.0f, 1.0f, 0.0f);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>          }</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>          <span class="keywordflow">else</span>{</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            glColor3f (1.0f, 0.0f, 0.0f);</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>      }</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>      <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">circles</a>.size();  i++)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>      {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>          P = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">place</a>(ogl, <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">circles</a>[i]);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>          temp = <a class="code hl_function" href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">glCircle</a>(P.<a class="code hl_variable" href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">x</a>, P.<a class="code hl_variable" href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">y</a>, P.<a class="code hl_variable" href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">radius</a>);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>          <span class="keywordflow">if</span> ((<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">circles</a>[i].flags &amp; <a class="code hl_define" href="scene_8h.html#a595b3bdb31e0c542382b0135f4f1df5b">IS_OUTSIDE</a>) &gt; 0){</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            glColor3f (0.0f, 1.0f, 0.0f);</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>          }</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>          glBegin (GL_LINE_LOOP);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>          <span class="keywordflow">for</span> (j = 0; j &lt; temp.size(); j++)</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>          {</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>              glVertex2f (temp[j].x, temp[j].y);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>          }</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>          glEnd ();</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>      }</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>      <span class="comment">// Text</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>      glColor3f(0.0f, 0.0f, 1.0f);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>      <span class="keywordtype">float</span> yd = 0.8f;</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>      <span class="keywordflow">for</span> (i = 0; i &lt; bl.<a class="code hl_variable" href="classborder_line.html#acc8f7d4a6a48b2ca46432cd810264674">dataDisplay</a>.size(); i++){</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordtype">string</span> mymsg = bl.<a class="code hl_variable" href="classborder_line.html#acc8f7d4a6a48b2ca46432cd810264674">dataDisplay</a>[i];</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment">//showText(mymsg); exit(0);</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        glRasterPos2f(-0.9f, yd);</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <a class="code hl_function" href="bmpfont_8h.html#a97867203486aff2c9e63da6051abf556">printString</a>(mymsg);</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        yd -= 0.1;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>      }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>      <span class="comment">/*for (i = 0; i &lt; bl.dataDisplay.size(); i++){</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">        free(bl.dataDisplay[i]);</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">      }</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment">      bl.dataDisplay.clear();</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">      //glFlush();</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">      **********/</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>      SwapBuffers (hDC);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">      /*********DEBUG**/</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>      <span class="keywordflow">if</span> (attn.size() &gt; 0){</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="comment">//wait();</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>      }</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">      /*********DEBUG***/</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>      <span class="comment">//Sleep(1);</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>  }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>          <span class="keywordflow">else</span>{</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            glColor3f (1.0f, 0.0f, 0.0f);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>          }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>          glBegin (GL_LINE_LOOP);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>          <span class="keywordflow">for</span> (j = 0; j &lt; temp.size(); j++)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>          {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>              glVertex2f (temp[j].x, temp[j].y);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>          }</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>          glEnd ();</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>      }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>      <span class="comment">// Text</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>      glColor3f(0.0f, 0.0f, 1.0f);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>      <span class="keywordtype">float</span> yd = 0.8f;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>      <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#aa65d82c0986d6022a37c3a5aac8ae4d8">dataDisplay</a>.size(); i++){</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        std::string mymsg = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#aa65d82c0986d6022a37c3a5aac8ae4d8">dataDisplay</a>[i];</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="comment">//showText(mymsg); exit(0);</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        glRasterPos2f(-0.9f, yd);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <a class="code hl_function" href="bmpfont_8h.html#a0f148fff7720dbf6b6f82d820143416d">printString</a>(mymsg);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        yd -= 0.1;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>      }</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>      <span class="comment">/*for (i = 0; i &lt; bl.dataDisplay.size(); i++){</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">        free(bl.dataDisplay[i]);</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">      }</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">      bl.dataDisplay.clear();</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">      //glFlush();</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">      **********/</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>      SwapBuffers (hDC);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="comment">      /*********DEBUG**/</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>      <span class="keywordflow">if</span> (attn.size() &gt; 0){</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="comment">//wait();</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>      }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="comment">      /*********DEBUG***/</span></div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>      <span class="comment">//Sleep(1);</span></div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>  }</div>
 </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="foldopen" id="foldopen00279" data-start="{" data-end="}">
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">  279</a></span>  <a class="code hl_class" href="classborder_line.html">borderLine</a> <a class="code hl_function" href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">gsimulate</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a>* blp, <span class="keywordtype">int</span> ncycles, HDC hDC)</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>  {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    restart_log();</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>      <a class="code hl_class" href="classborder_line.html">borderLine</a> bl = *blp;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>      MSG msg;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>      <span class="comment">//bl.setStep(1);</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>      <span class="keywordtype">bool</span> bQuit = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>      <span class="keywordflow">while</span> (!bQuit)</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>      {</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>          <span class="comment">/* check for messages */</span></div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>          <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>          {</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>              <span class="comment">/* handle or dispatch messages */</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>              <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>              {</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                  bQuit = TRUE;</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>              }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
+<div class="foldopen" id="foldopen00282" data-start="{" data-end="}">
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno"><a class="line" href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">  282</a></span>  <a class="code hl_class" href="classborder_line.html">borderLine</a> <a class="code hl_function" href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">gsimulate</a>(<a class="code hl_class" href="classborder_line.html">borderLine</a>* blp, <span class="keywordtype">int</span> ncycles, HDC hDC)</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>  {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    restart_log();</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>      <a class="code hl_class" href="classborder_line.html">borderLine</a> <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a> = *blp;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>      MSG msg;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>      <span class="comment">//bl.setStep(1);</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>      <span class="keywordtype">bool</span> bQuit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>      <span class="keywordflow">while</span> (!bQuit)</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>      {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>          <span class="comment">/* check for messages */</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>          <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>          {</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>              <span class="comment">/* handle or dispatch messages */</span></div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>              <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>              {</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                  TranslateMessage (&amp;msg);</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>                  DispatchMessage (&amp;msg);</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>              }</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>          }</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>          <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>          {</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>              <span class="keywordflow">if</span> (bl.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>.<a class="code hl_function" href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">isMax</a>() == <span class="keyword">true</span>) <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(bl, hDC);</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>              bl.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>++;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>          }</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>      }</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> step = 1; step &lt; 8; step++){</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        bQuit = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        bl.<a class="code hl_function" href="group___a_p_i.html#gaafdbc3a5bf91a3513452d7419733bc11">setStep</a>(step);</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="keywordflow">while</span> (!bQuit)</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        {</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <span class="comment">/* check for messages */</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            {</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                <span class="comment">/* handle or dispatch messages */</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                {</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                    bQuit = TRUE;</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                }</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                  bQuit = TRUE;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>              }</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>              {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>                  TranslateMessage (&amp;msg);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                  DispatchMessage (&amp;msg);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>              }</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>          }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>          <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>          {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>              <span class="keywordflow">if</span> (<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>.<a class="code hl_function" href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">isMax</a>() == <span class="keyword">true</span>) <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>, hDC);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>              <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>++;</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>          }</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>      }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>      <span class="keywordflow">for</span> (<a class="code hl_typedef" href="elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> step = <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a7bc27be5c29ffac6daf238e33dd1c8b3">currentStep</a>; step &lt; 8; step++){</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        bQuit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="group___a_p_i.html#gaafdbc3a5bf91a3513452d7419733bc11">setStep</a>(step);</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="keywordflow">while</span> (!bQuit)</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        {</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            <span class="comment">/* check for messages */</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="keywordflow">if</span> (PeekMessage (&amp;msg, NULL, 0, 0, PM_REMOVE))</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                <span class="comment">/* handle or dispatch messages */</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                <span class="keywordflow">if</span> (msg.message == WM_QUIT)</div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                {</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                    TranslateMessage (&amp;msg);</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                    DispatchMessage (&amp;msg);</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                }</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            }</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>            {</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>                bl.<a class="code hl_function" href="group___a_p_i.html#gae55c41c8d7adaf59e1c37ed4839f9b20">setCycle</a>(step);</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>                <span class="keywordflow">if</span> (bl.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>.<a class="code hl_function" href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">isMax</a>()) <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(bl, hDC);</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>                <span class="keywordflow">if</span> (bl.<a class="code hl_function" href="group___a_p_i.html#ga04242fb41c327f61c3c82c6e3b58ae1b">isStepFinished</a>(step)){</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>                  bQuit = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>                }</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                <span class="comment">//Sleep(200);</span></div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>            }</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        }</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>      }</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>      <span class="keywordflow">return</span> bl;</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>  }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                    bQuit = TRUE;</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                }</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                {</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                    TranslateMessage (&amp;msg);</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>                    DispatchMessage (&amp;msg);</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>                }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>            }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>            {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>                <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="group___a_p_i.html#gae55c41c8d7adaf59e1c37ed4839f9b20">setCycle</a>(step);</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_variable" href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">refreshScreen</a>.<a class="code hl_function" href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">isMax</a>()) <a class="code hl_function" href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">toOGL</a>(<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>, hDC);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>.<a class="code hl_function" href="group___a_p_i.html#ga04242fb41c327f61c3c82c6e3b58ae1b">isStepFinished</a>(step)){</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>                  bQuit = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                }</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>                <span class="comment">//Sleep(200);</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>            }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        }</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>      }</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      <span class="keywordflow">return</span> <a class="code hl_variable" href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a>;</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>  }</div>
 </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>};</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>};</div>
 </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">#endif </span><span class="comment">// GRAPHICS_H_INCLUDED</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#endif </span><span class="comment">// GRAPHICS_H_INCLUDED</span></div>
 <div class="ttc" id="abmpfont_8h_html"><div class="ttname"><a href="bmpfont_8h.html">bmpfont.h</a></div></div>
-<div class="ttc" id="abmpfont_8h_html_a97867203486aff2c9e63da6051abf556"><div class="ttname"><a href="bmpfont_8h.html#a97867203486aff2c9e63da6051abf556">printString</a></div><div class="ttdeci">void printString(string s)</div><div class="ttdef"><b>Definition</b> <a href="bmpfont_8h_source.html#l00091">bmpfont.h:91</a></div></div>
-<div class="ttc" id="aclassborder_line_html"><div class="ttname"><a href="classborder_line.html">borderLine</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01362">topol.h:1363</a></div></div>
-<div class="ttc" id="aclassborder_line_html_a03afc00ab7b4258be25731de5ea4eb52"><div class="ttname"><a href="classborder_line.html#a03afc00ab7b4258be25731de5ea4eb52">borderLine::getWarnings</a></div><div class="ttdeci">vector&lt; point &gt; getWarnings()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l04800">topol.h:4800</a></div></div>
-<div class="ttc" id="aclassborder_line_html_a084169ea5e24d6ec39575c9ab91b9c57"><div class="ttname"><a href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">borderLine::place</a></div><div class="ttdeci">point place(scale s, point m)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01519">topol.h:1519</a></div></div>
-<div class="ttc" id="aclassborder_line_html_a16a472dad872f704195c00435437db5e"><div class="ttname"><a href="classborder_line.html#a16a472dad872f704195c00435437db5e">borderLine::clearWarnings</a></div><div class="ttdeci">void clearWarnings()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l04796">topol.h:4796</a></div></div>
-<div class="ttc" id="aclassborder_line_html_a35a26fa0e557a853097340e99e4cf709"><div class="ttname"><a href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">borderLine::refreshScreen</a></div><div class="ttdeci">lCounter refreshScreen</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01395">topol.h:1395</a></div></div>
-<div class="ttc" id="aclassborder_line_html_a612076eb5b5363484988648f63a8e958"><div class="ttname"><a href="classborder_line.html#a612076eb5b5363484988648f63a8e958">borderLine::colors</a></div><div class="ttdeci">vector&lt; rgb &gt; colors</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01401">topol.h:1401</a></div></div>
-<div class="ttc" id="aclassborder_line_html_aae396c418a1c02d196e40bbe365602b1"><div class="ttname"><a href="classborder_line.html#aae396c418a1c02d196e40bbe365602b1">borderLine::showThis</a></div><div class="ttdeci">bool showThis</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01412">topol.h:1412</a></div></div>
-<div class="ttc" id="aclassborder_line_html_ab3330fcab159e6601e46df1edecae693"><div class="ttname"><a href="classborder_line.html#ab3330fcab159e6601e46df1edecae693">borderLine::circles</a></div><div class="ttdeci">vector&lt; point &gt; circles</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01379">topol.h:1379</a></div></div>
-<div class="ttc" id="aclassborder_line_html_acc8f7d4a6a48b2ca46432cd810264674"><div class="ttname"><a href="classborder_line.html#acc8f7d4a6a48b2ca46432cd810264674">borderLine::dataDisplay</a></div><div class="ttdeci">vector&lt; string &gt; dataDisplay</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01407">topol.h:1407</a></div></div>
-<div class="ttc" id="aclassborder_line_html_af29e87238ace509c4910c91a561e1f44"><div class="ttname"><a href="classborder_line.html#af29e87238ace509c4910c91a561e1f44">borderLine::bl</a></div><div class="ttdeci">vector&lt; vector&lt; point &gt; &gt; bl</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01378">topol.h:1378</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html"><div class="ttname"><a href="classgl_graphics.html">glGraphics</a></div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00010">graphics.h:10</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_a12846965314c7ee99536980cc6999631"><div class="ttname"><a href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">glGraphics::toOGL</a></div><div class="ttdeci">void toOGL(borderLine bl, HDC hDC)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00102">graphics.h:102</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_a5c590ce88f997593f3575dfed34cf4c8"><div class="ttname"><a href="classgl_graphics.html#a5c590ce88f997593f3575dfed34cf4c8">glGraphics::addRectangle</a></div><div class="ttdeci">void addRectangle(borderLine bl, scale ogl, vector&lt; point &gt; p, rgb color={0.5, 0.5, 0.5})</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00054">graphics.h:54</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_a66ff81dfe2958bbf11ed3f80a8367f7f"><div class="ttname"><a href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">glGraphics::gsimulate</a></div><div class="ttdeci">borderLine gsimulate(borderLine *blp, int ncycles, HDC hDC)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00279">graphics.h:279</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_ac66b058c919c31a44f2ed88b5703eb5a"><div class="ttname"><a href="classgl_graphics.html#ac66b058c919c31a44f2ed88b5703eb5a">glGraphics::glCircle</a></div><div class="ttdeci">vector&lt; point &gt; glCircle(float x, float y, float r)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00013">graphics.h:13</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_ae68bb170273c169e0932c2d2105ca7d0"><div class="ttname"><a href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">glGraphics::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00082">graphics.h:82</a></div></div>
-<div class="ttc" id="aclassgl_graphics_html_ae8b44a1c41bdab8d6625007702e6afb3"><div class="ttname"><a href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">glGraphics::showForce</a></div><div class="ttdeci">point showForce(point p, float sc=1)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00046">graphics.h:46</a></div></div>
-<div class="ttc" id="aclassl_counter_html_a079003b060f0cc95cd0c6f7002a86524"><div class="ttname"><a href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">lCounter::isMax</a></div><div class="ttdeci">bool isMax()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00695">topol.h:695</a></div></div>
-<div class="ttc" id="aclasspoint_html"><div class="ttname"><a href="classpoint.html">point</a></div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00042">scene.h:43</a></div></div>
-<div class="ttc" id="aclasspoint_html_a1ec3a47579bc4216e9016a72315f7e0a"><div class="ttname"><a href="classpoint.html#a1ec3a47579bc4216e9016a72315f7e0a">point::fy</a></div><div class="ttdeci">float fy</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00067">scene.h:67</a></div></div>
-<div class="ttc" id="aclasspoint_html_a23bbe7b59a74c7f9d28396f0228fdb0d"><div class="ttname"><a href="classpoint.html#a23bbe7b59a74c7f9d28396f0228fdb0d">point::fx</a></div><div class="ttdeci">float fx</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00066">scene.h:66</a></div></div>
-<div class="ttc" id="aclasspoint_html_a616ad85a2096d1566f5971666bbc3b3f"><div class="ttname"><a href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">point::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00063">scene.h:63</a></div></div>
-<div class="ttc" id="aclasspoint_html_a8293fd2de3ce739deb6d53691fd21fcf"><div class="ttname"><a href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">point::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00062">scene.h:62</a></div></div>
-<div class="ttc" id="aclasspoint_html_ada8d252f6a8e7a53585bca19f35120d9"><div class="ttname"><a href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">point::radius</a></div><div class="ttdeci">float radius</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00068">scene.h:68</a></div></div>
-<div class="ttc" id="aclassscale_html"><div class="ttname"><a href="classscale.html">scale</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00782">topol.h:783</a></div></div>
-<div class="ttc" id="aclassscale_html_a84024d4d617a7a19d19a9b394a6bd409"><div class="ttname"><a href="classscale.html#a84024d4d617a7a19d19a9b394a6bd409">scale::initScale</a></div><div class="ttdeci">void initScale()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00876">topol.h:876</a></div></div>
+<div class="ttc" id="abmpfont_8h_html_a0f148fff7720dbf6b6f82d820143416d"><div class="ttname"><a href="bmpfont_8h.html#a0f148fff7720dbf6b6f82d820143416d">printString</a></div><div class="ttdeci">void printString(std::string s)</div><div class="ttdef"><b>Definition</b> <a href="bmpfont_8h_source.html#l00091">bmpfont.h:91</a></div></div>
+<div class="ttc" id="aclassborder_line_html"><div class="ttname"><a href="classborder_line.html">borderLine</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01424">topol.h:1425</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a084169ea5e24d6ec39575c9ab91b9c57"><div class="ttname"><a href="classborder_line.html#a084169ea5e24d6ec39575c9ab91b9c57">borderLine::place</a></div><div class="ttdeci">point place(scale s, point m)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01758">topol.h:1758</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a16a472dad872f704195c00435437db5e"><div class="ttname"><a href="classborder_line.html#a16a472dad872f704195c00435437db5e">borderLine::clearWarnings</a></div><div class="ttdeci">void clearWarnings()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05118">topol.h:5118</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a35a26fa0e557a853097340e99e4cf709"><div class="ttname"><a href="classborder_line.html#a35a26fa0e557a853097340e99e4cf709">borderLine::refreshScreen</a></div><div class="ttdeci">lCounter refreshScreen</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01472">topol.h:1472</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a4e6f67b38484cda3a8f4c1c726887bfd"><div class="ttname"><a href="classborder_line.html#a4e6f67b38484cda3a8f4c1c726887bfd">borderLine::colors</a></div><div class="ttdeci">std::vector&lt; rgb &gt; colors</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01478">topol.h:1478</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a538819134a2437b726ca53a3d16d6f2f"><div class="ttname"><a href="classborder_line.html#a538819134a2437b726ca53a3d16d6f2f">borderLine::circles</a></div><div class="ttdeci">std::vector&lt; point &gt; circles</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01456">topol.h:1456</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a7bc27be5c29ffac6daf238e33dd1c8b3"><div class="ttname"><a href="classborder_line.html#a7bc27be5c29ffac6daf238e33dd1c8b3">borderLine::currentStep</a></div><div class="ttdeci">UINT currentStep</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01447">topol.h:1447</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a918f3410f243300c319a702f167361b4"><div class="ttname"><a href="classborder_line.html#a918f3410f243300c319a702f167361b4">borderLine::getWarnings</a></div><div class="ttdeci">std::vector&lt; point &gt; getWarnings()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05122">topol.h:5122</a></div></div>
+<div class="ttc" id="aclassborder_line_html_a9a2e0f80c3e2a4e41ff3b80e383f38dd"><div class="ttname"><a href="classborder_line.html#a9a2e0f80c3e2a4e41ff3b80e383f38dd">borderLine::bl</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; point &gt; &gt; bl</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01455">topol.h:1455</a></div></div>
+<div class="ttc" id="aclassborder_line_html_aa65d82c0986d6022a37c3a5aac8ae4d8"><div class="ttname"><a href="classborder_line.html#aa65d82c0986d6022a37c3a5aac8ae4d8">borderLine::dataDisplay</a></div><div class="ttdeci">std::vector&lt; std::string &gt; dataDisplay</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01485">topol.h:1485</a></div></div>
+<div class="ttc" id="aclassborder_line_html_aae396c418a1c02d196e40bbe365602b1"><div class="ttname"><a href="classborder_line.html#aae396c418a1c02d196e40bbe365602b1">borderLine::showThis</a></div><div class="ttdeci">bool showThis</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l01490">topol.h:1490</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html"><div class="ttname"><a href="classgl_graphics.html">glGraphics</a></div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00013">graphics.h:13</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_a12846965314c7ee99536980cc6999631"><div class="ttname"><a href="classgl_graphics.html#a12846965314c7ee99536980cc6999631">glGraphics::toOGL</a></div><div class="ttdeci">void toOGL(borderLine bl, HDC hDC)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00105">graphics.h:105</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_a66ff81dfe2958bbf11ed3f80a8367f7f"><div class="ttname"><a href="classgl_graphics.html#a66ff81dfe2958bbf11ed3f80a8367f7f">glGraphics::gsimulate</a></div><div class="ttdeci">borderLine gsimulate(borderLine *blp, int ncycles, HDC hDC)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00282">graphics.h:282</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_a93c36af1a17da1dd92664417e6e7a696"><div class="ttname"><a href="classgl_graphics.html#a93c36af1a17da1dd92664417e6e7a696">glGraphics::glCircle</a></div><div class="ttdeci">std::vector&lt; point &gt; glCircle(float x, float y, float r)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00016">graphics.h:16</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_ae29985129ac2a2f3f24aa1ffd3317f79"><div class="ttname"><a href="classgl_graphics.html#ae29985129ac2a2f3f24aa1ffd3317f79">glGraphics::addRectangle</a></div><div class="ttdeci">void addRectangle(borderLine bl, scale ogl, std::vector&lt; point &gt; p, rgb color={0.5, 0.5, 0.5})</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00057">graphics.h:57</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_ae68bb170273c169e0932c2d2105ca7d0"><div class="ttname"><a href="classgl_graphics.html#ae68bb170273c169e0932c2d2105ca7d0">glGraphics::wait</a></div><div class="ttdeci">void wait()</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00085">graphics.h:85</a></div></div>
+<div class="ttc" id="aclassgl_graphics_html_ae8b44a1c41bdab8d6625007702e6afb3"><div class="ttname"><a href="classgl_graphics.html#ae8b44a1c41bdab8d6625007702e6afb3">glGraphics::showForce</a></div><div class="ttdeci">point showForce(point p, float sc=1)</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00049">graphics.h:49</a></div></div>
+<div class="ttc" id="aclassl_counter_html_a079003b060f0cc95cd0c6f7002a86524"><div class="ttname"><a href="classl_counter.html#a079003b060f0cc95cd0c6f7002a86524">lCounter::isMax</a></div><div class="ttdeci">bool isMax()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00718">topol.h:718</a></div></div>
+<div class="ttc" id="aclasspoint_html"><div class="ttname"><a href="classpoint.html">point</a></div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00069">scene.h:70</a></div></div>
+<div class="ttc" id="aclasspoint_html_a1ec3a47579bc4216e9016a72315f7e0a"><div class="ttname"><a href="classpoint.html#a1ec3a47579bc4216e9016a72315f7e0a">point::fy</a></div><div class="ttdeci">float fy</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00094">scene.h:94</a></div></div>
+<div class="ttc" id="aclasspoint_html_a23bbe7b59a74c7f9d28396f0228fdb0d"><div class="ttname"><a href="classpoint.html#a23bbe7b59a74c7f9d28396f0228fdb0d">point::fx</a></div><div class="ttdeci">float fx</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00093">scene.h:93</a></div></div>
+<div class="ttc" id="aclasspoint_html_a616ad85a2096d1566f5971666bbc3b3f"><div class="ttname"><a href="classpoint.html#a616ad85a2096d1566f5971666bbc3b3f">point::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00090">scene.h:90</a></div></div>
+<div class="ttc" id="aclasspoint_html_a8293fd2de3ce739deb6d53691fd21fcf"><div class="ttname"><a href="classpoint.html#a8293fd2de3ce739deb6d53691fd21fcf">point::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00089">scene.h:89</a></div></div>
+<div class="ttc" id="aclasspoint_html_ada8d252f6a8e7a53585bca19f35120d9"><div class="ttname"><a href="classpoint.html#ada8d252f6a8e7a53585bca19f35120d9">point::radius</a></div><div class="ttdeci">float radius</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00095">scene.h:95</a></div></div>
+<div class="ttc" id="aclassscale_html"><div class="ttname"><a href="classscale.html">scale</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00805">topol.h:806</a></div></div>
+<div class="ttc" id="aclassscale_html_a84024d4d617a7a19d19a9b394a6bd409"><div class="ttname"><a href="classscale.html#a84024d4d617a7a19d19a9b394a6bd409">scale::initScale</a></div><div class="ttdeci">void initScale()</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00909">topol.h:909</a></div></div>
+<div class="ttc" id="aelements_8h_html_a36cb3b01d81ffd844bbbfb54003e06ec"><div class="ttname"><a href="elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a></div><div class="ttdeci">unsigned int UINT</div><div class="ttdef"><b>Definition</b> <a href="elements_8h_source.html#l00016">elements.h:16</a></div></div>
 <div class="ttc" id="agraphics_8h_html_ac7a7b9b9d9070fb89d55d76625436754"><div class="ttname"><a href="graphics_8h.html#ac7a7b9b9d9070fb89d55d76625436754">showContacts</a></div><div class="ttdeci">bool showContacts</div><div class="ttdef"><b>Definition</b> <a href="graphics_8h_source.html#l00008">graphics.h:8</a></div></div>
-<div class="ttc" id="agroup___a_p_i_html_ga04242fb41c327f61c3c82c6e3b58ae1b"><div class="ttname"><a href="group___a_p_i.html#ga04242fb41c327f61c3c82c6e3b58ae1b">borderLine::isStepFinished</a></div><div class="ttdeci">bool isStepFinished(UINT stepNumber=0)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05566">topol.h:5566</a></div></div>
-<div class="ttc" id="agroup___a_p_i_html_gaafdbc3a5bf91a3513452d7419733bc11"><div class="ttname"><a href="group___a_p_i.html#gaafdbc3a5bf91a3513452d7419733bc11">borderLine::setStep</a></div><div class="ttdeci">bool setStep(UINT stepNumber=0)</div><div class="ttdoc">Inits the conditions for a given step.</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05433">topol.h:5433</a></div></div>
-<div class="ttc" id="agroup___a_p_i_html_gae55c41c8d7adaf59e1c37ed4839f9b20"><div class="ttname"><a href="group___a_p_i.html#gae55c41c8d7adaf59e1c37ed4839f9b20">borderLine::setCycle</a></div><div class="ttdeci">bool setCycle(UINT stepNumber=0)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05511">topol.h:5511</a></div></div>
-<div class="ttc" id="ascene_8h_html_a36cb3b01d81ffd844bbbfb54003e06ec"><div class="ttname"><a href="scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a></div><div class="ttdeci">unsigned int UINT</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00017">scene.h:17</a></div></div>
-<div class="ttc" id="astructrgb_html"><div class="ttname"><a href="structrgb.html">rgb</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00952">topol.h:953</a></div></div>
-<div class="ttc" id="atopol_8h_html_a595b3bdb31e0c542382b0135f4f1df5b"><div class="ttname"><a href="topol_8h.html#a595b3bdb31e0c542382b0135f4f1df5b">IS_OUTSIDE</a></div><div class="ttdeci">#define IS_OUTSIDE</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00023">topol.h:23</a></div></div>
+<div class="ttc" id="agroup___a_p_i_html_ga04242fb41c327f61c3c82c6e3b58ae1b"><div class="ttname"><a href="group___a_p_i.html#ga04242fb41c327f61c3c82c6e3b58ae1b">borderLine::isStepFinished</a></div><div class="ttdeci">bool isStepFinished(UINT stepNumber=0)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l06003">topol.h:6003</a></div></div>
+<div class="ttc" id="agroup___a_p_i_html_gaafdbc3a5bf91a3513452d7419733bc11"><div class="ttname"><a href="group___a_p_i.html#gaafdbc3a5bf91a3513452d7419733bc11">borderLine::setStep</a></div><div class="ttdeci">bool setStep(UINT stepNumber=0)</div><div class="ttdoc">Inits the conditions for a given step.</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05824">topol.h:5824</a></div></div>
+<div class="ttc" id="agroup___a_p_i_html_gae55c41c8d7adaf59e1c37ed4839f9b20"><div class="ttname"><a href="group___a_p_i.html#gae55c41c8d7adaf59e1c37ed4839f9b20">borderLine::setCycle</a></div><div class="ttdeci">bool setCycle(UINT stepNumber=0)</div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l05939">topol.h:5939</a></div></div>
+<div class="ttc" id="ascene_8h_html_a595b3bdb31e0c542382b0135f4f1df5b"><div class="ttname"><a href="scene_8h.html#a595b3bdb31e0c542382b0135f4f1df5b">IS_OUTSIDE</a></div><div class="ttdeci">#define IS_OUTSIDE</div><div class="ttdef"><b>Definition</b> <a href="scene_8h_source.html#l00014">scene.h:14</a></div></div>
+<div class="ttc" id="astructrgb_html"><div class="ttname"><a href="structrgb.html">rgb</a></div><div class="ttdef"><b>Definition</b> <a href="topol_8h_source.html#l00990">topol.h:991</a></div></div>
+<div class="ttc" id="atowasm_8cpp_html_a2ac90d75206b8523afa1b5253c8d60f6"><div class="ttname"><a href="towasm_8cpp.html#a2ac90d75206b8523afa1b5253c8d60f6">bl</a></div><div class="ttdeci">borderLine bl</div><div class="ttdef"><b>Definition</b> <a href="towasm_8cpp_source.html#l00011">towasm.cpp:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

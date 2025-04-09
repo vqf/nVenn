@@ -5,5 +5,5 @@ var searchData=
   ['wlimit_2',['wlimit',['../classborder_line.html#a7dd0e4247ce1be6e833a75b3e8ea981e',1,'borderLine']]],
   ['wndproc_3',['WndProc',['../initogl_8h.html#a30a1e3b0304f1b083637664cbda94e72',1,'initogl.h']]],
   ['writecoords_4',['writeCoords',['../classborder_line.html#a151c0582b1aef6438cac0e605ada345b',1,'borderLine']]],
-  ['writesvg_5',['writeSVG',['../classborder_line.html#ae83cf8b564edcdcb31c8175bf7198e1a',1,'borderLine']]]
+  ['writesvg_5',['writeSVG',['../classborder_line.html#a69b44ec3b61cd612d45fa2215cfe06c4',1,'borderLine']]]
 ];

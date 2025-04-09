@@ -1,0 +1,21 @@
+<map id="borderLine::isTopolIncorrect" name="borderLine::isTopolIncorrect">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,186,133"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a95b23721d655561ee9b1b499637d0eaf" title=" " alt="" coords="234,107,385,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,117,218,117,218,123,186,123"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a631ddec3d3e984012a36803537fcc6f9" title=" " alt="" coords="450,5,589,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,104,374,73,432,42,448,35,450,40,434,46,377,78,331,108"/>
+<area shape="rect" id="Node000004" href="$classborder_line.html#a45da7fbf9d55987369f8dcc249892402" title="Do segments p1&#45;p2 and p3&#45;p4 cross?" alt="" coords="459,56,580,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="367,103,446,84,447,89,368,109"/>
+<area shape="rect" id="Node000006" href="$classborder_line.html#af08f193584fdf8dafc49f571723a7650" title=" " alt="" coords="433,107,605,133"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="385,117,417,117,417,123,385,123"/>
+<area shape="rect" id="Node000009" href="$classborder_line.html#abaf46f598f3fa69f53bcbe0317ae837c" title=" " alt="" coords="451,157,588,184"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="368,131,447,151,446,156,367,137"/>
+<area shape="rect" id="Node000010" href="$classborder_line.html#a754217543a26b2df2af42e099d622d3a" title=" " alt="" coords="447,208,591,235"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="331,132,377,162,434,194,450,200,448,205,432,198,374,167,328,136"/>
+<area shape="rect" id="Node000005" href="$classtangent.html#a29b747ba8f8879d5c5bc395326ba92a6" title=" " alt="" coords="697,56,802,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="580,67,681,67,681,72,580,72"/>
+<area shape="rect" id="Node000007" href="$classborder_line.html#abcc5d1676d3dfab3e32e32e1e2903437" title=" " alt="" coords="653,107,846,133"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="606,117,638,117,638,123,606,123"/>
+<area shape="rect" id="Node000008" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="716,157,783,184"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="584,131,702,158,700,163,583,137"/>
+</map>

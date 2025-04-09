@@ -1,0 +1,15 @@
+<map id="getInfoFromStream" name="getInfoFromStream">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,132,137,159"/>
+<area shape="rect" id="Node000002" href="$str_functs_8h.html#adec99b1205b94d3f8021d61876e30fea" title=" " alt="" coords="209,5,296,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,130,125,87,183,42,194,36,196,41,186,46,128,91,86,133"/>
+<area shape="rect" id="Node000003" href="$str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d" title=" " alt="" coords="200,56,305,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,129,184,92,198,86,200,91,186,97,103,134"/>
+<area shape="rect" id="Node000004" href="$str_functs_8h.html#af184aa15c7d063f7151b3ba97b12d621" title="Eliminates characters that cannot belong to a number. In this version, eliminates any letter,..." alt="" coords="206,107,299,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,134,190,126,190,131,137,139"/>
+<area shape="rect" id="Node000005" href="$classborder_line.html#ae7ec6d15fc0e5cc806b6a204a866e2ac" title=" " alt="" coords="185,157,320,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="137,152,169,156,169,162,136,157"/>
+<area shape="rect" id="Node000006" href="$topol_8h.html#ab6c3d21f2cbc970647cffef7ff777b76" title="Converts a number into a std::vector of integers with the binary representation of the number." alt="" coords="227,208,278,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="103,157,186,194,214,205,212,210,184,198,101,162"/>
+<area shape="rect" id="Node000007" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="219,259,286,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="86,157,128,200,186,244,206,255,204,259,183,249,125,204,83,161"/>
+</map>

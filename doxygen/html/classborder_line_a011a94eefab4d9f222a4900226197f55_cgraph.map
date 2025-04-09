@@ -1,5 +1,23 @@
 <map id="borderLine::scGhostGrav" name="borderLine::scGhostGrav">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,170,32"/>
-<area shape="rect" id="Node000002" href="$classscene.html#a2da5fdfb9cc19e60219820ae7663f152" title="Do GHOST particles feel gravity? By default, they do feel gravity, but do not affect other bodies." alt="" coords="218,5,375,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,16,202,16,202,21,170,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,183,170,209"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a79ef131ece85b6ddbe926114928a8589" title=" " alt="" coords="218,157,380,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,183,202,180,202,185,170,189"/>
+<area shape="rect" id="Node000011" href="$classscene.html#a2da5fdfb9cc19e60219820ae7663f152" title="Do GHOST particles feel gravity? By default, they do feel gravity, but do not affect other bodies." alt="" coords="220,208,378,235"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="170,203,205,207,204,213,170,209"/>
+<area shape="rect" id="Node000003" href="$classscene.html#a1720091e2f4b190b6c1417cd493bb080" title=" " alt="" coords="475,5,584,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,155,355,100,388,68,427,42,458,28,460,33,429,46,392,73,359,104,312,159"/>
+<area shape="rect" id="Node000004" href="$classscene.html#ab40c6a10865eade7a6ee8793a718e9a4" title=" " alt="" coords="467,56,591,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="318,154,366,123,427,92,452,83,453,88,429,97,369,128,321,159"/>
+<area shape="rect" id="Node000005" href="$classscene.html#afa9e44b1bf5761c2e0a37d171064fe9a" title=" " alt="" coords="465,107,594,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="362,154,450,135,451,140,364,159"/>
+<area shape="rect" id="Node000006" href="$classscene.html#a906a407fbedf0b877d427f75d3fe8c6a" title=" " alt="" coords="461,157,597,184"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="380,168,445,168,445,173,380,173"/>
+<area shape="rect" id="Node000007" href="$classborder_line.html#a42b81a37bcaf817dd47b169f65617cf5" title=" " alt="" coords="428,208,630,235"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="364,182,451,201,450,207,362,187"/>
+<area shape="rect" id="Node000009" href="$classscene.html#a9f3ed5ca9bcd0b7c0653a86215dc6a24" title=" " alt="" coords="446,259,612,285"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="358,182,381,194,397,207,406,220,415,233,429,244,441,250,438,255,427,249,411,236,402,223,393,210,379,198,356,187"/>
+<area shape="rect" id="Node000010" href="$classscene.html#a328893217bc70d99428028dfecef5f23" title=" " alt="" coords="452,309,607,336"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="364,182,382,194,393,207,400,220,406,246,412,272,419,284,430,295,439,302,436,306,426,299,414,287,407,274,401,248,395,222,389,210,378,198,361,187"/>
+<area shape="rect" id="Node000008" href="$classscene.html#a0b579963c6817f759b5dce6d454c5c8e" title=" " alt="" coords="678,208,856,235"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="631,219,663,219,663,224,631,224"/>
 </map>

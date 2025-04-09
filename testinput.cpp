@@ -14,5 +14,5 @@ int main(){
       yo.addSet(setn[i], setinp[i]);
     }
     std::cout << yo.getCode() << std::endl;
-
+    std::cout << yo.getInfo() << std::endl;
 }

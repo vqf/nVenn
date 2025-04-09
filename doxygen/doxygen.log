@@ -1,39 +1,39 @@
-D:/Proyectos/nVenn2/gh/graphics.h:342: warning: Reached end of file while still inside a (nested) comment. Nesting level 2 (probable line reference: 194, 147)
-D:/Proyectos/nVenn2/gh/test.cpp:246: warning: Reached end of file while still inside a (nested) comment. Nesting level 1 (probable line reference: 88)
-D:/Proyectos/nVenn2/gh/topol.h:2367: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p0'
-D:/Proyectos/nVenn2/gh/topol.h:348: warning: Found unknown command '@p1'
-D:/Proyectos/nVenn2/gh/topol.h:109: warning: argument '0' of command @param is not found in the argument list of toBin(int number, UINT nBits=0)
-D:/Proyectos/nVenn2/gh/topol.h:109: warning: The following parameter of toBin(int number, UINT nBits=0) is not documented:
+D:/Proyectos/nVenn2/gh/graphics.h:345: warning: Reached end of file while still inside a (nested) comment. Nesting level 2 (probable line reference: 197, 150)
+D:/Proyectos/nVenn2/gh/test.cpp:249: warning: Reached end of file while still inside a (nested) comment. Nesting level 1 (probable line reference: 88)
+D:/Proyectos/nVenn2/gh/topol.h:2664: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p0'
+D:/Proyectos/nVenn2/gh/topol.h:371: warning: Found unknown command '@p1'
+D:/Proyectos/nVenn2/gh/topol.h:144: warning: argument '0' of command @param is not found in the argument list of toBin(int number, UINT nBits=0)
+D:/Proyectos/nVenn2/gh/topol.h:144: warning: The following parameter of toBin(int number, UINT nBits=0) is not documented:
   parameter 'nBits'
-D:/Proyectos/nVenn2/gh/topol.h:5429: warning: argument '0' of command @param is not found in the argument list of borderLine::setStep(UINT stepNumber=0)
-D:/Proyectos/nVenn2/gh/topol.h:5429: warning: The following parameter of borderLine::setStep(UINT stepNumber=0) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:5820: warning: argument '0' of command @param is not found in the argument list of borderLine::setStep(UINT stepNumber=0)
+D:/Proyectos/nVenn2/gh/topol.h:5820: warning: The following parameter of borderLine::setStep(UINT stepNumber=0) is not documented:
   parameter 'stepNumber'
-D:/Proyectos/nVenn2/gh/topol.h:2367: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:2330: warning: found documented return type for borderLine::addLines that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:1997: warning: argument 'false' of command @param is not found in the argument list of borderLine::fixTopology(bool logit=false)
-D:/Proyectos/nVenn2/gh/topol.h:1997: warning: The following parameter of borderLine::fixTopology(bool logit=false) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:2664: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:2618: warning: found documented return type for borderLine::addLines that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2239: warning: argument 'false' of command @param is not found in the argument list of borderLine::fixTopology(bool logit=false)
+D:/Proyectos/nVenn2/gh/topol.h:2239: warning: The following parameter of borderLine::fixTopology(bool logit=false) is not documented:
   parameter 'logit'
-D:/Proyectos/nVenn2/gh/topol.h:1997: warning: found documented return type for borderLine::fixTopology that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:2145: warning: argument 'false' of command @param is not found in the argument list of borderLine::fTopology(bool logit=false)
-D:/Proyectos/nVenn2/gh/topol.h:2145: warning: The following parameter of borderLine::fTopology(bool logit=false) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:2239: warning: found documented return type for borderLine::fixTopology that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2389: warning: argument 'false' of command @param is not found in the argument list of borderLine::fTopology(bool logit=false)
+D:/Proyectos/nVenn2/gh/topol.h:2389: warning: The following parameter of borderLine::fTopology(bool logit=false) is not documented:
   parameter 'logit'
-D:/Proyectos/nVenn2/gh/topol.h:2145: warning: found documented return type for borderLine::fTopology that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:2367: warning: Found unknown command '@addLines'
-D:/Proyectos/nVenn2/gh/topol.h:2370: warning: found documented return type for borderLine::polishLines that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:1654: warning: found documented return type for borderLine::randomizeCircles that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:4608: warning: found documented return type for borderLine::setBV that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:4617: warning: found documented return type for borderLine::setContactFunction that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:4674: warning: found documented return type for borderLine::setCoords that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:4237: warning: found documented return type for borderLine::setRelationships that does not return anything
-D:/Proyectos/nVenn2/gh/topol.h:4422: warning: found documented return type for borderLine::startRefiningSteps that does not return anything
-D:/Proyectos/nVenn2/gh/scene.h:628: warning: found documented return type for scene::grestore that does not return anything
-D:/Proyectos/nVenn2/gh/scene.h:613: warning: found documented return type for scene::gsave that does not return anything
-D:/Proyectos/nVenn2/gh/scene.h:577: warning: argument 'true' of command @param is not found in the argument list of scene::setGhostGravity(bool setGhost=true)
-D:/Proyectos/nVenn2/gh/scene.h:577: warning: The following parameter of scene::setGhostGravity(bool setGhost=true) is not documented:
+D:/Proyectos/nVenn2/gh/topol.h:2389: warning: found documented return type for borderLine::fTopology that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:2664: warning: Found unknown command '@addLines'
+D:/Proyectos/nVenn2/gh/topol.h:2667: warning: found documented return type for borderLine::polishLines that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:1893: warning: found documented return type for borderLine::randomizeCircles that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4918: warning: found documented return type for borderLine::setBV that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4927: warning: found documented return type for borderLine::setContactFunction that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4988: warning: found documented return type for borderLine::setCoords that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4571: warning: found documented return type for borderLine::setRelationships that does not return anything
+D:/Proyectos/nVenn2/gh/topol.h:4624: warning: found documented return type for borderLine::startRefiningSteps that does not return anything
+D:/Proyectos/nVenn2/gh/scene.h:802: warning: found documented return type for scene::grestore that does not return anything
+D:/Proyectos/nVenn2/gh/scene.h:787: warning: found documented return type for scene::gsave that does not return anything
+D:/Proyectos/nVenn2/gh/scene.h:742: warning: argument 'true' of command @param is not found in the argument list of scene::setGhostGravity(bool setGhost=true)
+D:/Proyectos/nVenn2/gh/scene.h:742: warning: The following parameter of scene::setGhostGravity(bool setGhost=true) is not documented:
   parameter 'setGhost'
-D:/Proyectos/nVenn2/gh/scene.h:577: warning: found documented return type for scene::setGhostGravity that does not return anything
+D:/Proyectos/nVenn2/gh/scene.h:742: warning: found documented return type for scene::setGhostGravity that does not return anything

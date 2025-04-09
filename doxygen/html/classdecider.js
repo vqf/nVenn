@@ -4,7 +4,8 @@ var classdecider =
     [ "finished", "classdecider.html#a3cba04b2505de1e6f2de6fc3208d238b", null ],
     [ "init", "classdecider.html#afab804ef4ce9ec64e1bd9cc62c28aade", null ],
     [ "keepState", "classdecider.html#a1cde50cf0ee3f8af1fb86130a22094d7", null ],
-    [ "setConstants", "classdecider.html#a875d12a89ff6b75bdf1684a05a30e5c2", null ],
+    [ "setCanFinish", "classdecider.html#a9cb11a3d417bf42f33eaa2e464ace499", null ],
+    [ "setConstants", "classdecider.html#a9bd8870a0db6c7943e116d056a5656c2", null ],
     [ "viewCanFinish", "classdecider.html#a2f418b2651e58300333205f4d043cb8b", null ],
     [ "viewCounter", "classdecider.html#adfdcbc31fc08077fd28d1a4d7f799588", null ],
     [ "viewCyclesWithoutImprovement", "classdecider.html#a2a7bbe5914aab2e257e7f2a27249725e", null ],
@@ -19,6 +20,9 @@ var classdecider =
     [ "first", "classdecider.html#a24ffa256808b9f41d714704c30d660fc", null ],
     [ "keep", "classdecider.html#a70cd37fb9566b65494b019b410e82dc6", null ],
     [ "lastCompactness", "classdecider.html#a99e50ad727842ada3124211378d691c0", null ],
+    [ "mincycles", "classdecider.html#ad0955ecef7b37c2b383124e4fedc8ed6", null ],
     [ "nAvg", "classdecider.html#a9f41dfb52ec975bad65bfb7353d46bb3", null ],
-    [ "totalCompactness", "classdecider.html#a2ca984fe5f10245dbc9891f7bacf928d", null ]
+    [ "ncycles", "classdecider.html#a371b45a09d885bc7565bb12deb79c30c", null ],
+    [ "totalCompactness", "classdecider.html#a2ca984fe5f10245dbc9891f7bacf928d", null ],
+    [ "wRoom", "classdecider.html#ab725022d0d7d1188170b9388a75f40b5", null ]
 ];
