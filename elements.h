@@ -169,6 +169,7 @@ public:
   nvenn(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     addInfo(desc, sep, byCol);
   }
+
   /** \brief Add set with name to object
    *
    * \param setName std::string
@@ -193,6 +194,17 @@ public:
       warnings << "Duplicated set name: " << setName << ". The set has not bee added" << std::endl;
     }
   }
+
+  /** \brief Add sets from a table
+   *
+   * \param desc std::string Table with sets in rows or columns
+   * \param const char sep = 0x00 Character that separates columns in @desc. If no character is
+   * provided, it will be inferred with @getSep.
+   * \param unset colInfo byCol = unset If t, sets are in columns. If f, sets are in rows. If
+   * unset, it will be heuristically inferred by @decideByCol.
+   * \return void
+   *
+   */
   void addInfo(std::string desc, const char sep = 0x00, colInfo byCol = unset){
     upToDate = false;
     desc = exchangeChar(desc, '\r', 0x00);

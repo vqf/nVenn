@@ -31,6 +31,18 @@ D:/Proyectos/nVenn2/gh/topol.h:4927: warning: found documented return type for b
 D:/Proyectos/nVenn2/gh/topol.h:4988: warning: found documented return type for borderLine::setCoords that does not return anything
 D:/Proyectos/nVenn2/gh/topol.h:4571: warning: found documented return type for borderLine::setRelationships that does not return anything
 D:/Proyectos/nVenn2/gh/topol.h:4624: warning: found documented return type for borderLine::startRefiningSteps that does not return anything
+D:/Proyectos/nVenn2/gh/elements.h:200: warning: argument 'const' of command @param is not found in the argument list of nvenn::addInfo(std::string desc, const char sep=0x00, colInfo byCol=unset)
+D:/Proyectos/nVenn2/gh/elements.h:201: warning: Found unknown command '@desc'
+D:/Proyectos/nVenn2/gh/elements.h:202: warning: Found unknown command '@getSep'
+D:/Proyectos/nVenn2/gh/elements.h:200: warning: argument 'unset' of command @param is not found in the argument list of nvenn::addInfo(std::string desc, const char sep=0x00, colInfo byCol=unset)
+D:/Proyectos/nVenn2/gh/elements.h:204: warning: Found unknown command '@decideByCol'
+D:/Proyectos/nVenn2/gh/elements.h:200: warning: The following parameters of nvenn::addInfo(std::string desc, const char sep=0x00, colInfo byCol=unset) are not documented:
+  parameter 'sep'
+  parameter 'byCol'
+D:/Proyectos/nVenn2/gh/elements.h:200: warning: found documented return type for nvenn::addInfo that does not return anything
+D:/Proyectos/nVenn2/gh/elements.h:175: warning: found documented return type for nvenn::addSet that does not return anything
+D:/Proyectos/nVenn2/gh/elements.h:66: warning: found documented return type for nvenn::transpose that does not return anything
+D:/Proyectos/nVenn2/gh/elements.h:118: warning: found documented return type for nvenn::update that does not return anything
 D:/Proyectos/nVenn2/gh/scene.h:802: warning: found documented return type for scene::grestore that does not return anything
 D:/Proyectos/nVenn2/gh/scene.h:787: warning: found documented return type for scene::gsave that does not return anything
 D:/Proyectos/nVenn2/gh/scene.h:742: warning: argument 'true' of command @param is not found in the argument list of scene::setGhostGravity(bool setGhost=true)

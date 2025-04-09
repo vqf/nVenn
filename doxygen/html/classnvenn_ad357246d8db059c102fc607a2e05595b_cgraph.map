@@ -1,6 +1,6 @@
 <map id="nvenn::getCode" name="nvenn::getCode">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,29,116,56"/>
-<area shape="rect" id="Node000002" href="$classnvenn.html#a875c57e7fd4e891a83cb77ca34e0bfe9" title=" " alt="" coords="164,29,265,56"/>
+<area shape="rect" id="Node000002" href="$classnvenn.html#a875c57e7fd4e891a83cb77ca34e0bfe9" title="Lazily create nVenn code." alt="" coords="164,29,265,56"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,40,148,40,148,45,116,45"/>
 <area shape="rect" id="Node000003" href="$classnvenn.html#a2348282ad964036c7405f8d1ae434926" title=" " alt="" coords="313,29,433,56"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,40,297,40,297,45,266,45"/>

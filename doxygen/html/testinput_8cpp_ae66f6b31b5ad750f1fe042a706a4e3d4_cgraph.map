@@ -1,12 +1,12 @@
 <map id="main" name="main">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,56,55,83"/>
-<area shape="rect" id="Node000002" href="$classnvenn.html#a72635beb99421bd5425532b415355179" title=" " alt="" coords="106,5,210,32"/>
+<area shape="rect" id="Node000002" href="$classnvenn.html#a72635beb99421bd5425532b415355179" title="Add set with name to object." alt="" coords="106,5,210,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,57,107,36,109,41,56,62"/>
 <area shape="rect" id="Node000003" href="$classnvenn.html#ad357246d8db059c102fc607a2e05595b" title=" " alt="" coords="103,56,213,83"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,67,87,67,87,72,55,72"/>
 <area shape="rect" id="Node000006" href="$classnvenn.html#af552f5e262ab9110585c0349bd47fa22" title=" " alt="" coords="108,107,208,133"/>
 <area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="56,76,109,98,107,103,54,81"/>
-<area shape="rect" id="Node000004" href="$classnvenn.html#a875c57e7fd4e891a83cb77ca34e0bfe9" title=" " alt="" coords="261,56,362,83"/>
+<area shape="rect" id="Node000004" href="$classnvenn.html#a875c57e7fd4e891a83cb77ca34e0bfe9" title="Lazily create nVenn code." alt="" coords="261,56,362,83"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,67,245,67,245,72,213,72"/>
 <area shape="rect" id="Node000005" href="$classnvenn.html#a2348282ad964036c7405f8d1ae434926" title=" " alt="" coords="410,56,531,83"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="363,67,395,67,395,72,363,72"/>

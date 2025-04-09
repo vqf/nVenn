@@ -1,18 +1,18 @@
 <map id="nvenn::nvenn" name="nvenn::nvenn">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,132,101,159"/>
-<area shape="rect" id="Node000002" href="$classnvenn.html#a926046b5985ed3785661520db89a0d9f" title=" " alt="" coords="149,132,252,159"/>
+<area shape="rect" id="Node000002" href="$classnvenn.html#a926046b5985ed3785661520db89a0d9f" title="Add sets from a table." alt="" coords="149,132,252,159"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,143,133,143,133,148,101,148"/>
-<area shape="rect" id="Node000003" href="$classnvenn.html#a72635beb99421bd5425532b415355179" title=" " alt="" coords="316,5,419,32"/>
+<area shape="rect" id="Node000003" href="$classnvenn.html#a72635beb99421bd5425532b415355179" title="Add set with name to object." alt="" coords="316,5,419,32"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,130,246,87,271,63,298,42,307,37,310,41,302,46,274,67,250,91,214,133"/>
-<area shape="rect" id="Node000004" href="$classnvenn.html#a1370359c905c2b79a0acbed3c0b87d59" title=" " alt="" coords="300,56,435,83"/>
+<area shape="rect" id="Node000004" href="$classnvenn.html#a1370359c905c2b79a0acbed3c0b87d59" title="Heuristically decide whether sets are in rows or columns." alt="" coords="300,56,435,83"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="226,129,299,92,313,86,315,91,301,97,228,134"/>
 <area shape="rect" id="Node000005" href="$str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d" title=" " alt="" coords="316,107,420,133"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="252,135,300,128,300,133,253,140"/>
-<area shape="rect" id="Node000006" href="$elements_8h.html#a7d3a1fb4e002c1472c35821c857752b2" title="Heuristically predict which separator is being used." alt="" coords="337,157,399,184"/>
+<area shape="rect" id="Node000006" href="$elements_8h.html#a7d3a1fb4e002c1472c35821c857752b2" title="Heuristically predict which separator is being used in a table." alt="" coords="337,157,399,184"/>
 <area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="253,151,322,161,321,166,252,156"/>
 <area shape="rect" id="Node000008" href="$str_functs_8h.html#aad87886235071732c47ae04b47dc97c8" title=" " alt="" coords="345,208,390,235"/>
 <area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="228,157,301,194,331,206,329,211,299,198,226,162"/>
-<area shape="rect" id="Node000009" href="$classnvenn.html#a4f6d0362e2796a1085365524de4ef721" title=" " alt="" coords="308,259,427,285"/>
+<area shape="rect" id="Node000009" href="$classnvenn.html#a4f6d0362e2796a1085365524de4ef721" title="Generate tcells from cells." alt="" coords="308,259,427,285"/>
 <area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="214,158,250,200,274,224,302,244,310,249,307,254,298,249,271,228,246,204,210,161"/>
 <area shape="rect" id="Node000007" href="$str_functs_8h.html#a8285c02c556efa6cd210d8dffb80b4cb" title=" " alt="" coords="483,157,564,184"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="399,168,467,168,467,173,399,173"/>
