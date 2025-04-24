@@ -144,9 +144,9 @@ class nvenn{
       }
     }
     //bycol?
-    for (UINT i = 0; i < cells.size(); i++){
-      if (cells[i][0] == ""){
-        canBeByRow = false;
+    for (UINT i = 0; i < tcells[0].size(); i++){
+      if (tcells[0][i] == ""){
+        canBeByCol = false;
       }
     }
     if (canBeByCol && !canBeByRow){
@@ -157,8 +157,8 @@ class nvenn{
     }
     else if (canBeByCol && canBeByRow){
       UINT nrows = cells[0].size();
-      UINT ncols = cells.size();
-      result = (nrows > ncols) ? t : f;
+      UINT ncols = tcells[0].size();
+      result = (nrows > ncols) ? f : t;
     }
     return result;
   }
@@ -222,12 +222,13 @@ public:
         cells[i].push_back(cols[j]);
       }
     }
-    if (byCol == unset){
-      byCol = decideByCol();
-    }
     transpose();
     activeCells = tcells;
-    if (byCol == f){
+    if (byCol == unset){
+      byCol = decideByCol();
+      warnings << "Bycol: " << (UINT) byCol << std::endl;
+    }
+    if (byCol == t){
       activeCells = cells;
     }
     for (UINT i = 0; i < activeCells.size(); i++){
@@ -236,7 +237,9 @@ public:
       for (UINT j = 1; j < activeCells[i].size(); j++){
         if (activeCells[i][j] != ""){
           els.push_back(activeCells[i][j]);
+          //std::cout << activeCells[i][j] << std::endl;
         }
+        //std::cout << "Ended " << i << std::endl;
       }
       addSet(sn, els);
     }

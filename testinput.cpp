@@ -1,5 +1,9 @@
 #include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
 #include "../gh/elements.h"
+#include "../gh/topol.h"
 
 std::string inp = "a b c\nd e g\n e \n";
 
@@ -10,9 +14,18 @@ std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b",
 int main(){
 
     nvenn yo;
-    for (UINT i = 0; i < setn.size(); i++){
-      yo.addSet(setn[i], setinp[i]);
+    std::ifstream ifile;
+    ifile.open("/home/vqf/proyectos/nVenn2/gh/sets.txt");
+    std::stringstream txt;
+    std::string l;
+    while (std::getline(ifile, l)){
+      txt << l << std::endl;
     }
-    std::cout << yo.getCode() << std::endl;
-    std::cout << yo.getInfo() << std::endl;
+    ifile.close();
+    yo.addInfo(txt.str());
+    std::stringstream info;
+    info << yo.getCode();
+    borderLine bl = getInfoFromStream(info, 0x00, "");
+    bl.simulate();
+    bl.writeSVG("/home/vqf/proyectos/nVenn2/gh/sets.svg");
 }
