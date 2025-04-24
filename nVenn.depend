@@ -186,3 +186,52 @@
 
 1742401374 d:\proyectos\nvenn2\gh\strfuncts.h
 
+1745492804 source:/home/vqf/proyectos/nVenn2/gh2/testinput.cpp
+	<iostream>
+	<istream>
+	<ostream>
+	<sstream>
+	"../gh/elements.h"
+	"../gh/topol.h"
+
+1745491646 /home/vqf/proyectos/nVenn2/gh/elements.h
+	<unordered_set>
+	<iostream>
+	<vector>
+	<fstream>
+	<sstream>
+	<string>
+	"strFuncts.h"
+	"topol.h"
+
+1742397774 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
+
+1742396138 /home/vqf/proyectos/nVenn2/gh/topol.h
+	<vector>
+	<cmath>
+	<time.h>
+	<fstream>
+	<sstream>
+	<cstdarg>
+	<iterator>
+	<algorithm>
+	<iostream>
+	<random>
+	<set>
+	<string>
+	"debug.h"
+	"scene.h"
+	"strFuncts.h"
+
+1737454954 /home/vqf/proyectos/nVenn2/gh/debug.h
+	<stdio.h>
+	<fstream>
+	<sstream>
+
+1738147638 /home/vqf/proyectos/nVenn2/gh/scene.h
+	<vector>
+	<fstream>
+	<sstream>
+	<cmath>
+	"debug.h"
+
