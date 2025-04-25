@@ -2,8 +2,8 @@
 #include <istream>
 #include <ostream>
 #include <sstream>
-#include "../gh/elements.h"
-#include "../gh/topol.h"
+#include "elements.h"
+#include "topol.h"
 
 std::string inp = "a b c\nd e g\n e \n";
 

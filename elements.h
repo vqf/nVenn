@@ -140,13 +140,13 @@ class nvenn{
     //byrow?
     for (UINT i = 0; i < cells[0].size(); i++){
       if (cells[0][i] == ""){
-        canBeByRow = false;
+        canBeByCol = false;
       }
     }
     //bycol?
     for (UINT i = 0; i < tcells[0].size(); i++){
       if (tcells[0][i] == ""){
-        canBeByCol = false;
+        canBeByRow = false;
       }
     }
     if (canBeByCol && !canBeByRow){
@@ -223,13 +223,13 @@ public:
       }
     }
     transpose();
-    activeCells = tcells;
+    activeCells = cells;
     if (byCol == unset){
       byCol = decideByCol();
-      warnings << "Bycol: " << (UINT) byCol << std::endl;
+      warnings << "ByRow (0 - unset, 1 - true, 2 - false): " << (UINT) byCol << std::endl;
     }
     if (byCol == t){
-      activeCells = cells;
+      activeCells = tcells;
     }
     for (UINT i = 0; i < activeCells.size(); i++){
       std::string sn = activeCells[i][0];
