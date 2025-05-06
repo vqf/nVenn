@@ -12,10 +12,22 @@ std::vector<std::string> setn = {"set1", "set2", "set3"};
 std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b", "c"}, {"a", "b", "d", "x"}};
 
 
-int main(){
-    borderLine b(inp);
+int main(int argc, char *argv[]){
+    std::string infile = "";
+    if (argc > 1){
+        infile = argv[1];
+    }
+    else{
+        std::cout << "Need the name of the input file" << std::endl; return 0;
+    }
+    std::ifstream vFile;
+    vFile.open(infile.c_str());
+    std::stringstream content;
+    content << vFile.rdbuf();
+    vFile.close();
+    borderLine b(content.str());
     b.simulate();
-    b.writeHTML("/home/vqf/delme.html");
+    b.writeHTML(infile + ".html");
     return 0;
 }
 

@@ -1,110 +1,92 @@
-Line 3227 - Next candidate: 7
-Line 3254 - Swapping 1 with 3 -> 31.2851
-Line 3254 - Swapping 2 with 3 -> 29.9543
-Line 3227 - Next candidate: 3
-Line 6089 - Outcount: 1
-Line 3227 - Next candidate: 4
-Line 6089 - Outcount: 2
-Line 3227 - Next candidate: 2
-Line 3259 - Prev untie: 0, new untie: 0
-Line 3247 - Undo on checkTopol
-Line 6089 - Outcount: 3
-Line 3227 - Next candidate: 1
-Line 3259 - Prev untie: 0, new untie: 0
-Line 6089 - Outcount: 4
-Line 3227 - Next candidate: 0
-Line 6089 - Outcount: 5
-Line 3227 - Next candidate: 7
-Line 3247 - Undo on checkTopol
-Line 6089 - Outcount: 6
-Line 3227 - Next candidate: 3
-Line 6089 - Outcount: 7
-Line 3227 - Next candidate: 4
-Line 6089 - Outcount: 8
-Line 3227 - Next candidate: 2
-Line 3259 - Prev untie: 0, new untie: 0
-Line 3247 - Undo on checkTopol
-Line 6089 - Outcount: 9
-Line 3227 - Next candidate: 1
-Line 3259 - Prev untie: 0, new untie: 0
-Line 6089 - Outcount: 10
-Line 3227 - Next candidate: 0
-Line 6089 - Outcount: 11
-Line 3227 - Next candidate: 1
-Line 3247 - Undo on checkTopol
-Line 3259 - Prev untie: 29.9543, new untie: 29.9543
-Line 6105 - Outcount: 1
-Line 3227 - Next candidate: 2
-Line 3259 - Prev untie: 29.9543, new untie: 29.9543
-Line 6105 - Outcount: 2
-Line 3227 - Next candidate: 4
-Line 3259 - Prev untie: 29.9543, new untie: 29.9759
-Line 3263 - Did not swap on untie
-Line 3259 - Prev untie: 29.9543, new untie: 31.8035
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 3
-Line 3227 - Next candidate: 3
-Line 3259 - Prev untie: 29.9543, new untie: 29.9759
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 4
-Line 3227 - Next candidate: 7
-Line 3247 - Undo on checkTopol
-Line 3259 - Prev untie: 29.9543, new untie: 31.8035
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 5
-Line 3227 - Next candidate: 0
-Line 6105 - Outcount: 6
-Line 3227 - Next candidate: 1
-Line 3247 - Undo on checkTopol
-Line 3259 - Prev untie: 29.9543, new untie: 29.9543
-Line 6105 - Outcount: 7
-Line 3227 - Next candidate: 2
-Line 3259 - Prev untie: 29.9543, new untie: 29.9543
-Line 6105 - Outcount: 8
-Line 3227 - Next candidate: 4
-Line 3259 - Prev untie: 29.9543, new untie: 29.9759
-Line 3263 - Did not swap on untie
-Line 3259 - Prev untie: 29.9543, new untie: 31.8035
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 9
-Line 3227 - Next candidate: 3
-Line 3259 - Prev untie: 29.9543, new untie: 29.9759
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 10
-Line 3227 - Next candidate: 7
-Line 3247 - Undo on checkTopol
-Line 3259 - Prev untie: 29.9543, new untie: 31.8035
-Line 3263 - Did not swap on untie
-Line 6105 - Outcount: 11
-Line 304 - Distance is zero: X: 3.56361, Y: 12.9271	N: 0	radius: 0	vx: 0	vy: 0	Fx: 24307.3	Fy: -9440.96	Flags: 64
-X: 3.56361, Y: 12.9271	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 4.13233, Y: 15.472	N: 0	radius: 0	vx: 0	vy: 0	Fx: -7561.29	Fy: -11670	Flags: 64
-X: 4.13233, Y: 15.472	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 16.0467, Y: 16.0238	N: 0	radius: 0	vx: 0	vy: 0	Fx: -87578.5	Fy: -17608.3	Flags: 64
-X: 16.0467, Y: 16.0238	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 15.8653, Y: 6.95711	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4284.09	Fy: -27957.9	Flags: 64
-X: 15.8653, Y: 6.95711	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: -7932.32	Fy: -13091.7	Flags: 64
-X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7932.32	Fy: 13091.7	Flags: 64
-X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 3.56361, Y: 12.9271	N: 0	radius: 0	vx: 0	vy: 0	Fx: 24307.3	Fy: -9440.96	Flags: 64
-X: 3.56361, Y: 12.9271	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 4.13233, Y: 15.472	N: 0	radius: 0	vx: 0	vy: 0	Fx: -7561.29	Fy: -11670	Flags: 64
-X: 4.13233, Y: 15.472	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 16.0467, Y: 16.0238	N: 0	radius: 0	vx: 0	vy: 0	Fx: -87578.5	Fy: -17608.3	Flags: 64
-X: 16.0467, Y: 16.0238	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 15.8653, Y: 6.95711	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4284.09	Fy: -27957.9	Flags: 64
-X: 15.8653, Y: 6.95711	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: -7932.32	Fy: -13091.7	Flags: 64
-X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 24.2559, Y: 13.1179	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7932.32	Fy: 13091.7	Flags: 64
-X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 26.6232, Y: 9.89367	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 3228 - Next candidate: 7
+Line 3255 - Swapping 2 with 3 -> 29.0789
+Line 3228 - Next candidate: 3
+Line 3255 - Swapping 1 with 2 -> 29.0283
+Line 3228 - Next candidate: 4
+Line 6173 - Outcount: 1
+Line 3228 - Next candidate: 2
+Line 6173 - Outcount: 2
+Line 3228 - Next candidate: 1
+Line 3248 - Undo on checkTopol
+Line 6173 - Outcount: 3
+Line 3228 - Next candidate: 0
+Line 6173 - Outcount: 4
+Line 3228 - Next candidate: 7
+Line 3248 - Undo on checkTopol
+Line 6173 - Outcount: 5
+Line 3228 - Next candidate: 3
+Line 6173 - Outcount: 6
+Line 3228 - Next candidate: 4
+Line 6173 - Outcount: 7
+Line 3228 - Next candidate: 2
+Line 6173 - Outcount: 8
+Line 3228 - Next candidate: 1
+Line 3248 - Undo on checkTopol
+Line 6173 - Outcount: 9
+Line 3228 - Next candidate: 0
+Line 6173 - Outcount: 10
+Line 3228 - Next candidate: 7
+Line 3248 - Undo on checkTopol
+Line 6173 - Outcount: 11
+Line 3228 - Next candidate: 1
+Line 3248 - Undo on checkTopol
+Line 3260 - Prev untie: 29.0283, new untie: 29.0283
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 1
+Line 3228 - Next candidate: 2
+Line 3260 - Prev untie: 29.0283, new untie: 29.0283
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 2
+Line 3228 - Next candidate: 4
+Line 3260 - Prev untie: 29.0283, new untie: 30.1762
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 3
+Line 3228 - Next candidate: 3
+Line 3260 - Prev untie: 29.0283, new untie: 30.1762
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 4
+Line 3228 - Next candidate: 7
+Line 3248 - Undo on checkTopol
+Line 6189 - Outcount: 5
+Line 3228 - Next candidate: 0
+Line 6189 - Outcount: 6
+Line 3228 - Next candidate: 1
+Line 3248 - Undo on checkTopol
+Line 3260 - Prev untie: 29.0283, new untie: 29.0283
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 7
+Line 3228 - Next candidate: 2
+Line 3260 - Prev untie: 29.0283, new untie: 29.0283
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 8
+Line 3228 - Next candidate: 4
+Line 3260 - Prev untie: 29.0283, new untie: 30.1762
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 9
+Line 3228 - Next candidate: 3
+Line 3260 - Prev untie: 29.0283, new untie: 30.1762
+Line 3264 - Did not swap on untie
+Line 6189 - Outcount: 10
+Line 3228 - Next candidate: 7
+Line 3248 - Undo on checkTopol
+Line 6189 - Outcount: 11
+Line 304 - Distance is zero: X: -2.49286, Y: 10.9003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0.00476837	Fy: 0	Flags: 64
+X: -2.49286, Y: 10.9003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -3.1123, Y: 13.3904	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1422.54	Fy: -13574.8	Flags: 64
+X: -3.1123, Y: 13.3904	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -7.32752, Y: 7.32376	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: -7.32752, Y: 7.32376	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -7.53442, Y: 4.50291	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0.00476837	Flags: 64
+X: -7.53442, Y: 4.50291	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -10.3553, Y: 4.70981	N: 0	radius: 0	vx: 0	vy: 0	Fx: 13675.7	Fy: -6876.66	Flags: 64
+X: -10.3553, Y: 4.70981	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -2.49286, Y: 10.9003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0.00476837	Fy: 0	Flags: 64
+X: -2.49286, Y: 10.9003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -3.1123, Y: 13.3904	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1422.54	Fy: -13574.8	Flags: 64
+X: -3.1123, Y: 13.3904	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -7.32752, Y: 7.32376	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: -7.32752, Y: 7.32376	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -7.53442, Y: 4.50291	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0.00476837	Flags: 64
+X: -7.53442, Y: 4.50291	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: -10.3553, Y: 4.70981	N: 0	radius: 0	vx: 0	vy: 0	Fx: 13675.7	Fy: -6876.66	Flags: 64
+X: -10.3553, Y: 4.70981	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64

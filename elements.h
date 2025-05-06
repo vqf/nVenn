@@ -195,6 +195,12 @@ public:
     }
   }
 
+  std::vector<std::string> names(){
+    std::vector<std::string> result;
+    result.insert(result.begin(), setNames.begin(), setNames.end());
+    return result;
+  }
+
   /** \brief Add sets from a table
    *
    * \param desc std::string Table with sets in rows or columns
