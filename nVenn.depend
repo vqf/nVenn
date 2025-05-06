@@ -194,7 +194,7 @@
 	"../gh/elements.h"
 	"../gh/topol.h"
 
-1745573085 /home/vqf/proyectos/nVenn2/gh/elements.h
+1746455225 /home/vqf/proyectos/nVenn2/gh/elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
@@ -202,11 +202,10 @@
 	<sstream>
 	<string>
 	"strFuncts.h"
-	"topol.h"
 
 1745497027 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 
-1742396138 /home/vqf/proyectos/nVenn2/gh/topol.h
+1746527140 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -219,6 +218,7 @@
 	<random>
 	<set>
 	<string>
+	"elements.h"
 	"debug.h"
 	"scene.h"
 	"strFuncts.h"
@@ -235,7 +235,7 @@
 	<cmath>
 	"debug.h"
 
-1745497027 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
+1746443894 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
 	"topol.h"
 	<stdlib.h>
 	<stdio.h>
@@ -260,7 +260,7 @@
 
 1745497027 /home/vqf/proyectos/nVenn2/gh/initogl.h
 
-1745572421 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
+1746525890 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
 	<iostream>
 	<istream>
 	<ostream>

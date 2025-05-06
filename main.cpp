@@ -85,9 +85,7 @@ int main(int argc, char** argv)
     //result.close();
     lines.writeSVG();
     //lines.centerScene();
-    lines.rotateScene(10);
-    lines.writeSVG("delme.svg");
-
+    lines.writeHTML("/home/vqf/delmeya.html");
     return 0;
 }
 #else

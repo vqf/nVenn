@@ -113,9 +113,6 @@
 			<Option target="towasm" />
 		</Unit>
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />
 				<doxyfile_project />

@@ -8,7 +8,7 @@
 #include <sstream>
 #include <string>
 #include "strFuncts.h"
-#include "topol.h"
+//#include "topol.h"
 
 
 /**< Functions and objects to input sets and interrogate regions */
@@ -303,6 +303,18 @@ public:
       }
       std::cout << std::endl;
     }
+  }
+
+  std::string asJSON(){
+    if (!upToDate){
+      update();
+    }
+    std::string result = "[";
+    for (std::vector<std::string> r : regions){
+      result += "[\"" + join("\", \"", r) + "\"], ";
+    }
+    result += "]";
+    return result;
   }
 
   std::string getCode(){

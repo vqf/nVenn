@@ -14,6 +14,7 @@
 #include <set>
 #include <string>
 
+#include "elements.h"
 #include "debug.h"
 #include "scene.h"
 #include "strFuncts.h"
@@ -1427,6 +1428,7 @@ class borderLine
     friend class groupIterator;
 
     binMap* bm;
+    nvenn setElements;
     scene tosolve;
     float wmax;
     float cushion; /* Distance between lines */
@@ -1524,6 +1526,7 @@ class borderLine
 
     void init(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
       UINT i;
+      setElements = nvenn();
       origw.clear();
       circRadii.clear();
       error = false;
@@ -4585,8 +4588,78 @@ void setRelationships(){
   }
 }
 
+void writeFileText(fileText* tmp, std::string fname = ""){
+    resetScale();
+    std::ofstream result;
+    if (fname == ""){
+      fname = blSettings.fname.c_str();
+    }
+    result.open(fname);
+    result.write(tmp->getText().c_str(), tmp->getText().size());
+    result.close();
+}
+
 public:
     borderLine(){}
+    borderLine(std::string description, std::string fname = "nvenn.txt", std::string outputFile = "result.svg", const char lineSep = 0x00){
+        setElements = nvenn(description, lineSep);
+        std::stringstream vFile;
+        vFile << setElements.getCode();
+        std::string header;
+        std::vector<std::string> groupNames;
+        std::vector<int> temp;
+        std::vector<float> weights;
+        std::vector<std::string> labels;
+        getline(vFile, header);
+        //std::cout << header << std::endl;
+        getline(vFile, header);
+        std::string ng = purgeLetters(header);
+        UINT number = (UINT) atoi(ng.c_str());
+        if (number > 0 && number < 100){
+            //std::cout << std::endl << number << " groups:" << std::endl;
+            for (UINT i = 0; i < number; i++){
+                getline(vFile, header);
+                std::string cl = cleanString(header);
+                groupNames.insert(groupNames.end(), cl);
+                //std::cout << header << std::endl;
+            }
+            UINT n = (UINT) twoPow(number);
+            for (UINT i = 0; i < n; i++){
+                getline(vFile, header); //  get the whole line
+                int l = header.find_first_of(" ");
+                std::string w = purgeLetters(header);
+                if (l > 0){
+                    w = header.substr(0,l);
+                }
+                weights.insert (weights.end(), atoi(w.c_str())); // it takes the first number
+                std::string label = "";
+                /*try
+                {
+                label = header.substr(header.find_first_of(" "));
+                }
+                catch (const std::exception& e)
+                {
+                //std::cout << i << std::endl;
+                label = "";
+                }*/
+                labels.insert (labels.end(), label);
+                //std::cout << "w=" << w << "  label:" << label << std::endl;
+                //getline(vFile, header, ' '); /// get the number
+                //weights.insert (weights.end(), atoi(header.c_str()));
+                //getline(vFile, header) ;  ///  get the rest of the line with the labels
+                //labels.insert (labels.end(), header);
+                temp = toBin(i, number);
+                //printv(temp);
+                //std::cout << ".- " << weights[i] << " : " << labels[i] << std::endl;
+            }
+            init(groupNames, weights, labels, fname, outputFile);
+            setElements = nvenn(description, lineSep);
+        }
+        else{
+            init({"one"}, {0, 1}, {"", ""});
+            setError("Malformed input string. No more than 100 groups are allowed");
+        }
+    }
     borderLine(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg") /// aqui
     {
         fromSignature = false;
@@ -5164,7 +5237,7 @@ public:
       UINT i, j;
       std::string tst;
       point svgtemp;
-      svg.addLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"700\" height=\"500\">");
+      svg.addLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 700 500\">");// width=\"700\" height=\"500\">");
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
       svg.addLine("  .borderLine {");
@@ -5545,6 +5618,57 @@ public:
         return pstext;
     }
 
+    fileText toHTML(){
+        fileText result;
+        result.addLine("<!DOCTYPE html>");
+        result.addLine("<html>");
+        result.addLine("<head>");
+        result.addLine("<style>");
+        result.addLine("body{");
+        result.addLine("margin: 0;");
+        result.addLine("padding: 0;");
+        result.addLine("}");
+        result.addLine(".menus{");
+        result.addLine("width: 100%;");
+        result.addLine("height: 10vh;");
+        result.addLine("}");
+        result.addLine(".panel{");
+        result.addLine("width: 49vw;");
+        result.addLine("height: 90vh;");
+        result.addLine("float: left;");
+        result.addLine("margin: 0;");
+        result.addLine("padding-left: 0.5vw;");
+        result.addLine("border: solid thin black;");
+        result.addLine("border-radius: 1%;");
+        result.addLine("}");
+        result.addLine("</style>");
+        result.addLine("</head>");
+        result.addLine("<body>");
+        result.addLine("<div class=\"menus\" id=\"uppermenu\">");
+        result.addLine("</div>");
+        result.addLine("<div class=\"row\" id=\"noscript\">");
+        result.addLine("<h1>If this message does not disappear, Javascript is inactive</h1>");
+        result.addLine("<h1>You need to activate Javascript to use this interface</h1>");
+        result.addLine("</div>");
+        result.addLine("<div class=\"panel\">");
+        result.addLine("</div>");
+        result.addLine("<div class=\"panel\" id=\"svg\">");
+        fileText svg = toSVG();
+        result.addLine(svg.getText());
+        result.addLine("</div>");
+        result.addLine("<script>");
+        result.addLine("function hideMsg(){");
+        result.addLine("const nosc = document.getElementById('noscript');");
+        result.addLine("nosc.parentNode.removeChild(nosc);");
+        result.addLine("}");
+        result.addLine("hideMsg();");
+        result.addLine("const elements = " + setElements.asJSON() + ";");
+        result.addLine("</script>");
+        result.addLine("</body>");
+        result.addLine("</html>");
+        return result;
+    }
+
 
     void keepDist(float minDist){
       if (blSettings.doCheckTopol){
@@ -5698,14 +5822,13 @@ public:
 
     void writeSVG(std::string fname = ""){
         fileText tmp = toSVG();
-        resetScale();
-        std::ofstream result;
-        if (fname == ""){
-          fname = blSettings.fname.c_str();
-        }
-        result.open(fname);
-        result.write(tmp.getText().c_str(), tmp.getText().size());
-        result.close();
+        writeFileText(&tmp, fname);
+
+    }
+    void writeHTML(std::string fname = ""){
+        //std::cout << "Writing to " << fname << std::endl;
+        fileText tmp = toHTML();
+        writeFileText(&tmp, fname);
 
     }
 
@@ -6117,14 +6240,14 @@ borderLine getInfoFromStream(std::stringstream& vFile, const char lineSep = 0x00
         //printv(temp);
         //std::cout << ".- " << weights[i] << " : " << labels[i] << std::endl;
     }
-    borderLine lines(groupNames, weights, labels, fname, outputFile);
-    return lines;
   }
-  else{
-    borderLine l({"one"}, {0, 1}, {"", ""});
-    l.setError("Malformed input string. No more than 100 groups are allowed");
-    return l;
-  }
+  borderLine lines(groupNames, weights, labels, fname, outputFile);
+  return lines;
+  //else{
+  //  borderLine l({"one"}, {0, 1}, {"", ""});
+  //  l.setError("Malformed input string. No more than 100 groups are allowed");
+  //  return l;
+  //}
 }
 
 
