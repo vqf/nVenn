@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
         infile = argv[1];
     }
     else{
-        std::cout << "Need the name of the input file" << std::endl; return 0;
+        infile = getFile("Input?", "Cannot find file. Please, write the location of the text file with the Venn table");
     }
     std::ifstream vFile;
     vFile.open(infile.c_str());

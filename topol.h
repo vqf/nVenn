@@ -2248,7 +2248,7 @@ class borderLine
     void fixTopology(bool logit = false){
       addLines();
       polishLines();
-      writeSVG("polishlines.svg");
+      //writeSVG("polishlines.svg");
       for (UINT i = 0; i < circles.size(); i++){
         circles[i].flags = unsetFlag(circles[i].flags, USED);
       }
@@ -2384,7 +2384,7 @@ class borderLine
         }
       }
       embellishTopology(logit);
-      writeSVG("embellish.svg");
+      //writeSVG("embellish.svg");
     }
 
 
@@ -2399,9 +2399,9 @@ class borderLine
       addLines();
       //writeSVG("addlines.svg");
       polishLines();
-      writeSVG("polishlines.svg");
+      //writeSVG("polishlines.svg");
       //embellishTopology();
-      writeSVG("embellish.svg");
+      //writeSVG("embellish.svg");
       for (UINT k = 0; k < bl.size(); k++){
         bool goon = true;
         while (goon){
@@ -2540,10 +2540,6 @@ class borderLine
           point p2 = bl[i][np2];
           float dx = p2.x - p1.x;
           float dy = p2.y - p1.y;
-          float neg = 1;
-          if (dx < 0){
-            neg = -1;
-          }
           area += p1.y * dx + dx * dy / 2;
         }
       }
@@ -5230,7 +5226,7 @@ public:
       return r.str();
     }
 
-    fileText toSVG(){
+    fileText toSVG(bool showNames = false){
       //if (blSettings.optimize){
        // getBestSoFar();
       //}
@@ -5674,12 +5670,28 @@ public:
         result.addLine("</head>");
         result.addLine("<body>");
         result.addLine("<div class=\"menus\" id=\"uppermenu\">");
+        result.addLine("<button id=\"getSVG\">Download SVG</button>");
+        result.addLine("<button id=\"getPNG\">Download PNG</button>");
         result.addLine("</div>");
         result.addLine("<div class=\"row\" id=\"noscript\">");
         result.addLine("<h1>If this message does not disappear, Javascript is inactive</h1>");
         result.addLine("<h1>You need to activate Javascript to use this interface</h1>");
         result.addLine("</div>");
         result.addLine("<div class=\"panel25\" id=\"info\">");
+        result.addLine("<dialog id=\"save\" closedby=\"any\">");
+        result.addLine("\t<label for=\"outfile\">Output file:</label>");
+        result.addLine("\t<input autofocus id=\"outfile\" name=\"outfile\" type=\"text\" />");
+        result.addLine("\t<button id=\"downloadpng\">Download</button>");
+        result.addLine("\t<form method=\"dialog\">");
+        result.addLine("\t\t<button>Close</button>");
+        result.addLine("\t</form>");
+        result.addLine("</dialog>");
+        result.addLine("<dialog id=\"safety\" closedby=\"any\">");
+        result.addLine("\t<span><a id=\"safelink\">If the download does not start, you can try clicking here</a></span>");
+        result.addLine("\t<form method=\"dialog\">");
+        result.addLine("\t\t<button autofocus>Close</button>");
+        result.addLine("\t</form>");
+        result.addLine("</dialog>");
         result.addLine("<div id=\"ticks\">");
         std::vector<std::string> setNames = setElements.names();
         result.addLine("<div id=\"checkboxes\">");
@@ -5710,44 +5722,139 @@ public:
         result.addLine(svg.getText());
         result.addLine("</div>");
         result.addLine("<script>");
+        result.addLine("let currentUrl = null;");
+        result.addLine("const dsvg = document.getElementById('getSVG');");
+        result.addLine("const dpng = document.getElementById('getPNG');");
+        result.addLine("const dlg = document.getElementById('save');");
+        result.addLine("const dlg2 = document.getElementById('safety');");
+        result.addLine("const outf = document.getElementById('outfile');");
+        result.addLine("const dod = document.getElementById('downloadpng');");
+        result.addLine("dsvg.addEventListener('click', preparesvg);");
+        result.addLine("dpng.addEventListener('click', preparepng);");
+        result.addLine("outf.addEventListener('keyup', checkfilename);");
+        result.addLine("dod.addEventListener('click', downloadpng);");
+        result.addLine("dlg2.addEventListener('close', function(){window.URL.revokeObjectURL(currentUrl);});");
         result.addLine("const outp = document.getElementById('reg');");
         result.addLine("const elements = " + setElements.asJSON() + ";");
-        result.addLine("function setout(nreg){");
-        result.addLine("\toutp.value = elements[nreg].join(\"\\n\");");
-        result.addLine("}");
-        result.addLine("function fromCircle(nreg){");
-        result.addLine("\tfor (let i = 0; i < cboxes.length; i++){");
-        result.addLine("\tlet nb = 1 << i;");
-        result.addLine("\t\tif ((nreg & nb) > 0){");
-        result.addLine("\t\t\tcboxes[i].checked = true;");
-        result.addLine("\t\t}");
-        result.addLine("\t\telse{");
-        result.addLine("\t\t\tcboxes[i].checked = false;");
-        result.addLine("\t\t}");
-        result.addLine("\t}");
-        result.addLine("\tsetout(nreg);");
-        result.addLine("}");
-        result.addLine("function intersection(){");
-        result.addLine("let region = 0;");
-        result.addLine("\tconst checks = document.getElementsByClassName('cbox');");
-        result.addLine("\tfor (const c of checks){");
-        result.addLine("\t\tif (c.checked){");
-        result.addLine("\t\t\tlet n = c.dataset.nbit;");
-        result.addLine("\t\t\tregion += 1 << n;");
-        result.addLine("\t\t}");
-        result.addLine("\t}");
-        result.addLine("\t\tfromCircle(region);");
-        result.addLine("}");
-        result.addLine("function hideMsg(){");
-        result.addLine("const nosc = document.getElementById('noscript');");
-        result.addLine("nosc.parentNode.removeChild(nosc);");
-        result.addLine("}");
-        result.addLine("hideMsg();");
-        result.addLine("const checks = document.getElementsByClassName('cbox');");
-        result.addLine("for (const c of checks){");
-        result.addLine("\tc.addEventListener('click', intersection);");
-        result.addLine("}");
-        result.addLine("</script>");
+		result.addLine("function setout(nreg){");
+		result.addLine("\toutp.value = elements[nreg].join(\"\\n\");");
+		result.addLine("}");
+		result.addLine("function fromCircle(nreg){");
+		result.addLine("\tfor (let i = 0; i < cboxes.length; i++){");
+		result.addLine("\tlet nb = 1 << i;");
+		result.addLine("\t\tif ((nreg & nb) > 0){");
+		result.addLine("\t\t\tcboxes[i].checked = true;");
+		result.addLine("\t\t}");
+		result.addLine("\t\telse{");
+		result.addLine("\t\t\tcboxes[i].checked = false;");
+		result.addLine("\t\t}");
+		result.addLine("\t}");
+		result.addLine("\tsetout(nreg);");
+		result.addLine("}");
+		result.addLine("function intersection(){");
+		result.addLine("let region = 0;");
+		result.addLine("\tconst checks = document.getElementsByClassName('cbox');");
+		result.addLine("\tfor (const c of checks){");
+		result.addLine("\t\tif (c.checked){");
+		result.addLine("\t\t\tlet n = c.dataset.nbit;");
+		result.addLine("\t\t\tregion += 1 << n;");
+		result.addLine("\t\t}");
+		result.addLine("\t}");
+		result.addLine("\t\tfromCircle(region);");
+		result.addLine("}");
+		result.addLine("function hideMsg(){");
+		result.addLine("const nosc = document.getElementById('noscript');");
+		result.addLine("nosc.parentNode.removeChild(nosc);");
+		result.addLine("}");
+		result.addLine("hideMsg();");
+		result.addLine("const checks = document.getElementsByClassName('cbox');");
+		result.addLine("for (const c of checks){");
+		result.addLine("\tc.addEventListener('click', intersection);");
+		result.addLine("intersection();");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function makePNG(img, jname, callback){");
+		result.addLine("\t\tlet canvas = document.createElement('canvas');");
+		result.addLine("\t\tconst newW = img.width;");
+		result.addLine("\t\tconst newH = img.height;");
+		result.addLine("\t\tcanvas.width = newW;");
+		result.addLine("\t\tcanvas.height = newH;");
+		result.addLine("");
+		result.addLine("\t\tlet ctx = canvas.getContext('2d');");
+		result.addLine("\t\tctx.drawImage(img, 0, 0, newW, newH);");
+		result.addLine("");
+		result.addLine("\t\tlet canvasdata = canvas.toDataURL('image/png');");
+		result.addLine("\t\tlet a = document.createElement('a');");
+		result.addLine("\t\ta.id=\"safelink\";");
+		result.addLine("\t\ta.download = jname + \".png\";");
+		result.addLine("\t\ta.href=canvasdata;");
+		result.addLine("\t\tif (currentUrl !== null){window.URL.revokeObjectURL(currentUrl);}");
+		result.addLine("\t\tcurrentUrl = canvasdata;");
+		result.addLine("\t\tcallback(a);");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function downloadLink(a){");
+		result.addLine("\tconst lnk = document.getElementById('safelink');");
+		result.addLine("\tconst p = lnk.parentNode;");
+		result.addLine("\tconst cnt = lnk.innerHTML;");
+		result.addLine("\ta.innerHTML = cnt;");
+		result.addLine("\tp.removeChild(lnk);");
+		result.addLine("\tp.appendChild(a);");
+		result.addLine("\ta.click();");
+		result.addLine("\tdlg.close();");
+		result.addLine("\tdlg2.show();");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function toPNG(jname){");
+		result.addLine("\tconst svg = document.getElementsByTagName('svg')[0];");
+		result.addLine("\tconst svg_xml = (new XMLSerializer()).serializeToString(svg);");
+		result.addLine("\tconst blob = new Blob([svg_xml], {type:'image/svg+xml;charset=utf-8'});");
+		result.addLine("\tconst url = window.URL.createObjectURL(blob);");
+		result.addLine("\tvar newW = 2800;");
+		result.addLine("\tvar newH = 2000;");
+		result.addLine("\tvar img = new Image();");
+		result.addLine("\timg.width = newW;");
+		result.addLine("\timg.height = newH;");
+		result.addLine("\timg.src = url;");
+		result.addLine("\tif (currentUrl !== null){window.URL.revokeObjectURL(currentUrl);}");
+		result.addLine("\tcurrentUrl = url;");
+		result.addLine("\timg.addEventListener('load', function(){makePNG(img, jname, downloadLink)});");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function toSVG(jname){");
+		result.addLine("\tconst svg = document.getElementsByTagName('svg')[0];");
+		result.addLine("\tconst svg_xml = (new XMLSerializer()).serializeToString(svg);");
+		result.addLine("\tconst blob = new Blob([svg_xml], {type:'image/svg+xml;charset=utf-8'});");
+		result.addLine("\tconst url = window.URL.createObjectURL(blob);");
+		result.addLine("\tlet a = document.createElement('a');");
+		result.addLine("\ta.id=\"safelink\";");
+		result.addLine("\ta.download = jname + \".svg\";");
+		result.addLine("\ta.href=url;");
+		result.addLine("\tconsole.log(url);");
+		result.addLine("\tif (currentUrl !== null){window.URL.revokeObjectURL(currentUrl);}");
+		result.addLine("\tcurrentUrl = url;");
+		result.addLine("\tdownloadLink(a);");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function preparesvg(){");
+		result.addLine("\tdlg.showModal();");
+		result.addLine("\ttoSVG(outf.value);");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function preparepng(){");
+		result.addLine("\tdlg.showModal();");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function downloadpng(){");
+		result.addLine("\ttoPNG(outf.value);");
+		result.addLine("}");
+		result.addLine("");
+		result.addLine("function checkfilename(e){");
+		result.addLine("\tif (e.keyCode === 13){");
+		result.addLine("\t\tdownloadpng();");
+		result.addLine("\t}");
+		result.addLine("}");
+		result.addLine("</script>");
         result.addLine("</body>");
         result.addLine("</html>");
         return result;

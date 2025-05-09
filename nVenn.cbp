@@ -40,7 +40,7 @@
 				</Linker>
 			</Target>
 			<Target title="test">
-				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option output="test" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Linker>
@@ -52,12 +52,12 @@
 				</Linker>
 			</Target>
 			<Target title="towasm">
-				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option output="nVenn_wasm" prefix_auto="1" extension_auto="1" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 			</Target>
 			<Target title="test_input">
-				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option output="input" prefix_auto="1" extension_auto="1" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
