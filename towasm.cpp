@@ -23,6 +23,8 @@ extern "C" {
  void load_signature(const char* signature);
  void rotate_venn(float angle);
  const char* svg();
+ const char* html();
+ const char* getRegion(UINT n);
 }
 
 
@@ -78,6 +80,12 @@ bool draw(){
 
 const char* svg(){
   svgcode = bl.toSVG().getText();
+  const char* result = svgcode.c_str();
+  return result;
+}
+
+const char* html(){
+  svgcode = bl.toHTML().getText();
   const char* result = svgcode.c_str();
   return result;
 }

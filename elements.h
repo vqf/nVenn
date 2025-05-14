@@ -251,6 +251,26 @@ public:
     }
   }
 
+  /** \brief Get a string with the elements in a region
+   *
+   * \param n UINT Region. The binary representation of this integer shows the sets the region
+   *          belongs to (1s) and does not belong to (0s).
+   * \return std::string Elements in the region, separated with a newline
+   *
+   */
+  std::string region(UINT n){
+      std::vector<std::string> v = getRegion(n);
+      std::string r = join("\n", v);
+      return r;
+  }
+
+  /** \brief Get elements in a region
+   *
+   * \param n UINT Region. The binary representation of this integer shows the sets the region
+   *          belongs to (1s) and does not belong to (0s).
+   * \return std::vector<std::string> Elements belonging to the region.
+   *
+   */
   std::vector<std::string> getRegion(UINT n){
     UINT tmp = n;
     std::vector<std::string> snames;
@@ -265,6 +285,12 @@ public:
     return getRegion(snames);
   }
 
+  /** \brief Get elements in a region
+   *
+   * \param regionDesc std::vector<std::string> Names of the sets the region belongs to.
+   * \return std::vector<std::string> Elements belonging to the region.
+   *
+   */
   std::vector<std::string> getRegion(std::vector<std::string> regionDesc){
     std::vector<std::string> result;
     std::unordered_set<std::string> r;

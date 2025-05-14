@@ -5226,6 +5226,19 @@ public:
       return r.str();
     }
 
+    /** \brief Calculate the position of each label if elements are shown
+     *
+     *         Based on heuristics: length = font_size * (7.5 * word_length + 5) / 15 and
+                                    height = 1.368 * font_size + 0.2811
+     * \return std::vector<std::string> svg code with the code for each
+     *                                  element label
+     *
+     */
+    std::vector<std::string> svgLabels(){
+        std::vector<std::string> result;
+        return result;
+    }
+
     fileText toSVG(bool showNames = false){
       //if (blSettings.optimize){
        // getBestSoFar();
@@ -5616,6 +5629,8 @@ public:
         return pstext;
     }
 
+
+
     fileText toHTML(){
         fileText result;
         std::stringstream l;
@@ -5628,10 +5643,20 @@ public:
         result.addLine("\tmargin: 0;");
         result.addLine("\tpadding: 0;");
         result.addLine("}");
+        result.addLine(".dbutton{");
+        result.addLine("\t\theight: 8vh;");
+        result.addLine("\t\tvertical-align: middle;");
+        result.addLine("}");
         result.addLine(".menus{");
         result.addLine("\twidth: 100%;");
         result.addLine("\theight: 9vh;");
+        result.addLine("\tpadding-left: 1vh;");
+        result.addLine("\tborder: thin solid black;");
+        result.addLine("\tborder-radius: 1vw;");
         result.addLine("}");
+        result.addLine("#svg{");
+        result.addLine("\tfloat: right;");
+        result.addLine("};");
         result.addLine(".panel{");
         result.addLine("\twidth: 49vw;");
         result.addLine("\theight: 90vh;");
@@ -5639,16 +5664,16 @@ public:
         result.addLine("\tmargin: 0;");
         result.addLine("\tpadding-left: 0.5vw;");
         result.addLine("\tborder: solid thin black;");
-        result.addLine("\tborder-radius: 1%;");
+        result.addLine("\tborder-radius: 1vh;");
         result.addLine("}");
         result.addLine(".panel25{");
-        result.addLine("\twidth: 24vw;");
+        result.addLine("\twidth: 24.5vw;");
         result.addLine("\theight: 90vh;");
         result.addLine("\tfloat: left;");
         result.addLine("\tmargin: 0;");
         result.addLine("\tpadding-left: 0.5vw;");
         result.addLine("\tborder: solid thin black;");
-        result.addLine("\tborder-radius: 1%;");
+        result.addLine("\tborder-radius: 1vh;");
         result.addLine("}");
         result.addLine(".panel75{");
         result.addLine("\twidth: 74vw;");
@@ -5670,8 +5695,8 @@ public:
         result.addLine("</head>");
         result.addLine("<body>");
         result.addLine("<div class=\"menus\" id=\"uppermenu\">");
-        result.addLine("<button id=\"getSVG\">Download SVG</button>");
-        result.addLine("<button id=\"getPNG\">Download PNG</button>");
+        result.addLine("<button class=\"dbutton\" id=\"getSVG\">Download SVG</button>");
+        result.addLine("<button class=\"dbutton\" id=\"getPNG\">Download PNG</button>");
         result.addLine("</div>");
         result.addLine("<div class=\"row\" id=\"noscript\">");
         result.addLine("<h1>If this message does not disappear, Javascript is inactive</h1>");
