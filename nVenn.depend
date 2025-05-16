@@ -203,15 +203,15 @@
 	<string>
 	"strFuncts.h"
 
-1747314311 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
+1747408648 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
+	<cstdarg>
 
-1747314311 /home/vqf/proyectos/nVenn2/gh/topol.h
+1747410341 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
 	<fstream>
 	<sstream>
-	<cstdarg>
 	<iterator>
 	<algorithm>
 	<iostream>
@@ -222,6 +222,7 @@
 	"debug.h"
 	"scene.h"
 	"strFuncts.h"
+	"palettes.h"
 
 1747314311 /home/vqf/proyectos/nVenn2/gh/debug.h
 	<stdio.h>
@@ -260,11 +261,13 @@
 
 1745497027 /home/vqf/proyectos/nVenn2/gh/initogl.h
 
-1747314308 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
+1747409428 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
 	<iostream>
 	<istream>
 	<ostream>
 	<sstream>
 	"elements.h"
 	"topol.h"
+
+1747409026 /home/vqf/proyectos/nVenn2/gh/palettes.h
 

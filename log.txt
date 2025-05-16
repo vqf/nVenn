@@ -1,204 +1,141 @@
-Line 3224 - Next candidate: 122
-Line 3256 - Prev untie: 12, new untie: 14
-Line 3260 - Did not swap on untie
-Line 3256 - Prev untie: 44, new untie: 14
-Line 3244 - Undo on checkTopol
-Line 6290 - Outcount: 1
-Line 3224 - Next candidate: 72
-Line 3256 - Prev untie: 18, new untie: 14
-Line 3256 - Prev untie: 14, new untie: 14
-Line 3244 - Undo on checkTopol
-Line 6290 - Outcount: 2
-Line 3224 - Next candidate: 68
-Line 3251 - Swapping 1 with 68 -> 30.6549
-Line 3256 - Prev untie: 13, new untie: 5
-Line 3256 - Prev untie: 5, new untie: 11
-Line 3260 - Did not swap on untie
-Line 3256 - Prev untie: 8, new untie: 4
-Line 3224 - Next candidate: 1
-Line 6290 - Outcount: 1
-Line 3224 - Next candidate: 64
-Line 3256 - Prev untie: 5, new untie: 13
-Line 3260 - Did not swap on untie
-Line 3256 - Prev untie: 20, new untie: 5
-Line 3256 - Prev untie: 5, new untie: 5
-Line 6290 - Outcount: 2
-Line 3224 - Next candidate: 0
-Line 6290 - Outcount: 3
-Line 3224 - Next candidate: 122
-Line 3244 - Undo on checkTopol
-Line 3251 - Swapping 92 with 17 -> 30.6549
-Line 3224 - Next candidate: 68
-Line 3244 - Undo on checkTopol
-Line 3256 - Prev untie: 6, new untie: 11
-Line 3260 - Did not swap on untie
-Line 6290 - Outcount: 1
-Line 3224 - Next candidate: 72
-Line 3244 - Undo on checkTopol
-Line 3256 - Prev untie: 6, new untie: 5
-Line 6290 - Outcount: 2
-Line 3224 - Next candidate: 1
-Line 6290 - Outcount: 3
-Line 3224 - Next candidate: 64
-Line 3256 - Prev untie: 5, new untie: 4
-Line 3244 - Undo on checkTopol
-Line 6290 - Outcount: 4
-Line 3224 - Next candidate: 0
-Line 6290 - Outcount: 5
-Line 3224 - Next candidate: 122
-Line 6290 - Outcount: 6
-Line 3224 - Next candidate: 68
-Line 3256 - Prev untie: 19, new untie: 11
-Line 3256 - Prev untie: 11, new untie: 11
-Line 6290 - Outcount: 7
-Line 3224 - Next candidate: 72
-Line 3244 - Undo on checkTopol
-Line 3256 - Prev untie: 6, new untie: 5
-Line 6290 - Outcount: 8
-Line 3224 - Next candidate: 1
-Line 6290 - Outcount: 9
-Line 3224 - Next candidate: 64
-Line 3256 - Prev untie: 5, new untie: 4
-Line 3244 - Undo on checkTopol
-Line 6290 - Outcount: 10
-Line 3224 - Next candidate: 0
-Line 6290 - Outcount: 11
-Line 3224 - Next candidate: 1
-Line 3251 - Swapping 122 with 1 -> 0
-Line 3224 - Next candidate: 64
-Line 6306 - Outcount: 1
-Line 3224 - Next candidate: 68
-Line 3256 - Prev untie: 31.5575, new untie: 31.5575
-Line 6306 - Outcount: 2
-Line 3224 - Next candidate: 72
-Line 3256 - Prev untie: 31.5575, new untie: 31.5575
-Line 6306 - Outcount: 3
-Line 3224 - Next candidate: 122
-Line 6306 - Outcount: 4
-Line 3224 - Next candidate: 0
-Line 6306 - Outcount: 5
-Line 3224 - Next candidate: 1
-Line 6306 - Outcount: 6
-Line 3224 - Next candidate: 64
-Line 3256 - Prev untie: 31.5575, new untie: 31.5575
-Line 6306 - Outcount: 7
-Line 3224 - Next candidate: 68
-Line 3256 - Prev untie: 31.5575, new untie: 31.5575
-Line 6306 - Outcount: 8
-Line 3224 - Next candidate: 72
-Line 3244 - Undo on checkTopol
-Line 6306 - Outcount: 9
-Line 3224 - Next candidate: 122
-Line 3256 - Prev untie: 31.5575, new untie: 31.5575
-Line 6306 - Outcount: 10
-Line 3224 - Next candidate: 0
-Line 6306 - Outcount: 11
-Line 304 - Distance is zero: X: 56.1376, Y: 106.357	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 56.1376, Y: 106.357	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 54.9289, Y: 110.17	N: 0	radius: 0	vx: 0	vy: 0	Fx: -13021.5	Fy: -25108.6	Flags: 64
-X: 54.9289, Y: 110.17	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.65, Y: 95.5747	N: 0	radius: 0	vx: 0	vy: 0	Fx: 119654	Fy: 45798.7	Flags: 64
-X: 61.65, Y: 95.5747	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 5930.63	Fy: 10145.2	Flags: 64
-X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 56.1376, Y: 106.357	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 56.1376, Y: 106.357	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 54.9289, Y: 110.17	N: 0	radius: 0	vx: 0	vy: 0	Fx: -13021.5	Fy: -25108.6	Flags: 64
-X: 54.9289, Y: 110.17	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.65, Y: 95.5747	N: 0	radius: 0	vx: 0	vy: 0	Fx: 119654	Fy: 45798.7	Flags: 64
-X: 61.65, Y: 95.5747	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 5930.63	Fy: 10145.2	Flags: 64
-X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 61.136, Y: 93.3877	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 3224 - Next candidate: 14
-Line 3251 - Swapping 5 with 7 -> 201.947
-Line 3251 - Swapping 6 with 7 -> 200.339
-Line 3251 - Swapping 9 with 7 -> 199.729
-Line 3251 - Swapping 11 with 7 -> 198.999
-Line 3251 - Swapping 13 with 7 -> 198.618
-Line 3224 - Next candidate: 13
-Line 3251 - Swapping 6 with 11 -> 198.423
-Line 3251 - Swapping 8 with 11 -> 196.725
-Line 3224 - Next candidate: 9
-Line 3251 - Swapping 1 with 14 -> 195.151
-Line 3251 - Swapping 5 with 14 -> 194.663
-Line 3251 - Swapping 6 with 14 -> 194.637
-Line 3251 - Swapping 7 with 14 -> 192.689
-Line 3251 - Swapping 9 with 14 -> 191.451
-Line 3224 - Next candidate: 6
-Line 3251 - Swapping 8 with 6 -> 191.255
-Line 3251 - Swapping 13 with 6 -> 190.594
-Line 3224 - Next candidate: 10
-Line 3251 - Swapping 5 with 8 -> 190.155
-Line 3251 - Swapping 13 with 8 -> 188.614
-Line 3224 - Next candidate: 5
-Line 6305 - Outcount: 1
-Line 3224 - Next candidate: 12
-Line 6305 - Outcount: 2
-Line 3224 - Next candidate: 1
-Line 6305 - Outcount: 3
-Line 3224 - Next candidate: 8
-Line 6305 - Outcount: 4
-Line 3224 - Next candidate: 2
-Line 6305 - Outcount: 5
-Line 3224 - Next candidate: 4
-Line 6305 - Outcount: 6
-Line 3224 - Next candidate: 0
-Line 6305 - Outcount: 7
-Line 3224 - Next candidate: 13
-Line 3251 - Swapping 14 with 11 -> 188.601
-Line 3224 - Next candidate: 14
-Line 6305 - Outcount: 1
-Line 3224 - Next candidate: 5
-Line 6305 - Outcount: 2
-Line 3224 - Next candidate: 6
-Line 6305 - Outcount: 3
-Line 3224 - Next candidate: 9
-Line 6305 - Outcount: 4
-Line 3224 - Next candidate: 10
-Line 6305 - Outcount: 5
-Line 3224 - Next candidate: 12
-Line 6305 - Outcount: 6
-Line 3224 - Next candidate: 1
-Line 6305 - Outcount: 7
-Line 3224 - Next candidate: 8
-Line 6305 - Outcount: 8
-Line 3224 - Next candidate: 2
-Line 6305 - Outcount: 9
-Line 3224 - Next candidate: 4
-Line 6305 - Outcount: 10
-Line 3224 - Next candidate: 0
-Line 6305 - Outcount: 11
-Line 3224 - Next candidate: 1
-Line 6321 - Outcount: 1
-Line 3224 - Next candidate: 2
-Line 6321 - Outcount: 2
-Line 3224 - Next candidate: 4
-Line 6321 - Outcount: 3
-Line 3224 - Next candidate: 8
-Line 3256 - Prev untie: 188.601, new untie: 190.143
-Line 3260 - Did not swap on untie
-Line 6321 - Outcount: 4
-Line 3224 - Next candidate: 6
-Line 6321 - Outcount: 5
-Line 3224 - Next candidate: 10
-Line 3256 - Prev untie: 188.601, new untie: 190.143
-Line 3260 - Did not swap on untie
-Line 6321 - Outcount: 6
-Line 3224 - Next candidate: 5
-Line 3256 - Prev untie: 188.601, new untie: 189.822
-Line 3260 - Did not swap on untie
-Line 6321 - Outcount: 7
-Line 3224 - Next candidate: 12
-Line 6321 - Outcount: 8
-Line 3224 - Next candidate: 9
-Line 6321 - Outcount: 9
-Line 3224 - Next candidate: 14
-Line 6321 - Outcount: 10
-Line 3224 - Next candidate: 13
-Line 3256 - Prev untie: 188.601, new untie: 189.822
-Line 3260 - Did not swap on untie
-Line 6321 - Outcount: 11
+Line 3203 - Next candidate: 127
+Line 3230 - Swapping 40 with 7 -> 202.242
+Line 3230 - Swapping 69 with 7 -> 202.242
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 123 with 7 -> 200.916
+Line 3203 - Next candidate: 122
+Line 3230 - Swapping 40 with 17 -> 198.012
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 69 with 17 -> 196.697
+Line 3230 - Swapping 92 with 17 -> 196.697
+Line 3230 - Swapping 122 with 17 -> 196.283
+Line 3230 - Swapping 123 with 17 -> 195.489
+Line 3203 - Next candidate: 60
+Line 6292 - Outcount: 1
+Line 3203 - Next candidate: 69
+Line 3235 - Prev untie: 32, new untie: 15
+Line 3230 - Swapping 17 with 69 -> 195.261
+Line 3203 - Next candidate: 65
+Line 6292 - Outcount: 1
+Line 3203 - Next candidate: 68
+Line 3223 - Undo on checkTopol
+Line 6292 - Outcount: 2
+Line 3203 - Next candidate: 72
+Line 3235 - Prev untie: 36, new untie: 19
+Line 6292 - Outcount: 3
+Line 3203 - Next candidate: 1
+Line 3223 - Undo on checkTopol
+Line 6292 - Outcount: 4
+Line 3203 - Next candidate: 4
+Line 6292 - Outcount: 5
+Line 3203 - Next candidate: 64
+Line 6292 - Outcount: 6
+Line 3203 - Next candidate: 0
+Line 6292 - Outcount: 7
+Line 3203 - Next candidate: 127
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 92 with 7 -> 194.917
+Line 3203 - Next candidate: 122
+Line 3230 - Swapping 92 with 17 -> 194.917
+Line 3203 - Next candidate: 60
+Line 6292 - Outcount: 1
+Line 3203 - Next candidate: 69
+Line 3230 - Swapping 7 with 69 -> 194.917
+Line 3203 - Next candidate: 65
+Line 6292 - Outcount: 1
+Line 3203 - Next candidate: 68
+Line 6292 - Outcount: 2
+Line 3203 - Next candidate: 72
+Line 6292 - Outcount: 3
+Line 3203 - Next candidate: 4
+Line 6292 - Outcount: 4
+Line 3203 - Next candidate: 1
+Line 3223 - Undo on checkTopol
+Line 6292 - Outcount: 5
+Line 3203 - Next candidate: 64
+Line 6292 - Outcount: 6
+Line 3203 - Next candidate: 0
+Line 6292 - Outcount: 7
+Line 3203 - Next candidate: 127
+Line 3223 - Undo on checkTopol
+Line 6292 - Outcount: 8
+Line 3203 - Next candidate: 122
+Line 6292 - Outcount: 9
+Line 3203 - Next candidate: 60
+Line 6292 - Outcount: 10
+Line 3203 - Next candidate: 69
+Line 6292 - Outcount: 11
+Line 3203 - Next candidate: 1
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 92 with 1 -> 13
+Line 3230 - Swapping 122 with 1 -> 11
+Line 3203 - Next candidate: 4
+Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 64
+Line 6308 - Outcount: 2
+Line 3203 - Next candidate: 68
+Line 3230 - Swapping 48 with 68 -> 9
+Line 3223 - Undo on checkTopol
+Line 3203 - Next candidate: 72
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 65
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 2
+Line 3203 - Next candidate: 69
+Line 3230 - Swapping 7 with 69 -> 8
+Line 3230 - Swapping 92 with 69 -> 6
+Line 3203 - Next candidate: 60
+Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 122
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 2
+Line 3203 - Next candidate: 127
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 3
+Line 3203 - Next candidate: 0
+Line 6308 - Outcount: 4
+Line 3203 - Next candidate: 1
+Line 3223 - Undo on checkTopol
+Line 3235 - Prev untie: 197.33, new untie: 199.072
+Line 3239 - Did not swap on untie
+Line 6308 - Outcount: 5
+Line 3203 - Next candidate: 4
+Line 6308 - Outcount: 6
+Line 3203 - Next candidate: 64
+Line 3230 - Swapping 92 with 122 -> 5
+Line 3203 - Next candidate: 68
+Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 72
+Line 6308 - Outcount: 2
+Line 3203 - Next candidate: 65
+Line 3235 - Prev untie: 196.896, new untie: 198.637
+Line 3239 - Did not swap on untie
+Line 6308 - Outcount: 3
+Line 3203 - Next candidate: 69
+Line 3223 - Undo on checkTopol
+Line 3235 - Prev untie: 196.896, new untie: 195.796
+Line 6308 - Outcount: 4
+Line 3203 - Next candidate: 60
+Line 6308 - Outcount: 5
+Line 3203 - Next candidate: 122
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 6
+Line 3203 - Next candidate: 127
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 7
+Line 3203 - Next candidate: 0
+Line 6308 - Outcount: 8
+Line 3203 - Next candidate: 1
+Line 3235 - Prev untie: 195.796, new untie: 195.23
+Line 6308 - Outcount: 9
+Line 3203 - Next candidate: 4
+Line 6308 - Outcount: 10
+Line 3203 - Next candidate: 64
+Line 3235 - Prev untie: 195.23, new untie: 195.796
+Line 3239 - Did not swap on untie
+Line 6308 - Outcount: 11
+Line 304 - Distance is zero: X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 1676.03	Fy: 12936.9	Flags: 64
+X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 1676.03	Fy: 12936.9	Flags: 64
+X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64

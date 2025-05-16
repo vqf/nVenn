@@ -6,7 +6,6 @@
 #include <time.h>
 #include <fstream>
 #include <sstream>
-#include <cstdarg>
 #include <iterator>
 #include <algorithm>
 #include <iostream>
@@ -18,6 +17,7 @@
 #include "debug.h"
 #include "scene.h"
 #include "strFuncts.h"
+#include "palettes.h"
 
 //#include <windows.h>
 
@@ -1423,6 +1423,12 @@ typedef struct csts{
   float B;  // Newtonian resistance coefficient
 } constants;
 
+typedef struct svgOpts{
+    std::vector<std::string> svgColors;
+    float svgOpacity;
+    float svgLineWidth;
+} svgOptions;
+
 class borderLine
 {
     friend class glGraphics;
@@ -1479,7 +1485,8 @@ class borderLine
     std::vector<std::string> labels;
     std::vector<float> origw;
     std::vector<rgb> colors;
-    std::vector<std::string> svgcolors;
+    palettes svgPalettes;
+    svgOptions svgParams;
     std::vector<point> warn;
     scale internalScale;
     scale limits;
@@ -1533,6 +1540,9 @@ class borderLine
       error = false;
       resetV = false;
       cushion = 0.02;
+      svgParams.svgOpacity = 0.4;
+      svgParams.svgLineWidth = 1;
+      palettes svgPalettes;
       errorMessage = "";
       groups = g;
       currentStep = attract;
@@ -1596,40 +1606,8 @@ class borderLine
       udt.init();
       evaluation.init();
       evaluation.setConstants(100, 50);
-      int arr[] = {
-        0xE6194B,
-        0x3CB44B,
-        0xffe119,
-        0x0082c8,
-        0xf58231,
-        0x911eb4,
-        0x46f0f0,
-        0xf032e6,
-        0xd2f53c,
-        0xfabebe,
-        0x008080,
-        0xe6beff,
-        0xaa6e28,
-        0xfffac8,
-        0x800000,
-        0xaaffc3,
-        0x808000,
-        0xffd8b1,
-        0x000080,
-        0x808080,
-        0xFFFFFF,
-        0x000000
-      };
-      svgcolors.clear();
-      for (UINT i = 0; i < ngroups; i++){
-        std::string c = vformat("#%06x", arr[i]);
-        svgcolors.push_back(c.c_str());
-      }
-      //init colors
-      for (UINT i = 0; i < ngroups; i++)
-      {
-        colors.push_back(toRGB(arr[i], 1));
-      }
+      //Set starting palette and load svg and postscript colors
+      loadPalette(0);
       w = tw;         //keep a copy of the weights
       wlimit();
       for (i = 0; i < tw.size(); i++){
@@ -1680,6 +1658,7 @@ class borderLine
       savedState.hasBeenSet = false;
       randomizeCircles();
     }
+
 
     UINT leftmostCircle(UINT group){
       groupIterator git(circles, group, 1);
@@ -4667,6 +4646,19 @@ public:
         /*writeSVG()*/
     }
 
+    void loadPalette(UINT n){
+        std::vector<UINT> arr = svgPalettes.getPalette(n);
+        svgParams.svgColors.clear();
+        for (UINT i = 0; i < ngroups; i++){
+            std::string c = vformat("#%06x", arr[i]);
+            svgParams.svgColors.push_back(c.c_str());
+        }
+        //init postscript colors
+        for (UINT i = 0; i < ngroups; i++)
+        {
+            colors.push_back(toRGB(arr[i], 1));
+        }
+    }
 
     void initCounters(){
       blCounter.setLimits(0, 50u);
@@ -5149,27 +5141,6 @@ public:
         return result;
     }
 
-    const std::string vformat(const char * const zcFormat, ...) {
-
-      // initialize use of the variable argument array
-      va_list vaArgs;
-      va_start(vaArgs, zcFormat);
-
-      // reliably acquire the size
-      // from a copy of the variable argument array
-      // and a functionally reliable call to mock the formatting
-      va_list vaArgsCopy;
-      va_copy(vaArgsCopy, vaArgs);
-      const int iLen = std::vsnprintf(NULL, 0, zcFormat, vaArgsCopy);
-      va_end(vaArgsCopy);
-
-      // return a formatted string without risking memory mismanagement
-      // and without assuming any compiler or platform specific behavior
-      std::vector<char> zc(iLen + 1);
-      std::vsnprintf(zc.data(), zc.size(), zcFormat, vaArgs);
-      va_end(vaArgs);
-      return std::string(zc.data(), iLen);
-    }
 
     std::string croack(){
       std::string result = internalScale.croack();
@@ -5226,7 +5197,7 @@ public:
       return r.str();
     }
 
-    /** \brief Calculate the position of each label if elements are shown
+    /** \brief Calculate the position of each label if elements are shown TODO
      *
      *         Based on heuristics: length = font_size * (7.5 * word_length + 5) / 15 and
                                     height = 1.368 * font_size + 0.2811
@@ -5237,6 +5208,22 @@ public:
     std::vector<std::string> svgLabels(){
         std::vector<std::string> result;
         return result;
+    }
+
+    void setSVGColor(UINT setNumber, std::vector<int8_t> rgbColor){
+        std::string s = vformat("#%02x%02x%02x", rgbColor[0], rgbColor[1], rgbColor[2]);
+        if (setNumber > 0){
+            setNumber--;
+        }
+        svgParams.svgColors[setNumber] = s;
+    }
+
+    void setSVGOpacity(float t){
+        svgParams.svgOpacity = t;
+    }
+
+    void setSVGLineWidth(float lw){
+        svgParams.svgLineWidth = lw;
     }
 
     fileText toSVG(bool showNames = false){
@@ -5253,10 +5240,10 @@ public:
       svg.addLine("<style type=\"text/css\"><![CDATA[");
       svg.addLine("  .borderLine {");
       svg.addLine("	   stroke: none;");
-      svg.addLine("	   fill-opacity: 0.4;");
+      svg.addLine(vformat("	   fill-opacity: %.4f;", svgParams.svgOpacity));
       svg.addLine("  }");
       svg.addLine("  .outLine {");
-      svg.addLine("	   stroke-width: 1;");
+      svg.addLine(vformat("	   stroke-width: %.4f;", svgParams.svgLineWidth));
       svg.addLine("	   fill: none;");
       svg.addLine("  }");
       svg.addLine("  .circle {");
@@ -5301,11 +5288,11 @@ public:
       for (i = 0; i < ngroups; i++){
         svg.addLine("  .p" + num(i) + "{");
         svg.addLine("    stroke: none;");
-        svg.addLine("    fill: " + svgcolors[i] + ";");
+        svg.addLine("    fill: " + svgParams.svgColors[i] + ";");
         svg.addLine("  }");
         svg.addLine("  .q" + num(i) + "{");
         svg.addLine("    fill: none;");
-        svg.addLine("    stroke: " + svgcolors[i] + ";");
+        svg.addLine("    stroke: " + svgParams.svgColors[i] + ";");
         svg.addLine("  }");
       }
       svg.addLine("]]>");

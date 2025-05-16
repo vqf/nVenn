@@ -27,6 +27,10 @@ int main(int argc, char *argv[]){
     vFile.close();
     borderLine b(content.str());
     b.simulate();
+    b.loadPalette(3);
+    b.setSVGOpacity(0.2);
+    b.setSVGLineWidth(0.5);
+    //std::cout << "Here\n";
     b.writeHTML(infile + ".html");
     return 0;
 }
