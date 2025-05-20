@@ -61,8 +61,6 @@ std::string buildTw(std::string signat){
 
 
 
-
-
 //--------------------------------------------
 void printv(std::vector<UINT> v)
 {
@@ -1427,6 +1425,9 @@ typedef struct svgOpts{
     std::vector<std::string> svgColors;
     float svgOpacity;
     float svgLineWidth;
+    bool showNumbers;
+    bool showRegionNumbers;
+    UINT svgFontSize;
 } svgOptions;
 
 class borderLine
@@ -1542,6 +1543,9 @@ class borderLine
       cushion = 0.02;
       svgParams.svgOpacity = 0.4;
       svgParams.svgLineWidth = 1;
+      svgParams.showNumbers = true;
+      svgParams.showRegionNumbers = true;
+      svgParams.svgFontSize = 1;
       palettes svgPalettes;
       errorMessage = "";
       groups = g;
@@ -4577,7 +4581,7 @@ void writeFileText(fileText* tmp, std::string fname = ""){
 
 public:
     borderLine(){}
-    borderLine(std::string description, std::string fname = "nvenn.txt", std::string outputFile = "result.svg", const char lineSep = 0x00){
+    borderLine(std::string description, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
         fromSignature = false;
         setElements = nvenn(description, lineSep);
         std::stringstream vFile;
@@ -5226,12 +5230,37 @@ public:
         svgParams.svgLineWidth = lw;
     }
 
+    void showCircleNumbers(bool s){
+        svgParams.showNumbers = s;
+    }
+    void showRegionNumbers(bool s){
+        svgParams.showRegionNumbers = s;
+    }
+    void setFontSize(UINT fs){
+        if (fs > 2){
+            fs = 2;
+        }
+        svgParams.svgFontSize = fs;
+    }
+
+    std::string getVennRegion(UINT r){
+        std::vector<std::string> s = setElements.getRegion(r);
+        std::string result = join("\n", s);
+        return result;
+    }
+
     fileText toSVG(bool showNames = false){
       //if (blSettings.optimize){
        // getBestSoFar();
       //}
       fileText svg;
       int fsize = 10;
+      if (svgParams.svgFontSize == 0){
+        fsize = 8;
+      }
+      else if (svgParams.svgFontSize == 2){
+        fsize = 12;
+      }
       UINT i, j;
       std::string tst;
       point svgtemp;
@@ -5379,23 +5408,28 @@ public:
             tst = vformat("<circle onclick=\"fromCircle(%u)\" class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, clss.c_str(), svgtemp.x,
                             svgtemp.y, svgtemp.radius);
             svg.addLine(tst);
-            tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
-            svg.addLine(tst);
-            tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);
-            svg.addLine(tst);
-            // Belongs to
-            std::vector<int> tb = toBin(circles[i].n, bl.size());
-            std::vector<std::string> blongs;
-            UINT m;
-            for (m = 0; m < tb.size(); m++){
-              if (tb[m] > 0){
-                std::string t = vformat("%d", m + 1);
-                blongs.push_back(t);
-              }
+            if (svgParams.showNumbers){
+                tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
+                svg.addLine(tst);
+                tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);
+                svg.addLine(tst);
+
             }
-            std::string bgs = join(", ", blongs);
-            std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
-            svg.addLine(t);
+            // Belongs to
+            if (svgParams.showRegionNumbers){
+                std::vector<int> tb = toBin(circles[i].n, bl.size());
+                std::vector<std::string> blongs;
+                UINT m;
+                for (m = 0; m < tb.size(); m++){
+                  if (tb[m] > 0){
+                    std::string t = vformat("%d", m + 1);
+                    blongs.push_back(t);
+                  }
+                }
+                std::string bgs = join(", ", blongs);
+                std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
+                svg.addLine(t);
+            }
           }
         }
       }
@@ -6389,6 +6423,11 @@ public:
     }
 
 };
+
+borderLine fromSets(std::string sets, UINT byCol){
+    borderLine result(sets, byCol);
+    return result;
+}
 
 borderLine getInfoFromStream(std::stringstream& vFile, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
   std::string header;

@@ -25,11 +25,47 @@ extern "C" {
  const char* svg();
  const char* html();
  const char* getRegion(UINT n);
+ void setColor(UINT setNumber, std::vector<int8_t> rgbColor);
+ void setOpacity(float t);
+ void setLineWidth(float t);
+ void showSizes(bool s);
+ void showRegionDesc(bool s);
+ void setFontSize(UINT fs);
+ void load_sets(const char* sets, UINT bycol);
 }
 
+const char* getRegion(UINT n){
+    std::string r = bl.getVennRegion(n);
+    const char* result = r.c_str();
+    return result;
+}
 
 void rotate_venn(float angle){
   bl.rotateScene(angle);
+}
+
+void setColor(UINT setNumber, std::vector<int8_t> rgbColor){
+    bl.setSVGColor(setNumber, rgbColor);
+}
+
+void setOpacity(float t){
+    bl.setSVGOpacity(t);
+}
+
+void setLineWidth(float t){
+    bl.setSVGLineWidth(t);
+}
+
+void showSizes(bool s){
+    bl.showCircleNumbers(s);
+}
+
+void showRegionDesc(bool s){
+    bl.showRegionNumbers(s);
+}
+
+void setFontSize(UINT fs){
+    bl.setFontSize(fs);
 }
 
 bool init_bl(const char* description){
@@ -48,7 +84,10 @@ void load_signature(const char* signature){
   in << desc;
   bl = getInfoFromStream(in);
   bl.loadSignature(sig.str());
+}
 
+void load_sets(const char* sets, UINT bycol){
+    bl = fromSets(sets, bycol);
 }
 
 

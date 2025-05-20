@@ -1,55 +1,58 @@
 Line 3203 - Next candidate: 127
-Line 3230 - Swapping 40 with 7 -> 202.242
-Line 3230 - Swapping 69 with 7 -> 202.242
 Line 3223 - Undo on checkTopol
-Line 3230 - Swapping 123 with 7 -> 200.916
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 68 with 7 -> 196.841
+Line 3230 - Swapping 69 with 7 -> 196.841
+Line 3230 - Swapping 122 with 7 -> 196.17
+Line 3230 - Swapping 123 with 7 -> 194.942
 Line 3203 - Next candidate: 122
-Line 3230 - Swapping 40 with 17 -> 198.012
-Line 3223 - Undo on checkTopol
-Line 3230 - Swapping 69 with 17 -> 196.697
-Line 3230 - Swapping 92 with 17 -> 196.697
-Line 3230 - Swapping 122 with 17 -> 196.283
-Line 3230 - Swapping 123 with 17 -> 195.489
+Line 3230 - Swapping 40 with 17 -> 189.391
 Line 3203 - Next candidate: 60
 Line 6292 - Outcount: 1
 Line 3203 - Next candidate: 69
-Line 3235 - Prev untie: 32, new untie: 15
-Line 3230 - Swapping 17 with 69 -> 195.261
-Line 3203 - Next candidate: 65
-Line 6292 - Outcount: 1
-Line 3203 - Next candidate: 68
-Line 3223 - Undo on checkTopol
+Line 3235 - Prev untie: 19, new untie: 33
+Line 3239 - Did not swap on untie
 Line 6292 - Outcount: 2
 Line 3203 - Next candidate: 72
-Line 3235 - Prev untie: 36, new untie: 19
-Line 6292 - Outcount: 3
+Line 3230 - Swapping 122 with 92 -> 189.247
+Line 3203 - Next candidate: 68
+Line 6292 - Outcount: 1
+Line 3203 - Next candidate: 65
+Line 6292 - Outcount: 2
 Line 3203 - Next candidate: 1
-Line 3223 - Undo on checkTopol
-Line 6292 - Outcount: 4
+Line 3230 - Swapping 122 with 1 -> 189.086
 Line 3203 - Next candidate: 4
-Line 6292 - Outcount: 5
+Line 3223 - Undo on checkTopol
+Line 6292 - Outcount: 1
 Line 3203 - Next candidate: 64
-Line 6292 - Outcount: 6
+Line 6292 - Outcount: 2
 Line 3203 - Next candidate: 0
-Line 6292 - Outcount: 7
+Line 6292 - Outcount: 3
 Line 3203 - Next candidate: 127
 Line 3223 - Undo on checkTopol
-Line 3230 - Swapping 92 with 7 -> 194.917
+Line 3230 - Swapping 68 with 7 -> 188.325
+Line 3230 - Swapping 69 with 7 -> 188.325
 Line 3203 - Next candidate: 122
-Line 3230 - Swapping 92 with 17 -> 194.917
+Line 3230 - Swapping 7 with 17 -> 188.221
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 68 with 17 -> 187.848
+Line 3235 - Prev untie: 10, new untie: 53
+Line 3239 - Did not swap on untie
 Line 3203 - Next candidate: 60
 Line 6292 - Outcount: 1
 Line 3203 - Next candidate: 69
-Line 3230 - Swapping 7 with 69 -> 194.917
+Line 3235 - Prev untie: 20, new untie: 15
+Line 3230 - Swapping 17 with 69 -> 187.615
 Line 3203 - Next candidate: 65
+Line 3223 - Undo on checkTopol
 Line 6292 - Outcount: 1
 Line 3203 - Next candidate: 68
 Line 6292 - Outcount: 2
 Line 3203 - Next candidate: 72
 Line 6292 - Outcount: 3
-Line 3203 - Next candidate: 4
-Line 6292 - Outcount: 4
 Line 3203 - Next candidate: 1
+Line 6292 - Outcount: 4
+Line 3203 - Next candidate: 4
 Line 3223 - Undo on checkTopol
 Line 6292 - Outcount: 5
 Line 3203 - Next candidate: 64
@@ -60,82 +63,269 @@ Line 3203 - Next candidate: 127
 Line 3223 - Undo on checkTopol
 Line 6292 - Outcount: 8
 Line 3203 - Next candidate: 122
+Line 3223 - Undo on checkTopol
 Line 6292 - Outcount: 9
 Line 3203 - Next candidate: 60
 Line 6292 - Outcount: 10
 Line 3203 - Next candidate: 69
 Line 6292 - Outcount: 11
 Line 3203 - Next candidate: 1
-Line 3223 - Undo on checkTopol
-Line 3230 - Swapping 92 with 1 -> 13
-Line 3230 - Swapping 122 with 1 -> 11
+Line 3230 - Swapping 48 with 1 -> 25
+Line 3235 - Prev untie: 191.346, new untie: 192.73
+Line 3239 - Did not swap on untie
 Line 3203 - Next candidate: 4
-Line 6308 - Outcount: 1
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 123 with 40 -> 14
 Line 3203 - Next candidate: 64
-Line 6308 - Outcount: 2
+Line 3230 - Swapping 68 with 122 -> 12
 Line 3203 - Next candidate: 68
-Line 3230 - Swapping 48 with 68 -> 9
-Line 3223 - Undo on checkTopol
-Line 3203 - Next candidate: 72
-Line 3223 - Undo on checkTopol
 Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 72
+Line 3235 - Prev untie: 192.256, new untie: 193.532
+Line 3239 - Did not swap on untie
+Line 6308 - Outcount: 2
 Line 3203 - Next candidate: 65
 Line 3223 - Undo on checkTopol
-Line 6308 - Outcount: 2
+Line 6308 - Outcount: 3
 Line 3203 - Next candidate: 69
-Line 3230 - Swapping 7 with 69 -> 8
-Line 3230 - Swapping 92 with 69 -> 6
+Line 6308 - Outcount: 4
 Line 3203 - Next candidate: 60
-Line 6308 - Outcount: 1
+Line 3230 - Swapping 17 with 48 -> 10
 Line 3203 - Next candidate: 122
 Line 3223 - Undo on checkTopol
-Line 6308 - Outcount: 2
+Line 6308 - Outcount: 1
 Line 3203 - Next candidate: 127
 Line 3223 - Undo on checkTopol
-Line 6308 - Outcount: 3
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 2
 Line 3203 - Next candidate: 0
-Line 6308 - Outcount: 4
-Line 3203 - Next candidate: 1
-Line 3223 - Undo on checkTopol
-Line 3235 - Prev untie: 197.33, new untie: 199.072
-Line 3239 - Did not swap on untie
-Line 6308 - Outcount: 5
-Line 3203 - Next candidate: 4
-Line 6308 - Outcount: 6
-Line 3203 - Next candidate: 64
-Line 3230 - Swapping 92 with 122 -> 5
-Line 3203 - Next candidate: 68
-Line 6308 - Outcount: 1
-Line 3203 - Next candidate: 72
-Line 6308 - Outcount: 2
-Line 3203 - Next candidate: 65
-Line 3235 - Prev untie: 196.896, new untie: 198.637
-Line 3239 - Did not swap on untie
 Line 6308 - Outcount: 3
-Line 3203 - Next candidate: 69
-Line 3223 - Undo on checkTopol
-Line 3235 - Prev untie: 196.896, new untie: 195.796
+Line 3203 - Next candidate: 1
 Line 6308 - Outcount: 4
-Line 3203 - Next candidate: 60
+Line 3203 - Next candidate: 4
+Line 3223 - Undo on checkTopol
 Line 6308 - Outcount: 5
+Line 3203 - Next candidate: 64
+Line 6308 - Outcount: 6
+Line 3203 - Next candidate: 68
+Line 3223 - Undo on checkTopol
+Line 3230 - Swapping 92 with 68 -> 9
+Line 3203 - Next candidate: 72
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 1
+Line 3203 - Next candidate: 65
+Line 6308 - Outcount: 2
+Line 3203 - Next candidate: 69
+Line 6308 - Outcount: 3
+Line 3203 - Next candidate: 60
+Line 6308 - Outcount: 4
 Line 3203 - Next candidate: 122
 Line 3223 - Undo on checkTopol
-Line 6308 - Outcount: 6
+Line 6308 - Outcount: 5
 Line 3203 - Next candidate: 127
 Line 3223 - Undo on checkTopol
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 6
+Line 3203 - Next candidate: 0
 Line 6308 - Outcount: 7
-Line 3203 - Next candidate: 0
-Line 6308 - Outcount: 8
 Line 3203 - Next candidate: 1
-Line 3235 - Prev untie: 195.796, new untie: 195.23
-Line 6308 - Outcount: 9
+Line 6308 - Outcount: 8
 Line 3203 - Next candidate: 4
-Line 6308 - Outcount: 10
+Line 3223 - Undo on checkTopol
+Line 6308 - Outcount: 9
 Line 3203 - Next candidate: 64
-Line 3235 - Prev untie: 195.23, new untie: 195.796
-Line 3239 - Did not swap on untie
+Line 6308 - Outcount: 10
+Line 3203 - Next candidate: 68
+Line 3223 - Undo on checkTopol
 Line 6308 - Outcount: 11
-Line 304 - Distance is zero: X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 1676.03	Fy: 12936.9	Flags: 64
-X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 304 - Distance is zero: X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 1676.03	Fy: 12936.9	Flags: 64
-X: 123.688, Y: 129.299	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 3207 - Next candidate: 13
+Line 3234 - Swapping 5 with 11 -> 208.116
+Line 3207 - Next candidate: 14
+Line 3234 - Swapping 5 with 7 -> 206.815
+Line 3234 - Swapping 6 with 7 -> 205.975
+Line 3234 - Swapping 9 with 7 -> 203.882
+Line 3234 - Swapping 12 with 7 -> 202.802
+Line 3207 - Next candidate: 6
+Line 3234 - Swapping 8 with 6 -> 202.528
+Line 3234 - Swapping 10 with 6 -> 198.785
+Line 3234 - Swapping 12 with 6 -> 198.143
+Line 3234 - Swapping 14 with 6 -> 197.127
+Line 3207 - Next candidate: 10
+Line 6320 - Outcount: 1
+Line 3207 - Next candidate: 12
+Line 6320 - Outcount: 2
+Line 3207 - Next candidate: 5
+Line 6320 - Outcount: 3
+Line 3207 - Next candidate: 9
+Line 3234 - Swapping 7 with 14 -> 196.711
+Line 3207 - Next candidate: 2
+Line 6320 - Outcount: 1
+Line 3207 - Next candidate: 1
+Line 6320 - Outcount: 2
+Line 3207 - Next candidate: 8
+Line 6320 - Outcount: 3
+Line 3207 - Next candidate: 4
+Line 3234 - Swapping 6 with 9 -> 196.435
+Line 3207 - Next candidate: 0
+Line 6320 - Outcount: 1
+Line 3207 - Next candidate: 13
+Line 6320 - Outcount: 2
+Line 3207 - Next candidate: 14
+Line 6320 - Outcount: 3
+Line 3207 - Next candidate: 10
+Line 6320 - Outcount: 4
+Line 3207 - Next candidate: 6
+Line 6320 - Outcount: 5
+Line 3207 - Next candidate: 12
+Line 6320 - Outcount: 6
+Line 3207 - Next candidate: 5
+Line 6320 - Outcount: 7
+Line 3207 - Next candidate: 9
+Line 6320 - Outcount: 8
+Line 3207 - Next candidate: 2
+Line 6320 - Outcount: 9
+Line 3207 - Next candidate: 1
+Line 6320 - Outcount: 10
+Line 3207 - Next candidate: 8
+Line 6320 - Outcount: 11
+Line 3207 - Next candidate: 1
+Line 6336 - Outcount: 1
+Line 3207 - Next candidate: 2
+Line 3234 - Swapping 8 with 5 -> 12
+Line 3207 - Next candidate: 4
+Line 6336 - Outcount: 1
+Line 3207 - Next candidate: 8
+Line 3234 - Swapping 8 with 13 -> 7
+Line 3234 - Swapping 14 with 13 -> 6
+Line 3207 - Next candidate: 6
+Line 3234 - Swapping 12 with 6 -> 5
+Line 3207 - Next candidate: 10
+Line 3234 - Swapping 5 with 8 -> 4
+Line 3207 - Next candidate: 5
+Line 6336 - Outcount: 1
+Line 3207 - Next candidate: 12
+Line 3239 - Prev untie: 197.831, new untie: 199.038
+Line 3243 - Did not swap on untie
+Line 3234 - Swapping 9 with 12 -> 3
+Line 3234 - Swapping 11 with 12 -> 2
+Line 3207 - Next candidate: 9
+Line 6336 - Outcount: 1
+Line 3207 - Next candidate: 14
+Line 6336 - Outcount: 2
+Line 3207 - Next candidate: 13
+Line 3239 - Prev untie: 198.52, new untie: 197.541
+Line 6336 - Outcount: 3
+Line 3207 - Next candidate: 0
+Line 6336 - Outcount: 4
+Line 3207 - Next candidate: 1
+Line 6336 - Outcount: 5
+Line 3207 - Next candidate: 2
+Line 6336 - Outcount: 6
+Line 3207 - Next candidate: 4
+Line 6336 - Outcount: 7
+Line 3207 - Next candidate: 8
+Line 6336 - Outcount: 8
+Line 3207 - Next candidate: 6
+Line 6336 - Outcount: 9
+Line 3207 - Next candidate: 10
+Line 6336 - Outcount: 10
+Line 3207 - Next candidate: 5
+Line 3239 - Prev untie: 197.541, new untie: 198.52
+Line 3243 - Did not swap on untie
+Line 6336 - Outcount: 11
+Line 3207 - Next candidate: 13
+Line 3234 - Swapping 5 with 11 -> 204.409
+Line 3234 - Swapping 6 with 11 -> 204.393
+Line 3234 - Swapping 9 with 11 -> 202.687
+Line 3234 - Swapping 12 with 11 -> 202.607
+Line 3207 - Next candidate: 14
+Line 3234 - Swapping 6 with 7 -> 202.109
+Line 3234 - Swapping 10 with 7 -> 201.665
+Line 3234 - Swapping 12 with 7 -> 200.941
+Line 3207 - Next candidate: 10
+Line 3234 - Swapping 1 with 8 -> 200.679
+Line 3234 - Swapping 5 with 8 -> 198.747
+Line 3234 - Swapping 9 with 8 -> 197.804
+Line 3234 - Swapping 13 with 8 -> 196.588
+Line 3207 - Next candidate: 9
+Line 6326 - Outcount: 1
+Line 3207 - Next candidate: 6
+Line 6326 - Outcount: 2
+Line 3207 - Next candidate: 12
+Line 3234 - Swapping 8 with 12 -> 195.072
+Line 3207 - Next candidate: 5
+Line 6326 - Outcount: 1
+Line 3207 - Next candidate: 2
+Line 3234 - Swapping 9 with 5 -> 194.884
+Line 3207 - Next candidate: 1
+Line 6326 - Outcount: 1
+Line 3207 - Next candidate: 4
+Line 6326 - Outcount: 2
+Line 3207 - Next candidate: 8
+Line 6326 - Outcount: 3
+Line 3207 - Next candidate: 0
+Line 6326 - Outcount: 4
+Line 3207 - Next candidate: 13
+Line 6326 - Outcount: 5
+Line 3207 - Next candidate: 14
+Line 3234 - Swapping 12 with 7 -> 194.214
+Line 3207 - Next candidate: 9
+Line 6326 - Outcount: 1
+Line 3207 - Next candidate: 6
+Line 6326 - Outcount: 2
+Line 3207 - Next candidate: 10
+Line 6326 - Outcount: 3
+Line 3207 - Next candidate: 5
+Line 6326 - Outcount: 4
+Line 3207 - Next candidate: 12
+Line 6326 - Outcount: 5
+Line 3207 - Next candidate: 2
+Line 6326 - Outcount: 6
+Line 3207 - Next candidate: 1
+Line 6326 - Outcount: 7
+Line 3207 - Next candidate: 4
+Line 6326 - Outcount: 8
+Line 3207 - Next candidate: 8
+Line 6326 - Outcount: 9
+Line 3207 - Next candidate: 0
+Line 6326 - Outcount: 10
+Line 3207 - Next candidate: 14
+Line 6326 - Outcount: 11
+Line 3207 - Next candidate: 1
+Line 6342 - Outcount: 1
+Line 3207 - Next candidate: 2
+Line 3239 - Prev untie: 194.214, new untie: 196.441
+Line 3243 - Did not swap on untie
+Line 6342 - Outcount: 2
+Line 3207 - Next candidate: 4
+Line 3234 - Swapping 10 with 9 -> 2
+Line 3207 - Next candidate: 8
+Line 6342 - Outcount: 1
+Line 3207 - Next candidate: 6
+Line 6342 - Outcount: 2
+Line 3207 - Next candidate: 10
+Line 3239 - Prev untie: 195.044, new untie: 195.969
+Line 3243 - Did not swap on untie
+Line 6342 - Outcount: 3
+Line 3207 - Next candidate: 5
+Line 6342 - Outcount: 4
+Line 3207 - Next candidate: 12
+Line 6342 - Outcount: 5
+Line 3207 - Next candidate: 9
+Line 6342 - Outcount: 6
+Line 3207 - Next candidate: 14
+Line 3239 - Prev untie: 195.044, new untie: 197.271
+Line 3243 - Did not swap on untie
+Line 3239 - Prev untie: 195.044, new untie: 195.969
+Line 3243 - Did not swap on untie
+Line 6342 - Outcount: 7
+Line 3207 - Next candidate: 13
+Line 6342 - Outcount: 8
+Line 3207 - Next candidate: 0
+Line 6342 - Outcount: 9
+Line 3207 - Next candidate: 1
+Line 6342 - Outcount: 10
+Line 3207 - Next candidate: 2
+Line 3239 - Prev untie: 195.044, new untie: 197.271
+Line 3243 - Did not swap on untie
+Line 6342 - Outcount: 11
