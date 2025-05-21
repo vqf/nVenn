@@ -11,6 +11,7 @@
 borderLine bl;
 std::string svgcode;
 std::string errorMessage;
+std::string rvenn;
 
 extern "C" {
  bool init_bl(const char* description);
@@ -34,10 +35,11 @@ extern "C" {
  void load_sets(const char* sets, UINT bycol);
 }
 
+
 const char* getRegion(UINT n){
-    std::string r = bl.getVennRegion(n);
-    const char* result = r.c_str();
-    return result;
+    rvenn = bl.getVennRegion(n);
+    const char* result_region = rvenn.c_str();
+    return result_region;
 }
 
 void rotate_venn(float angle){
@@ -72,7 +74,6 @@ bool init_bl(const char* description){
   std::stringstream info;
   info << description << std::endl;
   bl = getInfoFromStream(info);
-  //free(&description);
   return true;
 }
 
@@ -107,6 +108,7 @@ bool finished(UINT step_number){
 bool error(){
   return bl.err();
 }
+
 
 const char* errorMsg(){
   errorMessage = bl.errorMsg();

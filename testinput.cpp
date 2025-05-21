@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
     b.loadPalette(2);
     b.setSVGOpacity(0.2);
     b.setSVGLineWidth(0.5);
-    //std::cout << "Here\n";
+    std::cout << "-" << b.getVennRegion(68) << "-" << std::endl;
     b.writeHTML(infile + ".html");
     return 0;
 }
