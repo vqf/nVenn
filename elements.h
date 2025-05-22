@@ -137,17 +137,20 @@ class nvenn{
     colInfo result = f;
     bool canBeByCol = true;
     bool canBeByRow = true;
+    UINT dimy = cells.size();
+    UINT dimx = 0;
+    for (UINT i = 0; i < cells.size(); i++){
+        if (cells[i].size() > dimx){
+            dimx = cells[i].size();
+        }
+    }
     //byrow?
-    for (UINT i = 0; i < cells[0].size(); i++){
-      if (cells[0][i] == ""){
+    if (cells[0].size() < dimx || cells[0][cells[0].size()-1] == ""){
         canBeByCol = false;
-      }
     }
     //bycol?
-    for (UINT i = 0; i < tcells[0].size(); i++){
-      if (tcells[0][i] == ""){
+    if (tcells[0].size() < dimy || tcells[0][tcells[0].size()-1] == ""){
         canBeByRow = false;
-      }
     }
     if (canBeByCol && !canBeByRow){
       result = t;

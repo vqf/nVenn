@@ -5444,8 +5444,8 @@ public:
         std::string g = groups[l];
         std::string myg = vformat("p%d", l);
         std::string myq = vformat("q%d", l);
-        std::string addRect = vformat("<rect class=\"%s borderLine\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
-                myg.c_str(), cx, cy, rw, rh);
+        std::string addRect = vformat("<rect class=\"%s borderLine\" data-nbit=\"%u\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
+                myg.c_str(), l, cx, cy, rw, rh);
         std::string addOut = vformat("<rect class=\"%s\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
                 myq.c_str(), cx, cy, rw, rh);
         std::string addLegend = vformat("<text class=\"legend\" x=\"%.2f\" y=\"%.2f\">%s</text>", cx + dx, cy + rh, g.c_str());
