@@ -5214,12 +5214,19 @@ public:
         return result;
     }
 
-    void setSVGColor(UINT setNumber, std::vector<int8_t> rgbColor){
+    void setSVGColor(UINT setNumber, std::vector<UINT> rgbColor){
         std::string s = vformat("#%02x%02x%02x", rgbColor[0], rgbColor[1], rgbColor[2]);
+        std::cout << setNumber << std::endl;
+        std::cout << s << std::endl;
         if (setNumber > 0){
             setNumber--;
         }
         svgParams.svgColors[setNumber] = s;
+    }
+
+    void setRGBColor(UINT setNumer, UINT red, UINT green, UINT blue){
+        std::vector<UINT> c = {red, green, blue};
+        setSVGColor(setNumer, c);
     }
 
     void setSVGOpacity(float t){
@@ -5409,9 +5416,13 @@ public:
                             svgtemp.y, svgtemp.radius);
             svg.addLine(tst);
             if (svgParams.showNumbers){
+                float deltaY = -fsize / 2;
+                if (svgParams.showRegionNumbers){
+                    deltaY = fsize / 2;
+                }
                 tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
                 svg.addLine(tst);
-                tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - fsize/2, circles[i].orig);
+                tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - deltaY, circles[i].orig);
                 svg.addLine(tst);
 
             }
@@ -5427,7 +5438,11 @@ public:
                   }
                 }
                 std::string bgs = join(", ", blongs);
-                std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + fsize / 2, bgs.c_str());
+                float deltaY = 0;
+                if (svgParams.showNumbers){
+                    deltaY = fsize / 2;
+                }
+                std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + deltaY, bgs.c_str());
                 svg.addLine(t);
             }
           }

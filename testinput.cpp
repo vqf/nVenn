@@ -27,8 +27,9 @@ int main(int argc, char *argv[]){
     vFile.close();
     borderLine b(content.str());
     b.simulate();
-    b.loadPalette(2);
-    b.setSVGOpacity(0.2);
+    //b.loadPalette(2);
+    b.setRGBColor(7, 255, 255, 255);
+    //b.setSVGOpacity(0.2);
     b.setSVGLineWidth(0.5);
     b.writeHTML(infile + ".html");
     return 0;

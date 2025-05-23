@@ -25,18 +25,27 @@ extern "C" {
  void rotate_venn(float angle);
  const char* svg();
  const char* html();
- const char* getRegion(UINT n);
- void setColor(UINT setNumber, std::vector<int8_t> rgbColor);
- void setOpacity(float t);
- void setLineWidth(float t);
- void showSizes(bool s);
- void showRegionDesc(bool s);
- void setFontSize(UINT fs);
+ const char* get_region(UINT n);
+ void set_color(UINT setNumber, UINT red, UINT green, UINT blue);
+ void set_opacity(float t);
+ void set_line_width(float t);
+ void set_font_size(UINT fs);
  void load_sets(const char* sets, UINT bycol);
+ void set_palette(UINT p);
+ void show_region_size(bool s);
+ void show_region_description(bool s);
 }
 
 
-const char* getRegion(UINT n){
+void show_region_description(bool s){
+    bl.showRegionNumbers(s);
+}
+
+void show_region_size(bool s){
+    bl.showCircleNumbers(s);
+}
+
+const char* get_region(UINT n){
     rvenn = bl.getVennRegion(n);
     const char* result_region = rvenn.c_str();
     return result_region;
@@ -46,15 +55,19 @@ void rotate_venn(float angle){
   bl.rotateScene(angle);
 }
 
-void setColor(UINT setNumber, std::vector<int8_t> rgbColor){
-    bl.setSVGColor(setNumber, rgbColor);
+void set_color(UINT setNumber, UINT red, UINT green, UINT blue){
+    bl.setRGBColor(setNumber, red, green, blue);
 }
 
-void setOpacity(float t){
+void set_palette(UINT p){
+    bl.loadPalette(p);
+}
+
+void set_opacity(float t){
     bl.setSVGOpacity(t);
 }
 
-void setLineWidth(float t){
+void set_line_width(float t){
     bl.setSVGLineWidth(t);
 }
 
@@ -66,7 +79,7 @@ void showRegionDesc(bool s){
     bl.showRegionNumbers(s);
 }
 
-void setFontSize(UINT fs){
+void set_font_size(UINT fs){
     bl.setFontSize(fs);
 }
 
@@ -144,6 +157,7 @@ int main(){
       }
     }
   }
+  set_color(4, 255, 0, 0);
   const char* s = svg();
   std::cout << (std::string) s << std::endl;
   std::string yo;
