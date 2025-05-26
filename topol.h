@@ -1545,7 +1545,7 @@ class borderLine
       svgParams.svgLineWidth = 1;
       svgParams.showNumbers = true;
       svgParams.showRegionNumbers = true;
-      svgParams.svgFontSize = 1;
+      svgParams.svgFontSize = 10;
       palettes svgPalettes;
       errorMessage = "";
       groups = g;
@@ -5244,9 +5244,6 @@ public:
         svgParams.showRegionNumbers = s;
     }
     void setFontSize(UINT fs){
-        if (fs > 2){
-            fs = 2;
-        }
         svgParams.svgFontSize = fs;
     }
 
@@ -5261,13 +5258,7 @@ public:
        // getBestSoFar();
       //}
       fileText svg;
-      int fsize = 10;
-      if (svgParams.svgFontSize == 0){
-        fsize = 8;
-      }
-      else if (svgParams.svgFontSize == 2){
-        fsize = 12;
-      }
+      int fsize = svgParams.svgFontSize;
       UINT i, j;
       std::string tst;
       point svgtemp;
@@ -6299,7 +6290,7 @@ public:
         scG(2e-1);
         scD(50);
         scSpringK(1e4);
-        scFriction(500);
+        scFriction(100);
         oc.maxOutCount = 70;
         oc.outCount = 0;
         oc.optVal = 0;
