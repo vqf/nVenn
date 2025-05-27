@@ -15,9 +15,9 @@
 
 typedef unsigned int UINT;
 
-/** \brief t for true, f for false, unset for autodetect
+/** \brief 1 for true, 2 for false, 0 for autodetect
  */
-typedef enum{unset, t, f} colInfo;
+//typedef enum{unset, t, f} colInfo;
 
 
 /** \brief Heuristically predict which separator is being used in a table
@@ -130,11 +130,11 @@ class nvenn{
 
   /** \brief Heuristically decide whether sets are in rows or columns
    *
-   * \return colInfo
+   * \return UINT
    *
    */
-  colInfo decideByCol(){
-    colInfo result = f;
+  UINT decideByCol(){
+    UINT result = 2;
     bool canBeByCol = true;
     bool canBeByRow = true;
     UINT dimy = cells.size();
@@ -153,15 +153,15 @@ class nvenn{
         canBeByRow = false;
     }
     if (canBeByCol && !canBeByRow){
-      result = t;
+      result = 1;
     }
     else if (!canBeByCol && canBeByRow){
-      result = f;
+      result = 2;
     }
     else if (canBeByCol && canBeByRow){
       UINT nrows = cells[0].size();
       UINT ncols = tcells[0].size();
-      result = (nrows > ncols) ? f : t;
+      result = (nrows > ncols) ? 2 : 1;
     }
     return result;
   }
@@ -169,7 +169,7 @@ class nvenn{
 public:
   nvenn(){}
 
-  nvenn(std::string desc, const char sep = 0x00, colInfo byCol = unset){
+  nvenn(std::string desc, const char sep = 0x00, UINT byCol = 0){
     addInfo(desc, sep, byCol);
   }
 
@@ -209,12 +209,12 @@ public:
    * \param desc std::string Table with sets in rows or columns
    * \param const char sep = 0x00 Character that separates columns in @desc. If no character is
    * provided, it will be inferred with @getSep.
-   * \param unset colInfo byCol = unset If t, sets are in columns. If f, sets are in rows. If
-   * unset, it will be heuristically inferred by @decideByCol.
+   * \param unset UINT byCol = 0 If 1, sets are in columns. If 2, sets are in rows. If
+   * 0, it will be heuristically inferred by @decideByCol.
    * \return void
    *
    */
-  void addInfo(std::string desc, const char sep = 0x00, colInfo byCol = unset){
+  void addInfo(std::string desc, const char sep = 0x00, UINT byCol = 0){
     upToDate = false;
     desc = exchangeChar(desc, '\r', 0x00);
     char separator = sep;
@@ -233,11 +233,11 @@ public:
     }
     transpose();
     activeCells = cells;
-    if (byCol == unset){
+    if (byCol == 0){
       byCol = decideByCol();
       warnings << "ByRow (0 - unset, 1 - true, 2 - false): " << (UINT) byCol << std::endl;
     }
-    if (byCol == t){
+    if (byCol == 1){
       activeCells = tcells;
     }
     for (UINT i = 0; i < activeCells.size(); i++){

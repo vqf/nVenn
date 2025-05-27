@@ -4583,7 +4583,7 @@ public:
     borderLine(){}
     borderLine(std::string description, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
         fromSignature = false;
-        setElements = nvenn(description, lineSep);
+        setElements = nvenn(description, lineSep, bycol);
         std::stringstream vFile;
         vFile << setElements.getCode();
         std::string header;
@@ -5407,7 +5407,7 @@ public:
                             svgtemp.y, svgtemp.radius);
             svg.addLine(tst);
             if (svgParams.showNumbers){
-                float deltaY = -fsize / 2;
+                float deltaY = -fsize / 3;
                 if (svgParams.showRegionNumbers){
                     deltaY = fsize / 2;
                 }
@@ -5677,7 +5677,7 @@ public:
         result.addLine(".menus{");
         result.addLine("\twidth: 100%;");
         result.addLine("\theight: 9vh;");
-        result.addLine("\tpadding-left: 1vh;");
+        result.addLine("\tpadding: 0;");
         result.addLine("\tborder: thin solid black;");
         result.addLine("\tborder-radius: 1vw;");
         result.addLine("}");
@@ -5694,7 +5694,7 @@ public:
         result.addLine("\tborder-radius: 1vh;");
         result.addLine("}");
         result.addLine(".panel25{");
-        result.addLine("\twidth: 24.5vw;");
+        result.addLine("\twidth: 24vw;");
         result.addLine("\theight: 90vh;");
         result.addLine("\tfloat: left;");
         result.addLine("\tmargin: 0;");
