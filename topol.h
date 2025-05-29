@@ -6341,6 +6341,13 @@ public:
           if (thisCross < oc.optVal){
             oc.optVal = thisCross;
             oc.outCount = 0;
+            // Check for bad topology, restart if necessary
+            fixTopology();
+            setCheckTopol(true);
+            if (checkTopol()){
+                oc.maxOutCount *= 2;
+                optStep.init(oc.optVal);
+            }
             //showCrossings();
           }
           else{

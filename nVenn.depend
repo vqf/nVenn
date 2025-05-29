@@ -206,7 +206,7 @@
 1747408648 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 	<cstdarg>
 
-1748342743 /home/vqf/proyectos/nVenn2/gh/topol.h
+1748421638 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -236,7 +236,7 @@
 	<cmath>
 	"debug.h"
 
-1746443894 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
+1747314308 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
 	"topol.h"
 	<stdlib.h>
 	<stdio.h>
@@ -252,14 +252,14 @@
 	"graphics.h"
 	"initogl.h"
 
-1745497027 /home/vqf/proyectos/nVenn2/gh/graphics.h
-	<gl/gl.h>
-	<gl/glu.h>
+1748513433 /home/vqf/proyectos/nVenn2/gh/graphics.h
+	<GLUT/glut.h>
+	<GL/glut.h>
 	"bmpfont.h"
 
-1745497027 /home/vqf/proyectos/nVenn2/gh/bmpfont.h
+1747314312 /home/vqf/proyectos/nVenn2/gh/bmpfont.h
 
-1745497027 /home/vqf/proyectos/nVenn2/gh/initogl.h
+1747314308 /home/vqf/proyectos/nVenn2/gh/initogl.h
 
 1748000810 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
 	<iostream>

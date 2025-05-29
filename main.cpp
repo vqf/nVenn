@@ -21,8 +21,8 @@
 
 #ifdef GRAPHICS
 
-  #include <windows.h>
-  #include <Windows.h>
+//  #include <windows.h>
+//  #include <Windows.h>
   #include "graphics.h"
 #endif // GRAPHICS
 
@@ -94,56 +94,29 @@ int main(int argc, char** argv)
  * WinMain
  *
  **************************/
-int WINAPI
-WinMain (HINSTANCE hInstance,
-         HINSTANCE hPrevInstance,
-         LPSTR lpCmdLine,
-         int iCmdShow)
+
+int main(int argc, char *argv[])
 {
-    WNDCLASS wc;
-    HWND hWnd;
-    HDC hDC;
-    HGLRC hRC;
-    MSG msg;
-    BOOL bQuit = FALSE;
+    glutInit(&argc, argv);
+    glutInitWindowSize(900,900);
+    glutInitWindowPosition(10,10);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+
+    glutCreateWindow("nVenn2");
+    bool bQuit = FALSE;
     std::string fname;
     std::ofstream result;
     fileText psfile;
     fileText svgfile;
     fname = "venn.txt";
     std::string outputFile = "result.svg";
-    borderLine lines = getFileInfo(fname, outputFile);
 
-    /* register window class */
-    wc.style = CS_OWNDC;
-    wc.lpfnWndProc = WndProc;
-    wc.cbClsExtra = 0;
-    wc.cbWndExtra = 0;
-    wc.hInstance = hInstance;
-    wc.hIcon = LoadIcon (NULL, IDI_APPLICATION);
-    wc.hCursor = LoadCursor (NULL, IDC_ARROW);
-    wc.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH);
-    wc.lpszMenuName = NULL;
-    wc.lpszClassName = "GLSample";
-    RegisterClass (&wc);
-
-    /* create main window */
-    hWnd = CreateWindow (
-               "GLSample", "nVenn",
-               WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-               0, 0, 1200, 800,
-               NULL, NULL, hInstance, NULL);
-    publich = hWnd;
-    //MessageBox(hWnd, "hi", "yo", MB_ICONINFORMATION | MB_OK);
-
-    /* enable OpenGL for the window */
-    EnableOpenGL (hWnd, &hDC, &hRC);
     init(); // Init bitmap font
 
     //lines.interpolate(8);
 
     glGraphics mygl;
-    borderLine lres = mygl.gsimulate(&lines, 100, hDC);
+    borderLine lres = mygl.gsimulate(fname, outputFile);
 
 
     //mymap.textOut();
@@ -159,35 +132,21 @@ WinMain (HINSTANCE hInstance,
 
 
 
-    /* program main loop */
-    while (!bQuit)
+}
+
+static void key(unsigned char key, int x, int y)
+{
+    switch (key)
     {
-        /* check for messages */
-        if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-        {
-            /* handle or dispatch messages */
-            if (msg.message == WM_QUIT)
-            {
-                bQuit = TRUE;
-            }
-            else
-            {
-                TranslateMessage (&msg);
-                DispatchMessage (&msg);
-            }
-        }
-        else
-        {
-        }
+        case 27 :
+        case 'q':
+            exit(0);
+            break;
     }
 
-    /* shutdown OpenGL */
-    DisableOpenGL (hWnd, hDC, hRC);
-
-    /* destroy the window explicitly */
-    DestroyWindow (hWnd);
-
-    return msg.wParam;
+    glutPostRedisplay();
 }
+
+
 
 #endif

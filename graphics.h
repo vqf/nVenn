@@ -1,7 +1,11 @@
 #ifndef GRAPHICS_H_INCLUDED
 #define GRAPHICS_H_INCLUDED
-#include <gl/gl.h>
-#include <gl/glu.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
 #include "bmpfont.h"
 //#include <windows.h>
 
@@ -82,27 +86,7 @@ class glGraphics{
     return;
   }
 
-  void wait(){
-    bool bQuit = false;
-    MSG msg;
-
-    while (!bQuit){
-      if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-      {
-
-          if (msg.message == WM_QUIT)
-          {
-              bQuit = TRUE;
-          }
-          {
-              TranslateMessage (&msg);
-              DispatchMessage (&msg);
-          }
-      }
-    }
-  }
-
-  void toOGL(borderLine bl, HDC hDC)
+  void toOGL(borderLine bl)
   {
       UINT i, j;
       point P;     //coordinates
@@ -267,7 +251,7 @@ class glGraphics{
       bl.dataDisplay.clear();
       //glFlush();
       **********/
-      SwapBuffers (hDC);
+      glutSwapBuffers();
       /*********DEBUG**/
       if (attn.size() > 0){
         //wait();
@@ -279,63 +263,29 @@ class glGraphics{
 
 
 
-  borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
+  borderLine gsimulate(int ncycles)
   {
     restart_log();
+    std::string inp = "a b c\nd e g\ne n \nn i e";
 
-      borderLine bl = *blp;
-      MSG msg;
+      borderLine bl = getFileInfo(fname, outputFile);
       //bl.setStep(1);
       bool bQuit = false;
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              if (bl.refreshScreen.isMax() == true) toOGL(bl, hDC);
-              bl.refreshScreen++;
-          }
-      }
+      glutKeyboardFunc(key);
+      glutIdleFunc(idle);
+      glClearColor(1,1,1,1);
+      glutMainLoop();
       for (UINT step = bl.currentStep; step < 8; step++){
         bQuit = false;
         bl.setStep(step);
         while (!bQuit)
         {
-            /* check for messages */
-            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-            {
-                /* handle or dispatch messages */
-                if (msg.message == WM_QUIT)
-                {
-                    bQuit = TRUE;
-                }
-                {
-                    TranslateMessage (&msg);
-                    DispatchMessage (&msg);
-                }
-            }
-            else
-            {
-                bl.setCycle(step);
-                if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-                if (bl.isStepFinished(step)){
-                  bQuit = true;
-                }
-                //Sleep(200);
-            }
+            bl.setCycle(step);
+            if (bl.refreshScreen.isMax()) toOGL(bl);
+            if (bl.isStepFinished(step)){
+              bQuit = true;
         }
+
       }
       return bl;
   }
