@@ -1,17 +1,61 @@
-#ifndef GRAPHICS_H_INCLUDED
-#define GRAPHICS_H_INCLUDED
-#include <gl/gl.h>
-#include <gl/glu.h>
+#ifndef TOGLUT_H_INCLUDED
+#define TOGLUT_H_INCLUDED
+
+/*
+ * GLUT Shapes Demo
+ *
+ * Written by Nigel Stewart November 2003
+ *
+ * This program is test harness for the sphere, cone
+ * and torus shapes in GLUT.
+ *
+ * Spinning wireframe and smooth shaded shapes are
+ * displayed until the ESC or q key is pressed.  The
+ * number of geometry stacks and slices can be adjusted
+ * using the + and - keys.
+ */
+
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
 #include "bmpfont.h"
-//#include <windows.h>
+#include "palettes.h"
+#include <stdlib.h>
+#include <unistd.h>
 
+
+bool bQuit = false;
 bool showContacts = false;
+UINT step = 0;
+
+borderLine bl;
 
 
-
-
-class glGraphics{
-  public:
+void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
+    glBegin (GL_LINE_LOOP);
+    glColor3f(color.red, color.green, color.blue);
+    point p0;
+    p0.x = p[0].x;
+    p0.y = p[0].y;
+    glVertex2f(p0.x, p0.y);
+    p0.x = p[1].x;
+    p0.y = p[0].y;
+    glVertex2f(p0.x, p0.y);
+    p0.x = p[1].x;
+    p0.y = p[1].y;
+    glVertex2f(p0.x, p0.y);
+    p0.x = p[0].x;
+    p0.y = p[1].y;
+    glVertex2f(p0.x, p0.y);
+    p0.x = p[0].x;
+    p0.y = p[0].y;
+    glVertex2f(p0.x, p0.y);
+    glEnd();
+    return;
+  }
 
   std::vector<point> glCircle(float x, float y, float r)
   {
@@ -46,74 +90,21 @@ class glGraphics{
       return result;
   }
 
-  point showForce(point p, float sc = 1){
-    borderLine dummy;
-    point r;
-    r.x = p.x + p.fx * sc;
-    r.y = p.y + p.fy * sc;
-    return r;
-  }
 
-  void addRectangle(borderLine bl, scale ogl, std::vector<point> p, rgb color = {0.5, 0.5, 0.5}){
-    glBegin (GL_LINE_LOOP);
-    glColor3f(color.red, color.green, color.blue);
-    point p0;
-    p0.x = p[0].x;
-    p0.y = p[0].y;
-    point mp = bl.place(ogl, p0);
-    glVertex2d(mp.x, mp.y);
-    p0.x = p[1].x;
-    p0.y = p[0].y;
-    mp = bl.place(ogl, p0);
-    glVertex2d(mp.x, mp.y);
-    p0.x = p[1].x;
-    p0.y = p[1].y;
-    mp = bl.place(ogl, p0);
-    glVertex2d(mp.x, mp.y);
-    p0.x = p[0].x;
-    p0.y = p[1].y;
-    mp = bl.place(ogl, p0);
-    glVertex2d(mp.x, mp.y);
-    p0.x = p[0].x;
-    p0.y = p[0].y;
-    mp = bl.place(ogl, p0);
-    glVertex2d(mp.x, mp.y);
-    glEnd();
-    return;
-  }
-
-  void wait(){
-    bool bQuit = false;
-    MSG msg;
-
-    while (!bQuit){
-      if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-      {
-
-          if (msg.message == WM_QUIT)
-          {
-              bQuit = TRUE;
-          }
-          {
-              TranslateMessage (&msg);
-              DispatchMessage (&msg);
-          }
-      }
-    }
-  }
-
-  void toOGL(borderLine bl, HDC hDC)
+  void toOGL()
   {
       UINT i, j;
       point P;     //coordinates
       std::vector<point> temp; //stores perimeters
-      std::vector<std::vector<point> > blp = bl.bl;
-      bool showPoints = bl.showThis;
+      std::vector<std::vector<point>> blp = bl.getBl();
+      bool showPoints = bl.doIShowThis();
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
       //define openGL scale
 
       scale ogl;
+      palettes p;
+      std::vector<UINT> colors = p.getPalette();
       //addRectangle(bl, ogl, bl.getBoundaries(2 * bl.maxRad()));
       ogl.initScale();
       //define vectors
@@ -124,7 +115,8 @@ class glGraphics{
             //attention(blp[i][0].x, blp[i][0].y);
             //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
             glBegin (GL_LINE_LOOP);
-            glColor3f (bl.colors[i].red, bl.colors[i].green, bl.colors[i].blue);
+            rgb c = p.toRGB(colors[i]);
+            glColor3f (c.red, c.green, c.blue);
             for (j = 0; j < blp[i].size(); j++)
             {
                 P = bl.place(ogl, blp[i][j]);
@@ -267,7 +259,7 @@ class glGraphics{
       bl.dataDisplay.clear();
       //glFlush();
       **********/
-      SwapBuffers (hDC);
+      //glutSwapBuffers();
       /*********DEBUG**/
       if (attn.size() > 0){
         //wait();
@@ -278,67 +270,102 @@ class glGraphics{
 
 
 
+/* GLUT callback Handlers */
 
-  borderLine gsimulate(borderLine* blp, int ncycles, HDC hDC)
-  {
-    restart_log();
+static void resize(int width, int height)
+{
+    const float ar = (float) width / (float) height;
 
-      borderLine bl = *blp;
-      MSG msg;
-      //bl.setStep(1);
-      bool bQuit = false;
-      while (!bQuit)
-      {
-          /* check for messages */
-          if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-          {
-              /* handle or dispatch messages */
-              if (msg.message == WM_QUIT)
-              {
-                  bQuit = TRUE;
-              }
-              {
-                  TranslateMessage (&msg);
-                  DispatchMessage (&msg);
-              }
-          }
-          else
-          {
-              if (bl.refreshScreen.isMax() == true) toOGL(bl, hDC);
-              bl.refreshScreen++;
-          }
-      }
-      for (UINT step = bl.currentStep; step < 8; step++){
-        bQuit = false;
-        bl.setStep(step);
-        while (!bQuit)
-        {
-            /* check for messages */
-            if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-            {
-                /* handle or dispatch messages */
-                if (msg.message == WM_QUIT)
-                {
-                    bQuit = TRUE;
-                }
-                {
-                    TranslateMessage (&msg);
-                    DispatchMessage (&msg);
-                }
+    glViewport(0, 0, width, height);
+
+}
+
+static void display(void)
+{
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    bl.setCycle(step);
+    toOGL();
+    if (bl.isStepFinished(step)){
+        step++;
+    }
+    //sleep(0);
+    //glFlush();
+    glutSwapBuffers();
+
+}
+
+
+static void key(unsigned char key, int x, int y)
+{
+    switch (key)
+    {
+        case 27 :
+        case 'q':
+            if (step < 8){
+                step++;
+                bl.setStep(step);
+                std::cout << step << std::endl;
             }
-            else
-            {
-                bl.setCycle(step);
-                if (bl.refreshScreen.isMax()) toOGL(bl, hDC);
-                if (bl.isStepFinished(step)){
-                  bQuit = true;
-                }
-                //Sleep(200);
+            else{
+                exit(0);
             }
-        }
-      }
-      return bl;
-  }
-};
+            break;
 
-#endif // GRAPHICS_H_INCLUDED
+        case '+':
+
+            break;
+
+        case '-':
+            break;
+    }
+
+    glutPostRedisplay();
+}
+
+static void idle(void)
+{
+    glutPostRedisplay();
+}
+
+const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
+const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat light_position[] = { 2.0f, 5.0f, 5.0f, 0.0f };
+
+const GLfloat mat_ambient[]    = { 0.7f, 0.7f, 0.7f, 1.0f };
+const GLfloat mat_diffuse[]    = { 0.8f, 0.8f, 0.8f, 1.0f };
+const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
+const GLfloat high_shininess[] = { 100.0f };
+
+/* Program entry point */
+
+
+
+void glutSimulate(std::string filepath, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
+    bl = fromSetFile(filepath, bycol);
+}
+
+int initGlut(int argc, char *argv[])
+{
+    glutInit(&argc, argv);
+    glutInitWindowSize(1200,1200);
+    glutInitWindowPosition(10,10);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+
+    glutCreateWindow("nVenn2");
+
+    glutReshapeFunc(resize);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(key);
+    glutIdleFunc(idle);
+
+
+    glutMainLoop();
+
+    return EXIT_SUCCESS;
+}
+
+
+
+#endif // TOGLUT_H_INCLUDED

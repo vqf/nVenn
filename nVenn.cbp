@@ -57,6 +57,17 @@
 					<Add option="-g" />
 				</Compiler>
 			</Target>
+			<Target title="glut">
+				<Option output="nVennGlut" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Linker>
+					<Add library="glut" />
+					<Add library="GL" />
+					<Add library="GLU" />
+					<Add library="Xxf86vm" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -76,6 +87,9 @@
 			<Option target="towasm" />
 			<Option target="test_input" />
 		</Unit>
+		<Unit filename="glutmain.cpp">
+			<Option target="glut" />
+		</Unit>
 		<Unit filename="graphics.h">
 			<Option target="default" />
 		</Unit>
@@ -86,19 +100,34 @@
 			<Option target="default" />
 			<Option target="plain" />
 		</Unit>
-		<Unit filename="palettes.h" />
+		<Unit filename="palettes.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="test" />
+			<Option target="towasm" />
+			<Option target="test_input" />
+		</Unit>
 		<Unit filename="scene.h">
 			<Option target="default" />
 			<Option target="plain" />
 			<Option target="test" />
 			<Option target="towasm" />
 		</Unit>
-		<Unit filename="strFuncts.h" />
+		<Unit filename="strFuncts.h">
+			<Option target="default" />
+			<Option target="plain" />
+			<Option target="test" />
+			<Option target="towasm" />
+			<Option target="test_input" />
+		</Unit>
 		<Unit filename="test.cpp">
 			<Option target="test" />
 		</Unit>
 		<Unit filename="testinput.cpp">
 			<Option target="test_input" />
+		</Unit>
+		<Unit filename="toGlut.h">
+			<Option target="glut" />
 		</Unit>
 		<Unit filename="topol.h">
 			<Option target="default" />

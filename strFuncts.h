@@ -129,6 +129,15 @@ std::string getFile(std::string prompt, std::string errorPrompt)
     return fname;
 }
 
+std::string getFileText(std::string path){
+    std::ifstream vFile;
+    vFile.open(path.c_str());
+    std::stringstream content;
+    content << vFile.rdbuf();
+    vFile.close();
+    return content.str();
+}
+
 class splitString{
   UINT counter;
   std::vector<std::string> v;

@@ -1,101 +1,1090 @@
-Line 3207 - Next candidate: 127
-Line 6332 - Outcount: 1
-Line 3207 - Next candidate: 122
-Line 3234 - Swapping 40 with 17 -> 193.553
-Line 3227 - Undo on checkTopol
-Line 3234 - Swapping 122 with 17 -> 193.246
-Line 3234 - Swapping 123 with 17 -> 191.79
-Line 3207 - Next candidate: 60
-Line 3234 - Swapping 68 with 48 -> 191.043
-Line 3207 - Next candidate: 69
-Line 3234 - Swapping 123 with 69 -> 190.893
-Line 3207 - Next candidate: 72
-Line 6332 - Outcount: 1
-Line 3207 - Next candidate: 68
-Line 6332 - Outcount: 2
-Line 3207 - Next candidate: 65
-Line 3234 - Swapping 1 with 123 -> 190.528
-Line 3207 - Next candidate: 4
-Line 6332 - Outcount: 1
-Line 3207 - Next candidate: 1
-Line 3234 - Swapping 92 with 1 -> 190.292
-Line 3207 - Next candidate: 64
-Line 3234 - Swapping 123 with 122 -> 189.285
-Line 3207 - Next candidate: 0
-Line 6332 - Outcount: 1
-Line 3207 - Next candidate: 127
-Line 3234 - Swapping 17 with 7 -> 188.227
-Line 3234 - Swapping 69 with 7 -> 188.227
-Line 3207 - Next candidate: 122
-Line 3227 - Undo on checkTopol
-Line 6332 - Outcount: 1
-Line 3207 - Next candidate: 60
-Line 6332 - Outcount: 2
-Line 3207 - Next candidate: 69
-Line 6332 - Outcount: 3
-Line 3207 - Next candidate: 68
-Line 6332 - Outcount: 4
-Line 3207 - Next candidate: 72
-Line 3227 - Undo on checkTopol
-Line 6332 - Outcount: 5
-Line 3207 - Next candidate: 65
-Line 6332 - Outcount: 6
-Line 3207 - Next candidate: 4
-Line 6332 - Outcount: 7
-Line 3207 - Next candidate: 1
-Line 6332 - Outcount: 8
-Line 3207 - Next candidate: 64
-Line 6332 - Outcount: 9
-Line 3207 - Next candidate: 0
-Line 6332 - Outcount: 10
-Line 3207 - Next candidate: 127
-Line 6332 - Outcount: 11
-Line 3207 - Next candidate: 1
-Line 3234 - Swapping 17 with 1 -> 20
-Line 3234 - Swapping 92 with 1 -> 17
-Line 3234 - Swapping 122 with 1 -> 14
-Line 3239 - Prev untie: 191.26, new untie: 190.88
-Line 3207 - Next candidate: 4
-Line 3239 - Prev untie: 190.88, new untie: 196.139
-Line 3243 - Did not swap on untie
-Line 3234 - Swapping 92 with 40 -> 11
-Line 3234 - Swapping 122 with 40 -> 7
-Line 3207 - Next candidate: 64
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 1
-Line 3207 - Next candidate: 68
-Line 6355 - Outcount: 2
-Line 3207 - Next candidate: 72
-Line 6355 - Outcount: 3
-Line 3207 - Next candidate: 65
-Line 3234 - Swapping 1 with 123 -> 5
-Line 3207 - Next candidate: 69
-Line 6355 - Outcount: 1
-Line 3207 - Next candidate: 60
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 2
-Line 3207 - Next candidate: 122
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 3
-Line 3207 - Next candidate: 127
-Line 3227 - Undo on checkTopol
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 4
-Line 3207 - Next candidate: 0
-Line 6355 - Outcount: 5
-Line 3207 - Next candidate: 1
-Line 6355 - Outcount: 6
-Line 3207 - Next candidate: 4
-Line 3227 - Undo on checkTopol
-Line 3227 - Undo on checkTopol
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 7
-Line 3207 - Next candidate: 64
-Line 3227 - Undo on checkTopol
-Line 6355 - Outcount: 8
-Line 3207 - Next candidate: 68
-Line 6355 - Outcount: 9
-Line 3207 - Next candidate: 72
-Line 6355 - Outcount: 10
-Line 3207 - Next candidate: 65
-Line 6355 - Outcount: 11
+Line 3209 - Next candidate: 43
+Line 3236 - Swapping 1 with 88 -> 1982.88
+Line 3236 - Swapping 3 with 88 -> 1981.29
+Line 3236 - Swapping 9 with 88 -> 1980.7
+Line 3236 - Swapping 31 with 88 -> 1978.53
+Line 3236 - Swapping 40 with 88 -> 1972.86
+Line 3236 - Swapping 46 with 88 -> 1969.17
+Line 3236 - Swapping 50 with 88 -> 1965.27
+Line 3236 - Swapping 52 with 88 -> 1961.93
+Line 3236 - Swapping 74 with 88 -> 1961.74
+Line 3236 - Swapping 96 with 88 -> 1958.6
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 46
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 31 with 32 -> 1958.47
+Line 3236 - Swapping 88 with 32 -> 1958.05
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 112 with 32 -> 1957.63
+Line 3236 - Swapping 114 with 32 -> 1956.3
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 45
+Line 3236 - Swapping 9 with 64 -> 1955.75
+Line 3236 - Swapping 18 with 64 -> 1954.84
+Line 3236 - Swapping 31 with 64 -> 1954.2
+Line 3236 - Swapping 41 with 64 -> 1953.58
+Line 3236 - Swapping 74 with 64 -> 1953.2
+Line 3236 - Swapping 86 with 64 -> 1952.65
+Line 3236 - Swapping 96 with 64 -> 1940.14
+Line 3236 - Swapping 114 with 64 -> 1939.49
+Line 3236 - Swapping 115 with 64 -> 1939.23
+Line 3209 - Next candidate: 39
+Line 3236 - Swapping 3 with 115 -> 1937.45
+Line 3236 - Swapping 9 with 115 -> 1934.63
+Line 3236 - Swapping 31 with 115 -> 1934.32
+Line 3236 - Swapping 41 with 115 -> 1931.87
+Line 3236 - Swapping 46 with 115 -> 1931.13
+Line 3236 - Swapping 52 with 115 -> 1929.96
+Line 3236 - Swapping 88 with 115 -> 1929.75
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 114 with 115 -> 1928.54
+Line 3236 - Swapping 122 with 115 -> 1926.78
+Line 3209 - Next candidate: 41
+Line 3236 - Swapping 1 with 87 -> 1924.18
+Line 3236 - Swapping 2 with 87 -> 1919.22
+Line 3236 - Swapping 3 with 87 -> 1917.76
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 50 with 87 -> 1917.38
+Line 3236 - Swapping 86 with 87 -> 1917.32
+Line 3236 - Swapping 88 with 87 -> 1917.23
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 113 with 87 -> 1915.69
+Line 3236 - Swapping 114 with 87 -> 1915.29
+Line 3209 - Next candidate: 76
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 14 with 52 -> 1912.53
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 73 with 52 -> 1910.89
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 122 with 52 -> 1901.78
+Line 3209 - Next candidate: 7
+Line 3236 - Swapping 14 with 3 -> 1901.51
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 35
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 9 with 114 -> 1898.03
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 113 with 114 -> 1897.03
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 11
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 87 with 74 -> 1896.9
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 38
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 44
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 9 with 50 -> 1895.48
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 32 with 50 -> 1894.69
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 42
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 88 with 18 -> 1894.04
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 112 with 18 -> 1893.15
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 48
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 30 with 102 -> 1890.71
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 36
+Line 3236 - Swapping 14 with 62 -> 1890.29
+Line 3236 - Swapping 73 with 62 -> 1888.44
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 122 with 62 -> 1887.22
+Line 3209 - Next candidate: 10
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 9 with 14 -> 1886.54
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 32 with 14 -> 1886.53
+Line 3236 - Swapping 86 with 14 -> 1886.36
+Line 3209 - Next candidate: 6
+Line 3236 - Swapping 40 with 9 -> 1886.33
+Line 3236 - Swapping 46 with 9 -> 1885.36
+Line 3209 - Next candidate: 12
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 40 with 46 -> 1884.14
+Line 3236 - Swapping 96 with 46 -> 1882.87
+Line 3236 - Swapping 122 with 46 -> 1882.28
+Line 3209 - Next candidate: 33
+Line 3236 - Swapping 8 with 113 -> 1881.83
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 112 with 113 -> 1877.9
+Line 3209 - Next candidate: 3
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 34
+Line 3236 - Swapping 113 with 30 -> 1877.44
+Line 3209 - Next candidate: 9
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 40 with 73 -> 1877.31
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 40
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 5
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 16
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 72 with 96 -> 1875.99
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 62 with 122 -> 1873.54
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 8
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 2
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 32
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 3
+Line 3209 - Next candidate: 1
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 4
+Line 3209 - Next candidate: 4
+Line 3236 - Swapping 62 with 40 -> 1870.93
+Line 3209 - Next candidate: 0
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 39
+Line 3236 - Swapping 3 with 115 -> 1870.67
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 45
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 14 with 64 -> 1869.82
+Line 3236 - Swapping 32 with 64 -> 1869.43
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 43
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 87 with 88 -> 1868.38
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 46
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 87 with 32 -> 1868.21
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 44
+Line 3236 - Swapping 14 with 50 -> 1867.22
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 76
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 35
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 7
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 3
+Line 3209 - Next candidate: 42
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 87 with 18 -> 1867.21
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 41
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 38
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 11
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 88 with 74 -> 1866.95
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 48
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 9
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 3
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 3
+Line 3209 - Next candidate: 33
+Line 3236 - Swapping 30 with 113 -> 1866.39
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 12
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 10
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 34
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 3
+Line 3209 - Next candidate: 40
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 4
+Line 3209 - Next candidate: 36
+Line 3236 - Swapping 9 with 62 -> 1865.18
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 6
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 1
+Line 3209 - Next candidate: 5
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 2
+Line 3209 - Next candidate: 16
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 3
+Line 3209 - Next candidate: 64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 4
+Line 3209 - Next candidate: 8
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 5
+Line 3209 - Next candidate: 32
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 6
+Line 3209 - Next candidate: 2
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 7
+Line 3209 - Next candidate: 1
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 8
+Line 3209 - Next candidate: 4
+Line 6334 - Outcount: 9
+Line 3209 - Next candidate: 0
+Line 6334 - Outcount: 10
+Line 3209 - Next candidate: 39
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6334 - Outcount: 11
+Line 3209 - Next candidate: 1
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 9 with 1 -> 66
+Line 3236 - Swapping 14 with 1 -> 58
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1880.16, new untie: 1876.05
+Line 3236 - Swapping 86 with 1 -> 57
+Line 3236 - Swapping 112 with 1 -> 56
+Line 3241 - Prev untie: 1877.79, new untie: 1884.82
+Line 3245 - Did not swap on untie
+Line 3209 - Next candidate: 2
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 4
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 8
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 86 with 72 -> 55
+Line 3241 - Prev untie: 1877.58, new untie: 1879.91
+Line 3245 - Did not swap on untie
+Line 3209 - Next candidate: 16
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1877.58, new untie: 1880.13
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 32
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1877.58, new untie: 1878.57
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1877.58, new untie: 1879.91
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 3
+Line 3241 - Prev untie: 1877.58, new untie: 1883.29
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1877.58, new untie: 1882.5
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 6
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 5
+Line 3209 - Next candidate: 10
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 73 with 14 -> 49
+Line 3209 - Next candidate: 34
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 5
+Line 3236 - Swapping 2 with 41 -> 48
+Line 3241 - Prev untie: 1885.29, new untie: 1884.64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 12
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 52 with 46 -> 44
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 36
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 9
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1884.72, new untie: 1891.79
+Line 3245 - Did not swap on untie
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 40
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 48
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1884.72, new untie: 1887.27
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 33
+Line 3241 - Prev untie: 1884.72, new untie: 1891.64
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1884.72, new untie: 1891.79
+Line 3245 - Did not swap on untie
+Line 3236 - Swapping 74 with 113 -> 41
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 114 with 113 -> 35
+Line 3209 - Next candidate: 7
+Line 3241 - Prev untie: 1889.4, new untie: 1890.05
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 42
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 38
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 44
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 64 with 50 -> 34
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 76
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1889.33, new untie: 1889.9
+Line 3245 - Did not swap on untie
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 11
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 41
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 35
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 46
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 64 with 32 -> 33
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 45
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 88 with 64 -> 31
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 43
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 39
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 0
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 1
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 2
+Line 3236 - Swapping 30 with 8 -> 30
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 4
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 8
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 16
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 32
+Line 3241 - Prev untie: 1890.76, new untie: 1893.37
+Line 3245 - Did not swap on untie
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1890.76, new untie: 1891.34
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 5
+Line 3209 - Next candidate: 3
+Line 3241 - Prev untie: 1890.76, new untie: 1891.05
+Line 3245 - Did not swap on untie
+Line 3241 - Prev untie: 1890.76, new untie: 1888.72
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 6
+Line 3209 - Next candidate: 6
+Line 3241 - Prev untie: 1888.72, new untie: 1890.76
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 7
+Line 3209 - Next candidate: 10
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1888.72, new untie: 1891.33
+Line 3245 - Did not swap on untie
+Line 6357 - Outcount: 8
+Line 3209 - Next candidate: 34
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 113 with 30 -> 27
+Line 3209 - Next candidate: 5
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 12
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 36
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 9
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 40
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 5
+Line 3209 - Next candidate: 48
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 6
+Line 3209 - Next candidate: 33
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 7
+Line 3209 - Next candidate: 7
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1889.79, new untie: 1891.27
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 8
+Line 3209 - Next candidate: 42
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 9
+Line 3209 - Next candidate: 38
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1889.79, new untie: 1888.77
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 114 with 31 -> 25
+Line 3209 - Next candidate: 44
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 76
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1887.42, new untie: 1888.25
+Line 3245 - Did not swap on untie
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 11
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 41
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 35
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 5
+Line 3209 - Next candidate: 46
+Line 3229 - Undo on checkTopol
+Line 3236 - Swapping 18 with 32 -> 23
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3209 - Next candidate: 45
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 1
+Line 3209 - Next candidate: 43
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 2
+Line 3209 - Next candidate: 39
+Line 3241 - Prev untie: 1887.46, new untie: 1888.95
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 3
+Line 3209 - Next candidate: 0
+Line 6357 - Outcount: 4
+Line 3209 - Next candidate: 1
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 5
+Line 3209 - Next candidate: 2
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 6
+Line 3209 - Next candidate: 4
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 7
+Line 3209 - Next candidate: 8
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 8
+Line 3209 - Next candidate: 16
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 9
+Line 3209 - Next candidate: 32
+Line 6357 - Outcount: 10
+Line 3209 - Next candidate: 64
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3241 - Prev untie: 1887.46, new untie: 1888.29
+Line 3245 - Did not swap on untie
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 3229 - Undo on checkTopol
+Line 6357 - Outcount: 11
+Line 304 - Distance is zero: X: 130.413, Y: 153.75	N: 0	radius: 0	vx: 0	vy: 0	Fx: -55676.6	Fy: 58804.8	Flags: 64
+X: 130.413, Y: 153.75	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4449	Fy: 20079.8	Flags: 64
+X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.699, Y: 151.336	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14219.5	Fy: -14859.2	Flags: 64
+X: 132.699, Y: 151.336	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.413, Y: 153.75	N: 0	radius: 0	vx: 0	vy: 0	Fx: -55676.6	Fy: 58804.8	Flags: 64
+X: 130.413, Y: 153.75	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4449	Fy: 20079.8	Flags: 64
+X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 129.296, Y: 150.404	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.699, Y: 151.336	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14219.5	Fy: -14859.2	Flags: 64
+X: 132.699, Y: 151.336	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 2594 - Mc: 0.160789, minc: 0.113228, result: 0.643157
+Line 2594 - Mc: 0.15277, minc: 0.113228, result: 0.122216
+Line 3156 - Next candidate: 127
+Line 3156 - Next candidate: 127
+Line 3156 - Next candidate: 1
+Line 2077 - Line 2077 - : Incorrect topology of circle 68 with line 4, X: 115.148, Y: 100.447	N: 68	radius: 2.71648	vx: 66.0277	vy: -82.3661	Fx: 0	Fy: 0	Flags: 0
+Line 2077 - Line 2077 - : Incorrect topology of circle 69 with line 4, X: 132.17, Y: 76.8071	N: 69	radius: 2.71648	vx: -9.22334	vy: -24.5362	Fx: 0	Fy: 0	Flags: 0
+Line 2077 - Line 2077 - : Incorrect topology of circle 65 with line 4, X: 100.378, Y: 91.0321	N: 65	radius: 2.71648	vx: 23.5904	vy: 125.868	Fx: 0	Fy: 0	Flags: 0
+Line 2077 - Line 2077 - : Incorrect topology of circle 68 with line 5, X: 115.148, Y: 100.447	N: 68	radius: 2.71648	vx: 66.0277	vy: -82.3661	Fx: 0	Fy: 0	Flags: 0
+Line 2077 - Line 2077 - : Incorrect topology of circle 69 with line 5, X: 132.17, Y: 76.8071	N: 69	radius: 2.71648	vx: -9.22334	vy: -24.5362	Fx: 0	Fy: 0	Flags: 0
+Line 2077 - Line 2077 - : Incorrect topology of circle 65 with line 5, X: 100.378, Y: 91.0321	N: 65	radius: 2.71648	vx: 23.5904	vy: 125.868	Fx: 0	Fy: 0	Flags: 0
+Line 3156 - Next candidate: 1
+Line 3188 - Prev untie: 194.611, new untie: 195.548
+Line 3192 - Did not swap on untie
+Line 6362 - Outcount: 1
+Line 3156 - Next candidate: 4
+Line 3183 - Swapping 17 with 40 -> 17
+Line 3188 - Prev untie: 189.77, new untie: 191.267
+Line 3192 - Did not swap on untie
+Line 3156 - Next candidate: 64
+Line 3183 - Swapping 17 with 122 -> 10
+Line 3188 - Prev untie: 188.95, new untie: 190.568
+Line 3192 - Did not swap on untie
+Line 3156 - Next candidate: 68
+Line 3188 - Prev untie: 188.95, new untie: 193.781
+Line 3192 - Did not swap on untie
+Line 3183 - Swapping 48 with 68 -> 7
+Line 3156 - Next candidate: 72
+Line 3183 - Swapping 17 with 92 -> 5
+Line 3176 - Undo on checkTopol
+Line 3156 - Next candidate: 65
+Line 6362 - Outcount: 1
+Line 3156 - Next candidate: 69
+Line 6362 - Outcount: 2
+Line 3156 - Next candidate: 60
+Line 6362 - Outcount: 3
+Line 3156 - Next candidate: 122
+Line 3176 - Undo on checkTopol
+Line 6362 - Outcount: 4
+Line 3156 - Next candidate: 127
+Line 304 - Distance is zero: X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 48.4617, Y: 143.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 4921 - Line 4921 - Cannot solve topol problems
+Line 3156 - Next candidate: 1
+Line 3183 - Swapping 40 with 1 -> 16
+Line 3188 - Prev untie: 194.571, new untie: 193.427
+Line 3183 - Swapping 92 with 1 -> 8
+Line 3183 - Swapping 122 with 1 -> 7
+Line 3188 - Prev untie: 193.18, new untie: 192.841
+Line 3156 - Next candidate: 4
+Line 3183 - Swapping 69 with 40 -> 6
+Line 3156 - Next candidate: 64
+Line 3188 - Prev untie: 194.104, new untie: 196.047
+Line 3192 - Did not swap on untie
+Line 6362 - Outcount: 1
+Line 3156 - Next candidate: 68
+Line 3176 - Undo on checkTopol
+Line 3188 - Prev untie: 194.104, new untie: 193.052
+Line 6362 - Outcount: 2
+Line 3156 - Next candidate: 72
+Line 3183 - Swapping 1 with 92 -> 5
+Line 3176 - Undo on checkTopol
+Line 3156 - Next candidate: 1
+Line 3156 - Next candidate: 1
+Line 3183 - Swapping 40 with 1 -> 18
+Line 3188 - Prev untie: 195.376, new untie: 192.523
+Line 3188 - Prev untie: 192.523, new untie: 194.743
+Line 3192 - Did not swap on untie
+Line 3183 - Swapping 123 with 1 -> 17
+Line 3156 - Next candidate: 4
+Line 3188 - Prev untie: 194.819, new untie: 194.659
+Line 3183 - Swapping 92 with 40 -> 16
+Line 3183 - Swapping 122 with 40 -> 14
+Line 3156 - Next candidate: 64
+Line 3188 - Prev untie: 195.854, new untie: 194.917
+Line 6362 - Outcount: 1
+Line 3156 - Next candidate: 68
+Line 3183 - Swapping 69 with 68 -> 13
+Line 3183 - Swapping 122 with 68 -> 8
+Line 3156 - Next candidate: 72
+Line 3188 - Prev untie: 193.645, new untie: 194.423
+Line 3192 - Did not swap on untie
+Line 6362 - Outcount: 1
+Line 3156 - Next candidate: 65
+Line 3176 - Undo on checkTopol
+Line 3156 - Next candidate: 1
+Line 3183 - Swapping 7 with 1 -> 42
+Line 3183 - Swapping 40 with 1 -> 28
+Line 3183 - Swapping 48 with 1 -> 27
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8111.27	Fy: 17785.3	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12159.6	Fy: -15305.3	Flags: 64
+X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 6868.44	Fy: -19513.6	Flags: 64
+X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8111.27	Fy: 17785.3	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12159.6	Fy: -15305.3	Flags: 64
+X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 6868.44	Fy: -19513.6	Flags: 64
+X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8111.27	Fy: 17785.3	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 127.561, Y: 103.801	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12159.6	Fy: -15305.3	Flags: 64
+X: 130.717, Y: 105.094	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 6868.44	Fy: -19513.6	Flags: 64
+X: 125.059, Y: 87.2393	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 4921 - Line 4921 - Cannot solve topol problems

@@ -987,13 +987,6 @@ public:
     }
 };
 
-struct rgb
-{
-    float red;
-    float green;
-    float blue;
-};
-
 
 
 template<typename T>
@@ -1434,6 +1427,8 @@ class borderLine
 {
     friend class glGraphics;
     friend class groupIterator;
+    friend void toOGL();
+
 
     binMap* bm;
     nvenn setElements;
@@ -1722,17 +1717,7 @@ class borderLine
         dataDisplay.push_back(dsp);
     }
 
-    rgb toRGB(int color, int max)
-    {
-        rgb result;
-        result.red = (0x00FF0000 & color)/0x10000;
-        result.red = result.red * max / 0xFF;
-        result.green = (0x0000FF00 & color)/0x100;
-        result.green = result.green * max / 0xFF;
-        result.blue = (0x000000FF & color);
-        result.blue = result.blue * max / 0xFF;
-        return result;
-    }
+
 
 
     void initOlds()
@@ -1740,44 +1725,6 @@ class borderLine
         savedState.bl_old10 = bl;
         ncyles_old10 = blSettings.ncycles;
         savedState.circles_old10 = circles;
-    }
-
-    point place(scale s, point m)
-    {
-        point r;
-        scale tempScale;
-        tempScale.initScale();
-        float offset;
-        float Scale;
-        if (s.ratio() <= internalScale.ratio())
-        {
-            offset = s.xSpan() - s.ySpan() / internalScale.ratio();
-            offset /= 2;
-            tempScale.setMinX(offset + s.minX());
-            tempScale.setMaxX(s.maxX() - offset);
-            tempScale.setMinY(s.minY());
-            tempScale.setMaxY(s.maxY());
-        }
-        else
-        {
-            offset = s.ySpan() - internalScale.ratio() * s.xSpan();
-            offset /= 2;
-            tempScale.setMinX(s.minX());
-            tempScale.setMaxX(s.maxX());
-            tempScale.setMinY(offset + s.minY());
-            tempScale.setMaxY(s.maxY() - offset);
-        }
-        r.x = m.x - internalScale.minX();
-        r.y = m.y - internalScale.minY();
-        r.x /= internalScale.xSpan();
-        r.y /= internalScale.ySpan();
-        r.x *= tempScale.xSpan();
-        r.y *= tempScale.ySpan();
-        r.x += tempScale.minX();
-        r.y += tempScale.minY();
-        Scale = tempScale.xSpan() / internalScale.xSpan();
-        r.radius = Scale * m.radius;
-        return r;
     }
 
 
@@ -2231,7 +2178,9 @@ class borderLine
     void fixTopology(bool logit = false){
       addLines();
       polishLines();
-      //writeSVG("polishlines.svg");
+      embellishTopology();
+      //writeSVG("embellish.svg");
+      //exit(0);
       for (UINT i = 0; i < circles.size(); i++){
         circles[i].flags = unsetFlag(circles[i].flags, USED);
       }
@@ -2366,7 +2315,7 @@ class borderLine
           circles[i].flags = unsetFlag(circles[i].flags, USED);
         }
       }
-      embellishTopology(logit);
+      //embellishTopology(logit);
       //writeSVG("embellish.svg");
     }
 
@@ -4650,6 +4599,48 @@ public:
         /*writeSVG()*/
     }
 
+    UINT getCurrentStep(){
+        return currentStep;
+    }
+
+    point place(scale s, point m)
+    {
+        point r;
+        scale tempScale;
+        tempScale.initScale();
+        float offset;
+        float Scale;
+        if (s.ratio() <= internalScale.ratio())
+        {
+            offset = s.xSpan() - s.ySpan() / internalScale.ratio();
+            offset /= 2;
+            tempScale.setMinX(offset + s.minX());
+            tempScale.setMaxX(s.maxX() - offset);
+            tempScale.setMinY(s.minY());
+            tempScale.setMaxY(s.maxY());
+        }
+        else
+        {
+            offset = s.ySpan() - internalScale.ratio() * s.xSpan();
+            offset /= 2;
+            tempScale.setMinX(s.minX());
+            tempScale.setMaxX(s.maxX());
+            tempScale.setMinY(offset + s.minY());
+            tempScale.setMaxY(s.maxY() - offset);
+        }
+        r.x = m.x - internalScale.minX();
+        r.y = m.y - internalScale.minY();
+        r.x /= internalScale.xSpan();
+        r.y /= internalScale.ySpan();
+        r.x *= tempScale.xSpan();
+        r.y *= tempScale.ySpan();
+        r.x += tempScale.minX();
+        r.y += tempScale.minY();
+        Scale = tempScale.xSpan() / internalScale.xSpan();
+        r.radius = Scale * m.radius;
+        return r;
+    }
+
     void loadPalette(UINT n){
         std::vector<UINT> arr = svgPalettes.getPalette(n);
         svgParams.svgColors.clear();
@@ -4662,6 +4653,18 @@ public:
         {
             colors.push_back(toRGB(arr[i], 1));
         }
+    }
+
+    rgb toRGB(int color, int max)
+    {
+        rgb result;
+        result.red = (0x00FF0000 & color)/0x10000;
+        result.red = result.red * max / 0xFF;
+        result.green = (0x0000FF00 & color)/0x100;
+        result.green = result.green * max / 0xFF;
+        result.blue = (0x000000FF & color);
+        result.blue = result.blue * max / 0xFF;
+        return result;
     }
 
     void initCounters(){
@@ -5251,6 +5254,10 @@ public:
         std::vector<std::string> s = setElements.getRegion(r);
         std::string result = join("\n", s);
         return result;
+    }
+
+    bool doIShowThis(){
+        return showThis;
     }
 
     fileText toSVG(bool showNames = false){
@@ -6209,7 +6216,7 @@ public:
         setCheckTopol(true);
         resetOptimize();
         fixTopology();
-        oc.maxOutCount = 10;
+        oc.maxOutCount = 4 * ngroups;
         oc.outCount = 0;
         oc.optVal = compactness();
         optStep.init(oc.optVal);
@@ -6413,6 +6420,10 @@ public:
 
     /** @} */
 
+    std::vector<std::vector<point>> getBl(){
+        return bl;
+    }
+
     bool simulate(int maxRel = 0){
       restart_log();
       for (UINT step = currentStep; step < 8; step++){
@@ -6439,6 +6450,12 @@ public:
 
 borderLine fromSets(std::string sets, UINT byCol){
     borderLine result(sets, byCol);
+    return result;
+}
+
+borderLine fromSetFile(std::string filepath, UINT byCol = 0x00){
+    std::string nfo = getFileText(filepath);
+    borderLine result = fromSets(nfo, byCol);
     return result;
 }
 

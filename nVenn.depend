@@ -194,7 +194,7 @@
 	"../gh/elements.h"
 	"../gh/topol.h"
 
-1748252615 /home/vqf/proyectos/nVenn2/gh/elements.h
+1748861392 /home/vqf/proyectos/nVenn2/gh/elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
@@ -203,10 +203,10 @@
 	<string>
 	"strFuncts.h"
 
-1747408648 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
+1748695014 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 	<cstdarg>
 
-1748421638 /home/vqf/proyectos/nVenn2/gh/topol.h
+1748861460 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -257,7 +257,8 @@
 	<GL/glut.h>
 	"bmpfont.h"
 
-1747314312 /home/vqf/proyectos/nVenn2/gh/bmpfont.h
+1748513519 /home/vqf/proyectos/nVenn2/gh/bmpfont.h
+	<cstring>
 
 1747314308 /home/vqf/proyectos/nVenn2/gh/initogl.h
 
@@ -269,11 +270,31 @@
 	"elements.h"
 	"topol.h"
 
-1748334149 /home/vqf/proyectos/nVenn2/gh/palettes.h
+1748858682 /home/vqf/proyectos/nVenn2/gh/palettes.h
 
 1748013299 source:/home/vqf/proyectos/nVenn2/gh/towasm.cpp
 	<cstdlib>
 	<sstream>
 	"topol.h"
 	<iostream>
+
+1748861478 source:/home/vqf/proyectos/nVenn2/gh/glutmain.cpp
+	"topol.h"
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<iostream>
+	<vector>
+	<string>
+	<sstream>
+	<fstream>
+	"toGlut.h"
+
+1748864250 /home/vqf/proyectos/nVenn2/gh/toGlut.h
+	<GLUT/glut.h>
+	<GL/glut.h>
+	"bmpfont.h"
+	"palettes.h"
+	<stdlib.h>
+	<unistd.h>
 
