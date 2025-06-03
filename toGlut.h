@@ -116,7 +116,7 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
             //attention(bl[i][bl[i].size()-1].x, bl[i][bl[i].size()-1].y, 0.1);
             glBegin (GL_LINE_LOOP);
             rgb c = p.toRGB(colors[i]);
-            glColor3f (c.red, c.green, c.blue);
+            glColor3f (c.red / 255, c.green/255, c.blue/255);
             for (j = 0; j < blp[i].size(); j++)
             {
                 P = bl.place(ogl, blp[i][j]);
@@ -288,6 +288,8 @@ static void display(void)
     toOGL();
     if (bl.isStepFinished(step)){
         step++;
+        bl.setStep(step);
+        std::cout << step << std::endl;
     }
     //sleep(0);
     //glFlush();
@@ -351,7 +353,7 @@ int initGlut(int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitWindowSize(1200,1200);
     glutInitWindowPosition(10,10);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_RGB  | GLUT_DEPTH);
 
     glutCreateWindow("nVenn2");
 
@@ -360,6 +362,7 @@ int initGlut(int argc, char *argv[])
     glutKeyboardFunc(key);
     glutIdleFunc(idle);
 
+//    glXSwapIntervalEXT(0);
 
     glutMainLoop();
 

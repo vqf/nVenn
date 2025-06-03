@@ -1044,6 +1044,9 @@ public:
   }
   void init(float comp){
     bestComp = comp;
+    counter = 0;
+    candidate = 0;
+    bestComp = 0;
     startCycle();
     ended = true;
     untied = false;
@@ -1587,6 +1590,9 @@ class borderLine
       simulationTime = 0;
       maxLineVsq = 0;
       maxCircleVsq = 0;
+      oc.maxOutCount = 70;
+      oc.outCount = 0;
+      oc.optVal = 0;
       borderLine::currentMeasure = &borderLine::compactness;
       /**/
       // Set the width of a line
@@ -4545,7 +4551,7 @@ public:
         getline(vFile, header);
         std::string ng = purgeLetters(header);
         UINT number = (UINT) atoi(ng.c_str());
-        if (number > 0 && number < 100){
+        if (number > 0 && number < 20){
             //std::cout << std::endl << number << " groups:" << std::endl;
             for (UINT i = 0; i < number; i++){
                 getline(vFile, header);
@@ -4587,7 +4593,7 @@ public:
         }
         else{
             init({"one"}, {0, 1}, {"", ""});
-            setError("Malformed input string. No more than 100 groups are allowed");
+            setError("Malformed input string. No more than 20 groups are allowed");
         }
     }
     borderLine(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg") /// aqui
