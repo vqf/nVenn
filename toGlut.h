@@ -18,7 +18,8 @@
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+//#include <GL/glut.h>
+#include <GL/freeglut.h>
 #endif
 
 #include "bmpfont.h"
@@ -97,6 +98,7 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
       point P;     //coordinates
       std::vector<point> temp; //stores perimeters
       std::vector<std::vector<point>> blp = bl.getBl();
+      std::vector<point> outp = bl.getOutsideBl();
       bool showPoints = bl.doIShowThis();
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
@@ -124,6 +126,15 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
             }
             glEnd ();
         }
+        glBegin (GL_LINE_LOOP);
+        rgb c = p.toRGB(colors[i]);
+        glColor3f (c.red / 255, c.green/255, c.blue/255);
+        for (j = 0; j < outp.size(); j++)
+        {
+            P = bl.place(ogl, outp[j]);
+            glVertex2f (P.x, P.y);
+        }
+        glEnd ();
         if (showPoints){
           for (i = 0; i < blp.size(); i++){
             for (j = 0; j < blp[i].size(); j++){
@@ -250,7 +261,9 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
         std::string mymsg = bl.dataDisplay[i];
         //showText(mymsg); exit(0);
         glRasterPos2f(-0.9f, yd);
-        printString(mymsg);
+        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+        const unsigned char* t = reinterpret_cast<const unsigned char *>(mymsg.c_str());
+        glutBitmapString(GLUT_BITMAP_HELVETICA_18, t);
         yd -= 0.1;
       }
       /*for (i = 0; i < bl.dataDisplay.size(); i++){
@@ -291,7 +304,7 @@ static void display(void)
         bl.setStep(step);
         std::cout << step << std::endl;
     }
-    //sleep(0);
+    sleep(0);
     //glFlush();
     glutSwapBuffers();
 

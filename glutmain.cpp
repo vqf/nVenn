@@ -12,6 +12,6 @@
 
 
 int main(int argc, char *argv[]){
-    glutSimulate("/home/vqf/proyectos/lquiros/second/all.txt");
+    glutSimulate("/home/vqf/proyectos/nVenn2/stressTest.txt");
     initGlut(argc, argv);
 }
