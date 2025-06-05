@@ -1046,7 +1046,6 @@ public:
     bestComp = comp;
     counter = 0;
     candidate = 0;
-    bestComp = 0;
     startCycle();
     ended = true;
     untied = false;
@@ -1461,7 +1460,6 @@ class borderLine
     std::vector<std::string> groups;
     std::vector<point> p;
     std::vector<std::vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
-    std::vector<point> outsideBl; /**< Vector of points for the outside line */
     std::vector<point> circles;
     std::vector<point> scircles; /**< Circles sorted according to @n */
     std::vector<point> debug;
@@ -2214,7 +2212,7 @@ class borderLine
     void fixTopology(bool logit = false){
       addLines();
       polishLines();
-      embellishTopology();
+      //embellishTopology();
       //writeSVG("embellish.svg");
       //exit(0);
       for (UINT i = 0; i < circles.size(); i++){
@@ -2329,7 +2327,6 @@ class borderLine
                   //writeSVG("delme.svg");
                   //exit(0);
                   //tolog(toString(circleTopol(p3, belong, k)) + "\n");
-
                 }
                 else{
                   //tolog(_L_ + "Somehow, this one did not make it.\n");
@@ -2352,42 +2349,8 @@ class borderLine
           circles[i].flags = unsetFlag(circles[i].flags, USED);
         }
       }
-      //addOutsideLine();
-      //embellishTopology(logit);
+      embellishTopology(logit);
       //writeSVG("embellish.svg");
-    }
-
-    void addOutsideLine(){
-        std::vector<point> ext = getBoundaries(2 * maxRad());
-        UINT ns = 5;
-        float cx = ext[0].x;
-        float cy = ext[0].y;
-        float tx = ext[1].x;
-        float ty = ext[1].y;
-        float sx = (tx - cx) / ns;
-        float sy = (ty - cy) / ns;
-        outsideBl.clear();
-        outsideBl.push_back(ext[0]);
-        for (UINT i = 0; i <= ns; i++){
-            cx += ns;
-            point t(cx, cy);
-            outsideBl.push_back(t);
-        }
-        for (UINT i = 0; i <= ns; i++){
-            cy += ns;
-            point t(cx, cy);
-            outsideBl.push_back(t);
-        }
-        for (UINT i = 0; i <= ns; i++){
-            cx -= ns;
-            point t(cx, cy);
-            outsideBl.push_back(t);
-        }
-        for (UINT i = 0; i <= ns; i++){
-            cy -= ns;
-            point t(cx, cy);
-            outsideBl.push_back(t);
-        }
     }
 
 
@@ -3219,6 +3182,8 @@ class borderLine
                          float (borderLine::*countFunct)(), float (borderLine::*untieFunct)(),
                          bool logit = false){
       float untie = (this->*untieFunct)();
+      //float startComp = (this->*countFunct)();
+      //opt->setBestCompactness(startComp);
       displayFloat("BEST", opt->getBestCompactness());
       if (opt->hasEnded()){
         opt->startCycle();
@@ -4274,14 +4239,6 @@ class borderLine
             return ct;
           }
       }
-      // Outside
-      /*bool cto = circleTopol(P, {1}, 0);
-      if (cto){
-        if (blSettings.doCheckTopol == true){
-          //tolog(toString(__LINE__) + "\n" + toString(P.n) + "\n");
-        }
-        return cto;
-      }*/
       return false;
     }
 
@@ -4934,16 +4891,6 @@ public:
         level++;
       }
       level *= 2;
-      // Outside
-      /*UINT lp = cnt;
-      for (UINT j = 0; j < outsideBl.size(); j++){
-        outsideBl[j].flags = outsideBl[j].flags | GHOST;
-        tosolve.addPointP(&(outsideBl[j]));
-        sceneTranslator.push_back(outsideBl[j].n);
-        tosolve.addLink(cnt + lp, cnt + j, springK / 5);
-        lp = j;
-        pairDistances.push_back(cushion * (float) level);
-      }*/
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           tosolve.addPointP(&(circles[i]));
@@ -5496,7 +5443,7 @@ public:
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
           if (svgtemp.x > svgScale.minX() && svgtemp.x < svgScale.maxX()){
             std::string clss = "circle";
-            if ((circles[i].flags & USED) > 0){
+            if ((circles[i].flags & IS_OUTSIDE) > 0){
               clss = "spcircle";
             }
             tst = vformat("<circle onclick=\"fromCircle(%u)\" class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, clss.c_str(), svgtemp.x,
@@ -6305,7 +6252,7 @@ public:
         setCheckTopol(true);
         resetOptimize();
         fixTopology();
-        oc.maxOutCount = 4 * ngroups;
+        oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = compactness();
         optStep.init(oc.optVal);
@@ -6315,7 +6262,7 @@ public:
       else if (stepNumber == minimizeCrossings){
         resetOptimize();
         fixTopology();
-        oc.maxOutCount = 4 * ngroups;
+        oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = countCrossings();
         optStep.init(oc.optVal);
@@ -6426,6 +6373,7 @@ public:
           else{
             oc.outCount = oc.outCount + 1;
             tolog("Outcount: " + toString(oc.outCount) + "\n");
+            tolog("Cval: " + toString(oc.optVal) + "\n");
           }
           //fixTopology();
         }
@@ -6513,9 +6461,6 @@ public:
         return bl;
     }
 
-    std::vector<point> getOutsideBl(){
-        return outsideBl;
-    }
 
     bool simulate(int maxRel = 0){
       restart_log();

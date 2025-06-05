@@ -12,6 +12,7 @@
 
 
 int main(int argc, char *argv[]){
+    restart_log();
     glutSimulate("/home/vqf/proyectos/nVenn2/stressTest.txt");
     initGlut(argc, argv);
 }

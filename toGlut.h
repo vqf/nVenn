@@ -33,6 +33,7 @@ bool showContacts = false;
 UINT step = 0;
 
 borderLine bl;
+std::string fout = "";
 
 
 void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
@@ -98,7 +99,6 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
       point P;     //coordinates
       std::vector<point> temp; //stores perimeters
       std::vector<std::vector<point>> blp = bl.getBl();
-      std::vector<point> outp = bl.getOutsideBl();
       bool showPoints = bl.doIShowThis();
       glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
       glClear (GL_COLOR_BUFFER_BIT);
@@ -128,12 +128,7 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
         }
         glBegin (GL_LINE_LOOP);
         rgb c = p.toRGB(colors[i]);
-        glColor3f (c.red / 255, c.green/255, c.blue/255);
-        for (j = 0; j < outp.size(); j++)
-        {
-            P = bl.place(ogl, outp[j]);
-            glVertex2f (P.x, P.y);
-        }
+
         glEnd ();
         if (showPoints){
           for (i = 0; i < blp.size(); i++){
@@ -323,6 +318,7 @@ static void key(unsigned char key, int x, int y)
                 std::cout << step << std::endl;
             }
             else{
+                bl.writeHTML(fout);
                 exit(0);
             }
             break;
@@ -359,6 +355,7 @@ const GLfloat high_shininess[] = { 100.0f };
 
 void glutSimulate(std::string filepath, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
     bl = fromSetFile(filepath, bycol);
+    fout = filepath + ".html";
 }
 
 int initGlut(int argc, char *argv[])

@@ -206,7 +206,7 @@
 1748695014 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 	<cstdarg>
 
-1749121709 /home/vqf/proyectos/nVenn2/gh/topol.h
+1749133324 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -278,7 +278,7 @@
 	"topol.h"
 	<iostream>
 
-1749057932 source:/home/vqf/proyectos/nVenn2/gh/glutmain.cpp
+1749132163 source:/home/vqf/proyectos/nVenn2/gh/glutmain.cpp
 	"topol.h"
 	<stdlib.h>
 	<stdio.h>
@@ -290,7 +290,7 @@
 	<fstream>
 	"toGlut.h"
 
-1748948540 /home/vqf/proyectos/nVenn2/gh/toGlut.h
+1749123507 /home/vqf/proyectos/nVenn2/gh/toGlut.h
 	<GLUT/glut.h>
 	<GL/freeglut.h>
 	"bmpfont.h"
