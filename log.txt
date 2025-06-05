@@ -9521,3 +9521,3814 @@ Line 3218 - Undo on checkTopol
 Line 3218 - Undo on checkTopol
 Line 6422 - Outcount: 29
 Line 2084 - Line 2084 - : Incorrect topology of circle 7 with line 4, X: 119.939, Y: 120.005	N: 7	radius: 1.48404	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 0
+Line 3207 - Next candidate: 46
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 6408 - Outcount: 1
+Line 3207 - Next candidate: 43
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3227 - Undo on checkTopol
+Line 3217 - Next candidate: 46
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 1
+Line 3217 - Next candidate: 39
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 2
+Line 3217 - Next candidate: 43
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 3
+Line 3217 - Next candidate: 45
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 4
+Line 3217 - Next candidate: 41
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 5
+Line 3217 - Next candidate: 42
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 6
+Line 3217 - Next candidate: 35
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 7
+Line 3217 - Next candidate: 76
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 8
+Line 3217 - Next candidate: 38
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 9
+Line 3217 - Next candidate: 11
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 10
+Line 3217 - Next candidate: 44
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 11
+Line 3217 - Next candidate: 7
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 12
+Line 3217 - Next candidate: 34
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 13
+Line 3217 - Next candidate: 36
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 14
+Line 3217 - Next candidate: 9
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 15
+Line 3217 - Next candidate: 3
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 16
+Line 3217 - Next candidate: 10
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 17
+Line 3217 - Next candidate: 40
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 18
+Line 3217 - Next candidate: 48
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 19
+Line 3217 - Next candidate: 6
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 20
+Line 3217 - Next candidate: 12
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 21
+Line 3217 - Next candidate: 33
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 22
+Line 3217 - Next candidate: 5
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 23
+Line 3217 - Next candidate: 16
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 24
+Line 3217 - Next candidate: 64
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 25
+Line 3217 - Next candidate: 2
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 26
+Line 3217 - Next candidate: 8
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 27
+Line 3217 - Next candidate: 4
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 28
+Line 3217 - Next candidate: 1
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6418 - Outcount: 29
+Line 3217 - Next candidate: 1
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 1
+Line 3217 - Next candidate: 2
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 2
+Line 3217 - Next candidate: 4
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 3
+Line 3217 - Next candidate: 8
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 4
+Line 3217 - Next candidate: 16
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 5
+Line 3217 - Next candidate: 32
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 6
+Line 3217 - Next candidate: 64
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 7
+Line 3217 - Next candidate: 3
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 8
+Line 3217 - Next candidate: 6
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 9
+Line 3217 - Next candidate: 10
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 10
+Line 3217 - Next candidate: 34
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 11
+Line 3217 - Next candidate: 5
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 12
+Line 3217 - Next candidate: 12
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 13
+Line 3217 - Next candidate: 36
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 14
+Line 3217 - Next candidate: 9
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 15
+Line 3217 - Next candidate: 40
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 16
+Line 3217 - Next candidate: 48
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 17
+Line 3217 - Next candidate: 33
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 18
+Line 3217 - Next candidate: 7
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 19
+Line 3217 - Next candidate: 42
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 20
+Line 3217 - Next candidate: 38
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 21
+Line 3217 - Next candidate: 44
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 22
+Line 3217 - Next candidate: 76
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 23
+Line 3217 - Next candidate: 11
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 24
+Line 3217 - Next candidate: 41
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 25
+Line 3217 - Next candidate: 35
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 26
+Line 3217 - Next candidate: 46
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 27
+Line 3217 - Next candidate: 45
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 28
+Line 3217 - Next candidate: 43
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 3237 - Undo on checkTopol
+Line 6441 - Outcount: 29
+Line 2084 - Line 2084 - : Incorrect topology of circle 43 with line 6, X: 87.9555, Y: 111.188	N: 43	radius: 1.44517	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 0
+Line 3219 - Next candidate: 43
+Line 3239 - Undo on checkTopol
+Line 3224 - Next candidate: 46
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3224 - Next candidate: 43
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3224 - Next candidate: 46
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3224 - Next candidate: 46
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3224 - Next candidate: 46
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 6425 - Outcount: 1
+Line 3224 - Next candidate: 43
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 3244 - Undo on checkTopol
+Line 6425 - Outcount: 2
+Line 3224 - Next candidate: 39
+Line 3244 - Undo on checkTopol
+Line 3226 - Next candidate: 46
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 1
+Line 3226 - Next candidate: 43
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 2
+Line 3226 - Next candidate: 39
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 3
+Line 3226 - Next candidate: 45
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 4
+Line 3226 - Next candidate: 38
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 5
+Line 3226 - Next candidate: 41
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 6
+Line 3226 - Next candidate: 35
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 7
+Line 3226 - Next candidate: 11
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 8
+Line 3226 - Next candidate: 42
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 9
+Line 3226 - Next candidate: 76
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 10
+Line 3226 - Next candidate: 7
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 11
+Line 3226 - Next candidate: 44
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 12
+Line 3226 - Next candidate: 9
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 13
+Line 3226 - Next candidate: 40
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 14
+Line 3226 - Next candidate: 48
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 15
+Line 3226 - Next candidate: 3
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 16
+Line 3226 - Next candidate: 10
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 17
+Line 3226 - Next candidate: 36
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 18
+Line 3226 - Next candidate: 34
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 19
+Line 3226 - Next candidate: 33
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 20
+Line 3226 - Next candidate: 5
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 21
+Line 3226 - Next candidate: 12
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 22
+Line 3226 - Next candidate: 6
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 23
+Line 3226 - Next candidate: 64
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 24
+Line 3226 - Next candidate: 16
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 25
+Line 3226 - Next candidate: 1
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 26
+Line 3226 - Next candidate: 8
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 27
+Line 3226 - Next candidate: 4
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 28
+Line 3226 - Next candidate: 2
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6427 - Outcount: 29
+Line 3226 - Next candidate: 1
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 1
+Line 3226 - Next candidate: 2
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 2
+Line 3226 - Next candidate: 4
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 3
+Line 3226 - Next candidate: 8
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 4
+Line 3226 - Next candidate: 16
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 5
+Line 3226 - Next candidate: 32
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 6
+Line 3226 - Next candidate: 64
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 7
+Line 3226 - Next candidate: 3
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 8
+Line 3226 - Next candidate: 6
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 9
+Line 3226 - Next candidate: 10
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 10
+Line 3226 - Next candidate: 34
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 11
+Line 3226 - Next candidate: 5
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 12
+Line 3226 - Next candidate: 12
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 13
+Line 3226 - Next candidate: 36
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 14
+Line 3226 - Next candidate: 9
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 15
+Line 3226 - Next candidate: 40
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 16
+Line 3226 - Next candidate: 48
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 17
+Line 3226 - Next candidate: 33
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 18
+Line 3226 - Next candidate: 7
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 19
+Line 3226 - Next candidate: 42
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 20
+Line 3226 - Next candidate: 38
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 21
+Line 3226 - Next candidate: 44
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 22
+Line 3226 - Next candidate: 76
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 23
+Line 3226 - Next candidate: 11
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 24
+Line 3226 - Next candidate: 41
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 25
+Line 3226 - Next candidate: 35
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 26
+Line 3226 - Next candidate: 46
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 27
+Line 3226 - Next candidate: 45
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 28
+Line 3226 - Next candidate: 43
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 3246 - Undo on checkTopol
+Line 6450 - Outcount: 29
+Line 2084 - Line 2084 - : Incorrect topology of circle 48 with line 2, X: 122.566, Y: 157.981	N: 48	radius: 1.28415	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 0
+Line 3227 - Next candidate: 46
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 1
+Line 3227 - Next candidate: 43
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 2
+Line 3227 - Next candidate: 39
+Line 6428 - Outcount: 3
+Line 3227 - Next candidate: 45
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 4
+Line 3227 - Next candidate: 76
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 5
+Line 3227 - Next candidate: 35
+Line 6428 - Outcount: 6
+Line 3227 - Next candidate: 42
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 7
+Line 3227 - Next candidate: 41
+Line 6428 - Outcount: 8
+Line 3227 - Next candidate: 44
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 9
+Line 3227 - Next candidate: 11
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 10
+Line 3227 - Next candidate: 38
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 11
+Line 3227 - Next candidate: 7
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 12
+Line 3227 - Next candidate: 3
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 13
+Line 3227 - Next candidate: 34
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 14
+Line 3227 - Next candidate: 48
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 15
+Line 3227 - Next candidate: 36
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 16
+Line 3227 - Next candidate: 40
+Line 6428 - Outcount: 17
+Line 3227 - Next candidate: 9
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 18
+Line 3227 - Next candidate: 33
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 19
+Line 3227 - Next candidate: 10
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 20
+Line 3227 - Next candidate: 12
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 21
+Line 3227 - Next candidate: 5
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 22
+Line 3227 - Next candidate: 6
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 23
+Line 3227 - Next candidate: 16
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 24
+Line 3227 - Next candidate: 64
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 25
+Line 3227 - Next candidate: 8
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 26
+Line 3227 - Next candidate: 2
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 27
+Line 3227 - Next candidate: 1
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 28
+Line 3227 - Next candidate: 32
+Line 6428 - Outcount: 29
+Line 3227 - Next candidate: 1
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 1
+Line 3227 - Next candidate: 2
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 2
+Line 3227 - Next candidate: 4
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 3
+Line 3227 - Next candidate: 8
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 4
+Line 3227 - Next candidate: 16
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 5
+Line 3227 - Next candidate: 32
+Line 6451 - Outcount: 6
+Line 3227 - Next candidate: 64
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 7
+Line 3227 - Next candidate: 3
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 8
+Line 3227 - Next candidate: 6
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 9
+Line 3227 - Next candidate: 10
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 10
+Line 3227 - Next candidate: 34
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 11
+Line 3227 - Next candidate: 5
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 12
+Line 3227 - Next candidate: 12
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 13
+Line 3227 - Next candidate: 36
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 14
+Line 3227 - Next candidate: 9
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 15
+Line 3227 - Next candidate: 40
+Line 6451 - Outcount: 16
+Line 3227 - Next candidate: 48
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 17
+Line 3227 - Next candidate: 33
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 18
+Line 3227 - Next candidate: 7
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 19
+Line 3227 - Next candidate: 42
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 20
+Line 3227 - Next candidate: 38
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 21
+Line 3227 - Next candidate: 44
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 22
+Line 3227 - Next candidate: 76
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 23
+Line 3227 - Next candidate: 11
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 24
+Line 3227 - Next candidate: 41
+Line 6451 - Outcount: 25
+Line 3227 - Next candidate: 35
+Line 6451 - Outcount: 26
+Line 3227 - Next candidate: 46
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 27
+Line 3227 - Next candidate: 45
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 28
+Line 3227 - Next candidate: 43
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 29
+Line 304 - Distance is zero: X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82377.3	Fy: -43905	Flags: 64
+X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19774	Fy: 546.417	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8972.85	Fy: -17629.5	Flags: 64
+X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82377.3	Fy: -43905	Flags: 64
+X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19774	Fy: 546.417	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8972.85	Fy: -17629.5	Flags: 64
+X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82377.3	Fy: -43905	Flags: 64
+X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19774	Fy: 546.417	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8972.85	Fy: -17629.5	Flags: 64
+X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82377.3	Fy: -43905	Flags: 64
+X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19774	Fy: 546.417	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8972.85	Fy: -17629.5	Flags: 64
+X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: -82377.3	Fy: -43905	Flags: 64
+X: 114.566, Y: 145.492	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19774	Fy: 546.417	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 117.506, Y: 143.709	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8972.85	Fy: -17629.5	Flags: 64
+X: 117.666, Y: 147.144	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 2612 - Mc: 0.175738, minc: 0.113228, result: 0.702953
+Line 2612 - Mc: 0.170972, minc: 0.113228, result: 0.136777
+Line 3227 - Next candidate: 46
+Line 6428 - Outcount: 1
+Line 3227 - Next candidate: 43
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 2
+Line 3227 - Next candidate: 39
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 3
+Line 3227 - Next candidate: 45
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 4
+Line 3227 - Next candidate: 41
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 5
+Line 3227 - Next candidate: 42
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 6
+Line 3227 - Next candidate: 76
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 7
+Line 3227 - Next candidate: 11
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 8
+Line 3227 - Next candidate: 35
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 9
+Line 3227 - Next candidate: 38
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 10
+Line 3227 - Next candidate: 44
+Line 6428 - Outcount: 11
+Line 3227 - Next candidate: 7
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 12
+Line 3227 - Next candidate: 9
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 13
+Line 3227 - Next candidate: 10
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 14
+Line 3227 - Next candidate: 40
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 15
+Line 3227 - Next candidate: 3
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 16
+Line 3227 - Next candidate: 48
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 17
+Line 3227 - Next candidate: 36
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 18
+Line 3227 - Next candidate: 34
+Line 6428 - Outcount: 19
+Line 3227 - Next candidate: 12
+Line 6428 - Outcount: 20
+Line 3227 - Next candidate: 33
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 21
+Line 3227 - Next candidate: 6
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 22
+Line 3227 - Next candidate: 5
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 23
+Line 3227 - Next candidate: 64
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 24
+Line 3227 - Next candidate: 16
+Line 6428 - Outcount: 25
+Line 3227 - Next candidate: 8
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 26
+Line 3227 - Next candidate: 2
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 27
+Line 3227 - Next candidate: 4
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 28
+Line 3227 - Next candidate: 1
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6428 - Outcount: 29
+Line 3227 - Next candidate: 1
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 1
+Line 3227 - Next candidate: 2
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 2
+Line 3227 - Next candidate: 4
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 3
+Line 3227 - Next candidate: 8
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 4
+Line 3227 - Next candidate: 16
+Line 6451 - Outcount: 5
+Line 3227 - Next candidate: 32
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 6
+Line 3227 - Next candidate: 64
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 7
+Line 3227 - Next candidate: 3
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 8
+Line 3227 - Next candidate: 6
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 9
+Line 3227 - Next candidate: 10
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 10
+Line 3227 - Next candidate: 34
+Line 6451 - Outcount: 11
+Line 3227 - Next candidate: 5
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 12
+Line 3227 - Next candidate: 12
+Line 6451 - Outcount: 13
+Line 3227 - Next candidate: 36
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 14
+Line 3227 - Next candidate: 9
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 15
+Line 3227 - Next candidate: 40
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 16
+Line 3227 - Next candidate: 48
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 17
+Line 3227 - Next candidate: 33
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 18
+Line 3227 - Next candidate: 7
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 19
+Line 3227 - Next candidate: 42
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 20
+Line 3227 - Next candidate: 38
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 21
+Line 3227 - Next candidate: 44
+Line 6451 - Outcount: 22
+Line 3227 - Next candidate: 76
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 23
+Line 3227 - Next candidate: 11
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 24
+Line 3227 - Next candidate: 41
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 25
+Line 3227 - Next candidate: 35
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 26
+Line 3227 - Next candidate: 46
+Line 6451 - Outcount: 27
+Line 3227 - Next candidate: 45
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 28
+Line 3227 - Next candidate: 43
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 3247 - Undo on checkTopol
+Line 6451 - Outcount: 29
+Line 304 - Distance is zero: X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1512.91	Fy: 73067.3	Flags: 64
+X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9260.56	Fy: 17288.7	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4318.31	Fy: -83088.1	Flags: 64
+X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5942.38	Fy: -15290.8	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 15890.3	Fy: -4076.23	Flags: 64
+X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: -17082.4	Fy: -2033.69	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 5509.64	Fy: -16297	Flags: 64
+X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7269.67	Fy: -13736.4	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 13547.4	Fy: 7615.81	Flags: 64
+X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: -83576	Fy: 5363.31	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: -84634.6	Fy: -93040.6	Flags: 64
+X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19837.6	Fy: -5895.84	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 16123.7	Fy: -12973.6	Flags: 64
+X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8377.38	Fy: 12811.4	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8377.38	Fy: -12811.4	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: -100275	Fy: -68451.8	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1512.91	Fy: 73067.3	Flags: 64
+X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9260.56	Fy: 17288.7	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4318.31	Fy: -83088.1	Flags: 64
+X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5942.38	Fy: -15290.8	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 15890.3	Fy: -4076.23	Flags: 64
+X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: -17082.4	Fy: -2033.69	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 5509.64	Fy: -16297	Flags: 64
+X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7269.67	Fy: -13736.4	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 13547.4	Fy: 7615.81	Flags: 64
+X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: -83576	Fy: 5363.31	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: -84634.6	Fy: -93040.6	Flags: 64
+X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19837.6	Fy: -5895.84	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 16123.7	Fy: -12973.6	Flags: 64
+X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8377.38	Fy: 12811.4	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8377.38	Fy: -12811.4	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: -100275	Fy: -68451.8	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: -1512.91	Fy: 73067.3	Flags: 64
+X: 131.606, Y: 115.715	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 9260.56	Fy: 17288.7	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 128.721, Y: 113.88	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4318.31	Fy: -83088.1	Flags: 64
+X: 86.7488, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5942.38	Fy: -15290.8	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8812, Y: 116.838	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 15890.3	Fy: -4076.23	Flags: 64
+X: 86.5426, Y: 118.705	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: -17082.4	Fy: -2033.69	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 115.37, Y: 139.701	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 5509.64	Fy: -16297	Flags: 64
+X: 115.738, Y: 142.785	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 7269.67	Fy: -13736.4	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 99.6776, Y: 102.38	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 13547.4	Fy: 7615.81	Flags: 64
+X: 96.8318, Y: 102.057	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 86.7558, Y: 114.739	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 84.888, Y: 116.863	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 87.012, Y: 118.73	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 88.8798, Y: 116.606	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: -83576	Fy: 5363.31	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14488.2	Fy: -4940.19	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.849, Y: 115.917	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: -4940.19	Fy: 14488.2	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 132.717, Y: 113.793	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14488.2	Fy: 4940.19	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 130.593, Y: 111.925	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 4940.19	Fy: -14488.2	Flags: 64
+X: 128.725, Y: 114.049	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: -84634.6	Fy: -93040.6	Flags: 64
+X: 122.316, Y: 142.944	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: -19837.6	Fy: -5895.84	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.744, Y: 142.051	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 16123.7	Fy: -12973.6	Flags: 64
+X: 124.531, Y: 145.379	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 8377.38	Fy: 12811.4	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 96.562, Y: 122.064	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 93.7826, Y: 122.589	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8377.38	Fy: -12811.4	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 94.3068, Y: 125.368	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 97.0862, Y: 124.844	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: -100275	Fy: -68451.8	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: -12811.4	Fy: 8377.38	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 125.916, Y: 144.524	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 304 - Distance is zero: X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 12811.4	Fy: -8377.38	Flags: 64
+X: 122.612, Y: 142.269	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 2612 - Mc: 0.197341, minc: 0.113228, result: 0.789365
+Line 2612 - Mc: 0.195917, minc: 0.113228, result: 0.156733

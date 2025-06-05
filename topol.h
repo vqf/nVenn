@@ -2101,11 +2101,13 @@ class borderLine
         while (again){
           again = false;
           std::vector<point> newbl;
+          std::vector<point> newblAlt;
           for (UINT j = 0; j < bl[i].size(); j++){
-            if (!again){
+            if (!again){ // sanity check
               point nxt = bl[i][nextPoint(i, j)];
               point current = bl[i][j];
               newbl.push_back(current);
+              newblAlt.push_back(current);
               float dsq3 = sqDistance(current, nxt);
               if (dsq3 > 0){
                 float sq3 = sqrt(dsq3);
@@ -2130,6 +2132,7 @@ class borderLine
                           float t = sqrt(lrad * lrad - h * h);
                           float d1 = sqrt(dsq1 - h * h);
                           float x1 = d1 - t;
+                          c.flags = setFlag(c.flags, USED);
                           point pst1 = tp.transformPoint(current, x1);
                           pst1.flags = setFlag(pst1.flags, DO_NOT_EMBELLISH);
                           pst1.flags = setFlag(pst1.flags, DELME);
@@ -2139,22 +2142,48 @@ class borderLine
                           pst2.flags = setFlag(pst2.flags, DELME);
                           pst2.n = k;
                           newbl.push_back(pst1);
+                          newblAlt.push_back(pst1);
+                          // Option 1
                           tangent tr = tp + rgh;
-                          //tolog(toString(__LINE__) + "\n" + "Outside: \n" + tp.croack() + tr.croack());
-                          if (inside || (!inside && ((c.flags & USED) > 0))){
-                            tr = tp + lft;
-                            //tolog(toString(__LINE__) + "\n" + "Inside: \n" + tp.croack() + tr.croack());
-                          }
-                          c.flags = setFlag(c.flags, USED);
                           point newp = tr.transformPoint(c, lrad);
                           newp.flags = setFlag(newp.flags, DO_NOT_EMBELLISH);
                           newp.flags = setFlag(newp.flags, DELME);
                           newp.n = k;
-                          newbl.push_back(newp);
+                          //Option 2
+                          tr = tp + lft;
+                          point newpa = tr.transformPoint(c, lrad);
+                          newpa.flags = setFlag(newpa.flags, DO_NOT_EMBELLISH);
+                          newpa.flags = setFlag(newpa.flags, DELME);
+                          newpa.n = k;
+
+                          if (inside){
+                            newbl.push_back(newpa);
+                            newblAlt.push_back(newp);
+                          }
+                          else{
+                            newbl.push_back(newp);
+                            newblAlt.push_back(newpa);
+                          }
+
                           newbl.push_back(pst2);
+                          newblAlt.push_back(pst2);
                           // Close the bl for the next cycle
                           for (UINT l = j+1; l < bl[i].size(); l++){
                             newbl.push_back(bl[i][l]);
+                            newblAlt.push_back(bl[i][l]);
+                          }
+                          bl[i].clear();
+                          bl[i] = newbl;
+                          UINT cn = c.n;
+                          std::vector<int> belong = toBin(cn, bl.size());
+                          bool incorrect = circleTopol(c, belong, i);
+                          if (incorrect){
+                            //writeSVG("/home/vqf/proyectos/nVenn2/error.svg");
+                            bl[i].clear();
+                            bl[i] = newblAlt;
+                            //std::cout << c.n << "\t" << i + 1 << std::endl;
+                            //std::cout << join(", ", belong) << std::endl;
+                            //writeSVG("/home/vqf/proyectos/nVenn2/other.svg"); exit(0);
                           }
                         }
                       }
@@ -2164,8 +2193,8 @@ class borderLine
               }
             }
           }
-          bl[i].clear();
-          bl[i] = newbl;
+          //bl[i].clear();
+          //bl[i] = newbl;
           for (UINT k = 0; k < circles.size(); k++){
             circles[k].flags = unsetFlag(circles[k].flags, USED);
           }
@@ -2300,6 +2329,7 @@ class borderLine
                   //writeSVG("delme.svg");
                   //exit(0);
                   //tolog(toString(circleTopol(p3, belong, k)) + "\n");
+
                 }
                 else{
                   //tolog(_L_ + "Somehow, this one did not make it.\n");
@@ -5466,7 +5496,7 @@ public:
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
           if (svgtemp.x > svgScale.minX() && svgtemp.x < svgScale.maxX()){
             std::string clss = "circle";
-            if ((circles[i].flags & IS_OUTSIDE) > 0){
+            if ((circles[i].flags & USED) > 0){
               clss = "spcircle";
             }
             tst = vformat("<circle onclick=\"fromCircle(%u)\" class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, clss.c_str(), svgtemp.x,
