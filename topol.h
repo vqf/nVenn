@@ -3372,9 +3372,9 @@ class borderLine
     void writeCoords(){
         std::ofstream result;
         std::string outputFigData = blSettings.fname + ".data";
-        fileText datafile = saveFigure();
+        std::string datafile = saveFigure();
         result.open(outputFigData.c_str());
-        result.write(datafile.getText().c_str(), datafile.getText().size());
+        result.write(datafile.c_str(), datafile.size());
         result.close();
     }
 
@@ -5096,20 +5096,16 @@ public:
      *
      */
     void setCoords(std::string dataFile){
-        std::ifstream vFile;
-        vFile.open(dataFile.c_str());
-        UINT ncI = 0;
-        if (vFile.good() == true){
+        std::stringstream vFile;
+        std::string line;
+        vFile << dataFile;
             bl.clear();
             savedState.bl_secure.clear();
             savedState.bl_old10.clear();
-            std::string line;
             getline(vFile, line); // _F
             getline(vFile, line); // ncyclesInterrupted or _L
             if (line != "_L"){
                 int c = atoi(line.c_str());
-                if (c > 0) ncI = (UINT) c;
-                blSettings.ncyclesInterrupted = ncI;
                 getline(vFile, line); // _L
             }
             while (line == "_L" && vFile.eof() == false){
@@ -5141,7 +5137,6 @@ public:
                     i++;
                 }
             }
-        }
     }
 
     void showInfo(){
@@ -5157,10 +5152,11 @@ public:
       std::cout << "Spans: " << "(" << internalScale.xSpan() << ", " << internalScale.ySpan() << ")\n";
     }
 
-    fileText saveFigure(){
+
+    std::string saveFigure(){
         fileText result;
         result.addLine("_F");
-        std::string nc = UINT2string(blSettings.ncyclesInterrupted);
+        std::string nc = UINT2string(currentStep);
         result.addLine(nc);
         UINT i; UINT j;
         for (i = 0; i < bl.size(); i++){
@@ -5181,7 +5177,7 @@ public:
             result.addLine(y);
             result.addLine(r);
         }
-        return result;
+        return result.getText();
     }
 
 

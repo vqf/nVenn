@@ -1,510 +1,532 @@
-Line 3192 - Next candidate: 46
-Line 3219 - Swapping 2 with 32 -> 1972.1
-Line 3219 - Swapping 3 with 32 -> 1971.53
-Line 3219 - Swapping 31 with 32 -> 1967.82
-Line 3219 - Swapping 40 with 32 -> 1967.72
-Line 3219 - Swapping 46 with 32 -> 1962.4
-Line 3219 - Swapping 50 with 32 -> 1961.6
-Line 3219 - Swapping 52 with 32 -> 1961.02
-Line 3219 - Swapping 62 with 32 -> 1959.05
-Line 3219 - Swapping 73 with 32 -> 1957.73
-Line 3219 - Swapping 74 with 32 -> 1955.68
-Line 3192 - Next candidate: 45
-Line 3219 - Swapping 9 with 64 -> 1954.83
-Line 3219 - Swapping 18 with 64 -> 1954.83
-Line 3219 - Swapping 31 with 64 -> 1954.41
-Line 3219 - Swapping 52 with 64 -> 1953.1
-Line 3219 - Swapping 112 with 64 -> 1948.42
-Line 3219 - Swapping 115 with 64 -> 1948.27
 Line 3192 - Next candidate: 43
-Line 3219 - Swapping 40 with 88 -> 1946.55
-Line 3219 - Swapping 52 with 88 -> 1945.83
-Line 3219 - Swapping 64 with 88 -> 1945.54
-Line 3219 - Swapping 86 with 88 -> 1940.6
-Line 3219 - Swapping 115 with 88 -> 1938.34
+Line 3219 - Swapping 3 with 88 -> 1961.58
+Line 3219 - Swapping 31 with 88 -> 1961.2
+Line 3219 - Swapping 32 with 88 -> 1960.69
+Line 3219 - Swapping 46 with 88 -> 1955.04
+Line 3219 - Swapping 50 with 88 -> 1953.91
+Line 3219 - Swapping 52 with 88 -> 1949.16
+Line 3219 - Swapping 74 with 88 -> 1943.75
+Line 3219 - Swapping 86 with 88 -> 1942.18
+Line 3219 - Swapping 87 with 88 -> 1941.55
+Line 3219 - Swapping 96 with 88 -> 1915.92
+Line 3192 - Next candidate: 46
+Line 3219 - Swapping 18 with 32 -> 1915.1
+Line 3219 - Swapping 31 with 32 -> 1912.04
+Line 3219 - Swapping 88 with 32 -> 1911.52
 Line 3192 - Next candidate: 39
-Line 3219 - Swapping 2 with 115 -> 1935.49
-Line 3219 - Swapping 9 with 115 -> 1932.85
-Line 3219 - Swapping 18 with 115 -> 1929.4
-Line 3192 - Next candidate: 41
-Line 3219 - Swapping 1 with 87 -> 1927.68
-Line 3219 - Swapping 2 with 87 -> 1925.61
-Line 3219 - Swapping 3 with 87 -> 1924.88
-Line 3219 - Swapping 9 with 87 -> 1920.1
-Line 3219 - Swapping 30 with 87 -> 1918.49
-Line 3219 - Swapping 50 with 87 -> 1918.42
-Line 3219 - Swapping 112 with 87 -> 1915.65
-Line 3219 - Swapping 114 with 87 -> 1914.48
-Line 3219 - Swapping 122 with 87 -> 1913.33
-Line 3192 - Next candidate: 44
-Line 3219 - Swapping 18 with 50 -> 1912.33
-Line 3219 - Swapping 62 with 50 -> 1912.31
-Line 3219 - Swapping 86 with 50 -> 1910.48
-Line 3192 - Next candidate: 42
-Line 3219 - Swapping 40 with 18 -> 1910.09
-Line 3219 - Swapping 41 with 18 -> 1909.39
-Line 3219 - Swapping 46 with 18 -> 1909.03
-Line 3219 - Swapping 74 with 18 -> 1908.07
-Line 3219 - Swapping 122 with 18 -> 1903.02
-Line 3192 - Next candidate: 76
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1903.02
+Line 3219 - Swapping 50 with 115 -> 1910.92
+Line 3219 - Swapping 64 with 115 -> 1910.7
+Line 3192 - Next candidate: 45
+Line 3219 - Swapping 88 with 64 -> 1910.57
 Line 3192 - Next candidate: 38
-Line 3219 - Swapping 3 with 31 -> 1902.19
-Line 3219 - Swapping 9 with 31 -> 1902.14
-Line 3219 - Swapping 46 with 31 -> 1899.12
-Line 3219 - Swapping 114 with 31 -> 1898.96
+Line 3219 - Swapping 1 with 31 -> 1905.75
+Line 3219 - Swapping 3 with 31 -> 1905.66
+Line 3219 - Swapping 40 with 31 -> 1900.59
+Line 3219 - Swapping 41 with 31 -> 1899.48
 Line 3192 - Next candidate: 7
-Line 3219 - Swapping 41 with 3 -> 1898.35
-Line 3219 - Swapping 114 with 3 -> 1896.27
-Line 3192 - Next candidate: 35
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1896.27
+Line 3219 - Swapping 9 with 3 -> 1898.46
+Line 3219 - Swapping 31 with 3 -> 1897.99
 Line 3192 - Next candidate: 11
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1896.27
-Line 3192 - Next candidate: 9
-Line 3219 - Swapping 40 with 73 -> 1896.08
-Line 3219 - Swapping 46 with 73 -> 1895.8
-Line 3192 - Next candidate: 12
-Line 3219 - Swapping 40 with 46 -> 1894.84
-Line 3219 - Swapping 122 with 46 -> 1890.94
-Line 3192 - Next candidate: 3
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1890.94
-Line 3192 - Next candidate: 34
-Line 3219 - Swapping 113 with 30 -> 1888.8
-Line 3192 - Next candidate: 48
-Line 3219 - Swapping 30 with 102 -> 1887.94
-Line 3219 - Swapping 62 with 102 -> 1887.72
-Line 3219 - Swapping 86 with 102 -> 1885.36
-Line 3192 - Next candidate: 36
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1885.36
-Line 3192 - Next candidate: 6
-Line 3219 - Swapping 73 with 9 -> 1883.17
-Line 3192 - Next candidate: 5
-Line 3219 - Swapping 73 with 41 -> 1882.9
-Line 3192 - Next candidate: 33
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1882.9
-Line 3192 - Next candidate: 10
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1882.9
-Line 3192 - Next candidate: 40
-Line 3219 - Swapping 18 with 86 -> 1881.37
-Line 3192 - Next candidate: 16
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 64
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 4
-Line 6375 - Outcount: 3
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 1
-Line 6375 - Outcount: 4
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 8
-Line 6375 - Outcount: 5
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 2
-Line 6375 - Outcount: 6
-Line 6376 - Cval: 1881.37
-Line 3192 - Next candidate: 32
-Line 3219 - Swapping 18 with 112 -> 1880.36
-Line 3219 - Swapping 30 with 112 -> 1877.53
-Line 3219 - Swapping 96 with 112 -> 1877.13
-Line 3192 - Next candidate: 0
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1877.13
-Line 3192 - Next candidate: 43
-Line 3219 - Swapping 32 with 88 -> 1876.28
-Line 3192 - Next candidate: 39
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1876.28
-Line 3192 - Next candidate: 46
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1876.28
-Line 3192 - Next candidate: 45
-Line 6375 - Outcount: 3
-Line 6376 - Cval: 1876.28
-Line 3192 - Next candidate: 76
-Line 6375 - Outcount: 4
-Line 6376 - Cval: 1876.28
-Line 3192 - Next candidate: 35
-Line 6375 - Outcount: 5
-Line 6376 - Cval: 1876.28
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1897.99
 Line 3192 - Next candidate: 41
-Line 6375 - Outcount: 6
-Line 6376 - Cval: 1876.28
-Line 3192 - Next candidate: 42
-Line 3219 - Swapping 31 with 18 -> 1875.53
-Line 3219 - Swapping 64 with 18 -> 1875.51
-Line 3219 - Swapping 88 with 18 -> 1875.28
-Line 3192 - Next candidate: 38
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1875.28
-Line 3192 - Next candidate: 44
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1875.28
-Line 3192 - Next candidate: 7
-Line 3219 - Swapping 41 with 3 -> 1875.05
-Line 3219 - Swapping 74 with 3 -> 1875.04
-Line 3192 - Next candidate: 11
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1875.04
-Line 3192 - Next candidate: 12
-Line 3219 - Swapping 72 with 46 -> 1874.98
-Line 3192 - Next candidate: 3
-Line 3219 - Swapping 41 with 2 -> 1874.71
-Line 3219 - Swapping 73 with 2 -> 1874.17
-Line 3192 - Next candidate: 5
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1874.17
-Line 3192 - Next candidate: 36
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1874.17
-Line 3192 - Next candidate: 33
-Line 6375 - Outcount: 3
-Line 6376 - Cval: 1874.17
-Line 3192 - Next candidate: 40
-Line 3219 - Swapping 31 with 86 -> 1874.1
-Line 3192 - Next candidate: 34
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 48
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 6
-Line 6375 - Outcount: 3
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 10
-Line 6375 - Outcount: 4
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 9
-Line 6375 - Outcount: 5
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 16
-Line 6375 - Outcount: 6
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 64
-Line 6375 - Outcount: 7
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 4
-Line 6375 - Outcount: 8
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 1
-Line 6375 - Outcount: 9
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 8
-Line 6375 - Outcount: 10
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 2
-Line 6375 - Outcount: 11
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 32
-Line 6375 - Outcount: 12
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 0
-Line 6375 - Outcount: 13
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 39
-Line 6375 - Outcount: 14
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 45
-Line 6375 - Outcount: 15
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 46
-Line 6375 - Outcount: 16
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 43
-Line 6375 - Outcount: 17
-Line 6376 - Cval: 1874.1
-Line 3192 - Next candidate: 38
-Line 3219 - Swapping 50 with 31 -> 1874.05
-Line 3192 - Next candidate: 44
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1874.05
+Line 3219 - Swapping 14 with 87 -> 1897
+Line 3219 - Swapping 46 with 87 -> 1896.24
+Line 3219 - Swapping 50 with 87 -> 1895.09
+Line 3219 - Swapping 102 with 87 -> 1891.84
 Line 3192 - Next candidate: 76
-Line 3219 - Swapping 46 with 52 -> 1873.61
-Line 3192 - Next candidate: 11
-Line 6375 - Outcount: 1
-Line 6376 - Cval: 1873.61
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1891.84
 Line 3192 - Next candidate: 35
-Line 6375 - Outcount: 2
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 41
-Line 6375 - Outcount: 3
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 7
-Line 6375 - Outcount: 4
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 42
-Line 6375 - Outcount: 5
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 5
-Line 6375 - Outcount: 6
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 36
-Line 6375 - Outcount: 7
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 3
-Line 6375 - Outcount: 8
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 33
-Line 6375 - Outcount: 9
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 34
-Line 6375 - Outcount: 10
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 12
-Line 6375 - Outcount: 11
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 48
-Line 6375 - Outcount: 12
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 6
-Line 6375 - Outcount: 13
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 10
-Line 6375 - Outcount: 14
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 9
-Line 6375 - Outcount: 15
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 40
-Line 6375 - Outcount: 16
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 16
-Line 6375 - Outcount: 17
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 64
-Line 6375 - Outcount: 18
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 4
-Line 6375 - Outcount: 19
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 1
-Line 6375 - Outcount: 20
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 8
-Line 6375 - Outcount: 21
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 2
-Line 6375 - Outcount: 22
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 32
-Line 6375 - Outcount: 23
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 0
-Line 6375 - Outcount: 24
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 39
-Line 6375 - Outcount: 25
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 45
-Line 6375 - Outcount: 26
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 46
-Line 6375 - Outcount: 27
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 43
-Line 6375 - Outcount: 28
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 76
-Line 6375 - Outcount: 29
-Line 6376 - Cval: 1873.61
+Line 3219 - Swapping 102 with 114 -> 1889.63
+Line 3219 - Swapping 113 with 114 -> 1889.14
 Line 3192 - Next candidate: 44
-Line 6375 - Outcount: 30
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 11
-Line 6375 - Outcount: 31
-Line 6376 - Cval: 1873.61
-Line 3192 - Next candidate: 1
-Line 3224 - Prev untie: 1873.61, new untie: 1877.17
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 2
-Line 6399 - Outcount: 2
-Line 3192 - Next candidate: 4
-Line 3219 - Swapping 30 with 40 -> 54
-Line 3224 - Prev untie: 1884.76, new untie: 1882.97
-Line 3192 - Next candidate: 8
-Line 3219 - Swapping 9 with 72 -> 48
-Line 3224 - Prev untie: 1887.8, new untie: 1888.71
-Line 3228 - Did not swap on untie
-Line 3192 - Next candidate: 16
-Line 3224 - Prev untie: 1887.8, new untie: 1887.83
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 32
-Line 3224 - Prev untie: 1887.8, new untie: 1893.21
-Line 3228 - Did not swap on untie
-Line 3224 - Prev untie: 1887.8, new untie: 1887.83
-Line 3228 - Did not swap on untie
-Line 3224 - Prev untie: 1887.8, new untie: 1889.04
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 2
-Line 3192 - Next candidate: 64
-Line 6399 - Outcount: 3
-Line 3192 - Next candidate: 3
-Line 6399 - Outcount: 4
-Line 3192 - Next candidate: 6
-Line 3219 - Swapping 40 with 9 -> 39
-Line 3224 - Prev untie: 1891.96, new untie: 1893.28
-Line 3228 - Did not swap on untie
-Line 3192 - Next candidate: 10
-Line 3219 - Swapping 72 with 14 -> 37
-Line 3192 - Next candidate: 34
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 5
-Line 3219 - Swapping 113 with 41 -> 35
-Line 3192 - Next candidate: 12
-Line 3219 - Swapping 40 with 46 -> 34
-Line 3192 - Next candidate: 36
-Line 3224 - Prev untie: 1895.7, new untie: 1898.13
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 9
-Line 3219 - Swapping 74 with 73 -> 30
-Line 3192 - Next candidate: 40
-Line 3224 - Prev untie: 1895.26, new untie: 1895.86
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 48
-Line 3219 - Swapping 41 with 102 -> 28
-Line 3224 - Prev untie: 1900.44, new untie: 1901.66
-Line 3228 - Did not swap on untie
-Line 3192 - Next candidate: 33
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 7
-Line 3219 - Swapping 18 with 3 -> 26
+Line 3219 - Swapping 72 with 50 -> 1885.54
+Line 3219 - Swapping 73 with 50 -> 1884.97
+Line 3219 - Swapping 86 with 50 -> 1882.62
+Line 3219 - Swapping 87 with 50 -> 1882.32
 Line 3192 - Next candidate: 42
-Line 6399 - Outcount: 1
+Line 3219 - Swapping 102 with 18 -> 1881.05
+Line 3219 - Swapping 112 with 18 -> 1879.4
+Line 3192 - Next candidate: 3
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1879.4
+Line 3192 - Next candidate: 6
+Line 3219 - Swapping 1 with 9 -> 1879.26
+Line 3219 - Swapping 40 with 9 -> 1876.11
+Line 3219 - Swapping 52 with 9 -> 1875.71
+Line 3219 - Swapping 73 with 9 -> 1868.5
+Line 3192 - Next candidate: 10
+Line 3219 - Swapping 46 with 14 -> 1867.19
+Line 3219 - Swapping 72 with 14 -> 1863.76
+Line 3192 - Next candidate: 12
+Line 3219 - Swapping 122 with 46 -> 1863.37
+Line 3192 - Next candidate: 36
+Line 3219 - Swapping 102 with 62 -> 1862.05
+Line 3219 - Swapping 112 with 62 -> 1860.81
+Line 3192 - Next candidate: 48
+Line 3219 - Swapping 112 with 102 -> 1860.55
+Line 3192 - Next candidate: 34
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1860.55
+Line 3192 - Next candidate: 5
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1860.55
+Line 3192 - Next candidate: 40
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1860.55
+Line 3192 - Next candidate: 9
+Line 3219 - Swapping 46 with 73 -> 1860.4
+Line 3192 - Next candidate: 33
+Line 3219 - Swapping 62 with 113 -> 1860.14
+Line 3192 - Next candidate: 16
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1860.14
+Line 3192 - Next candidate: 64
+Line 3219 - Swapping 40 with 122 -> 1857.85
+Line 3192 - Next candidate: 2
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1857.85
+Line 3192 - Next candidate: 4
+Line 3219 - Swapping 52 with 40 -> 1857.22
+Line 3219 - Swapping 73 with 40 -> 1856.87
+Line 3192 - Next candidate: 1
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1856.87
+Line 3192 - Next candidate: 32
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1856.87
+Line 3192 - Next candidate: 8
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1856.87
+Line 3192 - Next candidate: 0
+Line 6371 - Outcount: 4
+Line 6372 - Cval: 1856.87
+Line 3192 - Next candidate: 46
+Line 3219 - Swapping 31 with 32 -> 1856.38
+Line 3219 - Swapping 88 with 32 -> 1855.88
+Line 3192 - Next candidate: 43
+Line 3219 - Swapping 115 with 88 -> 1855.87
+Line 3192 - Next candidate: 39
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1855.87
+Line 3192 - Next candidate: 45
+Line 3219 - Swapping 32 with 64 -> 1855.61
+Line 3219 - Swapping 50 with 64 -> 1855.38
+Line 3219 - Swapping 88 with 64 -> 1855.35
+Line 3192 - Next candidate: 76
+Line 3219 - Swapping 46 with 52 -> 1854.89
+Line 3219 - Swapping 73 with 52 -> 1854.03
+Line 3192 - Next candidate: 11
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1854.03
+Line 3192 - Next candidate: 7
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1854.03
 Line 3192 - Next candidate: 38
-Line 6399 - Outcount: 2
-Line 3192 - Next candidate: 44
-Line 6399 - Outcount: 3
-Line 3192 - Next candidate: 76
-Line 6399 - Outcount: 4
-Line 3192 - Next candidate: 11
-Line 6399 - Outcount: 5
-Line 3192 - Next candidate: 41
-Line 3224 - Prev untie: 1900.9, new untie: 1905.73
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 6
+Line 3219 - Swapping 114 with 31 -> 1853.67
 Line 3192 - Next candidate: 35
-Line 6399 - Outcount: 7
-Line 3192 - Next candidate: 46
-Line 6399 - Outcount: 8
-Line 3192 - Next candidate: 45
-Line 6399 - Outcount: 9
-Line 3192 - Next candidate: 43
-Line 6399 - Outcount: 10
-Line 3192 - Next candidate: 39
-Line 6399 - Outcount: 11
-Line 3192 - Next candidate: 0
-Line 6399 - Outcount: 12
-Line 3192 - Next candidate: 1
-Line 6399 - Outcount: 13
-Line 3192 - Next candidate: 2
-Line 6399 - Outcount: 14
-Line 3192 - Next candidate: 4
-Line 3219 - Swapping 46 with 40 -> 25
-Line 3192 - Next candidate: 8
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 16
-Line 6399 - Outcount: 2
-Line 3192 - Next candidate: 32
-Line 3224 - Prev untie: 1897.94, new untie: 1899.16
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 3
-Line 3192 - Next candidate: 64
-Line 6399 - Outcount: 4
-Line 3192 - Next candidate: 3
-Line 6399 - Outcount: 5
-Line 3192 - Next candidate: 6
-Line 6399 - Outcount: 6
-Line 3192 - Next candidate: 10
-Line 6399 - Outcount: 7
-Line 3192 - Next candidate: 34
-Line 6399 - Outcount: 8
-Line 3192 - Next candidate: 5
-Line 6399 - Outcount: 9
-Line 3192 - Next candidate: 12
-Line 6399 - Outcount: 10
-Line 3192 - Next candidate: 36
-Line 3219 - Swapping 86 with 62 -> 23
-Line 3192 - Next candidate: 9
-Line 6399 - Outcount: 1
-Line 3192 - Next candidate: 40
-Line 3224 - Prev untie: 1895.71, new untie: 1896.09
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 2
-Line 3192 - Next candidate: 48
-Line 3224 - Prev untie: 1895.71, new untie: 1896.93
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 3
-Line 3192 - Next candidate: 33
-Line 6399 - Outcount: 4
-Line 3192 - Next candidate: 7
-Line 6399 - Outcount: 5
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1853.67
+Line 3192 - Next candidate: 41
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1853.67
 Line 3192 - Next candidate: 42
-Line 6399 - Outcount: 6
-Line 3192 - Next candidate: 38
-Line 6399 - Outcount: 7
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1853.67
 Line 3192 - Next candidate: 44
-Line 6399 - Outcount: 8
-Line 3192 - Next candidate: 76
-Line 6399 - Outcount: 9
-Line 3192 - Next candidate: 11
-Line 6399 - Outcount: 10
-Line 3192 - Next candidate: 41
-Line 3224 - Prev untie: 1895.71, new untie: 1896.09
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 11
-Line 3192 - Next candidate: 35
-Line 6399 - Outcount: 12
-Line 3192 - Next candidate: 46
-Line 6399 - Outcount: 13
-Line 3192 - Next candidate: 45
-Line 6399 - Outcount: 14
-Line 3192 - Next candidate: 43
-Line 6399 - Outcount: 15
-Line 3192 - Next candidate: 39
-Line 6399 - Outcount: 16
-Line 3192 - Next candidate: 0
-Line 6399 - Outcount: 17
-Line 3192 - Next candidate: 1
-Line 6399 - Outcount: 18
-Line 3192 - Next candidate: 2
-Line 6399 - Outcount: 19
-Line 3192 - Next candidate: 4
-Line 6399 - Outcount: 20
-Line 3192 - Next candidate: 8
-Line 6399 - Outcount: 21
-Line 3192 - Next candidate: 16
-Line 6399 - Outcount: 22
-Line 3192 - Next candidate: 32
-Line 3224 - Prev untie: 1895.71, new untie: 1896.93
-Line 3228 - Did not swap on untie
-Line 6399 - Outcount: 23
-Line 3192 - Next candidate: 64
-Line 6399 - Outcount: 24
+Line 3219 - Swapping 88 with 50 -> 1853.31
 Line 3192 - Next candidate: 3
-Line 6399 - Outcount: 25
+Line 3219 - Swapping 9 with 2 -> 1853.29
 Line 3192 - Next candidate: 6
-Line 6399 - Outcount: 26
-Line 3192 - Next candidate: 10
-Line 6399 - Outcount: 27
-Line 3192 - Next candidate: 34
-Line 6399 - Outcount: 28
+Line 3219 - Swapping 1 with 9 -> 1851.71
+Line 3219 - Swapping 41 with 9 -> 1851.32
+Line 3219 - Swapping 74 with 9 -> 1851.31
 Line 3192 - Next candidate: 5
-Line 6399 - Outcount: 29
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1851.31
 Line 3192 - Next candidate: 12
-Line 6399 - Outcount: 30
+Line 3219 - Swapping 73 with 46 -> 1850.44
+Line 3192 - Next candidate: 9
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 34
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 10
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 48
+Line 6371 - Outcount: 4
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 40
+Line 6371 - Outcount: 5
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 33
+Line 6371 - Outcount: 6
+Line 6372 - Cval: 1850.44
 Line 3192 - Next candidate: 36
-Line 6399 - Outcount: 31
-Line 2575 - Mc: 0.156266, minc: 0.113228, result: 0.625062
-Line 2575 - Mc: 0.145193, minc: 0.113228, result: 0.116154
+Line 6371 - Outcount: 7
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 64
+Line 6371 - Outcount: 8
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 16
+Line 6371 - Outcount: 9
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 2
+Line 6371 - Outcount: 10
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 1
+Line 6371 - Outcount: 11
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 4
+Line 6371 - Outcount: 12
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 32
+Line 6371 - Outcount: 13
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 8
+Line 6371 - Outcount: 14
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 0
+Line 6371 - Outcount: 15
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 39
+Line 6371 - Outcount: 16
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 45
+Line 6371 - Outcount: 17
+Line 6372 - Cval: 1850.44
+Line 3192 - Next candidate: 46
+Line 3219 - Swapping 88 with 32 -> 1850.02
+Line 3192 - Next candidate: 43
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1850.02
+Line 3192 - Next candidate: 76
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1850.02
+Line 3192 - Next candidate: 11
+Line 3219 - Swapping 9 with 74 -> 1849.78
+Line 3192 - Next candidate: 35
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1849.78
+Line 3192 - Next candidate: 7
+Line 3219 - Swapping 9 with 3 -> 1849.77
+Line 3192 - Next candidate: 38
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 41
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 42
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 44
+Line 6371 - Outcount: 4
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 3
+Line 6371 - Outcount: 5
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 5
+Line 6371 - Outcount: 6
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 9
+Line 6371 - Outcount: 7
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 6
+Line 6371 - Outcount: 8
+Line 6372 - Cval: 1849.77
+Line 3192 - Next candidate: 34
+Line 3219 - Swapping 113 with 30 -> 1849.7
+Line 3192 - Next candidate: 33
+Line 6371 - Outcount: 1
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 10
+Line 6371 - Outcount: 2
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 48
+Line 6371 - Outcount: 3
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 40
+Line 6371 - Outcount: 4
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 12
+Line 6371 - Outcount: 5
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 36
+Line 6371 - Outcount: 6
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 64
+Line 6371 - Outcount: 7
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 16
+Line 6371 - Outcount: 8
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 2
+Line 6371 - Outcount: 9
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 1
+Line 6371 - Outcount: 10
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 4
+Line 6371 - Outcount: 11
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 32
+Line 6371 - Outcount: 12
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 8
+Line 6371 - Outcount: 13
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 0
+Line 6371 - Outcount: 14
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 39
+Line 6371 - Outcount: 15
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 45
+Line 6371 - Outcount: 16
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 43
+Line 6371 - Outcount: 17
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 46
+Line 6371 - Outcount: 18
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 76
+Line 6371 - Outcount: 19
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 11
+Line 6371 - Outcount: 20
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 7
+Line 6371 - Outcount: 21
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 35
+Line 6371 - Outcount: 22
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 38
+Line 6371 - Outcount: 23
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 41
+Line 6371 - Outcount: 24
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 42
+Line 6371 - Outcount: 25
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 44
+Line 6371 - Outcount: 26
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 3
+Line 6371 - Outcount: 27
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 33
+Line 6371 - Outcount: 28
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 5
+Line 6371 - Outcount: 29
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 9
+Line 6371 - Outcount: 30
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 6
+Line 6371 - Outcount: 31
+Line 6372 - Cval: 1849.7
+Line 3192 - Next candidate: 1
+Line 3219 - Swapping 2 with 1 -> 109
+Line 3219 - Swapping 30 with 1 -> 99
+Line 3219 - Swapping 96 with 1 -> 79
+Line 3192 - Next candidate: 2
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 4
+Line 3224 - Prev untie: 1862.1, new untie: 1864.65
+Line 3228 - Did not swap on untie
+Line 3224 - Prev untie: 1862.1, new untie: 1862.5
+Line 3228 - Did not swap on untie
+Line 3219 - Swapping 73 with 40 -> 74
+Line 3192 - Next candidate: 8
+Line 3219 - Swapping 14 with 72 -> 64
+Line 3219 - Swapping 40 with 72 -> 63
+Line 3224 - Prev untie: 1870.19, new untie: 1871.91
+Line 3228 - Did not swap on untie
+Line 3224 - Prev untie: 1870.19, new untie: 1875.52
+Line 3228 - Did not swap on untie
+Line 3192 - Next candidate: 16
+Line 3219 - Swapping 102 with 96 -> 61
+Line 3224 - Prev untie: 1868.8, new untie: 1861.79
+Line 3192 - Next candidate: 32
+Line 3224 - Prev untie: 1861.79, new untie: 1868.8
+Line 3228 - Did not swap on untie
+Line 3219 - Swapping 102 with 112 -> 59
+Line 3224 - Prev untie: 1861.75, new untie: 1860.7
+Line 3192 - Next candidate: 64
+Line 3224 - Prev untie: 1860.7, new untie: 1866.03
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 3
+Line 3219 - Swapping 9 with 2 -> 54
+Line 3219 - Swapping 74 with 2 -> 41
+Line 3192 - Next candidate: 6
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 10
+Line 3224 - Prev untie: 1859.14, new untie: 1861.18
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 34
+Line 3219 - Swapping 113 with 30 -> 38
+Line 3192 - Next candidate: 5
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 12
+Line 3219 - Swapping 87 with 46 -> 31
+Line 3192 - Next candidate: 36
+Line 3224 - Prev untie: 1860.07, new untie: 1861.08
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 9
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 40
+Line 6395 - Outcount: 3
+Line 3192 - Next candidate: 48
+Line 3224 - Prev untie: 1860.07, new untie: 1860.64
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 4
+Line 3192 - Next candidate: 33
+Line 6395 - Outcount: 5
+Line 3192 - Next candidate: 7
+Line 6395 - Outcount: 6
+Line 3192 - Next candidate: 42
+Line 6395 - Outcount: 7
+Line 3192 - Next candidate: 38
+Line 3224 - Prev untie: 1860.07, new untie: 1861.08
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 8
+Line 3192 - Next candidate: 44
+Line 6395 - Outcount: 9
+Line 3192 - Next candidate: 76
+Line 3224 - Prev untie: 1860.07, new untie: 1861.71
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 10
+Line 3192 - Next candidate: 11
+Line 6395 - Outcount: 11
+Line 3192 - Next candidate: 41
+Line 6395 - Outcount: 12
+Line 3192 - Next candidate: 35
+Line 6395 - Outcount: 13
+Line 3192 - Next candidate: 46
+Line 6395 - Outcount: 14
+Line 3192 - Next candidate: 45
+Line 6395 - Outcount: 15
+Line 3192 - Next candidate: 43
+Line 3219 - Swapping 115 with 88 -> 30
+Line 3192 - Next candidate: 39
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 0
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 1
+Line 6395 - Outcount: 3
+Line 3192 - Next candidate: 2
+Line 6395 - Outcount: 4
+Line 3192 - Next candidate: 4
+Line 6395 - Outcount: 5
+Line 3192 - Next candidate: 8
+Line 3219 - Swapping 46 with 72 -> 29
+Line 3219 - Swapping 86 with 72 -> 28
+Line 3192 - Next candidate: 16
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 32
+Line 3224 - Prev untie: 1860.94, new untie: 1861.51
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 64
+Line 6395 - Outcount: 3
+Line 3192 - Next candidate: 3
+Line 6395 - Outcount: 4
+Line 3192 - Next candidate: 6
+Line 6395 - Outcount: 5
+Line 3192 - Next candidate: 10
+Line 3224 - Prev untie: 1860.94, new untie: 1859.7
+Line 3219 - Swapping 86 with 14 -> 26
+Line 3192 - Next candidate: 34
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 5
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 12
+Line 3219 - Swapping 40 with 46 -> 25
+Line 3224 - Prev untie: 1854.52, new untie: 1856.5
+Line 3228 - Did not swap on untie
+Line 3192 - Next candidate: 36
+Line 3224 - Prev untie: 1854.52, new untie: 1855.35
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 1
+Line 3192 - Next candidate: 9
+Line 6395 - Outcount: 2
+Line 3192 - Next candidate: 40
+Line 6395 - Outcount: 3
+Line 3192 - Next candidate: 48
+Line 3224 - Prev untie: 1854.52, new untie: 1855.1
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 4
+Line 3192 - Next candidate: 33
+Line 6395 - Outcount: 5
+Line 3192 - Next candidate: 7
+Line 6395 - Outcount: 6
+Line 3192 - Next candidate: 42
+Line 6395 - Outcount: 7
+Line 3192 - Next candidate: 38
+Line 3224 - Prev untie: 1854.52, new untie: 1855.35
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 8
+Line 3192 - Next candidate: 44
+Line 6395 - Outcount: 9
+Line 3192 - Next candidate: 76
+Line 3224 - Prev untie: 1854.52, new untie: 1856.5
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 10
+Line 3192 - Next candidate: 11
+Line 6395 - Outcount: 11
+Line 3192 - Next candidate: 41
+Line 6395 - Outcount: 12
+Line 3192 - Next candidate: 35
+Line 6395 - Outcount: 13
+Line 3192 - Next candidate: 46
+Line 6395 - Outcount: 14
+Line 3192 - Next candidate: 45
+Line 6395 - Outcount: 15
+Line 3192 - Next candidate: 43
+Line 6395 - Outcount: 16
+Line 3192 - Next candidate: 39
+Line 6395 - Outcount: 17
+Line 3192 - Next candidate: 0
+Line 6395 - Outcount: 18
+Line 3192 - Next candidate: 1
+Line 6395 - Outcount: 19
+Line 3192 - Next candidate: 2
+Line 6395 - Outcount: 20
+Line 3192 - Next candidate: 4
+Line 6395 - Outcount: 21
+Line 3192 - Next candidate: 8
+Line 6395 - Outcount: 22
+Line 3192 - Next candidate: 16
+Line 6395 - Outcount: 23
+Line 3192 - Next candidate: 32
+Line 3224 - Prev untie: 1854.52, new untie: 1855.1
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 24
+Line 3192 - Next candidate: 64
+Line 6395 - Outcount: 25
+Line 3192 - Next candidate: 3
+Line 6395 - Outcount: 26
+Line 3192 - Next candidate: 6
+Line 6395 - Outcount: 27
+Line 3192 - Next candidate: 10
+Line 6395 - Outcount: 28
+Line 3192 - Next candidate: 34
+Line 6395 - Outcount: 29
+Line 3192 - Next candidate: 5
+Line 6395 - Outcount: 30
+Line 3192 - Next candidate: 12
+Line 3224 - Prev untie: 1854.52, new untie: 1856.5
+Line 3228 - Did not swap on untie
+Line 6395 - Outcount: 31
+Line 2575 - Mc: 0.193092, minc: 0.113228, result: 0.772368
+Line 2575 - Mc: 0.187067, minc: 0.113228, result: 0.149654
