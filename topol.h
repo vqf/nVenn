@@ -198,10 +198,23 @@ int toInt(std::vector<int> v)
 class fileText
 {
     std::ostringstream text;
+    std::string sep;
+    UINT w;
+    UINT cl;
 public:
+    fileText(std::string lineSep = "\n", UINT wrap = 0){
+        sep = lineSep;
+        w = wrap;
+        cl = 0;
+    }
     void addLine(std::string t)
     {
-        text << t << "\n";
+        text << t << sep;
+        cl += t.size() + 1;
+        if (sep != "\n" && w > 0 && cl > w){
+            text << "\n";
+            cl = 0;
+        }
     }
     void addText(std::string t){
         text << t;
@@ -5154,13 +5167,13 @@ public:
 
 
     std::string saveFigure(){
-        fileText result;
-        result.addLine("_F");
+        fileText result("_", 80);
+        result.addLine("F");
         std::string nc = UINT2string(currentStep);
         result.addLine(nc);
         UINT i; UINT j;
         for (i = 0; i < bl.size(); i++){
-            result.addLine("_L");
+            result.addLine("L");
             for (j = 0; j < bl[i].size(); j++){
                 std::string x = float2string(bl[i][j].x);
                 std::string y = float2string(bl[i][j].y);
@@ -5168,7 +5181,7 @@ public:
                 result.addLine(y);
             }
         }
-        result.addLine("_C");
+        result.addLine("C");
         for (i = 0; i < circles.size(); i++){
             std::string x = float2string(circles[i].x);
             std::string y = float2string(circles[i].y);

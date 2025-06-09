@@ -12,7 +12,7 @@ template <typename T> void printVector(std::vector<T> v) {
   }
 }
 
-/** \brief Save replacement for sprintf
+/** \brief Safe replacement for sprintf
  *
  * \param const char * const zcFormat
  * \param ...
@@ -111,6 +111,7 @@ std::string purgeLetters(std::string input) {
   }
   return result;
 }
+
 
 std::string getFile(std::string prompt, std::string errorPrompt)
 {

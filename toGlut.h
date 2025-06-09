@@ -319,6 +319,7 @@ static void key(unsigned char key, int x, int y)
             }
             else{
                 bl.writeHTML(fout);
+                //std::cout << bl.saveFigure() << std::endl;
                 exit(0);
             }
             break;
