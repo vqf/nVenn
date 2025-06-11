@@ -196,6 +196,7 @@ class scene{
   float G; // Gravity constant
   float g; // gravity accel. Incompatible with G
   bool ghostGrav; // Do Particles with rad==0 feel gravity?
+  bool backgroundGravity; // Is there attraction between bodies in different partitions?
   bool pseudoGravity; // Pseudo-grav is a 1/d force
   bool dump;
 
@@ -218,7 +219,10 @@ class scene{
     p0->fy -= g * p0->mass;
   }
 
-  void gforce(point *p0, point *p1){
+  void gforce(point *p0, point *p1, float localG = 0){
+    if (localG == 0){
+        localG = G;
+    }
     bool g1 = (p0->flags & GHOST) == 0;
     bool g2 = (p1->flags & GHOST) == 0;
     bool dog = g1 && g2;
@@ -236,8 +240,8 @@ class scene{
       }
       if (denom > 0){
         point result;
-        result.fx = G * p0->mass * p1->mass * dx / denom;
-        result.fy = G * p0->mass * p1->mass * dy / denom;
+        result.fx = localG * p0->mass * p1->mass * dx / denom;
+        result.fy = localG * p0->mass * p1->mass * dy / denom;
         p0->fx += result.fx;
         p1->fx -= result.fx;
         p0->fy += result.fy;
@@ -270,7 +274,7 @@ class scene{
           }
         }
       }
-      else{
+      if (gpartitions.size() == 0){
         for (UINT i = 0; i < (points.size() - 1); i++){
           point *p0 = points[i];
           if ((p0->flags & INGRAVID) == 0){
@@ -278,6 +282,19 @@ class scene{
               point *p1 = points[j];
               if ((p1->flags & INGRAVID) == 0){
                 gforce(p0, p1);
+              }
+            }
+          }
+        }
+      }
+      else if (backgroundGravity){
+        for (UINT i = 0; i < (points.size() - 1); i++){
+          point *p0 = points[i];
+          if ((p0->flags & INGRAVID) == 0){
+            for (UINT j = i + 1; j < points.size(); j++){
+              point *p1 = points[j];
+              if ((p1->flags & INGRAVID) == 0){
+                gforce(p0, p1, G / 10);
               }
             }
           }
@@ -496,6 +513,7 @@ class scene{
     }
   }
 
+
   bool isContact(point *p0, point *p1, float cushion = 0){
     bool result = false;
     if (p0->radius > 0 || p1->radius > 0){
@@ -682,6 +700,9 @@ public:
     damp = 0;
     maxK = defaultK;
     dt = 1e-2;
+  }
+  void setBackgroundGravity(bool sg = true){
+      backgroundGravity = sg;
   }
   void setDebugSignal(){
     debugSignal = true;

@@ -193,42 +193,6 @@ int toInt(std::vector<int> v)
     return result;
 }
 
-/** \brief Manages a text stream
- */
-class fileText
-{
-    std::ostringstream text;
-    std::string sep;
-    UINT w;
-    UINT cl;
-public:
-    fileText(std::string lineSep = "\n", UINT wrap = 0){
-        sep = lineSep;
-        w = wrap;
-        cl = 0;
-    }
-    void addLine(std::string t)
-    {
-        text << t << sep;
-        cl += t.size() + 1;
-        if (sep != "\n" && w > 0 && cl > w){
-            text << "\n";
-            cl = 0;
-        }
-    }
-    void addText(std::string t){
-        text << t;
-    }
-    void clearText()
-    {
-        text.clear();
-    }
-    std::string getText()
-    {
-        return text.str();
-    }
-};
-
 
 enum crossResult{crosses, doesnotcross, cont};
 enum steps{
@@ -1347,6 +1311,9 @@ public:
     return keep;
   }
   void add(float comp){
+    if (comp == 0){
+        finish = true;
+    }
     keep = false;
     ncycles++;
     if (first){
@@ -3385,7 +3352,7 @@ class borderLine
     void writeCoords(){
         std::ofstream result;
         std::string outputFigData = blSettings.fname + ".data";
-        std::string datafile = saveFigure();
+        std::string datafile = saveBl();
         result.open(outputFigData.c_str());
         result.write(datafile.c_str(), datafile.size());
         result.close();
@@ -4884,6 +4851,7 @@ public:
       float springK = scConstants.K;
       UINT cnt = 0;
       tosolve.clearScene();
+      tosolve.setBackgroundGravity();
       tosolve.setRodStiffness(1e5);
       sceneTranslator.clear();
       pairDistances.clear();
@@ -5102,54 +5070,34 @@ public:
       return bl;
     }
 
-    /** \brief Sets the starting coordinates from a previous execution
+    /** \brief Restore a borderline object from a previous execution
      *
-     * \param dataFile std::string File with coordinates from borderLine::saveFigure
+     * \param dataFile std::string File with coordinates from borderLine::saveBl
      * \return void
      *
      */
-    void setCoords(std::string dataFile){
-        std::stringstream vFile;
+    void restoreBl(std::string dataFile){
+        std::istringstream vFile;
         std::string line;
-        vFile << dataFile;
-            bl.clear();
-            savedState.bl_secure.clear();
-            savedState.bl_old10.clear();
-            getline(vFile, line); // _F
-            getline(vFile, line); // ncyclesInterrupted or _L
-            if (line != "_L"){
-                int c = atoi(line.c_str());
-                getline(vFile, line); // _L
+        vFile.str(dataFile);
+        bl.clear();
+        savedState.bl_secure.clear();
+        savedState.bl_old10.clear();
+        UINT state = 0;
+        for (std::string line; std::getline(vFile, line);){
+            std::istringstream sline;
+            sline.str(line);
+            std::string el;
+            std::getline(sline, el, ';');
+            if (el == "F"){
+                std::getline(sline, el, ';');
+                std::cout << el;
+                currentStep = (UINT) atoi(el.c_str());
             }
-            while (line == "_L" && vFile.eof() == false){
-                std::vector<point> thisline;
-                getline(vFile, line); // First x coord
-                while (line != "_L" && line != "_C" && vFile.eof() == false){
-                    float x = atof(line.c_str());
-                    getline(vFile, line);
-                    float y = atof(line.c_str());
-                    point p;
-                    p.x = x; p.y = y;
-                    internalScale.addToScale(p);
-                    thisline.push_back(p);
-                    getline(vFile, line);
-                }
-                bl.push_back(thisline);
+            else if (el == "L"){
+
             }
-            if (line == "_C"){
-                getline(vFile, line);
-                int i = 0;
-                while (vFile.eof() == false){
-                    float x = atof(line.c_str());
-                    getline(vFile, line);
-                    float y = atof(line.c_str());
-                    getline(vFile, line);
-                    float r = atof(line.c_str());
-                    getline(vFile, line);
-                    circles[i].x = x; circles[i].y = y; circles[i].radius = r;
-                    i++;
-                }
-            }
+        }
     }
 
     void showInfo(){
@@ -5166,8 +5114,8 @@ public:
     }
 
 
-    std::string saveFigure(){
-        fileText result("_", 80);
+    std::string saveBl(){
+        fileText result(";", 80);
         result.addLine("F");
         std::string nc = UINT2string(currentStep);
         result.addLine(nc);
@@ -5190,7 +5138,8 @@ public:
             result.addLine(y);
             result.addLine(r);
         }
-        return result.getText();
+        std::string rst = result.getText() + "\n" + setElements.getSets();
+        return rst;
     }
 
 
@@ -5417,6 +5366,9 @@ public:
       svg.addLine("</defs>");
       svg.addLine("<!-- signature: " + signature + " -->");
       svg.addLine("<desc>" + join((std::string)";", dataDisplay) + "</desc>");
+      std::string bldesc = saveBl();
+      svg.addLine("<desc id='result'>" + bldesc + "</desc>");
+      //restoreBl(bldesc);
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
 
       // Add fills
@@ -6341,7 +6293,7 @@ public:
         resetV = true;
         scG(2e-1);
         scD(50);
-        scSpringK(1e4);
+        scSpringK(5e4);
         scFriction(100);
         oc.maxOutCount = 70;
         oc.outCount = 0;
@@ -6582,7 +6534,7 @@ borderLine getFileInfo(std::string fname, std::string outputFile){
     vFile.open(dataFile.c_str());
     if (false){ //vFile.good() == true){ // Unfinished
         vFile.close();
-        lines.setCoords(dataFile);
+        lines.restoreBl(dataFile);
     }
 
 

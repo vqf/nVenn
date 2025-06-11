@@ -223,12 +223,16 @@ public:
     }
     warnings << "Separator: " << (UINT) separator << std::endl;
     std::vector<std::string> lines = split(desc, '\n');
+    UINT realline = 0;
     for (UINT i = 0; i < lines.size(); i++){
-      cells.push_back({});
-      cells[i].clear();
       std::vector<std::string> cols = split(lines[i], separator);
-      for (UINT j = 0; j < cols.size(); j++){
-        cells[i].push_back(cols[j]);
+      if (cols.size() > 0){
+        cells.push_back({});
+        cells[realline].clear();
+        for (UINT j = 0; j < cols.size(); j++){
+          cells[realline].push_back(cols[j]);
+        }
+        realline++;
       }
     }
     transpose();
@@ -287,6 +291,7 @@ public:
     }
     return getRegion(snames);
   }
+
 
   /** \brief Get elements in a region
    *
@@ -366,6 +371,19 @@ public:
       result << r.size() << std::endl;
     }
     return result.str();
+  }
+
+  std::string getSets(){
+      fileText r(";", 80);
+      for (UINT i = 0; i < sets.size(); i++){
+        r.addLine("S");
+        r.addLine(sets[i].setName);
+        for (const std::string& el : sets[i].setElements){
+          r.addLine(el);
+        }
+      }
+      std::string result = r.getText();
+      return result;
   }
 
   std::string getInfo(){

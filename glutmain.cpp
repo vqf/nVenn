@@ -13,6 +13,6 @@
 
 int main(int argc, char *argv[]){
     restart_log();
-    glutSimulate("/home/vqf/proyectos/nVenn2/stressTest.txt");
+    glutSimulate("/home/vqf/web/nvenn2/lighttest.txt");
     initGlut(argc, argv);
 }

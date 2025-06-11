@@ -6,6 +6,44 @@
 typedef unsigned int UINT;
 
 
+
+/** \brief Manages a text stream
+ */
+class fileText
+{
+    std::ostringstream text;
+    std::string sep;
+    UINT w;
+    UINT cl;
+public:
+    fileText(std::string lineSep = "\n", UINT wrap = 0){
+        sep = lineSep;
+        w = wrap;
+        cl = 0;
+    }
+    void addLine(std::string t)
+    {
+        text << t << sep;
+        cl += t.size() + 1;
+        if (sep != "\n" && w > 0 && cl > w){
+            text << "\n";
+            cl = 0;
+        }
+    }
+    void addText(std::string t){
+        text << t;
+    }
+    void clearText()
+    {
+        text.clear();
+    }
+    std::string getText()
+    {
+        return text.str();
+    }
+};
+
+
 template <typename T> void printVector(std::vector<T> v) {
   for (UINT i = 0; i < v.size(); i++) {
     std::cout << i << " - " << v[i] << std::endl;
