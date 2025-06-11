@@ -5070,6 +5070,8 @@ public:
       return bl;
     }
 
+    #define KL std::cout << el << "_" << std::endl;
+
     /** \brief Restore a borderline object from a previous execution
      *
      * \param dataFile std::string File with coordinates from borderLine::saveBl
@@ -5084,20 +5086,40 @@ public:
         savedState.bl_secure.clear();
         savedState.bl_old10.clear();
         UINT state = 0;
+        std::string all;
         for (std::string line; std::getline(vFile, line);){
-            std::istringstream sline;
-            sline.str(line);
-            std::string el;
+            all += exchangeChar(line, '\n', ' ');
+        }
+        std::istringstream sline(all);
+        std::string el;
+        std::getline(sline, el, ';');
+        if (el == "F"){
             std::getline(sline, el, ';');
-            if (el == "F"){
-                std::getline(sline, el, ';');
-                std::cout << el;
-                currentStep = (UINT) atoi(el.c_str());
-            }
-            else if (el == "L"){
+            //std::cout << el;
+            //currentStep = (UINT) atoi(el.c_str());
+        }
+        std::getline(sline, el, ';');
+        if (el == "L"){
+            while (el != "" && el != "C"){
+                if (el == "L"){
+                    std::getline(sline, el, ';');
+                }
+                bl.push_back({});
+                UINT ind = bl.size() - 1;
+                std::cout << "newl" << std::endl;
 
+                while (el != "" && el != "C" && el != "L"){
+                    float cx = std::atof(el.c_str());
+                    std::getline(sline, el, ';');
+                    float cy = std::atof(el.c_str());
+                    std::getline(sline, el, ';');
+                    point p(cx, cy);
+                    std::cout << p.croack();
+                    bl[ind].push_back(p);
+                }
             }
         }
+
     }
 
     void showInfo(){

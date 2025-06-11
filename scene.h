@@ -107,8 +107,11 @@ public:
         initPoint();
     }
     point(float px, float py){
+      radius = 0;
+      initPoint();
       x = px;
       y = py;
+
     }
     void reset()
     {

@@ -4329,6 +4329,7 @@ var _set_palette = Module['_set_palette'] = createExportWrapper('set_palette', 1
 var _set_opacity = Module['_set_opacity'] = createExportWrapper('set_opacity', 1);
 var _set_line_width = Module['_set_line_width'] = createExportWrapper('set_line_width', 1);
 var _set_font_size = Module['_set_font_size'] = createExportWrapper('set_font_size', 1);
+var _run = Module['_run'] = createExportWrapper('run', 0);
 var _init_bl = Module['_init_bl'] = createExportWrapper('init_bl', 1);
 var _load_signature = Module['_load_signature'] = createExportWrapper('load_signature', 1);
 var _load_sets = Module['_load_sets'] = createExportWrapper('load_sets', 2);

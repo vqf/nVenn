@@ -34,6 +34,7 @@ extern "C" {
  void set_palette(UINT p);
  void show_region_size(bool s);
  void show_region_description(bool s);
+ void run();
 }
 
 
@@ -82,6 +83,10 @@ void showRegionDesc(bool s){
 
 void set_font_size(UINT fs){
     bl.setFontSize(fs);
+}
+
+void run(){
+    bl.simulate();
 }
 
 bool init_bl(const char* description){

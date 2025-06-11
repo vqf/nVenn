@@ -1,65 +1,53 @@
 Line 3172 - Next candidate: 7
-Line 3199 - Swapping 2 with 3 -> 81.186
+Line 3199 - Swapping 2 with 3 -> 81.3161
 Line 3172 - Next candidate: 6
-Line 3199 - Swapping 1 with 5 -> 79.8333
-Line 3199 - Swapping 4 with 5 -> 78.11
+Line 3199 - Swapping 1 with 5 -> 79.9152
+Line 3199 - Swapping 4 with 5 -> 78.1293
 Line 3172 - Next candidate: 5
-Line 6336 - Outcount: 1
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 1
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 3
-Line 6336 - Outcount: 2
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 2
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 2
-Line 6336 - Outcount: 3
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 3
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 1
-Line 6336 - Outcount: 4
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 4
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 4
-Line 6336 - Outcount: 5
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 5
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 0
-Line 6336 - Outcount: 6
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 6
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 7
-Line 6336 - Outcount: 7
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 7
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 5
-Line 6336 - Outcount: 8
-Line 6337 - Cval: 78.11
+Line 6358 - Outcount: 8
+Line 6359 - Cval: 78.1293
 Line 3172 - Next candidate: 1
-Line 6360 - Outcount: 1
+Line 3204 - Prev untie: 78.1293, new untie: 80.3585
+Line 3208 - Did not swap on untie
+Line 6382 - Outcount: 1
 Line 3172 - Next candidate: 2
-Line 6360 - Outcount: 2
+Line 3204 - Prev untie: 78.1293, new untie: 80.3877
+Line 3208 - Did not swap on untie
+Line 6382 - Outcount: 2
 Line 3172 - Next candidate: 4
-Line 6360 - Outcount: 3
+Line 6382 - Outcount: 3
 Line 3172 - Next candidate: 3
-Line 6360 - Outcount: 4
+Line 3204 - Prev untie: 78.1293, new untie: 80.3585
+Line 3208 - Did not swap on untie
+Line 3204 - Prev untie: 78.1293, new untie: 80.3877
+Line 3208 - Did not swap on untie
+Line 6382 - Outcount: 4
 Line 3172 - Next candidate: 6
-Line 6360 - Outcount: 5
+Line 6382 - Outcount: 5
 Line 3172 - Next candidate: 5
-Line 6360 - Outcount: 6
+Line 6382 - Outcount: 6
 Line 3172 - Next candidate: 7
-Line 6360 - Outcount: 7
+Line 6382 - Outcount: 7
 Line 3172 - Next candidate: 0
-Line 6360 - Outcount: 8
-Line 321 - Distance is zero: X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: -10856.3	Fy: -4818	Flags: 64
-X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 20.3919, Y: 14.4286	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8374.69	Fy: 8422.4	Flags: 64
-X: 20.3919, Y: 14.4286	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 20.1161, Y: 12.1771	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0.00953674	Flags: 64
-X: 20.1161, Y: 12.1771	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 17.9144, Y: 11.6313	N: 0	radius: 0	vx: 0	vy: 0	Fx: 11857.1	Fy: -694.351	Flags: 64
-X: 17.9144, Y: 11.6313	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: -10856.3	Fy: -4818	Flags: 64
-X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 18.387, Y: 15.4896	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 20.3919, Y: 14.4286	N: 0	radius: 0	vx: 0	vy: 0	Fx: -8374.69	Fy: 8422.4	Flags: 64
-X: 20.3919, Y: 14.4286	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 20.1161, Y: 12.1771	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0.00953674	Flags: 64
-X: 20.1161, Y: 12.1771	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 321 - Distance is zero: X: 17.9144, Y: 11.6313	N: 0	radius: 0	vx: 0	vy: 0	Fx: 11857.1	Fy: -694.351	Flags: 64
-X: 17.9144, Y: 11.6313	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 6382 - Outcount: 8
