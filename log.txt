@@ -1,53 +1,49 @@
 Line 3172 - Next candidate: 7
-Line 3199 - Swapping 2 with 3 -> 81.3161
+Line 3199 - Swapping 2 with 3 -> 78.3051
 Line 3172 - Next candidate: 6
-Line 3199 - Swapping 1 with 5 -> 79.9152
-Line 3199 - Swapping 4 with 5 -> 78.1293
-Line 3172 - Next candidate: 5
-Line 6358 - Outcount: 1
-Line 6359 - Cval: 78.1293
+Line 3199 - Swapping 1 with 5 -> 77.0847
+Line 3199 - Swapping 4 with 5 -> 75.172
 Line 3172 - Next candidate: 3
-Line 6358 - Outcount: 2
-Line 6359 - Cval: 78.1293
-Line 3172 - Next candidate: 2
-Line 6358 - Outcount: 3
-Line 6359 - Cval: 78.1293
-Line 3172 - Next candidate: 1
-Line 6358 - Outcount: 4
-Line 6359 - Cval: 78.1293
+Line 6369 - Outcount: 1
+Line 6370 - Cval: 75.172
+Line 3172 - Next candidate: 5
+Line 6369 - Outcount: 2
+Line 6370 - Cval: 75.172
 Line 3172 - Next candidate: 4
-Line 6358 - Outcount: 5
-Line 6359 - Cval: 78.1293
+Line 6369 - Outcount: 3
+Line 6370 - Cval: 75.172
+Line 3172 - Next candidate: 2
+Line 6369 - Outcount: 4
+Line 6370 - Cval: 75.172
+Line 3172 - Next candidate: 1
+Line 6369 - Outcount: 5
+Line 6370 - Cval: 75.172
 Line 3172 - Next candidate: 0
-Line 6358 - Outcount: 6
-Line 6359 - Cval: 78.1293
+Line 6369 - Outcount: 6
+Line 6370 - Cval: 75.172
 Line 3172 - Next candidate: 7
-Line 6358 - Outcount: 7
-Line 6359 - Cval: 78.1293
-Line 3172 - Next candidate: 5
-Line 6358 - Outcount: 8
-Line 6359 - Cval: 78.1293
-Line 3172 - Next candidate: 1
-Line 3204 - Prev untie: 78.1293, new untie: 80.3585
-Line 3208 - Did not swap on untie
-Line 6382 - Outcount: 1
-Line 3172 - Next candidate: 2
-Line 3204 - Prev untie: 78.1293, new untie: 80.3877
-Line 3208 - Did not swap on untie
-Line 6382 - Outcount: 2
-Line 3172 - Next candidate: 4
-Line 6382 - Outcount: 3
-Line 3172 - Next candidate: 3
-Line 3204 - Prev untie: 78.1293, new untie: 80.3585
-Line 3208 - Did not swap on untie
-Line 3204 - Prev untie: 78.1293, new untie: 80.3877
-Line 3208 - Did not swap on untie
-Line 6382 - Outcount: 4
+Line 6369 - Outcount: 7
+Line 6370 - Cval: 75.172
 Line 3172 - Next candidate: 6
-Line 6382 - Outcount: 5
+Line 6369 - Outcount: 8
+Line 6370 - Cval: 75.172
+Line 3172 - Next candidate: 1
+Line 3204 - Prev untie: 75.172, new untie: 77.1873
+Line 3208 - Did not swap on untie
+Line 6393 - Outcount: 1
+Line 3172 - Next candidate: 2
+Line 6393 - Outcount: 2
+Line 3172 - Next candidate: 4
+Line 6393 - Outcount: 3
+Line 3172 - Next candidate: 3
+Line 6393 - Outcount: 4
+Line 3172 - Next candidate: 6
+Line 6393 - Outcount: 5
 Line 3172 - Next candidate: 5
-Line 6382 - Outcount: 6
+Line 3204 - Prev untie: 75.172, new untie: 77.1873
+Line 3208 - Did not swap on untie
+Line 6393 - Outcount: 6
 Line 3172 - Next candidate: 7
-Line 6382 - Outcount: 7
+Line 6393 - Outcount: 7
 Line 3172 - Next candidate: 0
-Line 6382 - Outcount: 8
+Line 6393 - Outcount: 8

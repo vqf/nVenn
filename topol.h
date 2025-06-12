@@ -5070,7 +5070,6 @@ public:
       return bl;
     }
 
-    #define KL std::cout << el << "_" << std::endl;
 
     /** \brief Restore a borderline object from a previous execution
      *
@@ -5082,13 +5081,13 @@ public:
         std::istringstream vFile;
         std::string line;
         vFile.str(dataFile);
-        bl.clear();
-        savedState.bl_secure.clear();
-        savedState.bl_old10.clear();
+        bool sane = true;
+        std::vector<std::vector<point>>newbl;
+        newbl.clear();
         UINT state = 0;
         std::string all;
         for (std::string line; std::getline(vFile, line);){
-            all += exchangeChar(line, '\n', ' ');
+            all += exchangeChar(line, '\n', 0x00);
         }
         std::istringstream sline(all);
         std::string el;
@@ -5098,26 +5097,66 @@ public:
             //std::cout << el;
             //currentStep = (UINT) atoi(el.c_str());
         }
+        else{
+            sane = false;
+        }
         std::getline(sline, el, ';');
         if (el == "L"){
             while (el != "" && el != "C"){
                 if (el == "L"){
                     std::getline(sline, el, ';');
                 }
-                bl.push_back({});
+                newbl.push_back({});
                 UINT ind = bl.size() - 1;
-                std::cout << "newl" << std::endl;
-
                 while (el != "" && el != "C" && el != "L"){
                     float cx = std::atof(el.c_str());
                     std::getline(sline, el, ';');
                     float cy = std::atof(el.c_str());
-                    std::getline(sline, el, ';');
                     point p(cx, cy);
-                    std::cout << p.croack();
-                    bl[ind].push_back(p);
+                    newbl[ind].push_back(p);
                 }
             }
+        }
+        std::vector<point> newcircles;
+        if (el == "C"){ // There should be a fixed number of circles
+            for (UINT i = 0; i < twoPow(newbl.size()); i++){
+                point p;
+                std::getline(sline, el, ';');
+                p.x = std::atof(el.c_str());
+                std::getline(sline, el, ';');
+                p.y = std::atof(el.c_str());
+                std::getline(sline, el, ';');
+                p.radius = std::atof(el.c_str());
+                newcircles.push_back(p);
+            }
+        }
+        else{
+            sane = false;
+        }
+        std::getline(sline, el, ';');
+        std::vector<vset> sets;
+        for (UINT i = 0; i < newbl.size(); i++){
+            if (el == "S"){
+                vset v;
+                std::getline(sline, el, ';');
+                v.setName = el;
+                sets.push_back(v);
+                UINT cn = sets.size() - 1;
+                std::getline(sline, el, ';');
+                while (el != "S"){
+                    sets[cn].setElements.insert(el);
+                    std::getline(sline, el, ';');
+                }
+            }
+            else{
+                sane = false;
+            }
+        }
+        if (sane){
+            savedState.bl_secure.clear();
+            savedState.bl_old10.clear();
+            bl = newbl;
+            circles = newcircles;
         }
 
     }
