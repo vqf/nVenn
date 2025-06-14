@@ -1634,8 +1634,8 @@ class borderLine
           bl.push_back(p);
       }
       startPerim = (UINT) perimeter(bl[0]);
-      UINT np = (UINT) (0.5f * (float) startPerim);
-      interpolate(np);
+      //UINT np = (UINT) (0.5f * (float) startPerim);
+      //interpolate(np);
 
       setPrevState();
       setSecureState();
@@ -5107,13 +5107,14 @@ public:
                     std::getline(sline, el, ';');
                 }
                 newbl.push_back({});
-                UINT ind = bl.size() - 1;
+                UINT ind = newbl.size() - 1;
                 while (el != "" && el != "C" && el != "L"){
                     float cx = std::atof(el.c_str());
                     std::getline(sline, el, ';');
                     float cy = std::atof(el.c_str());
                     point p(cx, cy);
                     newbl[ind].push_back(p);
+                    std::getline(sline, el, ';');
                 }
             }
         }
@@ -5134,19 +5135,20 @@ public:
             sane = false;
         }
         std::getline(sline, el, ';');
-        std::vector<vset> sets;
+        setElements = nvenn();
         for (UINT i = 0; i < newbl.size(); i++){
-            if (el == "S"){
-                vset v;
+            if (el == "S" || el == ""){
+                std::string sn;
+                std::unordered_set<std::string> els;
                 std::getline(sline, el, ';');
-                v.setName = el;
-                sets.push_back(v);
-                UINT cn = sets.size() - 1;
+                sn = el;
+                std::cout << sn << std::endl;
                 std::getline(sline, el, ';');
-                while (el != "S"){
-                    sets[cn].setElements.insert(el);
+                while (el != "" && el != "S"){
+                    els.insert(el);
                     std::getline(sline, el, ';');
                 }
+                setElements.addSet(sn, setElements.asVector(els));
             }
             else{
                 sane = false;
@@ -5157,6 +5159,10 @@ public:
             savedState.bl_old10.clear();
             bl = newbl;
             circles = newcircles;
+        }
+        else{
+            errorMessage = "Malformed save string";
+            std::cout << "insane" << std::endl;
         }
 
     }
@@ -6299,7 +6305,7 @@ public:
         evaluation.init();
         evaluation.setConstants(50, 50);
         if (checkTopol() == false){
-          interpolateToDist(2 * minCircDist());
+          interpolateToDist(minCircDist());
           setPrevState();
           setSecureState();
         }

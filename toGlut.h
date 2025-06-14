@@ -317,10 +317,13 @@ static void key(unsigned char key, int x, int y)
                 bl.setStep(step);
                 std::cout << step << std::endl;
             }
-            else{
+            else if (step == 8){
                 bl.writeHTML(fout);
-                std::cout << bl.saveBl() << std::endl;
+                //std::cout << bl.saveBl() << std::endl;
                 bl.restoreBl(bl.saveBl());
+                step++;
+            }
+            else{
                 exit(0);
             }
             break;

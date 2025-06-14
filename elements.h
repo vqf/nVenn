@@ -292,6 +292,14 @@ public:
     return getRegion(snames);
   }
 
+  std::vector<std::string> asVector(std::unordered_set<std::string> us){
+        std::vector<std::string> r;
+        for (const std::string& el : us){
+            r.push_back(el);
+        }
+        return r;
+  }
+
 
   /** \brief Get elements in a region
    *

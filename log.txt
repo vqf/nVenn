@@ -1,49 +1,49 @@
 Line 3172 - Next candidate: 7
-Line 3199 - Swapping 2 with 3 -> 78.3051
+Line 3199 - Swapping 2 with 3 -> 78.4182
 Line 3172 - Next candidate: 6
-Line 3199 - Swapping 1 with 5 -> 77.0847
-Line 3199 - Swapping 4 with 5 -> 75.172
+Line 3199 - Swapping 1 with 5 -> 77.1762
+Line 3199 - Swapping 4 with 5 -> 75.2197
 Line 3172 - Next candidate: 3
-Line 6369 - Outcount: 1
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 1
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 5
-Line 6369 - Outcount: 2
-Line 6370 - Cval: 75.172
-Line 3172 - Next candidate: 4
-Line 6369 - Outcount: 3
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 2
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 2
-Line 6369 - Outcount: 4
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 3
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 1
-Line 6369 - Outcount: 5
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 4
+Line 6404 - Cval: 75.2197
+Line 3172 - Next candidate: 4
+Line 6403 - Outcount: 5
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 0
-Line 6369 - Outcount: 6
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 6
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 7
-Line 6369 - Outcount: 7
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 7
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 6
-Line 6369 - Outcount: 8
-Line 6370 - Cval: 75.172
+Line 6403 - Outcount: 8
+Line 6404 - Cval: 75.2197
 Line 3172 - Next candidate: 1
-Line 3204 - Prev untie: 75.172, new untie: 77.1873
-Line 3208 - Did not swap on untie
-Line 6393 - Outcount: 1
+Line 6427 - Outcount: 1
 Line 3172 - Next candidate: 2
-Line 6393 - Outcount: 2
+Line 6427 - Outcount: 2
 Line 3172 - Next candidate: 4
-Line 6393 - Outcount: 3
+Line 6427 - Outcount: 3
 Line 3172 - Next candidate: 3
-Line 6393 - Outcount: 4
+Line 6427 - Outcount: 4
 Line 3172 - Next candidate: 6
-Line 6393 - Outcount: 5
+Line 6427 - Outcount: 5
 Line 3172 - Next candidate: 5
-Line 3204 - Prev untie: 75.172, new untie: 77.1873
-Line 3208 - Did not swap on untie
-Line 6393 - Outcount: 6
+Line 6427 - Outcount: 6
 Line 3172 - Next candidate: 7
-Line 6393 - Outcount: 7
+Line 6427 - Outcount: 7
 Line 3172 - Next candidate: 0
-Line 6393 - Outcount: 8
+Line 6427 - Outcount: 8
+Line 324 - Distance is zero: X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: -64012.8	Fy: -4302.02	Flags: 64
+X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 324 - Distance is zero: X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: -64012.8	Fy: -4302.02	Flags: 64
+X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
