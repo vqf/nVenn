@@ -75,6 +75,9 @@
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
+		<Compiler>
+			<Add option="-g" />
+		</Compiler>
 		<Unit filename="bmpfont.h">
 			<Option target="default" />
 			<Option target="test" />

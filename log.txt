@@ -1,49 +1,45 @@
 Line 3172 - Next candidate: 7
-Line 3199 - Swapping 2 with 3 -> 78.4182
+Line 3199 - Swapping 2 with 3 -> 78.7167
 Line 3172 - Next candidate: 6
-Line 3199 - Swapping 1 with 5 -> 77.1762
-Line 3199 - Swapping 4 with 5 -> 75.2197
-Line 3172 - Next candidate: 3
-Line 6403 - Outcount: 1
-Line 6404 - Cval: 75.2197
+Line 3199 - Swapping 1 with 5 -> 77.3365
+Line 3199 - Swapping 4 with 5 -> 75.2922
 Line 3172 - Next candidate: 5
-Line 6403 - Outcount: 2
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 2
-Line 6403 - Outcount: 3
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 1
-Line 6403 - Outcount: 4
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 4
-Line 6403 - Outcount: 5
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 0
-Line 6403 - Outcount: 6
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 7
-Line 6403 - Outcount: 7
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 6
-Line 6403 - Outcount: 8
-Line 6404 - Cval: 75.2197
-Line 3172 - Next candidate: 1
-Line 6427 - Outcount: 1
-Line 3172 - Next candidate: 2
-Line 6427 - Outcount: 2
-Line 3172 - Next candidate: 4
-Line 6427 - Outcount: 3
+Line 6408 - Outcount: 1
+Line 6409 - Cval: 75.2922
 Line 3172 - Next candidate: 3
-Line 6427 - Outcount: 4
-Line 3172 - Next candidate: 6
-Line 6427 - Outcount: 5
-Line 3172 - Next candidate: 5
-Line 6427 - Outcount: 6
-Line 3172 - Next candidate: 7
-Line 6427 - Outcount: 7
+Line 6408 - Outcount: 2
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 1
+Line 6408 - Outcount: 3
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 2
+Line 6408 - Outcount: 4
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 4
+Line 6408 - Outcount: 5
+Line 6409 - Cval: 75.2922
 Line 3172 - Next candidate: 0
-Line 6427 - Outcount: 8
-Line 324 - Distance is zero: X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: -64012.8	Fy: -4302.02	Flags: 64
-X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 324 - Distance is zero: X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: -64012.8	Fy: -4302.02	Flags: 64
-X: 15.5985, Y: 18.9338	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 6408 - Outcount: 6
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 7
+Line 6408 - Outcount: 7
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 5
+Line 6408 - Outcount: 8
+Line 6409 - Cval: 75.2922
+Line 3172 - Next candidate: 1
+Line 6432 - Outcount: 1
+Line 3172 - Next candidate: 2
+Line 6432 - Outcount: 2
+Line 3172 - Next candidate: 4
+Line 6432 - Outcount: 3
+Line 3172 - Next candidate: 3
+Line 6432 - Outcount: 4
+Line 3172 - Next candidate: 6
+Line 6432 - Outcount: 5
+Line 3172 - Next candidate: 5
+Line 6432 - Outcount: 6
+Line 3172 - Next candidate: 7
+Line 6432 - Outcount: 7
+Line 3172 - Next candidate: 0
+Line 6432 - Outcount: 8

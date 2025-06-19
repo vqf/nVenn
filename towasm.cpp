@@ -11,6 +11,7 @@
 borderLine bl;
 std::string svgcode;
 std::string errorMessage;
+std::string saved;
 std::string rvenn;
 
 extern "C" {
@@ -34,10 +35,16 @@ extern "C" {
  void set_palette(UINT p);
  void show_region_size(bool s);
  void show_region_description(bool s);
+ void restore_prev(const char* savedState);
  void run();
 }
 
-
+void restore_prev(const char* savedState){
+    std::stringstream conv;
+    conv << savedState;
+    saved = conv.str();
+    bl.restoreBl(saved);
+}
 
 void show_region_description(bool s){
     bl.showRegionNumbers(s);

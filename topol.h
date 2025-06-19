@@ -3975,6 +3975,7 @@ class borderLine
             }
             if (udt.cdt() < blSettings.mindt){
               restoreSecureState();
+              interpolateToDist(minCircRadius / 4);
               blCounter = 0;
             }
             else{
@@ -5082,6 +5083,7 @@ public:
         std::string line;
         vFile.str(dataFile);
         bool sane = true;
+        std::string errorstr;
         std::vector<std::vector<point>>newbl;
         newbl.clear();
         UINT state = 0;
@@ -5099,6 +5101,7 @@ public:
         }
         else{
             sane = false;
+            errorstr += "Failed first step. ";
         }
         std::getline(sline, el, ';');
         if (el == "L"){
@@ -5133,35 +5136,37 @@ public:
         }
         else{
             sane = false;
+            errorstr += "Failed circles. ";
         }
         std::getline(sline, el, ';');
-        setElements = nvenn();
-        for (UINT i = 0; i < newbl.size(); i++){
-            if (el == "S" || el == ""){
-                std::string sn;
-                std::unordered_set<std::string> els;
-                std::getline(sline, el, ';');
-                sn = el;
-                std::cout << sn << std::endl;
-                std::getline(sline, el, ';');
-                while (el != "" && el != "S"){
-                    els.insert(el);
-                    std::getline(sline, el, ';');
-                }
-                setElements.addSet(sn, setElements.asVector(els));
-            }
-            else{
-                sane = false;
-            }
-        }
         if (sane){
+            setElements = nvenn();
+            for (UINT i = 0; i < newbl.size(); i++){
+                if (el == "S" || el == ""){
+                    std::string sn;
+                    std::unordered_set<std::string> els;
+                    std::getline(sline, el, ';');
+                    sn = el;
+                    std::getline(sline, el, ';');
+                    while (el != "" && el != "S"){
+                        els.insert(el);
+                        std::getline(sline, el, ';');
+                    }
+                    setElements.addSet(sn, setElements.asVector(els));
+                }
+                else{
+                    sane = false;
+                }
+            }
             savedState.bl_secure.clear();
             savedState.bl_old10.clear();
             bl = newbl;
             circles = newcircles;
+            writeSVG("delme.svg");
         }
         else{
-            errorMessage = "Malformed save string";
+            error = true;
+            errorMessage = "Malformed save string: " + errorstr;
             std::cout << "insane" << std::endl;
         }
 
