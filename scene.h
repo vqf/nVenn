@@ -132,6 +132,7 @@ public:
       point result;
       result.x = x;
       result.y = y;
+      result.radius = radius;
       result.cancelForce = cancelForce;
       result.flags = flags;
       result.fx = fx;

@@ -321,6 +321,7 @@ static void key(unsigned char key, int x, int y)
                 bl.writeHTML(fout);
                 //std::cout << bl.saveBl() << std::endl;
                 bl.restoreBl(bl.saveBl());
+                bl.writeSVG("delme.svg");
                 step++;
             }
             else{

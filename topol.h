@@ -1510,11 +1510,7 @@ class borderLine
       b->maxRunningTime = 200; // 300 seconds to finish the first part
     }
 
-    void init(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
-      UINT i;
-      setElements = nvenn();
-      origw.clear();
-      circRadii.clear();
+    void init(){
       error = false;
       resetV = false;
       cushion = 0.02;
@@ -1525,13 +1521,6 @@ class borderLine
       svgParams.svgFontSize = 10;
       palettes svgPalettes;
       errorMessage = "";
-      groups = g;
-      currentStep = attract;
-      ngroups = g.size();
-      binMap b(ngroups);
-      bm = &b;
-      blSettings.inputFile = inputFile;
-      blSettings.fname = outputFile;
       minCircRadius = 1.0f;
       nPointsMin = 10;
       potential = 0;
@@ -1552,7 +1541,6 @@ class borderLine
       blSettings.signalEnd = false;
       blSettings.contacts = 0;
       blSettings.fixCircles = false;
-      blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
       blSettings.totalCircleV = 0;
       blSettings.totalLineV   = 0;
       blSettings.minSurfRatio = 0;
@@ -1564,7 +1552,6 @@ class borderLine
       blSettings.stepdt = 0.04f;
       blSettings.ncycles = 0;
       blSettings.cycleInfo = "";
-      blSettings.lineAir = ngroups;
       blSettings.optimize = true;
       simulationTime = 0;
       maxLineVsq = 0;
@@ -1573,7 +1560,6 @@ class borderLine
       oc.outCount = 0;
       oc.optVal = 0;
       borderLine::currentMeasure = &borderLine::compactness;
-      /**/
       // Set the width of a line
       point labs(1 / svgScale.xSpan(), 0);
       point lsvg = place(internalScale, labs);
@@ -1592,6 +1578,24 @@ class borderLine
       evaluation.setConstants(100, 50);
       //Set starting palette and load svg and postscript colors
       loadPalette(0);
+    }
+
+    void init(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
+      UINT i;
+      setElements = nvenn();
+      origw.clear();
+      circRadii.clear();
+      groups = g;
+      currentStep = attract;
+      ngroups = g.size();
+      binMap b(ngroups);
+      bm = &b;
+      blSettings.inputFile = inputFile;
+      blSettings.fname = outputFile;
+      blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
+      blSettings.lineAir = ngroups;
+      /**/
+      init();
       w = tw;         //keep a copy of the weights
       wlimit();
       for (i = 0; i < tw.size(); i++){
@@ -2767,20 +2771,20 @@ class borderLine
         }
       }
       if (blSettings.doCheckTopol && !onlyCircles){
-        for (UINT i = 0; i < bl.size(); i++){
-          if (i & groups){
-            for (UINT j = 0; j < bl[i].size(); j++){
-              if (bl[i][j].x < result[0].x){
-                result[0].x = bl[i][j].x;
+        for (UINT k = 0; k < bl.size(); k++){
+          if (k & groups){
+            for (UINT j = 0; j < bl[k].size(); j++){
+              if (bl[k][j].x < result[0].x){
+                result[0].x = bl[k][j].x;
               }
-              if (bl[i][j].y < result[0].y){
-                result[0].y = bl[i][j].y;
+              if (bl[k][j].y < result[0].y){
+                result[0].y = bl[k][j].y;
               }
-              if (bl[i][j].x > result[1].x){
-                result[1].x = bl[i][j].x;
+              if (bl[k][j].x > result[1].x){
+                result[1].x = bl[k][j].x;
               }
-              if (bl[i][j].y > result[1].y){
-                result[1].y = bl[i][j].y;
+              if (bl[k][j].y > result[1].y){
+                result[1].y = bl[k][j].y;
               }
             }
           }
@@ -5071,6 +5075,43 @@ public:
       return bl;
     }
 
+    std::vector<float> getWeights(std::string code){
+      std::stringstream v(code);
+      std::string line;
+      std::vector<float> result;
+      UINT n = 0;
+      float val = 0;
+      v >> line;
+      v >> n;
+      if (n > 0 && n < 20){
+        for (UINT i = 0; i < n; i++){
+          v >> line;
+        }
+        UINT tn = twoPow(n);
+        for (UINT i = 0; i < tn; i++){
+          v >> val;
+          result.push_back(val);
+        }
+      }
+      return result;
+    }
+
+    std::vector<std::string> getNames(std::string code){
+      std::stringstream v(code);
+      std::string line;
+      std::vector<std::string> result;
+      UINT n = 0;
+      v >> line;
+      v >> n;
+      if (n > 0 && n < 20){
+        for (UINT i = 0; i < n; i++){
+          v >> line;
+
+          result.push_back(line);
+        }
+      }
+      return result;
+    }
 
     /** \brief Restore a borderline object from a previous execution
      *
@@ -5079,6 +5120,7 @@ public:
      *
      */
     void restoreBl(std::string dataFile){
+        loadSignature(signature);
         std::istringstream vFile;
         std::string line;
         vFile.str(dataFile);
@@ -5107,9 +5149,9 @@ public:
         if (el == "L"){
             while (el != "" && el != "C"){
                 if (el == "L"){
+                    newbl.push_back({});
                     std::getline(sline, el, ';');
                 }
-                newbl.push_back({});
                 UINT ind = newbl.size() - 1;
                 while (el != "" && el != "C" && el != "L"){
                     float cx = std::atof(el.c_str());
@@ -5131,6 +5173,10 @@ public:
                 p.y = std::atof(el.c_str());
                 std::getline(sline, el, ';');
                 p.radius = std::atof(el.c_str());
+                std::getline(sline, el, ';');
+                p.n =  (UINT) std::atoi(el.c_str());
+                std::getline(sline, el, ';');
+                p.orig =  (UINT) std::atoi(el.c_str());
                 newcircles.push_back(p);
             }
         }
@@ -5140,7 +5186,7 @@ public:
         }
         std::getline(sline, el, ';');
         if (sane){
-            setElements = nvenn();
+            nvenn sel = nvenn();
             for (UINT i = 0; i < newbl.size(); i++){
                 if (el == "S" || el == ""){
                     std::string sn;
@@ -5152,17 +5198,35 @@ public:
                         els.insert(el);
                         std::getline(sline, el, ';');
                     }
-                    setElements.addSet(sn, setElements.asVector(els));
+                    sel.addSet(sn, sel.asVector(els));
                 }
                 else{
                     sane = false;
                 }
             }
+            std::string tovenn = sel.getCode();
+            std::vector<std::string> setNames = getNames(tovenn);
+            std::vector<float> tw = getWeights(tovenn);
+            std::vector<std::string> vd;
+            vd.assign(tw.size(), "");
+            init(setNames, tw, vd);
+            setElements = sel.clone();
             savedState.bl_secure.clear();
             savedState.bl_old10.clear();
-            bl = newbl;
-            circles = newcircles;
-            writeSVG("delme.svg");
+            bl.clear();
+            circles.clear();
+            for (UINT i = 0; i < newcircles.size(); i++){
+                circles.push_back(newcircles[i].clone());
+                internalScale.addToScale(newcircles[i]);
+            }
+            for (UINT i = 0; i < newbl.size(); i++){
+                bl.push_back({});
+                for (UINT j = 0; j < newbl[i].size(); j++){
+                    bl[i].push_back(newbl[i][j].clone());
+                }
+            }
+            blSettings.doCheckTopol = true;
+            resetScale();
         }
         else{
             error = true;
@@ -5206,9 +5270,13 @@ public:
             std::string x = float2string(circles[i].x);
             std::string y = float2string(circles[i].y);
             std::string r = float2string(circles[i].radius);
+            std::string n = toString(circles[i].n);
+            std::string o = toString(circles[i].orig);
             result.addLine(x);
             result.addLine(y);
             result.addLine(r);
+            result.addLine(n);
+            result.addLine(o);
         }
         std::string rst = result.getText() + "\n" + setElements.getSets();
         return rst;
@@ -5414,7 +5482,7 @@ public:
               point ctrlsec = ctrlPoint(next2, next, curr);
               cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
                                coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
-                               coord(next.x) + " " + coord(next.y);
+                               coord(next.x) + " " + coord(next.y) + "\n";
             }
             svg.addLine("<symbol id=\"bl" + num(i) + "\">");
             svg.addLine("<path d=\"" + cpath + " Z\" />");
@@ -6160,11 +6228,11 @@ public:
      *
      */
     std::string getSignature(){
-      std::stringstream result;
-      result << seed << ";";
-      result << ngroups << ";";
+      fileText result(";", 80);
+      result.addLine(toString(seed));
+      result.addLine(toString(ngroups));
       for (UINT i = 0; i < groups.size(); i++){
-        result << groups[i] << ";";
+        result.addLine(groups[i]);
       }
       std::vector<float> origs;
       origs.assign((1 << ngroups), 0);
@@ -6173,9 +6241,9 @@ public:
         origs[n] = circles[j].orig;
       }
       for (UINT i = 0; i < origs.size(); i++){
-        result << origs[i] << ";";
+        result.addLine(toString(origs[i]));
       }
-      return result.str();
+      return result.getText();
     }
 
     void setError(std::string msg){
@@ -6184,6 +6252,7 @@ public:
     }
 
     void loadSignature(std::string sig){
+      sig = exchangeChar(sig, '\n', 0x00);
       bl.clear();
       circles.clear();
       circRadii.clear();

@@ -194,7 +194,7 @@
 	"../gh/elements.h"
 	"../gh/topol.h"
 
-1749935643 /home/vqf/proyectos/nVenn2/gh/elements.h
+1750541842 /home/vqf/proyectos/nVenn2/gh/elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
@@ -206,7 +206,7 @@
 1749721512 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 	<cstdarg>
 
-1750374822 /home/vqf/proyectos/nVenn2/gh/topol.h
+1750541823 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>
@@ -229,14 +229,14 @@
 	<fstream>
 	<sstream>
 
-1749665560 /home/vqf/proyectos/nVenn2/gh/scene.h
+1750419432 /home/vqf/proyectos/nVenn2/gh/scene.h
 	<vector>
 	<fstream>
 	<sstream>
 	<cmath>
 	"debug.h"
 
-1747314308 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
+1750421938 source:/home/vqf/proyectos/nVenn2/gh/main.cpp
 	"topol.h"
 	<stdlib.h>
 	<stdio.h>
@@ -252,15 +252,15 @@
 	"graphics.h"
 	"initogl.h"
 
-1748513433 /home/vqf/proyectos/nVenn2/gh/graphics.h
-	<GLUT/glut.h>
-	<GL/glut.h>
+1748608608 /home/vqf/proyectos/nVenn2/gh/graphics.h
+	<gl/gl.h>
+	<gl/glu.h>
 	"bmpfont.h"
 
 1748513519 /home/vqf/proyectos/nVenn2/gh/bmpfont.h
 	<cstring>
 
-1747314308 /home/vqf/proyectos/nVenn2/gh/initogl.h
+1748519341 /home/vqf/proyectos/nVenn2/gh/initogl.h
 
 1748000810 source:/home/vqf/proyectos/nVenn2/gh/testinput.cpp
 	<iostream>
@@ -290,7 +290,7 @@
 	<fstream>
 	"toGlut.h"
 
-1749901224 /home/vqf/proyectos/nVenn2/gh/toGlut.h
+1750427877 /home/vqf/proyectos/nVenn2/gh/toGlut.h
 	<GLUT/glut.h>
 	<GL/freeglut.h>
 	"bmpfont.h"

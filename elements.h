@@ -381,6 +381,19 @@ public:
     return result.str();
   }
 
+  nvenn clone(){
+    nvenn result = nvenn();
+    result.cells = cells;
+    result.tcells = tcells;
+    result.activeCells = activeCells;
+    result.sets = sets;
+    result.setNames = setNames;
+    result.regions = regions;
+    //result.warnings = warnings;
+    result.upToDate = false;
+    return result;
+  }
+
   std::string getSets(){
       fileText r(";", 80);
       for (UINT i = 0; i < sets.size(); i++){

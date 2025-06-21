@@ -83,6 +83,7 @@ int main(int argc, char** argv)
     //result.open("result.ps");
     //result.write(psfile.getText().c_str(), psfile.getText().size());
     //result.close();
+    lines.restoreBl(lines.saveBl());
     lines.writeSVG();
     //lines.centerScene();
     lines.writeHTML("/home/vqf/delmeya.html");

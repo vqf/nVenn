@@ -1,45 +1,65 @@
-Line 3172 - Next candidate: 7
-Line 3199 - Swapping 2 with 3 -> 78.7167
-Line 3172 - Next candidate: 6
-Line 3199 - Swapping 1 with 5 -> 77.3365
-Line 3199 - Swapping 4 with 5 -> 75.2922
-Line 3172 - Next candidate: 5
-Line 6408 - Outcount: 1
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 3
-Line 6408 - Outcount: 2
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 1
-Line 6408 - Outcount: 3
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 2
-Line 6408 - Outcount: 4
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 4
-Line 6408 - Outcount: 5
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 0
-Line 6408 - Outcount: 6
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 7
-Line 6408 - Outcount: 7
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 5
-Line 6408 - Outcount: 8
-Line 6409 - Cval: 75.2922
-Line 3172 - Next candidate: 1
-Line 6432 - Outcount: 1
-Line 3172 - Next candidate: 2
-Line 6432 - Outcount: 2
-Line 3172 - Next candidate: 4
-Line 6432 - Outcount: 3
-Line 3172 - Next candidate: 3
-Line 6432 - Outcount: 4
-Line 3172 - Next candidate: 6
-Line 6432 - Outcount: 5
-Line 3172 - Next candidate: 5
-Line 6432 - Outcount: 6
-Line 3172 - Next candidate: 7
-Line 6432 - Outcount: 7
-Line 3172 - Next candidate: 0
-Line 6432 - Outcount: 8
+Line 3176 - Next candidate: 7
+Line 3203 - Swapping 2 with 3 -> 76.9822
+Line 3176 - Next candidate: 6
+Line 3203 - Swapping 1 with 5 -> 75.7329
+Line 3203 - Swapping 4 with 5 -> 73.9646
+Line 3176 - Next candidate: 5
+Line 6477 - Outcount: 1
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 3
+Line 6477 - Outcount: 2
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 4
+Line 6477 - Outcount: 3
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 2
+Line 6477 - Outcount: 4
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 1
+Line 6477 - Outcount: 5
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 0
+Line 6477 - Outcount: 6
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 7
+Line 6477 - Outcount: 7
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 6
+Line 6477 - Outcount: 8
+Line 6478 - Cval: 73.9646
+Line 3176 - Next candidate: 1
+Line 3208 - Prev untie: 73.9646, new untie: 76.0583
+Line 3212 - Did not swap on untie
+Line 6501 - Outcount: 1
+Line 3176 - Next candidate: 2
+Line 6501 - Outcount: 2
+Line 3176 - Next candidate: 4
+Line 6501 - Outcount: 3
+Line 3176 - Next candidate: 3
+Line 3208 - Prev untie: 73.9646, new untie: 76.0583
+Line 3212 - Did not swap on untie
+Line 6501 - Outcount: 4
+Line 3176 - Next candidate: 6
+Line 6501 - Outcount: 5
+Line 3176 - Next candidate: 5
+Line 6501 - Outcount: 6
+Line 3176 - Next candidate: 7
+Line 6501 - Outcount: 7
+Line 3176 - Next candidate: 0
+Line 6501 - Outcount: 8
+Line 325 - Distance is zero: X: 12.1889, Y: 20.003	N: 0	radius: 0	vx: 0	vy: 0	Fx: -56573.3	Fy: -25493.8	Flags: 64
+X: 12.1889, Y: 20.003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 12.591, Y: 22.2317	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5468.52	Fy: -10519.7	Flags: 64
+X: 12.591, Y: 22.2317	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11781.5	Fy: 1328.56	Flags: 64
+X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 12.1889, Y: 20.003	N: 0	radius: 0	vx: 0	vy: 0	Fx: -56573.3	Fy: -25493.8	Flags: 64
+X: 12.1889, Y: 20.003	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 12.591, Y: 22.2317	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5468.52	Fy: -10519.7	Flags: 64
+X: 12.591, Y: 22.2317	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: -11781.5	Fy: 1328.56	Flags: 64
+X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+Line 325 - Distance is zero: X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
+X: 14.8155, Y: 22.6563	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
