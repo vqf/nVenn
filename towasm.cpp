@@ -36,7 +36,12 @@ extern "C" {
  void show_region_size(bool s);
  void show_region_description(bool s);
  void restore_prev(const char* savedState);
+ void reset();
  void run();
+}
+
+void reset(){
+  bl.reset();
 }
 
 void restore_prev(const char* savedState){

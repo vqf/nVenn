@@ -1580,6 +1580,7 @@ class borderLine
       loadPalette(0);
     }
 
+
     void init(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
       UINT i;
       setElements = nvenn();
@@ -4942,8 +4943,7 @@ public:
         if (blSettings.dt < blSettings.mindt){
           tolog(_L_ + "Cannot solve topol problems\n");
           toSVG();
-          error = true;
-          errorMessage = "Cannot solve topol problems\n";
+          setError("Cannot solve topol problems");
         }
         blSettings.dt = udt.cdt();
         //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
@@ -5236,6 +5236,17 @@ public:
 
     }
 
+    void reset(){
+      std::vector<std::string> vd;
+      vd.assign(origw.size(), "");
+      nvenn keep = setElements.clone();
+      bl.clear();
+      circles.clear();
+      init(groups, origw, vd);
+      setElements = keep.clone();
+    }
+
+
     void showInfo(){
       return;
       std::cout << "Number of groups: " << ngroups << "\n";
@@ -5353,8 +5364,8 @@ public:
 
     void setSVGColor(UINT setNumber, std::vector<UINT> rgbColor){
         std::string s = vformat("#%02x%02x%02x", rgbColor[0], rgbColor[1], rgbColor[2]);
-        std::cout << setNumber << std::endl;
-        std::cout << s << std::endl;
+        //std::cout << setNumber << std::endl;
+        //std::cout << s << std::endl;
         if (setNumber > 0){
             setNumber--;
         }
@@ -5470,9 +5481,10 @@ public:
       if (blSettings.doCheckTopol){
         if (blSettings.smoothSVG == true){
           for (i = 0; i < ngroups; i++){
+            fileText mypath(" ", 80);
             point nxt = place(svgScale, bl[i][0]);
             std::string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
-
+            mypath.addLine(cpath);
             for (j = 0; j < (bl[i].size()); j++){
               point prev = place(svgScale, bl[i][prevPoint(i, j)]);
               point curr = place(svgScale, bl[i][j]);
@@ -5480,12 +5492,13 @@ public:
               point next2 = place(svgScale, bl[i][nextPoint(i, nextPoint(i, j))]);
               point ctrlfst = ctrlPoint(prev, curr, next);
               point ctrlsec = ctrlPoint(next2, next, curr);
-              cpath += " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
+              cpath = " C " + coord(ctrlfst.x) + " " + coord(ctrlfst.y) + " " +
                                coord(ctrlsec.x) + " " + coord(ctrlsec.y) + " " +
-                               coord(next.x) + " " + coord(next.y) + "\n";
+                               coord(next.x) + " " + coord(next.y);
+              mypath.addLine(cpath);
             }
             svg.addLine("<symbol id=\"bl" + num(i) + "\">");
-            svg.addLine("<path d=\"" + cpath + " Z\" />");
+            svg.addLine("<path d=\"" + mypath.getText() + " Z\" />");
             svg.addLine("</symbol>");
           }
         } else{
@@ -6504,6 +6517,9 @@ public:
         }
       }
       else if (stepNumber == contract || stepNumber == refineCircles){
+        if (checkTopol()){
+          setError("Bad starting topology");
+        }
         scSolve();
         /*if (tosolve.getDebugSignal()){
           writeSVG();
@@ -6521,6 +6537,9 @@ public:
     }
     bool isStepFinished(UINT stepNumber = 0){
       bool result = false;
+      if (error == true){
+        return true;
+      }
       if (stepNumber == attract){
         float tc = maxCircleVsq;
         if (tc > 0 && tc < 1e-2){

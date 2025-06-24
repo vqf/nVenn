@@ -298,6 +298,9 @@ static void display(void)
         step++;
         bl.setStep(step);
         std::cout << step << std::endl;
+        if (step > 8){
+          exit(0);
+        }
     }
     sleep(0);
     //glFlush();
@@ -319,9 +322,9 @@ static void key(unsigned char key, int x, int y)
             }
             else if (step == 8){
                 bl.writeHTML(fout);
-                //std::cout << bl.saveBl() << std::endl;
-                bl.restoreBl(bl.saveBl());
-                bl.writeSVG("delme.svg");
+                //std::cout << bl.croack() << std::endl;
+                //bl.reset();
+                //std::cout << bl.croack() << std::endl;
                 step++;
             }
             else{

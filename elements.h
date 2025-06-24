@@ -79,6 +79,18 @@ class nvenn{
     }
   }
 
+  std::string cleanName(std::string in){
+    std::string result;
+    result = exchangeChar(in, ';', '_');
+    result = exchangeChar(result, '[', '-');
+    result = exchangeChar(result, ']', '-');
+    result = exchangeChar(result, '(', '-');
+    result = exchangeChar(result, ')', '-');
+    result = exchangeChar(result, '"', '_');
+    return result;
+  }
+
+
   /** \brief Intersection of two sets
    *
    * \param s1 std::unordered_set<std::string>
@@ -173,6 +185,20 @@ public:
     addInfo(desc, sep, byCol);
   }
 
+  /** \brief Converts an unordered_set of strings into a vector of strings
+   *
+   * \param us std::unordered_set<std::string>
+   * \return std::vector<std::string>
+   *
+   */
+  std::vector<std::string> asVector(std::unordered_set<std::string> us){
+        std::vector<std::string> r;
+        for (const std::string& el : us){
+            r.push_back(el);
+        }
+        return r;
+  }
+
   /** \brief Add set with name to object
    *
    * \param setName std::string
@@ -183,21 +209,33 @@ public:
   void addSet(std::string setName, std::vector<std::string> elements){
     upToDate = false;
     vset st;
-    auto p = setNames.insert(setName);
-    if (p.second){
-      st.setName = setName;
-      for (UINT j = 0; j < elements.size(); j++){
-        if (elements[j] != ""){
-          st.setElements.insert(elements[j]);
+    if (elements.size() > 0){
+      setName = cleanName(setName);
+      auto p = setNames.insert(setName);
+      if (p.second){
+        st.setName = setName;
+        for (UINT j = 0; j < elements.size(); j++){
+          std::string tel = cleanName(elements[j]);
+          if (tel != ""){
+            st.setElements.insert(tel);
+          }
         }
+        sets.push_back(st);
       }
-      sets.push_back(st);
+      else{
+        warnings << "Duplicated set name: " << setName << ". The set has not bee added" << std::endl;
+      }
     }
     else{
-      warnings << "Duplicated set name: " << setName << ". The set has not bee added" << std::endl;
+      warnings << "Empty set: " << setName << std::endl;
     }
   }
 
+  /** \brief Gets the names of the sets as a string vector
+   *
+   * \return std::vector<std::string> Names of the sets
+   *
+   */
   std::vector<std::string> names(){
     std::vector<std::string> result;
     result.insert(result.begin(), setNames.begin(), setNames.end());
@@ -292,14 +330,6 @@ public:
     return getRegion(snames);
   }
 
-  std::vector<std::string> asVector(std::unordered_set<std::string> us){
-        std::vector<std::string> r;
-        for (const std::string& el : us){
-            r.push_back(el);
-        }
-        return r;
-  }
-
 
   /** \brief Get elements in a region
    *
@@ -343,6 +373,11 @@ public:
     return result;
   }
 
+  /** \brief Shows a text representation of the sets in stdout
+   *
+   * \return void
+   *
+   */
   void showSets(){
     for (UINT i = 0; i < sets.size(); i++){
       std::cout << "Set " << sets[i].setName << ": ";
@@ -357,11 +392,11 @@ public:
     if (!upToDate){
       update();
     }
-    std::string result = "[";
+    std::vector<std::string> inner;
     for (std::vector<std::string> r : regions){
-      result += "[\"" + join("\", \"", r) + "\"], ";
+      inner.push_back("[" + join(", ", r, "\"", 80) + "]");
     }
-    result += "]";
+    std::string result = "[" + join(", ", inner, "", 80) + "]";
     return result;
   }
 

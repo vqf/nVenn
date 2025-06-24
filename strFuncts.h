@@ -25,7 +25,7 @@ public:
     {
         text << t << sep;
         cl += t.size() + 1;
-        if (sep != "\n" && w > 0 && cl > w){
+        if (w > 0 && cl > w){
             text << "\n";
             cl = 0;
         }
@@ -78,6 +78,15 @@ const std::string vformat(const char * const zcFormat, ...) {
   va_end(vaArgs);
   return std::string(zc.data(), iLen);
 }
+
+template<typename T>
+std::string toString(T input)
+{
+    std::ostringstream result;
+    result << input;
+    return result.str();
+}
+
 
 
 
@@ -204,15 +213,23 @@ public:
 };
 
 template<typename T>
-std::string join(std::string interm, std::vector<T> arr) {
+std::string join(std::string interm, std::vector<T> arr, std::string enclose = "", UINT wrap = 0) {
+  UINT cll = 0;
   if (arr.size() < 1){
-    return "";
+    return enclose + enclose;
   }
   std::stringstream r;
   for (UINT i = 0; i < (arr.size() - 1); i++){
-    r << arr[i] << interm;
+    r << enclose << arr[i] << enclose << interm;
+    if (wrap > 0){
+      cll += 2 * enclose.length() + toString(arr[i]).length() + interm.length();
+      if (cll > wrap){
+        r << "\n";
+        cll = 0;
+      }
+    }
   }
-  r << arr[arr.size() - 1];
+  r << enclose << arr[arr.size() - 1] << enclose;
   return r.str();
 }
 

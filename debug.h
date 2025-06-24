@@ -44,13 +44,6 @@ void tologa(std::string t){
   f.close();
 }
 )
-template<typename T>
-std::string toString(T input)
-{
-    std::ostringstream result;
-    result << input;
-    return result.str();
-}
 
 
 #endif // DEBUG_H_INCLUDED
