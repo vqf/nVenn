@@ -1,0 +1,38 @@
+Line 3177 - Next candidate: 3
+Line 3209 - Prev untie: 4, new untie: 4
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 4.16084
+Line 3177 - Next candidate: 6
+Line 3209 - Prev untie: 4, new untie: 4
+Line 6490 - Outcount: 2
+Line 6491 - Cval: 4.16084
+Line 3177 - Next candidate: 0
+Line 6490 - Outcount: 3
+Line 6491 - Cval: 4.16084
+Line 3177 - Next candidate: 3
+Line 3209 - Prev untie: 4.16084, new untie: 4.16084
+Line 6514 - Outcount: 1
+Line 3177 - Next candidate: 6
+Line 3209 - Prev untie: 4.16084, new untie: 4.16084
+Line 6514 - Outcount: 2
+Line 3177 - Next candidate: 0
+Line 6514 - Outcount: 3
+Line 3177 - Next candidate: 6
+Line 3209 - Prev untie: 3, new untie: 3
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 5.04664
+Line 3177 - Next candidate: 3
+Line 3209 - Prev untie: 3, new untie: 3
+Line 6490 - Outcount: 2
+Line 6491 - Cval: 5.04664
+Line 3177 - Next candidate: 0
+Line 6490 - Outcount: 3
+Line 6491 - Cval: 5.04664
+Line 3177 - Next candidate: 3
+Line 3209 - Prev untie: 5.04664, new untie: 5.04664
+Line 6514 - Outcount: 1
+Line 3177 - Next candidate: 6
+Line 3209 - Prev untie: 5.04664, new untie: 5.04664
+Line 6514 - Outcount: 2
+Line 3177 - Next candidate: 0
+Line 6514 - Outcount: 3

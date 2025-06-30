@@ -10,6 +10,26 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// nVenn
+void nVenn(String desc);
+RcppExport SEXP _nVennR_nVenn(SEXP descSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< String >::type desc(descSEXP);
+    nVenn(desc);
+    return R_NilValue;
+END_RCPP
+}
+// simulate
+void simulate(bool verbose);
+RcppExport SEXP _nVennR_simulate(SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    simulate(verbose);
+    return R_NilValue;
+END_RCPP
+}
 // svg
 String svg();
 RcppExport SEXP _nVennR_svg() {
@@ -22,6 +42,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_nVennR_nVenn", (DL_FUNC) &_nVennR_nVenn, 1},
+    {"_nVennR_simulate", (DL_FUNC) &_nVennR_simulate, 1},
     {"_nVennR_svg", (DL_FUNC) &_nVennR_svg, 0},
     {NULL, NULL, 0}
 };
