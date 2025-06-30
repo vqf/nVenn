@@ -1,7 +1,7 @@
 <map id="nvenn::getRegion" name="nvenn::getRegion">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,126,57"/>
-<area shape="rect" id="Node000002" href="$classnvenn.html#a305e3ae9a5ac35294a177bbebe52f20f" title="Intersection of two sets." alt="" coords="174,5,303,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,33,158,28,159,33,126,38"/>
-<area shape="rect" id="Node000003" href="$classnvenn.html#a9a630426ad107006771e089c3730cfc3" title="Which elements belong to the first set and not to the second." alt="" coords="189,56,288,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,50,174,57,174,63,125,55"/>
+<area shape="rect" id="Node000001" title="Get elements in a region." alt="" coords="5,31,141,56"/>
+<area shape="rect" id="Node000002" href="$classnvenn.html#a305e3ae9a5ac35294a177bbebe52f20f" title="Intersection of two sets." alt="" coords="189,5,336,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,32,175,27,176,32,142,37"/>
+<area shape="rect" id="Node000003" href="$classnvenn.html#a9a630426ad107006771e089c3730cfc3" title="Which elements belong to the first set and not to the second." alt="" coords="206,55,319,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,49,192,56,192,61,141,55"/>
 </map>

@@ -1,595 +1,360 @@
 Line 3177 - Next candidate: 46
-Line 3204 - Swapping 9 with 32 -> 1946.7
-Line 3204 - Swapping 31 with 32 -> 1945.34
-Line 3204 - Swapping 50 with 32 -> 1944.43
-Line 3204 - Swapping 52 with 32 -> 1939.45
-Line 3204 - Swapping 73 with 32 -> 1938.54
-Line 3204 - Swapping 86 with 32 -> 1937.73
-Line 3204 - Swapping 88 with 32 -> 1937.53
-Line 3204 - Swapping 96 with 32 -> 1935.35
-Line 3204 - Swapping 113 with 32 -> 1935.13
+Line 3204 - Swapping 8 with 32 -> 1929.06
+Line 3204 - Swapping 9 with 32 -> 1924.67
+Line 3204 - Swapping 46 with 32 -> 1922
+Line 3204 - Swapping 50 with 32 -> 1921.94
+Line 3204 - Swapping 52 with 32 -> 1919.3
+Line 3204 - Swapping 64 with 32 -> 1918.91
+Line 3204 - Swapping 74 with 32 -> 1915.84
+Line 3204 - Swapping 96 with 32 -> 1912.49
 Line 3177 - Next candidate: 43
-Line 3204 - Swapping 3 with 88 -> 1935.03
-Line 3204 - Swapping 31 with 88 -> 1933.44
-Line 3204 - Swapping 32 with 88 -> 1933.18
-Line 3204 - Swapping 74 with 88 -> 1931.29
-Line 3204 - Swapping 115 with 88 -> 1930.43
+Line 3204 - Swapping 3 with 88 -> 1909.28
+Line 3204 - Swapping 32 with 88 -> 1909.17
+Line 3204 - Swapping 46 with 88 -> 1908.34
+Line 3204 - Swapping 50 with 88 -> 1908.06
+Line 3204 - Swapping 113 with 88 -> 1907.23
 Line 3177 - Next candidate: 39
-Line 3204 - Swapping 18 with 115 -> 1927.49
-Line 3204 - Swapping 31 with 115 -> 1927.26
-Line 3204 - Swapping 64 with 115 -> 1927.08
+Line 3204 - Swapping 18 with 115 -> 1905.19
+Line 3204 - Swapping 40 with 115 -> 1900.97
+Line 3204 - Swapping 41 with 115 -> 1898.32
+Line 3204 - Swapping 74 with 115 -> 1896.11
+Line 3204 - Swapping 87 with 115 -> 1895.31
+Line 3204 - Swapping 96 with 115 -> 1879.68
 Line 3177 - Next candidate: 45
-Line 6490 - Outcount: 1
-Line 6491 - Cval: 1927.08
-Line 3177 - Next candidate: 7
-Line 3204 - Swapping 2 with 3 -> 1925.57
-Line 3204 - Swapping 40 with 3 -> 1924.3
-Line 3204 - Swapping 41 with 3 -> 1922.95
-Line 3204 - Swapping 73 with 3 -> 1922.34
-Line 3177 - Next candidate: 41
-Line 3204 - Swapping 1 with 87 -> 1921.27
-Line 3204 - Swapping 2 with 87 -> 1917.73
-Line 3204 - Swapping 8 with 87 -> 1915.7
-Line 3204 - Swapping 9 with 87 -> 1914.97
-Line 3204 - Swapping 14 with 87 -> 1914.44
-Line 3204 - Swapping 18 with 87 -> 1913.11
-Line 3204 - Swapping 31 with 87 -> 1909.62
-Line 3204 - Swapping 46 with 87 -> 1906.03
-Line 3204 - Swapping 88 with 87 -> 1905.62
-Line 3204 - Swapping 113 with 87 -> 1904.39
-Line 3177 - Next candidate: 42
-Line 3204 - Swapping 31 with 18 -> 1904.23
-Line 3204 - Swapping 102 with 18 -> 1904.22
-Line 3204 - Swapping 114 with 18 -> 1903.87
+Line 3204 - Swapping 46 with 64 -> 1879.06
+Line 3204 - Swapping 50 with 64 -> 1878.47
+Line 3204 - Swapping 87 with 64 -> 1877.75
 Line 3177 - Next candidate: 38
-Line 3204 - Swapping 96 with 31 -> 1895.45
-Line 3177 - Next candidate: 35
-Line 6490 - Outcount: 1
-Line 6491 - Cval: 1895.45
+Line 3204 - Swapping 8 with 31 -> 1874.97
+Line 3204 - Swapping 86 with 31 -> 1874.24
+Line 3204 - Swapping 96 with 31 -> 1871.88
+Line 3204 - Swapping 113 with 31 -> 1869.34
+Line 3204 - Swapping 115 with 31 -> 1868.69
 Line 3177 - Next candidate: 76
-Line 3204 - Swapping 2 with 52 -> 1894.52
-Line 3204 - Swapping 9 with 52 -> 1893.11
-Line 3204 - Swapping 40 with 52 -> 1890.13
-Line 3204 - Swapping 46 with 52 -> 1888.07
-Line 3204 - Swapping 73 with 52 -> 1887.48
-Line 3204 - Swapping 74 with 52 -> 1887.21
-Line 3204 - Swapping 87 with 52 -> 1882.29
-Line 3177 - Next candidate: 44
-Line 3204 - Swapping 18 with 50 -> 1881.48
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 1868.69
+Line 3177 - Next candidate: 7
+Line 6490 - Outcount: 2
+Line 6491 - Cval: 1868.69
+Line 3177 - Next candidate: 35
+Line 3204 - Swapping 30 with 114 -> 1868.2
+Line 3204 - Swapping 62 with 114 -> 1868.05
+Line 3204 - Swapping 112 with 114 -> 1864.66
 Line 3177 - Next candidate: 11
 Line 6490 - Outcount: 1
-Line 6491 - Cval: 1881.48
-Line 3177 - Next candidate: 10
-Line 3204 - Swapping 122 with 14 -> 1875.98
-Line 3177 - Next candidate: 9
-Line 3204 - Swapping 2 with 73 -> 1874.93
-Line 3204 - Swapping 3 with 73 -> 1873.56
-Line 3204 - Swapping 14 with 73 -> 1873.32
-Line 3204 - Swapping 41 with 73 -> 1871.58
-Line 3204 - Swapping 74 with 73 -> 1871.55
-Line 3177 - Next candidate: 6
-Line 3204 - Swapping 73 with 9 -> 1871.27
+Line 6491 - Cval: 1864.66
+Line 3177 - Next candidate: 44
+Line 3204 - Swapping 87 with 50 -> 1864.61
+Line 3204 - Swapping 115 with 50 -> 1864.27
+Line 3177 - Next candidate: 41
+Line 3204 - Swapping 88 with 87 -> 1864.18
+Line 3177 - Next candidate: 42
+Line 3204 - Swapping 62 with 18 -> 1863.7
+Line 3177 - Next candidate: 48
+Line 3204 - Swapping 14 with 102 -> 1862.08
+Line 3177 - Next candidate: 33
+Line 3204 - Swapping 1 with 113 -> 1861.59
+Line 3204 - Swapping 8 with 113 -> 1857.77
+Line 3204 - Swapping 30 with 113 -> 1857.53
+Line 3204 - Swapping 62 with 113 -> 1857.48
+Line 3204 - Swapping 114 with 113 -> 1856.58
 Line 3177 - Next candidate: 34
-Line 3204 - Swapping 18 with 30 -> 1870.56
-Line 3204 - Swapping 86 with 30 -> 1868.83
-Line 3204 - Swapping 102 with 30 -> 1864.62
+Line 3204 - Swapping 86 with 30 -> 1855.14
+Line 3177 - Next candidate: 3
+Line 3204 - Swapping 8 with 2 -> 1853.63
+Line 3204 - Swapping 9 with 2 -> 1853.63
+Line 3177 - Next candidate: 10
+Line 3204 - Swapping 41 with 14 -> 1852.26
+Line 3177 - Next candidate: 5
+Line 3204 - Swapping 52 with 41 -> 1851.54
+Line 3177 - Next candidate: 6
+Line 3204 - Swapping 2 with 9 -> 1851.19
+Line 3204 - Swapping 14 with 9 -> 1848.84
+Line 3177 - Next candidate: 9
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 1848.84
+Line 3177 - Next candidate: 40
+Line 3204 - Swapping 62 with 86 -> 1848.13
+Line 3177 - Next candidate: 36
+Line 3204 - Swapping 30 with 62 -> 1844.67
 Line 3177 - Next candidate: 12
 Line 6490 - Outcount: 1
-Line 6491 - Cval: 1864.62
-Line 3177 - Next candidate: 36
-Line 3204 - Swapping 86 with 62 -> 1864.43
-Line 3204 - Swapping 112 with 62 -> 1863.24
-Line 3204 - Swapping 113 with 62 -> 1862.18
-Line 3177 - Next candidate: 40
-Line 3204 - Swapping 96 with 86 -> 1860.69
-Line 3204 - Swapping 112 with 86 -> 1857.73
-Line 3177 - Next candidate: 48
-Line 3204 - Swapping 18 with 102 -> 1857.45
-Line 3204 - Swapping 86 with 102 -> 1856.89
-Line 3177 - Next candidate: 5
-Line 6490 - Outcount: 1
-Line 6491 - Cval: 1856.89
-Line 3177 - Next candidate: 3
-Line 6490 - Outcount: 2
-Line 6491 - Cval: 1856.89
-Line 3177 - Next candidate: 33
-Line 3204 - Swapping 18 with 113 -> 1855.29
-Line 3204 - Swapping 112 with 113 -> 1853.37
+Line 6491 - Cval: 1844.67
 Line 3177 - Next candidate: 64
-Line 3204 - Swapping 8 with 122 -> 1849.56
+Line 3204 - Swapping 40 with 122 -> 1843.65
+Line 3204 - Swapping 96 with 122 -> 1843.35
 Line 3177 - Next candidate: 16
 Line 6490 - Outcount: 1
-Line 6491 - Cval: 1849.56
+Line 6491 - Cval: 1843.35
 Line 3177 - Next candidate: 1
 Line 6490 - Outcount: 2
-Line 6491 - Cval: 1849.56
+Line 6491 - Cval: 1843.35
 Line 3177 - Next candidate: 4
 Line 6490 - Outcount: 3
-Line 6491 - Cval: 1849.56
+Line 6491 - Cval: 1843.35
 Line 3177 - Next candidate: 2
 Line 6490 - Outcount: 4
-Line 6491 - Cval: 1849.56
-Line 3177 - Next candidate: 8
-Line 6490 - Outcount: 5
-Line 6491 - Cval: 1849.56
+Line 6491 - Cval: 1843.35
 Line 3177 - Next candidate: 32
-Line 6490 - Outcount: 6
-Line 6491 - Cval: 1849.56
-Line 3177 - Next candidate: 0
-Line 6490 - Outcount: 7
-Line 6491 - Cval: 1849.56
-Line 3177 - Next candidate: 43
-Line 3204 - Swapping 31 with 88 -> 1848.87
-Line 3204 - Swapping 115 with 88 -> 1848.79
-Line 3177 - Next candidate: 39
-Line 3204 - Swapping 9 with 115 -> 1846.85
-Line 3177 - Next candidate: 46
-Line 3204 - Swapping 64 with 32 -> 1846.43
-Line 3177 - Next candidate: 45
+Line 3204 - Swapping 30 with 112 -> 1843.06
+Line 3177 - Next candidate: 8
 Line 6490 - Outcount: 1
-Line 6491 - Cval: 1846.43
-Line 3177 - Next candidate: 35
+Line 6491 - Cval: 1843.06
+Line 3177 - Next candidate: 0
 Line 6490 - Outcount: 2
-Line 6491 - Cval: 1846.43
-Line 3177 - Next candidate: 76
+Line 6491 - Cval: 1843.06
+Line 3177 - Next candidate: 43
 Line 6490 - Outcount: 3
-Line 6491 - Cval: 1846.43
-Line 3177 - Next candidate: 11
-Line 3204 - Swapping 3 with 74 -> 1846.43
+Line 6491 - Cval: 1843.06
+Line 3177 - Next candidate: 45
+Line 3204 - Swapping 114 with 64 -> 1842.75
+Line 3177 - Next candidate: 39
+Line 3204 - Swapping 114 with 115 -> 1842.5
+Line 3177 - Next candidate: 46
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 1842.5
+Line 3177 - Next candidate: 76
+Line 6490 - Outcount: 2
+Line 6491 - Cval: 1842.5
+Line 3177 - Next candidate: 7
+Line 6490 - Outcount: 3
+Line 6491 - Cval: 1842.5
+Line 3177 - Next candidate: 38
+Line 6490 - Outcount: 4
+Line 6491 - Cval: 1842.5
 Line 3177 - Next candidate: 42
-Line 3204 - Swapping 62 with 18 -> 1845.78
+Line 3204 - Swapping 87 with 18 -> 1842.02
+Line 3177 - Next candidate: 11
+Line 6490 - Outcount: 1
+Line 6491 - Cval: 1842.02
+Line 3177 - Next candidate: 35
+Line 3204 - Swapping 64 with 114 -> 1841.79
+Line 3177 - Next candidate: 41
+Line 3204 - Swapping 86 with 87 -> 1841.47
+Line 3204 - Swapping 114 with 87 -> 1841.25
 Line 3177 - Next candidate: 44
 Line 6490 - Outcount: 1
-Line 6491 - Cval: 1845.78
-Line 3177 - Next candidate: 7
-Line 3204 - Swapping 74 with 3 -> 1845.65
-Line 3177 - Next candidate: 38
-Line 6490 - Outcount: 1
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 41
-Line 6490 - Outcount: 2
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 9
-Line 6490 - Outcount: 3
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 33
-Line 6490 - Outcount: 4
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 6
-Line 6490 - Outcount: 5
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 12
-Line 6490 - Outcount: 6
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 40
-Line 6490 - Outcount: 7
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 5
-Line 6490 - Outcount: 8
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 3
-Line 6490 - Outcount: 9
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 48
-Line 6490 - Outcount: 10
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 2
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 34
-Line 6490 - Outcount: 11
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 10
-Line 6490 - Outcount: 12
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 3
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 3
+Line 6490 - Outcount: 4
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 36
-Line 6490 - Outcount: 13
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 5
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 5
+Line 6490 - Outcount: 6
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 9
+Line 6490 - Outcount: 7
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 6
+Line 6490 - Outcount: 8
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 10
+Line 6490 - Outcount: 9
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 12
+Line 6490 - Outcount: 10
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 33
+Line 6490 - Outcount: 11
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 40
+Line 6490 - Outcount: 12
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 64
-Line 6490 - Outcount: 14
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 13
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 16
-Line 6490 - Outcount: 15
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 14
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 1
-Line 6490 - Outcount: 16
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 15
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 4
-Line 6490 - Outcount: 17
-Line 6491 - Cval: 1845.65
+Line 6490 - Outcount: 16
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 2
+Line 6490 - Outcount: 17
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 32
 Line 6490 - Outcount: 18
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 8
 Line 6490 - Outcount: 19
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 32
-Line 6490 - Outcount: 20
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 0
+Line 6490 - Outcount: 20
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 39
 Line 6490 - Outcount: 21
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 43
 Line 6490 - Outcount: 22
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 39
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 46
 Line 6490 - Outcount: 23
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 45
 Line 6490 - Outcount: 24
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 46
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 76
 Line 6490 - Outcount: 25
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 35
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 7
 Line 6490 - Outcount: 26
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 76
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 35
 Line 6490 - Outcount: 27
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 11
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 38
 Line 6490 - Outcount: 28
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 44
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 11
 Line 6490 - Outcount: 29
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 7
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 42
 Line 6490 - Outcount: 30
-Line 6491 - Cval: 1845.65
-Line 3177 - Next candidate: 42
+Line 6491 - Cval: 1841.25
+Line 3177 - Next candidate: 44
 Line 6490 - Outcount: 31
-Line 6491 - Cval: 1845.65
+Line 6491 - Cval: 1841.25
 Line 3177 - Next candidate: 1
-Line 3204 - Swapping 122 with 1 -> 72
+Line 6514 - Outcount: 1
 Line 3177 - Next candidate: 2
-Line 3209 - Prev untie: 1850.32, new untie: 1851.38
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1850.32, new untie: 1851.49
-Line 3213 - Did not swap on untie
-Line 3204 - Swapping 41 with 8 -> 71
-Line 3204 - Swapping 73 with 8 -> 68
-Line 3204 - Swapping 122 with 8 -> 60
+Line 6514 - Outcount: 2
 Line 3177 - Next candidate: 4
-Line 3204 - Swapping 52 with 40 -> 53
-Line 3204 - Swapping 72 with 40 -> 52
+Line 3204 - Swapping 73 with 40 -> 73
 Line 3177 - Next candidate: 8
-Line 3209 - Prev untie: 1860.68, new untie: 1858.01
-Line 3204 - Swapping 86 with 72 -> 51
-Line 3209 - Prev untie: 1862.56, new untie: 1867.6
-Line 3213 - Did not swap on untie
-Line 3204 - Swapping 122 with 72 -> 50
+Line 3204 - Swapping 14 with 72 -> 71
+Line 3204 - Swapping 40 with 72 -> 69
 Line 3177 - Next candidate: 16
-Line 6514 - Outcount: 1
+Line 3204 - Swapping 62 with 96 -> 62
+Line 3209 - Prev untie: 1856.7, new untie: 1858.42
+Line 3213 - Did not swap on untie
 Line 3177 - Next candidate: 32
-Line 3209 - Prev untie: 1859.32, new untie: 1860.23
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 2
+Line 6514 - Outcount: 1
 Line 3177 - Next candidate: 64
-Line 6514 - Outcount: 3
+Line 3209 - Prev untie: 1856.7, new untie: 1858.42
+Line 3213 - Did not swap on untie
+Line 6514 - Outcount: 2
 Line 3177 - Next candidate: 3
-Line 6514 - Outcount: 4
+Line 6514 - Outcount: 3
 Line 3177 - Next candidate: 6
-Line 3209 - Prev untie: 1859.32, new untie: 1859.14
-Line 3209 - Prev untie: 1859.14, new untie: 1859.6
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1859.14, new untie: 1864.02
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 5
+Line 6514 - Outcount: 4
 Line 3177 - Next candidate: 10
-Line 6514 - Outcount: 6
+Line 3204 - Swapping 86 with 14 -> 56
+Line 3204 - Swapping 88 with 14 -> 50
 Line 3177 - Next candidate: 34
-Line 3204 - Swapping 113 with 30 -> 45
+Line 3209 - Prev untie: 1858.75, new untie: 1860.32
+Line 3213 - Did not swap on untie
+Line 6514 - Outcount: 1
 Line 3177 - Next candidate: 5
-Line 6514 - Outcount: 1
+Line 6514 - Outcount: 2
 Line 3177 - Next candidate: 12
-Line 6514 - Outcount: 2
+Line 3204 - Swapping 62 with 46 -> 49
+Line 3204 - Swapping 73 with 46 -> 47
 Line 3177 - Next candidate: 36
-Line 6514 - Outcount: 3
+Line 3204 - Swapping 31 with 62 -> 32
 Line 3177 - Next candidate: 9
-Line 3204 - Swapping 14 with 73 -> 44
+Line 3204 - Swapping 41 with 73 -> 31
 Line 3177 - Next candidate: 40
-Line 3204 - Swapping 87 with 86 -> 39
+Line 3209 - Prev untie: 1854.32, new untie: 1855.92
+Line 3213 - Did not swap on untie
+Line 3204 - Swapping 18 with 86 -> 30
 Line 3177 - Next candidate: 48
-Line 3204 - Swapping 30 with 102 -> 38
-Line 3209 - Prev untie: 1865.99, new untie: 1864.3
+Line 6514 - Outcount: 1
 Line 3177 - Next candidate: 33
-Line 3204 - Swapping 114 with 113 -> 33
+Line 6514 - Outcount: 2
 Line 3177 - Next candidate: 7
-Line 3209 - Prev untie: 1864.46, new untie: 1865.62
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 1
+Line 6514 - Outcount: 3
 Line 3177 - Next candidate: 42
-Line 6514 - Outcount: 2
+Line 6514 - Outcount: 4
 Line 3177 - Next candidate: 38
-Line 6514 - Outcount: 3
-Line 3177 - Next candidate: 44
-Line 6514 - Outcount: 4
-Line 3177 - Next candidate: 76
-Line 3204 - Swapping 40 with 52 -> 31
-Line 3177 - Next candidate: 11
-Line 6514 - Outcount: 1
-Line 3177 - Next candidate: 41
-Line 6514 - Outcount: 2
-Line 3177 - Next candidate: 35
-Line 6514 - Outcount: 3
-Line 3177 - Next candidate: 46
-Line 3209 - Prev untie: 1863.95, new untie: 1863.52
-Line 6514 - Outcount: 4
-Line 3177 - Next candidate: 45
-Line 3209 - Prev untie: 1863.52, new untie: 1863.95
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1863.52, new untie: 1863.36
 Line 6514 - Outcount: 5
-Line 3177 - Next candidate: 43
-Line 3209 - Prev untie: 1863.36, new untie: 1863.62
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1863.36, new untie: 1863.78
-Line 3213 - Did not swap on untie
+Line 3177 - Next candidate: 44
 Line 6514 - Outcount: 6
-Line 3177 - Next candidate: 39
-Line 3209 - Prev untie: 1863.36, new untie: 1863.52
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1863.36, new untie: 1863.78
+Line 3177 - Next candidate: 76
+Line 3209 - Prev untie: 1855.24, new untie: 1855.32
 Line 3213 - Did not swap on untie
 Line 6514 - Outcount: 7
+Line 3177 - Next candidate: 11
+Line 3204 - Swapping 32 with 74 -> 27
+Line 3177 - Next candidate: 41
+Line 6514 - Outcount: 1
+Line 3177 - Next candidate: 35
+Line 6514 - Outcount: 2
+Line 3177 - Next candidate: 46
+Line 6514 - Outcount: 3
+Line 3177 - Next candidate: 45
+Line 6514 - Outcount: 4
+Line 3177 - Next candidate: 43
+Line 6514 - Outcount: 5
+Line 3177 - Next candidate: 39
+Line 6514 - Outcount: 6
 Line 3177 - Next candidate: 0
-Line 6514 - Outcount: 8
+Line 6514 - Outcount: 7
 Line 3177 - Next candidate: 1
-Line 6514 - Outcount: 9
+Line 6514 - Outcount: 8
 Line 3177 - Next candidate: 2
-Line 6514 - Outcount: 10
+Line 6514 - Outcount: 9
 Line 3177 - Next candidate: 4
-Line 6514 - Outcount: 11
+Line 6514 - Outcount: 10
 Line 3177 - Next candidate: 8
-Line 6514 - Outcount: 12
+Line 6514 - Outcount: 11
 Line 3177 - Next candidate: 16
-Line 6514 - Outcount: 13
+Line 3209 - Prev untie: 1856.04, new untie: 1857.76
+Line 3213 - Did not swap on untie
+Line 6514 - Outcount: 12
 Line 3177 - Next candidate: 32
-Line 3209 - Prev untie: 1863.36, new untie: 1865.05
+Line 6514 - Outcount: 13
+Line 3177 - Next candidate: 64
+Line 3209 - Prev untie: 1856.04, new untie: 1857.76
 Line 3213 - Did not swap on untie
 Line 6514 - Outcount: 14
-Line 3177 - Next candidate: 64
+Line 3177 - Next candidate: 3
 Line 6514 - Outcount: 15
-Line 3177 - Next candidate: 3
-Line 6514 - Outcount: 16
 Line 3177 - Next candidate: 6
-Line 3209 - Prev untie: 1863.36, new untie: 1864.51
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 17
-Line 3177 - Next candidate: 10
-Line 6514 - Outcount: 18
-Line 3177 - Next candidate: 34
-Line 6514 - Outcount: 19
-Line 3177 - Next candidate: 5
-Line 6514 - Outcount: 20
-Line 3177 - Next candidate: 12
-Line 6514 - Outcount: 21
-Line 3177 - Next candidate: 36
-Line 6514 - Outcount: 22
-Line 3177 - Next candidate: 9
-Line 6514 - Outcount: 23
-Line 3177 - Next candidate: 40
-Line 3209 - Prev untie: 1863.36, new untie: 1861.65
-Line 6514 - Outcount: 24
-Line 3177 - Next candidate: 48
-Line 3209 - Prev untie: 1861.65, new untie: 1863.34
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 25
-Line 3177 - Next candidate: 33
-Line 6514 - Outcount: 26
-Line 3177 - Next candidate: 7
-Line 3209 - Prev untie: 1861.65, new untie: 1862.81
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 27
-Line 3177 - Next candidate: 42
-Line 3204 - Swapping 31 with 18 -> 30
-Line 3177 - Next candidate: 38
-Line 6514 - Outcount: 1
-Line 3177 - Next candidate: 44
-Line 3209 - Prev untie: 1861.81, new untie: 1862.65
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 2
-Line 3177 - Next candidate: 76
-Line 6514 - Outcount: 3
-Line 3177 - Next candidate: 11
-Line 6514 - Outcount: 4
-Line 3177 - Next candidate: 41
-Line 6514 - Outcount: 5
-Line 3177 - Next candidate: 35
-Line 6514 - Outcount: 6
-Line 3177 - Next candidate: 46
-Line 3209 - Prev untie: 1861.81, new untie: 1862.65
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 7
-Line 3177 - Next candidate: 45
-Line 3209 - Prev untie: 1861.81, new untie: 1862.07
-Line 3213 - Did not swap on untie
-Line 3209 - Prev untie: 1861.81, new untie: 1861.97
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 8
-Line 3177 - Next candidate: 43
-Line 3209 - Prev untie: 1861.81, new untie: 1862.07
-Line 3213 - Did not swap on untie
-Line 3204 - Swapping 115 with 88 -> 27
-Line 3177 - Next candidate: 39
-Line 6514 - Outcount: 1
-Line 3177 - Next candidate: 0
-Line 6514 - Outcount: 2
-Line 3177 - Next candidate: 1
-Line 6514 - Outcount: 3
-Line 3177 - Next candidate: 2
-Line 6514 - Outcount: 4
-Line 3177 - Next candidate: 4
-Line 6514 - Outcount: 5
-Line 3177 - Next candidate: 8
-Line 6514 - Outcount: 6
-Line 3177 - Next candidate: 16
-Line 6514 - Outcount: 7
-Line 3177 - Next candidate: 32
-Line 3209 - Prev untie: 1862.23, new untie: 1863.92
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 8
-Line 3177 - Next candidate: 64
-Line 6514 - Outcount: 9
-Line 3177 - Next candidate: 3
-Line 6514 - Outcount: 10
-Line 3177 - Next candidate: 6
-Line 3209 - Prev untie: 1862.23, new untie: 1863.39
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 11
-Line 3177 - Next candidate: 10
-Line 6514 - Outcount: 12
-Line 3177 - Next candidate: 34
-Line 3204 - Swapping 18 with 30 -> 25
-Line 3177 - Next candidate: 5
-Line 6514 - Outcount: 1
-Line 3177 - Next candidate: 12
-Line 6514 - Outcount: 2
-Line 3177 - Next candidate: 36
-Line 6514 - Outcount: 3
-Line 3177 - Next candidate: 9
-Line 6514 - Outcount: 4
-Line 3177 - Next candidate: 40
-Line 6514 - Outcount: 5
-Line 3177 - Next candidate: 48
-Line 3209 - Prev untie: 1863.5, new untie: 1865.19
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 6
-Line 3177 - Next candidate: 33
-Line 6514 - Outcount: 7
-Line 3177 - Next candidate: 7
-Line 6514 - Outcount: 8
-Line 3177 - Next candidate: 42
-Line 6514 - Outcount: 9
-Line 3177 - Next candidate: 38
-Line 6514 - Outcount: 10
-Line 3177 - Next candidate: 44
-Line 3209 - Prev untie: 1863.5, new untie: 1864.34
-Line 3213 - Did not swap on untie
-Line 6514 - Outcount: 11
-Line 3177 - Next candidate: 76
-Line 6514 - Outcount: 12
-Line 3177 - Next candidate: 11
-Line 6514 - Outcount: 13
-Line 3177 - Next candidate: 41
-Line 6514 - Outcount: 14
-Line 3177 - Next candidate: 35
-Line 6514 - Outcount: 15
-Line 3177 - Next candidate: 46
-Line 3209 - Prev untie: 1863.5, new untie: 1864.34
-Line 3213 - Did not swap on untie
 Line 6514 - Outcount: 16
-Line 3177 - Next candidate: 45
-Line 3209 - Prev untie: 1863.5, new untie: 1863.05
+Line 3177 - Next candidate: 10
 Line 6514 - Outcount: 17
-Line 3177 - Next candidate: 43
-Line 3209 - Prev untie: 1863.05, new untie: 1863.5
-Line 3213 - Did not swap on untie
+Line 3177 - Next candidate: 34
 Line 6514 - Outcount: 18
-Line 3177 - Next candidate: 39
+Line 3177 - Next candidate: 5
 Line 6514 - Outcount: 19
-Line 3177 - Next candidate: 0
-Line 6514 - Outcount: 20
-Line 3177 - Next candidate: 1
-Line 6514 - Outcount: 21
-Line 3177 - Next candidate: 2
-Line 6514 - Outcount: 22
-Line 3177 - Next candidate: 4
-Line 6514 - Outcount: 23
-Line 3177 - Next candidate: 8
-Line 6514 - Outcount: 24
-Line 3177 - Next candidate: 16
-Line 6514 - Outcount: 25
-Line 3177 - Next candidate: 32
-Line 3209 - Prev untie: 1863.05, new untie: 1864.74
+Line 3177 - Next candidate: 12
+Line 3209 - Prev untie: 1856.04, new untie: 1856.12
 Line 3213 - Did not swap on untie
+Line 6514 - Outcount: 20
+Line 3177 - Next candidate: 36
+Line 6514 - Outcount: 21
+Line 3177 - Next candidate: 9
+Line 6514 - Outcount: 22
+Line 3177 - Next candidate: 40
+Line 6514 - Outcount: 23
+Line 3177 - Next candidate: 48
+Line 6514 - Outcount: 24
+Line 3177 - Next candidate: 33
+Line 6514 - Outcount: 25
+Line 3177 - Next candidate: 7
 Line 6514 - Outcount: 26
-Line 3177 - Next candidate: 64
+Line 3177 - Next candidate: 42
 Line 6514 - Outcount: 27
-Line 3177 - Next candidate: 3
+Line 3177 - Next candidate: 38
 Line 6514 - Outcount: 28
-Line 3177 - Next candidate: 6
+Line 3177 - Next candidate: 44
 Line 6514 - Outcount: 29
-Line 3177 - Next candidate: 10
+Line 3177 - Next candidate: 76
+Line 3209 - Prev untie: 1856.04, new untie: 1856.12
+Line 3213 - Did not swap on untie
 Line 6514 - Outcount: 30
-Line 3177 - Next candidate: 34
+Line 3177 - Next candidate: 11
 Line 6514 - Outcount: 31
-Line 325 - Distance is zero: X: 97.8477, Y: 134.818	N: 0	radius: 0	vx: 0	vy: 0	Fx: -74875.4	Fy: -4678.8	Flags: 64
-X: 97.8477, Y: 134.818	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14162.5	Fy: 4690.25	Flags: 64
-X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 101.836, Y: 135.067	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5280	Fy: -13953.4	Flags: 64
-X: 101.836, Y: 135.067	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 3151.55	Fy: 14979.4	Flags: 64
-X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14979.4	Fy: -3151.55	Flags: 64
-X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3151.55	Fy: -14979.4	Flags: 64
-X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14979.4	Fy: 3151.55	Flags: 64
-X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: -44252.2	Fy: -64673.8	Flags: 64
-X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3151.55	Fy: -14979.4	Flags: 64
-X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14979.4	Fy: 3151.55	Flags: 64
-X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 3151.55	Fy: 14979.4	Flags: 64
-X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14979.4	Fy: -3151.55	Flags: 64
-X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 97.8477, Y: 134.818	N: 0	radius: 0	vx: 0	vy: 0	Fx: -74875.4	Fy: -4678.8	Flags: 64
-X: 97.8477, Y: 134.818	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14162.5	Fy: 4690.25	Flags: 64
-X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.9616, Y: 133.03	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 101.836, Y: 135.067	N: 0	radius: 0	vx: 0	vy: 0	Fx: -5280	Fy: -13953.4	Flags: 64
-X: 101.836, Y: 135.067	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 3151.55	Fy: 14979.4	Flags: 64
-X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 102.722, Y: 93.8456	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14979.4	Fy: -3151.55	Flags: 64
-X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.9423, Y: 93.3244	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3151.55	Fy: -14979.4	Flags: 64
-X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 99.4211, Y: 96.1044	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14979.4	Fy: 3151.55	Flags: 64
-X: 102.201, Y: 96.6256	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: -44252.2	Fy: -64673.8	Flags: 64
-X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: -3151.55	Fy: -14979.4	Flags: 64
-X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 114.956, Y: 118.808	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: -14979.4	Fy: 3151.55	Flags: 64
-X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 117.736, Y: 119.329	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 3151.55	Fy: 14979.4	Flags: 64
-X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-X: 118.257, Y: 116.549	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 325 - Distance is zero: X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 14979.4	Fy: -3151.55	Flags: 64
-X: 115.477, Y: 116.028	N: 0	radius: 0	vx: 0	vy: 0	Fx: 0	Fy: 0	Flags: 64
-Line 2560 - Mc: 0.171449, minc: 0.113228, result: 0.685797
-Line 2560 - Mc: 0.165619, minc: 0.113228, result: 0.132495
+Line 2560 - Mc: 0.143101, minc: 0.113228, result: 0.572406
+Line 2560 - Mc: 0.141519, minc: 0.113228, result: 0.113215

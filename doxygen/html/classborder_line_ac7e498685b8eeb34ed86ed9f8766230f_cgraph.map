@@ -1,18 +1,21 @@
 <map id="borderLine::addLines" name="borderLine::addLines">
-<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,56,147,83"/>
-<area shape="rect" id="Node000002" href="$classborder_line.html#ae73fab0d3edeb32b1ece09e26adc6426" title=" " alt="" coords="195,27,363,53"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,57,179,52,180,57,147,62"/>
-<area shape="rect" id="Node000007" href="$classborder_line.html#af416a4bb4c4894d3899f1ed9d1b3300a" title=" " alt="" coords="197,77,361,120"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="147,77,181,82,181,87,146,82"/>
-<area shape="rect" id="Node000003" href="$classgroup_iterator.html#a7fcf587d0750100c33bd9d5228201308" title=" " alt="" coords="411,5,571,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,29,395,26,395,31,364,34"/>
-<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a5a60a0876ca3f292356b1b452f461ff1" title=" " alt="" coords="432,56,551,83"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="364,49,416,56,416,62,363,54"/>
-<area shape="rect" id="Node000006" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="433,107,549,133"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="334,51,364,63,388,78,412,92,427,99,425,104,410,97,386,82,362,68,332,56"/>
-<area shape="rect" id="Node000005" href="$classgroup_iterator.html#aa5c4b65130358159457c3300bc297504" title=" " alt="" coords="619,56,758,83"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="551,67,604,67,604,72,551,72"/>
-<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="335,74,362,63,410,42,428,35,430,40,412,46,364,68,337,79"/>
-<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="361,85,416,77,416,82,362,90"/>
-<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="361,104,418,110,417,115,361,110"/>
+<area shape="rect" id="Node000001" title="Adds group lines." alt="" coords="5,103,163,128"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#ae73fab0d3edeb32b1ece09e26adc6426" title=" " alt="" coords="211,103,401,128"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,113,197,113,197,118,163,118"/>
+<area shape="rect" id="Node000006" href="$str_functs_8h.html#a7824e0dc9a06a7ab03df4c0bd0ddcd83" title=" " alt="" coords="503,153,576,179"/>
+<area shape="poly" id="edge11_Node000001_Node000006" title=" " alt="" coords="141,125,211,138,363,154,489,161,489,167,362,159,210,143,140,131"/>
+<area shape="rect" id="Node000008" href="$classborder_line.html#af416a4bb4c4894d3899f1ed9d1b3300a" title=" " alt="" coords="213,38,399,78"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="133,100,214,79,216,84,135,105"/>
+<area shape="rect" id="Node000003" href="$classgroup_iterator.html#a7fcf587d0750100c33bd9d5228201308" title=" " alt="" coords="449,5,629,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,100,400,88,414,76,423,64,433,52,448,40,461,33,463,38,451,44,436,56,427,68,418,80,403,92,373,105"/>
+<area shape="rect" id="Node000004" href="$classgroup_iterator.html#a5a60a0876ca3f292356b1b452f461ff1" title=" " alt="" coords="471,55,607,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,100,463,80,464,85,369,105"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="366,126,490,153,489,158,365,131"/>
+<area shape="rect" id="Node000007" href="$classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb" title=" " alt="" coords="472,104,607,129"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="402,113,458,114,458,119,402,119"/>
+<area shape="rect" id="Node000005" href="$classgroup_iterator.html#aa5c4b65130358159457c3300bc297504" title=" " alt="" coords="677,55,832,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="607,65,664,65,664,70,607,70"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="399,39,451,30,452,36,400,45"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="399,59,458,61,457,67,399,64"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="387,75,476,98,474,103,385,81"/>
 </map>

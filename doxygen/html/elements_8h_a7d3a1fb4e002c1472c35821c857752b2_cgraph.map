@@ -1,5 +1,5 @@
 <map id="getSep" name="getSep">
-<area shape="rect" id="Node000001" title="Heuristically predict which separator is being used in a table." alt="" coords="5,5,68,32"/>
-<area shape="rect" id="Node000002" href="$str_functs_8h.html#a8285c02c556efa6cd210d8dffb80b4cb" title=" " alt="" coords="116,5,196,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,16,100,16,100,21,68,21"/>
+<area shape="rect" id="Node000001" title="1 for true, 2 for false, 0 for autodetect" alt="" coords="5,5,72,31"/>
+<area shape="rect" id="Node000002" href="$str_functs_8h.html#a8285c02c556efa6cd210d8dffb80b4cb" title=" " alt="" coords="120,5,208,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,15,106,15,106,21,72,21"/>
 </map>

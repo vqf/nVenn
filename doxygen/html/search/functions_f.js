@@ -13,7 +13,7 @@ var searchData=
   ['operator_3c_3d_10',['operator&lt;=',['../classtangent.html#a2f2753315cdfda104ac2b240a4e129ac',1,'tangent']]],
   ['operator_3d_11',['operator=',['../classl_counter.html#a2abd30e75b4119341cae9b663d83f826',1,'lCounter']]],
   ['operator_3d_3d_12',['operator==',['../classtangent.html#aea5cacbd10a2d0f4ad5887cf894ec613',1,'tangent::operator==()'],['../scene_8h.html#a1a106e73163e4f0f4cd0c53f5b1682cd',1,'operator==():&#160;scene.h']]],
-  ['optimizationstep_13',['optimizationstep',['../classoptimization_step.html#ab1384e272bd115440affe6aaa2d18375',1,'optimizationStep::optimizationStep()'],['../classoptimization_step.html#ae7e2d6a72ff63b7645435e605f107e9d',1,'optimizationStep::optimizationStep(float comp)']]],
+  ['optimizationstep_13',['optimizationstep',['../classoptimization_step.html#ae7e2d6a72ff63b7645435e605f107e9d',1,'optimizationStep::optimizationStep(float comp)'],['../classoptimization_step.html#ab1384e272bd115440affe6aaa2d18375',1,'optimizationStep::optimizationStep()']]],
   ['outcompactness_14',['outCompactness',['../classborder_line.html#aaa40c6a5c893d91e52778868a4bb35d8',1,'borderLine']]],
   ['outcrosses_15',['outCrosses',['../classborder_line.html#a5268e89d3cdec6d5580eb46c26128bf3',1,'borderLine']]],
   ['outsorter_16',['outsorter',['../topol_8h.html#a298d8608b46cb51c8e644b0a24cd8cdf',1,'topol.h']]]

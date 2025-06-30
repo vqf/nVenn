@@ -1,6 +1,5 @@
 var topol_8h =
 [
-    [ "fileText", "classfile_text.html", "classfile_text" ],
     [ "blData", "structbl_data.html", "structbl_data" ],
     [ "groupIterator", "classgroup_iterator.html", "classgroup_iterator" ],
     [ "tangent", "classtangent.html", "classtangent" ],
@@ -8,7 +7,6 @@ var topol_8h =
     [ "timeMaster", "classtime_master.html", "classtime_master" ],
     [ "lCounter", "classl_counter.html", "classl_counter" ],
     [ "scale", "classscale.html", "classscale" ],
-    [ "rgb", "structrgb.html", "structrgb" ],
     [ "outsiderInfo", "structoutsider_info.html", "structoutsider_info" ],
     [ "optimizationStep", "classoptimization_step.html", "classoptimization_step" ],
     [ "binMap", "classbin_map.html", "classbin_map" ],
@@ -16,12 +14,14 @@ var topol_8h =
     [ "blst", "structblst.html", "structblst" ],
     [ "outc", "structoutc.html", "structoutc" ],
     [ "csts", "structcsts.html", "structcsts" ],
+    [ "svgOpts", "structsvg_opts.html", "structsvg_opts" ],
     [ "borderLine", "classborder_line.html", "classborder_line" ],
     [ "AIR", "topol_8h.html#a9c9ed176f84de328afaf7f514ded7df3", null ],
     [ "blData", "topol_8h.html#a22fc9834a08134d3443f2436b790abb0", null ],
     [ "blState", "topol_8h.html#adaa11017ee84f170b1bbda9e0ec80cb0", null ],
     [ "constants", "topol_8h.html#a9e562247869d99de55ee095a365e26e4", null ],
     [ "outCounters", "topol_8h.html#a512ac4d06080db2b15e6f22c36590e10", null ],
+    [ "svgOptions", "topol_8h.html#a1150e96be4b6acc02b734b369593e70c", null ],
     [ "crossResult", "topol_8h.html#ab1493d7f38e275524a171f2be7927771", [
       [ "crosses", "topol_8h.html#ab1493d7f38e275524a171f2be7927771a7400dd3b7d7b599a12e94942b37076e6", null ],
       [ "doesnotcross", "topol_8h.html#ab1493d7f38e275524a171f2be7927771aadef1aaabf91ca1bfe30bdd789c8e6a5", null ],
@@ -40,6 +40,8 @@ var topol_8h =
     [ "_D_", "topol_8h.html#a2385d9b72e38556d0eb0eb4978b623c7", null ],
     [ "arr2vec", "topol_8h.html#a29f42e5c6a80b83e95ee114988b3d85a", null ],
     [ "buildTw", "topol_8h.html#aa08e319f470d55490595235d731cb072", null ],
+    [ "fromSetFile", "topol_8h.html#aba51b1ab8b0b42c542ae090ddd8ad003", null ],
+    [ "fromSets", "topol_8h.html#a0dae4c72a07f22955bc525bad7db487f", null ],
     [ "getFileInfo", "topol_8h.html#aa53645e28d22928943a59124ab17928c", null ],
     [ "getInfoFromStream", "topol_8h.html#a39073f0a88f60510a31b69bfd5024438", null ],
     [ "isNAN", "topol_8h.html#ada7b4aca29a3824271fbb4931081c4b7", null ],

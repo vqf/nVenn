@@ -16,12 +16,14 @@ var annotated_dup =
     [ "optimizationStep", "classoptimization_step.html", "classoptimization_step" ],
     [ "outc", "structoutc.html", "structoutc" ],
     [ "outsiderInfo", "structoutsider_info.html", "structoutsider_info" ],
+    [ "palettes", "classpalettes.html", "classpalettes" ],
     [ "point", "classpoint.html", "classpoint" ],
     [ "rgb", "structrgb.html", "structrgb" ],
     [ "scale", "classscale.html", "classscale" ],
     [ "scene", "classscene.html", "classscene" ],
     [ "splitString", "classsplit_string.html", "classsplit_string" ],
     [ "springLink", "structspring_link.html", "structspring_link" ],
+    [ "svgOpts", "structsvg_opts.html", "structsvg_opts" ],
     [ "tangent", "classtangent.html", "classtangent" ],
     [ "timeMaster", "classtime_master.html", "classtime_master" ]
 ];

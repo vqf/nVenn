@@ -3,7 +3,7 @@ var searchData=
   ['v_0',['v',['../classsplit_string.html#ae8430077e1aea0b26c80b8c0556841bf',1,'splitString']]],
   ['val_1',['val',['../classgroup_iterator.html#a09804b2dfaeb7435a9e2332e681941bb',1,'groupIterator']]],
   ['vertex_2',['vertex',['../structoutsider_info.html#a326bb1a1df23b20795f4bf8cf3fe034d',1,'outsiderInfo']]],
-  ['vformat_3',['vformat',['../classborder_line.html#ae0a3c3299df6bf91e7bfcca08ce676f2',1,'borderLine']]],
+  ['vformat_3',['vformat',['../str_functs_8h.html#ae2ae57fa2b078d13ff69bb3dff34adc7',1,'strFuncts.h']]],
   ['viewcanfinish_4',['viewCanFinish',['../classdecider.html#a2f418b2651e58300333205f4d043cb8b',1,'decider']]],
   ['viewcounter_5',['viewCounter',['../classdecider.html#adfdcbc31fc08077fd28d1a4d7f799588',1,'decider']]],
   ['viewcycleswithoutimprovement_6',['viewCyclesWithoutImprovement',['../classdecider.html#a2a7bbe5914aab2e257e7f2a27249725e',1,'decider']]],

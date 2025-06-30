@@ -101,13 +101,15 @@ $(document).ready(function(){initNavTree('classfile_text.html',''); initResizabl
 <p>Manages a text stream.  
  <a href="classfile_text.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="topol_8h_source.html">topol.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="str_functs_8h_source.html">strFuncts.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab0c09567658f74be13d532b887a4fbc3" id="r_ab0c09567658f74be13d532b887a4fbc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#ab0c09567658f74be13d532b887a4fbc3">addLine</a> (std::string <a class="el" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a>)</td></tr>
+<tr class="memitem:a70bb0fa304c3c840dd55849b3313b8ae" id="r_a70bb0fa304c3c840dd55849b3313b8ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a70bb0fa304c3c840dd55849b3313b8ae">fileText</a> (std::string lineSep=&quot;\n&quot;, <a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> wrap=0)</td></tr>
+<tr class="separator:a70bb0fa304c3c840dd55849b3313b8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c09567658f74be13d532b887a4fbc3" id="r_ab0c09567658f74be13d532b887a4fbc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#ab0c09567658f74be13d532b887a4fbc3">addLine</a> (std::string t)</td></tr>
 <tr class="separator:ab0c09567658f74be13d532b887a4fbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eabc19fc666794ad587e1b49fc93771" id="r_a9eabc19fc666794ad587e1b49fc93771"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a9eabc19fc666794ad587e1b49fc93771">addText</a> (std::string <a class="el" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a>)</td></tr>
+<tr class="memitem:a9eabc19fc666794ad587e1b49fc93771" id="r_a9eabc19fc666794ad587e1b49fc93771"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a9eabc19fc666794ad587e1b49fc93771">addText</a> (std::string t)</td></tr>
 <tr class="separator:a9eabc19fc666794ad587e1b49fc93771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a999505841e6ae8c856357e4e2e0ea9be" id="r_a999505841e6ae8c856357e4e2e0ea9be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a999505841e6ae8c856357e4e2e0ea9be">clearText</a> ()</td></tr>
 <tr class="separator:a999505841e6ae8c856357e4e2e0ea9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,12 +120,57 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a5c32e96525e44496d6a9d185dfef18cd" id="r_a5c32e96525e44496d6a9d185dfef18cd"><td class="memItemLeft" align="right" valign="top">std::ostringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a5c32e96525e44496d6a9d185dfef18cd">text</a></td></tr>
 <tr class="separator:a5c32e96525e44496d6a9d185dfef18cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5747d3ede349e3dce4a0b60620c4e12" id="r_ad5747d3ede349e3dce4a0b60620c4e12"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#ad5747d3ede349e3dce4a0b60620c4e12">sep</a></td></tr>
+<tr class="separator:ad5747d3ede349e3dce4a0b60620c4e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b9e4eaaa5546bf131f02cc49fd7affc" id="r_a1b9e4eaaa5546bf131f02cc49fd7affc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#a1b9e4eaaa5546bf131f02cc49fd7affc">w</a></td></tr>
+<tr class="separator:a1b9e4eaaa5546bf131f02cc49fd7affc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6cfb484384954f7da5d7a78f7beb20" id="r_afd6cfb484384954f7da5d7a78f7beb20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_text.html#afd6cfb484384954f7da5d7a78f7beb20">cl</a></td></tr>
+<tr class="separator:afd6cfb484384954f7da5d7a78f7beb20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages a text stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00199">199</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00012">12</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a70bb0fa304c3c840dd55849b3313b8ae" name="a70bb0fa304c3c840dd55849b3313b8ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70bb0fa304c3c840dd55849b3313b8ae">&#9670;&#160;</a></span>fileText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">fileText::fileText </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>lineSep</em> = <code>&quot;\n&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a>&#160;</td>
+          <td class="paramname"><em>wrap</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00019">19</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab0c09567658f74be13d532b887a4fbc3" name="ab0c09567658f74be13d532b887a4fbc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0c09567658f74be13d532b887a4fbc3">&#9670;&#160;</a></span>addLine()</h2>
 
@@ -148,7 +195,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00203">203</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00024">24</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
 
 </div>
 </div>
@@ -176,7 +223,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00207">207</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00033">33</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
 
 </div>
 </div>
@@ -203,7 +250,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00210">210</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00036">36</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
 
 </div>
 </div>
@@ -230,11 +277,59 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00214">214</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00040">40</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="afd6cfb484384954f7da5d7a78f7beb20" name="afd6cfb484384954f7da5d7a78f7beb20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd6cfb484384954f7da5d7a78f7beb20">&#9670;&#160;</a></span>cl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> fileText::cl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00017">17</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
+
+</div>
+</div>
+<a id="ad5747d3ede349e3dce4a0b60620c4e12" name="ad5747d3ede349e3dce4a0b60620c4e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5747d3ede349e3dce4a0b60620c4e12">&#9670;&#160;</a></span>sep</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string fileText::sep</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00015">15</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
+
+</div>
+</div>
 <a id="a5c32e96525e44496d6a9d185dfef18cd" name="a5c32e96525e44496d6a9d185dfef18cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c32e96525e44496d6a9d185dfef18cd">&#9670;&#160;</a></span>text</h2>
 
@@ -255,12 +350,36 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="topol_8h_source.html#l00201">201</a> of file <a class="el" href="topol_8h_source.html">topol.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00014">14</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
+
+</div>
+</div>
+<a id="a1b9e4eaaa5546bf131f02cc49fd7affc" name="a1b9e4eaaa5546bf131f02cc49fd7affc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b9e4eaaa5546bf131f02cc49fd7affc">&#9670;&#160;</a></span>w</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec">UINT</a> fileText::w</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="str_functs_8h_source.html#l00016">16</a> of file <a class="el" href="str_functs_8h_source.html">strFuncts.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="topol_8h_source.html">topol.h</a></li>
+<li><a class="el" href="str_functs_8h_source.html">strFuncts.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

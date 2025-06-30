@@ -123,8 +123,7 @@ $(document).ready(function(){initNavTree('debug_8h_source.html',''); initResizab
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="debug_8h.html#a11a64a793e0a7d618dc7729fe6557ea5">   30</a></span><a class="code hl_define" href="debug_8h.html#abb4c8d35a332bd694679c69e9d133a65">DEBUGONLY</a>(</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><a class="code hl_define" href="debug_8h.html#abb4c8d35a332bd694679c69e9d133a65">DEBUGONLY</a>(</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> restart_log(){</div>
@@ -134,27 +133,17 @@ $(document).ready(function(){initNavTree('debug_8h_source.html',''); initResizab
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  dlme.close();</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> tologa(std::string <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a>){</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  std::ofstream <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c">f</a>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c">f</a>.open(<span class="stringliteral">&quot;log.txt&quot;</span>, std::ios_base::app);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c">f</a>.write(<a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a>.c_str(), <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a>.size());</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_enumvalue" href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c">f</a>.close();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> tologa(std::string t){</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  std::ofstream f;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  f.open(<span class="stringliteral">&quot;log.txt&quot;</span>, std::ios_base::app);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  f.write(t.c_str(), t.size());</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  f.close();</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>template&lt;typename T&gt;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>std::string toString(T input)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::ostringstream result;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    result &lt;&lt; input;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span> result.str();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
-</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif </span><span class="comment">// DEBUG_H_INCLUDED</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>#endif <span class="comment">// DEBUG_H_INCLUDED</span></div>
 <div class="ttc" id="adebug_8h_html_abb4c8d35a332bd694679c69e9d133a65"><div class="ttname"><a href="debug_8h.html#abb4c8d35a332bd694679c69e9d133a65">DEBUGONLY</a></div><div class="ttdeci">#define DEBUGONLY(a)</div><div class="ttdef"><b>Definition</b> <a href="debug_8h_source.html#l00018">debug.h:18</a></div></div>
-<div class="ttc" id="aelements_8h_html_af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee"><div class="ttname"><a href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca0247320c476fffeaa81ffa7836e08dee">t</a></div><div class="ttdeci">@ t</div><div class="ttdef"><b>Definition</b> <a href="elements_8h_source.html#l00020">elements.h:20</a></div></div>
-<div class="ttc" id="aelements_8h_html_af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c"><div class="ttname"><a href="elements_8h.html#af9b9803d3666b65279a42df03313b79ca7ce756344023b99e5ab27b804feb765c">f</a></div><div class="ttdeci">@ f</div><div class="ttdef"><b>Definition</b> <a href="elements_8h_source.html#l00020">elements.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
