@@ -27,6 +27,7 @@
 
 #define DO_NOT_OPTIMIZE   0x80  // The point has already been optimized
 
+#define tolog(a) tologa(_L_ + a)
 
 typedef unsigned int UINT;
 

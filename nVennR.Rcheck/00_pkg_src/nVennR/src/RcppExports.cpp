@@ -10,42 +10,42 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// nVennCpp
-void nVennCpp(SEXP desc);
-RcppExport SEXP _nVennR_nVennCpp(SEXP descSEXP) {
+// nvSimulate
+void nvSimulate(bool verbose);
+RcppExport SEXP _nVennR_nvSimulate(SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type desc(descSEXP);
-    nVennCpp(desc);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    nvSimulate(verbose);
     return R_NilValue;
 END_RCPP
 }
-// getVennRegion
-List getVennRegion(SEXP n);
-RcppExport SEXP _nVennR_getVennRegion(SEXP nSEXP) {
+// nvGetRegion
+List nvGetRegion(unsigned int n);
+RcppExport SEXP _nVennR_nvGetRegion(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< SEXP >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(getVennRegion(n));
+    Rcpp::traits::input_parameter< unsigned int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(nvGetRegion(n));
     return rcpp_result_gen;
 END_RCPP
 }
-// getVennSvg
-String getVennSvg();
-RcppExport SEXP _nVennR_getVennSvg() {
+// nvSvg
+String nvSvg();
+RcppExport SEXP _nVennR_nvSvg() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(getVennSvg());
+    rcpp_result_gen = Rcpp::wrap(nvSvg());
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_nVennR_nVennCpp", (DL_FUNC) &_nVennR_nVennCpp, 1},
-    {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 1},
-    {"_nVennR_getVennSvg", (DL_FUNC) &_nVennR_getVennSvg, 0},
+    {"_nVennR_nvSimulate", (DL_FUNC) &_nVennR_nvSimulate, 1},
+    {"_nVennR_nvGetRegion", (DL_FUNC) &_nVennR_nvGetRegion, 1},
+    {"_nVennR_nvSvg", (DL_FUNC) &_nVennR_nvSvg, 0},
     {NULL, NULL, 0}
 };
 

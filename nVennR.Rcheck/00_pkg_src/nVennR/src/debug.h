@@ -11,7 +11,7 @@ Only in that case the function tolog(toString(__LINE__) + "\n" + ) will be avail
  */
 
 #define DEBUG
-#undef DEBUG
+//#undef DEBUG
 
 #ifdef DEBUG
 #define _L_ "Line " + toString(__LINE__) + " - "

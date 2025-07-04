@@ -8,7 +8,11 @@ Description: More about what it does (maybe more than one line).
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.14)
 LinkingTo: Rcpp
-Depends: 
-    R (>= 3.5)
+Depends: R (>= 3.5)
 LazyData: true
 RoxygenNote: 7.3.2
+NeedsCompilation: yes
+Packaged: 2025-07-03 13:38:10 UTC; vqf
+Author: Your Name [aut, cre]
+Maintainer: Your Name <your@email.com>
+Built: R 4.5.0; x86_64-pc-linux-gnu; 2025-07-03 13:40:42 UTC; unix

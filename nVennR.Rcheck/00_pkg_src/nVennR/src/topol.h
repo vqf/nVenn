@@ -5401,23 +5401,6 @@ public:
         return result;
     }
 
-    std::string getVennRegion(std::vector<std::string> r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        std::string result = join("\n", s);
-        return result;
-    }
-
-    std::vector<std::string> getVennRegionVector(UINT r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        return s;
-    }
-
-    std::vector<std::string> getVennRegionVectorL(std::vector<std::string> r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        return s;
-    }
-
-
     bool doIShowThis(){
         return showThis;
     }

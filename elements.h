@@ -321,7 +321,7 @@ public:
     std::vector<std::string> snames;
     UINT i = 0;
     while (tmp > 0 && i <= sets.size()){
-      if ((tmp & 1) > 0){
+      if ((tmp & 1) > 0 && i < sets.size()){
         snames.push_back(sets[i].setName);
       }
       tmp = tmp >> 1;
