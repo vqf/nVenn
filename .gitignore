@@ -3,6 +3,6 @@ ValgrindOut.xml
 .Rproj.user
 .o
 .so
-.gz
+*.gz
 nVennR.Rcheck/*
-*.Rdata*
+*.RData*
