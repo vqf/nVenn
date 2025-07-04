@@ -1,8 +1,8 @@
 doxygen/
 ValgrindOut.xml
 .Rproj.user
-.o
-.so
+*.o
+*.so
 *.gz
 nVennR.Rcheck/*
 *.RData*

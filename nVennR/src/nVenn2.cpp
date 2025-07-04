@@ -11,6 +11,10 @@ void nvSimulate(bool verbose){
   bl.setStep(step);
   while (step < maxStep){
     bl.setCycle(step);
+    if (bl.err()){
+      Rcout << bl.errorMsg() << std::endl;
+      step = maxStep;
+    }
     if (bl.isStepFinished(step)){
       if (verbose){
         Rcout << "Step " << step << " finished." << std::endl;
@@ -23,31 +27,42 @@ void nvSimulate(bool verbose){
 
 
 // [[Rcpp::export]]
-void nVennCpp(SEXP desc){
+void nVennR(SEXP desc, unsigned int byCol = 0){
   List sv = desc;
   std::string dsc;
   if (sv.size() > 0){
     StringVector s1 = as<StringVector>(sv[0]);
     if (sv.size() == 1 && s1.size() == 1){ //Text
       dsc = as<std::string>(s1[0]);
-      bl = borderLine(dsc);
     }
     else{
-      Function f("lol2string");
+      Function asNamespace("asNamespace");
+      Environment nv_env = asNamespace("nVennR");
+      Function f = nv_env[".lol2string"];
+      //Function f("lol2string");
       dsc = as<std::string>(f(desc));
     }
   }
-  bl = borderLine(dsc);
-  nvSimulate(true);
+  bl = borderLine(dsc, byCol);
+  if (bl.err()){
+    Rcout << "Input error\n";
+  }
+  else{
+    nvSimulate(true);
+  }
+  
 }
 
-/*
 // [[Rcpp::export]]
-List GetnRegionCpp(unsigned int n) {
-  List result = bl.getVennRegion(n);
+List getVennSetNames(){
+  std::vector<std::string> r = bl.getSetNames();
+  List result;
+  for (unsigned int i = 0; i < r.size(); i++){
+    result.push_back(r[i]);
+  }
   return result;
 }
-*/
+
 // [[Rcpp::export]]
 List getVennRegion(SEXP n) {
   List result;

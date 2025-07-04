@@ -28,27 +28,11 @@ NULL
 "exampledf"
 
 
-lol2string <- function(t){
+.lol2string <- function(t){
   result <- ""
   for (r in names(t)){
     result <- paste(c(result, paste(c(r, t[[r]]), collapse = "\t")) , collapse = "\n")
   }
   return(result);
-}
-
-nVenn <- function(t){
-  result <- ""
-  if (inherits(t, "list")){
-    for (r in names(t)){
-      result <- paste(c(result, paste(c(r, t[[r]]), collapse = "\t")) , collapse = "\n")
-    }
-  }
-  else if (inherits(t, "character")){
-    result <- t
-  }
-  else{
-    print("Cannot convert object for use in nVenn")
-  }
-  nVennR::nVennCpp(result)
 }
 

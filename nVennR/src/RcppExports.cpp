@@ -10,14 +10,25 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// nVennCpp
-void nVennCpp(SEXP desc);
-RcppExport SEXP _nVennR_nVennCpp(SEXP descSEXP) {
+// nVennR
+void nVennR(SEXP desc, unsigned int byCol);
+RcppExport SEXP _nVennR_nVennR(SEXP descSEXP, SEXP byColSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< SEXP >::type desc(descSEXP);
-    nVennCpp(desc);
+    Rcpp::traits::input_parameter< unsigned int >::type byCol(byColSEXP);
+    nVennR(desc, byCol);
     return R_NilValue;
+END_RCPP
+}
+// getVennSetNames
+List getVennSetNames();
+RcppExport SEXP _nVennR_getVennSetNames() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(getVennSetNames());
+    return rcpp_result_gen;
 END_RCPP
 }
 // getVennRegion
@@ -43,7 +54,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_nVennR_nVennCpp", (DL_FUNC) &_nVennR_nVennCpp, 1},
+    {"_nVennR_nVennR", (DL_FUNC) &_nVennR_nVennR, 2},
+    {"_nVennR_getVennSetNames", (DL_FUNC) &_nVennR_getVennSetNames, 0},
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 1},
     {"_nVennR_getVennSvg", (DL_FUNC) &_nVennR_getVennSvg, 0},
     {NULL, NULL, 0}

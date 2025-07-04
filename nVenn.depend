@@ -194,7 +194,7 @@
 	"../gh/elements.h"
 	"../gh/topol.h"
 
-1751022688 /home/vqf/proyectos/nVenn2/gh/elements.h
+1751624221 /home/vqf/proyectos/nVenn2/gh/elements.h
 	<unordered_set>
 	<iostream>
 	<vector>
@@ -206,7 +206,7 @@
 1750757140 /home/vqf/proyectos/nVenn2/gh/strFuncts.h
 	<cstdarg>
 
-1751616877 /home/vqf/proyectos/nVenn2/gh/topol.h
+1751630552 /home/vqf/proyectos/nVenn2/gh/topol.h
 	<vector>
 	<cmath>
 	<time.h>

@@ -4609,7 +4609,7 @@ public:
         }
         else{
             init({"one"}, {0, 1}, {"", ""});
-            setError("Malformed input string. No more than 20 groups are allowed");
+            setError("Malformed input string. No less than 2 and no more than 20 groups are allowed");
         }
     }
     borderLine(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg") /// aqui
@@ -6597,6 +6597,10 @@ public:
 
     std::vector<std::vector<point>> getBl(){
         return bl;
+    }
+
+    std::vector<std::string> getSetNames(){
+        return groups;
     }
 
 
