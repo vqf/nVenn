@@ -8,3 +8,7 @@ nVennR.Rcheck/*
 *.RData*
 *.o
 *.so
+.objs/glutmain.o
+nVennR/src/nVenn2.o
+nVennR/src/nVennR.so
+nVennR/src/RcppExports.o
