@@ -33,12 +33,45 @@ NULL
   for (r in names(t)){
     result <- paste(c(result, paste(c(r, t[[r]]), collapse = "\t")) , collapse = "\n")
   }
-  return(result);
+  return(result)
 }
 
-.setAsObject <- function(t){
-  class(t) <- c(class(t), "nVennObj")
-  return(t)
+.setAsObject <- function(t, options=NULL){
+  if (is.null(options)){
+    options <- .optData()
+  }
+  obj <- list()
+  obj$desc <- t
+  obj$opts <- options
+  class(obj) <- c(class(obj), "nVennObj")
+  return(obj)
+}
+
+.optData <- function(opacity = 0.4, fontSize = 12,
+                     lineWidth = 1, 
+                     showRegions = T, showWeights = T){
+  result <- list()
+  result$opacity <- opacity
+  result$fontSize <- fontSize
+  result$lineWidth <- lineWidth
+  result$showRegions <- showRegions
+  result$showWeights <- showWeights
+  class(result) <- c(class(result), "vennOpts")
+  return(result)
+}
+
+setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
+                     lineWidth = 1, 
+                     showRegions = T, showWeights = T){
+  if (is.null(nVennObj$opts)){
+    nVennObj$opts = .optData()
+  }
+  nVennObj$opts$opacity <- opacity
+  nVennObj$opts$fontSize <- fontSize
+  nVennObj$opts$lineWidth <- lineWidth
+  nVennObj$opts$showRegions <- showRegions
+  nVennObj$opts$showWeights <- showWeights
+  return(nVennObj)
 }
 
 #' Title Plot the current Venn diagram. 

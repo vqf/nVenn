@@ -73,3 +73,10 @@ myv #noshow
 myv <- nVennR(exampledf)
 myv #noshow
 ```
+
+
+```{r opacity}
+myv <- rotateVenn(myv, 180)
+myv <- setVennOpts(myv, opacity = 0.2, lineWidth = 1)
+myv #noshow
+```

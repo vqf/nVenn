@@ -25,6 +25,19 @@ void nvSimulate(borderLine& bl, bool verbose){
   }
 }
 
+SEXP toRObject(std::string desc, float opacity = 0.4, 
+               UINT fontSize = 12, UINT lineWidth = 1, 
+               bool showRegions = true,
+               bool showWeights = true){
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
+  Function g = nv_env[".setAsObject"];
+  Function h = nv_env[".optData"];
+  SEXP opts = h(opacity, fontSize, showRegions, showWeights);
+  SEXP r = g(desc, opts);
+  return(r);
+}
+
 
 // [[Rcpp::export]]
 SEXP nVennR(SEXP desc, bool verbose = true, unsigned int byCol = 0){
@@ -55,19 +68,18 @@ SEXP nVennR(SEXP desc, bool verbose = true, unsigned int byCol = 0){
     }
     else{
       result = bl.saveBl();
-      Function f("plotSVG");
-      f(result);
     }
   }
-  Function g = nv_env[".setAsObject"];
-  SEXP r = g(result);
+  SEXP r = toRObject(result);
+  Function f("plotSVG");
+  f(r);
   return r;
 }
 
 // [[Rcpp::export]]
-List getVennSetNames(std::string nvObject){
+List getVennSetNames(List nvObject){
   borderLine bl;
-  bl.restoreBl(nvObject);
+  bl.restoreBl(as<std::string>(nvObject["desc"]));
   std::vector<std::string> r = bl.getSetNames();
   List result;
   for (unsigned int i = 0; i < r.size(); i++){
@@ -77,9 +89,9 @@ List getVennSetNames(std::string nvObject){
 }
 
 // [[Rcpp::export]]
-List getVennRegion(std::string nvObject, SEXP n) {
+List getVennRegion(List nvObject, SEXP n) {
   borderLine bl;
-  bl.restoreBl(nvObject);
+  bl.restoreBl(as<std::string>(nvObject["desc"]));
   List result;
   if (TYPEOF(n) == STRSXP){
     StringVector sv = as<StringVector>(n);
@@ -107,17 +119,46 @@ List getVennRegion(std::string nvObject, SEXP n) {
 
 
 // [[Rcpp::export]]
-String getVennSvg(std::string nvObject) {
+String getVennSvg(List nvObject) {
   borderLine bl;
-  bl.restoreBl(nvObject);
+  bl.restoreBl(as<std::string>(nvObject["desc"]));
+  List opts = as<List>(nvObject["opts"]);
+  float opacity = as<float>(opts["opacity"]);
+  unsigned int fontSize = as<unsigned int>(opts["fontSize"]);
+  unsigned int lineWidth = as<unsigned int>(opts["lineWidth"]);
+  bool showRegions = as<bool>(opts["showRegions"]);
+  bool showWeights = as<bool>(opts["showWeights"]);
+  bl.setSVGOpacity(opacity);
+  bl.setSVGLineWidth(lineWidth);
+  bl.showCircleNumbers(showWeights);
+  bl.showRegionNumbers(showRegions);
+  bl.setFontSize(fontSize);
   return bl.toSVG().getText();
 }
 
 // [[Rcpp::export]]
-std::string rotateVenn(std::string nvObject, float angle){
+SEXP rotateVenn(List nvObject, float angle){
+  borderLine bl;
+  bl.restoreBl(as<std::string>(nvObject["desc"]));
+  List opts = nvObject["opts"];
+  float ang = 3.141592 * angle / 180;
+  bl.rotateScene(ang);
+  std::string result = bl.saveBl();
+  SEXP r = toRObject(result, opts["opacity"],
+                     opts["fontSize"], opts["lineWidth"],
+                     opts["showRegions"], opts["showWeights"]);
+  return r;
+}
+
+// [[Rcpp::export]]
+SEXP setVennOpacity(std::string nvObject, float opacity=0.4){
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
   borderLine bl;
   bl.restoreBl(nvObject);
-  bl.rotateScene(angle);
+  bl.setSVGOpacity(opacity);
   std::string result = bl.saveBl();
-  return result;
+  Function g = nv_env[".setAsObject"];
+  SEXP r = g(result);
+  return r;
 }
