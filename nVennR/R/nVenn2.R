@@ -36,3 +36,41 @@ NULL
   return(result);
 }
 
+.setAsObject <- function(t){
+  class(t) <- c(class(t), "nVennObj")
+  return(t)
+}
+
+#' Title Plot the current Venn diagram. 
+#'
+#' @param systemShow If true, it also displays the result in the system-defined editor.
+#'
+#' @export
+#'
+plotSVG <- function(nVennObj, systemShow = F){
+  tfile <- tempfile(fileext = ".svg")
+  tfile2 <- tempfile(fileext = ".svg")
+  cat(getVennSvg(nVennObj), file=tfile)
+  if (requireNamespace("rsvg", quietly = TRUE) && requireNamespace("grImport2", quietly = TRUE)) {
+    out <- tryCatch(
+      {
+        rsvg::rsvg_svg(svg = tfile, tfile2)
+        p <- grImport2::readPicture(tfile2, warn = F)
+        grImport2::grid.picture(p)
+      },
+      error=function(cond){
+        message(paste("rsvg or grImport2 reported an error: ", cond))
+        message("The figure cannot be rendered in the plot window. Please, use the arguments outFile and/or systemShow.")
+      }
+    )
+  } else {
+    if (systemShow == FALSE && outFile == ''){
+      message("The figure cannot be rendered in the plot window. Please, use the arguments outFile and/or systemShow.")
+    }
+  }
+  if (systemShow){
+    utils::browseURL(tfile)
+  }
+}
+
+

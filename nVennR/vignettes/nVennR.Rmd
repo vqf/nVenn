@@ -1,0 +1,75 @@
+---
+title: "Using nVennR to generate and explore n-dimensional, quasi-proportional Venn diagrams"
+author: "Victor Quesada"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Using nVennR to generate and explore n-dimensional, quasi-proportional Venn diagrams}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, F, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.show='hide'
+)
+library(knitr)
+uuid <- function() {
+  hex_digits <- c(as.character(0:9), letters[1:6])
+  hex_digits <- toupper(hex_digits)
+  paste(sample(hex_digits, 8), collapse='')
+}
+
+subsuid <- function(regex, strng){
+  l <- gregexpr(regex, strng, perl = T)
+  for (x in regmatches(strng, l)){ 
+    m <- regexpr('([^\\{ \\.\\#]+)', x, perl = T)
+    names <- regmatches(x, m)
+    gstr = strng
+    for (name in names){
+      nname <- paste('([^\\d\\w<>]', name, ')', sep="")
+      gstr <- gsub(nname, paste('\\1', '_', uuid(), sep=""), gstr, perl = T) 
+    }
+    return(gstr)
+  }
+}
+
+knit_print.nVennR = function(x, ...) {
+    g <- getVennSvg(x)
+    s <- subsuid('[\\.\\#](.+?)\\s*\\{', g)
+    s <- subsuid('bl\\d+', s)
+    knitr::asis_output(s)
+}
+# register the method
+registerS3method("knit_print", "nVennObj", knit_print.nVennR)
+local({
+  hook_source <- knitr::knit_hooks$get('source')
+  knitr::knit_hooks$set(source = function(x, options) {
+    x <- x[!grepl('#noshow$', x)]
+    hook_source(x, options)
+  })
+})
+
+```
+
+
+```{r setup}
+library(nVennR)
+exampledf
+```
+```{r example1}
+myv <- nVennR(exampledf)
+myv #noshow
+```
+
+```{r example2}
+myv <- nVennR(exampledf)
+myv #noshow
+```

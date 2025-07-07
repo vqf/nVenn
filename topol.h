@@ -4663,19 +4663,6 @@ public:
         return r;
     }
 
-    void loadPalette(UINT n){
-        std::vector<UINT> arr = svgPalettes.getPalette(n);
-        svgParams.svgColors.clear();
-        for (UINT i = 0; i < ngroups; i++){
-            std::string c = vformat("#%06x", arr[i]);
-            svgParams.svgColors.push_back(c.c_str());
-        }
-        //init postscript colors
-        for (UINT i = 0; i < ngroups; i++)
-        {
-            colors.push_back(toRGB(arr[i], 1));
-        }
-    }
 
     rgb toRGB(int color, int max)
     {
@@ -4824,32 +4811,6 @@ public:
           internalScale.addToScale(circles[i]);
         }
       }
-      resetScale();
-    }
-
-    void rotateScene(float alpha){
-      centerScene();
-      float cosa = std::cos(alpha);
-      float sina = std::sin(alpha);
-      std::vector<std::vector<point>> newbl;
-      std::vector<point> newcirc;
-      for (UINT i = 0; i < bl.size(); i++){
-        newbl.push_back({});
-        for (UINT j = 0; j < bl[i].size(); j++){
-          point t;
-          t.x =  cosa * bl[i][j].x + sina * (bl[i][j].y);
-          t.y = -sina * bl[i][j].x + cosa * (bl[i][j].y);
-          newbl[i].push_back(t);
-        }
-      }
-      for (UINT i = 0; i < circles.size(); i++){
-        point t = circles[i];
-        t.x =  cosa * circles[i].x + sina * (circles[i].y);
-        t.y = -sina * circles[i].x + cosa * (circles[i].y);
-        newcirc.push_back(t);
-      }
-      bl = newbl;
-      circles = newcirc;
       resetScale();
     }
 
@@ -5120,7 +5081,7 @@ public:
      *
      */
     void restoreBl(std::string dataFile){
-        loadSignature(signature);
+        //loadSignature(signature);
         std::istringstream vFile;
         std::string line;
         vFile.str(dataFile);
@@ -5139,7 +5100,7 @@ public:
         if (el == "F"){
             std::getline(sline, el, ';');
             //std::cout << el;
-            //currentStep = (UINT) atoi(el.c_str());
+            currentStep = (UINT) atoi(el.c_str());
         }
         else{
             sane = false;
@@ -5226,6 +5187,7 @@ public:
                 }
             }
             blSettings.doCheckTopol = true;
+            blSettings.smoothSVG = true;
             resetScale();
         }
         else{
@@ -5372,50 +5334,7 @@ public:
         svgParams.svgColors[setNumber] = s;
     }
 
-    void setRGBColor(UINT setNumer, UINT red, UINT green, UINT blue){
-        std::vector<UINT> c = {red, green, blue};
-        setSVGColor(setNumer, c);
-    }
 
-    void setSVGOpacity(float t){
-        svgParams.svgOpacity = t;
-    }
-
-    void setSVGLineWidth(float lw){
-        svgParams.svgLineWidth = lw;
-    }
-
-    void showCircleNumbers(bool s){
-        svgParams.showNumbers = s;
-    }
-    void showRegionNumbers(bool s){
-        svgParams.showRegionNumbers = s;
-    }
-    void setFontSize(UINT fs){
-        svgParams.svgFontSize = fs;
-    }
-
-    std::string getVennRegion(UINT r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        std::string result = join("\n", s);
-        return result;
-    }
-
-    std::string getVennRegion(std::vector<std::string> r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        std::string result = join("\n", s);
-        return result;
-    }
-
-    std::vector<std::string> getVennRegionVector(UINT r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        return s;
-    }
-
-    std::vector<std::string> getVennRegionVectorL(std::vector<std::string> r){
-        std::vector<std::string> s = setElements.getRegion(r);
-        return s;
-    }
 
 
     bool doIShowThis(){
@@ -6346,6 +6265,8 @@ public:
      *             quit = true
      *        </pseudocode>
      *
+     * The API also contains functions to change the appearance
+     * of the SVG result (rotation, colors, opacity, ...).
      */
 
     std::string errorMsg(){
@@ -6375,9 +6296,11 @@ public:
         refreshScreen.setLimits(1,1);
         resetV = false;
         setCheckTopol(false);
+        currentStep = stepNumber;
       }
       else if (stepNumber == disperse){
         setCheckTopol(false);
+        currentStep = stepNumber;
       }
       else if (stepNumber == minimizeCompactness){
         setFixedCircles(false);
@@ -6390,6 +6313,7 @@ public:
         optStep.init(oc.optVal);
         oc.optVal = outCompactness(&optStep, &borderLine::furthestPoint,
                                    &borderLine::compactness, &borderLine::countCrossings);
+        currentStep = stepNumber;
       }
       else if (stepNumber == minimizeCrossings){
         resetOptimize();
@@ -6400,6 +6324,7 @@ public:
         optStep.init(oc.optVal);
         oc.optVal = outCompactness(&optStep, &borderLine::crossestPoint,
                                    &borderLine::countCrossings, &borderLine::compactness);
+        currentStep = stepNumber;
       }
       else if (stepNumber == contract){
         udt.init(1e-4, 0.01);
@@ -6431,12 +6356,14 @@ public:
         scSpringK(1e4);
         scGhostGrav(false);
         getBestSoFar();
+        currentStep = stepNumber;
       }
       else if (stepNumber == refineCircles){
         resetTimer();
         resetOptimize();
         evaluation.init();
         evaluation.setConstants(10, 50);
+        setCheckTopol(true);
         float d = getEmbellishDist(2);
         interpolateToDist(d);
         setGravityPartitions();
@@ -6446,8 +6373,11 @@ public:
         scD(1e2);
         scGhostGrav(true);
         getBestSoFar();
+        currentStep = stepNumber;
       }
       else if (stepNumber == embellishLines){
+        setCheckTopol(true);
+        blSettings.smoothSVG = true;
         if (checkTopol() == true){
           restorePrevState();
         }
@@ -6471,6 +6401,7 @@ public:
         oc.optVal = 0;
         setPrevState();
         setSecureState();
+        currentStep = stepNumber;
       }
       else{
         result = false;
@@ -6580,7 +6511,7 @@ public:
         result = isSimulationComplete();
         if (result){
           blSettings.smoothSVG = true;
-          currentStep = 1;
+          //currentStep = 1;
         }
         //if (getMaxVsq() > 1e-7){
         //  result = false;
@@ -6591,6 +6522,91 @@ public:
     }
     bool refresh(){
       return refreshScreen.isMax();
+    }
+
+    void rotateScene(float alpha){
+      centerScene();
+      float cosa = std::cos(alpha);
+      float sina = std::sin(alpha);
+      std::vector<std::vector<point>> newbl;
+      std::vector<point> newcirc;
+      for (UINT i = 0; i < bl.size(); i++){
+        newbl.push_back({});
+        for (UINT j = 0; j < bl[i].size(); j++){
+          point t;
+          t.x =  cosa * bl[i][j].x + sina * (bl[i][j].y);
+          t.y = -sina * bl[i][j].x + cosa * (bl[i][j].y);
+          newbl[i].push_back(t);
+        }
+      }
+      for (UINT i = 0; i < circles.size(); i++){
+        point t = circles[i];
+        t.x =  cosa * circles[i].x + sina * (circles[i].y);
+        t.y = -sina * circles[i].x + cosa * (circles[i].y);
+        newcirc.push_back(t);
+      }
+      bl = newbl;
+      circles = newcirc;
+      resetScale();
+    }
+
+    void loadPalette(UINT n){
+        std::vector<UINT> arr = svgPalettes.getPalette(n);
+        svgParams.svgColors.clear();
+        for (UINT i = 0; i < ngroups; i++){
+            std::string c = vformat("#%06x", arr[i]);
+            svgParams.svgColors.push_back(c.c_str());
+        }
+        //init postscript colors
+        for (UINT i = 0; i < ngroups; i++)
+        {
+            colors.push_back(toRGB(arr[i], 1));
+        }
+    }
+
+    void setRGBColor(UINT setNumer, UINT red, UINT green, UINT blue){
+        std::vector<UINT> c = {red, green, blue};
+        setSVGColor(setNumer, c);
+    }
+
+    void setSVGOpacity(float t){
+        svgParams.svgOpacity = t;
+    }
+
+    void setSVGLineWidth(float lw){
+        svgParams.svgLineWidth = lw;
+    }
+
+    void showCircleNumbers(bool s){
+        svgParams.showNumbers = s;
+    }
+    void showRegionNumbers(bool s){
+        svgParams.showRegionNumbers = s;
+    }
+    void setFontSize(UINT fs){
+        svgParams.svgFontSize = fs;
+    }
+
+    std::string getVennRegion(UINT r){
+        std::vector<std::string> s = setElements.getRegion(r);
+        std::string result = join("\n", s);
+        return result;
+    }
+
+    std::string getVennRegion(std::vector<std::string> r){
+        std::vector<std::string> s = setElements.getRegion(r);
+        std::string result = join("\n", s);
+        return result;
+    }
+
+    std::vector<std::string> getVennRegionVector(UINT r){
+        std::vector<std::string> s = setElements.getRegion(r);
+        return s;
+    }
+
+    std::vector<std::string> getVennRegionVectorL(std::vector<std::string> r){
+        std::vector<std::string> s = setElements.getRegion(r);
+        return s;
     }
 
     /** @} */
@@ -6606,6 +6622,7 @@ public:
 
     bool simulate(int maxRel = 0){
       restart_log();
+      UINT cstep = currentStep;
       for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
         std::cout << "Step " << step << std::endl;
@@ -6622,7 +6639,9 @@ public:
             bQuit = true;
           }
         }
+        cstep = step;
       }
+      currentStep = cstep;
       return true;
     }
 

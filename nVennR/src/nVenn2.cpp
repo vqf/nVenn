@@ -3,13 +3,13 @@
 #include "topol.h"
 using namespace Rcpp;
 
-borderLine bl;
 
-void nvSimulate(bool verbose){
+
+void nvSimulate(borderLine& bl, bool verbose){
   UINT step = 1;
   UINT maxStep = 8;
-  bl.setStep(step);
-  while (step < maxStep){
+  bool goon = bl.setStep(step);
+  while (step < maxStep && goon){
     bl.setCycle(step);
     if (bl.err()){
       Rcout << bl.errorMsg() << std::endl;
@@ -20,26 +20,27 @@ void nvSimulate(bool verbose){
         Rcout << "Step " << step << " finished." << std::endl;
       }
       step++;
-      bl.setStep(step);
+      goon = bl.setStep(step);
     }
   }
 }
 
 
 // [[Rcpp::export]]
-void nVennR(SEXP desc, unsigned int byCol = 0){
+SEXP nVennR(SEXP desc, bool verbose = true, unsigned int byCol = 0){
   List sv = desc;
   std::string dsc;
+  borderLine bl;
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
+  std::string result;
   if (sv.size() > 0){
     StringVector s1 = as<StringVector>(sv[0]);
     if (sv.size() == 1 && s1.size() == 1){ //Text
       dsc = as<std::string>(s1[0]);
     }
     else{
-      Function asNamespace("asNamespace");
-      Environment nv_env = asNamespace("nVennR");
       Function f = nv_env[".lol2string"];
-      //Function f("lol2string");
       dsc = as<std::string>(f(desc));
     }
   }
@@ -48,13 +49,25 @@ void nVennR(SEXP desc, unsigned int byCol = 0){
     Rcout << "Input error\n";
   }
   else{
-    nvSimulate(true);
+    nvSimulate(bl, verbose);
+    if (bl.err()){
+      Rcout << bl.errorMsg() << std::endl;
+    }
+    else{
+      result = bl.saveBl();
+      Function f("plotSVG");
+      f(result);
+    }
   }
-  
+  Function g = nv_env[".setAsObject"];
+  SEXP r = g(result);
+  return r;
 }
 
 // [[Rcpp::export]]
-List getVennSetNames(){
+List getVennSetNames(std::string nvObject){
+  borderLine bl;
+  bl.restoreBl(nvObject);
   std::vector<std::string> r = bl.getSetNames();
   List result;
   for (unsigned int i = 0; i < r.size(); i++){
@@ -64,7 +77,9 @@ List getVennSetNames(){
 }
 
 // [[Rcpp::export]]
-List getVennRegion(SEXP n) {
+List getVennRegion(std::string nvObject, SEXP n) {
+  borderLine bl;
+  bl.restoreBl(nvObject);
   List result;
   if (TYPEOF(n) == STRSXP){
     StringVector sv = as<StringVector>(n);
@@ -92,6 +107,17 @@ List getVennRegion(SEXP n) {
 
 
 // [[Rcpp::export]]
-String getVennSvg() {
-    return bl.toSVG().getText() ;
+String getVennSvg(std::string nvObject) {
+  borderLine bl;
+  bl.restoreBl(nvObject);
+  return bl.toSVG().getText();
+}
+
+// [[Rcpp::export]]
+std::string rotateVenn(std::string nvObject, float angle){
+  borderLine bl;
+  bl.restoreBl(nvObject);
+  bl.rotateScene(angle);
+  std::string result = bl.saveBl();
+  return result;
 }

@@ -6,3 +6,5 @@ ValgrindOut.xml
 *.gz
 nVennR.Rcheck/*
 *.RData*
+*.o
+*.so
