@@ -47,13 +47,33 @@ NULL
   return(obj)
 }
 
+.resetvcolors <- function(nVennObj){
+  clrs <- list()
+  i <- 0
+  for (sn in nVennObj$setNames){
+    i <- i + 1
+    clrs[[sn]] <- "_"
+  }
+  nVennObj$colors <- clrs
+  return(nVennObj)
+}
+
+.avcolors <- function(nVennObj){
+  if (!("colors" %in% nVennObj)){
+    #nVennObj$setNames <- unlist(getVennSetNames(nVennObj))
+    nVennObj$colors <- .resetvcolors(nVennObj)
+  }
+  return(nVennObj)
+}
+
 .optData <- function(opacity = 0.4, fontSize = 12,
-                     lineWidth = 1, 
+                     lineWidth = 1, palette = 0,
                      showRegions = T, showWeights = T){
   result <- list()
   result$opacity <- opacity
   result$fontSize <- fontSize
   result$lineWidth <- lineWidth
+  result$palette <- palette;
   result$showRegions <- showRegions
   result$showWeights <- showWeights
   class(result) <- c(class(result), "vennOpts")
@@ -61,7 +81,7 @@ NULL
 }
 
 setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
-                     lineWidth = 1, 
+                     lineWidth = 1, palette = 0,
                      showRegions = T, showWeights = T){
   if (is.null(nVennObj$opts)){
     nVennObj$opts = .optData()
@@ -69,8 +89,48 @@ setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
   nVennObj$opts$opacity <- opacity
   nVennObj$opts$fontSize <- fontSize
   nVennObj$opts$lineWidth <- lineWidth
+  nVennObj$opts$palette <- palette
   nVennObj$opts$showRegions <- showRegions
   nVennObj$opts$showWeights <- showWeights
+  return(nVennObj)
+}
+
+setVennPalette <- function(nVennObj, palette = 0){
+  nVennObj <- setVennOpts(nVennObj = nVennObj, palette = palette)
+  nVennObj <- .resetvcolors(nVennObj)
+  return(nVennObj)
+}
+
+setVennColor <- function(nVennObj, setName, color){
+  #nVennObj <- .avcolors(nVennObj)
+  nVennObj$setNames <- unlist(getVennSetNames(nVennObj))
+  if (setName %in% nVennObj$setNames){
+    nVennObj$colors[[setName]] <- color
+  }
+  else{
+    warning(cat("Set\"", setName, "\" does not exist. Use getVennSetNames() to see",
+    " a list of set names", sep = ""))
+  }
+  return(nVennObj)
+}
+
+setVennColors <- function(nVennObj, colorList){
+  nVennObj <- .avcolors(nVennObj)
+  sn <- names(colorList)
+  if (is.null(sn)){
+    for (i in 1:length(nVennObj$setNames)){
+      if (i <= length(colorList)){
+        nm <- nVennObj$setNames[i]
+        vl <- colorList[i]
+        nVennObj <- setVennColor(nVennObj, nm, vl);
+      }
+    }
+  }
+  else{
+    for (nm in sn){
+      nVennObj <- setVennColor(nVennObj, nm, colorList[[nm]])
+    }
+  }
   return(nVennObj)
 }
 

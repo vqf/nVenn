@@ -69,18 +69,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// setVennOpacity
-SEXP setVennOpacity(std::string nvObject, float opacity);
-RcppExport SEXP _nVennR_setVennOpacity(SEXP nvObjectSEXP, SEXP opacitySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type nvObject(nvObjectSEXP);
-    Rcpp::traits::input_parameter< float >::type opacity(opacitySEXP);
-    rcpp_result_gen = Rcpp::wrap(setVennOpacity(nvObject, opacity));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_nVennR_nVennR", (DL_FUNC) &_nVennR_nVennR, 3},
@@ -88,7 +76,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 2},
     {"_nVennR_getVennSvg", (DL_FUNC) &_nVennR_getVennSvg, 1},
     {"_nVennR_rotateVenn", (DL_FUNC) &_nVennR_rotateVenn, 2},
-    {"_nVennR_setVennOpacity", (DL_FUNC) &_nVennR_setVennOpacity, 2},
     {NULL, NULL, 0}
 };
 

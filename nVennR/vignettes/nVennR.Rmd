@@ -77,6 +77,13 @@ myv #noshow
 
 ```{r opacity}
 myv <- rotateVenn(myv, 180)
-myv <- setVennOpts(myv, opacity = 0.2, lineWidth = 1)
+myv <- setVennOpts(myv, opacity = 0.2, lineWidth = 2, palette = 3)
+plotSVG(myv)
+myv #noshow
+```
+
+```{r colors}
+myv <- setVennColor(myv, "SAS", 'black')
+plotSVG(myv)
 myv #noshow
 ```

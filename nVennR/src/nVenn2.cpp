@@ -27,13 +27,14 @@ void nvSimulate(borderLine& bl, bool verbose){
 
 SEXP toRObject(std::string desc, float opacity = 0.4, 
                UINT fontSize = 12, UINT lineWidth = 1, 
+               UINT palette = 0,
                bool showRegions = true,
                bool showWeights = true){
   Function asNamespace("asNamespace");
   Environment nv_env = asNamespace("nVennR");
   Function g = nv_env[".setAsObject"];
   Function h = nv_env[".optData"];
-  SEXP opts = h(opacity, fontSize, showRegions, showWeights);
+  SEXP opts = h(opacity, fontSize, lineWidth, palette, showRegions, showWeights);
   SEXP r = g(desc, opts);
   return(r);
 }
@@ -126,6 +127,7 @@ String getVennSvg(List nvObject) {
   float opacity = as<float>(opts["opacity"]);
   unsigned int fontSize = as<unsigned int>(opts["fontSize"]);
   unsigned int lineWidth = as<unsigned int>(opts["lineWidth"]);
+  unsigned int palette = as<unsigned int>(opts["palette"]);
   bool showRegions = as<bool>(opts["showRegions"]);
   bool showWeights = as<bool>(opts["showWeights"]);
   bl.setSVGOpacity(opacity);
@@ -133,6 +135,23 @@ String getVennSvg(List nvObject) {
   bl.showCircleNumbers(showWeights);
   bl.showRegionNumbers(showRegions);
   bl.setFontSize(fontSize);
+  bl.loadPalette(palette);
+  
+  if (nvObject.containsElementNamed("colors")){
+    nvObject["setNames"] = bl.getSetNames();
+    List snames = as<List>(nvObject["setNames"]);
+    List colors = as<List>(nvObject["colors"]);
+    
+    for (UINT i = 0; i < snames.length(); i++){
+      std::string sn = as<std::string>(snames[i]);
+      if (colors.containsElementNamed(sn.c_str())){
+        if (as<std::string>(colors[sn]) != "_"){
+          bl.setVennColor(i, colors[sn]);
+        }
+      }
+    }
+  }
+  
   return bl.toSVG().getText();
 }
 
@@ -150,15 +169,5 @@ SEXP rotateVenn(List nvObject, float angle){
   return r;
 }
 
-// [[Rcpp::export]]
-SEXP setVennOpacity(std::string nvObject, float opacity=0.4){
-  Function asNamespace("asNamespace");
-  Environment nv_env = asNamespace("nVennR");
-  borderLine bl;
-  bl.restoreBl(nvObject);
-  bl.setSVGOpacity(opacity);
-  std::string result = bl.saveBl();
-  Function g = nv_env[".setAsObject"];
-  SEXP r = g(result);
-  return r;
-}
+
+

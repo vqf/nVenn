@@ -21,7 +21,3 @@ rotateVenn <- function(nvObject, angle) {
     .Call(`_nVennR_rotateVenn`, nvObject, angle)
 }
 
-setVennOpacity <- function(nvObject, opacity = 0.4) {
-    .Call(`_nVennR_setVennOpacity`, nvObject, opacity)
-}
-

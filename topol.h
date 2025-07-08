@@ -6569,6 +6569,10 @@ public:
         setSVGColor(setNumer, c);
     }
 
+    void setVennColor(UINT setNumber, std::string svgColor){
+      svgParams.svgColors[setNumber] = svgColor;
+    }
+
     void setSVGOpacity(float t){
         svgParams.svgOpacity = t;
     }
