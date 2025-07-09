@@ -1,6 +1,6 @@
 
 #include <Rcpp.h>
-#include "../../topol.h"
+#include "topol.h"
 using namespace Rcpp;
 
 
