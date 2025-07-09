@@ -65,12 +65,12 @@ library(nVennR)
 exampledf
 ```
 ```{r example1}
-myv <- nVennR(exampledf)
+myv <- nVennDiagram(exampledf)
 myv #noshow
 ```
 
 ```{r example2}
-myv <- nVennR(exampledf)
+myv <- nVennDiagram(exampledf)
 myv #noshow
 ```
 

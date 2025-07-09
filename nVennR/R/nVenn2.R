@@ -80,6 +80,34 @@ NULL
   return(result)
 }
 
+#' Set the appearance of an nVenn object diagram.
+#' 
+#' The function returns an object whose parameters will change the way the 
+#' diagram is plotted. To see the changes, it is necessary to run \link{plotSVG}
+#' afterwards.
+#'
+#' @param nVennObj nVenn object.
+#' @param opacity Opacity of sets, between 0 (completely transparent)
+#'                and 1 (completely opaque). Defaults to 0.4.
+#' @param fontSize Size of the font for the numbers of elements (weights) in each
+#'                 region. It also indirectly controls the font sizes of the 
+#'                 region descriptions, if shown (showRegions=T). Defaults to
+#'                 10.
+#' @param lineWidth Width of the lines defining each set. The value will be 
+#'                  rounded to the closest integer. Defaults to 1.
+#' @param palette Color palette to use to fill the sets. Integer from 1 to 4. 
+#'                Defaults to 1.
+#' @param showRegions If true (default), show region descriptions.
+#' @param showWeights If true (default), show number of elements in each region.
+#'
+#' @returns nVennObj with graphical options set.
+#' @seealso \link{plotSVG} for plotting the resulting diagram.
+#' @export
+#'
+#' @examples
+#' myv <- nVennDiagram(exampledf)
+#' myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
+#' plotSVG(myv)
 setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
                      lineWidth = 1, palette = 0,
                      showRegions = T, showWeights = T){
@@ -134,13 +162,21 @@ setVennColors <- function(nVennObj, colorList){
   return(nVennObj)
 }
 
-#' Title Plot the current Venn diagram. 
+#' Plot nVenn diagram
+#' 
+#' The nVenn diagram is generated in the plot window by default. If this is not
+#' possible, parameters outFile and systemShow may be used to export the SVG 
+#' figure. 
 #'
-#' @param systemShow If true, it also displays the result in the system-defined editor.
+#' @param nVennObj nVenn object.
+#' @param outFile Path to export the SVG figure. If empty, the figure is not
+#'                exported.
+#' @param systemShow If true, and the system has a default SVG-editing program,
+#'                   opens the figure in the default editor
 #'
 #' @export
 #'
-plotSVG <- function(nVennObj, systemShow = F){
+plotSVG <- function(nVennObj, outFile='', systemShow = F){
   tfile <- tempfile(fileext = ".svg")
   tfile2 <- tempfile(fileext = ".svg")
   cat(getVennSvg(nVennObj), file=tfile)

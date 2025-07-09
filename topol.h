@@ -34,7 +34,6 @@ std::string buildTw(std::string signat){
   splitString nums(signat, ';');
   std::string nxt;
   nxt = purgeLetters(nums.next());
-  UINT seed = atoi(nxt.c_str());
   r += "nVenn\n";
   nxt = purgeLetters(nums.next());
   UINT ng = atoi(nxt.c_str());
@@ -4935,9 +4934,9 @@ public:
       resetCircleRadius();
       float d = (this->*currentMeasure)();
       evaluation.add(d);
-      float mfsq = std::log10(tosolve.getMaxFsq());
-      float mvsq = std::log10(tosolve.getMaxVsq());
-      float mdsq = std::log10(tosolve.getMaxDsq());
+      //float mfsq = std::log10(tosolve.getMaxFsq());
+      //float mvsq = std::log10(tosolve.getMaxVsq());
+      //float mdsq = std::log10(tosolve.getMaxDsq());
       displayFloat("EVALUATE", d);
       displayFloat("LASTEVALUATE", evaluation.viewLastComp());
       if (blSettings.optimize){
@@ -5089,7 +5088,6 @@ public:
         std::string errorstr;
         std::vector<std::vector<point>>newbl;
         newbl.clear();
-        UINT state = 0;
         std::string all;
         for (std::string line; std::getline(vFile, line);){
             all += exchangeChar(line, '\n', 0x00);

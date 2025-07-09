@@ -520,7 +520,6 @@ class scene{
   bool isContact(point *p0, point *p1, float cushion = 0){
     bool result = false;
     if (p0->radius > 0 || p1->radius > 0){
-      float elastic = 0;
       float r = p0->radius + p1->radius + cushion;
       if (r == 0){
         return false;
@@ -957,7 +956,7 @@ public:
     effectSprings();
     effectGravity();
     effectRods();
-    UINT cts = icontacts();
+    icontacts();
     maxdsq = 0;
     maxfsq = 0;
     maxvsq = 0;
@@ -979,7 +978,7 @@ public:
     for (UINT i = 0; i < 10; i++){
     //while (cts > 0 && ncont < 10){
       clearForces();
-      cts = icontacts();
+      icontacts();
       update(cdt);
       if (resetVel){
         clearVelocities();

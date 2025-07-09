@@ -1,6 +1,6 @@
 
 #include <Rcpp.h>
-#include "topol.h"
+#include "../../topol.h"
 using namespace Rcpp;
 
 
@@ -39,9 +39,13 @@ SEXP toRObject(std::string desc, float opacity = 0.4,
   return(r);
 }
 
-
+//' Creates nVenn plot
+//'
+//' @param desc Description of sets, either as a list of lists or as text.
+//' @param v2 verbose If true, shows messages as the nVenn plot is created.
+//' @return nVenn object. As a side effect, shows the nVenn plot.
 // [[Rcpp::export]]
-SEXP nVennR(SEXP desc, bool verbose = true, unsigned int byCol = 0){
+SEXP nVennDiagram(SEXP desc, bool verbose = true, unsigned int byCol = 0){
   List sv = desc;
   std::string dsc;
   borderLine bl;

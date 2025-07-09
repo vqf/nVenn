@@ -128,7 +128,7 @@ std::string exchangeChar(std::string input, const char from, const char to){
   std::string result = "";
   for (std::basic_string<char>::const_iterator it = input.cbegin();
        it != input.cend(); it++) {
-    UINT c = *it;
+    char c = *it;
     if (c == from) {
       if (to != 0x00){
         result += to;
@@ -237,7 +237,7 @@ UINT countChar(std::string t, const char c){
   UINT result = 0;
   for (std::basic_string<char>::const_iterator it = t.cbegin();
        it != t.cend(); it++) {
-    UINT tc = *it;
+    char tc = *it;
     if (tc == c){
       result++;
     }

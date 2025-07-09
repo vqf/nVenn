@@ -2,13 +2,21 @@
 % Please edit documentation in R/nVenn2.R
 \name{plotSVG}
 \alias{plotSVG}
-\title{Title Plot the current Venn diagram.}
+\title{Plot nVenn diagram}
 \usage{
-plotSVG(systemShow = F)
+plotSVG(nVennObj, outFile = "", systemShow = F)
 }
 \arguments{
-\item{systemShow}{If true, it also displays the result in the system-defined editor.}
+\item{nVennObj}{nVenn object.}
+
+\item{outFile}{Path to export the SVG figure. If empty, the figure is not
+exported.}
+
+\item{systemShow}{If true, and the system has a default SVG-editing program,
+opens the figure in the default editor}
 }
 \description{
-Title Plot the current Venn diagram.
+The nVenn diagram is generated in the plot window by default. If this is not
+possible, parameters outFile and systemShow may be used to export the SVG 
+figure.
 }

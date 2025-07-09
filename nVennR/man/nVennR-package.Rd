@@ -3,20 +3,33 @@
 \alias{nVennR}
 \docType{package}
 \title{
-  A short title line describing what the package does
+   Interface for the nVenn2 algorithm to create quasi-proportional Venn 
+   diagrams with an arbitrary number of sets.
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+  This algorithm is faster
+ than the first version of nVenn and attempts to simplify the resulting
+ diagram. Starting conditions are pseudo-random, which means that the 
+ same input can be run several times with different results.
 }
 \details{
-  This section should provide a more detailed overview of how to use the
-  package, including the most important functions.
+  The input for nVennR is a list of lists or a text table. The dataset 
+  `exampledf` contains an example of a list of lists, where each internal 
+  list has a name for the set and some set elements. The result will be a 
+  Venn diagram where each region is represented by a circle whose area is 
+  approximately proportional to the number of elements in that region. Each 
+  circle has two labels. The number in a larger font size represents the 
+  number of elements in the region. The smaller numbers in parentheses 
+  show which sets the region belongs to.
+  
+  A diagram is created 
+  with nVennDiagram() and plotted with plotSVG(). The appearance of the plot
+  can be changed with setVennOpts() and setVennColors().
 }
 \author{
-Your Name, email optional.
+Victor Quesada, Universidad de Oviedo (Spain).
 
-Maintainer: Your Name <your@email.com>
+Maintainer: Victor Quesada <quesadavictor@uniovi.es>
 }
 \references{
   This optional section can contain literature or other references for
@@ -24,11 +37,13 @@ Maintainer: Your Name <your@email.com>
 }
 \keyword{ package }
 \seealso{
-  Optional links to other man pages
+  \link{nVennDiagram} to create diagram, \link{plotSVG} to plot diagram, 
+  \link{setVennOpts} to customize the plot, \link{setVennColor},
+  \link{setVennColors} and \link{setVennPalette} to change plot colors.
 }
 \examples{
-  \dontrun{
-     ## Optional simple examples of the most important functions
-     ## These can be in \dontrun{} and \donttest{} blocks.   
-  }
+     library(nVennR)
+     myv <- nVennDiagram(exampledf)
+     myv <- setVennOpts(myv, opacity=0.2, fontSize=14)
+     plotSVG(myv)
 }

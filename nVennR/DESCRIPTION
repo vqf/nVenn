@@ -3,10 +3,10 @@ Type: Package
 Title: An interface to nVenn2
 Version: 2.0
 Date: 2025-06-30
-Authors@R: person("Victor", "Quesada", role = c("aut", "cre"), email = "quesadavictor@uniovi.es")
+Authors@R: person("Victor", "Quesada", role = c("aut", "cre", "cph"), email = "quesadavictor@uniovi.es")
 Description: This package creates quasi-proportional Venn diagrams with an arbitrary number of sets.
             It is related to the old nVennR package, but the algorithm and use have been reworked.
-License: GPL (>= 2)
+License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.14)
 LinkingTo: Rcpp
 Encoding: UTF-8
