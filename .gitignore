@@ -12,3 +12,4 @@ nVennR.Rcheck/*
 nVennR/src/nVenn2.o
 nVennR/src/nVennR.so
 nVennR/src/RcppExports.o
+*.o

@@ -13,7 +13,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-
 ```{r setup, F, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -59,11 +58,19 @@ local({
 
 ```
 
+#Input
+To make a Venn diagram, nVennR provides the `nVennDiagram` function. Its input is either a list of lists or a text with the shape of a table. 
+
+##List of lists
+This is the same form of input that the first version of nVennR used. Each inner list has a name which is interpreted as the name of the set. The inner list itself contains the elements in that set. The algorithm accepts an arbitrary number of sets, although there is a hard limit in the code of 20 sets. Diagrams of that size would take a very long time to build, and probably would be of little use. 
 
 ```{r setup}
 library(nVennR)
 exampledf
 ```
+
+
+
 ```{r example1}
 myv <- nVennDiagram(exampledf)
 myv #noshow
@@ -72,6 +79,15 @@ myv #noshow
 ```{r example2}
 myv <- nVennDiagram(exampledf)
 myv #noshow
+```
+
+```{r fromText}
+toVenn <- 'Set1 Set2 Set3
+a a b
+b q d
+c  e'
+myv2 <- nVennDiagram(toVenn)
+myv2 #noshow
 ```
 
 

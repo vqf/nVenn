@@ -11,69 +11,82 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // nVennDiagram
-SEXP nVennDiagram(SEXP desc, bool verbose, unsigned int byCol);
-RcppExport SEXP _nVennR_nVennDiagram(SEXP descSEXP, SEXP verboseSEXP, SEXP byColSEXP) {
+SEXP nVennDiagram(SEXP desc, bool plot, bool verbose, unsigned int byCol);
+RcppExport SEXP _nVennR_nVennDiagram(SEXP descSEXP, SEXP plotSEXP, SEXP verboseSEXP, SEXP byColSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< SEXP >::type desc(descSEXP);
+    Rcpp::traits::input_parameter< bool >::type plot(plotSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
     Rcpp::traits::input_parameter< unsigned int >::type byCol(byColSEXP);
-    rcpp_result_gen = Rcpp::wrap(nVennDiagram(desc, verbose, byCol));
+    rcpp_result_gen = Rcpp::wrap(nVennDiagram(desc, plot, verbose, byCol));
     return rcpp_result_gen;
 END_RCPP
 }
 // getVennSetNames
-List getVennSetNames(List nvObject);
-RcppExport SEXP _nVennR_getVennSetNames(SEXP nvObjectSEXP) {
+List getVennSetNames(List nVennObj);
+RcppExport SEXP _nVennR_getVennSetNames(SEXP nVennObjSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type nvObject(nvObjectSEXP);
-    rcpp_result_gen = Rcpp::wrap(getVennSetNames(nvObject));
+    Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
+    rcpp_result_gen = Rcpp::wrap(getVennSetNames(nVennObj));
     return rcpp_result_gen;
 END_RCPP
 }
 // getVennRegion
-List getVennRegion(List nvObject, SEXP n);
-RcppExport SEXP _nVennR_getVennRegion(SEXP nvObjectSEXP, SEXP nSEXP) {
+List getVennRegion(List nVennObj, SEXP n);
+RcppExport SEXP _nVennR_getVennRegion(SEXP nVennObjSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type nvObject(nvObjectSEXP);
+    Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
     Rcpp::traits::input_parameter< SEXP >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(getVennRegion(nvObject, n));
+    rcpp_result_gen = Rcpp::wrap(getVennRegion(nVennObj, n));
     return rcpp_result_gen;
 END_RCPP
 }
+// listVennRegions
+void listVennRegions(List nVennObj, bool showEmpty);
+RcppExport SEXP _nVennR_listVennRegions(SEXP nVennObjSEXP, SEXP showEmptySEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
+    Rcpp::traits::input_parameter< bool >::type showEmpty(showEmptySEXP);
+    listVennRegions(nVennObj, showEmpty);
+    return R_NilValue;
+END_RCPP
+}
 // getVennSvg
-String getVennSvg(List nvObject);
-RcppExport SEXP _nVennR_getVennSvg(SEXP nvObjectSEXP) {
+String getVennSvg(List nVennObj);
+RcppExport SEXP _nVennR_getVennSvg(SEXP nVennObjSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type nvObject(nvObjectSEXP);
-    rcpp_result_gen = Rcpp::wrap(getVennSvg(nvObject));
+    Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
+    rcpp_result_gen = Rcpp::wrap(getVennSvg(nVennObj));
     return rcpp_result_gen;
 END_RCPP
 }
 // rotateVenn
-SEXP rotateVenn(List nvObject, float angle);
-RcppExport SEXP _nVennR_rotateVenn(SEXP nvObjectSEXP, SEXP angleSEXP) {
+SEXP rotateVenn(List nVennObj, float angle);
+RcppExport SEXP _nVennR_rotateVenn(SEXP nVennObjSEXP, SEXP angleSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< List >::type nvObject(nvObjectSEXP);
+    Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
     Rcpp::traits::input_parameter< float >::type angle(angleSEXP);
-    rcpp_result_gen = Rcpp::wrap(rotateVenn(nvObject, angle));
+    rcpp_result_gen = Rcpp::wrap(rotateVenn(nVennObj, angle));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_nVennR_nVennDiagram", (DL_FUNC) &_nVennR_nVennDiagram, 3},
+    {"_nVennR_nVennDiagram", (DL_FUNC) &_nVennR_nVennDiagram, 4},
     {"_nVennR_getVennSetNames", (DL_FUNC) &_nVennR_getVennSetNames, 1},
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 2},
+    {"_nVennR_listVennRegions", (DL_FUNC) &_nVennR_listVennRegions, 2},
     {"_nVennR_getVennSvg", (DL_FUNC) &_nVennR_getVennSvg, 1},
     {"_nVennR_rotateVenn", (DL_FUNC) &_nVennR_rotateVenn, 2},
     {NULL, NULL, 0}

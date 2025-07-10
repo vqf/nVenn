@@ -2,7 +2,7 @@
 % Please edit documentation in R/nVenn2.R
 \name{setVennOpts}
 \alias{setVennOpts}
-\title{Set the appearance of an nVenn object diagram.}
+\title{Set graphical parameters of an nVenn object diagram.}
 \usage{
 setVennOpts(
   nVennObj,
@@ -15,21 +15,21 @@ setVennOpts(
 )
 }
 \arguments{
-\item{nVennObj}{nVenn object.}
+\item{nVennObj}{nVenn object generated with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
 
 \item{opacity}{Opacity of sets, between 0 (completely transparent)
 and 1 (completely opaque). Defaults to 0.4.}
 
 \item{fontSize}{Size of the font for the numbers of elements (weights) in each
-region. It also indirectly controls the font sizes of the 
+region. It also indirectly controls the font sizes of the
 region descriptions, if shown (showRegions=T). Defaults to
 10.}
 
-\item{lineWidth}{Width of the lines defining each set. The value will be 
+\item{lineWidth}{Width of the lines defining each set. The value will be
 rounded to the closest integer. Defaults to 1.}
 
-\item{palette}{Color palette to use to fill the sets. Integer from 1 to 4. 
-Defaults to 1.}
+\item{palette}{Color palette to use to fill the sets. Integer from 0 to 3.
+Defaults to 0.}
 
 \item{showRegions}{If true (default), show region descriptions.}
 
@@ -39,15 +39,15 @@ Defaults to 1.}
 nVennObj with graphical options set.
 }
 \description{
-The function returns an object whose parameters will change the way the 
-diagram is plotted. To see the changes, it is necessary to run \link{plotSVG}
+The function returns an object whose parameters will change the way the
+diagram is plotted. To see the changes, it is necessary to run \code{\link[=plotVenn]{plotVenn()}}
 afterwards.
 }
 \examples{
 myv <- nVennDiagram(exampledf)
 myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
-plotSVG(myv)
+plotVenn(myv)
 }
 \seealso{
-\link{plotSVG} for plotting the resulting diagram.
+\link{plotVenn} for plotting the resulting diagram.
 }

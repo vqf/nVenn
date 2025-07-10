@@ -3,26 +3,92 @@
 
 #' Creates nVenn plot
 #'
-#' @param desc Description of sets, either as a list of lists or as text.
-#' @param v2 verbose If true, shows messages as the nVenn plot is created.
+#' @param desc Description of sets, either as a list of lists, text or a 
+#' previously created nVenn object (see Details). 
+#' @param plot If true (default), the resulting diagram is plotted. If false, 
+#' only the object is returned.
+#' @param verbose If true, shows messages as the nVenn plot is created.
+#' @param byCol If the input is a text, this parameter indicates whether 
+#' each set is a column (1) or a row (2). Defaults to 0, which means that 
+#' the package will try to guess which possibility makes more sense.
 #' @return nVenn object. As a side effect, shows the nVenn plot.
-nVennDiagram <- function(desc, verbose = TRUE, byCol = 0L) {
-    .Call(`_nVennR_nVennDiagram`, desc, verbose, byCol)
+#' @details A list of lists contains inner lists with a name, which will be 
+#' the corresponding set name. A dataframe can be used in the same way.
+#' 
+#' The input can also be a text containing a table, possibly with missing 
+#' values. If a text is provided, the package will try to guess if each set
+#' is encoded in columns or rows (use `byCol` to force) and which
+#' character separates fields (usually tab, space or comma).
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+nVennDiagram <- function(desc, plot = TRUE, verbose = TRUE, byCol = 0L) {
+    .Call(`_nVennR_nVennDiagram`, desc, plot, verbose, byCol)
 }
 
-getVennSetNames <- function(nvObject) {
-    .Call(`_nVennR_getVennSetNames`, nvObject)
+#' Gets the names of the sets
+#'
+#' @param nVennObj nVennR object generated with [nVennDiagram()].
+#' @return List of set names.
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' getVennSetNames(myv)
+getVennSetNames <- function(nVennObj) {
+    .Call(`_nVennR_getVennSetNames`, nVennObj)
 }
 
-getVennRegion <- function(nvObject, n) {
-    .Call(`_nVennR_getVennRegion`, nvObject, n)
+#' Gets a list of the elements in a region of the diagram
+#'
+#' @param nVennObj nVennR object generated with [nVennDiagram()].
+#' @param n Region, either as an integer or as a vector of set names. See Details
+#' @return List of set names.
+#' @details An integer expresses a region by considering its binary representation
+#' in reverse. A 1 in a position means "belongs to" and a 0 or empty position
+#' means "does not belong to". Thus, the binary representation of 19  (10011),
+#' read from right to left, means "region that belongs to
+#' sets 1, 2 and 5 and does not belong to any other set".
+#' 
+#' A vector of set names expresses a region by giving the sets the region
+#' belongs to. It is understood that the region does not belong to any other
+#' set.
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' #Both commands are equivalent:
+#' getVennRegion(myv, 3)
+#' getVennRegion(myv, c("Set1", "Set2"))
+getVennRegion <- function(nVennObj, n) {
+    .Call(`_nVennR_getVennRegion`, nVennObj, n)
 }
 
-getVennSvg <- function(nvObject) {
-    .Call(`_nVennR_getVennSvg`, nvObject)
+#' Lists the elements in every region of the diagram
+#'
+#' @param nVennObj nVennR object generated with [nVennDiagram()].
+#' @param showEmpty If true, lists every region, even if empty. 
+#' If false (default), only lists regions containing elements.
+#' @return Nothing. The result is printed.
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' listVennRegions(myv)
+listVennRegions <- function(nVennObj, showEmpty = FALSE) {
+    invisible(.Call(`_nVennR_listVennRegions`, nVennObj, showEmpty))
 }
 
-rotateVenn <- function(nvObject, angle) {
-    .Call(`_nVennR_rotateVenn`, nvObject, angle)
+#' Get the svg code of an nVenn diagram
+#'
+#' @param nVennObj nVennR object generated with [nVennDiagram()].
+#' @return String with svg code.
+#' @details
+#' The code returned by the funciton can be saved to a file and then 
+#' edited with vectorial image 
+#' software. This can be done directly with [nVennDiagram()] or
+#' [plotVenn()] by using the `outFile` param.
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' getVennSvg(myv)
+getVennSvg <- function(nVennObj) {
+    .Call(`_nVennR_getVennSvg`, nVennObj)
+}
+
+rotateVenn <- function(nVennObj, angle) {
+    .Call(`_nVennR_rotateVenn`, nVennObj, angle)
 }
 

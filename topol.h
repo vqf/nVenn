@@ -6621,6 +6621,18 @@ public:
         return groups;
     }
 
+    std::string regionDescription(UINT nreg){
+      std::vector<std::string> r;
+      for (UINT i = 0; i < groups.size(); i++){
+        UINT mask = 1 << i;
+        if ((nreg & mask) > 0){
+          r.push_back(groups[i]);
+        }
+      }
+      std::string result = "(" + join(", ", r) + ")";
+      return result;
+    }
+
 
     bool simulate(int maxRel = 0){
       restart_log();

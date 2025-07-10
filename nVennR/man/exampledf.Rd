@@ -7,10 +7,10 @@
 \format{
 A data frame with 18 rows and 3 variables:
 \describe{
-  \item{Employee}{Employee ID}
-  \item{SAS}{Employee uses SAS}
-  \item{Python}{Employee uses Python}
-  \item{R}{Employee uses R}
+\item{Employee}{Employee ID}
+\item{SAS}{Employee uses SAS}
+\item{Python}{Employee uses Python}
+\item{R}{Employee uses R}
 }
 }
 \source{

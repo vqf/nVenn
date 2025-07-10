@@ -24,9 +24,24 @@ NULL
 #'   \item{Python}{Employee uses Python}
 #'   \item{R}{Employee uses R}
 #' }
-#' @source \url{https://stackoverflow.com/questions/49471565/transforming-data-to-create-generalized-quasi-proportional-venn-diagrams-using}
+#' @source <https://stackoverflow.com/questions/49471565/transforming-data-to-create-generalized-quasi-proportional-venn-diagrams-using>
 "exampledf"
 
+
+.setSetNames <- function(nVennObj, snames){
+  nVennObj$setNames <- snames
+  return(nVennObj)
+}
+
+.validOpts <- function(){
+  result <- c("opacity", 
+              "fontSize", 
+              "lineWidth",
+              "palette",
+              "showRegions",
+              "showWeights")
+  return(result);
+}
 
 .lol2string <- function(t){
   result <- ""
@@ -80,13 +95,13 @@ NULL
   return(result)
 }
 
-#' Set the appearance of an nVenn object diagram.
+#' Set graphical parameters of an nVenn object diagram.
 #' 
 #' The function returns an object whose parameters will change the way the 
-#' diagram is plotted. To see the changes, it is necessary to run \link{plotSVG}
+#' diagram is plotted. To see the changes, it is necessary to run [plotVenn()]
 #' afterwards.
 #'
-#' @param nVennObj nVenn object.
+#' @param nVennObj nVenn object generated with [nVennDiagram()].
 #' @param opacity Opacity of sets, between 0 (completely transparent)
 #'                and 1 (completely opaque). Defaults to 0.4.
 #' @param fontSize Size of the font for the numbers of elements (weights) in each
@@ -95,42 +110,132 @@ NULL
 #'                 10.
 #' @param lineWidth Width of the lines defining each set. The value will be 
 #'                  rounded to the closest integer. Defaults to 1.
-#' @param palette Color palette to use to fill the sets. Integer from 1 to 4. 
-#'                Defaults to 1.
+#' @param palette Color palette to use to fill the sets. Integer from 0 to 3. 
+#'                Defaults to 0.
 #' @param showRegions If true (default), show region descriptions.
 #' @param showWeights If true (default), show number of elements in each region.
 #'
 #' @returns nVennObj with graphical options set.
-#' @seealso \link{plotSVG} for plotting the resulting diagram.
+#' @seealso [plotVenn] for plotting the resulting diagram.
 #' @export
 #'
 #' @examples
 #' myv <- nVennDiagram(exampledf)
 #' myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
-#' plotSVG(myv)
+#' plotVenn(myv)
 setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
                      lineWidth = 1, palette = 0,
                      showRegions = T, showWeights = T){
   if (is.null(nVennObj$opts)){
     nVennObj$opts = .optData()
   }
-  nVennObj$opts$opacity <- opacity
-  nVennObj$opts$fontSize <- fontSize
-  nVennObj$opts$lineWidth <- lineWidth
-  nVennObj$opts$palette <- palette
-  nVennObj$opts$showRegions <- showRegions
-  nVennObj$opts$showWeights <- showWeights
+  params <- list(
+    opacity = opacity,
+    fontSize = fontSize,
+    lineWidth = lineWidth,
+    palette = palette,
+    showRegions = showRegions,
+    showWeights = showWeights
+  )
+  nVennObj <- setVennSkin(nVennObj, params)
   return(nVennObj)
 }
 
+#' Set nVenn diagram appearance
+#'
+#' @param nVennObj nVenn object generated with [nVennDiagram()].
+#' @param params List of graphical options, as in [setVennOpts()], plus two
+#' special parameters: `palette` to set a color palette as in [setVennPalette()]
+#' and `colors` to change set colors as in [setVennColors()]
+#' 
+#' @details
+#' Running this function is equivalent to running [setVennOpts()] repeatedly.
+#' The advantage is that [setVennSkin()] can set multiple parameters at the 
+#' same time. The same `params` list can be used on multiple nVenn objects
+#' as a theme.
+#' 
+#' The only valid parameters for `params` are those in [setVennOpts()], 
+#' `palette` and `colors`.
+#' 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+#' theme <- list(opacity=0.2, lineWidth=2, fontSize=14, showRegions=F,
+#'               palette=2, colors=c("black"))
+#' myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
+#' myv <- setVennSkin(myv, theme)
+#' plotVenn(myv)
+setVennSkin <- function(nVennObj, params){
+  valid <- .validOpts()
+  for (p in names(params)){
+    if (p %in% valid){
+      nVennObj$opts[[p]] <- params[[p]]
+    }
+    else if (p == "palette"){
+      nVennObj <- setVennPalette(nVennObj, params[[p]])
+    }
+    else if (p == "colors"){
+      nVennObj <- setVennColors(nVennObj, params[[p]])
+    }
+    else{
+      warning(paste("Unrecognized parameter \"", p, "\"", sep = ""))
+    }
+  }
+  return(nVennObj)
+}
+
+#' Change the color palette for a diagram
+#'
+#' @param nVennObj nVenn object created with [nVennDiagram()].
+#' @param palette Either 0 (default), 1, 2 or 3. Each number defines a 
+#' color palette that will be applied to the results
+#'
+#' @returns nVenn object with the palette set to the requested value. This 
+#' function does not plot the diagram, [plotVenn()] must be used for that.
+#' @details
+#' The color palette for a diagram can also be set with [setVennOpts()], but 
+#' with a small difference. If a set color has been set with [setVennColor()],
+#' [setVennPalette()] will override and delete that setting, while [setVennOpts()]
+#' will not. This way, one can have a color defined for a set and change the 
+#' colors of the rest of sets with [setVennOpts()] or reset every color to the 
+#' pre-defined palette with [setVennPalette()].
+#' 
+#' @seealso [setVennOpts()] for an alternative way to change the color palette
+#' and [plotVenn()] to plot the new diagram.
+#' 
+#' @export
+#'
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' myv <- setVennPalette(myv, 2)
+#' plotVenn(myv)
 setVennPalette <- function(nVennObj, palette = 0){
   nVennObj <- setVennOpts(nVennObj = nVennObj, palette = palette)
   nVennObj <- .resetvcolors(nVennObj)
   return(nVennObj)
 }
 
+#' Change a set color
+#'
+#' @param nVennObj nVenn object created with [nVennDiagram()].
+#' @param setName Name of the set.
+#' @param color New color. It is important to notice that this parameter must be 
+#' a valid color in SVG format. The value is not checked, and therefore an 
+#' incorrect value will break the plot in [plotVenn()].
+#'
+#' @returns nVenn object with the change in color for the set. This function 
+#' does not plot the result, [plotVenn()] needs to be called afterwards.
+#' @export
+#'
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' myv <- setVennColor(myv, "Set2", "black")
+#' plotVenn(myv)
+#' myv <- setVennColor(myv, "Set1", "#ffff00")
+#' plotVenn(myv)
 setVennColor <- function(nVennObj, setName, color){
-  #nVennObj <- .avcolors(nVennObj)
   nVennObj$setNames <- unlist(getVennSetNames(nVennObj))
   if (setName %in% nVennObj$setNames){
     nVennObj$colors[[setName]] <- color
@@ -142,6 +247,33 @@ setVennColor <- function(nVennObj, setName, color){
   return(nVennObj)
 }
 
+#' Change set colors
+#'
+#' @param nVennObj nVenn object created with [nVennDiagram()].
+#' @param setName Name of the set.
+#' @param colorList Vector or list of colors for the sets (see Details).
+#' 
+#' @details
+#' If a vector of svg-formatted colors is provided, they will be used in the same
+#' order. This is a good way to create and use a custom color palette.
+#' If a list is used, the function will call [setVennColor()] with the names
+#' in the list.
+#' 
+#' It is important to notice that each color must be 
+#' a valid color in SVG format. The value is not checked, and therefore an 
+#' incorrect value will break the plot in [plotVenn()].
+#' 
+#' 
+#'
+#' @returns nVenn object with changed set colors. This function 
+#' does not plot the result, [plotVenn()] needs to be called afterwards.
+#' @export
+#'
+#' @examples
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' mypalette <- c("black", "#ffff00", "red")
+#' myv <- setVennColors(myv, mypalette)
+#' plotVenn(myv)
 setVennColors <- function(nVennObj, colorList){
   nVennObj <- .avcolors(nVennObj)
   sn <- names(colorList)
@@ -176,7 +308,7 @@ setVennColors <- function(nVennObj, colorList){
 #'
 #' @export
 #'
-plotSVG <- function(nVennObj, outFile='', systemShow = F){
+plotVenn <- function(nVennObj, outFile='', systemShow = F){
   tfile <- tempfile(fileext = ".svg")
   tfile2 <- tempfile(fileext = ".svg")
   cat(getVennSvg(nVennObj), file=tfile)

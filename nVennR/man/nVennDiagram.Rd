@@ -4,16 +4,36 @@
 \alias{nVennDiagram}
 \title{Creates nVenn plot}
 \usage{
-nVennDiagram(desc, verbose = TRUE, byCol = 0L)
+nVennDiagram(desc, plot = TRUE, verbose = TRUE, byCol = 0L)
 }
 \arguments{
-\item{desc}{Description of sets, either as a list of lists or as text.}
+\item{desc}{Description of sets, either as a list of lists, text or a
+previously created nVenn object (see Details).}
 
-\item{v2}{verbose If true, shows messages as the nVenn plot is created.}
+\item{plot}{If true (default), the resulting diagram is plotted. If false,
+only the object is returned.}
+
+\item{verbose}{If true, shows messages as the nVenn plot is created.}
+
+\item{byCol}{If the input is a text, this parameter indicates whether
+each set is a column (1) or a row (2). Defaults to 0, which means that
+the package will try to guess which possibility makes more sense.}
 }
 \value{
 nVenn object. As a side effect, shows the nVenn plot.
 }
 \description{
 Creates nVenn plot
+}
+\details{
+A list of lists contains inner lists with a name, which will be
+the corresponding set name. A dataframe can be used in the same way.
+
+The input can also be a text containing a table, possibly with missing
+values. If a text is provided, the package will try to guess if each set
+is encoded in columns or rows (use \code{byCol} to force) and which
+character separates fields (usually tab, space or comma).
+}
+\examples{
+myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 }
