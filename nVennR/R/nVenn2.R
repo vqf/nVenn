@@ -129,14 +129,20 @@ setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
   if (is.null(nVennObj$opts)){
     nVennObj$opts = .optData()
   }
-  params <- list(
-    opacity = opacity,
-    fontSize = fontSize,
-    lineWidth = lineWidth,
-    palette = palette,
-    showRegions = showRegions,
-    showWeights = showWeights
+  defaults <- list(opacity = opacity, fontSize = fontSize,
+                   lineWidth = lineWidth, palette = palette,
+                   showRegions = showRegions, showWeights = showWeights
   )
+  dnames <- names(defaults)
+  passed <- names(match.call())
+  prevOptions <- names(nVennObj$opts)
+  params <- list()
+  allopts <- .validOpts()
+  for (o in passed){
+    if (o %in% allopts){
+      params[[o]] <- defaults[[o]]
+    }
+  }
   nVennObj <- setVennSkin(nVennObj, params)
   return(nVennObj)
 }

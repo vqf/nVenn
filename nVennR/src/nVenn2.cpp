@@ -261,6 +261,21 @@ String getVennSvg(List nVennObj) {
   return bl.toSVG().getText();
 }
 
+
+//' Rotate a diagram
+//'
+//' @param nVennObj nVennR object generated with [nVennDiagram()].
+//' @param angle Angle of rotation in degrees. Positive values rotate
+//' counterclockwise.
+//' @return String with svg code.
+//' @details
+//' The code returned by the funciton can be saved to a file and then 
+//' edited with vectorial image 
+//' software. This can be done directly with [nVennDiagram()] or
+//' [plotVenn()] by using the `outFile` param.
+//' @examples
+//' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+//' getVennSvg(myv)
 // [[Rcpp::export]]
 SEXP rotateVenn(List nVennObj, float angle){
   borderLine bl;

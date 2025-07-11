@@ -62,7 +62,7 @@ local({
 
 Proportional Venn diagrams show the relationships between several sets in a compact representation. Each `set` is depicted as a contiguous area proportional to the number of elements it contains, delimited by a closed curve. Those curves may intersect, creating `regions` that belong to one or more sets. To be accurate, the area of each region should be proportional to the number of elements it contains. 
 
-Representing proportional Venn diagrams with more than two sets is not trivial, as the number of potential regions grows exponentially with the number of sets. The `nVenn` algorithm represents areas as circles with the desired areas and then encloses those circles in curves to create the sets. The resulting diagrams are approximately proportional and can represent an arbitrary number of sets.
+Representing proportional Venn diagrams with more than two sets is not trivial, as the number of potential regions grows exponentially with the number of sets. The `nVenn` algorithm represents regions as circles with the desired areas and then encloses those circles in curves to create the sets. The resulting diagrams are approximately proportional and can represent an arbitrary number of sets.
 
 # Input
 
@@ -143,7 +143,7 @@ myv2 #noshow
 
 ## Set colors
 
-The most straightforward way to change a set color is by using `setVennColor`. WARNING: colors must be formatted as valid svg color expressions. If we pass an invalid svg color, the resulting figure may be broken or another color can be set.
+The most straightforward way to change a set color is by using `setVennColor`. WARNING: colors must be formatted as [valid svg color expressions](https://www.w3.org/TR/css-color-3/). If we pass an invalid svg color, there may be unexpected results.
 
 ```{r colors}
 myv2 <- setVennColor(myv2, "Set2", 'black')
@@ -204,7 +204,7 @@ myv #noshow
 
 ## Rotate the diagram
 
-We can also rotate the plot with `rotateVenn`. The angle is interpreted in degrees and it is applied counter-clockwise.
+We can also rotate the plot with `rotateVenn`. The angle is interpreted in degrees and it is applied counterclockwise.
 
 ```{r rotate}
 plotVenn(myv2)
