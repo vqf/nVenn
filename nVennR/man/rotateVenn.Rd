@@ -13,18 +13,9 @@ rotateVenn(nVennObj, angle)
 counterclockwise.}
 }
 \value{
-String with svg code.
+nVenn object. The function does not plot the diagram. It is
+necessary to run \code{\link[=plotVenn]{plotVenn()}} for that.
 }
 \description{
 Rotate a diagram
-}
-\details{
-The code returned by the funciton can be saved to a file and then
-edited with vectorial image
-software. This can be done directly with \code{\link[=nVennDiagram]{nVennDiagram()}} or
-\code{\link[=plotVenn]{plotVenn()}} by using the \code{outFile} param.
-}
-\examples{
-myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
-getVennSvg(myv)
 }
