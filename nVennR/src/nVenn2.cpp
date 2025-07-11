@@ -45,6 +45,12 @@ SEXP toRObject(std::string desc, float opacity = 0.4,
 //' previously created nVenn object (see Details). 
 //' @param plot If true (default), the resulting diagram is plotted. If false, 
 //' only the object is returned.
+//' @param outFile If it contains a valid file path and `plot` is also true, 
+//' the svg code of the plot will 
+//' be saved in that path.
+//' @param systemShow If true, and `plot` is true, the function will attempt to 
+//' open the resulting 
+//' svg figure in the default editor. Defaults to false. 
 //' @param verbose If true, shows messages as the nVenn plot is created.
 //' @param byCol If the input is a text, this parameter indicates whether 
 //' each set is a column (1) or a row (2). Defaults to 0, which means that 
@@ -60,13 +66,14 @@ SEXP toRObject(std::string desc, float opacity = 0.4,
 //' @examples
 //' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 // [[Rcpp::export]]
-SEXP nVennDiagram(SEXP desc, bool plot = true, bool verbose = true, unsigned int byCol = 0){
+SEXP nVennDiagram(SEXP desc, bool plot = true, std::string outFile="", bool systemShow=false,
+                    bool verbose = true, unsigned int byCol = 0){
   List sv = desc;
   bool correct = true;
   borderLine bl;
+  std::string result;
   Function asNamespace("asNamespace");
   Environment nv_env = asNamespace("nVennR");
-  std::string result;
   if (sv.containsElementNamed("desc")){
     bl.restoreBl(as<std::string>(sv["desc"]));
   }
@@ -103,7 +110,7 @@ SEXP nVennDiagram(SEXP desc, bool plot = true, bool verbose = true, unsigned int
   r = n(r, sn);
   if (plot){
     Function f("plotVenn");
-    f(r);
+    f(r, outFile, systemShow);
   }
   return r;
 }
@@ -258,13 +265,21 @@ String getVennSvg(List nVennObj) {
 SEXP rotateVenn(List nVennObj, float angle){
   borderLine bl;
   bl.restoreBl(as<std::string>(nVennObj["desc"]));
-  List opts = nVennObj["opts"];
+  List skin;
+  if (nVennObj.containsElementNamed("opts")){
+    skin = nVennObj["opts"];
+  }
+  if (nVennObj.containsElementNamed("colors")){
+    skin["colors"] = nVennObj["colors"];
+  }
   float ang = 3.141592 * angle / 180;
   bl.rotateScene(ang);
   std::string result = bl.saveBl();
-  SEXP r = toRObject(result, opts["opacity"],
-                     opts["fontSize"], opts["lineWidth"], opts["palette"],
-                     opts["showRegions"], opts["showWeights"]);
+  SEXP r = toRObject(result);
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
+  Function setSkin = nv_env["setVennSkin"];
+  r = setSkin(r, skin);
   return r;
 }
 

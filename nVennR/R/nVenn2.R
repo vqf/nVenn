@@ -76,7 +76,7 @@ NULL
 .avcolors <- function(nVennObj){
   if (!("colors" %in% nVennObj)){
     #nVennObj$setNames <- unlist(getVennSetNames(nVennObj))
-    nVennObj$colors <- .resetvcolors(nVennObj)
+    nVennObj <- .resetvcolors(nVennObj)
   }
   return(nVennObj)
 }
@@ -309,7 +309,8 @@ setVennColors <- function(nVennObj, colorList){
 #' @export
 #'
 plotVenn <- function(nVennObj, outFile='', systemShow = F){
-  tfile <- tempfile(fileext = ".svg")
+  tfile = outFile
+  if (tfile == "") tfile <- tempfile(fileext = ".svg")
   tfile2 <- tempfile(fileext = ".svg")
   cat(getVennSvg(nVennObj), file=tfile)
   if (requireNamespace("rsvg", quietly = TRUE) && requireNamespace("grImport2", quietly = TRUE)) {

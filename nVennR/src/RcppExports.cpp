@@ -11,16 +11,18 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // nVennDiagram
-SEXP nVennDiagram(SEXP desc, bool plot, bool verbose, unsigned int byCol);
-RcppExport SEXP _nVennR_nVennDiagram(SEXP descSEXP, SEXP plotSEXP, SEXP verboseSEXP, SEXP byColSEXP) {
+SEXP nVennDiagram(SEXP desc, bool plot, std::string outFile, bool systemShow, bool verbose, unsigned int byCol);
+RcppExport SEXP _nVennR_nVennDiagram(SEXP descSEXP, SEXP plotSEXP, SEXP outFileSEXP, SEXP systemShowSEXP, SEXP verboseSEXP, SEXP byColSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< SEXP >::type desc(descSEXP);
     Rcpp::traits::input_parameter< bool >::type plot(plotSEXP);
+    Rcpp::traits::input_parameter< std::string >::type outFile(outFileSEXP);
+    Rcpp::traits::input_parameter< bool >::type systemShow(systemShowSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
     Rcpp::traits::input_parameter< unsigned int >::type byCol(byColSEXP);
-    rcpp_result_gen = Rcpp::wrap(nVennDiagram(desc, plot, verbose, byCol));
+    rcpp_result_gen = Rcpp::wrap(nVennDiagram(desc, plot, outFile, systemShow, verbose, byCol));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -83,7 +85,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_nVennR_nVennDiagram", (DL_FUNC) &_nVennR_nVennDiagram, 4},
+    {"_nVennR_nVennDiagram", (DL_FUNC) &_nVennR_nVennDiagram, 6},
     {"_nVennR_getVennSetNames", (DL_FUNC) &_nVennR_getVennSetNames, 1},
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 2},
     {"_nVennR_listVennRegions", (DL_FUNC) &_nVennR_listVennRegions, 2},

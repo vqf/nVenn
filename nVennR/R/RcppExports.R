@@ -7,6 +7,12 @@
 #' previously created nVenn object (see Details). 
 #' @param plot If true (default), the resulting diagram is plotted. If false, 
 #' only the object is returned.
+#' @param outFile If it contains a valid file path and `plot` is also true, 
+#' the svg code of the plot will 
+#' be saved in that path.
+#' @param systemShow If true, and `plot` is true, the function will attempt to 
+#' open the resulting 
+#' svg figure in the default editor. Defaults to false. 
 #' @param verbose If true, shows messages as the nVenn plot is created.
 #' @param byCol If the input is a text, this parameter indicates whether 
 #' each set is a column (1) or a row (2). Defaults to 0, which means that 
@@ -21,8 +27,8 @@
 #' character separates fields (usually tab, space or comma).
 #' @examples
 #' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
-nVennDiagram <- function(desc, plot = TRUE, verbose = TRUE, byCol = 0L) {
-    .Call(`_nVennR_nVennDiagram`, desc, plot, verbose, byCol)
+nVennDiagram <- function(desc, plot = TRUE, outFile = "", systemShow = FALSE, verbose = TRUE, byCol = 0L) {
+    .Call(`_nVennR_nVennDiagram`, desc, plot, outFile, systemShow, verbose, byCol)
 }
 
 #' Gets the names of the sets

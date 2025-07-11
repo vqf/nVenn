@@ -4,7 +4,14 @@
 \alias{nVennDiagram}
 \title{Creates nVenn plot}
 \usage{
-nVennDiagram(desc, plot = TRUE, verbose = TRUE, byCol = 0L)
+nVennDiagram(
+  desc,
+  plot = TRUE,
+  outFile = "",
+  systemShow = FALSE,
+  verbose = TRUE,
+  byCol = 0L
+)
 }
 \arguments{
 \item{desc}{Description of sets, either as a list of lists, text or a
@@ -12,6 +19,14 @@ previously created nVenn object (see Details).}
 
 \item{plot}{If true (default), the resulting diagram is plotted. If false,
 only the object is returned.}
+
+\item{outFile}{If it contains a valid file path and \code{plot} is also true,
+the svg code of the plot will
+be saved in that path.}
+
+\item{systemShow}{If true, and \code{plot} is true, the function will attempt to
+open the resulting
+svg figure in the default editor. Defaults to false.}
 
 \item{verbose}{If true, shows messages as the nVenn plot is created.}
 

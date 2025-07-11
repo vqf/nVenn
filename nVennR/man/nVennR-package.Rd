@@ -23,7 +23,7 @@
   show which sets the region belongs to.
   
   A diagram is created 
-  with nVennDiagram() and plotted with plotSVG(). The appearance of the plot
+  with nVennDiagram() and plotted with plotVenn(). The appearance of the plot
   can be changed with setVennOpts() and setVennColors().
 }
 \author{
@@ -37,13 +37,14 @@ Maintainer: Victor Quesada <quesadavictor@uniovi.es>
 }
 \keyword{ package }
 \seealso{
-  \link{nVennDiagram} to create diagram, \link{plotSVG} to plot diagram, 
+  \link{nVennDiagram} to create diagram, \link{plotVenn} to plot diagram, 
   \link{setVennOpts} to customize the plot, \link{setVennColor},
-  \link{setVennColors} and \link{setVennPalette} to change plot colors.
+  \link{setVennColors} and \link{setVennPalette} to change plot colors, 
+  \link{setVennSkin} to set all graphical properties.
 }
 \examples{
      library(nVennR)
      myv <- nVennDiagram(exampledf)
      myv <- setVennOpts(myv, opacity=0.2, fontSize=14)
-     plotSVG(myv)
+     plotVenn(myv)
 }
