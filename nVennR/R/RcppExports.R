@@ -99,9 +99,9 @@ getVennSvg <- function(nVennObj) {
 #' @param nVennObj nVennR object generated with [nVennDiagram()].
 #' @param angle Angle of rotation in degrees. Positive values rotate
 #' counterclockwise.
-#' @return nVenn object. The function does not plot the diagram. It is 
-#' necessary to run [plotVenn()] for that.
-rotateVenn <- function(nVennObj, angle) {
-    .Call(`_nVennR_rotateVenn`, nVennObj, angle)
+#' @param plot If true (default), prints the diagram after the rotation.
+#' @return nVenn object. 
+rotateVenn <- function(nVennObj, angle, plot = TRUE) {
+    .Call(`_nVennR_rotateVenn`, nVennObj, angle, plot)
 }
 

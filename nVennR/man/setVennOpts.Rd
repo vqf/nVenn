@@ -11,7 +11,8 @@ setVennOpts(
   lineWidth = 1,
   palette = 0,
   showRegions = T,
-  showWeights = T
+  showWeights = T,
+  plot = T
 )
 }
 \arguments{
@@ -34,20 +35,17 @@ Defaults to 0.}
 \item{showRegions}{If true (default), show region descriptions.}
 
 \item{showWeights}{If true (default), show number of elements in each region.}
+
+\item{plot}{If true (default), plots the diagram after the operation.}
 }
 \value{
 nVennObj with graphical options set.
 }
 \description{
 The function returns an object whose parameters will change the way the
-diagram is plotted. To see the changes, it is necessary to run \code{\link[=plotVenn]{plotVenn()}}
-afterwards.
+diagram is plotted.
 }
 \examples{
 myv <- nVennDiagram(exampledf)
 myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
-plotVenn(myv)
-}
-\seealso{
-\link{plotVenn} for plotting the resulting diagram.
 }

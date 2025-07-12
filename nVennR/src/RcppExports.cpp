@@ -72,14 +72,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // rotateVenn
-SEXP rotateVenn(List nVennObj, float angle);
-RcppExport SEXP _nVennR_rotateVenn(SEXP nVennObjSEXP, SEXP angleSEXP) {
+SEXP rotateVenn(List nVennObj, float angle, bool plot);
+RcppExport SEXP _nVennR_rotateVenn(SEXP nVennObjSEXP, SEXP angleSEXP, SEXP plotSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< List >::type nVennObj(nVennObjSEXP);
     Rcpp::traits::input_parameter< float >::type angle(angleSEXP);
-    rcpp_result_gen = Rcpp::wrap(rotateVenn(nVennObj, angle));
+    Rcpp::traits::input_parameter< bool >::type plot(plotSEXP);
+    rcpp_result_gen = Rcpp::wrap(rotateVenn(nVennObj, angle, plot));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -90,7 +91,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 2},
     {"_nVennR_listVennRegions", (DL_FUNC) &_nVennR_listVennRegions, 2},
     {"_nVennR_getVennSvg", (DL_FUNC) &_nVennR_getVennSvg, 1},
-    {"_nVennR_rotateVenn", (DL_FUNC) &_nVennR_rotateVenn, 2},
+    {"_nVennR_rotateVenn", (DL_FUNC) &_nVennR_rotateVenn, 3},
     {NULL, NULL, 0}
 };
 

@@ -4,18 +4,19 @@
 \alias{setVennColors}
 \title{Change set colors}
 \usage{
-setVennColors(nVennObj, colorList)
+setVennColors(nVennObj, colorList, plot = T)
 }
 \arguments{
 \item{nVennObj}{nVenn object created with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
 
 \item{colorList}{Vector or list of colors for the sets (see Details).}
 
+\item{plot}{If true (default), plots the diagram after setting the colors.}
+
 \item{setName}{Name of the set.}
 }
 \value{
-nVenn object with changed set colors. This function
-does not plot the result, \code{\link[=plotVenn]{plotVenn()}} needs to be called afterwards.
+nVenn object with changed set colors.
 }
 \description{
 Change set colors
@@ -28,11 +29,11 @@ in the list.
 
 It is important to notice that each color must be
 a valid color in SVG format. The value is not checked, and therefore an
-incorrect value will break the plot in \code{\link[=plotVenn]{plotVenn()}}.
+incorrect value may break the plot in \code{\link[=plotVenn]{plotVenn()}} or lead to unexpected
+results.
 }
 \examples{
 myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 mypalette <- c("black", "#ffff00", "red")
 myv <- setVennColors(myv, mypalette)
-plotVenn(myv)
 }

@@ -4,17 +4,18 @@
 \alias{setVennPalette}
 \title{Change the color palette for a diagram}
 \usage{
-setVennPalette(nVennObj, palette = 0)
+setVennPalette(nVennObj, palette = 0, plot = T)
 }
 \arguments{
 \item{nVennObj}{nVenn object created with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
 
 \item{palette}{Either 0 (default), 1, 2 or 3. Each number defines a
 color palette that will be applied to the results}
+
+\item{plot}{If true (default), plots the diagram after applying the palette.}
 }
 \value{
-nVenn object with the palette set to the requested value. This
-function does not plot the diagram, \code{\link[=plotVenn]{plotVenn()}} must be used for that.
+nVenn object with the palette set to the requested value.
 }
 \description{
 Change the color palette for a diagram
@@ -30,9 +31,8 @@ pre-defined palette with \code{\link[=setVennPalette]{setVennPalette()}}.
 \examples{
 myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 myv <- setVennPalette(myv, 2)
-plotVenn(myv)
+myv <- setVennPalette(myv, 3)
 }
 \seealso{
-\code{\link[=setVennOpts]{setVennOpts()}} for an alternative way to change the color palette
-and \code{\link[=plotVenn]{plotVenn()}} to plot the new diagram.
+\code{\link[=setVennOpts]{setVennOpts()}} for an alternative way to change the color palette.
 }

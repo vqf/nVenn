@@ -23,8 +23,8 @@
   show which sets the region belongs to.
   
   A diagram is created 
-  with nVennDiagram() and plotted with plotVenn(). The appearance of the plot
-  can be changed with setVennOpts() and setVennColors().
+  with [nVennDiagram()] and plotted with [plotVenn()]. The appearance of the plot
+  can be changed with [setVennOpts()] and [setVennColors()].
 }
 \author{
 Victor Quesada, Universidad de Oviedo (Spain).

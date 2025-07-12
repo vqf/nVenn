@@ -4,17 +4,18 @@
 \alias{rotateVenn}
 \title{Rotate a diagram}
 \usage{
-rotateVenn(nVennObj, angle)
+rotateVenn(nVennObj, angle, plot = TRUE)
 }
 \arguments{
 \item{nVennObj}{nVennR object generated with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
 
 \item{angle}{Angle of rotation in degrees. Positive values rotate
 counterclockwise.}
+
+\item{plot}{If true (default), prints the diagram after the rotation.}
 }
 \value{
-nVenn object. The function does not plot the diagram. It is
-necessary to run \code{\link[=plotVenn]{plotVenn()}} for that.
+nVenn object.
 }
 \description{
 Rotate a diagram

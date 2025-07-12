@@ -267,10 +267,12 @@ String getVennSvg(List nVennObj) {
 //' @param nVennObj nVennR object generated with [nVennDiagram()].
 //' @param angle Angle of rotation in degrees. Positive values rotate
 //' counterclockwise.
-//' @return nVenn object. The function does not plot the diagram. It is 
-//' necessary to run [plotVenn()] for that.
+//' @param plot If true (default), prints the diagram after the rotation.
+//' @return nVenn object. 
 // [[Rcpp::export]]
-SEXP rotateVenn(List nVennObj, float angle){
+SEXP rotateVenn(List nVennObj, float angle, bool plot = true){
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
   borderLine bl;
   bl.restoreBl(as<std::string>(nVennObj["desc"]));
   List skin;
@@ -284,10 +286,15 @@ SEXP rotateVenn(List nVennObj, float angle){
   bl.rotateScene(ang);
   std::string result = bl.saveBl();
   SEXP r = toRObject(result);
-  Function asNamespace("asNamespace");
-  Environment nv_env = asNamespace("nVennR");
+  Function n = nv_env[".setSetNames"];
+  std::vector<std::string> sn = bl.getSetNames();
+  r = n(r, sn);
   Function setSkin = nv_env["setVennSkin"];
   r = setSkin(r, skin);
+  if (plot){
+    Function p = nv_env["plotVenn"];
+    p(r);
+  }
   return r;
 }
 

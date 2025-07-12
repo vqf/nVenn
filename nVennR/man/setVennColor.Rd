@@ -4,7 +4,7 @@
 \alias{setVennColor}
 \title{Change a set color}
 \usage{
-setVennColor(nVennObj, setName, color)
+setVennColor(nVennObj, setName, color, plot = T)
 }
 \arguments{
 \item{nVennObj}{nVenn object created with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
@@ -13,11 +13,13 @@ setVennColor(nVennObj, setName, color)
 
 \item{color}{New color. It is important to notice that this parameter must be
 a valid color in SVG format. The value is not checked, and therefore an
-incorrect value will break the plot in \code{\link[=plotVenn]{plotVenn()}}.}
+incorrect value may break the plot in \code{\link[=plotVenn]{plotVenn()}} or lead to unexpected
+results.}
+
+\item{plot}{If true (default), plots the diagram after setting the color.}
 }
 \value{
-nVenn object with the change in color for the set. This function
-does not plot the result, \code{\link[=plotVenn]{plotVenn()}} needs to be called afterwards.
+nVenn object with the change in color for the set.
 }
 \description{
 Change a set color
@@ -25,7 +27,5 @@ Change a set color
 \examples{
 myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 myv <- setVennColor(myv, "Set2", "black")
-plotVenn(myv)
 myv <- setVennColor(myv, "Set1", "#ffff00")
-plotVenn(myv)
 }

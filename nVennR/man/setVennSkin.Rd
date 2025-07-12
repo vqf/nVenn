@@ -4,14 +4,16 @@
 \alias{setVennSkin}
 \title{Set nVenn diagram appearance}
 \usage{
-setVennSkin(nVennObj, params)
+setVennSkin(nVennObj, params, plot = T)
 }
 \arguments{
 \item{nVennObj}{nVenn object generated with \code{\link[=nVennDiagram]{nVennDiagram()}}.}
 
 \item{params}{List of graphical options, as in \code{\link[=setVennOpts]{setVennOpts()}}, plus two
 special parameters: \code{palette} to set a color palette as in \code{\link[=setVennPalette]{setVennPalette()}}
-and \code{colors} to change set colors as in \code{\link[=setVennColors]{setVennColors()}}}
+and \code{colors} to change set colors as in \code{\link[=setVennColors]{setVennColors()}}.}
+
+\item{plot}{If true (default), plots the diagram after the operation.}
 }
 \description{
 Set nVenn diagram appearance
@@ -28,7 +30,6 @@ The only valid parameters for \code{params} are those in \code{\link[=setVennOpt
 \examples{
 theme <- list(opacity=0.2, lineWidth=2, fontSize=14, showRegions=F,
               palette=2, colors=c("black"))
-myv <- setVennOpts(myv, showRegions=F, opacity=0.2, lineWidth=2)
+myv <- nVennDiagram(exampledf)
 myv <- setVennSkin(myv, theme)
-plotVenn(myv)
 }
