@@ -80,6 +80,7 @@ class point
       x = 0.0f;
       y = 0.0f;
       flags = 0;
+      custom = 0;
       inContact = false;
       softenVel = false;
     }
@@ -98,6 +99,7 @@ public:
     bool inContact;
     bool softenVel;
     uint8_t flags;
+    UINT custom;
     point()
     {
         x = 0;
@@ -126,6 +128,12 @@ public:
     {
         fx = 0;
         fy = 0;
+    }
+    void setCustom(UINT val){
+      custom = val;
+    }
+    UINT getCustom(){
+      return custom;
     }
     point clone(){
       point result;

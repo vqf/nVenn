@@ -40,6 +40,11 @@ char getSep(std::string t){
   return result;
 }
 
+typedef struct rgn{
+  UINT nreg;
+  std::vector<std::string> elems;
+} rgn;
+
 
 /** \brief A set with a name
  */
@@ -56,7 +61,7 @@ class nvenn{
   std::vector<std::vector<std::string>> activeCells;
   std::vector<vset> sets;
   std::unordered_set<std::string> setNames;
-  std::vector<std::vector<std::string>> regions;
+  std::vector<rgn> regions;
   std::stringstream warnings;
   bool upToDate = false;
 
@@ -135,7 +140,12 @@ class nvenn{
     UINT nreg = 1 << sets.size();
     for (UINT i = 0; i < nreg; i++){
       std::vector<std::string> els = getRegion(i);
-      regions.push_back(els);
+      if (els.size() > 0){
+        rgn r;
+        r.nreg = i;
+        r.elems = els;
+        regions.push_back(r);
+      }
     }
     upToDate = true;
   }
@@ -354,19 +364,21 @@ public:
       }
     }
     for (vset v : sets){
-      bool included = false;
-      for (std::string setName : regionDesc){
-        if (v.setName == setName){
-          included = true;
+      if (r.size() > 0){
+        bool included = false;
+        for (std::string setName : regionDesc){
+          if (v.setName == setName){
+            included = true;
+          }
         }
-      }
-      if (included){
-        r = intersection(r, v.setElements);
-        //result.insert(result.begin(), r.begin(), r.end());
-        //printVector(result); exit(0);
-      }
-      else{
-        r = setDiff(r, v.setElements);
+        if (included){
+          r = intersection(r, v.setElements);
+          //result.insert(result.begin(), r.begin(), r.end());
+          //printVector(result); exit(0);
+        }
+        else{
+          r = setDiff(r, v.setElements);
+        }
       }
     }
     result.insert(result.begin(), r.begin(), r.end());
@@ -400,10 +412,10 @@ public:
       update();
     }
     std::vector<std::string> inner;
-    for (std::vector<std::string> r : regions){
-      inner.push_back("[" + join(", ", r, "\"", 80) + "]");
+    for (rgn r : regions){
+      inner.push_back("\"" + toString(r.nreg) + "\": " "[" + join(", ", r.elems, "\"", 80) + "]");
     }
-    std::string result = "[" + join(", ", inner, "", 80) + "]";
+    std::string result = "{" + join(", ", inner, "", 80) + "}";
     return result;
   }
 
@@ -423,8 +435,8 @@ public:
     if (!upToDate){
       update();
     }
-    for (std::vector<std::string> r : regions){
-      result << r.size() << std::endl;
+    for (rgn r : regions){
+      result << r.nreg << "\t" << r.elems.size() << std::endl;
     }
     return result.str();
   }
