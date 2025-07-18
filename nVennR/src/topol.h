@@ -1431,6 +1431,8 @@ class borderLine
     constants scConstants;
     UINT internalCounter;
     UINT currentStep;
+    UINT doublings;
+    UINT maxdoublings;
     outCounters oc;
     optimizationStep optStep;
     float (borderLine::*currentMeasure)();
@@ -1440,7 +1442,6 @@ class borderLine
     std::vector<point> p;
     std::vector<std::vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
     std::vector<point> circles;
-    std::vector<point> scircles; /**< Circles sorted according to @n */
     std::vector<point> debug;
     std::vector<UINT> relationships;
     UINT ncycles_secure;
@@ -1460,7 +1461,7 @@ class borderLine
     std::vector<float> circRadii;
     std::vector<float> w;
     std::vector<std::string> labels;
-    std::vector<float> origw;
+    std::vector<std::vector<UINT>> origw;
     std::vector<rgb> colors;
     palettes svgPalettes;
     svgOptions svgParams;
@@ -1513,6 +1514,8 @@ class borderLine
       error = false;
       resetV = false;
       cushion = 0.02;
+      doublings = 0;
+      maxdoublings = 2;
       svgParams.svgOpacity = 0.4;
       svgParams.svgLineWidth = 1;
       svgParams.showNumbers = true;
@@ -1580,7 +1583,7 @@ class borderLine
     }
 
 
-    void init(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
+    void init(std::vector<std::string> g, std::vector<std::vector<UINT>> tw, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
       UINT i;
       setElements = nvenn();
       origw.clear();
@@ -1596,14 +1599,15 @@ class borderLine
       blSettings.lineAir = ngroups;
       /**/
       init();
-      w = tw;         //keep a copy of the weights
+      for (UINT i = 0; i < tw.size(); i++){
+        w.push_back(tw[i][1]);
+      }
       wlimit();
       for (i = 0; i < tw.size(); i++){
         origw.push_back(tw[i]);
       }
-
       //init circles
-      setCircles(*bm, origw, tlabels);
+      setCircles(origw);
       setRelationships(); /* How many bits does each pair of circles share */
 
 
@@ -1623,10 +1627,10 @@ class borderLine
       //tolog(toString(__LINE__) + "\n" + l.str());
       /**/
 
-      totalExpectedSurface = 0;
-      for (i = 0; i < w.size(); i++){
-        totalExpectedSurface += (int) (circles[i].radius * circles[i].radius);
-      }
+      //totalExpectedSurface = 0;
+      //for (i = 0; i < w.size(); i++){
+      //  totalExpectedSurface += (int) (circles[i].radius * circles[i].radius);
+      //}
 
 
 
@@ -1649,13 +1653,8 @@ class borderLine
 
 
     UINT leftmostCircle(UINT group){
-      groupIterator git(circles, group, 1);
+      groupIterator git(circles, group, 0);
       UINT result = git.val();
-      if (result == 0){
-        error = true;
-        errorMessage = "Empty set: " + toString(group);
-        return 0;
-      }
       float lx = circles[result].x;
       while(!git.isFinished()){
         UINT n = git.val();
@@ -1767,7 +1766,35 @@ class borderLine
 
     }
 
-    void setCircles(binMap b, std::vector<float> o, std::vector<std::string> tlabels)
+
+    void setCircles(std::vector<std::vector<UINT>> weights){
+        UINT maxw = 0;
+        for (UINT i = 0; i < weights.size(); i++){
+          UINT wgt = weights[i][1];
+          if (wgt > maxw){
+            maxw = wgt;
+          }
+        }
+        for (UINT i = 0; i < weights.size(); i++){
+          UINT reg = weights[i][0];
+          UINT sz  = weights[i][1];
+          float r = 2 * sqrt(((float) sz) / ((float) maxw));
+          point cpoint;
+          cpoint.n = reg;
+          cpoint.radius = 2 * sqrt(w[i] / maxw);;
+          cpoint.setCustom(i);
+          circRadii.push_back(r);
+          cpoint.orig = sz;
+          circles.push_back(cpoint);
+        }
+        for (UINT j = 0; j < circRadii.size(); j++){
+          if (circRadii[j] > 0 && circRadii[j] < minCircRadius) minCircRadius = circRadii[j];
+          if (circRadii[j] > 0 && circRadii[j] > maxRadius) maxRadius = circRadii[j];
+        }
+    }
+
+/*
+    void setCirclesOld(binMap b, std::vector<float> o, std::vector<std::string> tlabels)
     {
         UINT i, j;
         int n;
@@ -1776,7 +1803,6 @@ class borderLine
         float maxw = 0;
         point cpoint;
         height = b.row[0].size();
-        scircles.assign((1 << b.ngroups),cpoint);
         for (i = 0; i < w.size(); i++)
         {
             if (w[i] > maxw)
@@ -1785,7 +1811,7 @@ class borderLine
         for (i = 0; i < b.row.size(); i++)
         {
             offset = (height - b.row[i].size()) / 2;
-            for (j = 0; j < b.row[i].size(); j++)
+            for (j = 0; j < b.row[i].scirclessize(); j++)
             {
                 n = toInt(b.row[i][j]);
                 cpoint.n = n;
@@ -1808,7 +1834,7 @@ class borderLine
           if (circRadii[j] > 0 && circRadii[j] > maxRadius) maxRadius = circRadii[j];
         }
         //circles[0].radius = 0;
-    }
+    }*/
 
     /** \brief Gets the coordinates of circles from setCircles() and sets them
      *         on a grid pseudorandomly
@@ -2005,7 +2031,9 @@ class borderLine
         }
         float repulsion = blSettings.sk * kattr * 5;
         point result;
-        float factor = (float) getRelationships(p0.n, p1.n) + 1;
+        UINT n1 = p0.custom;
+        UINT n2 = p1.custom;
+        float factor = (float) getRelationships(n1, n2) + 1;
         float radius = radiusFactor * (p0.radius + p1.radius);
         //radius *= 1.2;
         float dx = p1.x - p0.x;
@@ -2578,7 +2606,7 @@ class borderLine
         //tolog("Val: " + toString(i) + "\n");
         UINT lm = leftmostCircle(i);
         //tolog(toString(circles[lm].n) + "\n");
-        if (lm > 0){
+        //if (lm > 0){
           point toadd = circles[lm];
           toadd.n = lm;
           bl[i].push_back(toadd);
@@ -2588,7 +2616,7 @@ class borderLine
           //tolog(" - "+toString(circles[np].n) + "\n");
           //std::cout << circles[lm].n << "\t" << circles[np].n << std::endl;
           //std::cout << circles[lm].radius << "\t" << circles[np].radius << std::endl;
-          if (lm > 0){
+          //if (lm > 0){
             while (np != lm){
               point toadd = circles[np];
               toadd.n = np;
@@ -2605,8 +2633,8 @@ class borderLine
               }
               //tolog(toString(circles[np].n) + "\n");
             }
-          }
-        }
+          //}
+        //}
       }
     }
 
@@ -3103,10 +3131,12 @@ class borderLine
       UINT result = 0;
       float best = 0;
       bool first = true;
+      bool resetOpt = true;
       for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0){
           float val = 0;
           if ((circles[i].flags & DO_NOT_OPTIMIZE) == 0){
+            resetOpt = false;
             for (UINT j = 0; j < circles.size(); j++){
               if (i != j){
                 UINT rel = getRelationships(i, j);
@@ -3126,12 +3156,15 @@ class borderLine
         }
       }
       //tolog(_L_ + circles[result].croack());
+      if (resetOpt){
+        resetOptimize();
+      }
       circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
       return result;
     }
 
-    /** \brief Gets (one of) the circle that belongs to the least number of sets
-     * The result must be higher than 0 and must have radius > 0. Never returns the same circle twice
+    /** \brief Gets (one of) the circle that belongs to the least number of sets.
+     * Must have radius > 0. Never returns the same circle twice
      * until resetOptimize() is run.
      *
      * \return UINT
@@ -3142,9 +3175,11 @@ class borderLine
       UINT crossest = 0;
       UINT mask = (1 << (ngroups)) - 1;
       bool first = true;
-      for (UINT i = 1; i < circles.size(); i++){
+      bool resetOpt = true;
+      for (UINT i = 0; i < circles.size(); i++){
         if (circles[i].radius > 0 && !(circles[i].flags & DO_NOT_OPTIMIZE)){
           UINT val = ones(circles[i].n & mask);
+          resetOpt = false;
           //tolog(toString(circles[i].n) + ": " + toString(val) + "\n");
           if (first || val < crossest){
             result = i;
@@ -3152,6 +3187,9 @@ class borderLine
             first = false;
           }
         }
+      }
+      if (resetOpt){
+        resetOptimize();
       }
       circles[result].flags = setFlag(circles[result].flags, DO_NOT_OPTIMIZE);
       //tolog("CNext: " + toString(circles[result].n) + "\n");
@@ -3172,19 +3210,19 @@ class borderLine
       if (opt->hasEnded()){
         opt->startCycle();
         opt->setCandidate((this->*chooseCandidate)());
-        UINT n = opt->getCandidate();
+        //UINT n = opt->getCandidate();
         tolog("Next candidate: " + toString(circles[n].n) + "\n");
-        if (n == 0){
-          opt->endCycle();
-          resetOptimize();
-          opt->startCycle();
-        }
+        //if (n == 0){
+        //  opt->endCycle();
+        //  resetOptimize();
+        //  opt->startCycle();
+        //}
         //std::cout << circles[n].n << std::endl;
       }
       else{
         UINT candidate = opt->getCandidate();
         displayUINT("CANDIDATE", candidate);
-        if (candidate > 0){
+        //if (candidate > 0){
           UINT i = opt->getCounter();
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
@@ -3217,7 +3255,7 @@ class borderLine
               }
             }
           }
-        }
+        //}
         opt->next();
         if (opt->getCounter() >= circles.size()){
           opt->endCycle();
@@ -4012,15 +4050,6 @@ class borderLine
         }
         blSettings.dt = udt.cdt();
         resetCircleRadius();
-        blSettings.surfRatio = estSurf();
-        if (blSettings.minSurfRatio == 0){
-          blSettings.minSurfRatio = blSettings.surfRatio;
-        }
-        if (blSettings.minDx == 0) blSettings.minDx = internalScale.xSpan();
-        if (blSettings.minDy == 0) blSettings.minDy = internalScale.ySpan();
-        if(blSettings.minSurfRatio > blSettings.surfRatio){
-          blSettings.minSurfRatio = blSettings.surfRatio;
-        }
         if (blSettings.minDx > internalScale.xSpan()) blSettings.minDx = internalScale.xSpan();
         if (blSettings.minDy > internalScale.ySpan()) blSettings.minDy = internalScale.ySpan();
         blCounter++;
@@ -4525,10 +4554,8 @@ UINT ones(UINT n){
  *
  */
 void setRelationships(){
-  UINT i;
-  UINT j;
-  for (i = 0; i < (circles.size() - 1); i++){
-    for (j = i + 1; j < circles.size(); j++){
+  for (UINT i = 0; i < (circles.size() - 1); i++){
+    for (UINT j = i + 1; j < circles.size(); j++){
       UINT r = 0;
       UINT bits = circles[i].n & circles[j].n;
       r = ones(bits);
@@ -4558,8 +4585,7 @@ public:
         vFile << setElements.getCode();
         std::string header;
         std::vector<std::string> groupNames;
-        std::vector<int> temp;
-        std::vector<float> weights;
+        std::vector<std::vector<UINT>> weights;
         std::vector<std::string> labels;
         getline(vFile, header);
         //std::cout << header << std::endl;
@@ -4567,54 +4593,31 @@ public:
         std::string ng = purgeLetters(header);
         UINT number = (UINT) atoi(ng.c_str());
         if (number > 0 && number < 20){
-            //std::cout << std::endl << number << " groups:" << std::endl;
             for (UINT i = 0; i < number; i++){
                 getline(vFile, header);
                 std::string cl = cleanString(header);
                 groupNames.insert(groupNames.end(), cl);
                 //std::cout << header << std::endl;
             }
-            UINT n = (UINT) twoPow(number);
-            for (UINT i = 0; i < n; i++){
-                getline(vFile, header); //  get the whole line
-                int l = header.find_first_of(" ");
-                std::string w = purgeLetters(header);
-                if (l > 0){
-                    w = header.substr(0,l);
-                }
-                weights.insert (weights.end(), atoi(w.c_str())); // it takes the first number
-                std::string label = "";
-                /*try
-                {
-                label = header.substr(header.find_first_of(" "));
-                }
-                catch (const std::exception& e)
-                {
-                //std::cout << i << std::endl;
-                label = "";
-                }*/
-                labels.insert (labels.end(), label);
-                //std::cout << "w=" << w << "  label:" << label << std::endl;
-                //getline(vFile, header, ' '); /// get the number
-                //weights.insert (weights.end(), atoi(header.c_str()));
-                //getline(vFile, header) ;  ///  get the rest of the line with the labels
-                //labels.insert (labels.end(), header);
-                temp = toBin(i, number);
-                //printv(temp);
-                //std::cout << ".- " << weights[i] << " : " << labels[i] << std::endl;
+            while (!vFile.eof()){
+              getline(vFile, header);
+              std::vector<UINT> l = getIntegers(header);
+              if (l.size() > 1){
+                weights.push_back(l);
+              }
             }
-            init(groupNames, weights, labels, fname, outputFile);
-            setElements = nvenn(description, lineSep);
+            init(groupNames, weights);
+            setElements = nvenn(description, lineSep, bycol);
         }
         else{
-            init({"one"}, {0, 1}, {"", ""});
+            init();
             setError("Malformed input string. No less than 2 and no more than 20 groups are allowed");
         }
     }
     borderLine(std::vector<std::string> g, std::vector<float> tw, std::vector<std::string> tlabels, std::string inputFile = "venn.txt", std::string outputFile = "result.svg") /// aqui
     {
         fromSignature = false;
-        init(g, tw, tlabels, inputFile, outputFile);
+        //init(g, tw, tlabels, inputFile, outputFile);
         limits.setClear(true);
 
         /*writeSVG()*/
@@ -4759,7 +4762,11 @@ public:
     void setGravityPartitions(){
       std::vector<std::vector<UINT>> gp;
       std::vector<UINT> cs;
-      for (UINT i = 0; i < circles.size(); i++){
+      UINT nels = circles.size();
+      for (UINT i = 0; i < bl.size(); i++){
+        nels += bl[i].size();
+      }
+      for (UINT i = 0; i < nels; i++){
         cs.push_back(0);
       }
       //tolog("st: " + toString(sceneTranslator.size()) + "\n");
@@ -4892,6 +4899,38 @@ public:
       scConstants.K = k;
       attachScene();
     }
+
+    void doubleThePoints(){
+      if (doublings < maxdoublings){
+        std::vector<std::vector<point>> newbl;
+        for (UINT i = 0; i < bl.size(); i++){
+          std::vector<point> tbl;
+          for (UINT j = 0; j < bl[i].size(); j++){
+            point p = bl[i][j];
+            point n = bl[i][0];
+            if (j < (bl[i].size() - 1)){
+              n = bl[i][j+1];
+            }
+            point newp(p);
+            newp.x = (p.x + n.x) / 2;
+            newp.y = (p.y + n.y) / 2;
+            tbl.push_back(p);
+            tbl.push_back(newp);
+          }
+          newbl.push_back(tbl);
+        }
+        bl.clear();
+        for (UINT i = 0; i < newbl.size(); i++){
+          bl.push_back({});
+          for (UINT j = 0; j < newbl[i].size(); j++){
+            bl[i].push_back(newbl[i][j].clone());
+          }
+        }
+        attachScene();
+        doublings++;
+      }
+    }
+
     void scSolve(){
       blSettings.dt = tosolve.solve(blSettings.dt, resetV);
       bool incorrect = checkTopol();
@@ -4901,9 +4940,14 @@ public:
         //tolog(_L_ + "Bad topol\n");
         udt.report();
         if (blSettings.dt < blSettings.mindt){
-          tolog(_L_ + "Cannot solve topol problems\n");
-          toSVG();
-          setError("Cannot solve topol problems");
+          if (doublings < maxdoublings){
+            doubleThePoints();
+          }
+          else{
+            tolog(_L_ + "Cannot solve topol problems\n");
+            writeSVG("error.svg");
+            setError("Cannot solve topol problems");
+          }
         }
         blSettings.dt = udt.cdt();
         //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
@@ -5035,22 +5079,28 @@ public:
       return bl;
     }
 
-    std::vector<float> getWeights(std::string code){
+    std::vector<std::vector<UINT>> getWeights(std::string code){
       std::stringstream v(code);
       std::string line;
-      std::vector<float> result;
+      std::vector<std::vector<UINT>> result;
       UINT n = 0;
-      float val = 0;
+      UINT v1;
+      UINT v2;
       v >> line;
       v >> n;
       if (n > 0 && n < 20){
         for (UINT i = 0; i < n; i++){
           v >> line;
         }
-        UINT tn = twoPow(n);
-        for (UINT i = 0; i < tn; i++){
-          v >> val;
-          result.push_back(val);
+        while (!v.eof()){
+          v >> v1;
+          v >> v2;
+          std::vector<UINT> vs;
+          vs.push_back(v1);
+          vs.push_back(v2);
+          if (!v.eof()){
+            result.push_back(vs);
+          }
         }
       }
       return result;
@@ -5123,27 +5173,29 @@ public:
             }
         }
         std::vector<point> newcircles;
-        if (el == "C"){ // There should be a fixed number of circles
-            for (UINT i = 0; i < twoPow(newbl.size()); i++){
+        if (el == "C"){ // (There should be a fixed number of circles.) Not anymore!
+            while (el != "S"){
                 point p;
                 std::getline(sline, el, ';');
-                p.x = std::atof(el.c_str());
-                std::getline(sline, el, ';');
-                p.y = std::atof(el.c_str());
-                std::getline(sline, el, ';');
-                p.radius = std::atof(el.c_str());
-                std::getline(sline, el, ';');
-                p.n =  (UINT) std::atoi(el.c_str());
-                std::getline(sline, el, ';');
-                p.orig =  (UINT) std::atoi(el.c_str());
-                newcircles.push_back(p);
+                if (el != "S"){
+                  p.x = std::atof(el.c_str());
+                  std::getline(sline, el, ';');
+                  p.y = std::atof(el.c_str());
+                  std::getline(sline, el, ';');
+                  p.radius = std::atof(el.c_str());
+                  std::getline(sline, el, ';');
+                  p.n =  (UINT) std::atoi(el.c_str());
+                  std::getline(sline, el, ';');
+                  p.orig =  (UINT) std::atoi(el.c_str());
+                  newcircles.push_back(p);
+                }
             }
         }
         else{
             sane = false;
             errorstr += "Failed circles. ";
         }
-        std::getline(sline, el, ';');
+        //std::getline(sline, el, ';');
         if (sane){
             nvenn sel = nvenn();
             for (UINT i = 0; i < newbl.size(); i++){
@@ -5165,10 +5217,8 @@ public:
             }
             std::string tovenn = sel.getCode();
             std::vector<std::string> setNames = getNames(tovenn);
-            std::vector<float> tw = getWeights(tovenn);
-            std::vector<std::string> vd;
-            vd.assign(tw.size(), "");
-            init(setNames, tw, vd);
+            std::vector<std::vector<UINT>> tw = getWeights(tovenn);
+            init(setNames, tw);
             setElements = sel.clone();
             savedState.bl_secure.clear();
             savedState.bl_old10.clear();
@@ -5184,6 +5234,7 @@ public:
                     bl[i].push_back(newbl[i][j].clone());
                 }
             }
+            attachScene();
             blSettings.doCheckTopol = true;
             blSettings.smoothSVG = true;
             resetScale();
@@ -5197,12 +5248,10 @@ public:
     }
 
     void reset(){
-      std::vector<std::string> vd;
-      vd.assign(origw.size(), "");
       nvenn keep = setElements.clone();
       bl.clear();
       circles.clear();
-      init(groups, origw, vd);
+      init(groups, origw);
       setElements = keep.clone();
     }
 
@@ -5440,7 +5489,7 @@ public:
           for (i = 0; i < ngroups; i++){
             point nxt = place(svgScale, bl[i][0]);
             std::string cpath = "M " + coord(nxt.x) + " " + coord(nxt.y);
-            for (j = 1; j < bl[i].size(); j++){
+            for (j = 0; j < bl[i].size(); j++){
               nxt = place(svgScale, bl[i][j]);
               cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
             }
@@ -5451,7 +5500,7 @@ public:
         }
       }
       svg.addLine("</defs>");
-      svg.addLine("<!-- signature: " + signature + " -->");
+      //svg.addLine("<!-- signature: " + signature + " -->");
       svg.addLine("<desc>" + join((std::string)";", dataDisplay) + "</desc>");
       std::string bldesc = saveBl();
       svg.addLine("<desc id='result'>" + bldesc + "</desc>");
@@ -5484,7 +5533,7 @@ public:
           svg.addLine(tmp);
         }
       }
-      for (i = 1; i < circles.size(); i++){
+      for (i = 0; i < circles.size(); i++){
         //printf("%d\n", i);
         if (circles[i].radius > 0){
           svgtemp = place(svgScale, circles[i]);
@@ -5502,8 +5551,8 @@ public:
                 if (svgParams.showRegionNumbers){
                     deltaY = fsize / 2;
                 }
-                tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
-                svg.addLine(tst);
+                //tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
+                //svg.addLine(tst);
                 tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - deltaY, circles[i].orig);
                 svg.addLine(tst);
 
@@ -6205,7 +6254,6 @@ public:
       circRadii.clear();
       fromSignature = true;
       std::vector<std::string> rgroups;
-      std::vector<std::string> tl;
       splitString nums(sig, ';');
       std::string nxt;
       nxt = purgeLetters(nums.next());
@@ -6213,20 +6261,20 @@ public:
       nxt = purgeLetters(nums.next());
       UINT ng = atoi(nxt.c_str());
       if (ng > 0){
-        tl.assign((1 << ng), "");
         for (UINT j = 0; j < ng; j++){
           nxt = nums.next();
           rgroups.push_back(nxt);
           //bl.push_back({});
         }
         if (nums.finished()) setError("Incorrect input at middle");
-        std::vector<float> tw;
+        std::vector<std::vector<UINT>> tw;
         while (!nums.finished()){
           nxt = purgeLetters(nums.next());
-          float n = stof(nxt);
-          tw.push_back(n);
+          std::string nxt2 = purgeLetters(nums.next());
+          std::vector<UINT> snd = {(UINT) std::atoi(nxt.c_str()), (UINT) std::atoi(nxt2.c_str())};
+          tw.push_back(snd);
         }
-        init(rgroups, tw, tl);
+        init(rgroups, tw);
       }
       else{
         setError("Incorrect input\n");
@@ -6345,6 +6393,7 @@ public:
           result.close();
           error = true;
           errorMessage = "Could not fix topology at start\n";
+          //std::cout << croack(); exit(0);
         }
         resetTimer();
         attachScene();

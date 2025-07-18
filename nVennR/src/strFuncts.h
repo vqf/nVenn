@@ -186,6 +186,35 @@ std::string getFileText(std::string path){
     return content.str();
 }
 
+std::vector<UINT> getIntegers(std::string line){
+  std::vector<UINT> result;
+  std::string nc = "";
+  bool reading = false;
+  for (std::basic_string<char>::const_iterator it = line.cbegin();
+       it != line.cend(); it++) {
+    UINT c = *it;
+    if ((c > 0x2f && c < 0x3a) || c == 0x45 || c == 0x65) {
+      if (!reading){
+        nc = "";
+        reading = true;
+      }
+      nc += *it;
+    }
+    else{
+      reading = false;
+      if (nc.size() > 0){
+        result.push_back(std::atoi(nc.c_str()));
+        nc = "";
+      }
+    }
+  }
+  if (nc.size() > 0){
+    result.push_back(std::atoi(nc.c_str()));
+    nc = "";
+  }
+  return result;
+}
+
 class splitString{
   UINT counter;
   std::vector<std::string> v;
