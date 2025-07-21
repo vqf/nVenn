@@ -46,5 +46,4 @@ Maintainer: Victor Quesada <quesadavictor@uniovi.es>
      library(nVennR)
      myv <- nVennDiagram(exampledf)
      myv <- setVennOpts(myv, opacity=0.2, fontSize=14)
-     plotVenn(myv)
 }

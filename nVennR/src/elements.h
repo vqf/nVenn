@@ -61,6 +61,7 @@ class nvenn{
   std::vector<std::vector<std::string>> activeCells;
   std::vector<vset> sets;
   std::unordered_set<std::string> setNames;
+  std::vector<std::string> vsetNames;
   std::vector<rgn> regions;
   std::stringstream warnings;
   bool upToDate = false;
@@ -231,6 +232,7 @@ public:
           }
         }
         sets.push_back(st);
+        vsetNames.push_back(setName);
       }
       else{
         warnings << "Duplicated set name: " << setName << ". The set has not bee added" << std::endl;
@@ -247,9 +249,7 @@ public:
    *
    */
   std::vector<std::string> names(){
-    std::vector<std::string> result;
-    result.insert(result.begin(), setNames.begin(), setNames.end());
-    return result;
+    return vsetNames;
   }
 
   /** \brief Add sets from a table
@@ -453,6 +453,7 @@ public:
     result.activeCells = activeCells;
     result.sets = sets;
     result.setNames = setNames;
+    result.vsetNames = vsetNames;
     result.regions = regions;
     //result.warnings = warnings;
     result.upToDate = false;

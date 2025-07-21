@@ -141,7 +141,7 @@ setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
       params[[o]] <- defaults[[o]]
     }
   }
-  nVennObj <- setVennSkin(nVennObj, params)
+  nVennObj <- setVennSkin(nVennObj, params, plot = F)
   if (plot){
     plotVenn(nVennObj)
   }
@@ -181,10 +181,10 @@ setVennSkin <- function(nVennObj, params, plot=T){
       nVennObj$opts[[p]] <- params[[p]]
     }
     else if (p == "palette"){
-      nVennObj <- setVennPalette(nVennObj, params[[p]])
+      nVennObj <- setVennPalette(nVennObj, params[[p]], plot = F)
     }
     else if (p == "colors"){
-      nVennObj <- setVennColors(nVennObj, params[[p]])
+      nVennObj <- setVennColors(nVennObj, params[[p]], plot = F)
     }
     else{
       warning(paste("Unrecognized parameter \"", p, "\"", sep = ""))
@@ -221,7 +221,7 @@ setVennSkin <- function(nVennObj, params, plot=T){
 #' myv <- setVennPalette(myv, 2)
 #' myv <- setVennPalette(myv, 3)
 setVennPalette <- function(nVennObj, palette = 0, plot=T){
-  nVennObj <- setVennOpts(nVennObj = nVennObj, palette = palette)
+  nVennObj <- setVennOpts(nVennObj = nVennObj, palette = palette, plot = F)
   nVennObj <- .resetvcolors(nVennObj)
   if (plot){
     plotVenn(nVennObj)
@@ -295,13 +295,13 @@ setVennColors <- function(nVennObj, colorList, plot=T){
       if (i <= length(colorList)){
         nm <- nVennObj$setNames[i]
         vl <- colorList[i]
-        nVennObj <- setVennColor(nVennObj, nm, vl);
+        nVennObj <- setVennColor(nVennObj, nm, vl, plot = F);
       }
     }
   }
   else{
     for (nm in sn){
-      nVennObj <- setVennColor(nVennObj, nm, colorList[[nm]])
+      nVennObj <- setVennColor(nVennObj, nm, colorList[[nm]], plot = F)
     }
   }
   if (plot){

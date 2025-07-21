@@ -1411,7 +1411,6 @@ class borderLine
     friend void toOGL();
 
 
-    binMap* bm;
     nvenn setElements;
     scene tosolve;
     float wmax;
@@ -1591,8 +1590,6 @@ class borderLine
       groups = g;
       currentStep = attract;
       ngroups = g.size();
-      binMap b(ngroups);
-      bm = &b;
       blSettings.inputFile = inputFile;
       blSettings.fname = outputFile;
       blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
@@ -1635,12 +1632,13 @@ class borderLine
 
 
       //init points
-      for (i = 0; i < ngroups; i++)
-      {
-          p.clear();
-          setPoints(*bm, i);
-          bl.push_back(p);
+      for (i = 0; i < ngroups; i++){
+      //{
+      //    p.clear();
+          //setPoints(i);
+          bl.push_back({});
       }
+      addLines();
       startPerim = (UINT) perimeter(bl[0]);
       //UINT np = (UINT) (0.5f * (float) startPerim);
       //interpolate(np);
@@ -1844,7 +1842,7 @@ class borderLine
      */
     void randomizeCircles(){
       UINT gstep = 1;
-      UINT gridSize = twoPow(ngroups >> 1);
+      UINT gridSize = (UINT) (sqrt(nregions()) + 2);
       if ((ngroups & 1) > 0){ // Odd number of groups
           gridSize = gridSize << 1;
           gstep = 2;
@@ -1864,7 +1862,15 @@ class borderLine
       std::mt19937 g(seed);
       shuffle(order.begin(), order.end(), g);
       UINT sy = 0; UINT sx = 0;
-      for (UINT i = 0; i < circles.size(); i++){
+      for (UINT i = 0; i < 2; i++){
+          float cx = (sx + 0.5) * xstep + internalScale.minX();
+          float cy = (sy + 0.5) * ystep + internalScale.minY();
+          sx += 1;
+          sy += 1;
+          circles[order[i]].x = cx;
+          circles[order[i]].y = cy;
+      }
+      for (UINT i = 3; i < circles.size(); i++){
         float cx = (sx + 0.5) * xstep + internalScale.minX();
         float cy = (sy + 0.5) * ystep + internalScale.minY();
         sx += gstep;
@@ -1878,8 +1884,8 @@ class borderLine
 
     }
 
-
-    void setPoints(binMap b, UINT ngroup)
+/*
+    void setPoints(UINT ngroup)
     {
         int i, counter;
         int cstart;         //placement of first and last point
@@ -1949,7 +1955,7 @@ class borderLine
         internalScale.addToScale(cpoint);
         p.push_back(cpoint);
         initOlds();
-    }
+    }*/
 
     void clearForces()
     {
@@ -3438,7 +3444,7 @@ class borderLine
 
     bool sensible(){
       bool result = true;
-      float minext = cushion * ngroups;
+      float minext = cushion * (ngroups + 1);
       for (UINT i = 0; i < (circles.size() - 1); i++){
         if (circles[i].radius > 0){
           for (UINT j = (i+1); j < circles.size(); j++){
@@ -4761,18 +4767,17 @@ public:
 
     void setGravityPartitions(){
       std::vector<std::vector<UINT>> gp;
-      std::vector<UINT> cs;
+      std::vector<std::vector<UINT>> cs;
       UINT nels = circles.size();
       for (UINT i = 0; i < bl.size(); i++){
         nels += bl[i].size();
       }
-      for (UINT i = 0; i < nels; i++){
-        cs.push_back(0);
-      }
-      //tolog("st: " + toString(sceneTranslator.size()) + "\n");
       for (UINT i = 0; i < sceneTranslator.size(); i++){
         if (sceneTranslator[i] > 0){
-          cs[sceneTranslator[i]] = i;
+          std::vector<UINT> t;
+          t.push_back(sceneTranslator[i]);
+          t.push_back(i);
+          cs.push_back(t);
         }
       }
       gp.clear();
@@ -4782,7 +4787,21 @@ public:
           for (UINT j = 0; j < circles.size(); j++){
             UINT mask = 1 << i;
             if (circles[j].radius > 0 && ((circles[j].n & mask) > 0)){
-              gp.push_back({counter, cs[circles[j].n]});
+              UINT tn = 0;
+              UINT counter = 0;
+              bool found = false;
+              while (!found && counter < cs.size()){
+                std::vector<UINT> tmp = cs[counter];
+                if (tmp[0] == circles[j].n){
+                  found = true;
+                  tn = tmp[1];
+                }
+                counter++;
+              }
+              if (!found){
+                setError("Error in scene translation");
+              }
+              gp.push_back({counter, tn});
             }
           }
           counter++;
@@ -4854,7 +4873,7 @@ public:
       }
       tosolve.setCushions(pairDistances);
       if (blSettings.part){
-        setGravityPartitions();
+        //setGravityPartitions();
       }
       tosolve.setPseudoGravity(true);
     }
@@ -5888,8 +5907,9 @@ public:
         std::vector<std::string> setNames = setElements.names();
         result.addLine("<div id=\"checkboxes\">");
         UINT nbit = 0;
-        for (UINT j = setNames.size(); j >= 1; --j){
-            UINT i = j - 1;
+        //for (UINT j = setNames.size(); j >= 1; --j){
+        for (UINT j = 0; j < setNames.size(); j++){
+            UINT i = j;
             std::string el = setNames[i];
             result.addLine("<p>");
             l.str(std::string());
@@ -6413,7 +6433,7 @@ public:
         setCheckTopol(true);
         float d = getEmbellishDist(2);
         interpolateToDist(d);
-        setGravityPartitions();
+        //setGravityPartitions();
         scSpringK(1e4);
         scFriction(1000);
         scG(1e-1);
@@ -6436,7 +6456,7 @@ public:
         resetTimer();
         float d = getEmbellishDist(0.4);
         interpolateToDist(d);
-        setGravityPartitions();
+        //setGravityPartitions();
         this->currentMeasure = &borderLine::getArea;
         resetV = true;
         scG(2e-1);
