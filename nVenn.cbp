@@ -71,6 +71,12 @@
 					<Add library="Xxf86vm" />
 				</Linker>
 			</Target>
+			<Target title="pybind">
+				<Option output="nVenn" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+			</Target>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />
@@ -86,12 +92,14 @@
 			<Option target="default" />
 			<Option target="plain" />
 			<Option target="test" />
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="elements.h">
 			<Option target="default" />
 			<Option target="plain" />
 			<Option target="towasm" />
 			<Option target="test_input" />
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="glutmain.cpp">
 			<Option target="glut" />
@@ -112,12 +120,17 @@
 			<Option target="test" />
 			<Option target="towasm" />
 			<Option target="test_input" />
+			<Option target="pybind" />
+		</Unit>
+		<Unit filename="pybind/src/nvenn2.cpp">
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="scene.h">
 			<Option target="default" />
 			<Option target="plain" />
 			<Option target="test" />
 			<Option target="towasm" />
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="strFuncts.h">
 			<Option target="default" />
@@ -125,6 +138,7 @@
 			<Option target="test" />
 			<Option target="towasm" />
 			<Option target="test_input" />
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="test.cpp">
 			<Option target="test" />
@@ -140,6 +154,7 @@
 			<Option target="plain" />
 			<Option target="test" />
 			<Option target="towasm" />
+			<Option target="pybind" />
 		</Unit>
 		<Unit filename="towasm.cpp">
 			<Option target="towasm" />

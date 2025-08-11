@@ -270,6 +270,7 @@ class groupIterator{
   void init(UINT v){
     cval = v;
     first = v;
+    ival = 0;
     setVal(v);
     first = val();
     finish = false;
@@ -5407,7 +5408,11 @@ public:
         return showThis;
     }
 
-    fileText toSVG(bool showNames = false){
+    std::string tosvg(){
+      return toSVG().getText();
+    }
+
+    fileText toSVG(){
       //if (blSettings.optimize){
        // getBestSoFar();
       //}
@@ -5815,7 +5820,9 @@ public:
         return pstext;
     }
 
-
+    std::string tohtml(){
+      return toHTML().getText();
+    }
 
     fileText toHTML(){
         fileText result;
@@ -6703,7 +6710,7 @@ public:
     }
 
 
-    bool simulate(int maxRel = 0){
+    bool simulate(){
       restart_log();
       UINT cstep = currentStep;
       for (UINT step = currentStep; step < 8; step++){
