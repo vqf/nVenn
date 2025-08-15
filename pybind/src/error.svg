@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 700 500">
+<defs>
+<style type="text/css"><![CDATA[
+  .borderLine {
+	   stroke: none;
+	   fill-opacity: 0.4000;
+  }
+  .outLine {
+	   stroke-width: 1.0000;
+	   fill: none;
+  }
+  .circle {
+	   stroke: #888888;
+	   stroke-width: 0.5;
+	   fill: none;
+    pointer-events: all;
+  }
+  .spcircle {
+	   stroke: #FF2222;
+	   stroke-width: 1;
+	   fill: none;
+    pointer-events: all;
+  }
+  .tLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 14px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .nLabel {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 10px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .belong {
+	   font-family: Arial;
+    pointer-events: none;
+	   font-size: 5px;
+	   text-anchor: middle;
+	   alignment-baseline: central;
+  }
+  .p0{
+    stroke: none;
+    fill: #e6194b;
+  }
+  .q0{
+    fill: none;
+    stroke: #e6194b;
+  }
+  .p1{
+    stroke: none;
+    fill: #3cb44b;
+  }
+  .q1{
+    fill: none;
+    stroke: #3cb44b;
+  }
+  .p2{
+    stroke: none;
+    fill: #ffe119;
+  }
+  .q2{
+    fill: none;
+    stroke: #ffe119;
+  }
+]]>
+</style>
+<symbol id="bl0">
+<path d="M 85.26 85.26 L 85.26 85.26 L 85.26 31.20 L 31.20 31.20 L 31.20 85.26 L 85.26 85.26 L 165.92 165.92 L 165.92 219.99 L 219.99 219.99 L 219.99 165.92 L 165.92 165.92 Z" />
+</symbol>
+<symbol id="bl1">
+<path d="M 219.99 219.99 L 219.99 219.99 L 219.99 165.92 L 165.92 165.92 L 165.92 219.99 L 219.99 219.99 L 317.36 317.36 L 414.74 414.74 L 414.74 468.80 L 468.80 468.80 L 468.80 414.74 L 414.74 414.74 L 331.86 331.86 L 343.06 304.83 L 331.86 277.79 L 304.83 266.60 L 277.79 277.79 Z" />
+</symbol>
+<symbol id="bl2">
+<path d="M 219.99 219.99 L 219.99 219.99 L 219.99 165.92 L 165.92 165.92 L 165.92 219.99 L 219.99 219.99 L 277.79 277.79 L 277.79 331.86 L 331.86 331.86 L 331.86 277.79 L 277.79 277.79 Z" />
+</symbol>
+</defs>
+<desc>STEP: 5</desc>
+<desc id='result'>F;5;L;-9.08931;-9.08931;-9.08931;-11.9177;-11.9177;-11.9177;-11.9177;-9.08931;-9.08931;
+-9.08931;-4.86961;-4.86961;-4.86961;-2.04118;-2.04118;-2.04118;-2.04118;-4.86961;
+-4.86961;-4.86961;L;-2.04118;-2.04118;-2.04118;-4.86961;-4.86961;-4.86961;-4.86961;
+-2.04118;-2.04118;-2.04118;3.05309;3.05309;8.14737;8.14737;8.14737;10.9758;10.9758;
+10.9758;10.9758;8.14737;8.14737;8.14737;3.81155;3.81155;4.39734;2.39734;3.81155;0.983124;
+2.39734;0.397338;0.983124;0.983124;L;-2.04118;-2.04118;-2.04118;-4.86961;-4.86961;
+-4.86961;-4.86961;-2.04118;-2.04118;-2.04118;0.983124;0.983124;0.983124;3.81155;3.81155;
+3.81155;3.81155;0.983124;0.983124;0.983124;C;-10.5035;-10.5035;2;1;1;9.56158;9.56158;
+2;2;1;2.39734;2.39734;2;6;1;-3.45539;-3.45539;2;7;1;
+S;a;2;1;S;b;4;3;2;S;c;2;3;</desc>
+<rect width="700" height="500" style="fill:#fff;stroke-width:0" />
+<use class="p0 borderLine" xlink:href="#bl0"/>
+<use class="p1 borderLine" xlink:href="#bl1"/>
+<use class="p2 borderLine" xlink:href="#bl2"/>
+<use class="q0 outLine" xlink:href="#bl0"/>
+<use class="q1 outLine" xlink:href="#bl1"/>
+<use class="q2 outLine" xlink:href="#bl2"/>
+<circle onclick="fromCircle(1)" class="circle" cx="58.2296" cy="58.2296" r="38.2296" />
+<text class="nLabel" x="58.23" y="53.23">1</text>
+<text class="belong" x="58.23" y="63.23">(1)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="441.7704" cy="441.7704" r="38.2296" />
+<text class="nLabel" x="441.77" y="436.77">1</text>
+<text class="belong" x="441.77" y="446.77">(2)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="304.8272" cy="304.8272" r="38.2296" />
+<text class="nLabel" x="304.83" y="299.83">1</text>
+<text class="belong" x="304.83" y="309.83">(2, 3)</text>
+<circle onclick="fromCircle(7)" class="circle" cx="192.9533" cy="192.9533" r="38.2296" />
+<text class="nLabel" x="192.95" y="187.95">1</text>
+<text class="belong" x="192.95" y="197.95">(1, 2, 3)</text>
+<rect class="p0 borderLine" data-nbit="0" x="500.00" y="50.00" width="30.00" height="15.00" />
+<rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="65.00">a</text>
+<rect class="p1 borderLine" data-nbit="1" x="500.00" y="90.00" width="30.00" height="15.00" />
+<rect class="q1" x="500.00" y="90.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="105.00">b</text>
+<rect class="p2 borderLine" data-nbit="2" x="500.00" y="130.00" width="30.00" height="15.00" />
+<rect class="q2" x="500.00" y="130.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="145.00">c</text>
+</svg>
