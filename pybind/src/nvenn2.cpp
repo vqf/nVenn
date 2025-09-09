@@ -32,5 +32,6 @@ are in columns (1) or rows (2)")
     .def("get_venn_region", &borderLine::getVennRegionVectorL, py::arg("region"), "Get a vector with the elements of a region.\n\nArgs:\n\tregion: description of \
          the region as a vector of the sets it belongs to.")
     .def("to_html", &borderLine::tohtml, "HTML code for a web page that contains the result figure. The figure can be clicked to explore the elements in each region.")
-    .def("to_svg", &borderLine::tosvg, "SVG code for the result figure.");
+    .def("to_svg", &borderLine::tosvg, "SVG code for the result figure.")
+    .def("restore_from_file", &borderLine::restoreFromFile, "Read previous result from svg file.");
 }

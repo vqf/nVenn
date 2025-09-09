@@ -31,6 +31,24 @@ nVennDiagram <- function(desc, plot = TRUE, outFile = "", systemShow = FALSE, ve
     .Call(`_nVennR_nVennDiagram`, desc, plot, outFile, systemShow, verbose, byCol)
 }
 
+#' Creates nVenn plot
+#'
+#' @param svgFile File name of an SVG or HTML file created by nVenn. 
+#' @param plot If true (default), the resulting diagram is plotted. If false, 
+#' only the object is returned.
+#' @param outFile If it contains a valid file path and `plot` is also true, 
+#' the svg code of the plot will 
+#' be saved in that path.
+#' @param systemShow If true, and `plot` is true, the function will attempt to 
+#' open the resulting 
+#' svg figure in the default editor. Defaults to false. 
+#' @returns nVenn object.
+#' @details In principle, this function should work with any SVG or HTML file
+#' created by nVenn, with either nVennR, a web interface or nVennPy.
+readVennSVG <- function(svgFile, plot = TRUE, outFile = "", systemShow = FALSE) {
+    .Call(`_nVennR_readVennSVG`, svgFile, plot, outFile, systemShow)
+}
+
 #' Gets the names of the sets
 #'
 #' @param nVennObj nVennR object generated with [nVennDiagram()].

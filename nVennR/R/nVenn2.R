@@ -166,7 +166,6 @@ setVennOpts <- function(nVennObj, opacity = 0.4, fontSize = 12,
 #' `palette` and `colors`.
 #' 
 #'
-#' @returns
 #' @export
 #'
 #' @examples

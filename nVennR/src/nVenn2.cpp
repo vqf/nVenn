@@ -115,6 +115,38 @@ SEXP nVennDiagram(SEXP desc, bool plot = true, std::string outFile="", bool syst
   return r;
 }
 
+//' Creates nVenn plot
+//'
+//' @param svgFile File name of an SVG or HTML file created by nVenn. 
+//' @param plot If true (default), the resulting diagram is plotted. If false, 
+//' only the object is returned.
+//' @param outFile If it contains a valid file path and `plot` is also true, 
+//' the svg code of the plot will 
+//' be saved in that path.
+//' @param systemShow If true, and `plot` is true, the function will attempt to 
+//' open the resulting 
+//' svg figure in the default editor. Defaults to false. 
+//' @returns nVenn object.
+//' @details In principle, this function should work with any SVG or HTML file
+//' created by nVenn, with either nVennR, a web interface or nVennPy.
+// [[Rcpp::export]]
+SEXP readVennSVG(std::string svgFile, bool plot = true, std::string outFile="", bool systemShow=false){
+  borderLine bl;
+  bl.restoreFromFile(svgFile);
+  Function asNamespace("asNamespace");
+  Environment nv_env = asNamespace("nVennR");
+  std::string result = bl.saveBl();
+  SEXP r = toRObject(result);
+  Function n = nv_env[".setSetNames"];
+  std::vector<std::string> sn = bl.getSetNames();
+  r = n(r, sn);
+  if (plot){
+    Function f("plotVenn");
+    f(r, outFile, systemShow);
+  }
+  return r;
+}
+
 
 //' Gets the names of the sets
 //'

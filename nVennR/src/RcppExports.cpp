@@ -26,6 +26,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// readVennSVG
+SEXP readVennSVG(std::string svgFile, bool plot, std::string outFile, bool systemShow);
+RcppExport SEXP _nVennR_readVennSVG(SEXP svgFileSEXP, SEXP plotSEXP, SEXP outFileSEXP, SEXP systemShowSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type svgFile(svgFileSEXP);
+    Rcpp::traits::input_parameter< bool >::type plot(plotSEXP);
+    Rcpp::traits::input_parameter< std::string >::type outFile(outFileSEXP);
+    Rcpp::traits::input_parameter< bool >::type systemShow(systemShowSEXP);
+    rcpp_result_gen = Rcpp::wrap(readVennSVG(svgFile, plot, outFile, systemShow));
+    return rcpp_result_gen;
+END_RCPP
+}
 // getVennSetNames
 List getVennSetNames(List nVennObj);
 RcppExport SEXP _nVennR_getVennSetNames(SEXP nVennObjSEXP) {
@@ -87,6 +101,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_nVennR_nVennDiagram", (DL_FUNC) &_nVennR_nVennDiagram, 6},
+    {"_nVennR_readVennSVG", (DL_FUNC) &_nVennR_readVennSVG, 4},
     {"_nVennR_getVennSetNames", (DL_FUNC) &_nVennR_getVennSetNames, 1},
     {"_nVennR_getVennRegion", (DL_FUNC) &_nVennR_getVennRegion, 2},
     {"_nVennR_listVennRegions", (DL_FUNC) &_nVennR_listVennRegions, 2},

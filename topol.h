@@ -5143,6 +5143,29 @@ public:
       return result;
     }
 
+    void restoreFromFile(std::string fileName){
+      std::string ft = getFileText(fileName);
+      std::string st = "<desc id=\'result\'>";
+      std::string nd = "</desc>";
+      std::string result = "";
+      UINT cstart = ft.find(st);
+      if (cstart == std::string::npos){
+        setError("Cannot find coordinates");
+      }
+      else{
+        UINT cnd = ft.find(nd, cstart);
+        if (cnd > cstart && cnd != std::string::npos){
+          UINT a = cstart + st.length();
+          UINT b = cnd - a;
+          result = ft.substr(a, b);
+        }
+        else{
+          setError("Cannot find coordinates");
+        }
+      }
+      restoreBl(result);
+    }
+
     /** \brief Restore a borderline object from a previous execution
      *
      * \param dataFile std::string File with coordinates from borderLine::saveBl
@@ -6769,6 +6792,12 @@ borderLine fromSetFile(std::string filepath, UINT byCol = 0x00){
     std::string nfo = getFileText(filepath);
     borderLine result = fromSets(nfo, byCol);
     return result;
+}
+
+borderLine fromPrevRun(std::string filename){
+  borderLine result;
+  result.restoreFromFile(filename);
+  return result;
 }
 
 borderLine getInfoFromStream(std::stringstream& vFile, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){

@@ -141,6 +141,8 @@ std::string exchangeChar(std::string input, const char from, const char to){
   return result;
 }
 
+
+
 /** \brief Eliminates characters that cannot belong to a number.
  *         In this version, eliminates any letter, except for e and E.
  * \param input std::string

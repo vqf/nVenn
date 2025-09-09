@@ -270,6 +270,7 @@ class groupIterator{
   void init(UINT v){
     cval = v;
     first = v;
+    ival = 0;
     setVal(v);
     first = val();
     finish = false;
@@ -5142,6 +5143,29 @@ public:
       return result;
     }
 
+    void restoreFromFile(std::string fileName){
+      std::string ft = getFileText(fileName);
+      std::string st = "<desc id=\'result\'>";
+      std::string nd = "</desc>";
+      std::string result = "";
+      UINT cstart = ft.find(st);
+      if (cstart == std::string::npos){
+        setError("Cannot find coordinates");
+      }
+      else{
+        UINT cnd = ft.find(nd, cstart);
+        if (cnd > cstart && cnd != std::string::npos){
+          UINT a = cstart + st.length();
+          UINT b = cnd - a;
+          result = ft.substr(a, b);
+        }
+        else{
+          setError("Cannot find coordinates");
+        }
+      }
+      restoreBl(result);
+    }
+
     /** \brief Restore a borderline object from a previous execution
      *
      * \param dataFile std::string File with coordinates from borderLine::saveBl
@@ -5407,7 +5431,26 @@ public:
         return showThis;
     }
 
-    fileText toSVG(bool showNames = false){
+    /** \brief Get isolated SVG code
+     *  Similar to `toSVG()`, but adds a unique id that serves to isolate the SVG code.
+     *  This way, several svgs can coexist in the same web page.
+     *
+     * \return std::string
+     *
+     */
+    std::string tosvg(){
+      std::string cuid = uid();
+      return toSVG(cuid).getText();
+    }
+
+    std::string uid(){
+      std::random_device rd;
+      UINT uuid = rd();
+      std::string result = "_" + toString(uuid);
+      return result;
+    }
+
+    fileText toSVG(std::string cuid = ""){
       //if (blSettings.optimize){
        // getBestSoFar();
       //}
@@ -5419,27 +5462,27 @@ public:
       svg.addLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 700 500\">");// width=\"700\" height=\"500\">");
       svg.addLine("<defs>");
       svg.addLine("<style type=\"text/css\"><![CDATA[");
-      svg.addLine("  .borderLine {");
+      svg.addLine("  .borderLine" + cuid + " {");
       svg.addLine("	   stroke: none;");
       svg.addLine(vformat("	   fill-opacity: %.4f;", svgParams.svgOpacity));
       svg.addLine("  }");
-      svg.addLine("  .outLine {");
+      svg.addLine("  .outLine" + cuid + " {");
       svg.addLine(vformat("	   stroke-width: %.4f;", svgParams.svgLineWidth));
       svg.addLine("	   fill: none;");
       svg.addLine("  }");
-      svg.addLine("  .circle {");
+      svg.addLine("  .circle" + cuid + " {");
       svg.addLine("	   stroke: #888888;");
       svg.addLine("	   stroke-width: 0.5;");
       svg.addLine("	   fill: none;");
       svg.addLine("    pointer-events: all;");
       svg.addLine("  }");
-      svg.addLine("  .spcircle {");
+      svg.addLine("  .spcircle" + cuid + " {");
       svg.addLine("	   stroke: #FF2222;");
       svg.addLine("	   stroke-width: 1;");
       svg.addLine("	   fill: none;");
       svg.addLine("    pointer-events: all;");
       svg.addLine("  }");
-      svg.addLine("  .tLabel {");
+      svg.addLine("  .tLabel" + cuid + " {");
       svg.addLine("	   font-family: Arial;");
       svg.addLine("    pointer-events: none;");
       svg.addText("	   font-size: ");
@@ -5448,7 +5491,7 @@ public:
       svg.addLine("	   text-anchor: middle;");
       svg.addLine("	   alignment-baseline: central;");
       svg.addLine("  }");
-      svg.addLine("  .nLabel {");
+      svg.addLine("  .nLabel" + cuid + " {");
       svg.addLine("	   font-family: Arial;");
       svg.addLine("    pointer-events: none;");
       svg.addText("	   font-size: ");
@@ -5457,7 +5500,7 @@ public:
       svg.addLine("	   text-anchor: middle;");
       svg.addLine("	   alignment-baseline: central;");
       svg.addLine("  }");
-      svg.addLine("  .belong {");
+      svg.addLine("  .belong" + cuid + " {");
       svg.addLine("	   font-family: Arial;");
       svg.addLine("    pointer-events: none;");
       svg.addText("	   font-size: ");
@@ -5467,11 +5510,11 @@ public:
       svg.addLine("	   alignment-baseline: central;");
       svg.addLine("  }");
       for (i = 0; i < ngroups; i++){
-        svg.addLine("  .p" + num(i) + "{");
+        svg.addLine("  .p" + num(i) + cuid + "{");
         svg.addLine("    stroke: none;");
         svg.addLine("    fill: " + svgParams.svgColors[i] + ";");
         svg.addLine("  }");
-        svg.addLine("  .q" + num(i) + "{");
+        svg.addLine("  .q" + num(i) + cuid + "{");
         svg.addLine("    fill: none;");
         svg.addLine("    stroke: " + svgParams.svgColors[i] + ";");
         svg.addLine("  }");
@@ -5499,7 +5542,7 @@ public:
                                coord(next.x) + " " + coord(next.y);
               mypath.addLine(cpath);
             }
-            svg.addLine("<symbol id=\"bl" + num(i) + "\">");
+            svg.addLine("<symbol id=\"bl" + num(i) + cuid + "\">");
             svg.addLine("<path d=\"" + mypath.getText() + " Z\" />");
             svg.addLine("</symbol>");
           }
@@ -5512,7 +5555,7 @@ public:
               nxt = place(svgScale, bl[i][j]);
               cpath += " L " + coord(nxt.x) + " " + coord(nxt.y);
             }
-            svg.addLine("<symbol id=\"bl" + num(i) + "\">");
+            svg.addLine("<symbol id=\"bl" + num(i) + cuid + "\">");
             svg.addLine("<path d=\"" + cpath + " Z\" />");
             svg.addLine("</symbol>");
           }
@@ -5522,18 +5565,18 @@ public:
       //svg.addLine("<!-- signature: " + signature + " -->");
       svg.addLine("<desc>" + join((std::string)";", dataDisplay) + "</desc>");
       std::string bldesc = saveBl();
-      svg.addLine("<desc id='result'>" + bldesc + "</desc>");
+      svg.addLine("<desc id='result" + cuid + "'>" + bldesc + "</desc>");
       //restoreBl(bldesc);
       svg.addLine("<rect width=\"700\" height=\"500\" style=\"fill:#fff;stroke-width:0\" />");
 
       // Add fills
       if (blSettings.doCheckTopol){
         for (i = 0; i < ngroups; i++){
-          svg.addLine("<use class=\"p" + num(i) + " borderLine\" xlink:href=\"#bl" + num(i) + "\"/>");
+          svg.addLine("<use class=\"p" + num(i) + cuid + " borderLine" + cuid + "\" xlink:href=\"#bl" + num(i) + cuid + "\"/>");
         }
         // Add strokes
         for (i = 0; i < ngroups; i++){
-          svg.addLine("<use class=\"q" + num(i) + " outLine\" xlink:href=\"#bl" + num(i) + "\"/>");
+          svg.addLine("<use class=\"q" + num(i) + cuid + " outLine" + cuid + "\" xlink:href=\"#bl" + num(i) + cuid + "\"/>");
         }
       }
       if (showThis){
@@ -5541,14 +5584,16 @@ public:
           for (UINT j = 0; j < bl[i].size(); j++){
             point nxt = place(svgScale, bl[i][j]);
             if ((bl[i][j].flags & DELME) > 0){
-              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", nxt.x, nxt.y);
+              std::string tcuid = "spcircle" + cuid;
+              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), nxt.x, nxt.y);
               svg.addLine(tmp);
             }
           }
         }
         for (UINT i = 0; i < debug.size(); i++){
           point t = place(svgScale, debug[i]);
-          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle", t.x, t.y);
+          std::string tcuid = "spcircle" + cuid;
+          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), t.x, t.y);
           svg.addLine(tmp);
         }
       }
@@ -5558,9 +5603,9 @@ public:
           svgtemp = place(svgScale, circles[i]);
           //printf("%.4f, %.4f, %.4f\n", svgtemp.x, sc.minX, sc.maxX);
           if (svgtemp.x > svgScale.minX() && svgtemp.x < svgScale.maxX()){
-            std::string clss = "circle";
+            std::string clss = "circle" + cuid;
             if ((circles[i].flags & IS_OUTSIDE) > 0){
-              clss = "spcircle";
+              clss = "spcircle" + cuid;
             }
             tst = vformat("<circle onclick=\"fromCircle(%u)\" class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"%.4f\" />", circles[i].n, clss.c_str(), svgtemp.x,
                             svgtemp.y, svgtemp.radius);
@@ -5572,7 +5617,7 @@ public:
                 }
                 //tst = vformat("<text class=\"tLabel\" x=\"%.2f\" y=\"%.2f\">%s</text>", svgtemp.x, svgtemp.y - 4*fsize/2, labels[i].c_str());
                 //svg.addLine(tst);
-                tst = vformat("<text class=\"nLabel\" x=\"%.2f\" y=\"%.2f\">%g</text>", svgtemp.x, svgtemp.y - deltaY, circles[i].orig);
+                tst = vformat("<text class=\"nLabel%s\" x=\"%.2f\" y=\"%.2f\">%g</text>", cuid.c_str(), svgtemp.x, svgtemp.y - deltaY, circles[i].orig);
                 svg.addLine(tst);
 
             }
@@ -5592,7 +5637,7 @@ public:
                 if (svgParams.showNumbers){
                     deltaY = fsize / 2;
                 }
-                std::string t = vformat("<text class=\"belong\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", svgtemp.x, svgtemp.y + deltaY, bgs.c_str());
+                std::string t = vformat("<text class=\"belong%s\" x=\"%.2f\" y=\"%.2f\">(%s)</text>", cuid.c_str(), svgtemp.x, svgtemp.y + deltaY, bgs.c_str());
                 svg.addLine(t);
             }
           }
@@ -5607,13 +5652,13 @@ public:
       float dx = 40.0f;
       for (UINT l = 0; l < ngroups; l++){
         std::string g = groups[l];
-        std::string myg = vformat("p%d", l);
-        std::string myq = vformat("q%d", l);
-        std::string addRect = vformat("<rect class=\"%s borderLine\" data-nbit=\"%u\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
-                myg.c_str(), l, cx, cy, rw, rh);
+        std::string myg = vformat("p%d", l) + cuid;
+        std::string myq = vformat("q%d", l) + cuid;
+        std::string addRect = vformat("<rect class=\"%s borderLine%s\" data-nbit=\"%u\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
+                myg.c_str(), cuid.c_str(), l, cx, cy, rw, rh);
         std::string addOut = vformat("<rect class=\"%s\" x=\"%.2f\" y=\"%.2f\" width=\"%.2f\" height=\"%.2f\" />",
                 myq.c_str(), cx, cy, rw, rh);
-        std::string addLegend = vformat("<text class=\"legend\" x=\"%.2f\" y=\"%.2f\">%s</text>", cx + dx, cy + rh, g.c_str());
+        std::string addLegend = vformat("<text class=\"legend%s\" x=\"%.2f\" y=\"%.2f\">%s</text>", cuid.c_str(), cx + dx, cy + rh, g.c_str());
         svg.addLine(addRect);
         svg.addLine(addOut);
         svg.addLine(addLegend);
@@ -5815,7 +5860,9 @@ public:
         return pstext;
     }
 
-
+    std::string tohtml(){
+      return toHTML().getText();
+    }
 
     fileText toHTML(){
         fileText result;
@@ -5949,7 +5996,10 @@ public:
         result.addLine("const outp = document.getElementById('reg');");
         result.addLine("const elements = " + setElements.asJSON() + ";");
 		result.addLine("function setout(nreg){");
-		result.addLine("\toutp.value = elements[nreg].join(\"\\n\");");
+		result.addLine("\toutp.value = \"\";");
+		result.addLine("\tif (elements[nreg] !== undefined){");
+		result.addLine("\t\toutp.value = elements[nreg].join(\"\\n\");");
+		result.addLine("\t}");
 		result.addLine("}");
 		result.addLine("function fromCircle(nreg){");
 		result.addLine("\tfor (let i = 0; i < cboxes.length; i++){");
@@ -6703,12 +6753,15 @@ public:
     }
 
 
-    bool simulate(int maxRel = 0){
+    bool simulate(bool verbose = false){
       restart_log();
+      reset();
       UINT cstep = currentStep;
       for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
-        std::cout << "Step " << step << std::endl;
+        if (verbose){
+            std::cout << "Step " << step << std::endl;
+        }
         bool success = setStep(step);
         if (!success) return false;
         while (!bQuit){
@@ -6717,7 +6770,7 @@ public:
             std::cout << errorMessage << std::endl;
             bQuit = true;
           }
-          if (refreshScreen.isMax()) writeSVG();
+          //if (refreshScreen.isMax()) writeSVG();
           if (isStepFinished(step)){
             bQuit = true;
           }
@@ -6739,6 +6792,12 @@ borderLine fromSetFile(std::string filepath, UINT byCol = 0x00){
     std::string nfo = getFileText(filepath);
     borderLine result = fromSets(nfo, byCol);
     return result;
+}
+
+borderLine fromPrevRun(std::string filename){
+  borderLine result;
+  result.restoreFromFile(filename);
+  return result;
 }
 
 borderLine getInfoFromStream(std::stringstream& vFile, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
