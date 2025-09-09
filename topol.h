@@ -5553,7 +5553,7 @@ public:
         }
         // Add strokes
         for (i = 0; i < ngroups; i++){
-          svg.addLine("<use class=\"q" + num(i) + cuid + " outLine\" xlink:href=\"#bl" + num(i) + cuid + "\"/>");
+          svg.addLine("<use class=\"q" + num(i) + cuid + " outLine" + cuid + "\" xlink:href=\"#bl" + num(i) + cuid + "\"/>");
         }
       }
       if (showThis){
@@ -5561,14 +5561,16 @@ public:
           for (UINT j = 0; j < bl[i].size(); j++){
             point nxt = place(svgScale, bl[i][j]);
             if ((bl[i][j].flags & DELME) > 0){
-              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle" + cuid, nxt.x, nxt.y);
+              std::string tcuid = "spcircle" + cuid;
+              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), nxt.x, nxt.y);
               svg.addLine(tmp);
             }
           }
         }
         for (UINT i = 0; i < debug.size(); i++){
           point t = place(svgScale, debug[i]);
-          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", "spcircle" + cuid, t.x, t.y);
+          std::string tcuid = "spcircle" + cuid;
+          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), t.x, t.y);
           svg.addLine(tmp);
         }
       }
@@ -5971,7 +5973,10 @@ public:
         result.addLine("const outp = document.getElementById('reg');");
         result.addLine("const elements = " + setElements.asJSON() + ";");
 		result.addLine("function setout(nreg){");
-		result.addLine("\toutp.value = elements[nreg].join(\"\\n\");");
+		result.addLine("\toutp.value = \"\";");
+		result.addLine("\tif (elements[nreg] !== undefined){");
+		result.addLine("\t\toutp.value = elements[nreg].join(\"\\n\");");
+		result.addLine("\t}");
 		result.addLine("}");
 		result.addLine("function fromCircle(nreg){");
 		result.addLine("\tfor (let i = 0; i < cboxes.length; i++){");
@@ -6727,6 +6732,7 @@ public:
 
     bool simulate(bool verbose = false){
       restart_log();
+      reset();
       UINT cstep = currentStep;
       for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
@@ -6741,7 +6747,7 @@ public:
             std::cout << errorMessage << std::endl;
             bQuit = true;
           }
-          if (refreshScreen.isMax()) writeSVG();
+          //if (refreshScreen.isMax()) writeSVG();
           if (isStepFinished(step)){
             bQuit = true;
           }
