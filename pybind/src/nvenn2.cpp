@@ -33,5 +33,7 @@ are in columns (1) or rows (2)")
          the region as a vector of the sets it belongs to.")
     .def("to_html", &borderLine::tohtml, "HTML code for a web page that contains the result figure. The figure can be clicked to explore the elements in each region.")
     .def("to_svg", &borderLine::tosvg, "SVG code for the result figure.")
-    .def("restore_from_file", &borderLine::restoreFromFile, "Read previous result from svg file.");
+    .def("restore_from_file", &borderLine::restoreFromFile, "Read previous result from svg file.")
+    .def("write_svg", &borderLine::writeSVG, py::arg("file_name"), "Write diagram to svg file")
+    .def("write_html", &borderLine::writeHTML,  py::arg("file_name"), "Write diagram to html file");
 }
