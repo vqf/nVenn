@@ -1441,6 +1441,7 @@ class borderLine
     std::vector<std::string> groups;
     std::vector<point> p;
     std::vector<std::vector<point> > bl; /**< Vector of lines. Each line is a vector of points */
+    std::vector<std::vector<point> > blCross; /**< Vector of lines. Keeps unembellished lines */
     std::vector<point> circles;
     std::vector<point> debug;
     std::vector<UINT> relationships;
@@ -2107,7 +2108,7 @@ class borderLine
     }
 
 
-    void embellishTopology(bool logit = false){
+    void embellishTopology(float rad = 0, bool logit = false){
       tangent lft(0, -1);
       tangent rgh(0, 1);
       for (UINT k = 0; k < circles.size(); k++){
@@ -2132,7 +2133,10 @@ class borderLine
                 for (UINT k = fcirc; k < circles.size(); k++){
                   point c = circles[k];
                   if (c.radius > 0){
-                    float lrad = maxRad();
+                    float lrad = rad;
+                    if (lrad == 0){
+                      lrad = maxRad();
+                    }
                     if (!again && ((c.flags & USED) == 0)){
                       bool inside = (c.n & twoPow(i)) > 0 ? true : false;
                       float dsq1 = sqDistance(c, current);
@@ -2228,9 +2232,9 @@ class borderLine
      * \return void
      *
      */
-    void fixTopology(bool logit = false){
+    void fixTopology(float rad = 0, bool logit = false){
       addLines();
-      polishLines();
+      polishLines(rad);
       //embellishTopology();
       //writeSVG("embellish.svg");
       //exit(0);
@@ -2368,7 +2372,7 @@ class borderLine
           circles[i].flags = unsetFlag(circles[i].flags, USED);
         }
       }
-      embellishTopology(logit);
+      embellishTopology(rad, logit);
       //writeSVG("embellish.svg");
     }
 
@@ -2652,7 +2656,7 @@ class borderLine
      * \return void
      *
      */
-    void polishLines(){
+    void polishLines(float rad = 0){
       tangent rev(1, 0);
       for (UINT i = 0; i < bl.size(); i++){
         UINT sz = bl[i].size();
@@ -2663,16 +2667,20 @@ class borderLine
           tangent up(0, 1);
           point current = bl[i][0];
           UINT n = current.n;
-          point p1 = rev.transformPoint(current, current.radius);
+          float lrad = rad;
+          if (rad == 0){
+            lrad = current.radius;
+          }
+          point p1 = rev.transformPoint(current, lrad);
           p1.flags = setFlag(p1.flags, DO_NOT_EMBELLISH);
           p1.n = n;
-          point p2 = dwn.transformPoint(current, current.radius);
+          point p2 = dwn.transformPoint(current, lrad);
           p2.flags = setFlag(p2.flags, DO_NOT_EMBELLISH);
           p2.n = n;
-          point p3 = lft.transformPoint(current, current.radius);
+          point p3 = lft.transformPoint(current, lrad);
           p3.flags = setFlag(p3.flags, DO_NOT_EMBELLISH);
           p3.n = n;
-          point p4 = up.transformPoint(current, current.radius);
+          point p4 = up.transformPoint(current, lrad);
           p4.flags = setFlag(p4.flags, DO_NOT_EMBELLISH);
           p4.n = n;
           newpoints.push_back(p1);
@@ -2690,7 +2698,10 @@ class borderLine
               point next = bl[i][nj];
               if (current.radius > 0){
                 // Point 1
-                float r = maxRadius;// current.radius;
+                float r = rad;
+                if (rad == 0){
+                  r = maxRadius;// current.radius;
+                }
                 float d = distance(current.x, current.y, prev.x, prev.y);
                 if (d > 0){
                   float ndx = (current.x - prev.x) * (1 - r/d);
@@ -2770,6 +2781,7 @@ class borderLine
       circles[i].y = circles[j].y;
       circles[j].x = interm.x;
       circles[j].y = interm.y;
+      fixTopology();
     }
 
 
@@ -3231,12 +3243,10 @@ class borderLine
         displayUINT("CANDIDATE", candidate);
         //if (candidate > 0){
           UINT i = opt->getCounter();
+          debug.push_back(circles[i]);
+          debug.push_back(circles[candidate]);
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
-            //tolog("Checking " + toString(circles[i].n) + " with " + toString(opt->getBestCompactness()) + "\n");
-            //std::cout << circles[i].n << ", ";
-            fixTopology();
-            //writeSVG("starting.svg");
             if (checkTopol()){
               tolog("Undo on checkTopol\n");
               swapCoords(i, candidate);
@@ -3961,6 +3971,7 @@ class borderLine
         }
     }
 
+
     void setBestSoFar(){
       savedState.bestCircles = circles;
       savedState.bestBl = bl;
@@ -4358,7 +4369,6 @@ class borderLine
 
     float countCrossings(){
       float result = 0;
-      debug.clear();
       std::vector<std::vector<point>> useme = bl;
       // Unembellish
       for (UINT i = 0; i < bl.size(); i++){
@@ -4421,7 +4431,6 @@ class borderLine
     }
 
     void showCrossings(){
-      debug.clear();
       std::vector<std::vector<point>> useme = bl;
       // Unembellish
       for (UINT i = 0; i < bl.size(); i++){
@@ -5479,7 +5488,8 @@ public:
       svg.addLine("  .spcircle" + cuid + " {");
       svg.addLine("	   stroke: #FF2222;");
       svg.addLine("	   stroke-width: 1;");
-      svg.addLine("	   fill: none;");
+      svg.addLine("	   fill: #000000;");
+      svg.addLine("	   opacity: 0.2;");
       svg.addLine("    pointer-events: all;");
       svg.addLine("  }");
       svg.addLine("  .tLabel" + cuid + " {");
@@ -5579,24 +5589,6 @@ public:
           svg.addLine("<use class=\"q" + num(i) + cuid + " outLine" + cuid + "\" xlink:href=\"#bl" + num(i) + cuid + "\"/>");
         }
       }
-      if (showThis){
-        for (UINT i = 0; i < bl.size(); i++){
-          for (UINT j = 0; j < bl[i].size(); j++){
-            point nxt = place(svgScale, bl[i][j]);
-            if ((bl[i][j].flags & DELME) > 0){
-              std::string tcuid = "spcircle" + cuid;
-              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), nxt.x, nxt.y);
-              svg.addLine(tmp);
-            }
-          }
-        }
-        for (UINT i = 0; i < debug.size(); i++){
-          point t = place(svgScale, debug[i]);
-          std::string tcuid = "spcircle" + cuid;
-          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), t.x, t.y);
-          svg.addLine(tmp);
-        }
-      }
       for (i = 0; i < circles.size(); i++){
         //printf("%d\n", i);
         if (circles[i].radius > 0){
@@ -5663,6 +5655,25 @@ public:
         svg.addLine(addOut);
         svg.addLine(addLegend);
         cy += dy;
+      }
+      if (showThis){
+        /*for (UINT i = 0; i < bl.size(); i++){
+          for (UINT j = 0; j < bl[i].size(); j++){
+            point nxt = place(svgScale, bl[i][j]);
+            if ((bl[i][j].flags & DELME) > 0){
+              std::string tcuid = "spcircle" + cuid;
+              std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"2\" />", tcuid.c_str(), nxt.x, nxt.y);
+              svg.addLine(tmp);
+            }
+          }
+        }*/
+        for (UINT i = 0; i < debug.size(); i++){
+          point t = place(svgScale, debug[i]);
+          std::string tcuid = "spcircle" + cuid;
+          std::string tmp = vformat("<circle class=\"%s\" cx=\"%.4f\" cy=\"%.4f\" r=\"10\" />", tcuid.c_str(), t.x, t.y);
+          svg.addLine(tmp);
+        }
+        debug.clear();
       }
       svg.addLine("</svg>");
       return svg;
@@ -6433,7 +6444,7 @@ public:
       }
       else if (stepNumber == minimizeCrossings){
         resetOptimize();
-        fixTopology();
+        fixTopology(1e-4);
         oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = countCrossings();
@@ -6614,11 +6625,17 @@ public:
       else if (stepNumber == disperse){
         if (minCircDist() > (2*maxRad()*AIR)){
           result = true;
+          setCheckTopol(true);
+          fixTopology();
         }
       }
       else if (stepNumber == minimizeCompactness || stepNumber == minimizeCrossings){
         if (oc.outCount > oc.maxOutCount){
           result = true;
+          displayFloat("COMPACTNESS", compactness());
+          displayUINT("CROSSINGS", countCrossings());
+          setCheckTopol(true);
+          fixTopology();
         }
       }
       else if (stepNumber == contract || stepNumber == refineCircles){

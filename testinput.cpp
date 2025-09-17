@@ -13,25 +13,44 @@ std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b",
 
 
 int main(int argc, char *argv[]){
-    std::string infile = "";
-    if (argc > 1){
+    std::string infile = "/home/vqf/proyectos/nVenn2/example.txt";
+    infile = "/home/vqf/proyectos/nVenn2/stressTest.txt";
+    /*if (argc > 1){
         infile = argv[1];
     }
     else{
         infile = getFile("Input?", "Cannot find file. Please, write the location of the text file with the Venn table");
-    }
+    }*/
     std::ifstream vFile;
     vFile.open(infile.c_str());
     std::stringstream content;
     content << vFile.rdbuf();
     vFile.close();
     borderLine b(content.str());
-    b.simulate();
-    //b.loadPalette(2);
-    b.setRGBColor(7, 255, 255, 255);
-    //b.setSVGOpacity(0.2);
-    b.setSVGLineWidth(0.5);
-    b.writeHTML(infile + ".html");
+    restart_log();
+      b.reset();
+      UINT cstep = 1;
+      for (UINT step = cstep; step < 8; step++){
+          std::cout << step << std::endl;
+        bool bQuit = false;
+        bool success = b.setStep(step);
+        if (!success) return false;
+        while (!bQuit){
+          b.setCycle(step);
+          if (b.err()){
+            std::cout << b.errorMsg() << std::endl;
+            bQuit = true;
+          }
+          //if (refreshScreen.isMax()) writeSVG();
+          if (b.isStepFinished(step)){
+            bQuit = true;
+            std::string ofname = "/home/vqf/web/steps/step" + toString(step) + ".svg";
+            b.writeSVG(ofname);
+          }
+        }
+        cstep = step;
+      }
+
     return 0;
 }
 
