@@ -14,7 +14,7 @@ nVennDiagram(
 )
 }
 \arguments{
-\item{desc}{Description of sets, either as a list of lists, text or a
+\item{desc}{Description of sets, either as a file path, a list of lists, text or a
 previously created nVenn object (see Details).}
 
 \item{plot}{If true (default), the resulting diagram is plotted. If false,
@@ -47,7 +47,8 @@ the corresponding set name. A dataframe can be used in the same way.
 The input can also be a text containing a table, possibly with missing
 values. If a text is provided, the package will try to guess if each set
 is encoded in columns or rows (use \code{byCol} to force) and which
-character separates fields (usually tab, space or comma).
+character separates fields (usually tab, space or comma). If the text
+describes a valid text file path, the contents of the file will be used.
 }
 \examples{
 myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)

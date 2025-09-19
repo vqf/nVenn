@@ -3,7 +3,7 @@
 
 #' Creates nVenn plot
 #'
-#' @param desc Description of sets, either as a list of lists, text or a 
+#' @param desc Description of sets, either as a file path, a list of lists, text or a 
 #' previously created nVenn object (see Details). 
 #' @param plot If true (default), the resulting diagram is plotted. If false, 
 #' only the object is returned.
@@ -24,7 +24,8 @@
 #' The input can also be a text containing a table, possibly with missing 
 #' values. If a text is provided, the package will try to guess if each set
 #' is encoded in columns or rows (use `byCol` to force) and which
-#' character separates fields (usually tab, space or comma).
+#' character separates fields (usually tab, space or comma). If the text
+#' describes a valid text file path, the contents of the file will be used.
 #' @examples
 #' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
 nVennDiagram <- function(desc, plot = TRUE, outFile = "", systemShow = FALSE, verbose = TRUE, byCol = 0L) {
