@@ -1,0 +1,207 @@
+---
+title: "Using nVennR2 to generate and explore n-dimensional, quasi-proportional Venn diagrams"
+author: "Victor Quesada"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Using nVennR2 to generate and explore n-dimensional, quasi-proportional Venn diagrams}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, F, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.show='hide'
+)
+library(knitr)
+uuid <- function() {
+  hex_digits <- c(as.character(0:9), letters[1:6])
+  hex_digits <- toupper(hex_digits)
+  paste(sample(hex_digits, 8), collapse='')
+}
+
+subsuid <- function(regex, strng){
+  l <- gregexpr(regex, strng, perl = T)
+  for (x in regmatches(strng, l)){ 
+    m <- regexpr('([^\\{ \\.\\#]+)', x, perl = T)
+    names <- regmatches(x, m)
+    gstr = strng
+    for (name in names){
+      nname <- paste('([^\\d\\w<>]', name, ')', sep="")
+      gstr <- gsub(nname, paste('\\1', '_', uuid(), sep=""), gstr, perl = T) 
+    }
+    return(gstr)
+  }
+}
+
+knit_print.nVennR2 = function(x, ...) {
+    g <- getVennSvg(x)
+    s <- subsuid('[\\.\\#](.+?)\\s*\\{', g)
+    s <- subsuid('bl\\d+', s)
+    knitr::asis_output(s)
+}
+# register the method
+registerS3method("knit_print", "nVennObj", knit_print.nVennR2)
+local({
+  hook_source <- knitr::knit_hooks$get('source')
+  knitr::knit_hooks$set(source = function(x, options) {
+    x <- x[!grepl('#noshow$', x)]
+    hook_source(x, options)
+  })
+})
+
+```
+
+# Introduction
+
+Proportional Venn diagrams show the relationships between several sets in a compact representation. Each `set` is depicted as a contiguous area proportional to the number of elements it contains, delimited by a closed curve. Those curves may intersect, creating `regions` that belong to one or more sets. To be accurate, the area of each region should be proportional to the number of elements it contains. 
+
+Representing proportional Venn diagrams with more than two sets is not trivial, as the number of potential regions grows exponentially with the number of sets. The `nVenn` algorithm represents regions as circles with the desired areas and then encloses those circles in curves to create the sets. The resulting diagrams are approximately proportional and can represent an arbitrary number of sets.
+
+# Input
+
+To make a Venn diagram, nVennR2 provides the `nVennDiagram` function. Its input is either a list of lists, a text with the shape of a table or a previously generated nVenn object. 
+
+## List of lists
+
+This is the same form of input that the first version of nVennR2 used. Each inner list has a name which is interpreted as the name of the set. The inner list itself contains the elements in that set. The algorithm accepts an arbitrary number of sets, although there is a hard limit in the code of 20 sets. Diagrams of that size would take a very long time to build, and probably would be of little use. 
+
+```{r setup}
+library(nVennR2)
+exampledf
+```
+
+
+
+```{r example1}
+myv <- nVennDiagram(exampledf)
+myv #noshow
+```
+Each time the algorithm is used, the starting conditions are chosen pseudorandomly. This means that executing `nVennDiagram` again on the same data will result in a different plot.
+```{r example2}
+myv <- nVennDiagram(exampledf, verbose = F)
+myv #noshow
+```
+
+This feature is very useful for more complex diagrams. It means that we can run the diagram multiple times and choose which one best represents the data. It also means that it is important to store the result of a good diagram, as there is no guarantee that it may be reproduced. In the examples, `myv` can be stored with `saveRDS` and recovered with `readRDS`.
+
+## Text
+
+The native input for `nVenn2` is a text table. Sets can be defined in rows or columns. If sets are in rows, the first column must contain set names. If sets are in columns, the first row must contain the set names. In most cases, `nVennDiagram` can guess if sets are in rows or columns. Users can also make sure that this is correct by providing the `byCol` parameter (1 means by column, 2 means by row).
+
+```{r fromText}
+toVenn <- 'Set1 Set2 Set3
+a a b
+b q d
+c  e'
+myv2 <- nVennDiagram(toVenn, byCol = 1, verbose = F)
+myv2 #noshow
+```
+
+## Object
+
+The function `nVennDiagram` also accepts an nVenn object from a previous execution. In that case, it will generate a new Venn diagram with the same data. As in previous cases, the resulting diagram will be different than the previous one.
+
+```{r obj}
+myv2 <- nVennDiagram(myv2, verbose = F)
+myv2 #noshow
+```
+
+# Listing elements
+
+Once the diagram is ready, the object returned can be queried to retrieve the elements in each region. A region will usually be represented with a vector of names of the sets it belongs to. In the example with `exampledf`, stored in `myv`, the sets are named `SAS`, `PYTHON` and `R`. To find out which elements belong to `SAS` and `R`, but not to `PYTHON`, the region will be `c('SAS', 'R')`.
+
+```{r getRegion}
+getVennRegion(myv, c('SAS', 'R'))
+```
+
+We can also list all the elements by region.
+
+```{r listRegions}
+listVennRegions(myv)
+```
+
+# Appearance
+
+There are several functions that modify the graphical parameters of the Venn diagram. To see the result of the modifications, we must call `plotVenn` afterwards. Most parameters can be accessed through `setVennOpts` except for set colors, which can be edited with `setVennPalette` and `setVennColor` or `setVennColors`. Finally, we can set a list of options and apply them all at once with `setVennSkin`.
+
+## Set graphical options
+
+With `setVennOpts`, we can tweak the opacity of the fill of sets (`opacity`), the size of the labels in the sets (`fontSize`), the width of the line surrounding the sets (`lineWidth`), the color palette (`palette`) and whether to show a description of each region (`showRegions`) or the number of elements in each region (`showWeights`).
+
+```{r opacity}
+myv2 <- setVennOpts(myv2, opacity = 0.2, lineWidth = 2, palette = 3, showRegions = F)
+myv2 #noshow
+```
+
+## Set colors
+
+The most straightforward way to change a set color is by using `setVennColor`. WARNING: colors must be formatted as [valid svg color expressions](https://www.w3.org/TR/css-color-3/). If we pass an invalid svg color, there may be unexpected results.
+
+```{r colors}
+myv2 <- setVennColor(myv2, "Set2", 'black')
+myv2 #noshow
+```
+
+There are also functions to change several colors at once. First, `nVenn` has four pre-packaged color palettes (`0`-`3`). The key to understand the behavior of `nVennR2` is that it first applies a palette and then individual colors. This means that set colors take precedence over palettes. Therefore, if we now apply a different palette, `Set2` will still be black.
+
+```{r optPalette}
+myv2 <- setVennOpts(myv2, palette = 2)
+myv2 #noshow
+```
+
+To apply a palette and override set colors, we can use `setVennPalette`. This also deletes any set color previously applied with `setVennColor` or `setVennColors`.
+
+
+```{r setPalette}
+myv2 <- setVennPalette(myv2, palette = 2)
+myv2 #noshow
+```
+
+The other way to change several colors at once is `setVennColors`. When using this function, it is understood that we want to set a theme. That is why this function resets any unspecified color to the palette we are using. If a vector with svg colors is passed, they will be applied to each set in the same order. If there are more sets than colors, the remaining sets keep their previous color.
+
+```{r colorVector}
+colorVector <- c("red", "grey")
+myv2 <- setVennColors(myv2, colorVector)
+myv2 #noshow
+```
+
+This function also accepts a list, whose names must indicate set names.
+
+```{r colorList}
+colorList <- list(Set1="blue", Set3="#00ff11")
+myv2 <- setVennColors(myv2, colorList)
+myv2 #noshow
+```
+
+Notice that the color of `Set2` has been reset to its default in palette 2.
+
+## Set skin
+
+Plots generated by `nVenn` have a defult graphical theme. In addition to changing each parameter, we can define a custom theme and apply it at once. To do this, we simply generate a list with all the parameters we may want to set (those in `setVennOpts` plus `colors`) and use `setVennSkin`. The logical way to use colors in this case is to pass a vector, so that we can apply the theme to any diagram, regardless of the names of the sets.
+
+```{r skin}
+mytheme <- list(opacity=0.2, lineWidth=2, fontSize=16, showRegions=F, colors=c("red", "green", "blue", "black", "#ffff00"))
+myv2 <- setVennSkin(myv2, mytheme)
+myv <- setVennSkin(myv, mytheme)
+myv2 #noshow
+myv #noshow
+```
+
+## Rotate the diagram
+
+We can also rotate the plot with `rotateVenn`. The angle is interpreted in degrees and it is applied counterclockwise.
+
+```{r rotate}
+plotVenn(myv2)
+myv2 #noshow
+myv2 <- rotateVenn(myv2, 30)
+myv2 #noshow
+```
+
