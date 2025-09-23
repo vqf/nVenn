@@ -76,7 +76,7 @@ getVennSetNames <- function(nVennObj) {
 #' belongs to. It is understood that the region does not belong to any other
 #' set.
 #' @examples
-#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+#' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=FALSE)
 #' #Both commands are equivalent:
 #' getVennRegion(myv, 3)
 #' getVennRegion(myv, c("Set1", "Set2"))

@@ -30,7 +30,7 @@
 
 bool bQuit = false;
 bool showContacts = false;
-UINT step = 0;
+UINT step = 1;
 
 borderLine bl;
 std::string fout = "";

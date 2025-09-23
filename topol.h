@@ -1580,75 +1580,81 @@ class borderLine
       evaluation.init();
       evaluation.setConstants(100, 50);
       //Set starting palette and load svg and postscript colors
-      loadPalette(0);
+      //loadPalette(0);
     }
 
 
     void init(std::vector<std::string> g, std::vector<std::vector<UINT>> tw, std::string inputFile = "venn.txt", std::string outputFile = "result.svg"){
       UINT i;
-      setElements = nvenn();
-      origw.clear();
-      circRadii.clear();
-      groups = g;
-      currentStep = attract;
-      ngroups = g.size();
-      blSettings.inputFile = inputFile;
-      blSettings.fname = outputFile;
-      blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
-      blSettings.lineAir = ngroups;
-      /**/
-      init();
-      for (UINT i = 0; i < tw.size(); i++){
-        w.push_back(tw[i][1]);
+      if (g.size() < 1){
+        setError("Empty diagram");
       }
-      wlimit();
-      for (i = 0; i < tw.size(); i++){
-        origw.push_back(tw[i]);
-      }
-      //init circles
-      setCircles(origw);
-      setRelationships(); /* How many bits does each pair of circles share */
+      else{
+        setElements = nvenn();
+        origw.clear();
+        circRadii.clear();
+        groups = g;
+        currentStep = attract;
+        ngroups = g.size();
+        blSettings.inputFile = inputFile;
+        blSettings.fname = outputFile;
+        blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
+        blSettings.lineAir = ngroups;
+        /**/
+        init();
+        for (UINT i = 0; i < tw.size(); i++){
+          w.push_back(tw[i][1]);
+        }
+        wlimit();
+        for (i = 0; i < tw.size(); i++){
+          origw.push_back(tw[i]);
+        }
+        //init circles
+        setCircles(origw);
+        setRelationships(); /* How many bits does each pair of circles share */
 
 
-      std::ostringstream l;
-      l << "\t";
-      for (UINT i = 0; i < circles.size(); i++){
-        l << '"' << circles[i].n << '"' << "\t";
-      }
-      l << "\n";
-      for (UINT i = 0; i < circles.size(); i++){
-        l << '"' << circles[i].n << '"' << "\t";
-        for (UINT j = 0; j < circles.size(); j++){
-          l << getRelationships(i, j) << "\t";
+        std::ostringstream l;
+        l << "\t";
+        for (UINT i = 0; i < circles.size(); i++){
+          l << '"' << circles[i].n << '"' << "\t";
         }
         l << "\n";
+        for (UINT i = 0; i < circles.size(); i++){
+          l << '"' << circles[i].n << '"' << "\t";
+          for (UINT j = 0; j < circles.size(); j++){
+            l << getRelationships(i, j) << "\t";
+          }
+          l << "\n";
+        }
+        //tolog(toString(__LINE__) + "\n" + l.str());
+        /**/
+
+        //totalExpectedSurface = 0;
+        //for (i = 0; i < w.size(); i++){
+        //  totalExpectedSurface += (int) (circles[i].radius * circles[i].radius);
+        //}
+
+
+
+        //init points
+        for (i = 0; i < ngroups; i++){
+        //{
+        //    p.clear();
+            //setPoints(i);
+            bl.push_back({});
+        }
+        addLines();
+        startPerim = (UINT) perimeter(bl[0]);
+        //UINT np = (UINT) (0.5f * (float) startPerim);
+        //interpolate(np);
+
+        setPrevState();
+        setSecureState();
+        savedState.hasBeenSet = false;
+        randomizeCircles();
+        loadPalette(0);
       }
-      //tolog(toString(__LINE__) + "\n" + l.str());
-      /**/
-
-      //totalExpectedSurface = 0;
-      //for (i = 0; i < w.size(); i++){
-      //  totalExpectedSurface += (int) (circles[i].radius * circles[i].radius);
-      //}
-
-
-
-      //init points
-      for (i = 0; i < ngroups; i++){
-      //{
-      //    p.clear();
-          //setPoints(i);
-          bl.push_back({});
-      }
-      addLines();
-      startPerim = (UINT) perimeter(bl[0]);
-      //UINT np = (UINT) (0.5f * (float) startPerim);
-      //interpolate(np);
-
-      setPrevState();
-      setSecureState();
-      savedState.hasBeenSet = false;
-      randomizeCircles();
     }
 
 
@@ -1869,8 +1875,10 @@ class borderLine
           float cy = (sy + 0.5) * ystep + internalScale.minY();
           sx += 1;
           sy += 1;
-          circles[order[i]].x = cx;
-          circles[order[i]].y = cy;
+          if (i < order.size() && order[i] < circles.size()){
+            circles[order[i]].x = cx;
+            circles[order[i]].y = cy;
+          }
       }
       for (UINT i = 3; i < circles.size(); i++){
         float cx = (sx + 0.5) * xstep + internalScale.minX();
@@ -6618,12 +6626,12 @@ public:
       }
       if (stepNumber == attract){
         float tc = maxCircleVsq;
-        if (tc > 0 && tc < 1e-2){
+        if (tc < 1e-2){
           result = true;
         }
       }
       else if (stepNumber == disperse){
-        if (minCircDist() > (2*maxRad()*AIR)){
+        if (ngroups == 1 || minCircDist() > (2*maxRad()*AIR)){
           result = true;
           setCheckTopol(true);
           fixTopology();

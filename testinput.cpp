@@ -15,6 +15,7 @@ std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b",
 int main(int argc, char *argv[]){
     std::string infile = "/home/vqf/proyectos/nVenn2/example.txt";
     infile = "/home/vqf/proyectos/nVenn2/stressTest.txt";
+    infile = "/home/vqf/proyectos/nVenn2/rror.txt";
     /*if (argc > 1){
         infile = argv[1];
     }

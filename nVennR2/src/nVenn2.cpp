@@ -114,7 +114,7 @@ SEXP nVennDiagram(SEXP desc, bool plot = true, std::string outFile="", bool syst
   std::vector<std::string> sn = bl.getSetNames();
   r = n(r, sn);
   if (plot){
-    Function f("plotVenn");
+    Function f = nv_env["plotVenn"];
     f(r, outFile, systemShow);
   }
   return r;
@@ -136,17 +136,17 @@ SEXP nVennDiagram(SEXP desc, bool plot = true, std::string outFile="", bool syst
 //' created by nVenn, with either nVennR2, a web interface or nVennPy.
 // [[Rcpp::export]]
 SEXP readVennSVG(std::string svgFile, bool plot = true, std::string outFile="", bool systemShow=false){
-  borderLine bl;
-  bl.restoreFromFile(svgFile);
   Function asNamespace("asNamespace");
   Environment nv_env = asNamespace("nVennR2");
+  borderLine bl;
+  bl.restoreFromFile(svgFile);
   std::string result = bl.saveBl();
   SEXP r = toRObject(result);
   Function n = nv_env[".setSetNames"];
   std::vector<std::string> sn = bl.getSetNames();
   r = n(r, sn);
   if (plot){
-    Function f("plotVenn");
+    Function f = nv_env["plotVenn"];
     f(r, outFile, systemShow);
   }
   return r;
@@ -187,7 +187,7 @@ List getVennSetNames(List nVennObj){
 //' belongs to. It is understood that the region does not belong to any other
 //' set.
 //' @examples
-//' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=F)
+//' myv <- nVennDiagram(list(Set1=c("a", "b", "c"), Set2=c("a", "c", "d")), verbose=FALSE)
 //' #Both commands are equivalent:
 //' getVennRegion(myv, 3)
 //' getVennRegion(myv, c("Set1", "Set2"))
