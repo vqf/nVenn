@@ -96,14 +96,17 @@ SEXP nVennDiagram(SEXP desc, bool plot = true, std::string outFile="", bool syst
     }
     bl = borderLine(dsc, byCol);
     if (bl.err()){
-      Rcout << "Input error\n";
+      Rcout << bl.errorMsg() << std::endl;
+      Rcout << "If you are trying to use a file, please make sure that the path exists" << std::endl;
       correct = false;
+      return R_NilValue;
     }
   }
   if (correct){
     nvSimulate(bl, verbose);
     if (bl.err()){
       Rcout << bl.errorMsg() << std::endl;
+      return R_NilValue;
     }
     else{
       result = bl.saveBl();
