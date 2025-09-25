@@ -11,11 +11,33 @@ std::string inp = "a b c\nd e g\ne n \nn i e";
 std::vector<std::string> setn = {"set1", "set2", "set3"};
 std::vector<std::vector<std::string>> setinp = {{"a", "b", "c", "x"}, {"c", "b", "c"}, {"a", "b", "d", "x"}};
 
+std::string getFile(std::string prompt, std::string errorPrompt)
+{
+    std::string fname;
+    std::cout << prompt << std::endl;
+    std::cin >> fname;
+    if (fname != ""){
+      std::ifstream isfile;
+      isfile.open(fname.c_str());
+      if (!isfile.is_open())
+      {
+          isfile.close();
+          std::cout << errorPrompt << std::endl;
+          fname = getFile(prompt, errorPrompt);
+      }
+      isfile.close();
+    }
+    return fname;
+}
+
 
 int main(int argc, char *argv[]){
     std::string infile = "/home/vqf/proyectos/nVenn2/example.txt";
-    infile = "/home/vqf/proyectos/nVenn2/stressTest.txt";
-    infile = "/home/vqf/proyectos/nVenn2/rror.txt";
+    std::string ufile = getFile("Filename: ", "Cannot find file");
+    if (ufile != ""){
+      infile = ufile;
+    }
+    //infile = "/home/vqf/proyectos/nVenn2/rror.txt";
     /*if (argc > 1){
         infile = argv[1];
     }
@@ -45,7 +67,7 @@ int main(int argc, char *argv[]){
           //if (refreshScreen.isMax()) writeSVG();
           if (b.isStepFinished(step)){
             bQuit = true;
-            std::string ofname = "/home/vqf/web/steps/step" + toString(step) + ".svg";
+            std::string ofname = infile + ".svg";
             b.writeSVG(ofname);
           }
         }

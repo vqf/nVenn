@@ -390,7 +390,7 @@ public:
    * \return void
    *
    */
-  void showSets(){
+/*  void showSets(){
     for (UINT i = 0; i < sets.size(); i++){
       std::cout << "Set " << sets[i].setName << ": ";
       for (const std::string& el : sets[i].setElements){
@@ -399,7 +399,7 @@ public:
       std::cout << std::endl;
     }
   }
-
+*/
   /** \brief Gets the elements in each region in a JSON-like format.
    *         The function is not guaranteed to give a valid JSON string.
    *         Semicolons, parentheses and such are eliminated.
@@ -478,7 +478,7 @@ public:
     warnings.clear();
     warnings.str("");
   }
-
+/*
   void showCells(){
     for (UINT i = 0; i < cells.size(); i++){
       std::cout << "Row " << i + 1 << std::endl;
@@ -495,6 +495,7 @@ public:
       }
     }
   }
+  */
 };
 
 #endif // ELEMENTS_H_INCLUDED

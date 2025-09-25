@@ -343,7 +343,7 @@ class scene{
         float fy2 = result.fy + damp * p1->vy;
         if (p0->fx != p0->fx){
             tolog("Distance is still zero: " + p0->croack() + p1->croack());
-            exit(0);
+            return;
         }
         p0->fx += fx1;
         p1->fx -= fx2;

@@ -43,12 +43,13 @@ public:
     }
 };
 
-
+/*
 template <typename T> void printVector(std::vector<T> v) {
   for (UINT i = 0; i < v.size(); i++) {
     std::cout << i << " - " << v[i] << std::endl;
   }
 }
+*/
 
 /** \brief Safe replacement for sprintf
  *
@@ -161,7 +162,7 @@ std::string purgeLetters(std::string input) {
   return result;
 }
 
-
+/*
 std::string getFile(std::string prompt, std::string errorPrompt)
 {
     std::string fname;
@@ -177,7 +178,7 @@ std::string getFile(std::string prompt, std::string errorPrompt)
     }
     isfile.close();
     return fname;
-}
+}*/
 
 std::string getFileText(std::string path){
     std::ifstream vFile;

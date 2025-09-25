@@ -61,6 +61,7 @@ std::string buildTw(std::string signat){
 
 
 //--------------------------------------------
+/*
 void printv(std::vector<UINT> v)
 {
     UINT i;
@@ -70,7 +71,7 @@ void printv(std::vector<UINT> v)
     }
     std::cout << std::endl;
 }
-
+*/
 void vlog(std::vector<UINT> v){
   if (v.size() > 0){
     for (UINT i = 0; i < (v.size() - 1); i++){
@@ -1233,6 +1234,7 @@ public:
         currentC = getBranches(currentV);
         fillRow(currentC);
     }
+    /*
     void textOut()
     {
         UINT i, j, k;
@@ -1248,7 +1250,7 @@ public:
             }
             std::cout << std::endl;
         }
-    }
+    }*/
 };
 
 bool outsorter(outsiderInfo a, outsiderInfo b){
@@ -1628,7 +1630,7 @@ class borderLine
           l << "\n";
         }
         //tolog(toString(__LINE__) + "\n" + l.str());
-        /**/
+        
 
         //totalExpectedSurface = 0;
         //for (i = 0; i < w.size(); i++){
@@ -2644,8 +2646,8 @@ class borderLine
               st = np;
               np = nextLeftmostPoint(i, an, st);
               if (np == toadd.n){
-                std::cout << "Error in group " << i << std::endl;
-                std::cout << "The set is empty\n";
+                //std::cout << "Error in group " << i << std::endl;
+                //std::cout << "The set is empty\n";
                 tolog("Error in group " + toString(i) + "\nThe set is empty\n");
                 error = true;
                 errorMessage = "Error in group " + toString(i) + "\nThe set is empty\n";
@@ -5302,7 +5304,7 @@ public:
         else{
             error = true;
             errorMessage = "Malformed save string: " + errorstr;
-            std::cout << "insane" << std::endl;
+            //std::cout << "insane" << std::endl;
         }
 
     }
@@ -5315,7 +5317,7 @@ public:
       setElements = keep.clone();
     }
 
-
+/*
     void showInfo(){
       return;
       std::cout << "Number of groups: " << ngroups << "\n";
@@ -5329,7 +5331,7 @@ public:
       std::cout << "Spans: " << "(" << internalScale.xSpan() << ", " << internalScale.ySpan() << ")\n";
     }
 
-
+*/
     std::string saveBl(){
         fileText result(";", 80);
         result.addLine("F");
@@ -6421,7 +6423,7 @@ public:
     bool setStep(UINT stepNumber = 0){
       bool result = true;
       if (error){
-        std::cout << errorMessage << std::endl;
+        //std::cout << errorMessage << std::endl;
         return false;
       }
       if (stepNumber == attract){
@@ -6785,14 +6787,14 @@ public:
       for (UINT step = currentStep; step < 8; step++){
         bool bQuit = false;
         if (verbose){
-            std::cout << "Step " << step << std::endl;
+            //std::cout << "Step " << step << std::endl;
         }
         bool success = setStep(step);
         if (!success) return false;
         while (!bQuit){
           setCycle(step);
           if (err()){
-            std::cout << errorMessage << std::endl;
+            //std::cout << errorMessage << std::endl;
             bQuit = true;
           }
           //if (refreshScreen.isMax()) writeSVG();
