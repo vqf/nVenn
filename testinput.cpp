@@ -57,7 +57,7 @@ int main(int argc, char *argv[]){
           std::cout << step << std::endl;
         bool bQuit = false;
         bool success = b.setStep(step);
-        if (!success) return false;
+        if (!success) return 1;
         while (!bQuit){
           b.setCycle(step);
           if (b.err()){

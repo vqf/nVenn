@@ -2,39 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="glut" />
-	<File name="bmpfont.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="palettes.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1042" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="initogl.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="57" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="glutmain.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="270" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="graphics.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="28" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="test.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="44" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="elements.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8030" topLine="285" />
-		</Cursor>
-	</File>
-	<File name="testinput.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="452" topLine="12" />
+			<Cursor1 position="1407" topLine="20" />
 		</Cursor>
 	</File>
 	<File name="scene.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -42,9 +12,29 @@
 			<Cursor1 position="8989" topLine="357" />
 		</Cursor>
 	</File>
-	<File name="pybind/src/nvenn2.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="graphics.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2112" topLine="5" />
+			<Cursor1 position="28" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="glutmain.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="270" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="toGlut.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8260" topLine="288" />
+		</Cursor>
+	</File>
+	<File name="elements.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8030" topLine="285" />
+		</Cursor>
+	</File>
+	<File name="bmpfont.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1042" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="debug.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -52,34 +42,44 @@
 			<Cursor1 position="585" topLine="15" />
 		</Cursor>
 	</File>
+	<File name="initogl.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="57" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="testinput.cpp" open="1" top="1" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1705" topLine="32" />
+		</Cursor>
+	</File>
 	<File name="towasm.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1049" topLine="26" />
 		</Cursor>
 	</File>
-	<File name="palettes.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="test.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1407" topLine="20" />
+			<Cursor1 position="44" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="topol.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="topol.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="37228" topLine="1666" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1766" topLine="39" />
+			<Cursor1 position="26498" topLine="1267" />
 		</Cursor>
 	</File>
 	<File name="strFuncts.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3671" topLine="153" />
+			<Cursor1 position="3972" topLine="153" />
 		</Cursor>
 	</File>
-	<File name="toGlut.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8260" topLine="288" />
+			<Cursor1 position="782" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="pybind/src/nvenn2.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2112" topLine="5" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
