@@ -1872,11 +1872,12 @@ class borderLine
       std::mt19937 g(seed);
       shuffle(order.begin(), order.end(), g);
       UINT sy = 0; UINT sx = 0;
+      std::uniform_real_distribution<float> dt(-1,1);
       for (UINT i = 0; i < 2; i++){
           float cx = (sx + 0.5) * xstep + internalScale.minX();
           float cy = (sy + 0.5) * ystep + internalScale.minY();
-          sx += 1;
-          sy += 1;
+          sx += 1 + dt(g);
+          sy += 1 + dt(g);
           if (i < order.size() && order[i] < circles.size()){
             circles[order[i]].x = cx;
             circles[order[i]].y = cy;
@@ -2087,7 +2088,11 @@ class borderLine
         float dy = p1.y - p0.y;
         float d = distance(p0.x, p0.y, p1.x, p1.y);
         if (d == 0){
-          d = 0.01;
+          p0.x -= 1;
+          p0.y -= 1;
+          p1.x += 1;
+          p1.y += 1;
+          d = distance(p0.x, p0.y, p1.x, p1.y);
         }
         float fatt = 0;
         if (d > radius) fatt = blSettings.sk * kattr * (d-radius) - repulsion;
@@ -4142,11 +4147,17 @@ class borderLine
         for (i = 0; i < circles.size(); i++)
         {
           if (circles[i].radius > 0){
-              if (isNAN(circles[i].fx)){
+              if (isNAN(circles[i].fx) || isNAN(circles[i].fy)){
                 tolog(_L_ + "Bad circle: " + circles[i].croack());
                 writeSVG("error.svg");
-                error = true;
+                //error = true;
                 errorMessage = "Bad circle: " + circles[i].croack();
+                if (isNAN(circles[i].fx)){
+                  circles[i].fx = 0;
+                }
+                if (isNAN(circles[i].fy)){
+                  circles[i].fy = 0;
+                }
               }
               if (blSettings.doCheckTopol){
                   limitForce(circles[i], blSettings.maxf);
@@ -4985,6 +4996,10 @@ public:
         //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
         tosolve.solve(blSettings.dt, resetV);
         incorrect = checkTopol();
+        if (incorrect){
+          setError("Topol problems at start of simulation");
+          return;
+        }
       }
       if (blCounter == 0){
           setPrevState();

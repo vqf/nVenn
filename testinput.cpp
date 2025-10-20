@@ -32,8 +32,8 @@ std::string getFile(std::string prompt, std::string errorPrompt)
 
 
 int main(int argc, char *argv[]){
-    std::string infile = "/home/vqf/proyectos/nVenn2/example.txt";
-    std::string ufile = getFile("Filename: ", "Cannot find file");
+    std::string infile = "/home/vqf/proyectos/nVenn2/stressTest.txt";
+    /td::string ufile = getFile("Filename: ", "Cannot find file");
     if (ufile != ""){
       infile = ufile;
     }
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]){
           //if (refreshScreen.isMax()) writeSVG();
           if (b.isStepFinished(step)){
             bQuit = true;
-            std::string ofname = infile + ".svg";
+            std::string ofname = "/home/vqf/web/steps/step" + toString(step) + ".svg";
             b.writeSVG(ofname);
           }
         }

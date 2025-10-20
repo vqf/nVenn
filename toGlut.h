@@ -299,6 +299,9 @@ static void display(void)
         bl.setStep(step);
         std::cout << step << std::endl;
         if (step > 8){
+          //if (bl.err()){
+            std::cout << bl.errorMsg() << std::endl;
+          //}
           exit(0);
         }
     }
@@ -362,7 +365,7 @@ const GLfloat high_shininess[] = { 100.0f };
 
 
 
-void glutSimulate(std::string filepath, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.svg"){
+void glutSimulate(std::string filepath, UINT bycol = 0, const char lineSep = 0x00, std::string fname = "nvenn.txt", std::string outputFile = "result.html"){
     bl = fromSetFile(filepath, bycol);
     fout = filepath + ".html";
 }
