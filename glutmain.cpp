@@ -15,7 +15,8 @@ int main(int argc, char *argv[]){
     restart_log();
     std::string path1 = "/home/vqf/proyectos/nVenn2/errorTest.txt";
     std::string path2 = "/home/vqf/proyectos/nVenn2/extremeTest.txt";
+    std::string path3 = "/home/vqf/proyectos/nVenn2/stressTest.txt";
     //bl.restoreFromFile("/home/vqf/Downloads/tmp.html");
-    glutSimulate(path1, 0);
+    glutSimulate(path3, 0);
     initGlut(argc, argv);
 }

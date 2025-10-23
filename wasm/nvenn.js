@@ -4139,35 +4139,6 @@ function dbg(...args) {
       return 0;
     };
 
-  
-  var runtimeKeepaliveCounter = 0;
-  var keepRuntimeAlive = () => noExitRuntime || runtimeKeepaliveCounter > 0;
-  var _proc_exit = (code) => {
-      EXITSTATUS = code;
-      if (!keepRuntimeAlive()) {
-        Module['onExit']?.(code);
-        ABORT = true;
-      }
-      quit_(code, new ExitStatus(code));
-    };
-  
-  /** @suppress {duplicate } */
-  /** @param {boolean|number=} implicit */
-  var exitJS = (status, implicit) => {
-      EXITSTATUS = status;
-  
-      checkUnflushedContent();
-  
-      // if exit() was called explicitly, warn the user if the runtime isn't actually being shut down
-      if (keepRuntimeAlive() && !implicit) {
-        var msg = `program exited (with status: ${status}), but keepRuntimeAlive() is set (counter=${runtimeKeepaliveCounter}) due to an async operation, so halting execution but not exiting the runtime or preventing further async execution (you can use emscripten_force_exit, if you want to force a true shutdown)`;
-        err(msg);
-      }
-  
-      _proc_exit(status);
-    };
-  var _exit = exitJS;
-
   function _fd_close(fd) {
   try {
   
@@ -4306,8 +4277,6 @@ var wasmImports = {
   /** @export */
   environ_sizes_get: _environ_sizes_get,
   /** @export */
-  exit: _exit,
-  /** @export */
   fd_close: _fd_close,
   /** @export */
   fd_read: _fd_read,
@@ -4379,6 +4348,7 @@ var missingLibrarySymbols = [
   'stackAlloc',
   'getTempRet0',
   'setTempRet0',
+  'exitJS',
   'inetPton4',
   'inetNtop4',
   'inetPton6',
@@ -4394,6 +4364,7 @@ var missingLibrarySymbols = [
   'getDynCaller',
   'dynCall',
   'handleException',
+  'keepRuntimeAlive',
   'runtimeKeepalivePush',
   'runtimeKeepalivePop',
   'callUserCallback',
@@ -4557,7 +4528,6 @@ var unexportedSymbols = [
   'stackRestore',
   'ptrToString',
   'zeroMemory',
-  'exitJS',
   'getHeapMax',
   'growMemory',
   'ENV',
@@ -4573,7 +4543,6 @@ var unexportedSymbols = [
   'readEmAsmArgsArray',
   'jstoi_s',
   'getExecutableName',
-  'keepRuntimeAlive',
   'asyncLoad',
   'alignMemory',
   'mmapAlloc',

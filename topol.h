@@ -1423,7 +1423,7 @@ class borderLine
     bool resetV;
     float lastV;
     UINT seed;
-    std::string errorMessage;
+    std::vector<std::string> errorMessages;
     std::string signature;
     std::vector<UINT> sceneTranslator;
     blState savedState;
@@ -1479,6 +1479,7 @@ class borderLine
     float minRat;
     float minCircScreenRadius;
     bool showThis;
+    UINT universals;
 
     void initBlData(blData* b){
       b->sk = 1e3f;
@@ -1525,7 +1526,7 @@ class borderLine
       svgParams.showRegionNumbers = true;
       svgParams.svgFontSize = 10;
       palettes svgPalettes;
-      errorMessage = "";
+      errorMessages.clear();
       minCircRadius = 1.0f;
       nPointsMin = 10;
       potential = 0;
@@ -1876,8 +1877,8 @@ class borderLine
       for (UINT i = 0; i < 2; i++){
           float cx = (sx + 0.5) * xstep + internalScale.minX();
           float cy = (sy + 0.5) * ystep + internalScale.minY();
-          sx += 1 + dt(g);
-          sy += 1 + dt(g);
+          sx += 1 + 2 * dt(g);
+          sy += 1 + 2 * dt(g);
           if (i < order.size() && order[i] < circles.size()){
             circles[order[i]].x = cx;
             circles[order[i]].y = cy;
@@ -2052,13 +2053,20 @@ class borderLine
         point result;
         UINT n1 = p0.custom;
         UINT n2 = p1.custom;
-        float factor = (float) getRelationships(n1, n2) + 1;
+        float factor = (float) getRelationships(n1, n2) + 1 - universals;
         float radius = radiusFactor * (p0.radius + p1.radius);
         //radius *= 1.2;
         float dx = p1.x - p0.x;
         float dy = p1.y - p0.y;
         float d = distance(p0.x, p0.y, p1.x, p1.y);
-        float fatt = 0;
+        if (d == 0){
+          p0.x -= 1;
+          p0.y -= 1;
+          p1.x += 1;
+          p1.y += 1;
+          d = distance(p0.x, p0.y, p1.x, p1.y);
+        }
+        float fatt = repulsion;
         if (d > radius) fatt = (factor*factor) * blSettings.sk * kattr * (d-radius) - repulsion;
         //if (d < radius) fatt = -blSettings.sk * kattr * (d - radius);
         result.fx = dx * fatt/d;
@@ -2521,8 +2529,7 @@ class borderLine
                 if (incorrect){
                   writeSVG("error.svg");
                   tolog(_L_ + "Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n");
-                  error = true;
-                  errorMessage = "Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n";
+                  setError("Could not fix circle " + toString(circles[j].n) + " with line " + toString(k) + ".\n");
                 }
               }
             }
@@ -2654,8 +2661,7 @@ class borderLine
                 //std::cout << "Error in group " << i << std::endl;
                 //std::cout << "The set is empty\n";
                 tolog("Error in group " + toString(i) + "\nThe set is empty\n");
-                error = true;
-                errorMessage = "Error in group " + toString(i) + "\nThe set is empty\n";
+                setError("Error in group " + toString(i) + "\nThe set is empty\n");
               }
               //tolog(toString(circles[np].n) + "\n");
             }
@@ -4117,7 +4123,6 @@ class borderLine
                   if (cvelsq > maxLineVsq){
                     maxLineVsq = cvelsq;
                   }
-
                   bl[i][j].x += bl[i][j].vx * blSettings.dt;
                   bl[i][j].y += bl[i][j].vy * blSettings.dt;
                   savedState.simTime += blSettings.dt;
@@ -4149,14 +4154,15 @@ class borderLine
           if (circles[i].radius > 0){
               if (isNAN(circles[i].fx) || isNAN(circles[i].fy)){
                 tolog(_L_ + "Bad circle: " + circles[i].croack());
-                writeSVG("error.svg");
                 //error = true;
-                errorMessage = "Bad circle: " + circles[i].croack();
+                errorMessages.push_back("Bad circle at step " + toString(currentStep) +": " + circles[i].croack());
                 if (isNAN(circles[i].fx)){
                   circles[i].fx = 0;
+                  circles[i].vx = 0;
                 }
                 if (isNAN(circles[i].fy)){
                   circles[i].fy = 0;
+                  circles[i].vy = 0;
                 }
               }
               if (blSettings.doCheckTopol){
@@ -4189,9 +4195,24 @@ class borderLine
                 maxCircleVsq = cvelsq;
               }
               //limitVel(circles[i], maxv);
-
-              circles[i].x += circles[i].vx * blSettings.dt;
-              circles[i].y += circles[i].vy * blSettings.dt;
+              float cx = circles[i].x + circles[i].vx * blSettings.dt;
+              float cy = circles[i].y + circles[i].vy * blSettings.dt;
+              if (isNAN(cx)){
+                circles[i].vx = 0;
+                circles[i].fx = 0;
+                circles[i].x = 0;
+              }
+              else{
+                circles[i].x = cx;
+              }
+              if (isNAN(cy)){
+                circles[i].vy = 0;
+                circles[i].fy = 0;
+                circles[i].y = 0;
+              }
+              else{
+                circles[i].y = cy;
+              }
               if (resetVelocity)
               {
                   circles[i].vx = 0;
@@ -4279,8 +4300,7 @@ class borderLine
     bool isTopolIncorrect(point P, std::vector<int> belong){
       if (!(P.radius > 0)){
         tolog(_L_ + "Called isTopoloCorrect with radius 0\n");
-        error = true;
-        errorMessage = "Called isTopoloCorrect with radius 0\n";
+        setError("Called isTopoloCorrect with radius 0\n");
       }
       for (UINT j = 0; j < bl.size(); j++)
       {
@@ -4591,15 +4611,18 @@ UINT ones(UINT n){
  *
  */
 void setRelationships(){
+  UINT flagger = twoPow(circles.size()) - 1;
   for (UINT i = 0; i < (circles.size() - 1); i++){
     for (UINT j = i + 1; j < circles.size(); j++){
       UINT r = 0;
       UINT bits = circles[i].n & circles[j].n;
+      flagger = flagger & bits;
       r = ones(bits);
       relationships.push_back(r);
       //std::cout << i << ", " << j << " - " << r << "\n";
     }
   }
+  universals = ones(flagger);
 }
 
 void writeFileText(fileText* tmp, std::string fname = ""){
@@ -4611,6 +4634,16 @@ void writeFileText(fileText* tmp, std::string fname = ""){
     result.open(fname);
     result.write(tmp->getText().c_str(), tmp->getText().size());
     result.close();
+}
+
+void jiggleCircles(){
+  std::random_device rd;
+  std::mt19937 g(seed);
+  std::uniform_real_distribution<float> dt(-1,1);
+  for (UINT i = 0; i < circles.size(); i++){
+    circles[i].x += dt(g);
+    circles[i].y += dt(g);
+  }
 }
 
 public:
@@ -4980,6 +5013,12 @@ public:
       while (incorrect){
         restorePrevState();
         evaluation.init();
+        incorrect = checkTopol();
+        if (incorrect){
+          setError("Topol problems at start of simulation");
+          //std::cout << croack() << std::endl;
+          return;
+        }
         //tolog(_L_ + "Bad topol\n");
         udt.report();
         if (blSettings.dt < blSettings.mindt){
@@ -4995,11 +5034,6 @@ public:
         blSettings.dt = udt.cdt();
         //tolog(_L_ + "Bad topol: " + toString(udt.cdt()) + "\n");
         tosolve.solve(blSettings.dt, resetV);
-        incorrect = checkTopol();
-        if (incorrect){
-          setError("Topol problems at start of simulation");
-          return;
-        }
       }
       if (blCounter == 0){
           setPrevState();
@@ -5310,8 +5344,7 @@ public:
             resetScale();
         }
         else{
-            error = true;
-            errorMessage = "Malformed save string: " + errorstr;
+            setError("Malformed save string: " + errorstr);
             //std::cout << "insane" << std::endl;
         }
 
@@ -6342,7 +6375,7 @@ public:
 
     void setError(std::string msg){
       error = true;
-      errorMessage = msg;
+      errorMessages.push_back(msg);
     }
 
     void loadSignature(std::string sig){
@@ -6414,7 +6447,7 @@ public:
      */
 
     std::string errorMsg(){
-      return errorMessage;
+      return join("\n", errorMessages);
     }
 
     bool err(){
@@ -6489,8 +6522,7 @@ public:
           result.open("error.svg");
           result.write(svgfile.getText().c_str(), svgfile.getText().size());
           result.close();
-          error = true;
-          errorMessage = "Could not fix topology at start\n";
+          setError("Could not fix topology at start\n");
           //std::cout << croack(); exit(0);
         }
         resetTimer();
@@ -6610,14 +6642,7 @@ public:
         }
       }
       else if (stepNumber == contract || stepNumber == refineCircles){
-        if (checkTopol()){
-          setError("Bad starting topology");
-        }
         scSolve();
-        /*if (tosolve.getDebugSignal()){
-          writeSVG();
-          exit(0);
-        }*/
       }
       else if (stepNumber == embellishLines){
         scSolve();
@@ -6643,6 +6668,7 @@ public:
         if (ngroups == 1 || minCircDist() > (2*maxRad()*AIR)){
           result = true;
           setCheckTopol(true);
+          jiggleCircles();
           fixTopology();
         }
       }
