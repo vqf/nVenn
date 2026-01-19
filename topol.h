@@ -2134,9 +2134,6 @@ class borderLine
     void embellishTopology(float rad = 0, bool logit = false){
       tangent lft(0, -1);
       tangent rgh(0, 1);
-      for (UINT k = 0; k < circles.size(); k++){
-        circles[k].flags = unsetFlag(circles[k].flags, USED);
-      }
       for (UINT i = 0; i < bl.size(); i++){
         bool again = true;
         while (again){
@@ -2160,7 +2157,7 @@ class borderLine
                     if (lrad == 0){
                       lrad = maxRad();
                     }
-                    if (!again && ((c.flags & USED) == 0)){
+                    if (!again){
                       bool inside = (c.n & twoPow(i)) > 0 ? true : false;
                       float dsq1 = sqDistance(c, current);
                       float dsq2 = sqDistance(c, nxt);
@@ -2171,12 +2168,12 @@ class borderLine
                         //tolog(toString(__LINE__) + "\n" + toString(h) + "\t" + toString(dsq1) + "\t" + toString(dsq2) + "\t" + toString(dsq3) + "\t" + toString(sq3) + "\n");
                         if (h > 0 && h < c.radius){
                           again = true;
+                          //c.flags = setFlag(c.flags, USED);
                           fcirc = k + 1;
                           tangent tp(nxt.x - current.x, nxt.y - current.y);
                           float t = sqrt(lrad * lrad - h * h);
                           float d1 = sqrt(dsq1 - h * h);
                           float x1 = d1 - t;
-                          c.flags = setFlag(c.flags, USED);
                           point pst1 = tp.transformPoint(current, x1);
                           pst1.flags = setFlag(pst1.flags, DO_NOT_EMBELLISH);
                           pst1.flags = setFlag(pst1.flags, DELME);
@@ -2236,11 +2233,6 @@ class borderLine
                 }
               }
             }
-          }
-          //bl[i].clear();
-          //bl[i] = newbl;
-          for (UINT k = 0; k < circles.size(); k++){
-            circles[k].flags = unsetFlag(circles[k].flags, USED);
           }
         }
       }
@@ -6483,7 +6475,12 @@ public:
         setFixedCircles(false);
         setCheckTopol(true);
         resetOptimize();
+        //addLines();
+        //writeSVG("/home/vqf/proyectos/nVenn2/addlines.svg");
+        //polishLines();
+        //writeSVG("/home/vqf/proyectos/nVenn2/polishlines.svg");
         fixTopology();
+        //writeSVG("/home/vqf/proyectos/nVenn2/fixedlines.svg");
         oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = compactness();

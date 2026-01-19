@@ -21,4 +21,8 @@ This new version contains several functions that can be used as an API to genera
     </pseudocode>
 
 The API also contains functions to change the appearance of the SVG result (rotation, colors, opacity, ...). Like the first version, nVenn2 is coded in `C++` with `CodeBlocks`. The graphical interface has been recoded using `glut` for easier and more portable compiling.
-The `nVennR` folder contains an interface for `R`, and the `vqf/nVennPy` repository contains an interface for `Python`.
+
+Three interfaces are provided:
+- (Web page)[https://degradome.uniovi.es/vqf/nvenn2/nvenn2.html]
+- (R package)[https://github.com/vqf/nVennR2]
+- (Python library)[https://pypi.org/project/nvenn2/]
