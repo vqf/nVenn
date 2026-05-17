@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['d_0',['d',['../structcsts.html#abb765797aa26bcc1c2a9e17ae59e95d8',1,'csts::D'],['../structspring_link.html#a89cb10a96c6fa663501035edf7686e43',1,'springLink::d']]],
+  ['d_0',['d',['../structspring_link.html#a89cb10a96c6fa663501035edf7686e43',1,'springLink::d'],['../structcsts.html#abb765797aa26bcc1c2a9e17ae59e95d8',1,'csts::D']]],
   ['damp_1',['damp',['../classscene.html#acbd6d163eee74b26db677bed49f688eb',1,'scene']]],
   ['datadisplay_2',['dataDisplay',['../classborder_line.html#aa65d82c0986d6022a37c3a5aac8ae4d8',1,'borderLine']]],
   ['debug_3',['debug',['../debug_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG:&#160;debug.h'],['../classborder_line.html#ab67f8ec0716f46ec32eba4cb19bf9484',1,'borderLine::debug']]],
@@ -24,11 +24,13 @@ var searchData=
   ['donothing_21',['doNothing',['../classborder_line.html#a982f6ca9f154df8fad422e72d1c3b071',1,'borderLine']]],
   ['dooptimize_22',['doOptimize',['../classborder_line.html#a2b56ccb6715290bea6cd40a2effe94f0',1,'borderLine']]],
   ['dosomething_23',['doSomething',['../classscene.html#a2aa5eac637df24639a8cf82d05083919',1,'scene']]],
-  ['downforce_24',['downForce',['../classscene.html#acac53226512c159e03415b233b9d4384',1,'scene']]],
-  ['draw_25',['draw',['../towasm_8cpp.html#ad33d1e50f16c8c78a42bd519bcf66f92',1,'towasm.cpp']]],
-  ['dsena_26',['dsena',['../structoutsider_info.html#ad8b094bc449c539e0678ca6bbf5c23ac',1,'outsiderInfo']]],
-  ['dt_27',['dt',['../structbl_data.html#a9c9625933b8d08d232b8baa95ef5484f',1,'blData::dt'],['../classscene.html#a0dd09b558a56392da44c015ce37905f5',1,'scene::dt']]],
-  ['dump_28',['dump',['../classscene.html#acb16252dec9ae3b6bfd51926638ea791',1,'scene']]],
-  ['dumpme_29',['dumpme',['../classscene.html#a4858e39b09992f39377e6b1c805c32aa',1,'scene']]],
-  ['dumpthis_30',['dumpthis',['../classscene.html#ad0c8d66b39f708394c3beb7086cee7f9',1,'scene']]]
+  ['doublethepoints_24',['doubleThePoints',['../classborder_line.html#a6d2d426b8275940d31f690ccac76c2a4',1,'borderLine']]],
+  ['doublings_25',['doublings',['../classborder_line.html#add486fea558600661d5c767fec711e6d',1,'borderLine']]],
+  ['downforce_26',['downForce',['../classscene.html#acac53226512c159e03415b233b9d4384',1,'scene']]],
+  ['draw_27',['draw',['../towasm_8cpp.html#ad33d1e50f16c8c78a42bd519bcf66f92',1,'towasm.cpp']]],
+  ['dsena_28',['dsena',['../structoutsider_info.html#ad8b094bc449c539e0678ca6bbf5c23ac',1,'outsiderInfo']]],
+  ['dt_29',['dt',['../structbl_data.html#a9c9625933b8d08d232b8baa95ef5484f',1,'blData::dt'],['../classscene.html#a0dd09b558a56392da44c015ce37905f5',1,'scene::dt']]],
+  ['dump_30',['dump',['../classscene.html#acb16252dec9ae3b6bfd51926638ea791',1,'scene']]],
+  ['dumpme_31',['dumpme',['../classscene.html#a4858e39b09992f39377e6b1c805c32aa',1,'scene']]],
+  ['dumpthis_32',['dumpthis',['../classscene.html#ad0c8d66b39f708394c3beb7086cee7f9',1,'scene']]]
 ];

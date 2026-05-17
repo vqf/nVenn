@@ -1,11 +1,11 @@
 var searchData=
 [
   ['add_0',['add',['../classdecider.html#ac93fda949091f7582c268272cc666635',1,'decider']]],
-  ['addcircle_1',['addCircle',['../test_8cpp.html#abd3212038ec81c829b908c8f9a731484',1,'test.cpp']]],
+  ['addcrosslines_1',['addCrossLines',['../classborder_line.html#a8fdd168494758b51f8efde9a234c49ab',1,'borderLine']]],
   ['addglutrectangle_2',['addGlutRectangle',['../to_glut_8h.html#a41383da18099c4f537b78204e9027bc2',1,'toGlut.h']]],
   ['addglyph_3',['addGlyph',['../bmpfont_8h.html#a179fc205a59b9d986458d3130dac8d37',1,'bmpfont.h']]],
   ['addinfo_4',['addinfo',['../classnvenn.html#ac22b968bce1471b5799f4a47ce1faa6d',1,'nvenn::addInfo()'],['../classscene.html#a913189fed388d96c3609550d360c32ae',1,'scene::addInfo()']]],
-  ['addline_5',['addline',['../classfile_text.html#ab0c09567658f74be13d532b887a4fbc3',1,'fileText::addLine()'],['../test_8cpp.html#a0999407fddf16aa275f184fb42bf60f6',1,'addLine():&#160;test.cpp']]],
+  ['addline_5',['addLine',['../classfile_text.html#ab0c09567658f74be13d532b887a4fbc3',1,'fileText']]],
   ['addlines_6',['addLines',['../classborder_line.html#ac7e498685b8eeb34ed86ed9f8766230f',1,'borderLine']]],
   ['addlink_7',['addLink',['../classscene.html#a1720091e2f4b190b6c1417cd493bb080',1,'scene']]],
   ['addpoint_8',['addPoint',['../classscene.html#afd9fbae2ed875b9b814185085eb50cc0',1,'scene']]],

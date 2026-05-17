@@ -21,8 +21,9 @@ var searchData=
   ['currentstep_18',['currentStep',['../classborder_line.html#a7bc27be5c29ffac6daf238e33dd1c8b3',1,'borderLine']]],
   ['cushion_19',['cushion',['../classborder_line.html#ad6aa77db0d79741801adabc685139b11',1,'borderLine']]],
   ['cushions_20',['cushions',['../classscene.html#a0afbe32c8d6f05a2073475282c2e24c6',1,'scene']]],
-  ['cval_21',['cval',['../classgroup_iterator.html#afb1678cfd0ecf592387e2fbc6c782043',1,'groupIterator']]],
-  ['cycleinfo_22',['cycleInfo',['../structbl_data.html#a1fc5cb8e7514ee059c4266833bb6a865',1,'blData']]],
-  ['cyclesforstability_23',['cyclesForStability',['../structbl_data.html#a9c30fcca1dc7af746826ebf75f52fc11',1,'blData']]],
-  ['cycleswithoutimprovement_24',['cyclesWithoutImprovement',['../classdecider.html#af45c0fa279c6b1615c64c9f860ae1272',1,'decider']]]
+  ['custom_21',['custom',['../classpoint.html#a97a763957e6527604c34d33301586e36',1,'point']]],
+  ['cval_22',['cval',['../classgroup_iterator.html#afb1678cfd0ecf592387e2fbc6c782043',1,'groupIterator']]],
+  ['cycleinfo_23',['cycleInfo',['../structbl_data.html#a1fc5cb8e7514ee059c4266833bb6a865',1,'blData']]],
+  ['cyclesforstability_24',['cyclesForStability',['../structbl_data.html#a9c30fcca1dc7af746826ebf75f52fc11',1,'blData']]],
+  ['cycleswithoutimprovement_25',['cyclesWithoutImprovement',['../classdecider.html#af45c0fa279c6b1615c64c9f860ae1272',1,'decider']]]
 ];

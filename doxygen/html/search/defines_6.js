@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_5fmass_0',['POINT_MASS',['../scene_8h.html#ac2236a992b00645bc0dc5932f02ad9d4',1,'scene.h']]]
+  ['restart_5flog_0',['restart_log',['../debug_8h.html#a6af38d6e9503b108c46d130b5eb4a756',1,'debug.h']]]
 ];

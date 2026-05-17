@@ -12,6 +12,9 @@
 #include <random>
 #include <set>
 #include <string>
+#include <ostream>
+#include <chrono>
+
 
 #include "elements.h"
 #include "debug.h"
@@ -2345,6 +2348,11 @@ class borderLine
                     point c4 = toc4.transformPoint(pt, lrad);
                     q.n = j; c1.n = j; c2.n = j;
                     c3.n = j; c4.n = j;
+                    q.flags = setFlag(q.flags, DELME);
+                    c1.flags = setFlag(c1.flags, DELME);
+                    c2.flags = setFlag(c2.flags, DELME);
+                    c3.flags = setFlag(c3.flags, DELME);
+                    c4.flags = setFlag(c4.flags, DELME);
                     newpoints.push_back(q);
                     newpoints.push_back(c1);
                     newpoints.push_back(c2);
@@ -3256,8 +3264,8 @@ class borderLine
         displayUINT("CANDIDATE", candidate);
         //if (candidate > 0){
           UINT i = opt->getCounter();
-          debug.push_back(circles[i]);
-          debug.push_back(circles[candidate]);
+          //debug.push_back(circles[i]);
+          //debug.push_back(circles[candidate]);
           if (i != candidate && circles[i].radius > 0){
             swapCoords(i, candidate);
             if (checkTopol()){
@@ -3269,7 +3277,7 @@ class borderLine
               if (newComp < opt->getBestCompactness()){
                 opt->setBestCompactness(newComp);
                 tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
-                //std::cout << "Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
+                //std::cout << "Level " << level << ": Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
               }
               else if (newComp == opt->getBestCompactness()){
                 float newUntie = (this->*untieFunct)();
@@ -3277,10 +3285,11 @@ class borderLine
                 opt->setUntie();
                 if (newUntie > untie){
                   swapCoords(i, candidate);
-                  tolog("Did not swap on untie\n");
+                  //std::cout << "Level " << level << ": Did not swap on untie\n" << std::endl;
                 }
               }
               else{
+                //std::cout << "Level " << level << ": Did not swap - " << newComp << " vs " << opt->get << std::endl;
                 swapCoords(i, candidate);
               }
             }
@@ -3496,8 +3505,8 @@ class borderLine
         float fy = p0.fy + p1.fy;
         float modf = fx * dx + fy * dy;
         if (modf > 0){
-          attention(p0.x, p0.y);
-          attention(p1.x, p1.y);
+          //attention(p0.x, p0.y);
+          //attention(p1.x, p1.y);
         }
       }
     }
@@ -3544,7 +3553,7 @@ class borderLine
                   p1.fy -= result.fy;
                   p0.inContact = true;
                   p1.inContact = true;
-                  attention(p1.x, p1.y);
+                  //attention(p1.x, p1.y);
                   if (blSettings.softcontact){
                     float dvx = p0.vx - p1.vx;
                     float dvy = p0.vy - p1.vy;
@@ -4259,8 +4268,8 @@ class borderLine
           //attention(circles[j].x, circles[j].y);
           /******DEBUG*/
           if (blSettings.doCheckTopol){
-            attention(p1.x, p1.y);
-            attention(p2.x, p2.y);
+            //attention(p1.x, p1.y);
+            //attention(p2.x, p2.y);
             for (UINT i = 0; i < bl[j].size(); i++){
               point p3 = bl[j][i];
               crossResult cr = cont;
@@ -4273,8 +4282,8 @@ class borderLine
               }
               if (cr == crosses){
                 //isIn = !isIn;
-                attention(p3.x, p3.y);
-                attention(p4.x, p4.y);
+                //attention(p3.x, p3.y);
+                //attention(p4.x, p4.y);
                 //blSettings.cycleInfo += "Crossing with: \n" + p1.croack() + p2.croack() + p3.croack() + p4.croack();
               }
             }
@@ -4372,7 +4381,7 @@ class borderLine
           return crosses;
         }
         if (p2 == p4 || p1 == p4){
-          return doesnotcross;
+          return crosses;
         }
         tangent t1 = tangent(p1, p3);
         tangent t2 = tangent(p3, p2);
@@ -4394,29 +4403,169 @@ class borderLine
             result = crosses;
           }
         }
-        //blSettings.cycleInfo += "Tangents: \n" + t1.croack() + t2.croack() + t3.croack() + t4.croack();
       }
+      return result;
+    }
+
+    std::vector<std::vector<point>> addCrossLines(bool logit = false){
+      std::vector<std::vector<point>> result;
+      std::vector<std::vector<point>> bkp = bl;
+      for (UINT i = 0; i < ngroups; i++){
+        std::vector<point> line;
+        //tolog("Val: " + toString(i) + "\n");
+        UINT lm = leftmostCircle(i);
+        point toadd = circles[lm];
+        toadd.n = lm;
+        line.push_back(toadd);
+        UINT an = lm;
+        UINT st = lm;
+        UINT np = nextLeftmostPoint(i, an, st);
+        while (np != lm){
+          point toadd = circles[np];
+          toadd.n = np;
+          line.push_back(toadd);
+          an = st;
+          st = np;
+          np = nextLeftmostPoint(i, an, st);
+        }
+        result.push_back(line);
+      }
+      bl = result;
+      for (UINT k = 0; k < bl.size(); k++){
+        for (UINT j = 0; j < circles.size(); j++){
+            if (circles[j].radius > 0 && ((circles[j].flags & USED) == 0)){
+              circles[j].flags = setFlag(circles[j].flags, USED);
+              point p3 = circles[j];
+              UINT p3n = p3.n;
+              UINT mask = (1 << k);
+              bool goon = false;
+              if ((p3n & mask) == 0){
+                std::vector<int> belong = toBin(p3n, bl.size());
+                bool incorrect = circleTopol(circles[j], belong, k);
+                if (incorrect){
+                  outsiderInfo oi;
+                  oi.dsena = 0;
+                  oi.nextVertex = 0;
+                  oi.outsider = point();
+                  oi.vertex = 0;
+                  float minV = -1;
+                  for (UINT i = 0; i < bl[k].size(); i++){
+                    UINT tvertx = i;
+                    point p1 = bl[k][tvertx];
+                    UINT tvertnx = 0;
+                    if (tvertx < (bl[k].size() - 1)){
+                      tvertnx = tvertx + 1;
+                    }
+                    point p2 = bl[k][tvertnx];
+                    if (p1 != p3 && p2 != p3 && p1 != p2 &&
+                        !(p1.flags & DO_NOT_EMBELLISH) &&
+                        !(p2.flags & DO_NOT_EMBELLISH)){
+                      tangent t1(p1, p2);
+                      tangent t2(p1, p3);
+                      tangent t3(p2, p3);
+                      //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack());
+                      t2.rotate(t1);
+                      t3.rotate(t1);
+                      //tolog(toString(__LINE__) + "\n" + t2.croack() + t3.croack() + "Line " + toString(k) + ", circle " + toString(circles[j].n) + "\n");
+                      if ((t2.getQuadrant() == 4 && t3.getQuadrant() == 3)){
+                        //tolog(toString(__LINE__) + "\n" + "Line " + toString(k) + ", circle " + toString(j) + " " + toString(circles[j].n) + "\n");
+                        float d1sq = (p3.x - p1.x) * (p3.x - p1.x) +
+                                     (p3.y - p1.y) * (p3.y - p1.y);
+                        float d2sq = (p2.x - p3.x) * (p2.x - p3.x) +
+                                     (p2.y - p3.y) * (p2.y - p3.y);
+                        float dsq = (p2.x - p1.x) * (p2.x - p1.x) +
+                                    (p2.y - p1.y) * (p2.y - p1.y);
+                        if (true){ //dsq > 0){
+                          float d = sqrt(dsq);
+                          float dsena = (dsq + d1sq - d2sq) / (2*d);
+                          float ddsq = d1sq - dsena * dsena;
+                          if ((minV < 0 || (ddsq < minV))){
+                            minV = ddsq;
+                            //tolog(toString(__LINE__) + "\tminV " + toString(minV) + ", ddsq " + toString(ddsq) + "\n");
+                            oi.vertex = tvertx;
+                            oi.nextVertex = tvertnx;
+                            oi.dsena = dsena;
+                            oi.outsider = p3;
+                            goon = true;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  if (goon){
+                    //oilog(oi);
+                    std::vector<point> newpoints;
+                    for (UINT i = 0; i <= oi.vertex; i++){
+                      newpoints.push_back(bl[k][i]);
+                    }
+                    UINT prevVertex = oi.vertex;
+                    UINT currentVertex = oi.nextVertex;
+                    float dsena = oi.dsena;
+                    point pt = oi.outsider;
+                    //if (dsena > pt.radius){
+                      float lrad = minCircRadius / 10;
+                      tangent mn(0, 1);
+                      tangent rv(1, 0);
+                      point v = bl[k][prevVertex];
+                      point vn = bl[k][currentVertex];
+                      tangent t(v, vn);
+                      point q = t.transformPoint(v, dsena);
+                      tangent toc1(q, pt);
+                      float d = distance(q.x, q.y, pt.x, pt.y);
+                      point c1 = toc1.transformPoint(q, d - lrad);
+                    tangent toc2 = toc1 + mn;
+                    point c2 = toc2.transformPoint(pt, lrad);
+                    point c3 = toc1.transformPoint(pt, lrad);
+                    tangent toc4 = toc2 + rv;
+                    point c4 = toc4.transformPoint(pt, lrad);
+                    q.n = j; c1.n = j; c2.n = j;
+                    c3.n = j; c4.n = j;
+                    q.flags = setFlag(q.flags, DELME);
+                    c1.flags = setFlag(c1.flags, DELME);
+                    c2.flags = setFlag(c2.flags, DELME);
+                    c3.flags = setFlag(c3.flags, DELME);
+                    c4.flags = setFlag(c4.flags, DELME);
+                    newpoints.push_back(q);
+                    newpoints.push_back(c1);
+                    newpoints.push_back(c2);
+                    newpoints.push_back(c3);
+                    newpoints.push_back(c4);
+                    newpoints.push_back(c1);
+                    newpoints.push_back(q);
+                      //tolog(_L_ + t.croack() + toc1.croack() + toc2.croack() + toc4.croack());
+                    //}
+                    if (oi.nextVertex > 0){
+                      for (UINT i = oi.nextVertex; i < bl[k].size(); i++){
+                        newpoints.push_back(bl[k][i]);
+                      }
+                    }
+                    result[k].clear();
+                    result[k] = newpoints;
+                    bl[k].clear();
+                    bl[k] = newpoints;
+                    //tolog(_L_ +  toString(circleTopol(p3, belong, k)) + "\n");
+                    //writeSVG("delme.svg");
+                    //exit(0);
+                    //tolog(toString(circleTopol(p3, belong, k)) + "\n");
+                  }
+                }
+              }
+            }
+
+        }
+        for (UINT i = 0; i < circles.size(); i++){
+          circles[i].flags = unsetFlag(circles[i].flags, USED);
+        }
+      }
+      bl = bkp;
       return result;
     }
 
 
     float countCrossings(){
       float result = 0;
-      std::vector<std::vector<point>> useme = bl;
-      // Unembellish
-      for (UINT i = 0; i < bl.size(); i++){
-        UINT cunem = 0;
-        useme[i].clear();
-        for (UINT j = 0; j < bl[i].size(); j++){
-          if ((bl[i][j].flags & DELME) == 0){
-            useme[i].push_back(bl[i][j]);
-          }
-          else if (bl[i][j].n != cunem){
-            useme[i].push_back(circles[bl[i][j].n]);
-            cunem = bl[i][j].n;
-          }
-        }
-      }
+      std::vector<std::vector<point>> useme = addCrossLines();
+
       //
       for (UINT i = 0; i < useme.size()-1; i++){
         for (UINT ii = 0; ii < useme[i].size(); ii++){
@@ -4447,6 +4596,9 @@ class borderLine
                 } while (cr == cont && np != refn);
                 if (cr == crosses){
                   result = result + 1;
+                  //point crss = getCross(p1, p2, p3, p4);
+                  //attention(crss.x, crss.y);
+                  //debug.push_back(crss);
                   /*point crss = getCross(p1, p2, p3, p4);
                   tolog("----------\n");
                   tolog(p1.croack() + p2.croack() + p3.croack()+p4.croack() + crss.croack());
@@ -4459,26 +4611,32 @@ class borderLine
           }
         }
       }
-
+      //bl = useme;
+      //writeSVG("delme.svg");
+      //exit(0);
       return result;
     }
 
     void showCrossings(){
-      std::vector<std::vector<point>> useme = bl;
+      float result = 0;
+      std::vector<std::vector<point>> useme = addCrossLines();
       // Unembellish
-      for (UINT i = 0; i < bl.size(); i++){
+      /*for (UINT i = 0; i < bl.size(); i++){
         UINT cunem = 0;
         useme[i].clear();
         for (UINT j = 0; j < bl[i].size(); j++){
-          if ((bl[i][j].flags & DELME) == 0){
+          if ((bl[i][j].flags & DELME) == 0 && (bl[i][j].flags & DO_NOT_EMBELLISH) == 0){
             useme[i].push_back(bl[i][j]);
           }
           else if (bl[i][j].n != cunem){
-            useme[i].push_back(circles[bl[i][j].n]);
+            point toadd = circles[bl[i][j].n];
+            toadd.flags = unsetFlag(toadd.flags, DELME);
+            useme[i].push_back(toadd);
             cunem = bl[i][j].n;
           }
         }
-      }
+      }*/
+      //
       for (UINT i = 0; i < useme.size()-1; i++){
         for (UINT ii = 0; ii < useme[i].size(); ii++){
           point p1 = useme[i][ii];
@@ -4497,27 +4655,34 @@ class borderLine
               point p4 = useme[j][np];
               if (p1 != p3 && p1 != p4 && p2 != p3 && p2 != p4){
                 crossResult cr = cont;
-                while (cr == cont){
+                UINT refn = np;
+                do{
                   p4 = useme[j][np];
                   cr = cross(p1, p2, p3, p4);
                   np =  0;
                   if (jj < (useme[j].size() - 1)){
                     np = jj + 1;
                   }
-                }
+                } while (cr == cont && np != refn);
                 if (cr == crosses){
+                  result = result + 1;
                   point crss = getCross(p1, p2, p3, p4);
                   debug.push_back(crss);
+                  /*point crss = getCross(p1, p2, p3, p4);
+                  tolog("----------\n");
+                  tolog(p1.croack() + p2.croack() + p3.croack()+p4.croack() + crss.croack());
+                  tolog(toString(result) + "\n");
+                  tolog("----------");
+                  debug.push_back(crss);*/
                 }
               }
             }
           }
         }
       }
-      std::vector<std::vector<point>> delme = bl;
       bl = useme;
-      writeSVG("starting.svg");
-      bl = delme;
+      writeSVG("delme.svg");
+      exit(0);
     }
 
     UINT countOutsiders(){
@@ -4636,6 +4801,138 @@ void jiggleCircles(){
     circles[i].x += dt(g);
     circles[i].y += dt(g);
   }
+}
+
+std::vector<std::vector<UINT>> nextlevel(UINT n, std::vector<std::vector<UINT>> vtp){
+  std::vector<std::vector<UINT>> result;
+  for (UINT i = 0; i < vtp.size(); i++){
+    std::vector<UINT> cvec = vtp[i];
+    std::vector<UINT> rest;
+    for (UINT k = 0; k < n; k++){
+      bool incl = true;
+      for (UINT v : cvec){
+        if (k == v){
+          incl = false;
+        }
+      }
+      if (incl){
+        rest.push_back(k);
+      }
+    }
+    UINT nr = rest.size();
+    if (nr > 1){
+      for (UINT j = 0; j < nr - 1; j++){
+        for (UINT k = j + 1; k < nr; k++){
+          UINT n1 = rest[j];
+          UINT n2 = rest[k];
+          std::vector<UINT> t = {n1, n2};
+          t.insert(t.begin(), cvec.begin(), cvec.end());
+          result.push_back(t);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+
+std::vector<std::vector<UINT>> exMinimize(UINT maxlevels = 0){
+  std::vector<std::vector<UINT>> pairs;
+  for (UINT i = 0; i < circles.size() - 1; i++){
+    for (UINT j = i + 1; j < circles.size(); j++){
+      std::vector<UINT> pr;
+      pr.push_back(i);
+      pr.push_back(j);
+      pairs.push_back(pr);
+    }
+  }
+  std::vector<std::vector<UINT>> p = pairs;
+  for (UINT level = 0; level < maxlevels; level++){
+      std::vector<std::vector<UINT>> nl = nextlevel(circles.size(), p);
+      pairs.insert(pairs.end(), nl.begin(), nl.end());
+      p.clear();
+      p = nl;
+  }
+  return pairs;
+}
+
+bool exTest(std::vector<std::vector<UINT>> combinations){
+  std::vector<UINT> bestCombination;
+  UINT bestCross = (UINT) countCrossings();
+  float bestComp = compactness();
+  for (std::vector<UINT> comb : combinations){
+    for (UINT i = 0; i < comb.size(); i = i + 2){
+      UINT p1 = comb[i];
+      UINT p2 = comb[i + 1];
+      swapCoords(p1, p2);
+    }
+    UINT nc = (UINT) countCrossings();
+    float comp = compactness();
+    if (nc < bestCross || (nc == bestCross && comp < bestComp)){
+      bestCross = nc;
+      bestComp = comp;
+      bestCombination = comb;
+    }
+    for (UINT i = 0; i < comb.size(); i = i + 2){
+      UINT p1 = comb[i];
+      UINT p2 = comb[i + 1];
+      swapCoords(p1, p2);
+    }
+  }
+  for (UINT i = 0; i < bestCombination.size(); i = i + 2){
+    UINT p1 = bestCombination[i];
+    UINT p2 = bestCombination[i + 1];
+    swapCoords(p1, p2);
+  }
+  return true;
+}
+
+bool exStart(){
+  UINT cstep = attract;
+  for (UINT step = cstep; step < minimizeCompactness; step++){
+      bool bQuit = false;
+      bool success = setStep(step);
+      if (!success) return false;
+      while (!bQuit){
+        setCycle(step);
+        if (err()){
+          //std::cout << errorMessage << std::endl;
+          bQuit = true;
+        }
+        //if (refreshScreen.isMax()) writeSVG();
+        if (isStepFinished(step)){
+          bQuit = true;
+        }
+      }
+  }
+  return true;
+}
+
+bool exSimul(std::vector<std::vector<UINT>> combinations){
+  exStart();
+  // Test every combination
+  exTest(combinations);
+  //std::cout << bestCross << "\t" << bestComp << std::endl;
+  //pv(bestCombination);
+  //showCrossings();
+  currentStep = contract;
+  for (UINT step = currentStep; step < 8; step++){
+    bool bQuit = false;
+    bool success = setStep(step);
+    if (!success) return false;
+    while (!bQuit){
+      setCycle(step);
+      if (err()){
+        //std::cout << errorMessage << std::endl;
+        bQuit = true;
+      }
+      //if (refreshScreen.isMax()) writeSVG();
+      if (isStepFinished(step)){
+        bQuit = true;
+      }
+    }
+  }
+  return true;
 }
 
 public:
@@ -5198,6 +5495,10 @@ public:
 
     void restoreFromFile(std::string fileName){
       std::string ft = getFileText(fileName);
+      if (ft == ""){
+        setError("Empty file");
+        return;
+      }
       std::string st = "<desc id=\'result\'>";
       std::string nd = "</desc>";
       std::string result = "";
@@ -5270,7 +5571,7 @@ public:
         }
         std::vector<point> newcircles;
         if (el == "C"){ // (There should be a fixed number of circles.) Not anymore!
-            while (el != "S"){
+            while (el != "" && el != "S"){
                 point p;
                 std::getline(sline, el, ';');
                 if (el != "S"){
@@ -5699,7 +6000,7 @@ public:
         svg.addLine(addLegend);
         cy += dy;
       }
-      if (showThis){
+      if (debug.size() > 0){
         /*for (UINT i = 0; i < bl.size(); i++){
           for (UINT j = 0; j < bl[i].size(); j++){
             point nxt = place(svgScale, bl[i][j]);
@@ -6449,10 +6750,13 @@ public:
     /** \brief Inits the conditions for a given step
      *
      * \param 0 UINT stepNumber
+     * \param false bool exhaustive If true, the search looks for
+     * the best model, at the cost of a much larger computational
+     * cost.
      * \return bool
      *
      */
-    bool setStep(UINT stepNumber = 0){
+    bool setStep(UINT stepNumber = 0, bool exhaustive = false){
       bool result = true;
       if (error){
         //std::cout << errorMessage << std::endl;
@@ -6475,12 +6779,6 @@ public:
         setFixedCircles(false);
         setCheckTopol(true);
         resetOptimize();
-        //addLines();
-        //writeSVG("/home/vqf/proyectos/nVenn2/addlines.svg");
-        //polishLines();
-        //writeSVG("/home/vqf/proyectos/nVenn2/polishlines.svg");
-        fixTopology();
-        //writeSVG("/home/vqf/proyectos/nVenn2/fixedlines.svg");
         oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = compactness();
@@ -6491,7 +6789,6 @@ public:
       }
       else if (stepNumber == minimizeCrossings){
         resetOptimize();
-        fixTopology(1e-4);
         oc.maxOutCount = 1 * nregions();
         oc.outCount = 0;
         oc.optVal = countCrossings();
@@ -6501,6 +6798,7 @@ public:
         currentStep = stepNumber;
       }
       else if (stepNumber == contract){
+          //showCrossings();
         udt.init(1e-4, 0.01);
         resetOptimize();
         fixTopology();
@@ -6810,33 +7108,96 @@ public:
     }
 
 
-    bool simulate(bool verbose = false){
+    /** \brief Rough estimate of the time needed to run
+     * `simulate()` at a given level. Only includes
+     * minimization steps.
+     *
+     * \param 0 UINT level= Depth of combinations (see
+     * `simulate()` for details)
+     * \return float Estimated time in seconds.
+     *
+     */
+    float estimateExhaustiveRunTime(UINT level = 0){
+      UINT nest = 50;
+      float result = 0;
+      std::vector<std::vector<UINT>> all = exMinimize(level);
+      UINT n = all.size();
+      if (n > nest){
+        std::vector<std::vector<UINT>> test;
+        test.insert(test.begin(), all.begin(), all.begin() + nest);
+        exStart();
+        auto start = std::chrono::steady_clock::now();
+        exTest(test);
+        auto endat = std::chrono::steady_clock::now();
+        std::chrono::duration<float> elapsed = endat - start;
+        float elap = (float) elapsed.count();
+        result = elap * n / nest;
+      }
+      return result;
+    }
+
+
+    UINT countCombs(UINT level = 0){
+      std::vector<std::vector<UINT>> totry = exMinimize(level);
+      UINT result = totry.size();
+      return result;
+    }
+
+    std::vector<std::vector<UINT>> getCombinations(UINT maxlevel = 0){
+      std::vector<std::vector<UINT>> totry = exMinimize(maxlevel);
+      return totry;
+    }
+
+
+    /** \brief Run the algorithm non-interactively.
+     *
+     * \param false bool exhaustive= If true, the minimization steps
+     * will explore the combinatory space systematically.
+     * \param 0 UINT maxlevel= How many simultaneous exchanges should be
+     * explored. A value of zero checks all pairwise exchanges. A value
+     * of one explores all two-pair exchanges, and so on. The maximum value
+     * is floor(nregions / 2). Values higher than that are treated as that
+     * value.
+     * \return bool Returns true on completion
+     *
+     * The use of this function in exhaustive mode may require large amounts
+     * of computation and memory. The increase of those requirements with
+     * maxlevel are very steep. It is recommended to run estimateExhaustiveTime()
+     * to check whether this is feasible.
+     */
+    bool simulate(bool exhaustive = false, UINT maxlevel = 0){
       restart_log();
       reset();
-      UINT cstep = currentStep;
-      for (UINT step = currentStep; step < 8; step++){
-        bool bQuit = false;
-        if (verbose){
-            //std::cout << "Step " << step << std::endl;
-        }
-        bool success = setStep(step);
-        if (!success) return false;
-        while (!bQuit){
-          setCycle(step);
-          if (err()){
-            //std::cout << errorMessage << std::endl;
-            bQuit = true;
-          }
-          //if (refreshScreen.isMax()) writeSVG();
-          if (isStepFinished(step)){
-            bQuit = true;
-          }
-        }
-        cstep = step;
+      if (exhaustive){
+        std::vector<std::vector<UINT>> totry = exMinimize(maxlevel);
+        exSimul(totry);
+        return true;
       }
-      currentStep = cstep;
-      return true;
+      else{
+        UINT cstep = currentStep;
+        for (UINT step = currentStep; step < 8; step++){
+          bool bQuit = false;
+          bool success = setStep(step);
+          if (!success) return false;
+          while (!bQuit){
+            setCycle(step);
+            if (err()){
+              //std::cout << errorMessage << std::endl;
+              bQuit = true;
+            }
+            //if (refreshScreen.isMax()) writeSVG();
+            if (isStepFinished(step)){
+              bQuit = true;
+            }
+          }
+          cstep = step;
+        }
+        currentStep = cstep;
+        return true;
+      }
     }
+
+
 
 };
 

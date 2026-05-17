@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['uint_0',['uint',['../elements_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec',1,'UINT:&#160;elements.h'],['../scene_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec',1,'UINT:&#160;scene.h'],['../str_functs_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec',1,'UINT:&#160;strFuncts.h']]]
+  ['springlink_0',['springLink',['../scene_8h.html#a32fb05b1a87ec5ad0dea32fa29a2a2be',1,'scene.h']]],
+  ['svgoptions_1',['svgOptions',['../topol_8h.html#a1150e96be4b6acc02b734b369593e70c',1,'topol.h']]]
 ];

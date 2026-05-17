@@ -25,11 +25,12 @@ var searchData=
   ['coord_22',['coord',['../classborder_line.html#a564843763409b58573861d9810ed3572',1,'borderLine']]],
   ['correctedmincircradius_23',['correctedMinCircRadius',['../classborder_line.html#a5a5306867045c6b8355773953dae3445',1,'borderLine']]],
   ['countchar_24',['countChar',['../str_functs_8h.html#a8285c02c556efa6cd210d8dffb80b4cb',1,'strFuncts.h']]],
-  ['countcrossings_25',['countCrossings',['../classborder_line.html#a99c1ad654233f22fc6162866ebaca34a',1,'borderLine']]],
-  ['countoutsiders_26',['countOutsiders',['../classborder_line.html#a0d6e11c4cfcbf6f7a6826307747b2283',1,'borderLine']]],
-  ['croack_27',['croack',['../classpoint.html#aece42692c6637343a9fb50ef26d47b85',1,'point::croack()'],['../classscene.html#ab07525e7f4266c2d08f435261f039fed',1,'scene::croack()'],['../classtangent.html#aab93d6e6835f30d592dbda8a40d1af89',1,'tangent::croack()'],['../classccwangle.html#a56b619f50079f581c05ea30a0bef5b1d',1,'ccwangle::croack()'],['../classscale.html#ac7baa6478d21b99bd215783de12849bf',1,'scale::croack()'],['../classborder_line.html#a9ebf7fc11981fd0b943ef5b5ffb9f964',1,'borderLine::croack()']]],
-  ['croak_28',['croak',['../classgroup_iterator.html#a153fcf250b8cbe617e6d88ee99e10433',1,'groupIterator']]],
-  ['cross_29',['cross',['../classborder_line.html#a45da7fbf9d55987369f8dcc249892402',1,'borderLine']]],
-  ['crossestpoint_30',['crossestPoint',['../classborder_line.html#a9778fa89b2fa83596332ae6abd09f09a',1,'borderLine']]],
-  ['ctrlpoint_31',['ctrlPoint',['../classborder_line.html#ae41b8637230bc416d07e00aa175b4d4a',1,'borderLine']]]
+  ['countcombs_25',['countCombs',['../classborder_line.html#acdc971c0284ceedbb8feb0253099ea32',1,'borderLine']]],
+  ['countcrossings_26',['countCrossings',['../classborder_line.html#a99c1ad654233f22fc6162866ebaca34a',1,'borderLine']]],
+  ['countoutsiders_27',['countOutsiders',['../classborder_line.html#a0d6e11c4cfcbf6f7a6826307747b2283',1,'borderLine']]],
+  ['croack_28',['croack',['../classpoint.html#aece42692c6637343a9fb50ef26d47b85',1,'point::croack()'],['../classscene.html#ab07525e7f4266c2d08f435261f039fed',1,'scene::croack()'],['../classtangent.html#aab93d6e6835f30d592dbda8a40d1af89',1,'tangent::croack()'],['../classccwangle.html#a56b619f50079f581c05ea30a0bef5b1d',1,'ccwangle::croack()'],['../classscale.html#ac7baa6478d21b99bd215783de12849bf',1,'scale::croack()'],['../classborder_line.html#a9ebf7fc11981fd0b943ef5b5ffb9f964',1,'borderLine::croack()']]],
+  ['croak_29',['croak',['../classgroup_iterator.html#a153fcf250b8cbe617e6d88ee99e10433',1,'groupIterator']]],
+  ['cross_30',['cross',['../classborder_line.html#a45da7fbf9d55987369f8dcc249892402',1,'borderLine']]],
+  ['crossestpoint_31',['crossestPoint',['../classborder_line.html#a9778fa89b2fa83596332ae6abd09f09a',1,'borderLine']]],
+  ['ctrlpoint_32',['ctrlPoint',['../classborder_line.html#ae41b8637230bc416d07e00aa175b4d4a',1,'borderLine']]]
 ];

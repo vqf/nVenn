@@ -29,7 +29,7 @@
 
 
 bool bQuit = false;
-bool showContacts = false;
+bool showContacts = true;
 UINT step = 1;
 
 borderLine bl;

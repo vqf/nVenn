@@ -11,7 +11,9 @@ PYBIND11_MODULE(nvenn2, m) {
 are in columns (1) or rows (2)")
     .def(py::init<const std::string &>(), "Reads table containing a Venn diagram. The algorithm will attempt to guess whether sets are in rows or columns.\n\nArgs:\n\ttable (string): \
     text table containing the sets")
-    .def("simulate", &borderLine::simulate, py::arg("verbose") = false, "Generates Venn diagram figure")
+    .def("simulate", &borderLine::simulate, py::arg("verbose") = false, py::arg("maxlevel") = 0, "Generates Venn diagram figure. If maxlevel is set to a value higher than 0, it does so \
+using the exhaustive mode. Larger values tend to give better results, but the computational resources needed grow extremely fast. See estimate_exhaustive_run_time() to use this mode safely.")
+    .def("estimate_exhaustive_run_time", &borderLine::estimateExhaustiveRunTime, py::arg("maxlevel") = 0, "Estimates the time needed for an exhaustive simulation at a depth of maxlevel")
     .def("error_message", &borderLine::errorMsg, "Description of error if error() is true")
     .def("error", &borderLine::err, "True if there has been an error at some point. The function error_message() returns a description of the error.")
     .def("set_step", &borderLine::setStep, "Part of the simulation() API. See Github project documentation if you want to use it.")

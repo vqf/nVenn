@@ -1,5 +1,7 @@
 <map id="borderLine::setGravityPartitions" name="borderLine::setGravityPartitions">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,208,32"/>
-<area shape="rect" id="Node000002" href="$classscene.html#a0b579963c6817f759b5dce6d454c5c8e" title=" " alt="" coords="256,5,433,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,16,240,16,240,21,208,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,233,56"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#ae7ec6d15fc0e5cc806b6a204a866e2ac" title=" " alt="" coords="305,5,455,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,30,290,24,291,29,234,35"/>
+<area shape="rect" id="Node000003" href="$classscene.html#a0b579963c6817f759b5dce6d454c5c8e" title=" " alt="" coords="281,55,479,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,51,268,54,267,60,233,56"/>
 </map>

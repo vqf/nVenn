@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['g_0',['g',['../classscene.html#a698c366276432b63099b508e2d8a3a21',1,'scene::G'],['../structcsts.html#ad4304f0281c93f9bf40f173d219d4694',1,'csts::G'],['../classscene.html#aa587447cfa12539480cdcce62e7e5dc4',1,'scene::g']]],
+  ['g_0',['g',['../classscene.html#aa587447cfa12539480cdcce62e7e5dc4',1,'scene::g'],['../classscene.html#a698c366276432b63099b508e2d8a3a21',1,'scene::G'],['../structcsts.html#ad4304f0281c93f9bf40f173d219d4694',1,'csts::G']]],
   ['gcopies_1',['gcopies',['../classscene.html#a620320c623373bfba4d5f2e3eb5787ab',1,'scene']]],
   ['ghostgrav_2',['ghostGrav',['../classscene.html#aecfd0ab39cf7836dfcacc9a13e10e13d',1,'scene']]],
   ['gpartitions_3',['gpartitions',['../classscene.html#a59bf8501ef2483e0783e0230e6973479',1,'scene']]],

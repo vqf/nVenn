@@ -8,5 +8,6 @@ var searchData=
   ['ncyles_5fold10_5',['ncyles_old10',['../classborder_line.html#a803f3a10f02d840140959bf0d91195a1',1,'borderLine']]],
   ['nextvertex_6',['nextVertex',['../structoutsider_info.html#a4766bc91c4997fd85763ba8e21ed370c',1,'outsiderInfo']]],
   ['ngroups_7',['ngroups',['../classbin_map.html#abcdfc62754636f8e329469c79bc6f5fb',1,'binMap::ngroups'],['../classborder_line.html#a20770d574edea23917ffa02f5dbf3743',1,'borderLine::ngroups']]],
-  ['npointsmin_8',['nPointsMin',['../classborder_line.html#a5a2df608b876dc2b3a488e6f59beb5f0',1,'borderLine']]]
+  ['npointsmin_8',['nPointsMin',['../classborder_line.html#a5a2df608b876dc2b3a488e6f59beb5f0',1,'borderLine']]],
+  ['nreg_9',['nreg',['../structrgn.html#aa4b68aba9d624a623bf333cddd083497',1,'rgn']]]
 ];

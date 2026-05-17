@@ -37,7 +37,8 @@ extern "C" {
  void show_region_description(bool s);
  void restore_prev(const char* savedState);
  void reset();
- void run();
+ float estimate_time(UINT maxlevel);
+ void run(UINT maxlevel);
 }
 
 void reset(){
@@ -97,8 +98,13 @@ void set_font_size(UINT fs){
     bl.setFontSize(fs);
 }
 
-void run(){
-    bl.simulate();
+float estimate_time(UINT maxlevel){
+  float result = bl.estimateExhaustiveRunTime(maxlevel);
+  return result;
+}
+
+void run(UINT maxlevel = 0){
+    bl.simulate(maxlevel);
 }
 
 bool init_bl(const char* description){

@@ -3943,6 +3943,9 @@ function dbg(...args) {
       abort('native code called abort()');
     };
 
+  var nowIsMonotonic = 1;
+  var __emscripten_get_now_is_monotonic = () => nowIsMonotonic;
+
   var __emscripten_memcpy_js = (dest, src, num) => HEAPU8.copyWithin(dest, src, src + num);
 
   
@@ -3998,6 +4001,10 @@ function dbg(...args) {
         stringToUTF8(summerName, std_name, 17);
       }
     };
+
+  var _emscripten_date_now = () => Date.now();
+
+  var _emscripten_get_now = () => performance.now();
 
   var getHeapMax = () =>
       // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
@@ -4267,9 +4274,15 @@ var wasmImports = {
   /** @export */
   _abort_js: __abort_js,
   /** @export */
+  _emscripten_get_now_is_monotonic: __emscripten_get_now_is_monotonic,
+  /** @export */
   _emscripten_memcpy_js: __emscripten_memcpy_js,
   /** @export */
   _tzset_js: __tzset_js,
+  /** @export */
+  emscripten_date_now: _emscripten_date_now,
+  /** @export */
+  emscripten_get_now: _emscripten_get_now,
   /** @export */
   emscripten_resize_heap: _emscripten_resize_heap,
   /** @export */
@@ -4300,7 +4313,8 @@ var _set_palette = Module['_set_palette'] = createExportWrapper('set_palette', 1
 var _set_opacity = Module['_set_opacity'] = createExportWrapper('set_opacity', 1);
 var _set_line_width = Module['_set_line_width'] = createExportWrapper('set_line_width', 1);
 var _set_font_size = Module['_set_font_size'] = createExportWrapper('set_font_size', 1);
-var _run = Module['_run'] = createExportWrapper('run', 0);
+var _estimate_time = Module['_estimate_time'] = createExportWrapper('estimate_time', 1);
+var _run = Module['_run'] = createExportWrapper('run', 1);
 var _init_bl = Module['_init_bl'] = createExportWrapper('init_bl', 1);
 var _load_signature = Module['_load_signature'] = createExportWrapper('load_signature', 1);
 var _load_sets = Module['_load_sets'] = createExportWrapper('load_sets', 2);

@@ -11,6 +11,7 @@ var searchData=
   ['virtualpoints_8',['virtualPoints',['../classscene.html#a12267893eb92d7e4fab7d9d315bb4a3e',1,'scene']]],
   ['vlog_9',['vlog',['../topol_8h.html#a226d33f6cf024fab79e07761e1a91ec6',1,'topol.h']]],
   ['vset_10',['vset',['../elements_8h.html#ac812ab5a3720bcea740edb82c7d31c86',1,'elements.h']]],
-  ['vx_11',['vx',['../classpoint.html#a5a00df6ea19b4e284a65e2a5900b57c7',1,'point']]],
-  ['vy_12',['vy',['../classpoint.html#a4957b8800c0732a15ac1ca920401d125',1,'point']]]
+  ['vsetnames_11',['vsetNames',['../classnvenn.html#a08ba5c6af770bb9400e0475504c0c641',1,'nvenn']]],
+  ['vx_12',['vx',['../classpoint.html#a5a00df6ea19b4e284a65e2a5900b57c7',1,'point']]],
+  ['vy_13',['vy',['../classpoint.html#a4957b8800c0732a15ac1ca920401d125',1,'point']]]
 ];

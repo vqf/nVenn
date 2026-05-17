@@ -11,7 +11,6 @@ var classdecider =
     [ "viewCyclesWithoutImprovement", "classdecider.html#a2a7bbe5914aab2e257e7f2a27249725e", null ],
     [ "viewLastComp", "classdecider.html#a55a534f31206a0a86e2d8ee80e6e0a38", null ],
     [ "bestCompactness", "classdecider.html#a4fa8fd354efc5d29d048b890557758b5", null ],
-    [ "bestUntie", "classdecider.html#a66987e240b67a9c9561cf419df9fb902", null ],
     [ "canFinish", "classdecider.html#a30a4972e7ec40282536d7d9bec343a07", null ],
     [ "counter", "classdecider.html#a65ef4f4c907902ba08c7a401fabbfabe", null ],
     [ "cyclesWithoutImprovement", "classdecider.html#af45c0fa279c6b1615c64c9f860ae1272", null ],

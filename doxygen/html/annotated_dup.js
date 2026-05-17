@@ -19,6 +19,7 @@ var annotated_dup =
     [ "palettes", "classpalettes.html", "classpalettes" ],
     [ "point", "classpoint.html", "classpoint" ],
     [ "rgb", "structrgb.html", "structrgb" ],
+    [ "rgn", "structrgn.html", "structrgn" ],
     [ "scale", "classscale.html", "classscale" ],
     [ "scene", "classscene.html", "classscene" ],
     [ "splitString", "classsplit_string.html", "classsplit_string" ],

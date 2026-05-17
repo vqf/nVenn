@@ -1,7 +1,11 @@
 <map id="borderLine::crossestPoint" name="borderLine::crossestPoint">
-<area shape="rect" id="Node000001" title="Gets (one of) the circle that belongs to the least number of sets The result must be higher than 0 an..." alt="" coords="5,31,175,57"/>
-<area shape="rect" id="Node000002" href="$classborder_line.html#a55ec4358837f41e5a15797305a3067de" title="Count the number of ones in the binary representation of a number." alt="" coords="223,5,340,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,30,207,26,208,31,176,35"/>
-<area shape="rect" id="Node000003" href="$scene_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="249,56,314,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,53,234,61,234,66,175,58"/>
+<area shape="rect" id="Node000001" title="Gets (one of) the circle that belongs to the least number of sets. Must have radius &gt; 0...." alt="" coords="5,55,192,80"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a55ec4358837f41e5a15797305a3067de" title="Count the number of ones in the binary representation of a number." alt="" coords="270,5,401,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,52,260,31,261,36,161,57"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#ac3767dfd4d2e4883bad4fccb3f618822" title=" " alt="" coords="240,55,431,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,65,226,65,226,70,192,70"/>
+<area shape="rect" id="Node000005" href="$scene_8h.html#a76f712d8471177ab9a4e7545c9b94fb2" title=" " alt="" coords="300,104,371,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="161,77,287,104,286,109,160,83"/>
+<area shape="rect" id="Node000004" href="$scene_8h.html#a34e2cb67f2b4fc7fb1f8b3e10e1186a2" title=" " alt="" coords="479,55,565,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="431,65,465,65,465,70,431,70"/>
 </map>

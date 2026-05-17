@@ -1,248 +1,35 @@
-#include <windows.h>
-#include <Windows.h>
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
 #include "topol.h"
-#include "initogl.h"
-#include "graphics.h"
-#include "scene.h"
-//#include <math.h>
-//#include <random>
-
-bool showForces = true;
+#include "elements.h"
 
 
-void addCircle(point P, std::vector<float> color = {0, 1, 0}){
-  std::vector<point> temp = glCircle(P.x, P.y, P.radius);
-  glBegin (GL_LINE_LOOP);
-  glColor3f (color[0], color[1], color[2]);
-  for (UINT j = 0; j < temp.size(); j++)
-  {
-      glVertex2f (temp[j].x, temp[j].y);
+template<typename T>
+void printv(std::vector<T> v){
+  for (UINT i = 0; i < v.size() - 1; i++){
+    std::cout << v[i] << ", ";
   }
-  glEnd ();
-}
+  std::cout << v[v.size()-1] << std::endl;
 
-void addLine(point p0, point p1, std::vector<float> color = {0, 0, 1}){
-  glBegin (GL_LINE_LOOP);
-  glColor3f (color[0], color[1], color[2]);
-  glVertex2f(p0.x, p0.y);
-  glVertex2f(p1.x, p1.y);
-  glEnd ();
-}
-
-void OGLShow(scene s, scale sc, HDC hDC, float dt){
-  time_t start_time = time(nullptr);
-  glClearColor (1.0f, 1.0f, 1.0f, 0.0f);
-  glClear (GL_COLOR_BUFFER_BIT);
-  scale ogl;
-  ogl.initScale();
-  std::vector<point*> circles = s.getPoints();
-  //sc.setClear();
-  //for (UINT i = 0; i < circles.size(); i++){
-  //  sc.addToScale(*(circles[i]));
-  //}
-  s.addInfo("HX: ", sc.xSpan());
-  std::vector<point> v = s.getVirtual();
-  std::vector<std::string> w = s.getInfo();
-  for (UINT i = 0; i < circles.size(); i++){
-    point tp = sc.place(ogl, *(circles[i]));
-    addCircle(tp);
-  }
-  std::vector<springLink> springs = s.getLinks();
-  std::vector<springLink> rods = s.getRods();
-  for (UINT i = 0; i < springs.size(); i++){
-    point *p0 = circles[springs[i].from];
-    point *p1 = circles[springs[i].to];
-    //tolog(p0.croack()); exit(0);
-    point s0 = sc.place(ogl, *p0);
-    point s1 = sc.place(ogl, *p1);
-    addLine(s0, s1);
-  }
-  for (UINT i = 0; i < rods.size(); i++){
-    point *p0 = circles[rods[i].from];
-    point *p1 = circles[rods[i].to];
-    //tolog(p0.croack()); exit(0);
-    point s0 = sc.place(ogl, *p0);
-    point s1 = sc.place(ogl, *p1);
-    addLine(s0, s1, {1, 0, 0});
-  }
-  if (showForces){
-    for (UINT i = 0; i < circles.size(); i++){
-      point *a = circles[i];
-      point att = sc.place(ogl, *a);
-      float dx = a->x + a->fx * 1e-2;
-      float dy = a->y + a->fy * 1e-2;
-      point t; t.x = dx; t.y = dy;
-      point a2 = sc.place(ogl, t);
-      addLine(att, a2, {1, 1, 0});
-    }
-  }
-  glColor3f(0.0f, 0.0f, 1.0f);
-  float yd = 0.8f;
-  for (UINT i = 0; i < w.size(); i++){
-    std::string mymsg = w[i];
-    //showText(mymsg); exit(0);
-    glRasterPos2f(-0.9f, yd);
-    printString(mymsg);
-    yd -= 0.1;
-  }
-  /**
-  if (v.size() > 0){
-    for (UINT i = 0; i < v.size(); i++){
-      point a = v[i];
-      a.radius = 2;
-      point f;
-      f.x = a.fx;
-      f.y = a.fy;
-      point att = sc.place(ogl, a);
-      addCircle(att, {1, 0, 0});
-      point a2 = sc.place(ogl, f);
-      a2.x += att.x;
-      a2.y += att.y;
-      addLine(att, a2);
-    }
-  }
-  /***/
-  SwapBuffers (hDC);
-  if (v.size() > 0){
-    s.clearVirtual();
-    wait();
-  }
-  time_t end_time = time(nullptr);
-  time_t diff = end_time - start_time;
-  time_t tdt = time_t(dt * 1000);
-  if (diff < tdt){
-    Sleep(tdt - diff);
-  }
-}
-
-/**************************
- * WinMain
- *
- **************************/
-int WINAPI
-WinMain (HINSTANCE hInstance,
-         HINSTANCE hPrevInstance,
-         LPSTR lpCmdLine,
-         int iCmdShow)
-{
-    WNDCLASS wc;
-    HWND hWnd;
-    HDC hDC;
-    HGLRC hRC;
-    MSG msg;
-    BOOL bQuit = FALSE;
-    /* register window class */
-    wc.style = CS_OWNDC;
-    wc.lpfnWndProc = WndProc;
-    wc.cbClsExtra = 0;
-    wc.cbWndExtra = 0;
-    wc.hInstance = hInstance;
-    wc.hIcon = LoadIcon (NULL, IDI_APPLICATION);
-    wc.hCursor = LoadCursor (NULL, IDC_ARROW);
-    wc.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH);
-    wc.lpszMenuName = NULL;
-    wc.lpszClassName = "GLSample";
-    RegisterClass (&wc);
-
-    /* create main window */
-    hWnd = CreateWindow (
-               "GLSample", "nVenn",
-               WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-               0, 0, 800.0f, 800.0f,
-               NULL, NULL, hInstance, NULL);
-    publich = hWnd;
-    //MessageBox(hWnd, "hi", "yo", MB_ICONINFORMATION | MB_OK);
-
-    /* enable OpenGL for the window */
-    EnableOpenGL (hWnd, &hDC, &hRC);
-    init(); // Init bitmap font
-
-    //restart logger
-    restart_log();
-    /*std::random_device rd;  // Will be used to obtain a seed for the random number engine
-    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-    std::uniform_real_distribution<> dis(-1.0, 1.0);*/
-
-    scene univ;
-    univ.setRodStiffness(1e3);
-    univ.setFriction(0);
-    univ.setDown(5e-0);
-    point p; p.x = 0; p.y = 0; p.radius = 0.5;
-    p.flags = setFlag(p.flags, ANCHORED);
-    univ.addPoint(p);
-    p.x = 2;
-    p.y = -2;
-    p.flags = unsetFlag(p.flags, ANCHORED);
-    //p.vx = 1;
-    univ.addPoint(p);
-    univ.addRod(0, 1);
-    p.x = -5;
-    univ.addPoint(p);
-    univ.addLink(1, 2, 100, 1);
-    /*float sep = 0.5;
-    float r = sep / 5;
-    float psep = 0;
-    point p; p.mass = 5; p.radius = r;
-    p.x = -4; p.y = 4;
-    p.flags = setFlag(p.flags, ANCHORED);
-    univ.addPoint(p);
-    p.flags = unsetFlag(p.flags, ANCHORED);
-    UINT lst = 15;
-    for (UINT i = 1; i < lst; i++){
-      p.x += sep;
-      univ.addPoint(p);
-      univ.addLink(i-1, i, 100, psep);
-    }
-    p.x += sep; //p.y += 1;
-    p.flags = setFlag(p.flags, ANCHORED);
-    univ.addPoint(p);
-    univ.addLink(lst-1, lst, 100, psep);
-    point q; q.x = 1; q.y = 6; q.radius = 1; q.mass = 5;
-    univ.addPoint(q);
-    //univ.addRod(0, ncirc >> 1, 2);
-    //univ.addRod(ncirc >> 2, 3 * ncirc >> 2, 2);
-    */
-    scale scscale(point(-10, -10), point(10, 10));
-
-    //tolog(univ.croack());
-
-    /* program main loop */
-    while (!bQuit)
-    {
-        /* check for messages */
-        if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
-        {
-            /* handle or dispatch messages */
-            if (msg.message == WM_QUIT)
-            {
-                bQuit = TRUE;
-            }
-            else
-            {
-                TranslateMessage (&msg);
-                DispatchMessage (&msg);
-            }
-        }
-        else
-        {
-          Keyboard_Input();
-          if (DUMP || univ.dumpme()){
-            tolog(univ.croack()); exit(0);
-          }
-          float dt = univ.solve();
-          OGLShow(univ, scscale, hDC, dt);
-        }
-    }
-
-    /* shutdown OpenGL */
-    DisableOpenGL (hWnd, hDC, hRC);
-
-    /* destroy the window explicitly */
-    DestroyWindow (hWnd);
-
-    return msg.wParam;
 }
 
 
-
-
+int main(){
+  std::string path1 = "/home/vqf/proyectos/nVenn2/example.txt";
+  std::string path2 = "/home/vqf/proyectos/nVenn2/extremeTest.txt";
+  std::string path3 = "/home/vqf/proyectos/nVenn2/stressTest.txt";
+  std::string path4 = "/home/vqf/proyectos/nVenn2/polish.txt";
+  std::string path5 = "/home/vqf/Downloads/tmp.txt";
+  std::string path6 = "/home/vqf/proyectos/nVenn2/extremeTest2.txt";
+  borderLine bl = fromSetFile(path1);
+  UINT lvl = 2;
+  UINT n = bl.countCombs(lvl);
+  std::cout << n << std::endl;
+  float t = bl.estimateExhaustiveRunTime(lvl);
+  std::cout << t << std::endl;
+  bl.simulate(true, lvl);
+  bl.writeSVG("exhaustive.svg");
+  return 0;
+}

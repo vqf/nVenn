@@ -1,5 +1,7 @@
 <map id="borderLine::setRelationships" name="borderLine::setRelationships">
-<area shape="rect" id="Node000001" title="Set relationships (number of shared bytes) between circles." alt="" coords="5,5,191,32"/>
-<area shape="rect" id="Node000002" href="$classborder_line.html#a55ec4358837f41e5a15797305a3067de" title="Count the number of ones in the binary representation of a number." alt="" coords="239,5,356,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,16,223,16,223,21,191,21"/>
+<area shape="rect" id="Node000001" title="Set relationships (number of shared bytes) between circles." alt="" coords="5,31,212,56"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a55ec4358837f41e5a15797305a3067de" title="Count the number of ones in the binary representation of a number." alt="" coords="260,5,391,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,29,246,25,247,30,213,34"/>
+<area shape="rect" id="Node000003" href="$topol_8h.html#a30600ac38391dd9e00f70e8ae27a9570" title="Fast computing of 2**n." alt="" coords="289,55,362,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,52,275,59,275,64,212,57"/>
 </map>

@@ -4,12 +4,17 @@ var searchData=
   ['effectother_1',['effectOther',['../classscene.html#a498baf271675a01f4267a7dedad6e5a7',1,'scene']]],
   ['effectrods_2',['effectRods',['../classscene.html#ac279eed67ea4553d51b5041ac2a4393a',1,'scene']]],
   ['effectsprings_3',['effectSprings',['../classscene.html#a70767a719b389d6f4cad19154e3d8799',1,'scene']]],
-  ['embellishtopology_4',['embellishTopology',['../classborder_line.html#a0e6fe1eb4200ab0134d4565f1c41d69e',1,'borderLine']]],
+  ['embellishtopology_4',['embellishTopology',['../classborder_line.html#ad9d64bbfa20666e841c1ed18f92cc31b',1,'borderLine']]],
   ['endcycle_5',['endCycle',['../classoptimization_step.html#a6199a382688118bbe18f866941894c67',1,'optimizationStep']]],
   ['eqforce_6',['eqforce',['../classborder_line.html#ac83706f357b76de2ac7340faa0c33cf2',1,'borderLine']]],
   ['err_7',['err',['../group___a_p_i.html#ga99f376ff53cac16e59e06da52b99b2f6',1,'borderLine']]],
   ['error_8',['error',['../classtangent.html#a7f1ffed87e2e8008118deb5b06f7ae9c',1,'tangent::error()'],['../towasm_8cpp.html#a91004c239942d94aa16e9d9dc0f45160',1,'error():&#160;towasm.cpp']]],
   ['errormsg_9',['errormsg',['../group___a_p_i.html#ga0e3803953c1208faae1b44d134b40fac',1,'borderLine::errorMsg()'],['../towasm_8cpp.html#a900f395261eb2e3307fd6f54fce4dd26',1,'errorMsg():&#160;towasm.cpp']]],
-  ['estsurf_10',['estSurf',['../classborder_line.html#a172a0a9e7477348ef5e891c492b3c900',1,'borderLine']]],
-  ['exchangechar_11',['exchangeChar',['../str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d',1,'strFuncts.h']]]
+  ['estimateexhaustiveruntime_10',['estimateExhaustiveRunTime',['../classborder_line.html#a2dd6be29f4b4e772f052d02b820762d6',1,'borderLine']]],
+  ['estsurf_11',['estSurf',['../classborder_line.html#a172a0a9e7477348ef5e891c492b3c900',1,'borderLine']]],
+  ['exchangechar_12',['exchangeChar',['../str_functs_8h.html#a7c2c69ab9fd1bd800cfa2c22d2c0dc0d',1,'strFuncts.h']]],
+  ['exminimize_13',['exMinimize',['../classborder_line.html#a8fea88955d608a324e70d369c9329570',1,'borderLine']]],
+  ['exsimul_14',['exSimul',['../classborder_line.html#ab4e321cb04fc2dc5ba286ef38392463a',1,'borderLine']]],
+  ['exstart_15',['exStart',['../classborder_line.html#a1ab4d5467c0e7bfcfa86690ced2b1707',1,'borderLine']]],
+  ['extest_16',['exTest',['../classborder_line.html#a403c90e98b4e71b0722d66bd50315daa',1,'borderLine']]]
 ];

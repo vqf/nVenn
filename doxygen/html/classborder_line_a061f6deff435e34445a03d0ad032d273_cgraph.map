@@ -1,16 +1,13 @@
 <map id="borderLine::rope" name="borderLine::rope">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,132,120,159"/>
-<area shape="rect" id="Node000002" href="$classborder_line.html#a27547350bae9c465e049dfd1f15090d3" title=" " alt="" coords="168,56,301,83"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,129,187,87,190,92,96,134"/>
-<area shape="rect" id="Node000005" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="571,81,641,108"/>
-<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="120,137,555,97,556,102,120,143"/>
-<area shape="rect" id="Node000006" href="$classborder_line.html#a1f2d5da3e9fcc0528dcafbf5d6a77212" title=" " alt="" coords="168,183,301,209"/>
-<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="111,157,173,175,171,180,110,162"/>
-<area shape="rect" id="Node000003" href="$classborder_line.html#a631ddec3d3e984012a36803537fcc6f9" title=" " alt="" coords="536,5,676,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,53,299,33,348,16,392,9,437,6,521,7,521,13,437,11,393,14,350,21,301,37,260,58"/>
-<area shape="rect" id="Node000004" href="$classborder_line.html#a86ebfe0b8ef949c68e9d5d607a43d4ff" title=" " alt="" coords="349,31,488,57"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="300,58,333,53,334,58,301,63"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="301,71,556,89,555,94,301,76"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="488,32,520,28,521,33,489,37"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="472,55,556,79,555,84,470,61"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,133,132"/>
+<area shape="rect" id="Node000002" href="$classborder_line.html#a27547350bae9c465e049dfd1f15090d3" title=" " alt="" coords="183,56,329,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,104,195,82,196,88,118,109"/>
+<area shape="rect" id="Node000004" href="$scene_8h.html#a9c3aa637043402e0303bfefa6b9e14e4" title="Computes the cartesian distance between points (x0, y0) and (x1, y1)" alt="" coords="581,56,659,81"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="133,111,568,71,568,76,134,116"/>
+<area shape="rect" id="Node000005" href="$classborder_line.html#a1f2d5da3e9fcc0528dcafbf5d6a77212" title=" " alt="" coords="181,157,331,183"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="118,130,196,151,195,156,116,135"/>
+<area shape="rect" id="Node000003" href="$classborder_line.html#a86ebfe0b8ef949c68e9d5d607a43d4ff" title=" " alt="" coords="379,5,533,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="306,53,391,31,393,37,308,58"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="330,66,567,66,567,71,330,71"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="499,28,569,50,568,55,497,33"/>
 </map>

@@ -8,7 +8,7 @@ var searchData=
   ['listoutsiders_5',['listOutsiders',['../classborder_line.html#abc0db1f96cc1a22f5d4d2a5aff610104',1,'borderLine']]],
   ['load_5fsets_6',['load_sets',['../towasm_8cpp.html#a7ef7aba682833b4c8c72facc0298cd3f',1,'towasm.cpp']]],
   ['load_5fsignature_7',['load_signature',['../towasm_8cpp.html#a96fd9ab513d7d6482d518b4d98cb004b',1,'towasm.cpp']]],
-  ['loadpalette_8',['loadPalette',['../classborder_line.html#a2527a27ca6155186ae77b7fb86dd49c8',1,'borderLine']]],
+  ['loadpalette_8',['loadPalette',['../group___a_p_i.html#ga2527a27ca6155186ae77b7fb86dd49c8',1,'borderLine']]],
   ['loadscene_9',['loadScene',['../classscene.html#aa0dafc8998fccc9750fca2ded3afe55e',1,'scene']]],
   ['loadsignature_10',['loadSignature',['../classborder_line.html#a381a9afb07105eaf314c73ed3a5278e1',1,'borderLine']]]
 ];
