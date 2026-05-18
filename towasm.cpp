@@ -38,11 +38,17 @@ extern "C" {
  void restore_prev(const char* savedState);
  void reset();
  float estimate_time(UINT maxlevel);
+ UINT nregions();
  void run(UINT maxlevel);
 }
 
 void reset(){
   bl.reset();
+}
+
+UINT nregions(){
+  UINT result = bl.nregions();
+  return result;
 }
 
 void restore_prev(const char* savedState){
@@ -103,8 +109,8 @@ float estimate_time(UINT maxlevel){
   return result;
 }
 
-void run(UINT maxlevel = 0){
-    bl.simulate(maxlevel);
+void run(UINT maxlevel = 1){
+    bl.simulate(true, maxlevel);
 }
 
 bool init_bl(const char* description){

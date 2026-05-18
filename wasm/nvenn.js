@@ -4303,6 +4303,7 @@ var wasmImports = {
 var wasmExports = createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
 var _reset = Module['_reset'] = createExportWrapper('reset', 0);
+var _nregions = Module['_nregions'] = createExportWrapper('nregions', 0);
 var _restore_prev = Module['_restore_prev'] = createExportWrapper('restore_prev', 1);
 var _show_region_description = Module['_show_region_description'] = createExportWrapper('show_region_description', 1);
 var _show_region_size = Module['_show_region_size'] = createExportWrapper('show_region_size', 1);
