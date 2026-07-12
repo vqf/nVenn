@@ -294,7 +294,12 @@ static void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     bl.setCycle(step);
     toOGL();
+    //bl.showCircleNumbers(false);
+    bl.setFontSize(16);
     if (bl.isStepFinished(step)){
+        std::stringstream txt;
+        txt << "/home/vqf/web/steps/v3/step" << step << ".svg";
+        bl.writeSVG(txt.str());
         step++;
         bl.setStep(step);
         std::cout << step << std::endl;

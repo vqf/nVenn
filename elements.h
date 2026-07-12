@@ -93,6 +93,7 @@ class nvenn{
     result = exchangeChar(result, '(', '-');
     result = exchangeChar(result, ')', '-');
     result = exchangeChar(result, '"', '_');
+    result = exchangeChar(result, ' ', '_');
     return result;
   }
 

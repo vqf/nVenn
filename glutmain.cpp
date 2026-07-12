@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
     std::string path5 = "/home/vqf/Downloads/tmp.txt";
     std::string path6 = "/home/vqf/proyectos/nVenn2/extremeTest2.txt";
     //bl.restoreFromFile("/home/vqf/Downloads/tmp.html");
-    glutSimulate(path6);
+    glutSimulate(path3);
 
     //std::string t = path3 + ".html";
     //borderLine b;

@@ -75,29 +75,82 @@
     fill: none;
     stroke: #0082c8;
   }
+  .p4{
+    stroke: none;
+    fill: #f58231;
+  }
+  .q4{
+    fill: none;
+    stroke: #f58231;
+  }
+  .p5{
+    stroke: none;
+    fill: #911eb4;
+  }
+  .q5{
+    fill: none;
+    stroke: #911eb4;
+  }
+  .p6{
+    stroke: none;
+    fill: #46f0f0;
+  }
+  .q6{
+    fill: none;
+    stroke: #46f0f0;
+  }
 ]]>
 </style>
 <symbol id="bl0">
-<path d="M 136.48 202.85 L 136.48 202.85 L 209.84 328.98 L 312.35 427.11 L 189.43 109.40 Z" />
+<path d="M 233.55 288.11 L 233.55 288.11 L 277.49 317.91 L 290.47 298.77 L 290.45 298.66 L 290.55 298.64 L 290.57 298.75 L 290.47 298.77 L 277.49 317.91 L 327.34 351.71 L 471.09 293.80 L 464.82 238.05 L 418.67 243.25 L 418.60 243.33 L 418.52 243.27 L 418.58 243.18 L 418.67 243.25 L 464.82 238.05 L 455.93 159.16 L 370.31 105.65 L 234.70 68.11 Z" />
 </symbol>
 <symbol id="bl1">
-<path d="M 19.92 111.94 L 19.92 111.94 L 25.15 297.58 L 209.84 328.98 L 136.48 202.85 Z" />
+<path d="M 155.33 177.91 L 155.33 177.91 L 178.10 246.87 L 290.51 298.70 L 418.59 243.26 L 370.31 105.65 L 323.65 39.69 L 160.94 100.38 Z" />
 </symbol>
 <symbol id="bl2">
-<path d="M 25.15 297.58 L 25.15 297.58 L 312.35 427.11 L 460.10 233.85 L 328.78 227.02 Z" />
+<path d="M 78.19 151.78 L 78.19 151.78 L 100.55 367.88 L 186.69 321.78 L 233.55 288.11 L 276.54 153.58 L 225.41 137.24 L 225.31 137.29 L 225.26 137.19 L 225.36 137.14 L 225.41 137.24 L 276.54 153.58 L 290.79 109.00 L 234.70 68.11 L 160.94 100.38 Z" />
 </symbol>
 <symbol id="bl3">
-<path d="M 298.46 147.70 L 298.46 147.70 L 328.78 227.02 Z" />
+<path d="M 100.55 367.88 L 100.55 367.88 L 359.60 424.62 L 429.86 342.19 L 402.72 319.06 L 402.61 319.07 L 402.60 318.96 L 402.71 318.95 L 402.72 319.06 L 429.86 342.19 L 471.09 293.80 L 374.24 175.17 L 241.50 198.03 L 243.88 211.83 L 243.96 211.89 L 243.90 211.98 L 243.81 211.91 L 243.88 211.83 L 241.50 198.03 L 111.40 220.43 L 105.91 295.05 L 124.05 296.39 L 124.13 296.32 L 124.20 296.40 L 124.12 296.47 L 124.05 296.39 L 105.91 295.05 Z" />
+</symbol>
+<symbol id="bl4">
+<path d="M 171.22 389.81 L 171.22 389.81 L 172.74 460.31 Z" />
+</symbol>
+<symbol id="bl5">
+<path d="M 124.12 296.39 L 124.12 296.39 L 171.22 389.81 L 264.54 452.01 L 402.66 319.01 L 309.64 182.54 L 225.33 137.21 L 155.33 177.91 Z" />
+</symbol>
+<symbol id="bl6">
+<path d="M 28.91 244.02 L 28.91 244.02 L 111.40 220.43 Z" />
 </symbol>
 </defs>
-<desc>STEP: 2;MAXCIRCLEV: 2.95216;DT: 0.02</desc>
-<desc id='result'>F;2;L;-6.77533;-2.63231;-1.06298;7.18947;6.91977;14.8315;-2.6525;-9.90922;L;-15.8522;
--9.71211;-15.4453;4.74451;-1.06298;7.18947;-6.77533;-2.63231;L;-15.4453;4.74451;6.91977;
-14.8315;18.4253;-0.218034;8.19923;-0.75038;L;5.83823;-6.92728;8.19923;-0.75038;C;
--2.6525;-9.90922;2;1;328;-15.8522;-9.71211;0.869539;2;62;-6.77533;-2.63231;0.594692;
-3;29;18.4253;-0.218034;0.540552;4;9;6.91977;14.8315;0.540552;5;3;-15.4453;4.74451;
-0.540552;6;5;-1.06298;7.18947;0.540552;7;2;5.83823;-6.92728;0.540552;8;2;8.19923;
--0.75038;0.540552;12;1;
+<desc>STEP: 3;BEST: 1841.14;CANDIDATE: 19</desc>
+<desc id='result'>F;3;L;-3.48734;5.18939;3.0872;9.64736;5.02916;6.78339;5.02614;6.76766;5.04186;6.76465;
+5.04488;6.78037;5.02916;6.78339;3.0872;9.64736;10.5464;14.7052;32.0547;6.04033;31.1156;
+-2.30036;24.2105;-1.52289;24.2005;-1.51037;24.188;-1.52036;24.198;-1.53288;24.2105;
+-1.52289;31.1156;-2.30036;29.7865;-14.1049;16.9759;-22.111;-3.31445;-27.727;L;-15.1906;
+-11.2998;-11.7828;-0.980662;5.03551;6.77402;24.1992;-1.52162;16.9759;-22.111;9.99385;
+-31.9793;-14.3505;-22.8995;L;-26.7319;-15.2092;-23.3862;17.1238;-10.4985;10.2269;
+-3.48734;5.18939;2.94611;-14.9391;-4.70533;-17.3846;-4.71956;-17.3773;-4.7269;-17.3915;
+-4.71267;-17.3989;-4.70533;-17.3846;2.94611;-14.9391;5.07831;-21.6102;-3.31445;-27.727;
+-14.3505;-22.8995;L;-23.3862;17.1238;15.3731;25.6134;25.8847;13.2799;21.8241;9.81922;
+21.8082;9.8205;21.8069;9.80453;21.8229;9.80326;21.8241;9.81922;25.8847;13.2799;32.0547;
+6.04033;17.5633;-11.7095;-2.29722;-8.28906;-1.94165;-6.22451;-1.92857;-6.21528;-1.93781;
+-6.2022;-1.95089;-6.21143;-1.94165;-6.22451;-2.29722;-8.28906;-21.7631;-4.93659;-22.5845;
+6.22788;-19.8704;6.42757;-19.8583;6.41711;-19.8478;6.42923;-19.86;6.43969;-19.8704;
+6.42757;-22.5845;6.22788;L;-12.8128;20.4053;-12.5845;30.9532;L;-19.8591;6.4284;-12.8128;
+20.4053;1.14984;29.7121;21.8155;9.81188;7.89769;-10.6065;-4.71611;-17.3881;-15.1906;
+-11.2998;L;-34.1056;-1.40709;-21.7631;-4.93659;C;29.7865;-14.1049;1.45444;1;165;9.99385;
+-31.9793;1.33244;2;47;16.9759;-22.111;1.33244;3;20;-26.7319;-15.2092;1.33244;4;2;
+-3.31445;-27.727;1.33244;5;1;-14.3505;-22.8995;1.33244;6;3;5.07831;-21.6102;1.33244;
+7;1;15.3731;25.6134;1.33244;8;54;32.0547;6.04033;1.33244;9;3;24.1992;-1.52162;1.33244;
+10;6;17.5633;-11.7095;1.33244;11;1;-23.3862;17.1238;1.33244;12;3;-12.5845;30.9532;
+1.33244;16;1;1.14984;29.7121;2;32;312;21.8155;9.81188;1.38212;33;149;-4.71611;-17.3881;
+1.33244;34;8;7.89769;-10.6065;1.33244;35;6;-19.8591;6.4284;1.33244;36;3;-15.1906;
+-11.2998;1.33244;38;1;-1.93973;-6.21335;1.33244;39;1;-0.879345;17.215;1.33244;40;
+10;10.5464;14.7052;1.33244;41;11;5.03551;6.77402;1.33244;42;1;12.8303;0.247523;1.33244;
+43;2;-10.4985;10.2269;1.33244;44;1;-3.48734;5.18939;1.33244;45;2;-11.7828;-0.980662;
+1.33244;46;1;-12.8128;20.4053;1.33244;48;1;-34.1056;-1.40709;1.33244;64;2;-21.7631;
+-4.93659;1.33244;76;1;
 S;IBA;MGI:1918414;MGI:1923573;MGI:1927449;MGI:3649773;MGI:2670994;MGI:2183434;MGI:3651686;
 MGI:1914951;MGI:1916618;MGI:98943;MGI:1859307;MGI:1349462;MGI:2685640;MGI:2447992;
 MGI:1914775;MGI:2387432;MGI:1914199;MGI:2684862;MGI:2685298;MGI:1889623;MGI:2664992;
@@ -163,41 +216,194 @@ MGI:109274;MGI:2429943;MGI:107668;MGI:107659;MGI:1913391;MGI:2450574;MGI:1098268
 MGI:894284;MGI:107538;MGI:106588;MGI:1914320;MGI:1926263;MGI:1330832;S;IGI;MGI:3045213;
 MGI:1346060;MGI:3622649;MGI:1349420;MGI:1913963;MGI:98923;MGI:107539;MGI:1921367;
 MGI:105975;MGI:96923;MGI:88385;MGI:2444773;MGI:109274;MGI:88489;MGI:2143362;MGI:96924;
-MGI:2135589;MGI:108005;MGI:1914320;MGI:1328352;S;TAS;MGI:97244;MGI:97243;MGI:105975;
-</desc>
+MGI:2135589;MGI:108005;MGI:1914320;MGI:1328352;S;IMP;MGI:1927449;MGI:2441787;MGI:1859307;
+MGI:1917700;MGI:2442815;MGI:2441706;MGI:1913521;MGI:1346060;MGI:1921982;MGI:1927664;
+MGI:3622649;MGI:1349420;MGI:1328352;MGI:1924983;MGI:1923724;MGI:1922484;MGI:1891456;
+MGI:1341850;MGI:1861441;MGI:99523;MGI:1914005;MGI:1921998;MGI:1924963;MGI:103187;
+MGI:1915252;MGI:1918876;MGI:1913534;MGI:1927070;MGI:3039602;MGI:1343135;MGI:102858;
+MGI:107711;MGI:107179;MGI:87931;MGI:2443180;MGI:95496;MGI:2429397;MGI:103036;MGI:97545;
+MGI:105975;MGI:96824;MGI:1298389;MGI:1934368;MGI:88385;MGI:2385852;MGI:2687214;MGI:1921494;
+MGI:108005;MGI:2147032;MGI:3641753;MGI:1352467;MGI:2138446;MGI:1277186;MGI:1889575;
+MGI:1261775;MGI:1918673;MGI:2429611;MGI:1925000;MGI:1333879;MGI:103035;MGI:1096873;
+MGI:2685628;MGI:1278313;MGI:2676278;MGI:1914495;MGI:1919349;MGI:1922333;MGI:1913869;
+MGI:1925558;MGI:1915183;MGI:105112;MGI:2653833;MGI:1338888;MGI:2152414;MGI:96924;
+MGI:1859179;MGI:1918788;MGI:1861232;MGI:1859212;MGI:1328317;MGI:1100508;MGI:2145579;
+MGI:2662547;MGI:1196250;MGI:106588;MGI:1918836;MGI:1915864;MGI:2152213;MGI:1929658;
+MGI:3650490;MGI:1351641;MGI:1931595;MGI:96055;MGI:95915;MGI:1100846;MGI:2141990;S;
+IPI;MGI:3774845;MGI:3649078;S;ISO;MGI:3527792;MGI:1913470;MGI:2444393;MGI:1923573;
+MGI:1926031;MGI:1927449;MGI:109484;MGI:2444233;MGI:2679720;MGI:98933;MGI:98923;MGI:1096399;
+MGI:101857;MGI:3588256;MGI:1914049;MGI:1914500;MGI:1858216;MGI:1349462;MGI:1334459;
+MGI:1277211;MGI:1929470;MGI:102960;MGI:894689;MGI:3039573;MGI:1919604;MGI:2685298;
+MGI:1914104;MGI:1917057;MGI:2385051;MGI:3035181;MGI:98178;MGI:109274;MGI:97904;MGI:1914123;
+MGI:1913150;MGI:101835;MGI:104798;MGI:1932389;MGI:2176887;MGI:2176882;MGI:2156367;
+MGI:2182965;MGI:3040056;MGI:2147032;MGI:108072;MGI:98725;MGI:1289308;MGI:1918648;
+MGI:103027;MGI:98474;MGI:1891690;MGI:98484;MGI:103039;MGI:103063;MGI:98397;MGI:109561;
+MGI:1860188;MGI:1277151;MGI:1913770;MGI:1916618;MGI:1935129;MGI:103241;MGI:1329012;
+MGI:2140796;MGI:1353620;MGI:1351663;MGI:1277989;MGI:2384814;MGI:1918764;MGI:2177308;
+MGI:1891831;MGI:1915167;MGI:894696;MGI:1919260;MGI:894672;MGI:894667;MGI:2444223;
+MGI:1921386;MGI:1927468;MGI:1913416;MGI:1333780;MGI:1914498;MGI:1351455;MGI:1924983;
+MGI:1920131;MGI:1919206;MGI:1913847;MGI:1891456;MGI:1914128;MGI:2442858;MGI:1923688;
+MGI:2384294;MGI:1918910;MGI:1922248;MGI:107741;MGI:104641;MGI:1913895;MGI:1344375;
+MGI:104779;MGI:1915107;MGI:1914736;MGI:1924086;MGI:1922091;MGI:1918177;MGI:1917678;
+MGI:893575;MGI:1916832;MGI:101842;MGI:97584;MGI:97583;MGI:108202;MGI:1933117;MGI:1098801;
+MGI:2180849;MGI:2180850;MGI:2137355;MGI:2138351;MGI:2180853;MGI:97429;MGI:104662;
+MGI:2180855;MGI:1918046;MGI:1341295;MGI:2180856;MGI:2140770;MGI:2149633;MGI:2180860;
+MGI:98958;MGI:1352462;MGI:2679787;MGI:2154441;MGI:97815;MGI:1855692;MGI:1914315;MGI:2429397;
+MGI:2444084;MGI:2144613;MGI:2145528;MGI:1890518;MGI:3056570;MGI:1928368;MGI:2684861;
+MGI:2444070;MGI:1859645;MGI:1858171;MGI:97312;MGI:109431;MGI:97822;MGI:2149332;MGI:97283;
+MGI:98483;MGI:1351625;MGI:2152213;MGI:1860418;MGI:2389572;MGI:2385955;MGI:97297;MGI:1859179;
+MGI:102509;MGI:3642780;MGI:88070;MGI:3041165;MGI:99587;MGI:1932682;MGI:99583;MGI:103064;
+MGI:1922333;MGI:1914385;MGI:3630381;MGI:1203520;MGI:1337056;MGI:2442359;MGI:99585;
+MGI:104517;MGI:1921506;MGI:98325;MGI:99591;MGI:96698;MGI:1914775;MGI:2384959;MGI:99582;
+MGI:97572;MGI:3708769;MGI:88574;MGI:107931;MGI:1925666;MGI:2385923;MGI:3056600;MGI:96242;
+MGI:1316658;MGI:3782011;MGI:96448;MGI:2445077;MGI:99580;MGI:108041;MGI:88489;MGI:109601;
+MGI:107656;MGI:2137352;MGI:94880;MGI:96824;MGI:1196250;MGI:2152907;MGI:1923239;MGI:3036238;
+MGI:1298230;MGI:108445;MGI:1927165;MGI:2442261;MGI:894669;MGI:1349457;MGI:1196275;
+MGI:1891441;MGI:95640;MGI:106603;MGI:107448;MGI:1918943;MGI:2137431;MGI:107420;MGI:1929658;
+MGI:107157;MGI:1337994;MGI:2444210;MGI:3646434;MGI:1859822;MGI:3646688;MGI:1347245;
+MGI:1100525;MGI:1926262;MGI:104741;MGI:1919148;MGI:2159342;MGI:2448415;MGI:1915095;
+MGI:88022;MGI:1298389;MGI:109294;MGI:2441788;MGI:1855694;MGI:104729;MGI:1919489;MGI:3528602;
+MGI:1345152;MGI:1098268;MGI:99581;MGI:87986;MGI:1933107;MGI:99474;MGI:2685628;MGI:1914416;
+MGI:107170;MGI:2681836;MGI:3577015;MGI:98229;MGI:88256;MGI:1926134;MGI:1345961;MGI:2158560;
+MGI:4821257;MGI:1931751;MGI:2443226;MGI:1916851;MGI:1917360;MGI:1346330;MGI:894671;
+MGI:1859638;MGI:1349469;MGI:3808881;MGI:1333815;MGI:1918433;MGI:94882;MGI:1859307;
+MGI:2442218;MGI:88508;MGI:107168;MGI:95606;MGI:1197015;MGI:1860383;MGI:1921520;MGI:107387;
+MGI:1345151;MGI:101919;MGI:97616;MGI:1340031;MGI:1889272;MGI:3649094;MGI:1913544;
+MGI:1098644;MGI:88051;MGI:1100512;MGI:96617;MGI:1201793;MGI:107658;MGI:1925022;MGI:1346877;
+MGI:1100517;MGI:1298379;MGI:1341258;MGI:1891828;MGI:1890457;MGI:1338036;MGI:99846;
+MGI:96534;MGI:3528599;MGI:1922078;MGI:96748;MGI:2684967;MGI:1913391;MGI:99590;MGI:1929612;
+MGI:94919;MGI:1931465;MGI:1101055;MGI:3045318;MGI:1932051;MGI:3630383;MGI:106388;
+MGI:107470;MGI:1916800;MGI:2385084;MGI:108563;MGI:88216;MGI:107729;MGI:3630390;MGI:94883;
+MGI:1860040;MGI:97747;MGI:109267;MGI:1917562;MGI:1340806;MGI:3630385;MGI:1353616;
+MGI:1931749;MGI:99517;MGI:1341839;MGI:96539;MGI:1341296;MGI:103182;MGI:88251;MGI:1344401;
+MGI:97806;MGI:1096878;MGI:1333882;MGI:2137353;MGI:2441706;MGI:102520;MGI:3612191;
+MGI:1859396;MGI:99449;MGI:3709608;MGI:96544;MGI:4821183;MGI:1194505;MGI:1914914;MGI:99579;
+MGI:1333869;MGI:2441731;MGI:1098296;MGI:2138584;MGI:1933302;MGI:88059;MGI:1918039;
+MGI:1921985;MGI:1312921;MGI:99484;MGI:98262;MGI:3646853;MGI:1918731;MGI:1344333;MGI:1913763;
+MGI:108443;MGI:88320;MGI:1921664;MGI:88318;MGI:1916885;MGI:102674;MGI:1926264;MGI:3708786;
+MGI:95675;MGI:109531;MGI:2153340;MGI:1926446;MGI:1314635;MGI:1353449;MGI:1861232;
+MGI:107899;MGI:96629;MGI:102709;MGI:3033850;MGI:2443411;MGI:2672905;MGI:1099786;MGI:96434;
+MGI:1890169;MGI:1916442;MGI:2384570;MGI:2445102;MGI:1346060;MGI:894668;MGI:104579;
+MGI:96837;MGI:1196377;MGI:104984;MGI:1931560;MGI:1933786;MGI:1913619;MGI:101910;MGI:109353;
+MGI:2686159;MGI:1914440;MGI:1919429;MGI:1918673;MGI:97838;MGI:1278319;MGI:109324;
+MGI:102547;MGI:1328317;MGI:107757;MGI:97430;MGI:88385;MGI:103170;MGI:99586;MGI:1932723;
+MGI:109292;MGI:1932101;MGI:96572;MGI:95805;MGI:2442232;MGI:1916347;MGI:2442492;MGI:95832;
+MGI:95851;MGI:2159728;MGI:3606482;MGI:109256;MGI:2653833;MGI:1344360;MGI:3036234;
+MGI:106657;MGI:3698419;MGI:2443697;MGI:1100500;MGI:96113;MGI:96244;MGI:2138302;MGI:1859212;
+MGI:1918836;MGI:2656551;MGI:1917822;MGI:2686976;MGI:103270;MGI:1921732;MGI:2141990;
+MGI:105384;MGI:1098243;MGI:107655;MGI:3582959;MGI:3039602;MGI:107654;MGI:96540;MGI:104663;
+MGI:2449119;MGI:2181693;MGI:107657;MGI:1920955;MGI:99588;MGI:1921579;MGI:2444773;
+MGI:96573;MGI:106295;MGI:96590;MGI:96591;MGI:102749;MGI:3709048;MGI:96395;MGI:107567;
+MGI:2429603;MGI:1202301;MGI:2429943;MGI:96628;MGI:97374;MGI:2662547;MGI:1890645;MGI:96745;
+MGI:1929481;MGI:88127;MGI:96924;MGI:103290;MGI:1098776;MGI:2445060;MGI:1919762;MGI:1098274;
+MGI:1921738;MGI:106651;MGI:3647286;MGI:2385115;MGI:1346861;MGI:1343177;MGI:88492;
+MGI:1298204;MGI:1341909;MGI:1890474;MGI:1330832;MGI:96493;MGI:96923;MGI:2136841;MGI:3649078;
+MGI:1915600;MGI:108005;S;TAS;MGI:97244;MGI:97243;MGI:105975;</desc>
 <rect width="700" height="500" style="fill:#fff;stroke-width:0" />
 <use class="p0 borderLine" xlink:href="#bl0"/>
 <use class="p1 borderLine" xlink:href="#bl1"/>
 <use class="p2 borderLine" xlink:href="#bl2"/>
 <use class="p3 borderLine" xlink:href="#bl3"/>
+<use class="p4 borderLine" xlink:href="#bl4"/>
+<use class="p5 borderLine" xlink:href="#bl5"/>
+<use class="p6 borderLine" xlink:href="#bl6"/>
 <use class="q0 outLine" xlink:href="#bl0"/>
 <use class="q1 outLine" xlink:href="#bl1"/>
 <use class="q2 outLine" xlink:href="#bl2"/>
 <use class="q3 outLine" xlink:href="#bl3"/>
-<circle onclick="fromCircle(1)" class="circle" cx="189.4276" cy="109.4043" r="25.6830" />
-<text class="nLabel" x="189.43" y="104.40">328</text>
-<text class="belong" x="189.43" y="114.40">(1)</text>
-<circle onclick="fromCircle(3)" class="circle" cx="136.4843" cy="202.8508" r="7.6367" />
-<text class="nLabel" x="136.48" y="197.85">29</text>
-<text class="belong" x="136.48" y="207.85">(1, 2)</text>
-<circle onclick="fromCircle(4)" class="circle" cx="460.0982" cy="233.8537" r="6.9415" />
-<text class="nLabel" x="460.10" y="228.85">9</text>
-<text class="belong" x="460.10" y="238.85">(3)</text>
-<circle onclick="fromCircle(5)" class="circle" cx="312.3500" cy="427.1119" r="6.9415" />
-<text class="nLabel" x="312.35" y="422.11">3</text>
-<text class="belong" x="312.35" y="432.11">(1, 3)</text>
-<circle onclick="fromCircle(6)" class="circle" cx="25.1487" cy="297.5802" r="6.9415" />
-<text class="nLabel" x="25.15" y="292.58">5</text>
-<text class="belong" x="25.15" y="302.58">(2, 3)</text>
-<circle onclick="fromCircle(7)" class="circle" cx="209.8395" cy="328.9772" r="6.9415" />
-<text class="nLabel" x="209.84" y="323.98">2</text>
-<text class="belong" x="209.84" y="333.98">(1, 2, 3)</text>
-<circle onclick="fromCircle(8)" class="circle" cx="298.4614" cy="147.6970" r="6.9415" />
-<text class="nLabel" x="298.46" y="142.70">2</text>
-<text class="belong" x="298.46" y="152.70">(4)</text>
-<circle onclick="fromCircle(12)" class="circle" cx="328.7803" cy="227.0176" r="6.9415" />
-<text class="nLabel" x="328.78" y="222.02">1</text>
-<text class="belong" x="328.78" y="232.02">(3, 4)</text>
+<use class="q4 outLine" xlink:href="#bl4"/>
+<use class="q5 outLine" xlink:href="#bl5"/>
+<use class="q6 outLine" xlink:href="#bl6"/>
+<circle onclick="fromCircle(1)" class="circle" cx="455.9346" cy="159.1575" r="9.7209" />
+<text class="nLabel" x="455.93" y="154.16">165</text>
+<text class="belong" x="455.93" y="164.16">(1)</text>
+<circle onclick="fromCircle(2)" class="circle" cx="323.6485" cy="39.6925" r="8.9055" />
+<text class="nLabel" x="323.65" y="34.69">47</text>
+<text class="belong" x="323.65" y="44.69">(2)</text>
+<circle onclick="fromCircle(3)" class="circle" cx="370.3135" cy="105.6483" r="8.9055" />
+<text class="nLabel" x="370.31" y="100.65">20</text>
+<text class="belong" x="370.31" y="110.65">(1, 2)</text>
+<circle onclick="fromCircle(4)" class="circle" cx="78.1881" cy="151.7766" r="8.9055" />
+<text class="nLabel" x="78.19" y="146.78">2</text>
+<text class="belong" x="78.19" y="156.78">(3)</text>
+<circle onclick="fromCircle(5)" class="circle" cx="234.7012" cy="68.1127" r="8.9055" />
+<text class="nLabel" x="234.70" y="63.11">1</text>
+<text class="belong" x="234.70" y="73.11">(1, 3)</text>
+<circle onclick="fromCircle(6)" class="circle" cx="160.9404" cy="100.3778" r="8.9055" />
+<text class="nLabel" x="160.94" y="95.38">3</text>
+<text class="belong" x="160.94" y="105.38">(2, 3)</text>
+<circle onclick="fromCircle(7)" class="circle" cx="290.7950" cy="108.9952" r="8.9055" />
+<text class="nLabel" x="290.79" y="104.00">1</text>
+<text class="belong" x="290.79" y="114.00">(1, 2, 3)</text>
+<circle onclick="fromCircle(8)" class="circle" cx="359.6012" cy="424.6187" r="8.9055" />
+<text class="nLabel" x="359.60" y="419.62">54</text>
+<text class="belong" x="359.60" y="429.62">(4)</text>
+<circle onclick="fromCircle(9)" class="circle" cx="471.0945" cy="293.8000" r="8.9055" />
+<text class="nLabel" x="471.09" y="288.80">3</text>
+<text class="belong" x="471.09" y="298.80">(1, 4)</text>
+<circle onclick="fromCircle(10)" class="circle" cx="418.5915" cy="243.2590" r="8.9055" />
+<text class="nLabel" x="418.59" y="238.26">6</text>
+<text class="belong" x="418.59" y="248.26">(2, 4)</text>
+<circle onclick="fromCircle(11)" class="circle" cx="374.2396" cy="175.1673" r="8.9055" />
+<text class="nLabel" x="374.24" y="170.17">1</text>
+<text class="belong" x="374.24" y="180.17">(1, 2, 4)</text>
+<circle onclick="fromCircle(12)" class="circle" cx="100.5498" cy="367.8777" r="8.9055" />
+<text class="nLabel" x="100.55" y="362.88">3</text>
+<text class="belong" x="100.55" y="372.88">(3, 4)</text>
+<circle onclick="fromCircle(16)" class="circle" cx="172.7437" cy="460.3075" r="8.9055" />
+<text class="nLabel" x="172.74" y="455.31">1</text>
+<text class="belong" x="172.74" y="465.31">(5)</text>
+<circle onclick="fromCircle(32)" class="circle" cx="264.5387" cy="452.0129" r="13.3672" />
+<text class="nLabel" x="264.54" y="447.01">312</text>
+<text class="belong" x="264.54" y="457.01">(6)</text>
+<circle onclick="fromCircle(33)" class="circle" cx="402.6598" cy="319.0075" r="9.2375" />
+<text class="nLabel" x="402.66" y="314.01">149</text>
+<text class="belong" x="402.66" y="324.01">(1, 6)</text>
+<circle onclick="fromCircle(34)" class="circle" cx="225.3330" cy="137.2140" r="8.9055" />
+<text class="nLabel" x="225.33" y="132.21">8</text>
+<text class="belong" x="225.33" y="142.21">(2, 6)</text>
+<circle onclick="fromCircle(35)" class="circle" cx="309.6386" cy="182.5393" r="8.9055" />
+<text class="nLabel" x="309.64" y="177.54">6</text>
+<text class="belong" x="309.64" y="187.54">(1, 2, 6)</text>
+<circle onclick="fromCircle(36)" class="circle" cx="124.1233" cy="296.3937" r="8.9055" />
+<text class="nLabel" x="124.12" y="291.39">3</text>
+<text class="belong" x="124.12" y="301.39">(3, 6)</text>
+<circle onclick="fromCircle(38)" class="circle" cx="155.3257" cy="177.9056" r="8.9055" />
+<text class="nLabel" x="155.33" y="172.91">1</text>
+<text class="belong" x="155.33" y="182.91">(2, 3, 6)</text>
+<circle onclick="fromCircle(39)" class="circle" cx="243.8893" cy="211.9014" r="8.9055" />
+<text class="nLabel" x="243.89" y="206.90">1</text>
+<text class="belong" x="243.89" y="216.90">(1, 2, 3, 6)</text>
+<circle onclick="fromCircle(40)" class="circle" cx="250.9764" cy="368.4870" r="8.9055" />
+<text class="nLabel" x="250.98" y="363.49">10</text>
+<text class="belong" x="250.98" y="373.49">(4, 6)</text>
+<circle onclick="fromCircle(41)" class="circle" cx="327.3414" cy="351.7124" r="8.9055" />
+<text class="nLabel" x="327.34" y="346.71">11</text>
+<text class="belong" x="327.34" y="356.71">(1, 4, 6)</text>
+<circle onclick="fromCircle(42)" class="circle" cx="290.5089" cy="298.7037" r="8.9055" />
+<text class="nLabel" x="290.51" y="293.70">1</text>
+<text class="belong" x="290.51" y="303.70">(2, 4, 6)</text>
+<circle onclick="fromCircle(43)" class="circle" cx="342.6062" cy="255.0833" r="8.9055" />
+<text class="nLabel" x="342.61" y="250.08">2</text>
+<text class="belong" x="342.61" y="260.08">(1, 2, 4, 6)</text>
+<circle onclick="fromCircle(44)" class="circle" cx="186.6856" cy="321.7811" r="8.9055" />
+<text class="nLabel" x="186.69" y="316.78">1</text>
+<text class="belong" x="186.69" y="326.78">(3, 4, 6)</text>
+<circle onclick="fromCircle(45)" class="circle" cx="233.5457" cy="288.1127" r="8.9055" />
+<text class="nLabel" x="233.55" y="283.11">2</text>
+<text class="belong" x="233.55" y="293.11">(1, 3, 4, 6)</text>
+<circle onclick="fromCircle(46)" class="circle" cx="178.1021" cy="246.8746" r="8.9055" />
+<text class="nLabel" x="178.10" y="241.87">1</text>
+<text class="belong" x="178.10" y="251.87">(2, 3, 4, 6)</text>
+<circle onclick="fromCircle(48)" class="circle" cx="171.2179" cy="389.8094" r="8.9055" />
+<text class="nLabel" x="171.22" y="384.81">1</text>
+<text class="belong" x="171.22" y="394.81">(5, 6)</text>
+<circle onclick="fromCircle(64)" class="circle" cx="28.9055" cy="244.0245" r="8.9055" />
+<text class="nLabel" x="28.91" y="239.02">2</text>
+<text class="belong" x="28.91" y="249.02">(7)</text>
+<circle onclick="fromCircle(76)" class="circle" cx="111.3978" cy="220.4347" r="8.9055" />
+<text class="nLabel" x="111.40" y="215.43">1</text>
+<text class="belong" x="111.40" y="225.43">(3, 4, 7)</text>
 <rect class="p0 borderLine" data-nbit="0" x="500.00" y="50.00" width="30.00" height="15.00" />
 <rect class="q0" x="500.00" y="50.00" width="30.00" height="15.00" />
 <text class="legend" x="540.00" y="65.00">IBA</text>
@@ -209,8 +415,50 @@ MGI:2135589;MGI:108005;MGI:1914320;MGI:1328352;S;TAS;MGI:97244;MGI:97243;MGI:105
 <text class="legend" x="540.00" y="145.00">IGI</text>
 <rect class="p3 borderLine" data-nbit="3" x="500.00" y="170.00" width="30.00" height="15.00" />
 <rect class="q3" x="500.00" y="170.00" width="30.00" height="15.00" />
-<text class="legend" x="540.00" y="185.00">TAS</text>
-<circle class="spcircle" cx="171.7625" cy="263.5078" r="10" />
-<circle class="spcircle" cx="242.6749" cy="247.0282" r="10" />
-<circle class="spcircle" cx="171.7625" cy="263.5078" r="10" />
+<text class="legend" x="540.00" y="185.00">IMP</text>
+<rect class="p4 borderLine" data-nbit="4" x="500.00" y="210.00" width="30.00" height="15.00" />
+<rect class="q4" x="500.00" y="210.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="225.00">IPI</text>
+<rect class="p5 borderLine" data-nbit="5" x="500.00" y="250.00" width="30.00" height="15.00" />
+<rect class="q5" x="500.00" y="250.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="265.00">ISO</text>
+<rect class="p6 borderLine" data-nbit="6" x="500.00" y="290.00" width="30.00" height="15.00" />
+<rect class="q6" x="500.00" y="290.00" width="30.00" height="15.00" />
+<text class="legend" x="540.00" y="305.00">TAS</text>
+<circle class="spcircle" cx="290.4492" cy="298.6761" r="10" />
+<circle class="spcircle" cx="290.5593" cy="298.6819" r="10" />
+<circle class="spcircle" cx="404.5417" cy="320.6115" r="10" />
+<circle class="spcircle" cx="404.5417" cy="320.6115" r="10" />
+<circle class="spcircle" cx="398.4425" cy="323.0686" r="10" />
+<circle class="spcircle" cx="428.8852" cy="242.1000" r="10" />
+<circle class="spcircle" cx="418.5359" cy="243.2831" r="10" />
+<circle class="spcircle" cx="418.5706" cy="243.1994" r="10" />
+<circle class="spcircle" cx="428.8852" cy="242.1000" r="10" />
+<circle class="spcircle" cx="242.0185" cy="70.1381" r="10" />
+<circle class="spcircle" cx="233.6278" cy="272.4770" r="10" />
+<circle class="spcircle" cx="234.6761" cy="72.8766" r="10" />
+<circle class="spcircle" cx="234.3231" cy="140.0876" r="10" />
+<circle class="spcircle" cx="234.3231" cy="140.0876" r="10" />
+<circle class="spcircle" cx="234.0121" cy="199.3177" r="10" />
+<circle class="spcircle" cx="234.3129" cy="142.0420" r="10" />
+<circle class="spcircle" cx="166.2508" cy="210.9878" r="10" />
+<circle class="spcircle" cx="237.9119" cy="274.4520" r="10" />
+<circle class="spcircle" cx="366.4209" cy="265.8427" r="10" />
+<circle class="spcircle" cx="410.1221" cy="219.1180" r="10" />
+<circle class="spcircle" cx="239.0164" cy="71.2578" r="10" />
+<circle class="spcircle" cx="86.0430" cy="227.6854" r="10" />
+<circle class="spcircle" cx="86.0430" cy="227.6854" r="10" />
+<circle class="spcircle" cx="147.4955" cy="342.7542" r="10" />
+<circle class="spcircle" cx="263.5523" cy="194.2302" r="10" />
+<circle class="spcircle" cx="273.4990" cy="163.1096" r="10" />
+<circle class="spcircle" cx="225.3902" cy="137.2447" r="10" />
+<circle class="spcircle" cx="225.2867" cy="137.2409" r="10" />
+<circle class="spcircle" cx="167.5609" cy="382.5554" r="10" />
+<circle class="spcircle" cx="305.3308" cy="412.7316" r="10" />
+<circle class="spcircle" cx="402.6100" cy="319.0557" r="10" />
+<circle class="spcircle" cx="402.6251" cy="318.9566" r="10" />
+<circle class="spcircle" cx="311.9285" cy="185.8987" r="10" />
+<circle class="spcircle" cx="145.6810" cy="214.5304" r="10" />
+<circle class="spcircle" cx="124.1398" cy="296.3310" r="10" />
+<circle class="spcircle" cx="124.1481" cy="296.4430" r="10" />
 </svg>

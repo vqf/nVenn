@@ -23,7 +23,7 @@ int main(){
   std::string path4 = "/home/vqf/proyectos/nVenn2/polish.txt";
   std::string path5 = "/home/vqf/Downloads/tmp.txt";
   std::string path6 = "/home/vqf/proyectos/nVenn2/extremeTest2.txt";
-  borderLine bl = fromSetFile(path1);
+  borderLine bl = fromSetFile(path2);
   UINT lvl = 2;
   UINT n = bl.countCombs(lvl);
   std::cout << n << std::endl;

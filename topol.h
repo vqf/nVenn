@@ -235,7 +235,6 @@ typedef struct blData{
   float margin;
   float totalCircleV;
   float totalLineV;
-  bool increasedDT;
   int contacts;
   UINT ncycles;
   UINT maxRunningTime;
@@ -1487,7 +1486,7 @@ class borderLine
     void initBlData(blData* b){
       b->sk = 1e3f;
       b->dt = 0.025f;
-      b->mindt = b->dt / 100;
+      b->mindt = b->dt / 1000;
       b->maxdt = b->dt;
       b->baseBV = 5.0f;
 
@@ -1497,6 +1496,7 @@ class borderLine
       b->fixCircles = false;
       b->signalEnd = false;
       b->smoothSVG = false;
+      b->optimize = true;
       b->part = false;
       b->surfRatio = 0;
       b->minSurfRatio = 0;
@@ -1515,6 +1515,7 @@ class borderLine
       b->cyclesForStability = 100;
       b->contactFunction = 0; // contact()
       b->maxRunningTime = 200; // 300 seconds to finish the first part
+      b->lineAir = 0;
     }
 
     void init(){
@@ -1602,12 +1603,12 @@ class borderLine
         groups = g;
         currentStep = attract;
         ngroups = g.size();
+        /**/
+        init();
         blSettings.inputFile = inputFile;
         blSettings.fname = outputFile;
         blSettings.minratio = 0.1f * (ngroups * ngroups * ngroups)/ (4 * 4 * 4);
         blSettings.lineAir = ngroups;
-        /**/
-        init();
         for (UINT i = 0; i < tw.size(); i++){
           w.push_back(tw[i][1]);
         }
@@ -3277,7 +3278,15 @@ class borderLine
               if (newComp < opt->getBestCompactness()){
                 opt->setBestCompactness(newComp);
                 tolog("Swapping " + toString(i) + " with " + toString(candidate) + " -> " + toString(newComp) + "\n");
-                //std::cout << "Level " << level << ": Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
+                //// Delete later!!
+                //swapCoords(i, candidate);
+                //showCrossings();
+                //writeSVG("/home/vqf/web/steps/v3/before.svg");
+                //swapCoords(i, candidate);
+                //showCrossings();
+                //writeSVG("/home/vqf/web/steps/v3/after.svg");
+                ////
+                //std::cout << "Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
               }
               else if (newComp == opt->getBestCompactness()){
                 float newUntie = (this->*untieFunct)();
@@ -3286,6 +3295,17 @@ class borderLine
                 if (newUntie > untie){
                   swapCoords(i, candidate);
                   //std::cout << "Level " << level << ": Did not swap on untie\n" << std::endl;
+                }
+                else{
+                  //// Delete later!!
+                  //swapCoords(i, candidate);
+                  //showCrossings();
+                  //writeSVG("/home/vqf/web/steps/v3/before.svg");
+                  //swapCoords(i, candidate);
+                  //showCrossings();
+                  //writeSVG("/home/vqf/web/steps/v3/after.svg");
+                  //std::cout << "Tie-Swapping " << i << " with " << candidate << " -> " << newComp << std::endl;
+                  ////
                 }
               }
               else{
@@ -4681,8 +4701,6 @@ class borderLine
         }
       }
       bl = useme;
-      writeSVG("delme.svg");
-      exit(0);
     }
 
     UINT countOutsiders(){
@@ -7146,6 +7164,11 @@ public:
     std::vector<std::vector<UINT>> getCombinations(UINT maxlevel = 0){
       std::vector<std::vector<UINT>> totry = exMinimize(maxlevel);
       return totry;
+    }
+
+    bool pysim(UINT maxlevel = 1){
+      bool result = simulate(true, maxlevel);
+      return result;
     }
 
 
