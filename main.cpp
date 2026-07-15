@@ -60,7 +60,7 @@ int main(int argc, char** argv)
       fname = argv[1];
     }
     else{
-      fname = getFile("Name of the Venn data file?", "File not found!");
+      fname = "/home/vqf/proyectos/nVenn2/stressTest.txt";
     }
     if (argc > 2){
       outputFile = argv[2];

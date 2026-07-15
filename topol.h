@@ -251,6 +251,7 @@ typedef struct blData{
                            // the surface, the current point will also stick
   std::string inputFile;
   std::string fname;
+  UINT provokeError; // For debugging. 0 - no error; 10 - topol at init; 20 - cannot solve topol
 } blData;
 
 
@@ -1516,6 +1517,7 @@ class borderLine
       b->contactFunction = 0; // contact()
       b->maxRunningTime = 200; // 300 seconds to finish the first part
       b->lineAir = 0;
+      b->provokeError = 0;
     }
 
     void init(){
@@ -5317,25 +5319,26 @@ public:
     void scSolve(){
       blSettings.dt = tosolve.solve(blSettings.dt, resetV);
       bool incorrect = checkTopol();
-      while (incorrect){
+      while (incorrect || blSettings.provokeError == 10 || blSettings.provokeError == 20){
         restorePrevState();
         evaluation.init();
         incorrect = checkTopol();
-        if (incorrect){
+        if (incorrect || blSettings.provokeError == 10){
           setError("Topol problems at start of simulation");
           //std::cout << croack() << std::endl;
           return;
         }
         //tolog(_L_ + "Bad topol\n");
         udt.report();
-        if (blSettings.dt < blSettings.mindt){
+        if (blSettings.dt < blSettings.mindt || blSettings.provokeError == 20){
           if (doublings < maxdoublings){
             doubleThePoints();
           }
           else{
             tolog(_L_ + "Cannot solve topol problems\n");
-            writeSVG("error.svg");
+            //writeSVG("error.svg");
             setError("Cannot solve topol problems");
+            return;
           }
         }
         blSettings.dt = udt.cdt();
@@ -5353,7 +5356,7 @@ public:
       if (blSettings.optimize && keepDistCounter.isMax()){
           keepDist(avgStartDist);
           if (checkTopol()){
-            writeSVG("error.svg");
+            //writeSVG("error.svg");
             listOutsiders();
             tolog(_L_ + "Break on KeepDist\n");
             restorePrevState();
@@ -6546,7 +6549,7 @@ public:
           }
           bl[i] = rb;
           if (checkTopol()){
-            writeSVG("error.svg");
+            //writeSVG("error.svg");
             tolog("Backup after keepDist\n");
             bl[i] = backup;
           }
@@ -6763,6 +6766,10 @@ public:
 
     bool err(){
       return error;
+    }
+
+    void returnError(UINT errorno = 0){
+      blSettings.provokeError = errorno;
     }
 
     /** \brief Inits the conditions for a given step

@@ -696,6 +696,7 @@ public:
     otherForces.clear();
     clearScene();
     dump = false;
+    ghostGrav = false;
     pseudoGravity = false;
     debugSignal = false;
     maxvsq = 0;

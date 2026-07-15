@@ -127,7 +127,6 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
             glEnd ();
         }
         glBegin (GL_LINE_LOOP);
-        rgb c = p.toRGB(colors[i]);
 
         glEnd ();
         if (showPoints){
@@ -151,7 +150,7 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
         std::vector<point> q = bl.getSetBoundaries(n, 2*bl.maxRadius*AIR, true);
         addRectangle(bl, ogl, q, bl.colors[i]);
       }
-      /**********/
+      *********/
       //std::vector<point> bnd = bl.getBoundaries(bl.maxRadius, true);
       //addRectangle(bl, ogl, bnd);
       if (showContacts){
@@ -202,7 +201,7 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
               P = bl.place(ogl, t);
               glVertex2f(P.x, P.y);
               glEnd ();
-              /**********/
+              *********/
               //-----------
               /*
               // Show relationships
@@ -282,7 +281,6 @@ void addGlutRectangle(std::vector<point> p, rgb color = {1, 0.5, 0.5}){
 
 static void resize(int width, int height)
 {
-    const float ar = (float) width / (float) height;
 
     glViewport(0, 0, width, height);
 
@@ -295,11 +293,12 @@ static void display(void)
     bl.setCycle(step);
     toOGL();
     //bl.showCircleNumbers(false);
-    bl.setFontSize(16);
+    //bl.returnError(20);
+    bl.setFontSize(10);
     if (bl.isStepFinished(step)){
         std::stringstream txt;
-        txt << "/home/vqf/web/steps/v3/step" << step << ".svg";
-        bl.writeSVG(txt.str());
+        //txt << "/home/vqf/web/steps/v3/step" << step << ".svg";
+        //bl.writeSVG(txt.str());
         step++;
         bl.setStep(step);
         std::cout << step << std::endl;

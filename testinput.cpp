@@ -32,11 +32,11 @@ std::string getFile(std::string prompt, std::string errorPrompt)
 
 
 int main(int argc, char *argv[]){
-    std::string infile = "/home/vqf/proyectos/nVenn2/stressTest.txt";
-    /td::string ufile = getFile("Filename: ", "Cannot find file");
-    if (ufile != ""){
-      infile = ufile;
-    }
+    std::string infile = "/home/vqf/proyectos/nVenn2/example.txt";
+    //std::string ufile = getFile("Filename: ", "Cannot find file");
+    //if (ufile != ""){
+    //  infile = ufile;
+    //}
     //infile = "/home/vqf/proyectos/nVenn2/rror.txt";
     /*if (argc > 1){
         infile = argv[1];
@@ -67,12 +67,12 @@ int main(int argc, char *argv[]){
           //if (refreshScreen.isMax()) writeSVG();
           if (b.isStepFinished(step)){
             bQuit = true;
-            std::string ofname = "/home/vqf/web/steps/step" + toString(step) + ".svg";
-            b.writeSVG(ofname);
           }
         }
         cstep = step;
       }
+      std::string ofname = "/home/vqf/proyectos/nVenn2/plain.svg";
+      b.writeSVG(ofname);
 
     return 0;
 }
